@@ -33,7 +33,7 @@ export const homePageData = {
         alt: "Resort Pool",
       },
       {
-        image: "/images/img2.jpg",
+        image: "/images/img.jpg",
         alt: "Heritage Architecture",
       },
     ],
