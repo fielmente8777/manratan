@@ -26,7 +26,7 @@ const AccommodationIntro = ({
         </div>
 
         {/* Summary Description Section */}
-        <div className="flex flex-col gap-4 text-secondary text-sm sm:text-base leading-relaxed font-normal tracking-normal text-center  w-full mt-6 md:mt-8">
+        <div className="flex flex-col gap-4 text-secondary text-sm sm:text-base leading-relaxed font-normal tracking-normal text-center w-full mt-6 md:mt-8">
           {paragraphs.map((paragraph, index) => (
             <p key={index} className="wrap-break-word">
               {paragraph}
