@@ -1,5 +1,5 @@
 export const navData = {
-  // logo: "/images/logo.png",
+  logo: "/images/nav.png",
 
   location: {
     label: "NARASINGARH, MP",
@@ -8,9 +8,9 @@ export const navData = {
 
   links: [
     { label: "Home", href: "/" },
-    { label: "Our Story", href: "/about-us" },
+    { label: "Our Story", href: "/about" },
     { label: "Accommodation", href: "/rooms" },
     { label: "Gallery", href: "/gallery" },
-    { label: "Contact", href: "/contact-us" },
+    { label: "Contact", href: "/contactus" },
   ],
 };

@@ -47,14 +47,15 @@ const ImageBanner = ({ image, logo, videoLink, booking }: ImageBannerProps) => {
       <div className="absolute bottom-10 left-0 w-full z-20">
         <Container>
           <div className="relative">
-            <Form1 />
+            <div className="hidden lg:block">
+              <Form1 />
+            </div>
 
             <Link
               href={videoLink}
               className="absolute right-0 -top-16 flex items-center justify-center text-primary hover:scale-105 transition"
             >
-                <PlayIcon />
-             
+              <PlayIcon />
             </Link>
           </div>
         </Container>

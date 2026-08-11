@@ -98,7 +98,7 @@ const Form1 = ({ gridView }: Props) => {
     <form
       onSubmit={handleSubmit}
       className={`
-        ${gridView ? "flex flex-col" : "grid grid-cols-[1fr_1fr_1fr_0.75fr] w-fit"}
+        ${gridView ? "flex flex-col" : "grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr_0.75fr] w-fit"}
         mx-auto
     
     bg-black/40
@@ -120,9 +120,9 @@ const Form1 = ({ gridView }: Props) => {
                 gap-2
                 text-white
                 ${
-                  gridView
-                    ? "px-3 py-2 border-b border-white/60"
-                    : "px-3 py-2 border-r border-white/60"
+                  gridView || "max-md:border-b max-md:border-white/60"
+                    ? "px-3 py-3 md:border-r md:border-white/60"
+                    : "px-3 py-2"
                 }
               `}
             >

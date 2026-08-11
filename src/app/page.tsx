@@ -4,13 +4,16 @@ import About from "./(home)/components/About";
 import ExperienceSection from "./(home)/components/Experience";
 import Feature from "./(home)/components/Feature";
 import Event from "./(home)/components/Event";
-
-
+import Form1 from "@/components/forms/Form1";
 
 export default function Home() {
   return (
-    <>
+    <main>
       <ImageBanner {...homePageData.heroData} />
+
+      <div className="md:hidden">
+        <Form1 />
+      </div>
 
       <About {...homePageData.aboutData} />
 
@@ -19,6 +22,6 @@ export default function Home() {
       <Event {...homePageData.eventsData} />
 
       <ExperienceSection {...homePageData.experienceSection} />
-    </>
+    </main>
   );
 }

@@ -4,6 +4,7 @@ import "./globals.css";
 import "./style.scss";
 import { WebProvider } from "@/context-api/WebContext";
 import Footer from "@/components/footer/Landingfooter";
+import NavBar from "@/components/navbar/NavBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,12 +29,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <WebProvider>
-
-        {children}
-        <Footer/>
+          <NavBar />
+          {children}
+          <Footer />
         </WebProvider>
-
-        </body>
+      </body>
     </html>
   );
 }
