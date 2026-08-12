@@ -1,38 +1,60 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { SectionWithContainer } from "@/components/sectionComponants";
+
+interface Slide {
+  image: string;
+  logo?: string;
+  description: string;
+}
 
 interface AtManratanProps {
   title: string;
   subTitle: string;
-  image: string;
-  logo?: string;
-  description: string;
-  slideCount?: string;
+  slides: Slide[];
 }
 
 const AtManratan = ({
   title,
   subTitle,
-  image,
-  logo,
-  description,
-  slideCount = "1/4",
+  slides,
 }: AtManratanProps) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % slides.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [slides.length]);
+
+  const activeSlide = slides[activeIndex];
+
+  const previousIndex =
+    activeIndex === 0 ? slides.length - 1 : activeIndex - 1;
+
+  const previousSlide = slides[previousIndex];
+
+  const nextSlide = () => {
+    setActiveIndex((prev) => (prev + 1) % slides.length);
+  };
+
   return (
-    <SectionWithContainer>
-      {/* ================= HEADING ================= */}
+    <SectionWithContainer sectionClassName="bg-tertiary">
+      {/* ================= TITLE ================= */}
       <div className="mb-10 text-center">
         <h2
           className="
             text-primary
-            text-3xl
+            text-4xl
+            md:text-5xl
+            lg:text-[48px]
             font-normal
             uppercase
             leading-none
-            sm:text-4xl
-            lg:text-[40px]
           "
         >
           {title}
@@ -40,125 +62,135 @@ const AtManratan = ({
 
         <p
           className="
-            mt-1
             font-golden
             text-primary
             text-2xl
+            md:text-3xl
             leading-none
-            sm:text-3xl
+            mt-1
           "
         >
           {subTitle}
         </p>
       </div>
 
-      {/* ================= IMAGE + CARD ================= */}
-      <div
-        className="
-          relative
-          mx-auto
-          w-full
-          max-w-[850px]
-        "
-      >
-        {/* IMAGE */}
+      {/* ================= SLIDER ================= */}
+      <div className="relative mx-auto w-full max-w-[1168px]">
         <div
           className="
             relative
-            z-10
-            h-[300px]
-            w-[85%]
-            overflow-hidden
-            sm:h-[400px]
-            lg:h-[500px]
+            w-full
+            h-[544px]
           "
         >
-          <Image
-            src={image}
-            alt={title}
-            fill
-            className="object-cover"
-          />
-        </div>
-
-        {/* DARK INFORMATION CARD */}
-        <div
-          className="
-            relative
-            z-20
-            -mt-16
-            ml-auto
-            flex
-            min-h-[240px]
-            w-[55%]
-            flex-col
-            justify-between
-            bg-primary
-            px-6
-            py-7
-            sm:-mt-24
-            sm:min-h-[280px]
-            sm:px-8
-            sm:py-8
-            lg:-mt-32
-            lg:min-h-[300px]
-            lg:w-[42%]
-          "
-        >
-          {/* LOGO / TITLE */}
-          <div>
-            {logo ? (
-              <div className="relative h-[45px] w-[130px]">
-                <Image
-                  src={logo}
-                  alt="Restaurant"
-                  fill
-                  className="object-contain object-left"
-                />
-              </div>
-            ) : (
-              <h3
-                className="
-                  font-[serif]
-                  text-2xl
-                  uppercase
-                  leading-none
-                  text-white
-                  sm:text-3xl
-                "
-              >
-                Swadika
-              </h3>
-            )}
-
-            <p
-              className="
-                mt-6
-                text-[12px]
-                leading-5
-                text-white/80
-                sm:text-[13px]
-                sm:leading-6
-              "
-            >
-              {description}
-            </p>
-          </div>
-
-          {/* SLIDE INDICATOR */}
+          {/* ================= BACKGROUND IMAGE ================= */}
           <div
             className="
-              mt-6
-              flex
-              items-center
-              gap-2
-              text-xs
-              text-white
+              absolute
+              left-0
+              top-0
+              w-[60%]
+              h-[88%]
+              overflow-hidden
+              z-0
             "
           >
-            <span>{slideCount}</span>
+            <Image
+              src={previousSlide.image}
+              alt=""
+              fill
+              className="object-cover"
+            />
+          </div>
 
-            <span className="text-base leading-none">›</span>
+          {/* ================= FRONT IMAGE ================= */}
+          <div
+            className="
+              absolute
+              left-[48px]
+              top-[27px]
+              w-[64%]
+              h-[80%]
+              overflow-hidden
+              z-10
+            "
+          >
+            <Image
+              key={activeSlide.image}
+              src={activeSlide.image}
+              alt={title}
+              fill
+              priority
+              className="object-cover"
+            />
+          </div>
+
+          {/* ================= CONTENT CARD ================= */}
+          <div
+            className="
+              absolute
+              right-0
+              top-[19.5%]
+              z-20
+              w-[31%]
+              h-[302px]
+              bg-primary
+              px-8
+              py-8
+              flex
+              flex-col
+              justify-between
+            "
+          >
+            <div
+              key={activeIndex}
+              className="animate-content"
+            >
+              {activeSlide.logo && (
+                <div className="relative h-[55px] w-[150px] mx-auto">
+                  <Image
+                    src={activeSlide.logo}
+                    alt=""
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              )}
+
+              <p
+                className="
+                  mt-7
+                  text-[13px]
+                  leading-6
+                  text-white
+                  text-center
+                "
+              >
+                {activeSlide.description}
+              </p>
+            </div>
+
+            {/* ================= SLIDE COUNT ================= */}
+            <button
+              type="button"
+              onClick={nextSlide}
+              className="
+                flex
+                items-center
+                gap-3
+                text-white
+                text-sm
+                w-fit
+              "
+            >
+              <span>
+                {activeIndex + 1}/{slides.length}
+              </span>
+
+              <span className="text-xl">
+                ›
+              </span>
+            </button>
           </div>
         </div>
       </div>

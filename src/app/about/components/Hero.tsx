@@ -1,5 +1,6 @@
 "use client";
 
+import { SectionWithContainer } from "@/components/sectionComponants";
 import Image from "next/image";
 
 interface AboutHeroProps {
@@ -16,8 +17,8 @@ const Hero = ({
   subTitle,
 }: AboutHeroProps) => {
   return (
-    <section className="relative h-[650px] w-full overflow-hidden lg:h-[720px]">
-      {/* BACKGROUND IMAGE */}
+    <SectionWithContainer sectionClassName="relative h-[650px] w-full overflow-hidden lg:h-[720px]">
+
       <Image
         src={image}
         alt={title}
@@ -26,18 +27,18 @@ const Hero = ({
         className="object-cover"
       />
 
-      {/* DARK OVERLAY */}
+
       <div className="absolute inset-0 bg-black/30" />
 
-      {/* HERO CONTENT */}
+
       <div className="absolute inset-x-0 bottom-12 z-10 flex flex-col items-center text-center text-white sm:bottom-14 lg:bottom-16">
 
-        {/* TAGLINE */}
+
         <p className="text-xs uppercase tracking-[0.18em]">
           {tagline}
         </p>
 
-        {/* TITLE */}
+  
         <h1
           className="
             mt-2
@@ -54,7 +55,7 @@ const Hero = ({
           {title}
         </h1>
 
-        {/* SUB TITLE */}
+    
         <p
           className="
             mt-[-2px]
@@ -68,7 +69,7 @@ const Hero = ({
           {subTitle}
         </p>
       </div>
-    </section>
+    </SectionWithContainer>
   );
 };
 

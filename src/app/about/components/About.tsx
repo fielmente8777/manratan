@@ -22,8 +22,8 @@ const About = ({
   history,
 }: AboutStoryProps) => {
   return (
-    <SectionWithContainer>
-      {/* ================= INTRO ================= */}
+    <SectionWithContainer sectionClassName="bg-tertiary">
+      
       <div className="mx-auto max-w-[760px] text-center">
 
         <div className="relative inline-block">
@@ -72,8 +72,8 @@ const About = ({
         </p>
       </div>
 
-      {/* ================= HISTORY ================= */}
-      <div
+
+      {/* <div
         className="
           mt-24
           grid
@@ -84,7 +84,7 @@ const About = ({
           lg:gap-16
         "
       >
-        {/* IMAGE */}
+       
         <div className="relative w-full overflow-hidden">
           <Image
             src={history.image}
@@ -95,7 +95,7 @@ const About = ({
           />
         </div>
 
-        {/* CONTENT */}
+       
         <div className="lg:pb-4">
 
           <div className="relative inline-block">
@@ -143,7 +143,7 @@ const About = ({
           </p>
 
         </div>
-      </div>
+      </div> */}
     </SectionWithContainer>
   );
 };

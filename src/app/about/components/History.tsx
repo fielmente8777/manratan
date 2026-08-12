@@ -17,7 +17,7 @@ const History = ({
   description,
 }: AboutHistoryProps) => {
   return (
-    <SectionWithContainer>
+    <SectionWithContainer sectionClassName="bg-tertiary">
       <div
         className="
           grid

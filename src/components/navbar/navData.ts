@@ -9,7 +9,7 @@ export const navData = {
   links: [
     { label: "Home", href: "/" },
     { label: "Our Story", href: "/about" },
-    { label: "Accommodation", href: "/rooms" },
+    { label: "Accommodation", href: "/accommodation" },
     { label: "Gallery", href: "/gallery" },
     { label: "Contact", href: "/contactus" },
   ],
