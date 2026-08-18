@@ -58,3 +58,16 @@ body {
 .animate-content {
   animation: contentFade 0.5s ease-in-out;
 }
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}

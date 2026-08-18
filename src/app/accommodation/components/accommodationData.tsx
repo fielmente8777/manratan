@@ -1,27 +1,4 @@
-export interface RoomItem {
-  id: string;
-  title: string;
-  subtitle: string;
-  image: string;
-  alt: string;
-}
-
-export interface AccommodationData {
-  hero: {
-    bgImage: string;
-    alt: string;
-    title: string;
-    scrollText: string;
-  };
-  intro: {
-    heading: string;
-    subHeading: string;
-    paragraphs: string[];
-  };
-  rooms: RoomItem[];
-}
-
-export const accommodationData: AccommodationData = {
+export const accommodationData = {
   hero: {
     bgImage: "/images/accommodation/hero.png",
     alt: "Manratan Resort Accommodation",

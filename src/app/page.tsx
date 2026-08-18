@@ -11,7 +11,10 @@ export default function Home() {
     <main>
       <ImageBanner {...homePageData.heroData} />
 
-      <div className="md:hidden">
+      <div
+        className="bg-dark border md:hidden border-white/40 backdrop-blur-xs py-6 px-1.5 flex flex-col gap-5"
+        id="form"
+      >
         <Form1 />
       </div>
 

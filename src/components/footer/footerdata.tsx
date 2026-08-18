@@ -46,7 +46,7 @@ export const footerData: FooterData = {
 
   cta: {
     label: "FIND A ROOM",
-    href: "/rooms",
+    href: "/accommodation",
   },
 
   copyright: "© MANRATAN RESORT 2026",

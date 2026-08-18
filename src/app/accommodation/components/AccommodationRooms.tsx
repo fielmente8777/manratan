@@ -1,6 +1,13 @@
 import { SectionWithContainer } from "@/components/sectionComponants";
-import { RoomItem } from "./accommodationData";
 import RoomCard from "./RoomCard";
+
+interface RoomItem {
+  id: string;
+  title: string;
+  subtitle: string;
+  image: string;
+  alt: string;
+}
 
 interface AccommodationRoomsProps {
   rooms: RoomItem[];
