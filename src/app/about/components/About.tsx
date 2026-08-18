@@ -17,15 +17,10 @@ interface AboutStoryProps {
   };
 }
 
-const About = ({
-  intro,
-  history,
-}: AboutStoryProps) => {
+const About = ({ intro, history }: AboutStoryProps) => {
   return (
     <SectionWithContainer sectionClassName="bg-tertiary">
-      
       <div className="mx-auto max-w-[760px] text-center">
-
         <div className="relative inline-block">
           <h2
             className="
@@ -33,7 +28,6 @@ const About = ({
               text-4xl
               font-normal
               uppercase
-              leading-none
               sm:text-5xl
               lg:text-[48px]
             "
@@ -43,7 +37,8 @@ const About = ({
 
           <p
             className="
-              absolute
+              mt-2            
+              md:absolute
               -bottom-7
               right-0
               font-golden
@@ -60,18 +55,16 @@ const About = ({
 
         <p
           className="
-            mt-16
+            mt-4
+            md:mt-16
             text-secondary
-            text-sm
-            leading-6
-            sm:text-[15px]
-            sm:leading-7
+            md:text-[16px]
+            text-xs
           "
         >
           {intro.description}
         </p>
       </div>
-
 
       {/* <div
         className="

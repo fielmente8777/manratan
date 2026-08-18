@@ -32,7 +32,7 @@ const About = ({
      
       <div className="grid lg:grid-cols-[1fr_2fr]">
         {/* Heading */}
-        <div className="px-6 py-8 lg:px-0 lg:py-0">
+        <div className="px-6 lg:px-0 lg:py-0">
           <h2
             className="
               text-primary
@@ -53,7 +53,8 @@ const About = ({
               lg:text-5xl
               leading-none
               ml-24
-              mt-4
+              mt-2
+              md:mt-4
             "
           >
             {title.subHeading}

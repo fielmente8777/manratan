@@ -20,7 +20,7 @@ const ImageBanner = ({ image, logo, videoLink, booking }: ImageBannerProps) => {
   return (
     <Section
       defaultPadding={false}
-      className="relative h-screen min-h-[850px] overflow-hidden"
+      className="relative w-full lg:aspect-16/8.5 aspect-[4/5.2] overflow-hidden"
     >
       <Image
         src={image}

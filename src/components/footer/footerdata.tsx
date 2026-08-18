@@ -30,7 +30,7 @@ export const footerData: FooterData = {
         { label: "Accommodation", href: "/accommodation" },
         { label: "Gallery", href: "/gallery" },
         { label: "Wedding", href: "/wedding" },
-        { label: "Contact", href: "/contact" },
+        { label: "Contact", href: "/contactus" },
         { label: "Blogs", href: "/blogs" },
       ],
     },

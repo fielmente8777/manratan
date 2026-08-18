@@ -12,7 +12,7 @@ export default function Home() {
       <ImageBanner {...homePageData.heroData} />
 
       <div
-        className="bg-dark border md:hidden border-white/40 backdrop-blur-xs py-6 px-1.5 flex flex-col gap-5"
+        className="bg-dark border md:hidden border-white backdrop-blur-xs flex flex-col gap-5"
         id="form"
       >
         <Form1 />

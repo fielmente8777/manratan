@@ -17,7 +17,8 @@ const History = ({
   description,
 }: AboutHistoryProps) => {
   return (
-    <SectionWithContainer sectionClassName="bg-tertiary">
+    <SectionWithContainer defaultPadding={false}
+    sectionClassName="bg-tertiary">
       <div
         className="
           grid
@@ -28,7 +29,8 @@ const History = ({
 
         <div
           className="
-            relative
+            hidden lg:relative
+            lg:block
             h-[350px]
             overflow-hidden
             sm:h-[450px]
@@ -85,11 +87,28 @@ const History = ({
               {subTitle}
             </p>
           </div>
-
+   <div
+          className="
+            lg:hidden 
+            relative
+            h-[350px]
+            overflow-hidden
+            sm:h-[450px]
+            lg:h-[590px]
+          "
+        >
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover"
+          />
+        </div>
           {/* DESCRIPTION */}
           <p
             className="
-              mt-14
+              mt-8
+              md:mt-14
               text-secondary
               text-sm
               leading-6

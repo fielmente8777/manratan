@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { PlusIcon } from "@/utils/icons";
-import { BiMinus } from "react-icons/bi";
+import Accordion from "@/components/accordion/Accordion";
 import { Section } from "@/components/sectionComponants";
+
 
 interface FAQ {
   question: string;
@@ -15,22 +14,13 @@ interface FAQSectionProps {
 }
 
 const FAQSection = ({ faqs }: FAQSectionProps) => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const handleToggle = (index: number) => {
-    setOpenIndex((current) => (current === index ? null : index));
-  };
-
   return (
-    <Section defaultPadding={false} className=" bg-tertiary">
+    <Section defaultPadding={false} className="bg-tertiary">
       <div
         className="
           mx-auto
           w-full
-          max-w-[1440px]
-          px-6
-          py-20
-          sm:px-10
+          max-w-7xl!
           lg:px-16
           lg:py-24
         "
@@ -66,83 +56,14 @@ const FAQSection = ({ faqs }: FAQSectionProps) => {
         </div>
 
         {/* FAQ LIST */}
-        <div className="mx-auto w-full max-w-[575px] border-t border-[#C9C1B7]">
-          {faqs.map((faq, index) => {
-            const isOpen = openIndex === index;
-
-            return (
-              <div key={faq.question} className="border-b border-[#C9C1B7]">
-                {/* QUESTION */}
-                <button
-                  type="button"
-                  onClick={() => handleToggle(index)}
-                  aria-expanded={isOpen}
-                  className="
-                    flex
-                    w-full
-                    items-center
-                    justify-between
-                    gap-6
-                    px-1
-                    py-5
-                    text-left
-                    sm:py-6
-                  "
-                >
-                  <span
-                    className="
-                      text-primary
-                      text-[13px]
-                      uppercase
-                      leading-5
-                      tracking-[0.04em]
-                      sm:text-[14px]
-                    "
-                  >
-                    {faq.question}
-                  </span>
-
-                  <span
-                    className="
-                      flex
-                      h-5
-                      w-5
-                      shrink-0
-                      items-center
-                      justify-center
-                      text-primary
-                    "
-                  >
-                    {isOpen ? <BiMinus size={20} /> : <PlusIcon />}
-                  </span>
-                </button>
-
-                {/* ANSWER */}
-                <div
-                  className={`grid transition-all duration-300 ease-in-out ${
-                    isOpen
-                      ? "grid-rows-[1fr] opacity-100"
-                      : "grid-rows-[0fr] opacity-0"
-                  }`}
-                >
-                  <div className="overflow-hidden">
-                    <p
-                      className="
-                        text-secondary
-                        px-1
-                        pb-6
-                        pr-10
-                        text-sm
-                        leading-6
-                      "
-                    >
-                      {faq.answer}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+        <div className="mx-auto w-full max-w-[575px]">
+          {faqs.map((faq) => (
+            <Accordion
+              key={faq.question}
+              question={faq.question}
+              answer={faq.answer}
+            />
+          ))}
         </div>
       </div>
     </Section>

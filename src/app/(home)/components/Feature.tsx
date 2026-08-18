@@ -23,7 +23,9 @@ const Feature = ({
   gallery,
 }: FeatureGalleryProps) => {
   return (
-    <SectionWithContainer sectionClassName="bg-tertiary">
+    <SectionWithContainer 
+    defaultPadding={false}
+    sectionClassName="bg-tertiary">
       <div className="flex flex-col gap-4">
         {/* Heading */}
         <div>
@@ -31,20 +33,20 @@ const Feature = ({
             {title.heading}
           </h2>
 
-          <p className="font-golden text-primary text-xl md:text-5xl ml-58 mt-4 leading-none">
+          <p className="font-golden text-primary text-xl md:text-5xl ml-40 md:ml-58 mt-2 md:mt-4 leading-none">
             {title.subHeading}
           </p>
         </div>
 
         {/* Top Description */}
-        <p className="text-secondary text-[10px] md:text-lg leading-4">
+        <p className="text-secondary text-xs md:text-lg ">
           {topDescription}
         </p>
 
         {/* Gallery */}
         <div className="grid grid-cols-2 lg:grid-cols-4">
           {gallery.map((item, index) => (
-            <div key={index} className="relative h-[520px] overflow-hidden">
+            <div key={index} className="relative h-[250px] md:h-[520px] overflow-hidden">
               <Image
                 src={item.image}
                 alt={item.title}
@@ -64,7 +66,7 @@ const Feature = ({
 
         {/* Bottom Description */}
         <div>
-          <p className="text-secondary text-[10px] md:text-[16px] leading-4">
+          <p className="text-secondary text-xs md:text-[16px] mb-10 md:mb-20">
             {bottomDescription}
           </p>
         </div>

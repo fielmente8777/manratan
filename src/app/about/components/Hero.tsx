@@ -17,7 +17,7 @@ const Hero = ({
   subTitle,
 }: AboutHeroProps) => {
   return (
-    <SectionWithContainer sectionClassName="relative h-[650px] w-full overflow-hidden lg:h-[720px]">
+    <SectionWithContainer sectionClassName="relative lg:aspect-16/8 aspect-[4/5.2] w-full overflow-hidden">
 
       <Image
         src={image}
@@ -34,7 +34,7 @@ const Hero = ({
       <div className="absolute inset-x-0 bottom-12 z-10 flex flex-col items-center text-center text-white sm:bottom-14 lg:bottom-16">
 
 
-        <p className="text-xs uppercase tracking-[0.18em]">
+        <p className="text-xs uppercase">
           {tagline}
         </p>
 
@@ -46,8 +46,6 @@ const Hero = ({
             text-4xl
             font-normal
             uppercase
-            leading-none
-            tracking-[0.08em]
             sm:text-5xl
             lg:text-[56px]
           "
@@ -58,7 +56,7 @@ const Hero = ({
     
         <p
           className="
-            mt-[-2px]
+            mt-4
             font-golden
             text-2xl
             leading-none
