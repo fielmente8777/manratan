@@ -54,7 +54,7 @@ const ExperienceSection = ({
         </div>
 
         {/* Right Images */}
-        <div className="grid grid-cols-1 md:grid-cols-3 md:gap-3 h-[300px] md:h-[520px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 h-[300px] md:h-[520px]">
           {images.map((item, index) => (
             <div
               key={index}
