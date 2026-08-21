@@ -7,16 +7,16 @@ Please share the best available options and rates.
 Thank you!`);
 
 export const contact = {
-  email: "",
+  email: "contact@LOREMIPSUM.com",
   mapUrl: "",
   phone: ["+91xxxxxxxxxx"],
-  address: "",
+  address: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
   addressLink: "",
   socialMedia: {
     facebook: "https://www.facebook.com",
     instagram: "https://www.instagram.com/",
   },
-  callCta: `tel: +917208010831`,
+  callCta: `tel: +91xxxxxxxxxx`,
   WhatsappCta: `https://wa.me/+91xxxxxxxxxx?text=${enCodeText}`,
   // formDomain: "aspa",
   formDomain: "testmulti", //for testing

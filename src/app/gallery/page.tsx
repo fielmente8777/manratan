@@ -1,9 +1,15 @@
-const GalleryPage = () => {
-    return (
-        <main>
-            <h1>Gallery Page</h1>
-            {/* Add your gallery content here */}
-        </main>
-    );
+import GalleryGrid from "./components/Grid";
+import GalleryIntro from "./components/Intro";
+import { galleryData } from "./components/pagedata";
+
+export default function GalleryPage() {
+  return (
+    <main>
+      <GalleryIntro
+        title={galleryData.title}
+        description={galleryData.description}
+      />
+      <GalleryGrid images={galleryData.images} />
+    </main>
+  );
 }
-export default GalleryPage;

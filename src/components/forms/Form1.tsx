@@ -98,7 +98,7 @@ const Form1 = ({ gridView }: Props) => {
     <form
       onSubmit={handleSubmit}
       className={`
-        ${gridView ? "flex flex-col" : "grid grid-cols-[1fr_1fr_1fr_0.75fr] w-fit"}
+        ${gridView ? "flex flex-col gap-2" : "grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr_0.75fr] w-full"}
         mx-auto
     
     bg-black/40
@@ -111,7 +111,7 @@ const Form1 = ({ gridView }: Props) => {
       {formFields.map((field, index) => (
         <React.Fragment key={field.name}>
           {field.type === "date" ? (
-            /* ================= DATE ================= */
+           
             <div
               className={`
                 relative
@@ -120,9 +120,9 @@ const Form1 = ({ gridView }: Props) => {
                 gap-2
                 text-white
                 ${
-                  gridView
-                    ? "px-3 py-2 border-b border-white/60"
-                    : "px-3 py-2 border-r border-white/60"
+                  gridView || "max-md:border-b max-md:border-white/60"
+                    ? "px-3 py-3 md:border-r md:border-white/60"
+                    : "px-3 py-2"
                 }
               `}
             >
@@ -159,7 +159,7 @@ const Form1 = ({ gridView }: Props) => {
               )}
             </div>
           ) : field.type === "select" ? (
-            /* ================= GUESTS ================= */
+           
             <div
               className={`
                 relative
@@ -218,7 +218,7 @@ const Form1 = ({ gridView }: Props) => {
               )}
             </div>
           ) : (
-            /* ================= TEXT ================= */
+           
             <div
               className={`
                 relative
@@ -263,7 +263,7 @@ const Form1 = ({ gridView }: Props) => {
         </React.Fragment>
       ))}
 
-      {/* ================= FIND A ROOM ================= */}
+    
       <button
         type="submit"
         className="

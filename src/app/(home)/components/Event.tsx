@@ -32,7 +32,7 @@ const Event = ({ title, gallery, description, link }: EventsProps) => {
           {title.heading}
         </h2>
 
-        <p className="font-golden text-2xl md:text-5xl leading-none ml-70 mt-4">
+        <p className="font-golden text-xl md:text-5xl leading-none md:ml-70 mt-2 md:mt-4">
           {title.subHeading}
         </p>
       </div>
@@ -65,7 +65,7 @@ const Event = ({ title, gallery, description, link }: EventsProps) => {
 
       {/* ================= DESCRIPTION ================= */}
       <div className="max-w-5xl mx-auto mt-7 text-center">
-        <p className="text-tertiary text-xs md:text-[16px] leading-5">
+        <p className="text-tertiary text-xs md:text-[16px]">
           {description}
         </p>
 

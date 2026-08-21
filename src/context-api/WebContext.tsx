@@ -20,7 +20,7 @@ interface WebContextProps {
   setIsOpenPopUpForm2: (value: boolean) => void;
   setIsOpenNavBar: React.Dispatch<React.SetStateAction<boolean>>;
 
-  // ✅ ADD THIS
+
   handleImagePopup: (index: number, imageArray: string[]) => void;
 }
 

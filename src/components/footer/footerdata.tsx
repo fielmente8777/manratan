@@ -26,11 +26,11 @@ export const footerData: FooterData = {
       title: "LINKS",
       items: [
         { label: "Home", href: "/" },
-        { label: "About Us", href: "/about-us" },
+        { label: "About Us", href: "/about" },
         { label: "Accommodation", href: "/accommodation" },
         { label: "Gallery", href: "/gallery" },
         { label: "Wedding", href: "/wedding" },
-        { label: "Contact", href: "/contact" },
+        { label: "Contact", href: "/contactus" },
         { label: "Blogs", href: "/blogs" },
       ],
     },
