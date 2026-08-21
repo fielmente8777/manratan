@@ -127,15 +127,15 @@ export const homePageData = {
 
     images: [
       {
-        image: "/images/img10.jpg",
+        image: "/images/dining1.jpg",
         alt: "Dining Experience",
       },
       {
-        image: "/images/img11.jpg",
+        image: "/images/dining2.jpg",
         alt: "Restaurant",
       },
       {
-        image: "/images/img12.jpg",
+        image: "/images/dining3.jpg",
         alt: "Fine Dining",
       },
     ],
