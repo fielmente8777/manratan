@@ -104,26 +104,7 @@ export const blogsData: BlogPost[] = [
       ],
     },
     data: `
-  <div>
-    <p>
-      Your wedding day deserves a backdrop as extraordinary as your love story. Nestled amid picturesque natural landscapes and historic elegance, Manratan Resort offers an unparalleled venue for grand destination weddings.
-    </p>
-
-    <h2>Expansive Lawns and Regal Banquet Venues</h2>
-    <p>
-      From sun-kissed outdoor pheras on sprawling green lawns to regal evening receptions in luxurious banquet halls, Manratan accommodates every ceremonial nuance with elegance and scale.
-    </p>
-
-    <h2>Bespoke Culinary & Hospitality Experiences</h2>
-    <p>
-      Our master chefs curate exquisite multi-cuisine feasts, while our dedicated wedding concierge team ensures your guests experience royal hospitality from check-in to farewell.
-    </p>
-
-    <h2>Unforgettable Pre-Wedding Celebrations</h2>
-    <p>
-      Host intimate sangeet nights, sundowner mehendi sessions, and private pool parties surrounded by scenic hills and lush greenery.
-    </p>
-  </div>
+  
   `,
   },
   {
@@ -148,26 +129,7 @@ export const blogsData: BlogPost[] = [
       ],
     },
     data: `
-  <div>
-    <p>
-      In a world driven by constant haste, taking time to slow down and listen to your body is the ultimate luxury. At Manratan Resort, wellness is integrated into every aspect of your stay.
-    </p>
-
-    <h2>Sunrise Yoga & Forest Meditation</h2>
-    <p>
-      Begin your day with guided yoga sessions under ancient trees, inhaling crisp fresh air as gentle morning sunlight warms the horizon.
-    </p>
-
-    <h2>Rejuvenating Spa & Ayurvedic Therapies</h2>
-    <p>
-      Indulge in holistic therapies administered by expert therapists using pure herbal oils and natural botanical extracts designed to restore physical and mental balance.
-    </p>
-
-    <h2>Farm-to-Table Organic Dining</h2>
-    <p>
-      Nourish your body with wholesome, freshly prepared meals made from locally sourced organic ingredients that celebrate natural flavors.
-    </p>
-  </div>
+  
   `,
   },
   {
@@ -192,21 +154,7 @@ export const blogsData: BlogPost[] = [
       ],
     },
     data: `
-  <div>
-    <p>
-      Food is the heart of royal hospitality. At Manratan, our culinary team brings alive centuries-old Malwa recipes combined with contemporary international flavors.
-    </p>
-
-    <h2>Heritage Recipes Reimagined</h2>
-    <p>
-      Savor traditional slow-cooked curries, fragrant rice preparations, and artisanal breads baked in clay tandoors using authentic regional spices.
-    </p>
-
-    <h2>Starlight Dining Experiences</h2>
-    <p>
-      Enjoy private candlelit dinners on secluded decks with customized tasting menus prepared exclusively for you and your loved ones.
-    </p>
-  </div>
+  
   `,
   },
   {
@@ -231,21 +179,7 @@ export const blogsData: BlogPost[] = [
       ],
     },
     data: `
-  <div>
-    <p>
-      Looking for a quick weekend escape from urban traffic and deadlines? Narasingarh offers the perfect scenic road trip from Bhopal and Indore.
-    </p>
-
-    <h2>Scenic Highway Drives</h2>
-    <p>
-      Enjoy smooth roads winding through green countryside, small lakes, and rolling hills before arriving at the gates of Manratan Resort.
-    </p>
-
-    <h2>Activities for Everyone</h2>
-    <p>
-      Whether you want a restful weekend reading by the pool or an adventurous day trekking nearby trails, Manratan has something for every weekend traveler.
-    </p>
-  </div>
+  
   `,
   },
   {
@@ -270,21 +204,7 @@ export const blogsData: BlogPost[] = [
       ],
     },
     data: `
-  <div>
-    <p>
-      True luxury respects and protects the environment. At Manratan Resort, sustainable hospitality is embedded into our daily operations.
-    </p>
-
-    <h2>Solar Energy & Water Conservation</h2>
-    <p>
-      We harness renewable solar power and implement advanced rainwater harvesting techniques to maintain green landscapes without depleting natural water tables.
-    </p>
-
-    <h2>Zero-Plastic Commitment</h2>
-    <p>
-      From glass water carafes to organic bamboo toiletries, we eliminate single-use plastics to ensure your stay leaves a light footprint on mother earth.
-    </p>
-  </div>
+  
   `,
   },
 ];

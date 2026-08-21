@@ -13,7 +13,9 @@ interface BlogSlugPageProps {
 }
 
 export async function generateStaticParams() {
-  return blogsData.map((post) => ({
+  const posts = await blogsData;
+  
+  return posts.map((post) => ({
     slug: post.slug,
   }));
 }
