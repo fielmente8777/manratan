@@ -75,12 +75,12 @@ const AtManratan = ({
       </div>
 
       {/* ================= SLIDER ================= */}
-      <div className="relative mx-auto w-full max-w-[1168px]">
+      <div className="relative mx-auto w-full max-w-[1100px]">
         <div
           className="
             relative
             w-full
-            h-[544px]
+            h-[500px]
           "
         >
           {/* ================= BACKGROUND IMAGE ================= */}

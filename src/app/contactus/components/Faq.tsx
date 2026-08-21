@@ -18,6 +18,8 @@ const FAQSection = ({ faqs }: FAQSectionProps) => {
     <Section defaultPadding={false} className="bg-tertiary">
       <div
         className="
+          py-10
+          px-8
           mx-auto
           w-full
           max-w-7xl!

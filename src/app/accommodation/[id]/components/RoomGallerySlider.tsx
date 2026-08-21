@@ -57,7 +57,7 @@ const RoomGallerySlider = ({ specs, images }: RoomGallerySliderProps) => {
                 className={`w-full relative transition-all duration-500 ${
                   index === activeIndex
                     ? "md:aspect-4/2.5 aspect-4/3"
-                    : "md:aspect-[4/2.2] aspect-4/3 opacity-80 mt-8"
+                    : "md:aspect-[4/2.2] aspect-4/3 opacity-80 lg:mt-8"
                 }`}
               >
                 <Image

@@ -14,9 +14,6 @@ export default function MenuButton({ color = "#fff" }: { color?: string }) {
       className="flex items-center gap-4"
       aria-label="Menu"
     >
-      {/* <span className="font-body text-[20px] tracking-wide" style={{ color }}>
-        MENU
-      </span> */}
       <MenuIcon />
     </button>
   );

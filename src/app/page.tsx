@@ -5,6 +5,7 @@ import ExperienceSection from "./(home)/components/Experience";
 import Feature from "./(home)/components/Feature";
 import Event from "./(home)/components/Event";
 import Form1 from "@/components/forms/Form1";
+import Charm from "./(home)/components/Charm";
 
 export default function Home() {
   return (
@@ -19,6 +20,8 @@ export default function Home() {
       </div>
 
       <About {...homePageData.aboutData} />
+
+      <Charm {...homePageData.historyData} />
 
       <Feature {...homePageData.featureGalleryData} />
 

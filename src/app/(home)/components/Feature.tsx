@@ -24,7 +24,7 @@ const Feature = ({
 }: FeatureGalleryProps) => {
   return (
     <SectionWithContainer 
-    defaultPadding={false}
+    
     sectionClassName="bg-tertiary">
       <div className="flex flex-col gap-4">
         {/* Heading */}
@@ -66,7 +66,7 @@ const Feature = ({
 
         {/* Bottom Description */}
         <div>
-          <p className="text-secondary text-xs md:text-[16px] mb-10 md:mb-20">
+          <p className="text-secondary text-xs md:text-[16px]">
             {bottomDescription}
           </p>
         </div>

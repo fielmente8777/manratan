@@ -3,9 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import MenuButton from "./MenuButton";
+import NavMenu from "./NavMenu";
 import { navData } from "./navData";
 import { LocationIcon } from "@/utils/icons";
-import NavMenu from "./NavMenu";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Section, SectionWithContainer } from "../sectionComponants";
