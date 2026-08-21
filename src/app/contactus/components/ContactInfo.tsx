@@ -60,7 +60,7 @@ const ContactInformation = ({
                     {getIcon(item.type)}
                   </span>
 
-                  <h3 className="text-[25px] font-normal uppercase leading-none text-white sm:text-[27px] lg:text-[28px]">
+                  <h3 className="text-[25px] font-[serif] uppercase  text-white sm:text-[27px] lg:text-[28px]">
                     {item.title}:
                   </h3>
                 </div>

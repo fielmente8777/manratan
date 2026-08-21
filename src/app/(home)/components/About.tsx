@@ -22,14 +22,9 @@ interface AboutProps {
   }[];
 }
 
-const About = ({
-  title,
-  topContent,
-  gallery,
-}: AboutProps) => {
+const About = ({ title, topContent, gallery }: AboutProps) => {
   return (
     <SectionWithContainer sectionClassName="bg-tertiary">
-     
       <div className="grid lg:grid-cols-[1fr_2fr]">
         {/* Heading */}
         <div className="px-6 lg:px-0 lg:py-0">
@@ -39,7 +34,7 @@ const About = ({
               text-3xl
               lg:text-[56px]
               leading-none
-              font-normal
+              font-[serif]
             "
           >
             {title.heading}

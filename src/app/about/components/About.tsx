@@ -20,7 +20,7 @@ const About = ({ intro }: AboutStoryProps) => {
             className="
               text-primary
               text-4xl
-              font-normal
+              font-[serif]
               uppercase
               sm:text-5xl
               lg:text-[48px]

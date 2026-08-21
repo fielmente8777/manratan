@@ -42,7 +42,7 @@ const AccommodationHero = ({
         <Container>
           <div className="flex flex-col items-center justify-center text-center">
             {/* Main Title */}
-            <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] leading-tight md:leading-[4rem] [font-family:serif] font-light uppercase tracking-[0.12em] drop-shadow-md">
+            <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-[serif] uppercase drop-shadow-md">
               {title}
             </h1>
 

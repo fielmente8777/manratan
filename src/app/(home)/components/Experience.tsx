@@ -27,13 +27,11 @@ const ExperienceSection = ({
   link,
 }: ExperienceSectionProps) => {
   return (
-    <SectionWithContainer
-      sectionClassName="bg-tertiary"
-    >
+    <SectionWithContainer sectionClassName="bg-tertiary">
       <div className="grid lg:grid-cols-2 gap-12 items-center">
         {/* Left Content */}
         <div>
-          <h2 className="text-2xl md:text-[56px] text-primary text-start leading-none max-w-xl">
+          <h2 className="text-2xl md:text-[56px] text-primary font-[serif] text-start leading-none max-w-xl">
             {title.heading}
           </h2>
 
@@ -59,7 +57,6 @@ const ExperienceSection = ({
             <div
               key={index}
               className={`relative overflow-hidden ${
-
                 index === 0 ? "ml-10 mr-8 mb-4 md:mt-16 md:mb-12" : ""
               } ${index === 2 ? "ml-10 mr-8 mt-4 md:mt-16 md:mb-12" : ""}`}
             >

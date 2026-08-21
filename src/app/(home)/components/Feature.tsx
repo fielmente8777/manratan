@@ -23,13 +23,11 @@ const Feature = ({
   gallery,
 }: FeatureGalleryProps) => {
   return (
-    <SectionWithContainer 
-    
-    sectionClassName="bg-tertiary">
+    <SectionWithContainer sectionClassName="bg-tertiary">
       <div className="flex flex-col gap-4">
         {/* Heading */}
         <div>
-          <h2 className="text-primary text-3xl md:text-[56px] leading-none font-normal">
+          <h2 className="text-primary text-3xl md:text-[56px] leading-none font-[serif]">
             {title.heading}
           </h2>
 
@@ -39,14 +37,15 @@ const Feature = ({
         </div>
 
         {/* Top Description */}
-        <p className="text-secondary text-xs md:text-lg ">
-          {topDescription}
-        </p>
+        <p className="text-secondary text-xs md:text-lg ">{topDescription}</p>
 
         {/* Gallery */}
         <div className="grid grid-cols-2 lg:grid-cols-4">
           {gallery.map((item, index) => (
-            <div key={index} className="relative h-[250px] md:h-[520px] overflow-hidden">
+            <div
+              key={index}
+              className="relative h-[250px] md:h-[520px] overflow-hidden"
+            >
               <Image
                 src={item.image}
                 alt={item.title}

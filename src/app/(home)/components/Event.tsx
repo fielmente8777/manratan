@@ -28,7 +28,7 @@ const Event = ({ title, gallery, description, link }: EventsProps) => {
     <SectionWithContainer sectionClassName="bg-primary">
 
       <div className="text-center text-tertiary">
-        <h2 className="text-4xl md:text-[56px] leading-none font-normal">
+        <h2 className="text-4xl md:text-[56px] leading-none font-[serif]">
           {title.heading}
         </h2>
 

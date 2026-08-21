@@ -118,8 +118,8 @@ export const homePageData = {
   },
   experienceSection: {
     title: {
-      heading: "THE EXPERIENCE EVOLVES WITH THE LIGHT",
-      subHeading: "A Softer, Deeper Atmosphere",
+      heading: "LOCAL FLAVOURS MEET EXCEPTIONAL DINING",
+      subHeading: "Authentic Flavours, Thoughtfully Served",
     },
 
     description:

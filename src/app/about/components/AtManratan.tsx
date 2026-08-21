@@ -52,7 +52,7 @@ const AtManratan = ({
             text-4xl
             md:text-5xl
             lg:text-[48px]
-            font-normal
+            font-[serif]
             uppercase
             leading-none
           "

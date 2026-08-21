@@ -26,7 +26,7 @@ const GalleryIntro = ({
             text-5xl
             md:text-[56px]
             leading-none
-            font-normal
+            font-[serif]
             uppercase
           "
         >

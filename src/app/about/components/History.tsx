@@ -63,7 +63,7 @@ const History = ({
               className="
                 text-primary
                 text-4xl
-                font-normal
+                font-[serif]
                 uppercase
                 leading-none
                 sm:text-5xl

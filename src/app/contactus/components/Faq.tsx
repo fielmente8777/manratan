@@ -35,7 +35,7 @@ const FAQSection = ({ faqs }: FAQSectionProps) => {
               text-4xl
               sm:text-[44px]
               leading-none
-              font-normal
+              font-[serif]
               uppercase
             "
           >

@@ -46,7 +46,7 @@ const ContactUs = ({
                 text-4xl
                 lg:text-[48px]
                 leading-none
-                font-normal
+                font-[serif]
                 uppercase
               "
             >
