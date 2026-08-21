@@ -11,6 +11,8 @@ export const navData = {
     { label: "Our Story", href: "/about" },
     { label: "Accommodation", href: "/accommodation" },
     { label: "Gallery", href: "/gallery" },
+    { label: "Events", href: "/events" },
+    { label: "Blogs", href: "/blogs" },
     { label: "Contact", href: "/contactus" },
   ],
 };

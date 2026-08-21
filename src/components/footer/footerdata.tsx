@@ -29,6 +29,7 @@ export const footerData: FooterData = {
         { label: "About Us", href: "/about" },
         { label: "Accommodation", href: "/accommodation" },
         { label: "Gallery", href: "/gallery" },
+        { label: "Events", href: "/events" },
         { label: "Wedding", href: "/wedding" },
         { label: "Contact", href: "/contactus" },
         { label: "Blogs", href: "/blogs" },

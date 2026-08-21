@@ -8,7 +8,7 @@ import { navData } from "./navData";
 import { LocationIcon } from "@/utils/icons";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { Section, SectionWithContainer } from "../sectionComponants";
+import { SectionWithContainer } from "../sectionComponants";
 
 const Navbar = () => {
   const pathname = usePathname();

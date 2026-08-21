@@ -1,16 +1,27 @@
 "use client";
+import "./sliding.title.scss";
 
-export default function SlidingTitle({ titles }: { titles: string[] }) {
+interface SlidingTitleProps {
+  titles: string[];
+  bgClassName?: string;
+  textClassName?: string;
+}
+
+export default function SlidingTitle({
+  titles,
+  bgClassName = "bg-white",
+  textClassName = "text-primary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-[serif]",
+}: SlidingTitleProps) {
   titles = [...titles, ...titles];
 
   return (
-    <div className="relative overflow-hidden py-8 border-y border-p1 max_screen_width">
+    <div className={`relative overflow-hidden py-4 sm:py-5 border-y border-secondary/20 max_screen_width ${bgClassName}`}>
       <div className="marquee-wrapper">
         <div className="marquee-track">
           {titles.map((t, i) => (
             <span
               key={i}
-              className="marquee-item text-p2 font-primary md:text-[7rem] text-5xl"
+              className={`marquee-item tracking-[0.15em] uppercase ${textClassName}`}
             >
               <span>{t}</span>
               <span className="separator">
