@@ -38,9 +38,8 @@ const Charm = ({ image, title, subTitle, description, note }: CharmProps) => {
           className="
             flex
             flex-col
-            px-6
-            py-10
-            sm:px-10
+            px-0
+            py-6
             lg:px-0
             lg:pl-10
             lg:pt-0

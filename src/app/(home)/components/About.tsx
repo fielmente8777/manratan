@@ -27,7 +27,7 @@ const About = ({ title, topContent, gallery }: AboutProps) => {
     <SectionWithContainer sectionClassName="bg-tertiary">
       <div className="grid lg:grid-cols-[1fr_2fr]">
         {/* Heading */}
-        <div className="px-6 lg:px-0 lg:py-0">
+        <div className="px-0 lg:px-0 lg:py-0">
           <h2
             className="
               text-primary
@@ -47,7 +47,8 @@ const About = ({ title, topContent, gallery }: AboutProps) => {
               text-2xl
               lg:text-5xl
               leading-none
-              ml-24
+              ml-16
+              sm:ml-24
               mt-2
               md:mt-4
             "
@@ -57,7 +58,7 @@ const About = ({ title, topContent, gallery }: AboutProps) => {
         </div>
 
         {/* Description + Link */}
-        <div className="flex flex-col justify-between px-6 pb-7 lg:px-0 lg:pb-7">
+        <div className="flex flex-col justify-between px-0 pb-7 lg:px-0 lg:pb-7">
           <p
             className="
               text-secondary

@@ -12,13 +12,13 @@ export const contactUsData = {
     href: "https://maps.google.com/?q=Manratan+Resort+Narasingarh+MP",
   },
 
-  image: "/images/img2.jpg",
+  image: "/images/manratan-1.jpg",
 
   illustration: "/images/bell.png",
 };
 
 export const contactInformationData = {
-  image: "/images/contact.jpg",
+  image: "/images/reception2.jpeg",
 
   items: [
  {

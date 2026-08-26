@@ -1,6 +1,6 @@
 export const aboutData = {
   hero: {
-    image: "/images/about2.jpg",
+    image: "/images/aboutus1.jpg",
     tagline: "About",
     title: "Manratan",
     subTitle: "Resort",
@@ -12,18 +12,10 @@ export const aboutData = {
       description:
         "At Manratan Resort, we believe every stay should be more than just a place to spend the night. Located in the scenic surroundings of Narsinghgarh, our resort brings together modern comfort, warm hospitality and thoughtfully designed spaces for a relaxing getaway. From well-appointed rooms and refreshing poolside moments to delightful dining and beautiful views, every detail is designed to make your stay comfortable and memorable. Whether you are travelling with family, enjoying a peaceful escape or celebrating a special occasion, Manratan Resort offers the perfect setting to relax, reconnect and create lasting memories.",
     },
-
-    // history: {
-    //   image: "/images/about/history.jpg",
-    //   title: "Manratan",
-    //   subTitle: "History",
-    //   description:
-    //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
-    // },
   },
 
   aboutHistoryData: {
-    image: "/images/about.jpg",
+    image: "/images/royal-charm.jpg",
     title: "Manratan",
     subTitle: "History",
     description:
@@ -36,25 +28,25 @@ export const aboutData = {
 
     slides: [
       {
-        image: "/images/about.jpg",
+        image: "/images/manratan-1.jpg",
         logo: "/images/about3.png",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       },
       {
-        image: "/images/about2.jpg",
+        image: "/images/manratan-2.jpg",
         logo: "/images/about3.png",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       },
       {
-        image: "/images/about.jpg",
+        image: "/images/manratan-3.jpg",
         logo: "/images/about3.png",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       },
       {
-        image: "/images/about2.jpg",
+        image: "/images/manratan-4.jpg",
         logo: "/images/about3.png",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",

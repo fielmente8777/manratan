@@ -31,7 +31,7 @@ export default function EventsIntro({
           className="text-primary text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[serif] font-normal uppercase tracking-[0.05em] leading-tight"
         />
 
-        <p className="font-golden text-primary/80 text-3xl sm:text-4xl md:text-5xl mt-1 ml-auto text-right pr-16 sm:pr-20 md:pr-32 lg:pr-40 mb-10 md:mb-16">
+        <p className="font-golden text-primary/80 text-3xl sm:text-4xl md:text-5xl mt-1 ml-18 text-right pr-16 sm:pr-20 md:pr-32 lg:pr-40 mb-10 md:mb-16">
           {title.subHeading}
         </p>
 

@@ -18,7 +18,7 @@ const History = ({
 }: AboutHistoryProps) => {
   return (
     <SectionWithContainer defaultPadding={false}
-    sectionClassName="bg-tertiary">
+      sectionClassName="bg-tertiary">
       <div
         className="
           grid
@@ -49,9 +49,9 @@ const History = ({
           className="
             flex
             flex-col
-            px-6
+            
             py-10
-            sm:px-10
+            
             lg:px-0
             lg:pl-10
             lg:pt-0
@@ -87,8 +87,8 @@ const History = ({
               {subTitle}
             </p>
           </div>
-   <div
-          className="
+          <div
+            className="
             lg:hidden 
             relative
             h-[350px]
@@ -96,14 +96,14 @@ const History = ({
             sm:h-[450px]
             lg:h-[590px]
           "
-        >
-          <Image
-            src={image}
-            alt={title}
-            fill
-            className="object-cover"
-          />
-        </div>
+          >
+            <Image
+              src={image}
+              alt={title}
+              fill
+              className="object-cover"
+            />
+          </div>
           {/* DESCRIPTION */}
           <p
             className="

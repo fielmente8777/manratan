@@ -35,11 +35,11 @@ const ExperienceSection = ({
             {title.heading}
           </h2>
 
-          <p className="text-xl md:text-5xl font-golden text-primary ml-24 mt-2 md:mt-4">
+          <p className="text-base sm:text-xl md:text-2xl lg:text-[2.1rem] xl:text-[2.4rem] font-golden text-primary ml-30 sm:ml-12 lg:ml-44 mt-2 md:mt-4 leading-none whitespace-nowrap">
             {title.subHeading}
           </p>
 
-          <p className="md:mt-8 text-primary/80 leading-8 max-w-lg text-sm md:text-[16px]">
+          <p className="mt-6 md:mt-8 text-primary/80 leading-8 max-w-lg text-sm md:text-[16px]">
             {description}
           </p>
 
@@ -52,13 +52,12 @@ const ExperienceSection = ({
         </div>
 
         {/* Right Images */}
-        <div className="grid grid-cols-1 md:grid-cols-3 h-[300px] md:h-[520px]">
+        <div className="grid grid-cols-3 gap-2 sm:gap-4 h-[320px] sm:h-[400px] md:h-[520px]">
           {images.map((item, index) => (
             <div
               key={index}
-              className={`relative overflow-hidden ${
-                index === 0 ? "ml-10 mr-8 mb-4 md:mt-16 md:mb-12" : ""
-              } ${index === 2 ? "ml-10 mr-8 mt-4 md:mt-16 md:mb-12" : ""}`}
+              className={`relative overflow-hidden ${index === 0 ? "my-3 md:mt-16 md:mb-12" : ""
+                } ${index === 2 ? "my-3 md:mt-16 md:mb-12" : ""}`}
             >
               <Image
                 src={item.image}

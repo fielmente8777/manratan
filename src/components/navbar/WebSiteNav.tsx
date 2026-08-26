@@ -92,14 +92,7 @@ const Navbar = () => {
 
               <Link
                 href={navData.location.href}
-                className={`
-              flex
-              items-center
-              gap-2
-              text-xs
-              tracking-[0.2em]
-             text-white
-            `}
+                className="hidden md:flex items-center gap-2 text-xs tracking-[0.2em] text-white"
               >
                 <LocationIcon />
                 {navData.location.label}

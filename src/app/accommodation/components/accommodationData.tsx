@@ -1,6 +1,6 @@
 export const accommodationData = {
   hero: {
-    bgImage: "/images/accommodation/hero.png",
+    bgImage: "/images/acc-room2.jpg",
     alt: "Manratan Resort Accommodation",
     title: "ACCOMMODATION",
     scrollText: "Scroll to explore",
@@ -18,14 +18,14 @@ export const accommodationData = {
       id: "room-1",
       title: "LOREM IPSUM",
       subtitle: "Lorem • Lorem ipsum dolor • Lorem ipsum dolor",
-      image: "/images/accommodation/room-1.png",
+      image: "/images/acc-room1.jpg",
       alt: "Manratan Resort Room 1",
     },
     {
       id: "room-2",
       title: "LOREM IPSUM",
       subtitle: "Lorem • Lorem ipsum dolor • Lorem ipsum dolor",
-      image: "/images/accommodation/room-2.png",
+      image: "/images/acc-room11.jpg",
       alt: "Manratan Resort Room 2",
     },
   ],

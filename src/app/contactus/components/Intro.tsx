@@ -48,6 +48,7 @@ const ContactUs = ({
                 leading-none
                 font-[serif]
                 uppercase
+            
               "
             >
               {title}
@@ -61,6 +62,7 @@ const ContactUs = ({
                 lg:text-[38px]
                 leading-none
                 lg:ml-54
+                ml-30
               "
             >
               {subTitle}

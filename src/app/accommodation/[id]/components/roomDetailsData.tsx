@@ -3,20 +3,20 @@ export const roomDetailsData = [
     id: "room-1",
     title: "1 ROOM • TWIN / DOUBLE BED • GARDEN VIEW",
     specs: "1 ROOM • TWIN / DOUBLE BED • GARDEN VIEW",
-    heroImage: "/images/accommodation/extracted_4.jpg",
+    heroImage: "/images/acc-room1.jpg",
     introParagraph:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     galleryImages: [
       {
-        src: "/images/accommodation/extracted_3.jpg",
+        src: "/images/acc-room2.jpg",
         alt: "Twin Double Bed Room Left View",
       },
       {
-        src: "/images/accommodation/extracted_1.jpg",
+        src: "/images/acc-room3.jpg",
         alt: "Twin Double Bed Garden View Room Center Main Bed",
       },
       {
-        src: "/images/accommodation/extracted_0.jpg",
+        src: "/images/acc-room4.jpg",
         alt: "Twin Double Bed Room Lounge Right View",
       },
     ],
@@ -44,20 +44,20 @@ export const roomDetailsData = [
     id: "room-2",
     title: "LUXURY SUITE • KING BED • POOL VIEW",
     specs: "LUXURY SUITE • KING BED • POOL VIEW",
-    heroImage: "/images/accommodation/extracted_1.jpg",
+    heroImage: "/images/acc-room11.jpg",
     introParagraph:
       "Experience unmatched luxury and modern design with panoramic pool views, premium king bedding, and refined interiors crafted to perfection for an unforgettable escape.",
     galleryImages: [
       {
-        src: "/images/accommodation/extracted_3.jpg",
+        src: "/images/acc-room12.jpg",
         alt: "Luxury Suite Left View",
       },
       {
-        src: "/images/accommodation/extracted_1.jpg",
+        src: "/images/acc-room13.jpg",
         alt: "Luxury Suite King Bed Center View",
       },
       {
-        src: "/images/accommodation/extracted_0.jpg",
+        src: "/images/acc-room14.jpg",
         alt: "Luxury Suite Lounge Right View",
       },
     ],

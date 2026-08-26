@@ -42,6 +42,7 @@ const GalleryIntro = ({
             text-3xl
             sm:text-[40px]
             leading-none
+            ml-28
           "
         >
           {title.subHeading}

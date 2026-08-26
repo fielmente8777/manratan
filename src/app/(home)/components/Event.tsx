@@ -32,7 +32,7 @@ const Event = ({ title, gallery, description, link }: EventsProps) => {
           {title.heading}
         </h2>
 
-        <p className="font-golden text-xl md:text-5xl leading-none md:ml-70 mt-2 md:mt-4">
+        <p className="font-golden text-xl md:text-5xl leading-none ml-24 sm:ml-12 lg:ml-50 mt-2 md:mt-4">
           {title.subHeading}
         </p>
       </div>

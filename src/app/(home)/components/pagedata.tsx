@@ -29,17 +29,17 @@ export const homePageData = {
 
     gallery: [
       {
-        image: "/images/img1.jpg",
+        image: "/images/aboutus2.jpg",
         alt: "Resort Pool",
       },
       {
-        image: "/images/img.jpg",
+        image: "/images/aboutus1.jpg",
         alt: "Heritage Architecture",
       },
     ],
   },
   historyData: {
-    image: "/images/about.jpg",
+    image: "/images/royal-charm.jpg",
     title: "Royal Charm",
     subTitle: "of Narsinghgarh",
     description:
@@ -59,19 +59,19 @@ export const homePageData = {
     gallery: [
       {
         title: "Reception",
-        image: "/images/img2.jpg",
+        image: "/images/manratan-1.jpg",
       },
       {
         title: "Room",
-        image: "/images/img3.jpg",
+        image: "/images/manratan-2.jpg",
       },
       {
         title: "Restaurant",
-        image: "/images/img4.jpg",
+        image: "/images/manratan-3.jpg",
       },
       {
         title: "Pool",
-        image: "/images/img5.jpg",
+        image: "/images/manratan-4.jpg",
       },
     ],
 
@@ -127,15 +127,15 @@ export const homePageData = {
 
     images: [
       {
-        image: "/images/dining1.jpg",
+        image: "/images/dining-1.jpg",
         alt: "Dining Experience",
       },
       {
-        image: "/images/dining2.jpg",
+        image: "/images/dining-2.jpg",
         alt: "Restaurant",
       },
       {
-        image: "/images/dining3.jpg",
+        image: "/images/dining-3.jpg",
         alt: "Fine Dining",
       },
     ],

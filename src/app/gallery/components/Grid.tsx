@@ -13,12 +13,18 @@ interface GalleryGridProps {
   images: GalleryImage[];
 }
 
+const CATEGORIES = [
+  "All Images",
+  "Exterior",
+  "Accommodation",
+  "Reception",
+  "Garden",
+  "Restaurant",
+];
+
 const GalleryGrid = ({ images }: GalleryGridProps) => {
   const [selected, setSelected] = useState("All Images");
-  const categories = useMemo(
-    () => ["All Images", ...new Set(images.map((item) => item.alt))],
-    [images]
-  );
+  const categories = CATEGORIES;
 
   const filteredImages =
     selected === "All Images"
@@ -45,15 +51,19 @@ const GalleryGrid = ({ images }: GalleryGridProps) => {
           </button>
         ))}
       </div>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 md:gap-6 lg:gap-8 space-y-4 md:space-y-6 lg:space-y-8">
         {filteredImages.map((item, index) => (
-          <div key={index} className="relative w-full overflow-hidden">
+          <div
+            key={index}
+            className="break-inside-avoid group relative w-full overflow-hidden rounded-sm bg-gray-100 shadow-sm"
+          >
             <Image
               src={item.image}
-              alt={item.alt}
+              alt={item.alt || "Gallery Image"}
               width={800}
               height={600}
-              className="h-auto w-full object-cover"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="w-full h-auto object-cover transition-transform duration-500 ease-out group-hover:scale-105"
             />
           </div>
         ))}

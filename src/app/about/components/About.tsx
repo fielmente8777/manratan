@@ -19,11 +19,14 @@ const About = ({ intro }: AboutStoryProps) => {
           <h2
             className="
               text-primary
-              text-4xl
+              text-3xl
+              sm:text-4xl
+              md:text-[42px]
+              lg:text-[46px]
+              leading-none
               font-[serif]
               uppercase
-              sm:text-5xl
-              lg:text-[48px]
+              tracking-wide
             "
           >
             {intro.title}
@@ -34,13 +37,19 @@ const About = ({ intro }: AboutStoryProps) => {
               mt-2            
               md:absolute
               -bottom-7
+              md:-bottom-8
               right-0
+              md:-right-2
+              lg:-right-15
               font-golden
               text-primary
-              text-2xl
+              text-xl
+              sm:text-2xl
+              md:text-[26px]
+              lg:text-[28px]
               leading-none
-              sm:text-3xl
-              lg:text-[30px]
+              whitespace-nowrap
+              ml-60
             "
           >
             {intro.subTitle}
@@ -54,13 +63,14 @@ const About = ({ intro }: AboutStoryProps) => {
             text-secondary
             md:text-[16px]
             text-xs
+            
           "
         >
           {intro.description}
         </p>
       </div>
 
-    
+
     </SectionWithContainer>
   );
 };

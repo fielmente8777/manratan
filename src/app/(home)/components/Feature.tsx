@@ -31,7 +31,7 @@ const Feature = ({
             {title.heading}
           </h2>
 
-          <p className="font-golden text-primary text-xl md:text-5xl ml-40 md:ml-58 mt-2 md:mt-4 leading-none">
+          <p className="font-golden text-primary text-[18px] sm:text-[28px] md:text-[40px] ml-36 sm:ml-16 md:ml-[260px] mt-1 sm:mt-2 leading-none whitespace-nowrap">
             {title.subHeading}
           </p>
         </div>
