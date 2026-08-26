@@ -14,18 +14,20 @@ export const metadata: Metadata = {
 
 export default function BlogsPage() {
   return (
-    <main className="w-full bg-tertiary min-h-screen">
-      {/* Header Banner: MANRATAN Blogs */}
-      <BlogHero title="MANRATAN" subTitle="Blogs" />
+    <main className="w-full bg-white">
+      <div className="max_screen_width mx-auto bg-tertiary">
+        {/* Header Banner: MANRATAN Blogs */}
+        <BlogHero title="MANRATAN" subTitle="Blogs" />
 
-      {/* Main Blog Cards Grid Section - Reusing team's SectionWithContainer component pattern */}
-      <SectionWithContainer sectionClassName="bg-tertiary">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {blogsData.map((post) => (
-            <BlogCard key={post.id} post={post} />
-          ))}
-        </div>
-      </SectionWithContainer>
+        {/* Main Blog Cards Grid Section - Reusing team's SectionWithContainer component pattern */}
+        <SectionWithContainer sectionClassName="bg-tertiary">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {blogsData.map((post) => (
+              <BlogCard key={post.id} post={post} />
+            ))}
+          </div>
+        </SectionWithContainer>
+      </div>
     </main>
   );
 }

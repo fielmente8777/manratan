@@ -56,21 +56,23 @@ export default async function RoomsPage({ params }: Params) {
   if (!pageData) return notFound();
 
   return (
-    <main className="bg-[#f6f4f0] min-h-screen">
-      {/* Hero Header with Navbar */}
-      <AccommodationDetailHero
-        bgImage={pageData.heroImage}
-        alt={pageData.title}
-      />
+    <main className="w-full bg-white">
+      <div className="max_screen_width mx-auto bg-[#f6f4f0]">
+        {/* Hero Header with Navbar */}
+        <AccommodationDetailHero
+          bgImage={pageData.heroImage}
+          alt={pageData.title}
+        />
 
-      {/* Intro Description */}
-      <AccommodationDetailIntro text={pageData.introParagraph} />
+        {/* Intro Description */}
+        <AccommodationDetailIntro text={pageData.introParagraph} />
 
-      {/* Room Gallery Carousel Slider */}
-      <RoomGallerySlider specs={pageData.specs} images={pageData.galleryImages} />
+        {/* Room Gallery Carousel Slider */}
+        <RoomGallerySlider specs={pageData.specs} images={pageData.galleryImages} />
 
-      {/* Amenities Infinite Ticker */}
-      <AmenitiesTicker items={pageData.amenities} />
+        {/* Amenities Infinite Ticker */}
+        <AmenitiesTicker items={pageData.amenities} />
+      </div>
     </main>
   );
 }

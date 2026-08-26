@@ -13,7 +13,7 @@ const AccommodationDetailHero = ({
   alt,
 }: AccommodationDetailHeroProps) => {
   return (
-    <section className="relative w-full h-[65vh] sm:h-[75vh] md:h-[85vh] lg:h-[90vh] min-h-[500px] overflow-hidden">
+    <section className="relative w-full max_screen_width mx-auto min-h-[70vh] md:min-h-187.5 max-h-225 overflow-hidden flex flex-col justify-between">
       {/* Background Hero Image */}
       <Image
         src={bgImage}
@@ -31,6 +31,8 @@ const AccommodationDetailHero = ({
       <div className="relative z-20 w-full">
         <LandingNavbar />
       </div>
+
+
     </section>
   );
 };

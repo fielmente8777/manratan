@@ -11,7 +11,7 @@ export default function EventsHero({ image, alt }: EventsHeroProps) {
   return (
     <Section
       defaultPadding={false}
-      className="relative w-full h-[70vh] sm:h-[85vh] lg:h-[90vh] bg-black overflow-hidden flex items-center justify-center"
+      className="relative w-full max_screen_width mx-auto min-h-[70vh] md:min-h-187.5 max-h-225 bg-black overflow-hidden flex items-center justify-center"
     >
       {/* Background Image */}
       <Image

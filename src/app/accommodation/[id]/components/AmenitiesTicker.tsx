@@ -23,7 +23,7 @@ const AmenitiesTicker = ({ items }: AmenitiesTickerProps) => {
   const marqueeList = [...items, ...items, ...items, ...items];
 
   return (
-    <section className="w-full bg-[#f6f4f0] border-y border-[#1c1613] py-6 sm:py-7 md:py-8 overflow-hidden">
+    <section className="w-full max_screen_width mx-auto bg-[#f6f4f0] border-y border-[#1c1613] py-6 sm:py-7 md:py-8 overflow-hidden">
       <div className="flex w-full overflow-hidden select-none">
         <div className="flex shrink-0 animate-marquee items-center justify-around whitespace-nowrap min-w-full">
           {marqueeList.map((item, index) => (

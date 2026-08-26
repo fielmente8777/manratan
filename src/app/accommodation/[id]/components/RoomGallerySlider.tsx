@@ -22,7 +22,7 @@ const RoomGallerySlider = ({ specs, images }: RoomGallerySliderProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className="w-full bg-[#f6f4f0] pb-10 pt-2 md:pb-16 md:pt-4 overflow-hidden">
+    <section className="w-full max_screen_width mx-auto bg-[#f6f4f0] pb-10 pt-2 md:pb-16 md:pt-4 overflow-hidden">
       <div className="w-full flex flex-col items-center">
         {/* Room Specifications Title Header */}
         {specs && (

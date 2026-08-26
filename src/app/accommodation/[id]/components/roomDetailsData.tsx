@@ -44,7 +44,7 @@ export const roomDetailsData = [
     id: "room-2",
     title: "LUXURY SUITE • KING BED • POOL VIEW",
     specs: "LUXURY SUITE • KING BED • POOL VIEW",
-    heroImage: "/images/accommodation/extracted_4.jpg",
+    heroImage: "/images/accommodation/extracted_1.jpg",
     introParagraph:
       "Experience unmatched luxury and modern design with panoramic pool views, premium king bedding, and refined interiors crafted to perfection for an unforgettable escape.",
     galleryImages: [

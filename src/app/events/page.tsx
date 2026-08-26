@@ -17,24 +17,26 @@ export const metadata: Metadata = {
 
 export default function EventsPage() {
   return (
-    <main className="w-full bg-tertiary min-h-screen">
-      {/* Top Hero Banner */}
-      <EventsHero {...eventsPageData.heroData} />
+    <main className="w-full bg-white">
+      <div className="max_screen_width mx-auto bg-tertiary">
+        {/* Top Hero Banner */}
+        <EventsHero {...eventsPageData.heroData} />
 
-      {/* Events & Celebrations Introduction Section */}
-      <EventsIntro {...eventsPageData.introData} />
+        {/* Events & Celebrations Introduction Section */}
+        <EventsIntro {...eventsPageData.introData} />
 
-      {/* Marquee Ticker Band */}
-      <SlidingTitle titles={eventsPageData.tickerItems} />
+        {/* Marquee Ticker Band */}
+        <SlidingTitle titles={eventsPageData.tickerItems} />
 
-      {/* Dark 3-Card Showcase Grid */}
-      <EventsVideoGrid {...eventsPageData.videoCardsData} />
+        {/* Dark 3-Card Showcase Grid */}
+        <EventsVideoGrid {...eventsPageData.videoCardsData} />
 
-      {/* Host Your Events Stacked Carousel Section */}
-      <HostYourEvents {...eventsPageData.hostEventsData} />
+        {/* Host Your Events Stacked Carousel Section */}
+        <HostYourEvents {...eventsPageData.hostEventsData} />
 
-      {/* Contact CTA Section */}
-      <EventsCTA {...eventsPageData.ctaData} />
+        {/* Contact CTA Section */}
+        <EventsCTA {...eventsPageData.ctaData} />
+      </div>
     </main>
   );
 }

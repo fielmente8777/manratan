@@ -18,7 +18,7 @@ const AccommodationHero = ({
   scrollText,
 }: AccommodationHeroProps) => {
   return (
-    <section className="relative w-full min-h-[70vh] md:min-h-187.5 max-h-225 overflow-hidden flex flex-col justify-between">
+    <section className="relative w-full max_screen_width mx-auto min-h-[70vh] md:min-h-187.5 max-h-225 overflow-hidden flex flex-col justify-between">
       {/* Background Hero Image */}
       <Image
         src={bgImage}
@@ -36,6 +36,8 @@ const AccommodationHero = ({
       <div className="relative z-20 w-full">
         <LandingNavbar />
       </div>
+
+
 
       {/* Center Hero Heading & Mouse Scroll Indicator */}
       <div className="relative z-20 w-full pb-10 sm:pb-14 md:pb-16 mt-auto">
