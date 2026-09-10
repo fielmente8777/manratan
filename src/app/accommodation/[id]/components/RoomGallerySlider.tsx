@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import SwiperCarousel from "@/components/sliders/SwiperCarousel";
 
 interface RoomGalleryImage {
@@ -34,10 +34,14 @@ const RoomGallerySlider = ({ specs, images }: RoomGallerySliderProps) => {
         <div className="relative w-full lg:aspect-[4/1.59]">
           <SwiperCarousel
             data={sliderImages}
-            modules={[Navigation]}
+            modules={[Navigation , Autoplay]}
             navigation={{
               nextEl: ".room-slider-next",
               prevEl: ".room-slider-prev",
+            }}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
             }}
             slidesPerView={1}
             spaceBetween={24}

@@ -36,7 +36,7 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-golden: "Golden Hopes";
-  --font-ivy: "IvyOra", serif;
+  --font-ivy: "Ivy Ora", serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -78,5 +78,5 @@ body {
 }
 
 .animate-marquee {
-  animation: marquee 60s linear infinite;
+  animation: marquee 180s linear infinite;
 }

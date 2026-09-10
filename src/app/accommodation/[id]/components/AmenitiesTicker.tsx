@@ -28,7 +28,7 @@ const AmenitiesTicker = ({ items }: AmenitiesTickerProps) => {
         <div className="flex shrink-0 animate-marquee items-center justify-around whitespace-nowrap min-w-full">
           {marqueeList.map((item, index) => (
             <div key={index} className="flex items-center">
-              <span className="text-[#1c1613] text-lg sm:text-xl md:text-2xl lg:text-[1.75rem] font-[serif] tracking-[0.22em] font-normal uppercase">
+              <span className="text-[#1c1613] text-xl md:text-[56px] font-[serif] uppercase">
                 {item}
               </span>
               <DiamondSeparator />
@@ -41,7 +41,7 @@ const AmenitiesTicker = ({ items }: AmenitiesTickerProps) => {
         >
           {marqueeList.map((item, index) => (
             <div key={`dup-${index}`} className="flex items-center">
-              <span className="text-[#1c1613] text-lg sm:text-xl md:text-2xl lg:text-[1.75rem] font-[serif] tracking-[0.22em] font-normal uppercase">
+              <span className="text-[#1c1613] text-xl md:text-[56px] font-[serif] font-normal uppercase">
                 {item}
               </span>
               <DiamondSeparator />
