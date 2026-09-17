@@ -1,35 +1,37 @@
+"use client";
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { useDebounce } from "./useDebounce";
-import { contact } from "@/utils/constent";
 
-interface BookingFormData {
+export interface BookingFormData {
   name: string;
   countryCode: string;
   phone: string;
   email: string;
-  guests?: string;
   checkIn?: string;
   checkOut?: string;
-  noOfPeople: number | "";
   message?: string;
+  city?: string;
+  [key: string]: string | undefined;
 }
 
-interface FormErrors {
+export interface FormErrors {
   name?: string;
   phone?: string;
   email?: string;
   checkIn?: string;
   checkOut?: string;
+  city?: string;
+  guests?: string;
   [key: string]: string | undefined;
 }
 
-interface UseBookingFormProps {
+export interface UseBookingFormProps {
   includeCheckIn?: boolean;
   includeCheckOut?: boolean;
   includeMessage?: boolean;
-  includeNoOfPeople?: boolean;
   includeGuests?: boolean;
+  formDomain?: string;
   formHid?: string;
   onSubmitSuccess?: () => void;
 }
@@ -39,20 +41,20 @@ const initialFormData: BookingFormData = {
   countryCode: "+91",
   phone: "",
   email: "",
-  guests: "",
   checkIn: "",
   checkOut: "",
-  noOfPeople: "",
   message: "",
+  city: "",
+  guests: "1",
 };
 
-const useBookingForm = ({
-  includeCheckIn,
-  includeCheckOut,
+export const useBookingForm = ({
+  includeCheckIn = true,
+  includeCheckOut = true,
   includeMessage,
-  includeNoOfPeople,
   includeGuests,
-  formHid,
+  formDomain = "manratanresort.com",
+  formHid = "",
   onSubmitSuccess,
 }: UseBookingFormProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -72,48 +74,27 @@ const useBookingForm = ({
     return re.test(phone);
   };
 
-  // Debounced Email Validation
   useEffect(() => {
     if (debouncedEmail && !validateEmail(debouncedEmail)) {
-      setErrors((prev) => ({
-        ...prev,
-        email: "Invalid email format",
-      }));
+      setErrors((prev) => ({ ...prev, email: "Invalid email format" }));
     } else if (debouncedEmail && validateEmail(debouncedEmail)) {
-      setErrors((prev) => ({
-        ...prev,
-        email: undefined,
-      }));
+      setErrors((prev) => ({ ...prev, email: undefined }));
     }
   }, [debouncedEmail]);
 
-  // Debounced Phone Validation
   useEffect(() => {
     if (debouncedPhone && !validatePhone(debouncedPhone)) {
-      setErrors((prev) => ({
-        ...prev,
-        phone: "Phone must be 10-15 digits",
-      }));
+      setErrors((prev) => ({ ...prev, phone: "Phone must be 10-15 digits" }));
     } else if (debouncedPhone && validatePhone(debouncedPhone)) {
-      setErrors((prev) => ({
-        ...prev,
-        phone: undefined,
-      }));
+      setErrors((prev) => ({ ...prev, phone: undefined }));
     }
   }, [debouncedPhone]);
 
-  // Debounced Name Validation
   useEffect(() => {
     if (debouncedName && !debouncedName.trim()) {
-      setErrors((prev) => ({
-        ...prev,
-        name: "Name cannot be empty",
-      }));
+      setErrors((prev) => ({ ...prev, name: "Name cannot be empty" }));
     } else if (debouncedName && debouncedName.trim()) {
-      setErrors((prev) => ({
-        ...prev,
-        name: undefined,
-      }));
+      setErrors((prev) => ({ ...prev, name: undefined }));
     }
   }, [debouncedName]);
 
@@ -141,114 +122,73 @@ const useBookingForm = ({
       isValid = false;
     }
 
-    if (includeGuests && !formData.guests) {
-      newErrors.guests = "Please select number of guests";
-      isValid = false;
-    }
-
     if (includeCheckOut && !formData.checkOut) {
       newErrors.checkOut = "Check-out date is required";
       isValid = false;
     }
-    if (
-      includeNoOfPeople &&
-      (!formData.noOfPeople || formData.noOfPeople < 1)
-    ) {
-      newErrors.noOfPeople = "Enter valid number of people";
-      isValid = false;
-    }
+
     setErrors(newErrors);
     return isValid;
   }, [formData, includeCheckIn, includeCheckOut]);
 
-  // handle form submission
   const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]:
-        name === "noOfPeople" ? (value === "" ? "" : Number(value)) : value,
-    }));
-    // Clear error for this field
+    setFormData((prev) => ({ ...prev, [name]: value }));
     if (errors[name as keyof FormErrors]) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        [name]: "",
-      }));
+      setErrors((prev) => ({ ...prev, [name]: "" }));
     }
   };
 
   const setFieldValue = (field: keyof BookingFormData, value: string) => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [field]: value,
-    }));
-
+    setFormData((prev) => ({ ...prev, [field]: value }));
     if (errors[field as keyof FormErrors]) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        [field]: "",
-      }));
+      setErrors((prev) => ({ ...prev, [field]: "" }));
     }
   };
 
-  // reset form
   const resetForm = () => {
     setFormData(initialFormData);
     setErrors({});
   };
 
-  // handle form submission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     if (!validateForm()) return;
 
     setIsSubmitting(true);
+
     try {
-      const descriptionPart = [];
-      if (includeCheckIn) {
-        descriptionPart.push(`Check-in: ${formData.checkIn}`);
-      }
-      if (includeCheckOut) {
-        descriptionPart.push(`Check-out: ${formData.checkOut}`);
-      }
-      if (includeMessage) {
-        descriptionPart.push(`Message: ${formData.message}`);
-      }
+      const descriptionPart: string[] = [];
+      if (includeCheckIn) descriptionPart.push(`Check-in: ${formData.checkIn}`);
+      if (includeCheckOut) descriptionPart.push(`Check-out: ${formData.checkOut}`);
+      if (includeMessage) descriptionPart.push(`Message: ${formData.message}`);
+      if (formData.city) descriptionPart.push(`City: ${formData.city}`);
+
       const description = descriptionPart.join("\n");
 
       const { data } = await axios.post(
         "https://nexon.eazotel.com/eazotel/addcontacts",
         {
-          Domain: contact.formDomain,
+          Domain: formDomain,
           Name: formData.name,
           email: formData.email,
           Contact: formData.countryCode + formData.phone,
           check_in: formData.checkIn,
           check_out: formData.checkOut,
-          guests: formData.guests,
           Description: description,
           created_from: "webform",
-          source_url: window.location.href,
-          hId: contact.formHid ? contact.formHid : formHid,
+          source_url: typeof window !== "undefined" ? window.location.href : "",
+          hId: formHid,
         }
       );
 
       if (data.Status) {
         setSubmitSuccess(true);
         resetForm();
-        if (onSubmitSuccess) {
-          onSubmitSuccess();
-        }
-
-        setTimeout(() => {
-          setSubmitSuccess(false);
-        }, 3000);
+        if (onSubmitSuccess) onSubmitSuccess();
+        setTimeout(() => setSubmitSuccess(false), 3000);
         window.open("/thank-you/", "_blank");
       } else {
         alert(data.message || "Something went wrong. Please try again.");
@@ -266,18 +206,11 @@ const useBookingForm = ({
     setFormData,
     errors,
     isSubmitting,
-    setIsSubmitting,
     submitSuccess,
-    setSubmitSuccess,
-    includeCheckIn,
-    includeCheckOut,
-    includeMessage,
-    includeNoOfPeople,
-    includeGuests,
-    onSubmitSuccess,
     handleChange,
     setFieldValue,
     handleSubmit,
+    resetForm,
   };
 };
 

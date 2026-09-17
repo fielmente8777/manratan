@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 import { SectionWithContainer } from "../sectionComponants";
 import { footerData } from "./footerdata";
@@ -21,6 +22,11 @@ export const DropDown = () => (
 
 const Footer = () => {
   const [isOpen, setIsOpen] = useState<number | null>(null);
+  const pathName = usePathname();
+
+  if (pathName?.startsWith("/landing-page")) {
+    return null;
+  }
 
   return (
     <footer className="text-white">

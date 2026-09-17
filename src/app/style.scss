@@ -1,12 +1,15 @@
 @layer utilities {
+
   a,
   button {
     cursor: pointer;
   }
+
   .demo {
     .swiper {
       pointer-events: none;
     }
+
     .swiper-wrapper {
       transition-timing-function: linear !important;
     }
@@ -71,9 +74,12 @@
   .hide-scroll::-webkit-scrollbar {
     display: none;
   }
+
   .hide-scroll {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
   }
 }
 
@@ -81,6 +87,7 @@
 
 .bg-image {
   position: relative;
+
   &::after {
     content: "";
     position: absolute;
@@ -100,6 +107,7 @@
     height: 25%;
     rotate: 180deg;
     opacity: 0.8;
+
     @media (width < 668px) {
       height: 8%;
       rotate: -180deg;

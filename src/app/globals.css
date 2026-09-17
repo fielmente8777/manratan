@@ -18,7 +18,7 @@
 }
 
 @font-face {
-  font-family: "Ivy Ora";
+  font-family: "IvyOra Display";
   src: url("/fonts/Ivy-Ora-Display.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
@@ -36,7 +36,9 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-golden: "Golden Hopes";
-  --font-ivy: "Ivy Ora", serif;
+  --font-ivy: var(--font-cormorant), "IvyOra Display", serif;
+  --font-montserrat: var(--font-montserrat), sans-serif;
+  --font-dmsans: var(--font-dmsans), sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -79,4 +81,60 @@ body {
 
 .animate-marquee {
   animation: marquee 180s linear infinite;
+}
+
+/* ================= GALLERY SWIPER CUSTOM STYLES ================= */
+.gallery-swiper {
+  width: 100%;
+  overflow: visible !important;
+}
+
+.gallery-swiper .swiper-slide {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 100% !important;
+  transition: opacity 0.5s ease;
+}
+
+.gallery-card-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 !important;
+  width: 85vw;
+  max-width: 872px;
+  height: 260px;
+  transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+  opacity: 0.85;
+}
+
+@media (min-width: 640px) {
+  .gallery-card-wrapper {
+    width: 600px;
+    height: 350px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gallery-card-wrapper {
+    width: 872px;
+    height: 480px;
+  }
+}
+
+.gallery-swiper .swiper-slide-active .gallery-card-wrapper {
+  height: 340px;
+  opacity: 1;
+}
+
+@media (min-width: 640px) {
+  .gallery-swiper .swiper-slide-active .gallery-card-wrapper {
+    height: 450px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gallery-swiper .swiper-slide-active .gallery-card-wrapper {
+    height: 600px;
+  }
 }

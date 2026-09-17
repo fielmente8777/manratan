@@ -48,6 +48,7 @@
 import { TestimonialsProps } from "@/@types/landingPageTypes";
 import SwiperCarousel from "@/components/sliders/SwiperCarousel";
 import { Autoplay } from "swiper/modules";
+import { StarIcon, QuoteIcon } from "@/utils/icons";
 
 const TestimonialsSlider: React.FC<{
   reviews: TestimonialsProps["reviews"];
@@ -57,14 +58,14 @@ const TestimonialsSlider: React.FC<{
       <SwiperCarousel
         data={reviews}
         modules={[Autoplay]}
-        autoplay={{ delay: 2500, disableOnInteraction: false }}
+        autoplay={{ delay: 3500, disableOnInteraction: false }}
         slidesPerView={1}
-        spaceBetween={14}
+        spaceBetween={24}
         loop
-        className="p-1!"
+        className="w-full py-2"
         breakpoints={{
           640: {
-            slidesPerView: 1,
+            slidesPerView: 1.5,
           },
           768: {
             slidesPerView: 2,
@@ -74,26 +75,29 @@ const TestimonialsSlider: React.FC<{
           },
         }}
         renderSlide={(item) => (
-          <div className="flex min-h-[160px] flex-col gap-3 border border-[#DFD6C9] bg-white p-4 md:min-h-[162px] md:p-4">
-            {/* Quote */}
-            <p className="font-serif text-lg leading-none text-[#C5A24A]">“</p>
+          <div className="flex flex-col justify-between w-full lg:w-[424px] min-h-[276px] p-[24px] gap-[16px] bg-white">
+            {/* Top Content: Quote & Review */}
+            <div className="flex flex-col gap-[16px]">
+              {/* Quote Icon */}
+              <QuoteIcon className="w-5 h-5 shrink-0" />
 
-            {/* Review */}
-            <p className="text-xs leading-[1.45] text-secondary md:text-[11px]">
-              {item.review}
-            </p>
+              {/* Review Text */}
+              <p className="font-dmsans font-normal not-italic text-[18px] leading-[26px] tracking-normal align-middle text-[#5E534A]">
+                {item.review}
+              </p>
+            </div>
 
-            {/* Bottom */}
-            <div className="mt-auto">
-              <div className="mb-2 h-px w-full bg-[#DFD6C9]" />
-
-              <div className="flex items-center justify-between gap-2">
-                <p className="text-[9px] text-[#C5A24A]">★★★★★</p>
-
-                <p className="text-[9px] capitalize text-secondary">
-                  Guest from {item.name}
-                </p>
+            {/* Bottom Row: Rating + Guest Name */}
+            <div className="mt-auto flex items-center gap-[8px]">
+              <div className="flex items-center gap-[3px]">
+                {[...Array(5)].map((_, i) => (
+                  <StarIcon key={i} className="w-3 h-3 shrink-0" />
+                ))}
               </div>
+
+              <p className="font-dmsans font-normal not-italic text-[14px] leading-[20px] tracking-normal align-middle text-[#5E534A]">
+                Guest From {item.name.replace(/^Guest\s+[Ff]rom\s*/i, "")}
+              </p>
             </div>
           </div>
         )}

@@ -8,11 +8,10 @@ export function getDateInputLimits(options: {
   let max: string | undefined;
 
   if (options.showPast && !options.showFuture) {
-    max = today; // Only allow today or earlier
+    max = today;
   } else if (!options.showPast && options.showFuture) {
-    min = today; // Only allow today or later
+    min = today;
   } else if (!options.showPast && !options.showFuture) {
-    // If neither, restrict to today only
     min = max = today;
   }
 

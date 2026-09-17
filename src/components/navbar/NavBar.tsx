@@ -6,9 +6,9 @@ import WebSiteNav from "./WebSiteNav";
 const NavBar = () => {
   const pathName = usePathname();
 
-  if (pathName === "/landing-page/") {
+  if (pathName?.startsWith("/landing-page")) {
     return null;
-  } else if (pathName === "/thank-you/") {
+  } else if (pathName?.startsWith("/thank-you")) {
     return null;
   } else {
     return <WebSiteNav />;

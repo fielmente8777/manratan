@@ -1,17 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
-import type { Swiper as SwiperType } from "swiper";
-
-import "swiper/css";
-import "swiper/css/navigation";
-
-import LinkButton from "@/components/buttons/LinkButton";
-import { SectionWithContainer } from "@/components/sectionComponants";
-
+import { useState, useRef, useEffect, useCallback } from "react";
+import Link from "next/link";
+import { WhatsAppIcon, CalendarIcon, CheckIcon, SliderPrevIcon, SliderNextIcon } from "@/utils/icons";
 
 export interface LegacySectionProps {
   tagline: string;
@@ -35,139 +27,202 @@ const Legacy: React.FC<LegacySectionProps> = ({
   images,
   buttons,
 }) => {
-  const swiperRef = useRef<SwiperType | null>(null);
+  const rawImages = images.length > 0 ? images : ["/landing/image1.jpg"];
+  const baseImages =
+    rawImages.length < 3
+      ? [...rawImages, ...rawImages, ...rawImages]
+      : rawImages;
+
+  // Extended slides with 1 clone on left and 1 clone on right
+  const slides = [
+    baseImages[baseImages.length - 1],
+    ...baseImages,
+    baseImages[0],
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(1);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  const [isPaused, setIsPaused] = useState(false);
+  const touchStartX = useRef<number | null>(null);
+
+  const handlePrev = useCallback(() => {
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => prev - 1);
+  }, []);
+
+  const handleNext = useCallback(() => {
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => prev + 1);
+  }, []);
+
+  // Auto sliding
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      handleNext();
+    }, 3500);
+    return () => clearInterval(interval);
+  }, [isPaused, handleNext]);
+
+  const handleTransitionEnd = () => {
+    if (currentIndex === 0) {
+      setIsTransitioning(false);
+      setCurrentIndex(slides.length - 2);
+    } else if (currentIndex === slides.length - 1) {
+      setIsTransitioning(false);
+      setCurrentIndex(1);
+    }
+  };
+
+  useEffect(() => {
+    if (!isTransitioning) {
+      const timer = setTimeout(() => {
+        setIsTransitioning(true);
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [isTransitioning]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (diff > 50) {
+      handleNext();
+    } else if (diff < -50) {
+      handlePrev();
+    }
+    touchStartX.current = null;
+  };
 
   return (
-    <SectionWithContainer sectionClassName="bg-tertiary">
-      <div className="grid grid-cols-1 lg:grid-cols-[1.45fr_1fr]">
-        
-        {/* ================= IMAGE SLIDER ================= */}
-        <div className="relative aspect-[1.35/1] min-h-[350px] overflow-hidden lg:aspect-[1.45/1] lg:min-h-0">
-          <Swiper
-            modules={[Navigation]}
-            onSwiper={(swiper) => {
-              swiperRef.current = swiper;
+    <section className="relative w-full bg-tertiary py-12 md:py-16 lg:py-[100px] overflow-hidden">
+      <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-[24px] pl-0 pr-4 sm:pr-6 lg:pr-[max(60px,calc((100vw-1440px)/2+60px))] min-h-[601px]">
+
+        {/* ================= LEFT IMAGE SLIDER AREA  ================= */}
+        <div
+          className="relative w-full lg:w-[860px] h-[380px] sm:h-[480px] lg:h-[600px] overflow-hidden shrink-0 select-none"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          {/* SLIDER TRACK */}
+          <div
+            className="flex h-full"
+            style={{
+              gap: "15px",
+              transform: `translateX(calc(min(115px, 14vw) - ${currentIndex} * (min(745px, 85vw) + 15px)))`,
+              transition: isTransitioning
+                ? "transform 500ms cubic-bezier(0.25, 1, 0.5, 1)"
+                : "none",
             }}
-            loop={images.length > 1}
-            className="h-full w-full"
+            onTransitionEnd={handleTransitionEnd}
           >
-            {images.map((image, index) => (
-              <SwiperSlide key={index}>
-                <div className="relative h-full w-full">
-                  <Image
-                    src={image}
-                    alt={`${title} ${index + 1}`}
-                    fill
-                    priority={index === 0}
-                    className="object-cover"
-                  />
-                </div>
-              </SwiperSlide>
+            {slides.map((image, index) => (
+              <div
+                key={index}
+                className="w-[min(745px,85vw)] h-full shrink-0 relative overflow-hidden bg-black/5"
+              >
+                <Image
+                  src={image}
+                  alt={`${title} slide ${index}`}
+                  fill
+                  sizes="(max-width: 1024px) 85vw, 745px"
+                  priority={index === 1}
+                  className="object-cover pointer-events-none"
+                />
+              </div>
             ))}
-          </Swiper>
+          </div>
 
-          {/* PREVIOUS BUTTON */}
-          <button
-            type="button"
-            aria-label="Previous image"
-            onClick={() => swiperRef.current?.slidePrev()}
-            className="
-              absolute left-4 top-1/2 z-20
-              flex h-10 w-10
-              -translate-y-1/2
-              items-center justify-center
-              rounded-full bg-white
-              text-primary
-              transition-transform duration-300
-              hover:scale-105
-              md:left-6 md:h-11 md:w-11
-            "
-          >
-            {/* <BtnPrevIcon /> */}
-          </button>
+          {/* NAVIGATION CONTROLS OVER ACTIVE SLIDE  */}
+          <div className="pointer-events-none absolute left-[min(115px,14vw)] top-0 z-20 flex h-full w-[min(745px,85vw)] items-center justify-between px-[8px]">
+            <button
+              type="button"
+              aria-label="Previous image"
+              onClick={handlePrev}
+              className="pointer-events-auto flex items-center justify-center text-white transition-transform duration-200 hover:scale-105 active:scale-95 cursor-pointer drop-shadow-md"
+            >
+              <SliderPrevIcon className="w-10 h-10" />
+            </button>
 
-          {/* NEXT BUTTON */}
-          <button
-            type="button"
-            aria-label="Next image"
-            onClick={() => swiperRef.current?.slideNext()}
-            className="
-              absolute right-4 top-1/2 z-20
-              flex h-10 w-10
-              -translate-y-1/2
-              items-center justify-center
-              rounded-full bg-white
-              text-primary
-              transition-transform duration-300
-              hover:scale-105
-              md:right-6 md:h-11 md:w-11
-            "
-          >
-            {/* <BtnNext /> */}
-          </button>
+            <button
+              type="button"
+              aria-label="Next image"
+              onClick={handleNext}
+              className="pointer-events-auto flex items-center justify-center text-white transition-transform duration-200 hover:scale-105 active:scale-95 cursor-pointer drop-shadow-md"
+            >
+              <SliderNextIcon className="w-10 h-10" />
+            </button>
+          </div>
         </div>
 
-        {/* ================= CONTENT ================= */}
-        <div className="flex flex-col justify-center px-6 py-10 sm:px-8 md:px-10 lg:px-12 xl:px-14">
-          
-          {/* TAGLINE */}
-          <p className="mb-3 text-[10px] uppercase tracking-[0.18em] text-secondary md:text-xs">
-            {tagline}
-          </p>
+        {/* ================= RIGHT CONTENT AREA  ================= */}
+        <div className="flex flex-col justify-between w-full lg:w-[536px] lg:h-[600px] min-h-[600px] py-2 lg:py-0">
 
-          {/* TITLE */}
-          <h2 className="font-ivy text-4xl font-normal leading-[0.95] text-primary sm:text-5xl md:text-[52px] lg:text-[48px] xl:text-[54px]">
-            {title}
-          </h2>
+          {/* TOP SECTION: Tagline & Title & Subtitle */}
+          <div className="flex flex-col items-start w-full">
+            <p className="font-montserrat font-normal not-italic text-[16px] leading-[24px] tracking-normal text-secondary uppercase">
+              {tagline}
+            </p>
 
-          {/* HANDWRITTEN SUBTITLE */}
-          <p className="mt-1 font-golden text-xl text-primary md:text-2xl">
-            {subtitle}
-          </p>
+            <h2 className="mt-[24px] font-ivy text-[36px] sm:text-[46px] lg:text-[56px] font-normal leading-[1.14] lg:leading-[64px] tracking-[0.07em] text-[#221811]">
+              <span className="italic font-normal normal-case">Royal</span>
+              <span className="not-italic font-normal uppercase"> CHARM</span>
+            </h2>
+
+            <p className="font-golden font-normal not-italic text-[28px] sm:text-[34px] lg:text-[40px] leading-[36px] lg:leading-[48px] tracking-[0.07em] text-[#221811] ml-[130px] sm:ml-[180px] lg:ml-[240px] mt-[1px] sm:mt-[2px]">
+              {subtitle}
+            </p>
+          </div>
 
           {/* DESCRIPTION */}
-          <p className="mt-7 max-w-[560px] text-sm leading-[1.65] text-secondary md:text-[13px] lg:text-sm">
+          <p className="mt-[24px] font-montserrat font-normal not-italic text-[15px] lg:text-[16px] leading-[24px] tracking-normal text-secondary max-w-[536px]">
             {description}
           </p>
 
-          {/* POINTS */}
-          <ul className="mt-5 space-y-2.5">
+          {/* POINTS WITH CHECKMARKS  */}
+          <ul className="mt-[24px] space-y-2">
             {points.map((point, index) => (
               <li
                 key={index}
-                className="flex items-start gap-2 text-xs leading-[1.5] text-secondary md:text-[13px]"
+                className="flex items-start gap-2.5 font-montserrat font-normal not-italic text-[15px] lg:text-[16px] leading-[24px] tracking-normal text-secondary"
               >
-                <span className="mt-[6px] h-1 w-1 shrink-0 rounded-full bg-secondary" />
+                <CheckIcon className="mt-[8px] shrink-0 text-[#221811]" />
                 <span>{point}</span>
               </li>
             ))}
           </ul>
 
-          {/* BUTTONS */}
-          <div className="mt-6 flex flex-wrap gap-2">
+          {/* BUTTONS  */}
+          <div className="mt-auto pt-[24px] flex flex-wrap items-center gap-[12px] w-full max-w-[332px]">
             {buttons.map((button, index) => (
-              <LinkButton
+              <Link
                 key={index}
                 href={button.link}
-                label={button.label}
-                className={`
-                  rounded-md
-                  px-4 py-2
-                  text-xs
-                  uppercase
-                  justify-center
-                  ${
-                    index === 0
-                      ? "border border-primary bg-white text-primary"
-                      : "border border-primary bg-primary text-white"
-                  }
-                `}
-              />
+                className={`flex items-center justify-center gap-[8px] w-full sm:w-[160px] h-[41px] px-[16px] py-[12px] font-montserrat font-normal not-italic text-[14px] leading-none tracking-[0.03em] uppercase transition-all duration-200 ${index === 0
+                  ? "bg-white text-[#221811] border border-[#221811] hover:opacity-90 active:scale-[0.98]"
+                  : "bg-[#221811] text-white border border-[#221811] hover:opacity-90 active:scale-[0.98]"
+                  }`}
+              >
+                {index === 0 ? (
+                  <WhatsAppIcon className="shrink-0 w-[14px] h-[14px]" />
+                ) : (
+                  <CalendarIcon className="shrink-0 w-[16px] h-[16px]" />
+                )}
+                <span className="whitespace-nowrap">{button.label}</span>
+              </Link>
             ))}
           </div>
+
         </div>
+
       </div>
-    </SectionWithContainer>
+    </section>
   );
 };
 

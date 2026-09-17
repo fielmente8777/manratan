@@ -1,7 +1,7 @@
-import Accordion from "@/components/accordion/Accordion";
-import LinkButton from "@/components/buttons/LinkButton";
+import LandingAccordion from "./LandingAccordion";
+import Link from "next/link";
+import { WhatsAppIcon, CalendarIcon } from "@/utils/icons";
 import { SectionWithContainer } from "@/components/sectionComponants";
-import { SectionHeading } from "@/components/typography";
 
 interface FaqProps {
   tagline: string;
@@ -16,6 +16,7 @@ interface FaqProps {
     link: string;
   }[];
 }
+
 const Faq: React.FC<FaqProps> = ({
   tagline,
   title,
@@ -24,56 +25,62 @@ const Faq: React.FC<FaqProps> = ({
   buttons,
 }) => {
   return (
-    <SectionWithContainer sectionClassName="border-y border-p1 bg-background2">
-      <div className="grid lg:grid-cols-[1.1fr_1fr] grid-cols-1 gap-8">
-        <div className="lg:sticky lg:top-24 lg:self-start flex flex-col gap-2">
-          <p className="uppercase text-p1 text-xs tracking-widest">{tagline}</p>
-          <SectionHeading title={title} />
-          <p className="text-light">{description}</p>
-          <ul className="lg:grid hidden grid-cols-1 md:grid-cols-2 justify-center items-center gap-2 max-w-sm mt-4">
+    <SectionWithContainer sectionClassName="bg-[#F5F5F5] py-12 md:py-16 lg:py-20">
+      <div className="flex flex-col lg:flex-row justify-between items-start gap-8 lg:gap-[64px] max-w-[1320px] mx-auto">
+        {/* Left Column (581px width, gap 40px, top aligned) */}
+        <div className="flex flex-col justify-start items-start gap-[40px] w-full lg:w-[581px]">
+          {/* Top Info Group (Tagline + Heading) */}
+          <div className="flex flex-col items-start w-full">
+            <p className="font-montserrat font-normal not-italic text-[16px] leading-[24px] tracking-normal text-[#C99E54] uppercase">
+              {tagline}
+            </p>
+
+            {/* Heading (423px x 192px, IvyOra 56px / 64px, 7% spacing, 'uests' italic) */}
+            <h2 className="mt-[24px] max-w-[423px] w-full font-ivy font-normal text-[32px] sm:text-[44px] lg:text-[56px] leading-[1.14] lg:leading-[64px] tracking-[0.07em] text-primary uppercase">
+              <span>QUESTIONS </span>
+              <br />
+              <span className="not-italic uppercase">G</span>
+              <span className="italic font-normal normal-case">uests</span>
+              <span> ASK US</span>
+              <br />
+              <span>MOST!</span>
+            </h2>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex flex-wrap items-center gap-[12px] w-full max-w-[332px]">
             {buttons.map((button, index) => (
-              <li key={index}>
-                <LinkButton
-                  href={button.link}
-                  label={button.label}
-                  whatsAppIcon={index === 0}
-                  calendarIcon={index === 1}
-                  className={`rounded-md w-full text-nowrap text-sm! justify-center
-                    ${
-                      index === 0
-                        ? "bg-transparent text-p1"
-                        : "border border-primary text-white bg-p1"
-                    }
-                    `}
-                />
-              </li>
+              <Link
+                key={index}
+                href={button.link}
+                className={`flex items-center justify-center gap-[8px] w-full sm:w-[160px] h-[41px] px-[16px] py-[12px] font-montserrat font-normal not-italic text-[14px] leading-none tracking-[0.03em] uppercase transition-all duration-200 ${
+                  index === 0
+                    ? "bg-white text-[#221811] border border-[#221811] hover:opacity-90 active:scale-[0.98]"
+                    : "bg-[#221811] text-white border border-[#221811] hover:opacity-90 active:scale-[0.98]"
+                }`}
+              >
+                {index === 0 ? (
+                  <WhatsAppIcon className="shrink-0 w-[14px] h-[14px]" />
+                ) : (
+                  <CalendarIcon className="shrink-0 w-[16px] h-[16px]" />
+                )}
+                <span className="whitespace-nowrap">{button.label}</span>
+              </Link>
             ))}
-          </ul>
+          </div>
         </div>
-        <div className="space-y-4">
+
+        {/* Right Column: Accordion Box (647px x 610px) */}
+        <div className="flex flex-col justify-between w-full lg:w-[647px] min-h-[610px]">
           {items.map((item, index) => (
-            <Accordion key={index} question={item.q} answer={item.a} />
+            <LandingAccordion
+              key={index}
+              question={item.q}
+              answer={item.a}
+              isFirst={index === 0}
+            />
           ))}
         </div>
-        <ul className="grid lg:hidden grid-cols-1 md:grid-cols-2 w-full gap-2 max-w-sm mt-4">
-            {buttons.map((button, index) => (
-              <li key={index}>
-                <LinkButton
-                  href={button.link}
-                  label={button.label}
-                  whatsAppIcon={index === 0}
-                  calendarIcon={index === 1}
-                  className={`rounded-md w-full text-nowrap text-sm! justify-center
-                    ${
-                      index === 0
-                        ? "bg-transparent text-p1"
-                        : "border border-primary text-white bg-p1"
-                    }
-                    `}
-                />
-              </li>
-            ))}
-          </ul>
       </div>
     </SectionWithContainer>
   );

@@ -22,6 +22,26 @@ export const LandingPageData = {
       },
     ],
   },
+  statsBar: {
+    stats: [
+      {
+        value: "4.3/5",
+        label: "Guest rating, online aggregators",
+      },
+      {
+        value: "[X] Yrs",
+        label: "Serving Narsinghgarh",
+      },
+      {
+        value: "[X] Rooms",
+        label: "Pool-facing & garden view",
+      },
+      {
+        value: "2000+ Guests",
+        label: "Largest wedding lawn capacity",
+      },
+    ],
+  },
   legacySection: {
     tagline: "LIVE THE LEGACY OF NARSINGHGARH",
 
@@ -40,7 +60,12 @@ export const LandingPageData = {
       "Minutes from Narsinghgarh Fort, Paras Ram Sagar lake and the town market.",
     ],
 
-    images: ["/narsinghgarh-fort.jpg", "/narsinghgarh-resort.jpg", "/pool.jpg"],
+    images: [
+      "/landing/image1.jpg",
+      "/landing/Image 2.jpg",
+      "/landing/Image4.jpg",
+      "/landing/Image5.jpg",
+    ],
 
     buttons: [
       {
@@ -128,9 +153,9 @@ export const LandingPageData = {
         title: "Garden View Room",
 
         images: [
-          "/garden-view-room.jpg",
-          "/garden-view-room-2.jpg",
-          "/garden-view-room-3.jpg",
+          "/landing/Image 2.jpg",
+          "/landing/Image 2.jpg",
+          "/landing/Image 2.jpg",
         ],
 
         amenities: [
@@ -164,9 +189,9 @@ export const LandingPageData = {
         title: "Pool-Facing Room",
 
         images: [
-          "/pool-facing-room.jpg",
-          "/pool-facing-room-2.jpg",
-          "/pool-facing-room-3.jpg",
+          "/landing/Image 2.jpg",
+          "/landing/Image 2.jpg",
+          "/landing/Image 2.jpg",
         ],
 
         amenities: [
@@ -200,9 +225,9 @@ export const LandingPageData = {
         title: "Family Suite",
 
         images: [
-          "/family-suite.jpg",
-          "/family-suite-2.jpg",
-          "/family-suite-3.jpg",
+          "/landing/Image 2.jpg",
+          "/landing/Image 2.jpg",
+          "/landing/Image 2.jpg",
         ],
 
         amenities: [
@@ -245,7 +270,7 @@ export const LandingPageData = {
     description:
       "From a vibrant marigold-strewn haldi on the lawns to a grand baraat and an elegant reception, Manratan Resort offers the perfect setting to celebrate every ritual of your wedding under one roof. With beautiful event spaces, comfortable on-site accommodation for family and guests, personalised hospitality, and seamless services, we ensure every moment of your celebration is as memorable as the beginning of your forever.",
 
-    images: ["/wedding-1.jpg", "/wedding-2.jpg", "/wedding-3.jpg"],
+    images: ["/landing/Image 3.png", "/landing/Image 3.png", "/landing/Image 3.png"],
 
     button: {
       label: "Get a Wedding Quote",
@@ -260,11 +285,11 @@ export const LandingPageData = {
     italicTitle: "Manratan RESORT",
 
     images: [
-      "/gallery-1.jpg",
-      "/gallery-2.jpg",
-      "/gallery-3.jpg",
-      "/gallery-4.jpg",
-      "/gallery-5.jpg",
+      "/landing/Image4.jpg",
+      "/landing/Image5.jpg",
+      "/landing/Image6.jpg",
+      // "/landing/Image 5.jpg",
+      // "/landing/Image 5.jpg",
     ],
 
     floralImage: "/floral.png",
