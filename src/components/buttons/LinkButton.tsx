@@ -16,6 +16,8 @@ interface LinkButtonProps {
 const LinkButton: React.FC<LinkButtonProps> = ({
   href,
   label,
+  whatsAppIcon,
+  calendarIcon,
   className = "",
   arrowIcon = false,
   download = false,
