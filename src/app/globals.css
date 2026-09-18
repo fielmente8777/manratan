@@ -19,7 +19,7 @@
 
 @font-face {
   font-family: "IvyOra Display";
-  src: url("/fonts/Ivy-Ora-Display.otf") format("opentype");
+  src: url("/fonts/IvyOraDisplay-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -36,9 +36,10 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-golden: "Golden Hopes";
-  --font-ivy: var(--font-cormorant), "IvyOra Display", serif;
-  --font-montserrat: var(--font-montserrat), sans-serif;
-  --font-dmsans: var(--font-dmsans), sans-serif;
+  --font-ivy: var(--font-ivyora), "IvyOra Display";
+  /* --font-ivyora: var(--font-ivyora), "IvyOra Display"; */
+  --font-montserrat: var(--font-montserrat);
+  --font-dmsans: var(--font-dmsans);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -69,6 +70,7 @@ body {
 .animate-content {
   animation: contentFade 0.5s ease-in-out;
 }
+
 @keyframes marquee {
   0% {
     transform: translateX(0%);

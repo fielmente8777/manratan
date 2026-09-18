@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import { useWebContext } from "@/context-api/WebContext";
+
 interface LinkButtonProps {
   href: string;
   label: string;
@@ -24,6 +28,29 @@ const LinkButton: React.FC<LinkButtonProps> = ({
   icon,
   ...props
 }) => {
+  const { setIsOpenPopUpForm } = useWebContext();
+
+  const handleClick = (e: React.MouseEvent) => {
+    if (href === "#form" || !href) {
+      e.preventDefault();
+      setIsOpenPopUpForm(true);
+    }
+  };
+
+  if (href === "#form" || !href) {
+    return (
+      <button
+        type="button"
+        onClick={handleClick}
+        className={`flex items-center text-nowrap gap-3 bg-p1 text-white rounded-sm w-fit px-4 py-2 font-semibold hover:scale-95 transition-all duration-300 ease-in-out hover:scale-x-105 active:scale-95 cursor-pointer ${className}`}
+        {...props}
+      >
+        <span>{label}</span>
+        {icon && <span className="flex items-center">{icon}</span>}
+      </button>
+    );
+  }
+
   return (
     <Link
       href={href}

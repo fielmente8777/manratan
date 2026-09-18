@@ -14,7 +14,7 @@ import Faq from "./components/Faq";
 
 export default function Home() {
   return (
-    <main>
+    <main className="w-full overflow-x-clip">
       <LandingBanner {...homePageData.heroData} />
       <AboutIntro {...LandingPageData.aboutIntro} />
       <StatsBar {...LandingPageData.statsBar} />

@@ -9,7 +9,6 @@ export const LandingPageData = {
 
     location: "NH-46, Biaora Road · Narsinghgarh, Madhya Pradesh",
 
-    floralImage: "/floral.png",
 
     buttons: [
       {
@@ -288,11 +287,8 @@ export const LandingPageData = {
       "/landing/Image4.jpg",
       "/landing/Image5.jpg",
       "/landing/Image6.jpg",
-      // "/landing/Image 5.jpg",
-      // "/landing/Image 5.jpg",
     ],
 
-    floralImage: "/floral.png",
 
     buttons: [
       {
@@ -311,6 +307,21 @@ export const LandingPageData = {
     title: "Stories FROM THE STAY",
 
     reviews: [
+      {
+        name: "Delhi NCR",
+        review:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      },
+      {
+        name: "Delhi NCR",
+        review:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      },
+      {
+        name: "Delhi NCR",
+        review:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      },
       {
         name: "Delhi NCR",
         review:

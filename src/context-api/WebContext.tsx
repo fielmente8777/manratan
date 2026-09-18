@@ -6,11 +6,13 @@ interface WebContextProps {
   imageArray: string[];
   isOpenPillarPopup: boolean;
   isOpenPopUpForm: boolean;
+  isOpenFormPopUp: boolean;
   isOpenPopUpForm2: boolean;
   isOpenImagePopup: boolean;
   isOpenNavBar: boolean;
   pillarPopupData: { title: string; description: string };
   setIsOpenPopUpForm: (value: boolean) => void;
+  setIsOpenFormPopUp: (value: boolean) => void;
 
   setPillarPopupData: (value: { title: string; description: string }) => void;
   setIsOpenPillarPopup: (value: boolean) => void;
@@ -20,13 +22,13 @@ interface WebContextProps {
   setIsOpenPopUpForm2: (value: boolean) => void;
   setIsOpenNavBar: React.Dispatch<React.SetStateAction<boolean>>;
 
-
   handleImagePopup: (index: number, imageArray: string[]) => void;
 }
 
 export const WebContext = createContext<WebContextProps>({
   imgCurrentIndex: 0,
   isOpenPopUpForm: false,
+  isOpenFormPopUp: false,
   isOpenPillarPopup: false,
   imageArray: [],
   isOpenImagePopup: false,
@@ -35,6 +37,7 @@ export const WebContext = createContext<WebContextProps>({
   setIsOpenPopUpForm2: () => {},
   setImgCurrentIndex: () => {},
   setIsOpenPopUpForm: () => {},
+  setIsOpenFormPopUp: () => {},
   setPillarPopupData: () => {},
   setIsOpenPillarPopup: () => {},
   setImageArray: () => {},
@@ -84,6 +87,8 @@ export const WebProvider: React.FC<WebProviderProps> = ({ children }) => {
     setIsOpenPillarPopup,
     isOpenPopUpForm,
     setIsOpenPopUpForm,
+    isOpenFormPopUp: isOpenPopUpForm,
+    setIsOpenFormPopUp: setIsOpenPopUpForm,
     handleImagePopup,
     isOpenNavBar,
     setIsOpenNavBar,

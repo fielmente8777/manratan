@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { IoIosArrowDown } from "react-icons/io";
-import { countries } from "@/utils/countries";
+import { countries } from "@/utils/constent";
 import useBookingForm from "@/hooks/useBookingForm";
 import { getDateInputLimits } from "@/hooks/getDateInputLimits";
 import {
@@ -129,7 +129,7 @@ const Form2: React.FC<Props> = ({
                 placeholderText={field.label}
                 calendarClassName="!z-[99999]"
                 popperClassName="!z-[99999]"
-                className="w-full h-full bg-transparent outline-none text-[13px] font-montserrat font-medium text-[#221811] placeholder:text-[#5E534A]/80 cursor-pointer"
+                className="w-full h-full bg-transparent outline-none text-[14px] font-montserrat font-normal not-italic leading-none tracking-[0.03em] text-[#221811] placeholder:text-[#5E534A]/80 placeholder:font-montserrat placeholder:font-normal placeholder:text-[14px] placeholder:tracking-[0.03em] cursor-pointer"
                 wrapperClassName="w-full h-full !flex items-center"
               />
             </div>
@@ -142,20 +142,20 @@ const Form2: React.FC<Props> = ({
               </label>
               <div className="relative shrink-0">
                 <select
-                  className="ps-0.5 pe-4 cursor-pointer appearance-none bg-transparent text-[13px] font-montserrat font-medium text-[#221811] focus:outline-none"
+                  className="ps-1 pe-4 cursor-pointer appearance-none bg-transparent text-[14px] font-montserrat font-normal not-italic leading-none tracking-[0.03em] text-[#221811] focus:outline-none"
                   name="countryCode"
                   value={formData.countryCode}
                   onChange={(e) => setFieldValue("countryCode", e.target.value)}
-                  style={{ width: `${formData.countryCode.length * 2.2 + 8}px` }}
+                  style={{ width: `${(formData.countryCode?.length || 3) * 2}ch` }}
                   aria-label="Country Code"
                 >
                   {countries.map((country, idx) => (
                     <option
                       key={idx}
                       value={country.code}
-                      className="text-[#221811] bg-white"
+                      className="text-[#221811] bg-white font-montserrat"
                     >
-                      {country.code} ({country.name})
+                      {country.code}
                     </option>
                   ))}
                 </select>
@@ -167,7 +167,7 @@ const Form2: React.FC<Props> = ({
                 type={field.type}
                 name={field.name}
                 placeholder={field.label}
-                className="w-full bg-transparent outline-none text-[13px] font-montserrat font-medium text-[#221811] placeholder:text-[#5E534A]/80"
+                className="w-full bg-transparent outline-none text-[14px] font-montserrat font-normal not-italic leading-none tracking-[0.03em] text-[#221811] placeholder:text-[#5E534A]/80 placeholder:font-montserrat placeholder:font-normal placeholder:text-[14px] placeholder:tracking-[0.03em]"
                 value={field.value}
                 onChange={field.onChange}
               />
@@ -183,7 +183,7 @@ const Form2: React.FC<Props> = ({
                 type={field.type}
                 name={field.name}
                 placeholder={field.label}
-                className="w-full bg-transparent outline-none text-[13px] font-montserrat font-medium text-[#221811] placeholder:text-[#5E534A]/80"
+                className="w-full bg-transparent outline-none text-[14px] font-montserrat font-normal not-italic leading-none tracking-[0.03em] text-[#221811] placeholder:text-[#5E534A]/80 placeholder:font-montserrat placeholder:font-normal placeholder:text-[14px] placeholder:tracking-[0.03em]"
                 value={field.value}
                 onChange={field.onChange}
               />
@@ -200,7 +200,7 @@ const Form2: React.FC<Props> = ({
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full h-[44px] px-4 rounded-[3px] bg-[#5C4E3E] hover:bg-[#6D5D4B] border border-[#BCA049] text-white font-montserrat font-medium text-[13px] tracking-[0.05em] uppercase transition-all duration-200 disabled:opacity-60 flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:scale-[1.01] active:scale-[0.99]"
+        className="w-full h-[44px] px-4 rounded-[3px] bg-[#5C4E3E] hover:bg-[#6D5D4B] border border-[#BCA049] text-white font-montserrat font-normal not-italic text-[14px] leading-none tracking-[0.03em] uppercase transition-all duration-200 disabled:opacity-60 flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:scale-[1.01] active:scale-[0.99]"
       >
         {isSubmitting ? (
           "Submitting..."

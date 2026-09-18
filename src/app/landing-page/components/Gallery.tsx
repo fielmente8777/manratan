@@ -9,6 +9,7 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 
 import { WhatsAppIcon, CalendarIcon, SliderPrevIcon, SliderNextIcon } from "@/utils/icons";
+import { useWebContext } from "@/context-api/WebContext";
 
 interface GallerySectionProps {
   tagline: string;
@@ -30,33 +31,37 @@ const GallerySection: React.FC<GallerySectionProps> = ({
   floralImage,
   buttons,
 }) => {
-  const swiperRef = useRef<SwiperType | null>(null);
+  const { setIsOpenPopUpForm } = useWebContext();
+  const desktopSwiperRef = useRef<SwiperType | null>(null);
+  const mobileSwiperRef = useRef<SwiperType | null>(null);
 
-  // Duplicate images 
+  // Duplicate images for desktop
   const displayImages = images.length < 6 ? [...images, ...images, ...images] : images;
 
   return (
-    <section className="relative w-full overflow-hidden bg-tertiary py-12 md:py-16 lg:py-20">
-      {/* Floral Decoration */}
-      {floralImage && (
-        <div className="pointer-events-none absolute right-0 top-0 z-0 hidden h-[280px] w-[220px] md:block lg:h-[340px] lg:w-[280px]">
-          <Image
-            src={floralImage}
-            alt=""
-            fill
-            className="object-contain object-right-top opacity-40"
-          />
-        </div>
-      )}
+    <section className="relative w-full overflow-visible bg-tertiary py-12 md:py-16 lg:py-20">
+      {/* Background Image */}
+      <div
+        className="pointer-events-none absolute right-0 top-[-33px] md:top-[-57px] lg:top-[-73px] z-0 w-[200px] h-[177px] sm:w-[300px] sm:h-[265px] lg:w-[401px] lg:h-[353.99px] flex items-center justify-end"
+        style={{ opacity: 1 }}
+      >
+        <img
+          src="/landing/bg-image2.png"
+          alt="Gallery Background Ornament"
+          width={401}
+          height={354}
+          className="h-full w-auto object-contain object-right pointer-events-none select-none"
+        />
+      </div>
 
       <div className="relative z-10 w-full">
         {/* Heading */}
         <div className="flex flex-col items-center text-center px-4 max-w-[1440px] mx-auto">
-          <p className="font-dmsans font-normal not-italic text-[16px] leading-[15px] tracking-[2.3px] text-secondary uppercase align-middle">
+          <p className="font-dmsans font-normal not-italic text-[13px] sm:text-[16px] leading-[15px] tracking-[2px] sm:tracking-[2.3px] text-secondary uppercase align-middle">
             {tagline}
           </p>
 
-          <h2 className="mt-[24px] font-ivy font-normal text-[32px] sm:text-[44px] lg:text-[56px] leading-[1.14] lg:leading-[64px] tracking-[0.07em] text-primary text-center align-middle">
+          <h2 className="mt-3 sm:mt-[24px] font-ivy font-normal text-[28px] sm:text-[44px] lg:text-[56px] leading-[1.15] lg:leading-[64px] tracking-[0.05em] sm:tracking-[0.07em] text-primary text-center align-middle">
             <span className="not-italic uppercase block">{title}</span>
             <span className="block">
               <span className="italic normal-case">Manratan</span>
@@ -65,8 +70,67 @@ const GallerySection: React.FC<GallerySectionProps> = ({
           </h2>
         </div>
 
-        {/* ================= FULL-BLEED GALLERY SLIDER ================= */}
-        <div className="relative mt-10 lg:mt-12 w-full select-none overflow-hidden py-2">
+        {/* Mobile Gallery */}
+        <div className="block lg:hidden relative mt-6 w-full px-4 sm:px-6 select-none">
+          <div className="relative w-full h-[260px] sm:h-[380px] overflow-hidden">
+            <Swiper
+              modules={[Autoplay]}
+              autoplay={{
+                delay: 3500,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+              }}
+              onSwiper={(swiper) => {
+                mobileSwiperRef.current = swiper;
+              }}
+              loop={images.length > 1}
+              slidesPerView={1}
+              spaceBetween={0}
+              className="h-full w-full"
+            >
+              {images.map((image, index) => (
+                <SwiperSlide key={index}>
+                  <div className="relative h-full w-full">
+                    <Image
+                      src={image}
+                      alt={`Gallery image ${index + 1}`}
+                      fill
+                      priority={index === 0}
+                      className="object-cover"
+                    />
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+            {/* Previous Button */}
+            {images.length > 1 && (
+              <button
+                type="button"
+                aria-label="Previous gallery image"
+                onClick={() => mobileSwiperRef.current?.slidePrev()}
+                className="absolute left-3 top-1/2 z-20 -translate-y-1/2 flex items-center justify-center text-[#221811] transition-transform duration-200 hover:scale-105 active:scale-95 cursor-pointer drop-shadow-md"
+              >
+                <SliderPrevIcon className="w-8 h-8 sm:w-10 sm:h-10" />
+              </button>
+            )}
+
+            {/* Next Button */}
+            {images.length > 1 && (
+              <button
+                type="button"
+                aria-label="Next gallery image"
+                onClick={() => mobileSwiperRef.current?.slideNext()}
+                className="absolute right-3 top-1/2 z-20 -translate-y-1/2 flex items-center justify-center text-[#221811] transition-transform duration-200 hover:scale-105 active:scale-95 cursor-pointer drop-shadow-md"
+              >
+                <SliderNextIcon className="w-8 h-8 sm:w-10 sm:h-10" />
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Desktop Gallery */}
+        <div className="hidden lg:block relative mt-12 w-full select-none overflow-hidden py-2">
           <Swiper
             modules={[Autoplay]}
             autoplay={{
@@ -75,22 +139,14 @@ const GallerySection: React.FC<GallerySectionProps> = ({
               pauseOnMouseEnter: true,
             }}
             onSwiper={(swiper) => {
-              swiperRef.current = swiper;
+              desktopSwiperRef.current = swiper;
             }}
             centeredSlides={true}
             slidesPerView="auto"
-            spaceBetween={24}
-            breakpoints={{
-              640: {
-                spaceBetween: 36,
-              },
-              1024: {
-                spaceBetween: 72,
-              },
-            }}
+            spaceBetween={72}
             loop={true}
             speed={600}
-            className="gallery-swiper h-[340px] sm:h-[450px] lg:h-[600px]"
+            className="gallery-swiper h-[600px]"
           >
             {displayImages.map((image, index) => (
               <SwiperSlide
@@ -102,7 +158,7 @@ const GallerySection: React.FC<GallerySectionProps> = ({
                     src={image}
                     alt={`Gallery image ${index + 1}`}
                     fill
-                    sizes="(max-width: 640px) 85vw, (max-width: 1024px) 600px, 872px"
+                    sizes="872px"
                     priority={index === 0 || index === 1}
                     className="object-cover rounded-none pointer-events-none"
                   />
@@ -111,24 +167,24 @@ const GallerySection: React.FC<GallerySectionProps> = ({
             ))}
           </Swiper>
 
-          {/* Navigation Controls placed in the spacing between center and side images  */}
+          {/* Navigation Controls */}
           <div className="pointer-events-none absolute inset-0 z-30 flex items-center justify-center">
-            {/* Left Prev Button */}
+            {/* Previous Button */}
             <button
               type="button"
               aria-label="Previous gallery image"
-              onClick={() => swiperRef.current?.slidePrev()}
-              className="pointer-events-auto absolute left-[24px] sm:left-[36px] lg:left-[calc(50%-472px)] -translate-x-1/2 -translate-y-1/2 top-1/2 flex items-center justify-center text-[#221811] hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer drop-shadow-md"
+              onClick={() => desktopSwiperRef.current?.slidePrev()}
+              className="pointer-events-auto absolute left-[calc(50%-472px)] -translate-x-1/2 -translate-y-1/2 top-1/2 flex items-center justify-center text-[#221811] hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer drop-shadow-md"
             >
               <SliderPrevIcon className="w-10 h-10" />
             </button>
 
-            {/* Right Next Button */}
+            {/* Next Button */}
             <button
               type="button"
               aria-label="Next gallery image"
-              onClick={() => swiperRef.current?.slideNext()}
-              className="pointer-events-auto absolute right-[-16px] sm:right-[-4px] lg:right-auto lg:left-[calc(50%+472px)] -translate-x-1/2 -translate-y-1/2 top-1/2 flex items-center justify-center text-[#221811] hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer drop-shadow-md"
+              onClick={() => desktopSwiperRef.current?.slideNext()}
+              className="pointer-events-auto absolute left-[calc(50%+472px)] -translate-x-1/2 -translate-y-1/2 top-1/2 flex items-center justify-center text-[#221811] hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer drop-shadow-md"
             >
               <SliderNextIcon className="w-10 h-10" />
             </button>
@@ -136,14 +192,20 @@ const GallerySection: React.FC<GallerySectionProps> = ({
         </div>
 
         {/* Buttons */}
-        <div className="mt-10 lg:mt-12 flex flex-row items-center justify-center gap-[12px] w-full max-w-[332px] mx-auto">
+        <div className="mt-8 lg:mt-12 flex flex-row items-center justify-center gap-2 sm:gap-[12px] w-full max-w-[332px] mx-auto">
           {buttons.map((button, index) => (
             <Link
               key={index}
               href={button.link}
-              className={`flex items-center justify-center gap-[8px] w-[160px] shrink-0 h-[41px] px-[16px] py-[12px] font-montserrat font-normal not-italic text-[14px] leading-none tracking-[0.03em] uppercase transition-all duration-200 ${index === 0
-                  ? "bg-white text-[#221811] border border-[#221811] hover:opacity-90 active:scale-[0.98]"
-                  : "bg-[#221811] text-white border border-[#221811] hover:opacity-90 active:scale-[0.98]"
+              onClick={(e) => {
+                if (button.link === "#form") {
+                  e.preventDefault();
+                  setIsOpenPopUpForm(true);
+                }
+              }}
+              className={`flex items-center justify-center gap-1.5 sm:gap-[8px] flex-1 sm:flex-none sm:w-[160px] h-[41px] px-2 sm:px-[16px] py-[12px] font-montserrat font-normal not-italic text-[12px] sm:text-[14px] leading-none tracking-[0.02em] sm:tracking-[0.03em] uppercase transition-all duration-200 ${index === 0
+                ? "bg-white text-[#221811] border border-[#221811] hover:opacity-90 active:scale-[0.98]"
+                : "bg-[#221811] text-white border border-[#221811] hover:opacity-90 active:scale-[0.98]"
                 }`}
             >
               {index === 0 ? (

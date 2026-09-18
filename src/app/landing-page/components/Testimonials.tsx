@@ -10,44 +10,47 @@ const Testimonials: React.FC<TestimonialsProps> = ({
 }) => {
   return (
     <SectionWithContainer
-      sectionClassName="bg-primary"
-      containerClassName="space-y-8 lg:space-y-10"
+      defaultPadding={false}
+      sectionClassName="bg-primary pt-[50px] lg:pt-[92px] pb-12 sm:pb-20"
+      containerClassName="flex flex-col items-center w-full"
     >
+      {/* Tagline */}
+      <p className="font-dmsans font-normal not-italic text-[13px] sm:text-[16px] leading-[15px] tracking-[2px] sm:tracking-[2.3px] text-[#D2BD68] uppercase text-center align-middle">
+        {tagline}
+      </p>
+
       {/* Heading */}
-      <div className="flex flex-col items-center text-center">
-        <p className="font-dmsans font-normal not-italic text-[16px] leading-[15px] tracking-[2.3px] text-[#D2BD68] uppercase align-middle">
-          {tagline}
-        </p>
+      <h2 className="mt-[16px] font-ivy font-normal text-[28px] sm:text-[44px] lg:text-[56px] leading-[1.15] lg:leading-[64px] tracking-[0.05em] sm:tracking-[0.07em] text-white text-center align-middle">
+        <span className="italic font-normal normal-case">Stories</span>{" "}
+        <span className="not-italic uppercase">FROM THE STAY</span>
+      </h2>
 
-        <h2 className="mt-[24px] font-ivy font-normal text-[32px] sm:text-[44px] lg:text-[56px] leading-[1.14] lg:leading-[64px] tracking-[0.07em] text-white text-center align-middle">
-          <span className="italic font-normal normal-case">Stories</span>{" "}
-          <span className="not-italic uppercase">FROM THE STAY</span>
-        </h2>
-      </div>
-
-      {/* Review Partner Logos */}
-      <div className="mt-6 flex items-center justify-center gap-[32px] w-full max-w-[206px] h-[42px] mx-auto">
-        <div className="relative h-[42px] w-[132px] flex items-center justify-center shrink-0">
+      {/* Partner Logos */}
+      <div className="mt-[16px] flex items-center justify-center gap-6 sm:gap-[32px] w-full max-w-[206px] h-[32px] sm:h-[42px] mx-auto">
+        <div className="relative h-[30px] sm:h-[42px] w-[95px] sm:w-[132px] flex items-center justify-center shrink-0">
           <Image
             src="/landing/MakeMyTrip.png"
             alt="MakeMyTrip"
             width={132}
             height={42}
-            className="w-[132px] h-[42px] object-contain"
+            className="w-[95px] sm:w-[132px] h-[30px] sm:h-[42px] object-contain"
           />
         </div>
-        <div className="relative h-[42px] w-[42px] flex items-center justify-center shrink-0">
+        <div className="relative h-[30px] sm:h-[42px] w-[30px] sm:w-[42px] flex items-center justify-center shrink-0">
           <Image
             src="/landing/google.png"
             alt="Google"
             width={42}
             height={42}
-            className="w-[42px] h-[42px] object-contain"
+            className="w-[30px] sm:w-[42px] h-[30px] sm:h-[42px] object-contain"
           />
         </div>
       </div>
 
-      <TestimonialsSlider reviews={reviews} />
+      {/* Testimonials Slider */}
+      <div className="mt-[32px] sm:mt-[56px] w-full">
+        <TestimonialsSlider reviews={reviews} />
+      </div>
     </SectionWithContainer>
   );
 };

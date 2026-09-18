@@ -1,10 +1,18 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Cormorant_Garamond, Montserrat, DM_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import "./style.scss";
 import { WebProvider } from "@/context-api/WebContext";
 import Footer from "@/components/footer/Landingfooter";
 import NavBar from "@/components/navbar/NavBar";
+import PopUpForm from "@/components/pop-up/PopUpForm";
+
+const ivyOra = localFont({
+  src: "../../public/fonts/IvyOraDisplay-Regular.ttf",
+  variable: "--font-ivyora",
+  display: "swap",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,6 +35,7 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 const dmSans = DM_Sans({
@@ -44,13 +53,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} ${montserrat.variable} ${dmSans.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} ${montserrat.variable} ${dmSans.variable} ${ivyOra.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <WebProvider>
           <NavBar />
           {children}
           <Footer />
+          <PopUpForm />
         </WebProvider>
       </body>
     </html>
