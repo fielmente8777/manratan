@@ -10,6 +10,7 @@ import "swiper/css";
 import { useWebContext } from "@/context-api/WebContext";
 
 import { WhatsAppIcon, CalendarIcon, CheckIcon, SliderPrevIcon, SliderNextIcon } from "@/utils/icons";
+import { SectionWithContainer } from "@/components/sectionComponants";
 
 export interface LegacySectionProps {
   tagline: string;
@@ -44,7 +45,11 @@ const Legacy: React.FC<LegacySectionProps> = ({
   const mobileSwiperRef = useRef<SwiperType | null>(null);
 
   return (
-    <section className="relative w-full bg-tertiary py-10 md:py-16 lg:py-[100px] overflow-hidden">
+    <SectionWithContainer
+      defaultPadding={false}
+      sectionClassName="relative w-full bg-tertiary py-10 md:py-16 lg:py-[100px] overflow-hidden"
+      containerClassName="!max-w-full !p-0"
+    >
       <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-[24px] px-4 sm:px-6 lg:pl-0 lg:pr-[max(60px,calc((100vw-1440px)/2+60px))] min-h-0 lg:min-h-[601px]">
 
         {/* Heading */}
@@ -242,7 +247,7 @@ const Legacy: React.FC<LegacySectionProps> = ({
         </div>
 
       </div>
-    </section>
+    </SectionWithContainer>
   );
 };
 

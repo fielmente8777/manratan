@@ -10,6 +10,7 @@ import "swiper/css";
 
 import Link from "next/link";
 import { WhatsAppIcon, SliderPrevIcon, SliderNextIcon } from "@/utils/icons";
+import { SectionWithContainer } from "@/components/sectionComponants";
 
 interface WeddingSectionProps {
   tagline: string;
@@ -36,12 +37,14 @@ const WeddingSection: React.FC<WeddingSectionProps> = ({
   const swiperRef = useRef<SwiperType | null>(null);
 
   return (
-    <section className="relative w-full bg-tertiary py-10 md:py-16 lg:py-20 overflow-hidden">
-      <div className="relative mx-auto w-full max-w-[1320px] px-4 sm:px-6 lg:px-0">
+    <SectionWithContainer
+      defaultPadding={false}
+      sectionClassName="relative w-full bg-tertiary py-10 md:py-16 lg:py-20 overflow-hidden"
+    >
 
         {/* Background */}
         <div
-          className="relative w-full max-w-[1320px] lg:h-[673px] min-h-0 lg:min-h-[673px] overflow-hidden p-4 sm:p-8 lg:pt-[64px] lg:pb-[64px] lg:px-[31px] flex flex-col justify-center bg-no-repeat bg-center"
+          className="relative w-full lg:h-[673px] min-h-0 lg:min-h-[673px] overflow-hidden p-4 sm:p-8 lg:pt-[64px] lg:pb-[64px] lg:px-[31px] flex flex-col justify-center bg-no-repeat bg-center"
           style={{
             backgroundImage: "url('/landing/Wedding-bg.png')",
             backgroundSize: "cover",
@@ -59,7 +62,7 @@ const WeddingSection: React.FC<WeddingSectionProps> = ({
           </div>
 
           {/* Content Container */}
-          <div className="relative w-full max-w-[1258px] lg:h-[545px] mx-auto flex flex-col justify-between gap-6 sm:gap-[30px] lg:gap-[40px]">
+          <div className="relative w-full lg:h-[545px] mx-auto flex flex-col justify-between gap-6 sm:gap-[30px] lg:gap-[40px]">
 
             {/* Heading */}
             <div className="block lg:hidden flex flex-col items-start w-full gap-2.5 sm:gap-3 text-white">
@@ -79,7 +82,7 @@ const WeddingSection: React.FC<WeddingSectionProps> = ({
             </div>
 
             {/* Row */}
-            <div className="flex flex-col lg:flex-row items-center w-full max-w-[1258px] lg:h-[464px] gap-6 sm:gap-[24px]">
+            <div className="flex flex-col lg:flex-row items-center w-full lg:h-[464px] gap-6 sm:gap-[24px]">
 
               {/* Image Slider */}
               <div className="relative w-full lg:w-[624px] h-[240px] sm:h-[380px] lg:h-[464px] shrink-0 overflow-hidden">
@@ -177,8 +180,7 @@ const WeddingSection: React.FC<WeddingSectionProps> = ({
           </div>
 
         </div>
-      </div>
-    </section>
+    </SectionWithContainer>
   );
 };
 

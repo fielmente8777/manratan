@@ -47,7 +47,7 @@ const Faq: React.FC<FaqProps> = ({
         />
       </div>
 
-      <div className="relative z-10 flex flex-col lg:flex-row justify-between items-start gap-8 lg:gap-[64px] max-w-[1320px] mx-auto">
+      <div className="relative z-10 flex flex-col lg:flex-row justify-between items-start gap-8 lg:gap-[64px] w-full">
         {/* Left Column */}
         <div className="flex flex-col justify-start items-start gap-6 lg:gap-[40px] w-full lg:w-[581px]">
           {/* Heading */}

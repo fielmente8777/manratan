@@ -5,25 +5,31 @@ import Form2 from "@/components/forms/Form2";
 import { LocationPinIcon } from "@/utils/icons";
 import { CallIcon, MailIcon } from "@/utils/formIcons";
 import { contact } from "@/utils/constent";
+import { SectionWithContainer } from "@/components/sectionComponants";
 
 const LandingFooter = () => {
   return (
     <footer className="w-full flex flex-col">
       {/* Booking Form */}
-      <div className="w-full bg-[#1C130D] py-5 sm:py-6 px-4 sm:px-6 lg:px-8 border-t border-white/10">
-        <div className="max-w-[1320px] mx-auto flex flex-col items-center">
-          <Form2 />
+      <SectionWithContainer
+        defaultPadding={false}
+        sectionClassName="w-full bg-[#1C130D] py-5 sm:py-6 border-t border-white/10"
+        containerClassName="flex flex-col items-center"
+      >
+        <Form2 />
 
-          {/* Subtitle */}
-          <p className="mt-[22px] text-center font-montserrat font-normal not-italic text-[12px] sm:text-[14px] leading-none tracking-[0.03em] text-[#DFD6C9]/90 align-middle">
-            Save 15% when you book direct · Free cancellation on most dates*
-          </p>
-        </div>
-      </div>
+        {/* Subtitle */}
+        <p className="mt-[22px] text-center font-montserrat font-normal not-italic text-[12px] sm:text-[14px] leading-none tracking-[0.03em] text-[#DFD6C9]/90 align-middle">
+          Save 15% when you book direct · Free cancellation on most dates*
+        </p>
+      </SectionWithContainer>
 
       {/* Footer Content */}
-      <div className="w-full bg-[#5E534A] text-white py-10 sm:py-16 px-4 sm:px-8 lg:px-16">
-        <div className="max-w-[1320px] mx-auto flex flex-col md:flex-row items-start justify-start gap-8 md:gap-12 lg:gap-[238px]">
+      <SectionWithContainer
+        defaultPadding={false}
+        sectionClassName="w-full bg-[#5E534A] text-white py-10 sm:py-16"
+      >
+        <div className="w-full flex flex-col md:flex-row items-start justify-start gap-8 md:gap-12 lg:gap-[238px]">
           {/* Logo */}
           <div className="flex items-start">
             <div className="relative h-[52px] sm:h-[65px] w-[160px] sm:w-[200px] shrink-0">
@@ -82,11 +88,14 @@ const LandingFooter = () => {
             </div>
           </div>
         </div>
-      </div>
+      </SectionWithContainer>
 
       {/* Copyright */}
-      <div className="w-full bg-[#5E534A] border-t border-white/20 py-4 px-4 sm:px-8 lg:px-16 text-white/70">
-        <div className="max-w-[1320px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-3 text-[12px] sm:text-[13px] font-montserrat text-center sm:text-left">
+      <SectionWithContainer
+        defaultPadding={false}
+        sectionClassName="w-full bg-[#5E534A] border-t border-white/20 py-4 text-white/70"
+      >
+        <div className="w-full flex flex-col sm:flex-row justify-between items-center gap-3 text-[12px] sm:text-[13px] font-montserrat text-center sm:text-left">
           <p>© 2026 Manratan Resort. All rights reserved.</p>
           <a
             href="https://fielmente.com"
@@ -97,7 +106,7 @@ const LandingFooter = () => {
             Powered by Fielmente
           </a>
         </div>
-      </div>
+      </SectionWithContainer>
     </footer>
   );
 };

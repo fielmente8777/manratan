@@ -6,6 +6,7 @@ import { LocationIcon, CalendarIcon, BannerPlayIcon } from "@/utils/icons";
 import Form2 from "@/components/forms/Form2";
 import { useState, useEffect, useRef } from "react";
 import { useWebContext } from "@/context-api/WebContext";
+import { Container, SectionWithContainer } from "@/components/sectionComponants";
 
 export interface LandingBannerProps {
   image?: string;
@@ -63,13 +64,17 @@ const LandingBanner: React.FC<LandingBannerProps> = ({
   }, []);
 
   return (
-    <div className="relative w-full flex flex-col bg-[#1C130D] overflow-x-clip">
+    <SectionWithContainer
+      defaultPadding={false}
+      sectionClassName="relative w-full flex flex-col bg-[#1C130D]"
+      containerClassName="!max-w-full !p-0"
+    >
       {/* Header */}
       <header
-        className={`fixed top-0 left-0 w-full z-50 bg-[#1C130D] text-white border-b border-white/10 transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] will-change-transform ${visible ? "translate-y-0" : "-translate-y-full"
+        className={`fixed top-0 left-1/2 -translate-x-1/2 w-full max_screen_width z-50 bg-[#1C130D] text-white border-b border-white/10 transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] will-change-transform ${visible ? "translate-y-0" : "-translate-y-full"
           }`}
       >
-        <div className="max-w-[1440px] mx-auto h-[54px] sm:h-[84px] px-4 sm:px-8 lg:px-12 flex items-center justify-between gap-2">
+        <Container className="h-[54px] sm:h-[84px] flex items-center justify-between gap-2">
           {/* Location */}
           <div className="hidden sm:flex items-center gap-1 sm:gap-2 text-white/90 shrink-0">
             <span className="text-[#D2BD68] text-[11px] sm:text-base shrink-0">
@@ -106,7 +111,7 @@ const LandingBanner: React.FC<LandingBannerProps> = ({
               <span className="hidden sm:inline">BOOK NOW</span>
             </button>
           </div>
-        </div>
+        </Container>
       </header>
 
       {/* Spacer */}
@@ -143,7 +148,7 @@ const LandingBanner: React.FC<LandingBannerProps> = ({
         id="form"
         className="w-full bg-[#1C130D] py-5 sm:py-6 px-4 sm:px-6 lg:px-8 border-t border-white/10 z-20"
       >
-        <div className="max-w-[1320px] mx-auto flex flex-col items-center">
+        <div className="w-full flex flex-col items-center">
           <Form2 />
 
           {/* Subtitle */}
@@ -152,7 +157,7 @@ const LandingBanner: React.FC<LandingBannerProps> = ({
           </p>
         </div>
       </div>
-    </div>
+    </SectionWithContainer>
   );
 };
 

@@ -9,6 +9,7 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 
 import { WhatsAppIcon, CalendarIcon, SliderPrevIcon, SliderNextIcon } from "@/utils/icons";
+import { SectionWithContainer } from "@/components/sectionComponants";
 import { useWebContext } from "@/context-api/WebContext";
 
 interface GallerySectionProps {
@@ -39,7 +40,11 @@ const GallerySection: React.FC<GallerySectionProps> = ({
   const displayImages = images.length < 6 ? [...images, ...images, ...images] : images;
 
   return (
-    <section className="relative w-full overflow-visible bg-tertiary py-12 md:py-16 lg:py-20">
+    <SectionWithContainer
+      defaultPadding={false}
+      sectionClassName="relative w-full overflow-visible bg-tertiary py-12 md:py-16 lg:py-20"
+      containerClassName="!max-w-full !p-0 relative"
+    >
       {/* Background Image */}
       <div
         className="pointer-events-none absolute right-0 top-[-33px] md:top-[-57px] lg:top-[-73px] z-0 w-[200px] h-[177px] sm:w-[300px] sm:h-[265px] lg:w-[401px] lg:h-[353.99px] flex items-center justify-end"
@@ -56,7 +61,7 @@ const GallerySection: React.FC<GallerySectionProps> = ({
 
       <div className="relative z-10 w-full">
         {/* Heading */}
-        <div className="flex flex-col items-center text-center px-4 max-w-[1440px] mx-auto">
+        <div className="flex flex-col items-center text-center px-4 w-full">
           <p className="font-dmsans font-normal not-italic text-[13px] sm:text-[16px] leading-[15px] tracking-[2px] sm:tracking-[2.3px] text-secondary uppercase align-middle">
             {tagline}
           </p>
@@ -218,7 +223,7 @@ const GallerySection: React.FC<GallerySectionProps> = ({
           ))}
         </div>
       </div>
-    </section>
+    </SectionWithContainer>
   );
 };
 

@@ -53,7 +53,7 @@ const Property: React.FC<PropertyProps> = ({
         </div>
 
         {/* Features */}
-        <div className="mt-8 sm:mt-12 grid w-full max-w-[1320px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-[24px] justify-items-center">
+        <div className="mt-8 sm:mt-12 grid w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-[24px] justify-items-center">
           {features.map((feature, index) => (
             <PropertyCard
               key={index}

@@ -158,10 +158,10 @@ export const RoomsCard: React.FC<RoomCard> = ({
       </div>
 
       {/* Content Area */}
-      <div className="flex flex-col justify-between flex-1 p-4 sm:p-[20px] bg-white gap-3 sm:gap-[16px]">
+      <div className="flex flex-col justify-between flex-1 p-4 sm:p-[20px] bg-[#F3EEE7] border-x border-b border-[#BCA049] border-t-0 gap-3 sm:gap-[16px]">
         <div>
           {/* Title */}
-          <h3 className="font-ivy font-normal not-italic text-[22px] sm:text-[28px] leading-tight tracking-[0.05em] sm:tracking-[0.07em] text-[#221811] uppercase align-middle">
+          <h3 className="font-ivy font-normal not-italic text-[22px] sm:text-[28px] leading-tight tracking-[0.05em] sm:tracking-[0.07em] text-[#221811] align-middle">
             {title}
           </h3>
 
@@ -196,8 +196,8 @@ export const RoomsCard: React.FC<RoomCard> = ({
                 }
               }}
               className={`flex items-center justify-center gap-1.5 sm:gap-[8px] flex-1 h-[41px] px-2 sm:px-[16px] py-[12px] font-montserrat font-normal not-italic text-[12px] sm:text-[14px] leading-none tracking-[0.02em] sm:tracking-[0.03em] uppercase transition-all duration-200 ${index === 0
-                  ? "bg-white text-[#221811] border border-[#221811] hover:opacity-90 active:scale-[0.98]"
-                  : "bg-[#221811] text-white border border-[#221811] hover:opacity-90 active:scale-[0.98]"
+                ? "bg-white text-[#221811] border border-[#221811] hover:opacity-90 active:scale-[0.98]"
+                : "bg-[#221811] text-white border border-[#221811] hover:opacity-90 active:scale-[0.98]"
                 }`}
             >
               {index === 0 ? (
