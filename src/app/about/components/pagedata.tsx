@@ -1,6 +1,6 @@
 export const aboutData = {
   hero: {
-    image: "/images/aboutus1.jpg",
+    image: "/aboutpage/banner_11zon.webp",
     tagline: "About",
     title: "Manratan",
     subTitle: "Resort",
@@ -15,7 +15,7 @@ export const aboutData = {
   },
 
   aboutHistoryData: {
-    image: "/images/royal-charm.jpg",
+    image: "/aboutpage/history_11zon.webp",
     title: "Manratan",
     subTitle: "History",
     description:
@@ -28,25 +28,25 @@ export const aboutData = {
 
     slides: [
       {
-        image: "/images/manratan-1.jpg",
+        image: "/aboutpage/swadika1_11zon.webp",
         logo: "/images/about3.png",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       },
       {
-        image: "/images/manratan-2.jpg",
+        image: "/aboutpage/swadika2_11zon.webp",
         logo: "/images/about3.png",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       },
       {
-        image: "/images/manratan-3.jpg",
+        image: "/aboutpage/swadika3_11zon.webp",
         logo: "/images/about3.png",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       },
       {
-        image: "/images/manratan-4.jpg",
+        image: "/aboutpage/swadika4_11zon.webp",
         logo: "/images/about3.png",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",

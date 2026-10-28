@@ -1,6 +1,6 @@
 export const homePageData = {
   heroData: {
-    image: "/images/hero.jpg",
+    image: "/homopage/banner_11zon.webp",
 
     location: "NARASINGARH, MP",
 
@@ -29,17 +29,17 @@ export const homePageData = {
 
     gallery: [
       {
-        image: "/images/aboutus2.jpg",
-        alt: "Resort Pool",
+        image: "/homopage/about_11zon.webp",
+        alt: "Heritage Architecture",
       },
       {
-        image: "/images/aboutus1.jpg",
-        alt: "Heritage Architecture",
+        image: "/homopage/about1_11zon.webp",
+        alt: "Resort Aerial View",
       },
     ],
   },
   historyData: {
-    image: "/images/royal-charm.jpg",
+    image: "/homopage/narsinghgarh_11zon.webp",
     title: "Royal Charm",
     subTitle: "of Narsinghgarh",
     description:
@@ -59,19 +59,19 @@ export const homePageData = {
     gallery: [
       {
         title: "Reception",
-        image: "/images/manratan-1.jpg",
+        image: "/homopage/reception_11zon.webp",
       },
       {
         title: "Room",
-        image: "/images/manratan-2.jpg",
+        image: "/homopage/room_11zon.webp",
       },
       {
         title: "Restaurant",
-        image: "/images/manratan-3.jpg",
+        image: "/homopage/dining_11zon.webp",
       },
       {
         title: "Pool",
-        image: "/images/manratan-4.jpg",
+        image: "/homopage/pool_11zon.webp",
       },
     ],
 
@@ -127,15 +127,15 @@ export const homePageData = {
 
     images: [
       {
-        image: "/images/dining-1.jpg",
+        image: "/homopage/dining_11zon.webp",
         alt: "Dining Experience",
       },
       {
-        image: "/images/dining-2.jpg",
+        image: "/homopage/dining2_11zon.webp",
         alt: "Restaurant",
       },
       {
-        image: "/images/dining-3.jpg",
+        image: "/homopage/dining3_11zon.webp",
         alt: "Fine Dining",
       },
     ],
