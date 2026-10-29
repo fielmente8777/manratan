@@ -69,7 +69,7 @@ const Legacy: React.FC<LegacySectionProps> = ({
         </div>
 
         {/* Image Slider */}
-        <div className="block lg:hidden relative w-full h-[260px] sm:h-[380px] overflow-hidden shrink-0">
+        <div className="block lg:hidden relative mt-6 sm:mt-8 lg:mt-0 w-full h-[260px] sm:h-[380px] overflow-hidden shrink-0">
           <Swiper
             modules={[Autoplay]}
             autoplay={{

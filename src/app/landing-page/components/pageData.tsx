@@ -61,10 +61,10 @@ export const LandingPageData = {
     ],
 
     images: [
-      "/landing/image1.jpg",
-      "/landing/Image 2.jpg",
-      "/landing/Image4.jpg",
-      "/landing/Image5.jpg",
+      "/aboutpage/history_11zon.webp",
+      "/homopage/narsinghgarh_11zon.webp",
+      "/homopage/about_11zon.webp",
+      // "/aboutpage/dining_11zon.webp",
     ],
 
     buttons: [

@@ -58,7 +58,7 @@ const History = ({
           "
         >
           {/* TITLE */}
-          <div className="text-right">
+          <div className="relative inline-block w-fit">
             <h2
               className="
                 text-primary
@@ -70,27 +70,41 @@ const History = ({
                 lg:text-[48px]
               "
             >
-              {title}
+              <span>{title.slice(0, -1)}</span>
+              <span className="relative inline-block">
+                {title.slice(-1)}
+                <span
+                  className="
+                    absolute
+                    top-full
+                    -left-1
+                    sm:-left-1.5
+                    mt-1.5
+                    sm:mt-2
+                    font-golden
+                    text-primary
+                    text-2xl
+                    leading-none
+                    sm:text-3xl
+                    lg:text-[30px]
+                    normal-case
+                    whitespace-nowrap
+                  "
+                >
+                  {subTitle}
+                </span>
+              </span>
             </h2>
 
-            <p
-              className="
-                mt-2
-                font-golden
-                text-primary
-                text-2xl
-                leading-none
-                sm:text-3xl
-                lg:text-[30px]
-              "
-            >
-              {subTitle}
-            </p>
+            <div className="h-6 sm:h-8" aria-hidden="true" />
           </div>
           <div
             className="
             lg:hidden 
             relative
+            mt-6
+            sm:mt-8
+            lg:mt-0
             h-[350px]
             overflow-hidden
             sm:h-[450px]

@@ -80,6 +80,9 @@ const Charm = ({ image, title, subTitle, description, note }: CharmProps) => {
             className="
             lg:hidden 
             relative
+            mt-6
+            sm:mt-8
+            lg:mt-0
             h-[350px]
             overflow-hidden
             sm:h-[450px]

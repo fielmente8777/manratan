@@ -98,18 +98,18 @@ const AtManratan = ({
 
             {/* Bottom Dark Gradient Overlay with Logo & Description */}
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent pt-16 pb-6 px-6 flex flex-col items-center justify-end text-center z-30">
-              {activeSlide.logo && (
+              {slides[0]?.logo && (
                 <div className="relative h-[45px] w-[130px] mb-3">
                   <Image
-                    src={activeSlide.logo}
-                    alt=""
+                    src={slides[0].logo}
+                    alt="Swadika"
                     fill
                     className="object-contain"
                   />
                 </div>
               )}
 
-              <p className="text-white/90 text-xs leading-relaxed text-center font-light">
+              <p key={activeIndex} className="animate-content text-white/90 text-xs leading-relaxed text-center font-light">
                 {activeSlide.description}
               </p>
             </div>
@@ -179,19 +179,19 @@ const AtManratan = ({
 
           {/* ================= CONTENT CARD (ATTACHED FLUSH TO FRONT IMAGE RIGHT EDGE WITH ZERO OVERLAP & VERTICALLY CENTERED) ================= */}
           <div className="absolute right-0 top-[109px] z-30 w-[calc(100%-60px-62%)] h-[302px] bg-primary px-8 py-8 flex flex-col justify-between shadow-2xl">
-            <div key={activeIndex} className="animate-content">
-              {activeSlide.logo && (
+            <div>
+              {slides[0]?.logo && (
                 <div className="relative h-[55px] w-[150px] mx-auto">
                   <Image
-                    src={activeSlide.logo}
-                    alt=""
+                    src={slides[0].logo}
+                    alt="Swadika"
                     fill
                     className="object-contain"
                   />
                 </div>
               )}
 
-              <p className="mt-7 text-[13px] leading-6 text-white text-center">
+              <p key={activeIndex} className="animate-content mt-7 text-[13px] leading-6 text-white text-center">
                 {activeSlide.description}
               </p>
             </div>

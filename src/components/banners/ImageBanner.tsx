@@ -4,19 +4,17 @@ import Image from "next/image";
 import LandingNavbar from "../navbar/WebSiteNav";
 import { Container, Section } from "../sectionComponants";
 import Form1 from "../forms/Form1";
-import Link from "next/link";
-import { PlayIcon } from "@/utils/icons";
 
 interface ImageBannerProps {
   image: string;
   logo: string;
-  videoLink: string;
+  videoLink?: string;
   booking: {
     benefits: string;
   };
 }
 
-const ImageBanner = ({ image, logo, videoLink, booking }: ImageBannerProps) => {
+const ImageBanner = ({ image, logo }: ImageBannerProps) => {
   return (
     <Section
       defaultPadding={false}
@@ -50,13 +48,6 @@ const ImageBanner = ({ image, logo, videoLink, booking }: ImageBannerProps) => {
             <div className="hidden lg:block">
               <Form1 />
             </div>
-
-            <Link
-              href={videoLink}
-              className="absolute right-0 -top-16 flex items-center justify-center text-primary hover:scale-105 transition"
-            >
-              <PlayIcon />
-            </Link>
           </div>
         </Container>
       </div>

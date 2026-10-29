@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { PlusIcon, MinusIcon } from "@/utils/icons";
 
 interface AccordionProps {
   question: string;
@@ -26,9 +27,13 @@ const Accordion: React.FC<AccordionProps> = ({ question, answer }) => {
     >
       <div className="flex justify-between items-center  pb-4">
         <h3 className="text-p2 text-base md:text-[1.375rem] font-semibold">{question}</h3>
-        <DropDownIcon
-          className={`transition-transform duration-300 ease-in-out ${isOpen ? "rotate-0" : "rotate-180"}`}
-        />
+        <span className="shrink-0 text-[#B58A4A] flex items-center justify-center transition-transform duration-200">
+          {isOpen ? (
+            <MinusIcon className="w-5 h-5 sm:w-6 sm:h-6" />
+          ) : (
+            <PlusIcon className="w-5 h-5 sm:w-6 sm:h-6" />
+          )}
+        </span>
       </div>
 
       {/* Height animation wrapper */}

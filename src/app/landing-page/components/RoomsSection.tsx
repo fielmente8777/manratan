@@ -73,10 +73,27 @@ const RoomsSection: React.FC<RoomsSectionProps> = ({
         </div>
 
         {/* Room Cards */}
-        <div className="mt-8 sm:mt-14 lg:mt-[56px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-[24px] justify-items-center">
-          {cards.map((card, index) => (
-            <RoomsCard key={index} {...card} />
-          ))}
+        <div className="mt-8 sm:mt-14 lg:mt-[56px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 sm:gap-[24px] justify-items-center">
+          {cards.map((card, index) => {
+            const isCard3 = index === 3;
+            const isLast = index === cards.length - 1;
+            return (
+              <div
+                key={index}
+                className={`w-full max-w-[424px] flex justify-center ${
+                  cards.length === 5
+                    ? `lg:col-span-2 ${
+                        isCard3 ? "lg:col-start-2" : ""
+                      } ${
+                        isLast ? "md:col-span-2 lg:col-span-2" : "md:col-span-1"
+                      }`
+                    : "lg:col-span-2"
+                }`}
+              >
+                <RoomsCard {...card} />
+              </div>
+            );
+          })}
         </div>
       </div>
     </SectionWithContainer>

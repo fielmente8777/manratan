@@ -35,16 +35,16 @@ const GalleryGrid = ({ images }: GalleryGridProps) => {
     <SectionWithContainer defaultPadding={false} sectionClassName="bg-tertiary py-14">
       {/* TABS */}
       {/* FILTER BUTTONS */}
-      <div className="mb-8 flex justify-center gap-6 overflow-x-auto hide-scroll">
+      <div className="mb-8 flex items-center justify-start md:justify-center gap-2.5 sm:gap-4 md:gap-6 overflow-x-auto hide-scroll px-4 w-full">
         {categories.map((alt) => (
           <button
             key={alt}
             type="button"
             onClick={() => setSelected(alt)}
-            className={`shrink-0 border border-primary px-6 py-2 text-sm transition-all duration-300 rounded-sm ${
+            className={`shrink-0 border border-primary px-4 sm:px-6 py-2 text-xs sm:text-sm transition-all duration-300 rounded-sm cursor-pointer whitespace-nowrap ${
               selected === alt
                 ? "bg-primary text-white"
-                : "bg-white text-primary"
+                : "bg-white text-primary hover:bg-gray-50"
             }`}
           >
             {alt}
