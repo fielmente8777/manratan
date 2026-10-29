@@ -87,22 +87,22 @@ export const homePageData = {
 
     gallery: [
       {
-        image: "/images/img6.jpg",
+        image: "/events/event1_11zon.webp",
         alt: "Wedding Event 1",
         video: "#",
       },
       {
-        image: "/images/img7.jpg",
+        image: "/events/event2_11zon.webp",
         alt: "Wedding Event 2",
         video: "#",
       },
       {
-        image: "/images/img8.jpg",
+        image: "/events/event3_11zon.webp",
         alt: "Wedding Event 3",
         video: "#",
       },
       {
-        image: "/images/img9.jpg",
+        image: "/events/event4_11zon.webp",
         alt: "Wedding Event 4",
         video: "#",
       },

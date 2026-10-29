@@ -1,4 +1,5 @@
 import { contact } from "@/utils/constent";
+import { galleryData } from "@/app/gallery/components/pagedata";
 
 export const LandingPageData = {
   aboutIntro: {
@@ -144,17 +145,18 @@ export const LandingPageData = {
       italic: "Timeless ELEGANCE",
     },
 
-    description:
-      "Three categories, one standard of comfort, pick the outlook that suits your trip.",
+        description:
+      "Five categories, one standard of comfort, pick the outlook that suits your trip.",
 
     cards: [
       {
-        title: "Garden View Room",
+        title: "Deluxe Room",
 
         images: [
-          "/landing/Image 2.jpg",
-          "/landing/Image 2.jpg",
-          "/landing/Image 2.jpg",
+          "/roompage/Deluxe/Deluxe-room1_11zon.webp",
+          "/roompage/Deluxe/Deluxe-room2_11zon.webp",
+          "/roompage/Deluxe/Deluxe-room3_11zon.webp",
+          "/roompage/Deluxe/Deluxe-room4_11zon.webp",
         ],
 
         amenities: [
@@ -170,7 +172,7 @@ export const LandingPageData = {
         ],
 
         description:
-          "Comfortable AC rooms overlooking the landscaped lawns, ideal for couples and small families.",
+          "Experience refined comfort in our Deluxe Room featuring panoramic garden views, contemporary wooden finishes, and plush bedding.",
 
         buttons: [
           {
@@ -185,12 +187,50 @@ export const LandingPageData = {
       },
 
       {
-        title: "Pool-Facing Room",
+        title: "Deluxe Interconnected Room",
 
         images: [
-          "/landing/Image 2.jpg",
-          "/landing/Image 2.jpg",
-          "/landing/Image 2.jpg",
+          "/roompage/Inter/Inter-room1_11zon.webp",
+          "/roompage/Inter/Inter-room2_11zon.webp",
+          "/roompage/Inter/Inter-room3_11zon.webp",
+          "/roompage/Inter/Inter-room4_11zon.webp",
+        ],
+
+        amenities: [
+          {
+            label: "xxx sq ft",
+          },
+          {
+            label: "Upto x Guests",
+          },
+          {
+            label: "Connected Suite",
+          },
+        ],
+
+        description:
+          "Perfect for families and groups traveling together, offering seamless privacy and togetherness with interconnected bedrooms.",
+
+        buttons: [
+          {
+            label: "Enquire Now",
+            link: contact.WhatsappCta,
+          },
+          {
+            label: "Book Now",
+            link: "#form",
+          },
+        ],
+      },
+
+      {
+        title: "Executive Family Room",
+
+        images: [
+          "/roompage/Executive/Executive-banner_11zon.webp",
+          "/roompage/Executive/Executive-room1_11zon.webp",
+          "/roompage/Executive/Executive-room2_11zon.webp",
+          "/roompage/Executive/Executive-room3_11zon.webp",
         ],
 
         amenities: [
@@ -206,7 +246,7 @@ export const LandingPageData = {
         ],
 
         description:
-          "Wake up to the pool deck. Our most requested category for leisure stays and short breaks.",
+          "An exquisite executive family room offering expansive living spaces, lavish interiors, and serene pool views.",
 
         buttons: [
           {
@@ -221,12 +261,13 @@ export const LandingPageData = {
       },
 
       {
-        title: "Family Suite",
+        title: "Premium Room",
 
         images: [
-          "/landing/Image 2.jpg",
-          "/landing/Image 2.jpg",
-          "/landing/Image 2.jpg",
+          "/roompage/Premium/Premium-room1_11zon.webp",
+          "/roompage/Premium/Premium-room2_11zon.webp",
+          "/roompage/Premium/Premium-room3_11zon.webp",
+          "/roompage/Premium/Premium-room4_11zon.webp",
         ],
 
         amenities: [
@@ -237,12 +278,49 @@ export const LandingPageData = {
             label: "Upto x Guests",
           },
           {
-            label: "Extra Bedding*",
+            label: "Nature View",
           },
         ],
 
         description:
-          "Extra space for families and wedding parties, with seating and additional bedding on request.",
+          "Nestled amidst lush landscapes, our premium rooms offer a peaceful haven with tasteful furnishings and warm ambient lighting.",
+
+        buttons: [
+          {
+            label: "Enquire Now",
+            link: contact.WhatsappCta,
+          },
+          {
+            label: "Book Now",
+            link: "#form",
+          },
+        ],
+      },
+
+      {
+        title: "Suite Room",
+
+        images: [
+          "/roompage/Suite/Suite-banner_11zon.webp",
+          "/roompage/Suite/Suite-room1_11zon.webp",
+          "/roompage/Suite/Suite-room2_11zon.webp",
+          "/roompage/Suite/Suite-room3_11zon.webp",
+        ],
+
+        amenities: [
+          {
+            label: "xxx sq ft",
+          },
+          {
+            label: "Upto x Guests",
+          },
+          {
+            label: "Panoramic View",
+          },
+        ],
+
+        description:
+          "Experience unmatched luxury with panoramic resort views, premium king bedding, and refined interiors crafted for an unforgettable escape.",
 
         buttons: [
           {
@@ -257,7 +335,8 @@ export const LandingPageData = {
       },
     ],
   },
-  weddingSection: {
+
+        weddingSection: {
     tagline: "Weddings & Celebrations",
 
     title: {
@@ -269,7 +348,17 @@ export const LandingPageData = {
     description:
       "From a vibrant marigold-strewn haldi on the lawns to a grand baraat and an elegant reception, Manratan Resort offers the perfect setting to celebrate every ritual of your wedding under one roof. With beautiful event spaces, comfortable on-site accommodation for family and guests, personalised hospitality, and seamless services, we ensure every moment of your celebration is as memorable as the beginning of your forever.",
 
-    images: ["/landing/Image 3.png", "/landing/Image 3.png", "/landing/Image 3.png"],
+    images: [
+      "/events/event8_11zon.webp",
+      "/events/event6_11zon.webp",
+      "/events/event5_11zon.webp",
+      "/events/event1_11zon.webp",
+      "/events/event2_11zon.webp",
+      "/events/event3_11zon.webp",
+      "/events/event4_11zon.webp",
+      "/events/event7_11zon.webp",
+      "/events/event9_11zon.webp",
+    ],
 
     button: {
       label: "Get a Wedding Quote",
@@ -283,11 +372,7 @@ export const LandingPageData = {
 
     italicTitle: "Manratan RESORT",
 
-    images: [
-      "/landing/Image4.jpg",
-      "/landing/Image5.jpg",
-      "/landing/Image6.jpg",
-    ],
+    images: galleryData.images.map((item) => item.image),
 
 
     buttons: [

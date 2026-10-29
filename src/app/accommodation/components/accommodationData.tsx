@@ -1,6 +1,6 @@
 export const accommodationData = {
   hero: {
-    bgImage: "/images/acc-room2.jpg",
+    bgImage: "/roompage/banner.jpg",
     alt: "Manratan Resort Accommodation",
     title: "ACCOMMODATION",
     scrollText: "Scroll to explore",
@@ -16,17 +16,38 @@ export const accommodationData = {
   rooms: [
     {
       id: "room-1",
-      title: "LOREM IPSUM",
+      title: "DELUXE ROOM",
       subtitle: "Lorem • Lorem ipsum dolor • Lorem ipsum dolor",
-      image: "/images/acc-room1.jpg",
-      alt: "Manratan Resort Room 1",
+      image: "/roompage/Deluxe/Deluxe-room3_11zon.webp",
+      alt: "Manratan Resort Deluxe Room",
     },
     {
       id: "room-2",
-      title: "LOREM IPSUM",
+      title: "DELUXE INTERCONNECTED ROOM",
       subtitle: "Lorem • Lorem ipsum dolor • Lorem ipsum dolor",
-      image: "/images/acc-room11.jpg",
-      alt: "Manratan Resort Room 2",
+      image: "/roompage/Inter/Inter-room3_11zon.webp",
+      alt: "Manratan Resort Deluxe Interconnected Room",
+    },
+    {
+      id: "room-3",
+      title: "EXECUTIVE FAMILY ROOM",
+      subtitle: "Lorem • Lorem ipsum dolor • Lorem ipsum dolor",
+      image: "/roompage/Executive/Executive-room2_11zon.webp",
+      alt: "Manratan Resort Executive Family Room",
+    },
+    {
+      id: "room-4",
+      title: "PREMIUM ROOM",
+      subtitle: "Lorem • Lorem ipsum dolor • Lorem ipsum dolor",
+      image: "/roompage/Premium/Premium-room1_11zon.webp",
+      alt: "Manratan Resort Premium Room",
+    },
+    {
+      id: "room-5",
+      title: "SUITE ROOM",
+      subtitle: "Lorem • Lorem ipsum dolor • Lorem ipsum dolor",
+      image: "/roompage/Suite/Suite-room1_11zon.webp",
+      alt: "Manratan Resort Suite Room",
     },
   ],
 };

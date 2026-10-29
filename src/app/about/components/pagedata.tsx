@@ -28,25 +28,25 @@ export const aboutData = {
 
     slides: [
       {
-        image: "/aboutpage/swadika1_11zon.webp",
+        image: "/restaurant/restaurant1_11zon_11zon.webp",
         logo: "/images/about3.png",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       },
       {
-        image: "/aboutpage/swadika2_11zon.webp",
+        image: "/restaurant/restaurant2_11zon_11zon.webp",
         logo: "/images/about3.png",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       },
       {
-        image: "/aboutpage/swadika3_11zon.webp",
+        image: "/restaurant/dining_11zon.webp",
         logo: "/images/about3.png",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       },
       {
-        image: "/aboutpage/swadika4_11zon.webp",
+        image: "/restaurant/swadika3_11zon.webp",
         logo: "/images/about3.png",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
