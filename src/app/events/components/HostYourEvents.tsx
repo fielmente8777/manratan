@@ -1,10 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { SectionWithContainer } from "@/components/sectionComponants";
 import Headings from "@/components/typography/Headings";
 import SwiperCarousel from "@/components/sliders/SwiperCarousel";
 import { Autoplay, EffectCoverflow } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
 
 interface CategoryItem {
   id: string;
@@ -25,6 +27,7 @@ export default function HostYourEvents({
   title,
   categories,
 }: HostYourEventsProps) {
+  const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
   const data = categories.length < 5 ? [...categories, ...categories, ...categories] : categories;
 
   return (
@@ -44,7 +47,7 @@ export default function HostYourEvents({
         </div>
 
         {/* Swiper Carousel using project SwiperCarousel component */}
-        <div>
+        <div className="relative w-full">
           <SwiperCarousel
             data={data || []}
             modules={[EffectCoverflow, Autoplay]}
@@ -77,25 +80,40 @@ export default function HostYourEvents({
               },
             }}
             autoplay={{ delay: 2500, disableOnInteraction: false }}
+            onSwiper={(swiper) => setSwiperInstance(swiper)}
             renderSlide={(item) => (
-              <div className="w-full">
+              <div className="w-full group cursor-pointer">
                 <div className="w-full relative aspect-[4/2.5] rounded-none overflow-hidden shadow-[20px_0_25px_-5px_rgba(0,0,0,0.35),-20px_0_25px_-5px_rgba(0,0,0,0.35)] border border-black/10">
                   <Image
                     src={item.image}
                     alt={item.alt}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                   />
-                </div>
-                {/* Title Text Below Image */}
-                <div className="mt-4 text-center">
-                  <p className="text-sm sm:text-base font-normal tracking-[0.1em] uppercase text-primary font-[serif]">
-                    {item.title}
-                  </p>
                 </div>
               </div>
             )}
           />
+
+          {/* Previous Button - Positioned at left end of active center slide */}
+          <button
+            type="button"
+            onClick={() => swiperInstance?.slidePrev()}
+            aria-label="Previous slide"
+            className="absolute left-3 sm:left-[10%] md:left-[26.5%] top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/60 hover:bg-black/85 backdrop-blur-sm text-white text-2xl flex items-center justify-center transition-all shadow-xl cursor-pointer select-none"
+          >
+            ‹
+          </button>
+
+          {/* Next Button - Positioned at right end of active center slide */}
+          <button
+            type="button"
+            onClick={() => swiperInstance?.slideNext()}
+            aria-label="Next slide"
+            className="absolute right-3 sm:right-[10%] md:right-[26.5%] top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/60 hover:bg-black/85 backdrop-blur-sm text-white text-2xl flex items-center justify-center transition-all shadow-xl cursor-pointer select-none"
+          >
+            ›
+          </button>
         </div>
       </div>
     </SectionWithContainer>

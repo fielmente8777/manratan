@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Autoplay, Navigation } from "swiper/modules";
 import SwiperCarousel from "@/components/sliders/SwiperCarousel";
 
@@ -22,7 +23,7 @@ const RoomGallerySlider = ({ specs, images }: RoomGallerySliderProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className="w-full max_screen_width mx-auto bg-[#f6f4f0] pb-10 pt-2 md:pb-16 md:pt-4 overflow-hidden">
+    <section className="w-full max_screen_width mx-auto bg-[#f6f4f0] pb-12 pt-2 md:pb-16 md:pt-4 overflow-hidden">
       <div className="w-full flex flex-col items-center">
         {/* Room Specifications Title Header */}
         {specs && (
@@ -34,7 +35,7 @@ const RoomGallerySlider = ({ specs, images }: RoomGallerySliderProps) => {
         <div className="relative w-full lg:aspect-[4/1.59]">
           <SwiperCarousel
             data={sliderImages}
-            modules={[Navigation , Autoplay]}
+            modules={[Navigation, Autoplay]}
             navigation={{
               nextEl: ".room-slider-next",
               prevEl: ".room-slider-prev",
@@ -58,7 +59,7 @@ const RoomGallerySlider = ({ specs, images }: RoomGallerySliderProps) => {
             className="w-full"
             renderSlide={(item, index) => (
               <div
-                className={`w-full relative transition-all duration-500 ${
+                className={`w-full relative overflow-hidden group transition-all duration-500 ${
                   index === activeIndex
                     ? "md:aspect-4/2.5 aspect-4/3"
                     : "md:aspect-[4/2.2] aspect-4/3 opacity-80 lg:mt-8"
@@ -68,15 +69,16 @@ const RoomGallerySlider = ({ specs, images }: RoomGallerySliderProps) => {
                   src={item.src}
                   alt={item.alt || "Room Image"}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 60vw"
                 />
               </div>
             )}
           />
 
-          <div className="lg:absolute lg:top-[50%] lg:left-[50%] lg:-translate-x-[50%] max-lg:mt-6 lg:max-w-272 w-full z-10 pointer-events-none">
-            <div className="flex items-center md:justify-between justify-center gap-4 px-4">
+          {/* Navigation Controls: Over the image on both ends (Mobile & Desktop) */}
+          <div className="absolute top-[50%] -translate-y-[50%] left-[50%] -translate-x-[50%] w-full lg:max-w-272 z-10 pointer-events-none">
+            <div className="flex items-center justify-between w-full px-3 sm:px-4">
               <button
                 className="room-slider-prev pointer-events-auto flex items-center justify-center w-10 h-10 aspect-square bg-black/60 hover:bg-black/80 rounded-full transition shadow-md cursor-pointer text-white"
                 aria-label="Previous slide"
@@ -91,6 +93,16 @@ const RoomGallerySlider = ({ specs, images }: RoomGallerySliderProps) => {
               </button>
             </div>
           </div>
+        </div>
+
+        {/* Centered Contact Us Button */}
+        <div className="mt-8 sm:mt-12 md:mt-14 flex justify-center w-full px-4">
+          <Link
+            href="/contactus"
+            className="inline-block bg-primary hover:bg-[#1a120c] text-white text-xs sm:text-sm font-medium tracking-[0.18em] uppercase px-8 py-3.5 sm:px-12 sm:py-4 transition-all duration-300 shadow-md hover:shadow-lg text-center select-none"
+          >
+            Contact Us
+          </Link>
         </div>
       </div>
     </section>
@@ -113,4 +125,3 @@ export const BtnIcon = () => (
     />
   </svg>
 );
-

@@ -1,10 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { SectionWithContainer } from "@/components/sectionComponants";
-import { PlayIcon } from "@/utils/icons";
 import Image from "next/image";
 import Link from "next/link";
-import { FaPlay } from "react-icons/fa";
+import SwiperCarousel from "@/components/sliders/SwiperCarousel";
+import { Autoplay } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
 
 interface EventsProps {
   title: {
@@ -24,9 +26,10 @@ interface EventsProps {
 }
 
 const Event = ({ title, gallery, description, link }: EventsProps) => {
+  const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
+
   return (
     <SectionWithContainer sectionClassName="bg-primary">
-
       <div className="text-center text-tertiary">
         <h2 className="text-4xl md:text-[56px] leading-none font-[serif]">
           {title.heading}
@@ -37,8 +40,8 @@ const Event = ({ title, gallery, description, link }: EventsProps) => {
         </p>
       </div>
 
-      {/* ================= GALLERY ================= */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+      {/* ================= DESKTOP GALLERY (100% UNTOUCHED & UNCHANGEABLE) ================= */}
+      <div className="hidden md:grid grid-cols-2 gap-4 mt-8">
         {gallery.map((item, index) => (
           <Link
             key={index}
@@ -52,15 +55,54 @@ const Event = ({ title, gallery, description, link }: EventsProps) => {
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover transition duration-500 group-hover:scale-105"
             />
-
-            {/* Play Button */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className=" flex items-center justify-center">
-                <PlayIcon />
-              </div>
-            </div>
           </Link>
         ))}
+      </div>
+
+      {/* ================= MOBILE VIEW SLIDER WITH BUTTONS ================= */}
+      <div className="block md:hidden w-full relative mt-8">
+        <div className="relative w-full overflow-hidden shadow-lg">
+          <SwiperCarousel
+            data={gallery}
+            modules={[Autoplay]}
+            loop={true}
+            speed={600}
+            autoplay={{ delay: 4000, disableOnInteraction: false }}
+            className="w-full"
+            onSwiper={(swiper) => setSwiperInstance(swiper)}
+            renderSlide={(item) => (
+              <Link
+                href={item.video}
+                className="relative block w-full aspect-[648/400] overflow-hidden group"
+              >
+                <Image
+                  src={item.image}
+                  alt={item.alt}
+                  fill
+                  className="object-cover transition duration-500 group-hover:scale-105"
+                />
+              </Link>
+            )}
+          />
+
+          {/* Centered Navigation Buttons */}
+          <button
+            type="button"
+            onClick={() => swiperInstance?.slidePrev()}
+            aria-label="Previous event"
+            className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/60 backdrop-blur-sm text-white text-2xl flex items-center justify-center hover:bg-black/80 transition-colors shadow-lg cursor-pointer select-none"
+          >
+            ‹
+          </button>
+          <button
+            type="button"
+            onClick={() => swiperInstance?.slideNext()}
+            aria-label="Next event"
+            className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/60 backdrop-blur-sm text-white text-2xl flex items-center justify-center hover:bg-black/80 transition-colors shadow-lg cursor-pointer select-none"
+          >
+            ›
+          </button>
+        </div>
       </div>
 
       {/* ================= DESCRIPTION ================= */}

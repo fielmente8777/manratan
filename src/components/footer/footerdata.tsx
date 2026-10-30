@@ -30,7 +30,6 @@ export const footerData: FooterData = {
         { label: "Accommodation", href: "/accommodation" },
         { label: "Gallery", href: "/gallery" },
         { label: "Events", href: "/events" },
-        { label: "Wedding", href: "/wedding" },
         { label: "Contact", href: "/contactus" },
         { label: "Blogs", href: "/blogs" },
       ],
@@ -53,7 +52,7 @@ export const footerData: FooterData = {
   copyright: "© MANRATAN RESORT 2026",
 
   poweredBy: {
-    label: "Created by Fielmente",
+    label: "POWERED BY FIELMENTE",
     href: "https://fielmente.com",
   },
 };

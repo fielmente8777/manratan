@@ -24,9 +24,9 @@ const BannerSlider = ({
         className="w-full"
         renderSlide={(src) => (
           <div
-            className={`w-full relative ${wrapperClassName ? wrapperClassName : "md:aspect-4/2.5 aspect-4/4.5"} aspect-4/4.5`}
+            className={`w-full relative overflow-hidden group ${wrapperClassName ? wrapperClassName : "md:aspect-4/2.5 aspect-4/4.5"} aspect-4/4.5`}
           >
-            <Image src={src} alt="Image" fill className="object-cover" />
+            <Image src={src} alt="Image" fill className="object-cover transition-transform duration-500 ease-out group-hover:scale-105" />
           </div>
         )}
       />

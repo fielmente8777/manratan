@@ -31,6 +31,8 @@ export interface UseBookingFormProps {
   includeCheckOut?: boolean;
   includeMessage?: boolean;
   includeGuests?: boolean;
+  includePhone?: boolean;
+  includeEmail?: boolean;
   formDomain?: string;
   formHid?: string;
   onSubmitSuccess?: () => void;
@@ -53,6 +55,8 @@ export const useBookingForm = ({
   includeCheckOut = true,
   includeMessage,
   includeGuests,
+  includePhone = true,
+  includeEmail = true,
   formDomain = "manratanresort.com",
   formHid = "",
   onSubmitSuccess,
@@ -107,12 +111,12 @@ export const useBookingForm = ({
       isValid = false;
     }
 
-    if (!validatePhone(formData.phone)) {
+    if (includePhone && !validatePhone(formData.phone)) {
       newErrors.phone = "Phone must be 10-15 digits";
       isValid = false;
     }
 
-    if (!validateEmail(formData.email)) {
+    if (includeEmail && !validateEmail(formData.email)) {
       newErrors.email = "Invalid email format";
       isValid = false;
     }
@@ -129,7 +133,7 @@ export const useBookingForm = ({
 
     setErrors(newErrors);
     return isValid;
-  }, [formData, includeCheckIn, includeCheckOut]);
+  }, [formData, includeCheckIn, includeCheckOut, includePhone, includeEmail]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>

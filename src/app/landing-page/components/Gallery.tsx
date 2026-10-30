@@ -95,13 +95,13 @@ const GallerySection: React.FC<GallerySectionProps> = ({
             >
               {images.map((image, index) => (
                 <SwiperSlide key={index}>
-                  <div className="relative h-full w-full">
+                  <div className="relative h-full w-full group overflow-hidden">
                     <Image
                       src={image}
                       alt={`Gallery image ${index + 1}`}
                       fill
                       priority={index === 0}
-                      className="object-cover"
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                     />
                   </div>
                 </SwiperSlide>
@@ -158,14 +158,14 @@ const GallerySection: React.FC<GallerySectionProps> = ({
                 key={index}
                 className="!w-auto flex items-center justify-center shrink-0 h-full"
               >
-                <div className="gallery-card-wrapper">
+                <div className="gallery-card-wrapper group cursor-pointer">
                   <Image
                     src={image}
                     alt={`Gallery image ${index + 1}`}
                     fill
                     sizes="872px"
                     priority={index === 0 || index === 1}
-                    className="object-cover rounded-none pointer-events-none"
+                    className="object-cover rounded-none pointer-events-none transition-transform duration-500 ease-out group-hover:scale-105"
                   />
                 </div>
               </SwiperSlide>

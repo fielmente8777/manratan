@@ -16,19 +16,21 @@ interface AccommodationRoomsProps {
 const AccommodationRooms = ({ rooms }: AccommodationRoomsProps) => {
   return (
     <SectionWithContainer sectionClassName="bg-tertiary">
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6 lg:gap-8">
         {rooms.map((room, index) => {
-          const isLastOdd =
-            index === rooms.length - 1 && rooms.length % 2 === 1;
+          let gridClasses = "w-full";
+
+          if (index < 3) {
+            gridClasses = "w-full lg:col-span-2";
+          } else if (index === 3) {
+            gridClasses = "w-full sm:col-span-1 lg:col-start-2 lg:col-span-2";
+          } else if (index === 4) {
+            gridClasses =
+              "w-full sm:col-span-2 sm:w-[calc(50%-0.75rem)] sm:mx-auto lg:col-span-2 lg:w-full lg:mx-0";
+          }
+
           return (
-            <div
-              key={room.id}
-              className={
-                isLastOdd
-                  ? "w-full md:col-span-2 md:w-[calc(50%-0.75rem)] lg:w-[calc(50%-1rem)] md:mx-auto"
-                  : "w-full"
-              }
-            >
+            <div key={room.id} className={gridClasses}>
               <RoomCard {...room} />
             </div>
           );

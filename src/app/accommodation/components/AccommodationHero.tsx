@@ -18,7 +18,7 @@ const AccommodationHero = ({
   scrollText,
 }: AccommodationHeroProps) => {
   return (
-    <section className="relative w-full max_screen_width mx-auto min-h-[70vh] md:min-h-187.5 max-h-225 overflow-hidden flex flex-col justify-between">
+    <section className="relative w-full max_screen_width mx-auto min-h-[70vh] md:min-h-187.5 max-h-225 overflow-hidden flex flex-col justify-between group">
       {/* Background Hero Image */}
       <Image
         src={bgImage}
@@ -26,7 +26,7 @@ const AccommodationHero = ({
         fill
         priority
         sizes="100vw"
-        className="object-cover"
+        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
       />
 
       {/* Subtle top/bottom gradient overlay */}
@@ -36,8 +36,6 @@ const AccommodationHero = ({
       <div className="relative z-20 w-full">
         <LandingNavbar />
       </div>
-
-
 
       {/* Center Hero Heading & Mouse Scroll Indicator */}
       <div className="relative z-20 w-full pb-10 sm:pb-14 md:pb-16 mt-auto">
@@ -51,8 +49,8 @@ const AccommodationHero = ({
             {/* Scroll To Explore Indicator */}
             <div className="flex flex-col items-center gap-2 mt-6 sm:mt-8 md:mt-10">
               {/* White Mouse Scroll Icon */}
-              <div className="w-[1.375rem] h-[2.125rem] border-[0.09375rem] border-white rounded-full flex justify-center pt-2 shrink-0">
-                <div className="w-[0.1875rem] h-[0.4375rem] bg-white rounded-full animate-bounce" />
+              <div className="w-[1.375rem] h-[2.125rem] border-[0.09375rem] border-white rounded-full flex justify-center pt-1.5 shrink-0 relative overflow-hidden">
+                <div className="w-[0.1875rem] h-[0.4375rem] bg-white rounded-full animate-mouse-scroll" />
               </div>
 
               <p className="text-white/90 text-xs md:text-[0.8125rem] leading-[1.0625rem] tracking-[0.08em] font-light text-center">

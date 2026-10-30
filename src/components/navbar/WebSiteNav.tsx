@@ -62,10 +62,10 @@ const Navbar = () => {
 
   return (
     <>
-      <SectionWithContainer defaultPadding={false}>
+
         <header
           className={`
-    fixed top-0 left-0 w-full z-50
+    fixed top-0 left-1/2 -translate-x-1/2 w-full max_screen_width z-50
     transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)]
         will-change-transform
         ${visible ? "translate-y-0" : "-translate-y-full"}
@@ -78,7 +78,8 @@ const Navbar = () => {
         }
       `}
         >
-          <nav className="flex h-[80px] w-full items-center justify-between px-6 lg:px-12 xl:px-16">
+          <SectionWithContainer defaultPadding={false}>
+            <nav className="flex h-[80px] w-full items-center justify-between">
             <div className="flex items-center gap-6">
               {/* Left */}
               <Link href="/" className="relative h-[55px] w-[125px] shrink-0">
@@ -92,7 +93,7 @@ const Navbar = () => {
 
               <Link
                 href={navData.location.href}
-                className="hidden md:flex items-center gap-2 text-xs tracking-[0.2em] text-white"
+                className="hidden"
               >
                 <LocationIcon />
                 {navData.location.label}
@@ -115,12 +116,13 @@ const Navbar = () => {
 
               <MenuButton />
             </div>
-          </nav>
+            </nav>
+          </SectionWithContainer>
 
           <NavMenu />
         </header>
         {!isTransparent && <div className="h-[80px] w-full" />}
-      </SectionWithContainer>
+
     </>
   );
 };

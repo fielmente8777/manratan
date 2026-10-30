@@ -117,13 +117,13 @@ const ContactUs = ({
         </div>
 
         {/* RIGHT IMAGE */}
-        <div className="relative min-h-[500px] overflow-hidden lg:min-h-[650px]">
+        <div className="relative min-h-[500px] overflow-hidden lg:min-h-[650px] group">
           <Image
             src={image}
             alt={title}
             fill
             priority
-            className="object-cover"
+            className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
           />
         </div>
       </div>

@@ -16,10 +16,22 @@ export const aboutData = {
 
   aboutHistoryData: {
     image: "/aboutpage/history_11zon.webp",
+    images: [
+      "/aboutpage/history_11zon.webp",
+      "/homopage/narsinghgarh_11zon.webp",
+      "/aboutpage/banner_11zon.webp",
+    ],
     title: "Manratan",
     subTitle: "History",
+    tagline: "IT WAS THEIR NAME THAT BECAME OUR NEW BEGINNING.",
+    paragraphs: [
+      "Named in honour of a beloved grandmother and mother, Manratan is a legacy of love. Some stories begin with a dream. Ours began with love, family and a name that holds a special place in our hearts.",
+      "Manratan is more than a destination; it is a heartfelt tribute to two cherished women whose legacy continues to inspire us. What began as a meaningful family sentiment has grown into a place where people come together, celebrate life's milestones and create memories that last a lifetime.",
+      "Rooted in the warmth of family and guided by a passion for hospitality, Manratan brings together timeless elegance, thoughtful experiences and the joy of togetherness. Every celebration, every gathering and every stay carries forward the spirit behind our name.",
+    ],
+    closingQuote: "Because some legacies are not simply remembered. They are lived, shared and passed on.",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "Some stories begin with a dream. Ours began with love, family and a name that holds a special place in our hearts. Manratan is more than a destination; it is a heartfelt tribute to two cherished women whose legacy continues to inspire us.",
   },
 
   atManratanData: {

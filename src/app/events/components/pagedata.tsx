@@ -4,7 +4,7 @@ export const eventsPageData = {
     description: "Host grand destination weddings, celebrity celebrations, corporate retreats, and unforgettable pre-wedding events at Manratan Resort.",
   },
   heroData: {
-    image: "/events/event8_11zon.webp",
+    image: "/events/event5_11zon.webp",
     alt: "Events and Celebrations Hero at Manratan Resort",
   },
   introData: {
@@ -18,7 +18,7 @@ export const eventsPageData = {
         alt: "Gala Dinner Celebration",
       },
       {
-        image: "/events/event5_11zon.webp",
+        image: "/events/event7_11zon.webp",
         alt: "Celebrity Concert Performance",
       },
     ],

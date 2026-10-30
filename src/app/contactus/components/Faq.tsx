@@ -3,7 +3,6 @@
 import Accordion from "@/components/accordion/Accordion";
 import { Section } from "@/components/sectionComponants";
 
-
 interface FAQ {
   question: string;
   answer: string;
@@ -18,8 +17,9 @@ const FAQSection = ({ faqs }: FAQSectionProps) => {
     <Section defaultPadding={false} className="bg-tertiary">
       <div
         className="
-          py-10
-          px-8
+          py-8
+          px-4
+          sm:px-6
           mx-auto
           w-full
           max-w-7xl!
@@ -28,7 +28,7 @@ const FAQSection = ({ faqs }: FAQSectionProps) => {
         "
       >
         {/* HEADING */}
-        <div className="mb-12 text-center">
+        <div className="mb-8 md:mb-12 text-center">
           <h2
             className="
               text-primary

@@ -31,19 +31,19 @@ const Footer = () => {
   return (
     <footer className="text-white">
       <SectionWithContainer sectionClassName="bg-primary">
-        <div className="grid lg:grid-cols-[1.5fr_.6fr_.6fr_auto] gap-8 lg:gap-16 items-start">
-          <div>
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
+          <div className="shrink-0">
             <Image
               src={footerData.logo}
               alt="Manratan"
               width={270}
               height={90}
-              className="object-contain"
+              className="object-contain w-[210px] sm:w-[240px] lg:w-[270px] h-auto"
             />
           </div>
 
           {footerData.links.map((section, index) => (
-            <div key={section.title} className="w-full">
+            <div key={section.title} className="w-full lg:w-auto">
               {/* DESKTOP VIEW */}
               <div className="hidden lg:block">
                 <h3 className="text-[24px] font-medium uppercase mb-6">
@@ -68,7 +68,7 @@ const Footer = () => {
               <div className="lg:hidden border-b border-white/20 pb-4">
                 <button
                   onClick={() => setIsOpen(isOpen === index ? null : index)}
-                  className="text-xl font-medium uppercase flex items-center justify-between w-full py-2 text-white text-left"
+                  className="text-[17px] font-medium uppercase flex items-center justify-between w-full py-2 text-white text-left"
                   type="button"
                 >
                   <span>{section.title}</span>
@@ -102,7 +102,7 @@ const Footer = () => {
             </div>
           ))}
 
-          <div className="lg:justify-self-end mt-4 lg:mt-0">
+          <div className="shrink-0 mt-4 lg:mt-0">
             <Link
               href={footerData.cta.href}
               className="bg-white text-primary px-10 py-4 uppercase tracking-wider text-sm font-medium hover:bg-secondary transition inline-block"
@@ -112,7 +112,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/20 mt-16 pt-8 flex justify-between items-center text-xs text-white/70">
+        <div className="border-t border-white/20 mt-12 lg:mt-16 pt-8 flex flex-col lg:flex-row items-center justify-between gap-2.5 lg:gap-0 text-center lg:text-left text-xs text-white/70">
           <p>{footerData.copyright}</p>
 
           <Link

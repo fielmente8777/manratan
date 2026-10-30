@@ -12,12 +12,12 @@ export default function Home() {
     <main>
       <ImageBanner {...homePageData.heroData} />
 
-      <div
-        className="bg-dark border md:hidden border-white backdrop-blur-xs flex flex-col gap-5"
-        id="form"
-      >
-        <Form1 />
-      </div>
+      {/* Form rendered inside ImageBanner on top of hero image */}
+
+
+
+
+
 
       <About {...homePageData.aboutData} />
 

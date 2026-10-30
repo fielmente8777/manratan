@@ -96,14 +96,14 @@ export default async function BlogDetailPage({ params }: BlogSlugPageProps) {
 
             {/* Main Cover Image */}
             {coverImageUrl && (
-              <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden mb-8 bg-gray-100">
+              <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden mb-8 bg-gray-100 group">
                 <Image
                   src={coverImageUrl}
                   alt={post.alt || post.title}
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 896px"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                 />
               </div>
             )}

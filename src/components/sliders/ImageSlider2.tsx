@@ -47,14 +47,14 @@ const ImageSlider2: React.FC<
         }}
         renderSlide={(image, index) => (
           <div
-            className={`w-full relative lg:rounded-3xl rounded-2xl transition-all duration-300 ease-in-out overflow-hidden ${index === activeIndex ? "md:aspect-4/2.5 aspect-square" : "md:aspect-[4/2.15] aspect-square md:mt-8"}`}
+            className={`w-full relative lg:rounded-3xl rounded-2xl transition-all duration-300 ease-in-out overflow-hidden group ${index === activeIndex ? "md:aspect-4/2.5 aspect-square" : "md:aspect-[4/2.15] aspect-square md:mt-8"}`}
           >
             <Image
               src={image}
               alt={"hero-image"}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="w-full object-cover"
+              className="w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
             />
           </div>
         )}

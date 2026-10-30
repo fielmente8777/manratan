@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { LocationIcon, CalendarIcon, BannerPlayIcon } from "@/utils/icons";
+import { LocationIcon, CalendarIcon } from "@/utils/icons";
 import Form2 from "@/components/forms/Form2";
 import { useState, useEffect, useRef } from "react";
 import { useWebContext } from "@/context-api/WebContext";
@@ -125,22 +125,17 @@ const LandingBanner: React.FC<LandingBannerProps> = ({
       </div>
 
       {/* Hero Image */}
-      <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-[16/8.2] min-h-[240px] sm:min-h-[380px] lg:min-h-[540px] overflow-hidden">
+      <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-[16/8.2] min-h-[240px] sm:min-h-[380px] lg:min-h-[540px] overflow-hidden group cursor-pointer">
         <Image
           src={image}
           alt="Manratan Resort Exterior"
           fill
           priority
-          className="object-cover object-center"
+          className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
         />
 
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/25 z-10" />
-
-        {/* Play Icon */}
-        <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
-          <BannerPlayIcon className="w-[54px] h-[40px] sm:w-[80px] sm:h-[60px] drop-shadow-md" />
-        </div>
       </div>
 
       {/* Booking Form */}

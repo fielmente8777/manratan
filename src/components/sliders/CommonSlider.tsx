@@ -36,12 +36,12 @@ const CommonSlider: React.FC<Props> = ({
             },
           }}
           renderSlide={(src) => (
-            <div className="w-full relative aspect-4/4.5">
+            <div className="w-full relative aspect-4/4.5 overflow-hidden group">
               <Image
                 src={src}
                 alt={title}
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 style={{
                   background: "white",

@@ -62,6 +62,7 @@ export default async function RoomsPage({ params }: Params) {
         <AccommodationDetailHero
           bgImage={pageData.heroImage}
           alt={pageData.title}
+          title={pageData.title}
         />
 
         {/* Intro Description */}
@@ -76,5 +77,3 @@ export default async function RoomsPage({ params }: Params) {
     </main>
   );
 }
-
-

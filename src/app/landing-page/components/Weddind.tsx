@@ -101,13 +101,13 @@ const WeddingSection: React.FC<WeddingSectionProps> = ({
                 >
                   {images.map((image, index) => (
                     <SwiperSlide key={index}>
-                      <div className="relative h-full w-full">
+                      <div className="relative h-full w-full group overflow-hidden">
                         <Image
                           src={image}
                           alt={`Wedding celebration ${index + 1}`}
                           fill
                           priority={index === 0}
-                          className="object-cover"
+                          className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                         />
                       </div>
                     </SwiperSlide>

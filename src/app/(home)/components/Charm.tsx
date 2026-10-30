@@ -19,30 +19,33 @@ const Charm = ({ image, title, subTitle, description, note }: CharmProps) => {
           grid
           grid-cols-1
           lg:grid-cols-[1.55fr_1fr]
+          items-center
         "
       >
         <div
           className="
             hidden lg:relative
             lg:block
+            group
             h-[350px]
             overflow-hidden
             sm:h-[450px]
             lg:h-[590px]
           "
         >
-          <Image src={image} alt={title} fill className="object-cover" />
+          <Image src={image} alt={title} fill className="object-cover transition-transform duration-500 ease-out group-hover:scale-105" />
         </div>
 
         <div
           className="
             flex
             flex-col
+            justify-center
             px-0
             py-6
             lg:px-0
             lg:pl-10
-            lg:pt-0
+            lg:py-0
           "
         >
           {/* TITLE */}
@@ -79,6 +82,7 @@ const Charm = ({ image, title, subTitle, description, note }: CharmProps) => {
           <div
             className="
             lg:hidden 
+            group
             relative
             mt-6
             sm:mt-8
@@ -89,7 +93,7 @@ const Charm = ({ image, title, subTitle, description, note }: CharmProps) => {
             lg:h-[590px]
           "
           >
-            <Image src={image} alt={title} fill className="object-cover" />
+            <Image src={image} alt={title} fill className="object-cover transition-transform duration-500 ease-out group-hover:scale-105" />
           </div>
           {/* DESCRIPTION */}
           <p

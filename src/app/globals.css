@@ -58,17 +58,30 @@ body {
 @keyframes contentFade {
   from {
     opacity: 0;
-    transform: translateX(12px);
+    transform: translateY(6px);
   }
 
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 
 .animate-content {
-  animation: contentFade 0.5s ease-in-out;
+  animation: contentFade 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes mouseScroll {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(12px);
+  }
+}
+
+.animate-mouse-scroll {
+  animation: mouseScroll 1.6s ease-in-out infinite;
 }
 
 @keyframes marquee {
@@ -139,4 +152,19 @@ body {
   .gallery-swiper .swiper-slide-active .gallery-card-wrapper {
     height: 600px;
   }
+}
+
+/* ================= COVERFLOW SLIDER (HOST YOUR EVENTS) BLUR STYLES ================= */
+.we-offer-slider .swiper-slide {
+  transition: filter 0.6s ease, opacity 0.6s ease;
+}
+
+.we-offer-slider .swiper-slide:not(.swiper-slide-active) {
+  filter: blur(4px);
+  opacity: 0.7;
+}
+
+.we-offer-slider .swiper-slide-active {
+  filter: blur(0px);
+  opacity: 1;
 }

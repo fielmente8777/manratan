@@ -85,13 +85,13 @@ const Legacy: React.FC<LegacySectionProps> = ({
           >
             {rawImages.map((image, index) => (
               <SwiperSlide key={index}>
-                <div className="relative h-full w-full">
+                <div className="relative h-full w-full group overflow-hidden">
                   <Image
                     src={image}
                     alt={`${title} - image ${index + 1}`}
                     fill
                     priority={index === 0}
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                   />
                 </div>
               </SwiperSlide>
@@ -144,14 +144,14 @@ const Legacy: React.FC<LegacySectionProps> = ({
           >
             {displayImages.map((image, index) => (
               <SwiperSlide key={index} className="!w-[745px] h-full shrink-0">
-                <div className="w-[745px] h-full relative overflow-hidden bg-black/5">
+                <div className="w-[745px] h-full relative overflow-hidden bg-black/5 group cursor-pointer">
                   <Image
                     src={image}
                     alt={`${title} slide ${index + 1}`}
                     fill
                     sizes="745px"
                     priority={index === 0 || index === 1}
-                    className="object-cover pointer-events-none"
+                    className="object-cover pointer-events-none transition-transform duration-500 ease-out group-hover:scale-105"
                   />
                 </div>
               </SwiperSlide>
