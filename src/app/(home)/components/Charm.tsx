@@ -96,14 +96,14 @@ const Charm = ({ image, title, subTitle, description, note }: CharmProps) => {
             <Image src={image} alt={title} fill className="object-cover transition-transform duration-500 ease-out group-hover:scale-105" />
           </div>
           {/* DESCRIPTION */}
-          <p
+          <div
             className="
               mt-8
               text-secondary
               md:text-[16px]
               text-sm
+              leading-relaxed
             "
-
             dangerouslySetInnerHTML={{ __html: description }}
           />
 

@@ -7,14 +7,14 @@ import Form1 from "../forms/Form1";
 
 interface ImageBannerProps {
   image: string;
-  logo: string;
+  logo?: string;
   videoLink?: string;
   booking: {
     benefits: string;
   };
 }
 
-const ImageBanner = ({ image, logo }: ImageBannerProps) => {
+const ImageBanner = ({ image }: ImageBannerProps) => {
   return (
     <Section
       defaultPadding={false}
@@ -28,19 +28,7 @@ const ImageBanner = ({ image, logo }: ImageBannerProps) => {
         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
       />
 
-      <div className="absolute inset-0 bg-black/55 z-10" />
-
       <LandingNavbar />
-
-      <div className="absolute inset-x-0 top-16 bottom-[250px] lg:top-0 lg:bottom-0 z-20 flex items-center justify-center">
-        <Image
-          src={logo}
-          alt="Manratan Resort"
-          width={240}
-          height={240}
-          priority
-        />
-      </div>
 
       <div className="absolute bottom-4 sm:bottom-6 lg:bottom-10 left-0 w-full z-20">
         <Container>

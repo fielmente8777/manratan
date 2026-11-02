@@ -16,15 +16,15 @@ const defaultStats: StatItem[] = [
     label: "Guest rating, online aggregators",
   },
   {
-    value: "[X] Yrs",
+    value: "5+ Yrs",
     label: "Serving Narsinghgarh",
   },
   {
-    value: "[X] Rooms",
+    value: "65 Rooms",
     label: "Pool-facing & garden view",
   },
   {
-    value: "2000+ Guests",
+    value: "4,000 Guests",
     label: "Largest wedding lawn capacity",
   },
 ];

@@ -20,10 +20,10 @@ export const homePageData = {
 
     topContent: {
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
+        "Nestled in the scenic charm of Narsinghgarh—celebrated as the Kashmir of Malwa—Manratan Resort is a sanctuary where contemporary luxury meets timeless hospitality. Rooted in family warmth and a legacy of love, we offer 65 elegantly appointed rooms, signature pure-vegetarian dining at Swadika, a sparkling swimming pool, and magnificent open-air celebration venues.",
       link: {
-        label: "OUR LEGACY",
-        href: "/about-us/",
+        label: "KNOW MORE",
+        href: "/about/",
       },
     },
 
@@ -43,9 +43,9 @@ export const homePageData = {
     title: "Royal Charm",
     subTitle: "of Narsinghgarh",
     description:
-      `<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<p/>
+      `<p>Surrounded by misty green hills, heritage forts, and the tranquil Chidi Kho wildlife sanctuary, Narsinghgarh has long been celebrated as the picturesque 'Kashmir of Malwa'. Steeped in rich history and royal traditions, it offers an idyllic escape from the bustling city rhythm.</p>
       <br/>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<p/>`,
+      <p>Manratan Resort embraces this timeless legacy, offering guests a regal haven where natural serenity, refined architecture, and heartfelt service blend effortlessly. Whether you are exploring historic battlements or unwinding amidst pristine landscapes, every moment here connects you to the true spirit of Malwa.</p>`,
     note: "Live the Legacy of Narsinghgarh",
   },
   featureGalleryData: {
@@ -54,7 +54,8 @@ export const homePageData = {
       subHeading: "Resort",
     },
 
-    topDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    topDescription:
+      "Thoughtfully curated spaces designed for effortless relaxation, joyous gatherings, and pure indulgence.",
 
     gallery: [
       {
@@ -71,12 +72,12 @@ export const homePageData = {
       },
       {
         title: "Pool",
-        image: "/homopage/pool_11zon.webp",
+        image: "/images/manratan-4.jpg",
       },
     ],
 
     bottomDescription:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
+      "From our grand reception and 65 thoughtfully designed guest rooms to our chandelier-lit Swadika restaurant and serene outdoor swimming pool, every space at Manratan Resort is crafted to elevate your stay. Experience seamless hospitality, modern amenities, and warm personal care throughout your retreat.",
   },
 
   eventsData: {
@@ -109,7 +110,7 @@ export const homePageData = {
     ],
 
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
+      "From grand destination weddings and pre-wedding soirees on our expansive 4,000-guest Red Coral Lawn to celebrations in the Blue Sapphire Banquet and poolside mixers at the Blue Diamond Oasis, Manratan Resort crafts unforgettable celebrations elevated by regal grandeur, bespoke catering, and impeccable hospitality.",
 
     link: {
       label: "EXPLORE",
@@ -123,7 +124,7 @@ export const homePageData = {
     },
 
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Savour authentic Indian and global pure-vegetarian flavours at Swadika Restaurant. Beautifully illuminated by signature chandeliers, every meal is an unforgettable culinary experience prepared with the finest ingredients and warm hospitality.",
 
     images: [
       {
@@ -142,7 +143,7 @@ export const homePageData = {
 
     link: {
       label: "EXPLORE",
-      href: "/experience/",
+      href: "/about/",
     },
   },
 };

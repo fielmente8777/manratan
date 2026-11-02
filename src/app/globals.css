@@ -168,3 +168,25 @@ body {
   filter: blur(0px);
   opacity: 1;
 }
+
+/* ================= SCROLL FADE-IN REVEAL EFFECT ================= */
+.scroll-fade {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-fade.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-fade {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+

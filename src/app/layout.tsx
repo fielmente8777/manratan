@@ -7,6 +7,7 @@ import { WebProvider } from "@/context-api/WebContext";
 import Footer from "@/components/footer/Landingfooter";
 import NavBar from "@/components/navbar/NavBar";
 import PopUpForm from "@/components/pop-up/PopUpForm";
+import ScrollFadeObserver from "@/components/animations/ScrollFadeObserver";
 
 const ivyOra = localFont({
   src: "../../public/fonts/IvyOraDisplay-Regular.ttf",
@@ -53,6 +54,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <WebProvider>
+          <ScrollFadeObserver />
           <NavBar />
           {children}
           <Footer />

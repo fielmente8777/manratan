@@ -7,17 +7,17 @@ Please share the best available options and rates.
 Thank you!`);
 
 export const contact = {
-  email: "contact@LOREMIPSUM.com",
-  mapUrl: "",
-  phone: ["+91xxxxxxxxxx"],
-  address: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-  addressLink: "",
+  email: "reservation@manratanresort.com",
+  mapUrl: "https://maps.google.com/?q=Manratan+Resort+Narsinghgarh+MP",
+  phone: ["+91 91711 72205", "+91 91711 72206", "+91 91711 72208"],
+  address: "NH-46, Biaora Road, Narsinghgarh, Dist. Rajgarh, Madhya Pradesh - 465669",
+  addressLink: "https://maps.google.com/?q=Manratan+Resort+Narsinghgarh+MP",
   socialMedia: {
     facebook: "https://www.facebook.com",
     instagram: "https://www.instagram.com/",
   },
-  callCta: `tel: +91xxxxxxxxxx`,
-  WhatsappCta: `https://wa.me/+91xxxxxxxxxx?text=${enCodeText}`,
+  callCta: `tel:+919171172205`,
+  WhatsappCta: `https://wa.me/919171172205?text=${enCodeText}`,
   // formDomain: "aspa",
   formDomain: "testmulti", //for testing
   formHid: "",

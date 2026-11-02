@@ -40,14 +40,17 @@ const History = ({
   return (
     <SectionWithContainer
       defaultPadding={false}
-      sectionClassName="bg-tertiary"
+      sectionClassName="bg-tertiary py-12 sm:py-16 lg:py-20"
     >
       <div
         className="
           grid
           grid-cols-1
-          lg:grid-cols-[2fr_0.9fr]
-          lg:items-center
+          lg:grid-cols-[1.28fr_1fr]
+          items-center
+          gap-8
+          lg:gap-10
+          xl:gap-14
         "
       >
         {/* ================= DESKTOP VIEW SLIDER (LEFT) ================= */}
@@ -57,7 +60,8 @@ const History = ({
             lg:block
             lg:relative
             group
-            h-[620px]
+            h-[570px]
+            lg:h-[580px]
             overflow-hidden
             shadow-sm
           "
@@ -70,12 +74,16 @@ const History = ({
             autoplay={{ delay: 4000, disableOnInteraction: false }}
             className="w-full h-full"
             onSwiper={(swiper) => setDesktopSwiper(swiper)}
-            renderSlide={(imgSrc) => (
-              <div className="relative w-full h-[620px] overflow-hidden">
+            renderSlide={(imgSrc, index) => (
+              <div className="relative w-full h-[570px] lg:h-[580px] overflow-hidden">
                 <Image
                   src={imgSrc}
-                  alt={title}
+                  alt={`${title} Resort - Heritage and Story of Narsinghgarh`}
                   fill
+                  sizes="(max-width: 1024px) 100vw, 56vw"
+                  priority={index === 0}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  quality={85}
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
               </div>
@@ -107,10 +115,9 @@ const History = ({
             flex
             flex-col
             justify-center
-            py-10
-            lg:px-0
-            lg:pl-10
+            py-6
             lg:py-0
+            w-full
           "
         >
           {/* TITLE */}
@@ -118,12 +125,13 @@ const History = ({
             <h2
               className="
                 text-primary
-                text-4xl
+                text-3xl
+                sm:text-4xl
+                lg:text-[44px]
                 font-[serif]
                 uppercase
                 leading-none
-                sm:text-5xl
-                lg:text-[48px]
+                tracking-wide
               "
             >
               <span>{title.slice(0, -1)}</span>
@@ -135,14 +143,13 @@ const History = ({
                     top-full
                     -left-1
                     sm:-left-1.5
-                    mt-1.5
-                    sm:mt-2
+                    mt-1
+                    sm:mt-1.5
                     font-golden
                     text-primary
                     text-2xl
-                    leading-none
                     sm:text-3xl
-                    lg:text-[30px]
+                    lg:text-[28px]
                     normal-case
                     whitespace-nowrap
                   "
@@ -152,7 +159,7 @@ const History = ({
               </span>
             </h2>
 
-            <div className="h-6 sm:h-8" aria-hidden="true" />
+            <div className="h-5 sm:h-6" aria-hidden="true" />
           </div>
 
           {/* ================= MOBILE VIEW SLIDER ================= */}
@@ -209,35 +216,35 @@ const History = ({
           </div>
 
           {/* CONTENT SECTION */}
-          <div className="mt-6 lg:mt-8 space-y-3.5 text-secondary text-sm leading-relaxed sm:text-[15px] sm:leading-7">
+          <div className="mt-5 lg:mt-6 space-y-3 lg:space-y-3.5 text-secondary text-[13.5px] lg:text-[14px]">
             {tagline && (
-              <p className="font-semibold text-primary uppercase tracking-wide text-xs sm:text-[13px] leading-snug">
+              <p className="font-bold text-primary uppercase tracking-wide text-xs lg:text-[12.5px] leading-snug">
                 {tagline}
               </p>
             )}
 
             {subTagline && (
-              <p className="font-medium text-primary text-xs sm:text-[13px] leading-snug">
+              <p className="font-medium text-primary text-xs lg:text-[12.5px] leading-snug">
                 {subTagline}
               </p>
             )}
 
             {paragraphs && paragraphs.length > 0 ? (
               paragraphs.map((p, idx) => (
-                <p key={idx} className="text-secondary text-sm sm:text-[15px] leading-relaxed sm:leading-7">
+                <p key={idx} className="text-secondary text-[13.5px] lg:text-[14px] leading-[1.65]">
                   {p}
                 </p>
               ))
             ) : (
               description && (
-                <p className="text-secondary text-sm sm:text-[15px] leading-relaxed sm:leading-7">
+                <p className="text-secondary text-[13.5px] lg:text-[14px] leading-[1.65]">
                   {description}
                 </p>
               )
             )}
 
             {closingQuote && (
-              <p className="font-medium text-primary text-sm sm:text-[15px] pt-1">
+              <p className="font-medium text-primary text-[13.5px] lg:text-[14px] leading-relaxed pt-0.5">
                 {closingQuote}
               </p>
             )}

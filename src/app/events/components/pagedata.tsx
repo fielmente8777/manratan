@@ -1,7 +1,8 @@
 export const eventsPageData = {
   meta: {
     title: "Events & Celebrations | Manratan Resort",
-    description: "Host grand destination weddings, celebrity celebrations, corporate retreats, and unforgettable pre-wedding events at Manratan Resort.",
+    description:
+      "Host grand destination weddings, celebrity celebrations, corporate retreats, and unforgettable pre-wedding events at Manratan Resort.",
   },
   heroData: {
     image: "/events/event5_11zon.webp",
@@ -22,13 +23,13 @@ export const eventsPageData = {
         alt: "Celebrity Concert Performance",
       },
     ],
-    headingLabel: "Celebrity image & content here.",
+    headingLabel: "Crafted for Life's Grandest Milestones & Celebrations",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "At Manratan Resort, every celebration is an experience crafted to be remembered. From magnificent royal destination weddings and intimate gatherings to poolside soirées, pre-wedding shoots, and distinguished corporate retreats, every moment is elevated by elegant surroundings, gracious hospitality, and exceptional dining. Set amidst the scenic charm of Narsinghgarh, Manratan brings together the art of celebration and the warmth of belonging.",
   },
   tickerItems: [
     "EXPANSIVE LAWNS AND ROOMS",
-    "2000 GUESTS SEATED",
+    "4000 GUESTS CAPACITY",
     "CLASSIC CELEBRATIONS",
   ],
   videoCardsData: {
@@ -117,10 +118,10 @@ export const eventsPageData = {
   },
   ctaData: {
     title: {
-      heading: "LOREM IPSUM DOLOR SIT AMET",
+      heading: "PLAN YOUR MEMORABLE CELEBRATION WITH US",
     },
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad.",
+      "Whether planning a grand 4,000-guest wedding on Red Coral Lawn or an intimate poolside soiree, our event specialists are ready to turn your vision into reality.",
     link: {
       label: "CONTACT US",
       href: "/contactus",

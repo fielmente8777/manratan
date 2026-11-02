@@ -10,7 +10,7 @@ export const aboutData = {
       title: "A Timeless Escape",
       subTitle: "Our Story",
       description:
-        "At Manratan Resort, we believe every stay should be more than just a place to spend the night. Located in the scenic surroundings of Narsinghgarh, our resort brings together modern comfort, warm hospitality and thoughtfully designed spaces for a relaxing getaway. From well-appointed rooms and refreshing poolside moments to delightful dining and beautiful views, every detail is designed to make your stay comfortable and memorable. Whether you are travelling with family, enjoying a peaceful escape or celebrating a special occasion, Manratan Resort offers the perfect setting to relax, reconnect and create lasting memories.",
+        "At Manratan Resort, we believe every stay should be more than just a place to spend the night. Located in the scenic surroundings of Narsinghgarh—celebrated as the Kashmir of Malwa—our resort brings together modern comfort, warm hospitality and thoughtfully designed spaces for a relaxing getaway. From well-appointed rooms and refreshing poolside moments to delightful dining and beautiful views, every detail is designed to make your stay comfortable and memorable. Whether you are travelling with family, enjoying a peaceful escape or celebrating a special occasion, Manratan Resort offers the perfect setting to relax, reconnect and create lasting memories.",
     },
   },
 
@@ -43,25 +43,25 @@ export const aboutData = {
         image: "/restaurant/restaurant1_11zon_11zon.webp",
         logo: "/images/about3.png",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+          "Savour authentic Indian and regional Malwa specialties prepared with heritage recipes, fresh ingredients, and culinary passion.",
       },
       {
         image: "/restaurant/restaurant2_11zon_11zon.webp",
         logo: "/images/about3.png",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+          "Delight in global pure-vegetarian delicacies in a contemporary, chandelier-lit dining hall accommodating up to 100 guests.",
       },
       {
         image: "/restaurant/dining_11zon.webp",
         logo: "/images/about3.png",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+          "Experience refreshing poolside breakfasts, midday coolers, and relaxed open-air dining surrounded by tranquil resort vistas.",
       },
       {
         image: "/restaurant/swadika3_11zon.webp",
         logo: "/images/about3.png",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+          "Celebrate milestone family lunches, festive dinners, and romantic evenings with bespoke culinary creations and attentive service.",
       },
     ],
   },

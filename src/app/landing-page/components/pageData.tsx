@@ -29,16 +29,16 @@ export const LandingPageData = {
         label: "Guest rating, online aggregators",
       },
       {
-        value: "[X] Yrs",
-        label: "Serving Narsinghgarh",
+        value: "65 Rooms",
+        label: "Luxury guest rooms & suites",
       },
       {
-        value: "[X] Rooms",
-        label: "Pool-facing & garden view",
+        value: "4000+ Guests",
+        label: "Red Coral Lawn capacity",
       },
       {
-        value: "2000+ Guests",
-        label: "Largest wedding lawn capacity",
+        value: "Pure Veg",
+        label: "Swadika Multi-Cuisine Dining",
       },
     ],
   },
@@ -92,7 +92,7 @@ export const LandingPageData = {
       {
         title: "Multi-Cuisine Dining",
         description:
-          "An open-air pool for residents, with loungers and a poolside sitting deck.",
+          "Swadika pure-veg restaurant serving authentic Indian and global flavours in an elegant, chandelier-lit dining hall.",
       },
       {
         title: "Ample Parking",
@@ -393,34 +393,34 @@ export const LandingPageData = {
 
     reviews: [
       {
-        name: "Delhi NCR",
+        name: "Rahul Sharma, Indore",
         review:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "Stayed here during a family road trip to Narsinghgarh. The rooms are spotless, modern, and very comfortable. The Swadika restaurant served delicious pure veg food, and the staff was extremely courteous. Highly recommend!",
       },
       {
-        name: "Delhi NCR",
+        name: "Pooja & Amit Verma, Bhopal",
         review:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "We hosted our cousin's destination wedding here, and it was pure magic! The Red Coral lawn is vast and beautiful, and the Blue Sapphire hall is lavishly decorated. Truly the best venue in the region.",
       },
       {
-        name: "Delhi NCR",
+        name: "Dr. Vikram Singh, Jaipur",
         review:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "An oasis of calm right on NH-46. Beautiful swimming pool, excellent room service, and peaceful green surroundings. It genuinely feels like the Kashmir of Malwa. Will definitely visit again.",
       },
       {
-        name: "Delhi NCR",
+        name: "Neha Kulkarni, Pune",
         review:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "Booked the Deluxe Interconnected room for our family of four. The setup was spacious, beds were super comfy, and the garden views were breathtaking in the morning. Great value for money.",
       },
       {
-        name: "Delhi NCR",
+        name: "Sunil Jain, Ujjain",
         review:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "Exceptional hospitality! The management attended to all our requirements with a smile. The food quality at Swadika is top-notch, especially the regional Malwa dishes. Wonderful resort!",
       },
       {
-        name: "Delhi NCR",
+        name: "Meenakshi Patel, Ahmedabad",
         review:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "Celebrated our wedding anniversary at Manratan Resort. The candlelit dinner arrangement and quiet ambiance made it truly memorable. A luxurious gem in Narsinghgarh.",
       },
     ],
   },
