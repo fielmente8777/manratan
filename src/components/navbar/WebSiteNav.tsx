@@ -9,9 +9,11 @@ import { LocationIcon } from "@/utils/icons";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { SectionWithContainer } from "../sectionComponants";
+import { useWebContext } from "@/context-api/WebContext";
 
 const Navbar = () => {
   const pathname = usePathname();
+  const { isOpenNavBar } = useWebContext();
 
   const paths = ["/", "/rooms/"];
   const isTransparent = paths.includes(pathname);
@@ -62,24 +64,25 @@ const Navbar = () => {
 
   return (
     <>
-
-        <header
-          className={`
-    fixed top-0 left-1/2 -translate-x-1/2 w-full max_screen_width z-50
-    transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)]
-        will-change-transform
-        ${visible ? "translate-y-0" : "-translate-y-full"}
-        ${
-          isTransparent
-            ? scrolled
-              ? "bg-primary backdrop-blur-xl"
-              : "bg-transparent"
-            : "bg-primary "
-        }
-      `}
-        >
-          <SectionWithContainer defaultPadding={false}>
-            <nav className="flex h-[80px] w-full items-center justify-between">
+      <header
+        className={`
+          fixed top-0 left-1/2 -translate-x-1/2 w-full max_screen_width z-50
+          transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]
+          will-change-transform
+          ${visible || isOpenNavBar ? "translate-y-0" : "-translate-y-full"}
+          ${
+            isOpenNavBar
+              ? "bg-primary"
+              : isTransparent
+                ? scrolled
+                  ? "bg-primary backdrop-blur-xl"
+                  : "bg-transparent"
+                : "bg-primary"
+          }
+        `}
+      >
+        <SectionWithContainer defaultPadding={false}>
+          <nav className="flex h-[80px] w-full items-center justify-between">
             <div className="flex items-center gap-6">
               {/* Left */}
               <Link href="/" className="relative h-[55px] w-[125px] shrink-0">
@@ -101,28 +104,26 @@ const Navbar = () => {
             </div>
 
             {/* Right */}
-
             <div className="flex items-center gap-4">
               <span
                 className={`
-                text-xs
-                uppercase
-                tracking-[0.2em]
-                text-white
-              `}
+                  text-xs
+                  uppercase
+                  tracking-[0.2em]
+                  text-white
+                `}
               >
                 Menu
               </span>
 
               <MenuButton />
             </div>
-            </nav>
-          </SectionWithContainer>
+          </nav>
+        </SectionWithContainer>
 
-          <NavMenu />
-        </header>
-        {!isTransparent && <div className="h-[80px] w-full" />}
-
+        <NavMenu />
+      </header>
+      {!isTransparent && <div className="h-[80px] w-full" />}
     </>
   );
 };

@@ -29,11 +29,11 @@ export const homePageData = {
 
     gallery: [
       {
-        image: "/homopage/about_11zon.webp",
+        image: "/homopage/about-new.webp",
         alt: "Heritage Architecture",
       },
       {
-        image: "/homopage/about1_11zon.webp",
+        image: "/homopage/about-new1.webp",
         alt: "Resort Aerial View",
       },
     ],
