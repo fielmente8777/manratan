@@ -6,10 +6,9 @@ export const LandingPageData = {
     title: "A Royal MALWA RETREAT, BUILT FOR YOUR FINEST DAYS",
 
     description:
-      "Manratan Resort is where comfort meets memorable experiences. Nestled in Narsinghgarh, our resort offers elegant stays, spacious rooms, refreshing leisure spaces, delicious dining, and warm hospitality for families, couples, and travellers seeking a relaxing escape. Every stay is designed to offer comfort, convenience, and moments worth remembering.",
+      "Set amidst the scenic hills and tranquil countryside of Narsinghgarh—celebrated as the Kashmir of Malwa—Manratan Resort is the region's premier 4-star luxury destination. Spanning lush landscaped gardens along NH-46, the resort welcomes guests with 65 elegantly appointed rooms and suites, the pure-vegetarian Swadika restaurant, the Blue Diamond open-air swimming pool, and royal celebration lawns for grand weddings and serene getaways.",
 
     location: "NH-46, Biaora Road · Narsinghgarh, Madhya Pradesh",
-
 
     buttons: [
       {
@@ -50,21 +49,20 @@ export const LandingPageData = {
     subtitle: "of Narsinghgarh",
 
     description:
-      "Set right on NH-46 near the Narsinghgarh Fort, once home to the rulers of the Narsinghgarh princely state, Manratan Resort pairs an easy highway location with the quiet of a private, landscaped property.",
+      "Set right on NH-46 near the historic Narsinghgarh Fort and Chidi Kho Wildlife Sanctuary, Manratan Resort pairs seamless highway accessibility with the timeless tranquility of a private Malwa estate.",
 
     points: [
-      "Air-conditioned rooms with garden and pool-facing options.",
-      "Multi-cuisine restaurant with pure-veg and regional Malwa thali.",
-      "Outdoor swimming pool and lawns open to residents and event guests.",
-      "In-room dining, ample parking and 24-hour staff on call.",
-      "Minutes from Narsinghgarh Fort, Paras Ram Sagar lake and the town market.",
+      "Air-conditioned luxury rooms & suites with scenic garden and pool-facing views.",
+      "Swadika pure-vegetarian multi-cuisine dining serving authentic Indian and Malwa recipes.",
+      "Open-air swimming pool, poolside deck, and manicured lawns for morning relaxation.",
+      "24-hour in-room dining, power backup, high-speed Wi-Fi, and round-the-clock front desk.",
+      "Minutes from Narsinghgarh Fort, Paras Ram Sagar Lake, and Bada Mahadev Temple.",
     ],
 
     images: [
       "/aboutpage/history_11zon.webp",
       "/homopage/narsinghgarh_11zon.webp",
       "/homopage/about_11zon.webp",
-      // "/aboutpage/dining_11zon.webp",
     ],
 
     buttons: [
@@ -87,42 +85,42 @@ export const LandingPageData = {
       {
         title: "Swimming Pool",
         description:
-          "An open-air pool for residents, with loungers and a poolside sitting deck.",
+          "Crystal-clear open-air pool with comfortable loungers, poolside seating deck, and scenic garden vistas.",
       },
       {
         title: "Multi-Cuisine Dining",
         description:
-          "Swadika pure-veg restaurant serving authentic Indian and global flavours in an elegant, chandelier-lit dining hall.",
+          "Swadika 100% pure-veg restaurant serving North Indian, regional Malwa delicacies, and global cuisines in a chandelier-lit hall.",
       },
       {
         title: "Ample Parking",
         description:
-          "Secure on-site parking for cars and wedding guests, making arrivals easy.",
+          "Expansive, guarded on-site parking for over 200 vehicles, accommodating family stays and large wedding parties.",
       },
       {
         title: "Banquet & Lawns",
         description:
-          "Indoor banquet hall plus open lawns, laid out for functions of every size.",
+          "The grand Blue Sapphire indoor banquet hall and sprawling Red Coral open-air lawn accommodating up to 4,000 guests.",
       },
       {
-        title: "AC Rooms",
+        title: "AC Rooms & Suites",
         description:
-          "Climate-controlled rooms with garden or pool-facing views.",
+          "Climate-controlled rooms featuring king and twin beds, garden or pool views, ergonomic workstations, and LED TVs.",
       },
       {
-        title: "Landscaped Garden",
+        title: "Landscaped Gardens",
         description:
-          "Manicured lawns for photographs, morning walks and evening functions.",
+          "Expansive manicured green lawns framed by native flora, perfect for serene morning strolls, photo sessions, and open-air ceremonies.",
       },
       {
-        title: "Room Service",
+        title: "24/7 Room Service",
         description:
-          "Round-the-clock service for meals, housekeeping and guest requests.",
+          "Round-the-clock in-room dining, swift housekeeping, and attentive concierge service to meet every guest requirement.",
       },
       {
         title: "Highway Location",
         description:
-          "Directly on NH-46, Biaora Road — near the JIO petrol pump, simple for guests to locate.",
+          "Conveniently situated on NH-46, Biaora Road near the JIO petrol pump—effortlessly accessible from Bhopal (70 km) and Indore (210 km).",
       },
     ],
 
@@ -145,8 +143,8 @@ export const LandingPageData = {
       italic: "Timeless ELEGANCE",
     },
 
-        description:
-      "Five categories, one standard of comfort, pick the outlook that suits your trip.",
+    description:
+      "Five distinct room categories, all sharing the same high standard of refined comfort, modern amenities, and tranquil views across our gardens and pool.",
 
     cards: [
       {
@@ -161,10 +159,10 @@ export const LandingPageData = {
 
         amenities: [
           {
-            label: "xxx sq ft",
+            label: "280 sq ft",
           },
           {
-            label: "Upto x Guests",
+            label: "Up to 3 Guests",
           },
           {
             label: "Garden View",
@@ -172,7 +170,7 @@ export const LandingPageData = {
         ],
 
         description:
-          "Experience refined comfort in our Deluxe Room featuring panoramic garden views, contemporary wooden finishes, and plush bedding.",
+          "Experience refined comfort in our Deluxe Room featuring panoramic garden views, contemporary wooden finishes, plush king or twin bedding, and modern ensuite bathroom.",
 
         buttons: [
           {
@@ -198,10 +196,10 @@ export const LandingPageData = {
 
         amenities: [
           {
-            label: "xxx sq ft",
+            label: "560 sq ft",
           },
           {
-            label: "Upto x Guests",
+            label: "Up to 6 Guests",
           },
           {
             label: "Connected Suite",
@@ -209,7 +207,7 @@ export const LandingPageData = {
         ],
 
         description:
-          "Perfect for families and groups traveling together, offering seamless privacy and togetherness with interconnected bedrooms.",
+          "Perfect for families and wedding parties travelling together, offering seamless privacy and togetherness with interconnected bedrooms, dual bathrooms, and pool views.",
 
         buttons: [
           {
@@ -235,10 +233,10 @@ export const LandingPageData = {
 
         amenities: [
           {
-            label: "xxx sq ft",
+            label: "420 sq ft",
           },
           {
-            label: "Upto x Guests",
+            label: "Up to 4 Guests",
           },
           {
             label: "Pool View",
@@ -246,7 +244,7 @@ export const LandingPageData = {
         ],
 
         description:
-          "An exquisite executive family room offering expansive living spaces, lavish interiors, and serene pool views.",
+          "An exquisite executive family room offering expansive living space, lavish interiors, premium king bedding, and serene views overlooking our crystal-clear swimming pool.",
 
         buttons: [
           {
@@ -272,10 +270,10 @@ export const LandingPageData = {
 
         amenities: [
           {
-            label: "xxx sq ft",
+            label: "340 sq ft",
           },
           {
-            label: "Upto x Guests",
+            label: "Up to 3 Guests",
           },
           {
             label: "Nature View",
@@ -283,7 +281,7 @@ export const LandingPageData = {
         ],
 
         description:
-          "Nestled amidst lush landscapes, our premium rooms offer a peaceful haven with tasteful furnishings and warm ambient lighting.",
+          "Nestled amidst lush landscapes, our premium rooms offer a peaceful haven with tasteful furnishings, warm ambient lighting, tea/coffee maker, and modern amenities.",
 
         buttons: [
           {
@@ -309,10 +307,10 @@ export const LandingPageData = {
 
         amenities: [
           {
-            label: "xxx sq ft",
+            label: "580 sq ft",
           },
           {
-            label: "Upto x Guests",
+            label: "Up to 4 Guests",
           },
           {
             label: "Panoramic View",
@@ -320,7 +318,7 @@ export const LandingPageData = {
         ],
 
         description:
-          "Experience unmatched luxury with panoramic resort views, premium king bedding, and refined interiors crafted for an unforgettable escape.",
+          "Experience the pinnacle of royal luxury with panoramic resort views, a master bedroom, private lounge seating, and refined interiors crafted for an unforgettable getaway.",
 
         buttons: [
           {
@@ -336,7 +334,7 @@ export const LandingPageData = {
     ],
   },
 
-        weddingSection: {
+  weddingSection: {
     tagline: "Weddings & Celebrations",
 
     title: {
@@ -346,7 +344,7 @@ export const LandingPageData = {
     },
 
     description:
-      "From a vibrant marigold-strewn haldi on the lawns to a grand baraat and an elegant reception, Manratan Resort offers the perfect setting to celebrate every ritual of your wedding under one roof. With beautiful event spaces, comfortable on-site accommodation for family and guests, personalised hospitality, and seamless services, we ensure every moment of your celebration is as memorable as the beginning of your forever.",
+      "From a vibrant marigold-strewn haldi by the pool to a royal baraat on our wide driveways and a star-studded reception on the Red Coral Lawn, Manratan Resort is Narsinghgarh's ultimate wedding destination. With grand banquet halls, 65 on-site luxury rooms for wedding guests, bespoke pure-veg catering, and dedicated event coordinators, we turn your dream celebration into an unforgettable royal affair.",
 
     images: [
       "/events/event8_11zon.webp",
@@ -373,7 +371,6 @@ export const LandingPageData = {
     italicTitle: "Manratan RESORT",
 
     images: galleryData.images.map((item) => item.image),
-
 
     buttons: [
       {

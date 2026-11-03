@@ -83,13 +83,15 @@ export default function HostYourEvents({
             onSwiper={(swiper) => setSwiperInstance(swiper)}
             renderSlide={(item) => (
               <div className="w-full group cursor-pointer">
-                <div className="w-full relative aspect-[4/2.5] rounded-none overflow-hidden shadow-[20px_0_25px_-5px_rgba(0,0,0,0.35),-20px_0_25px_-5px_rgba(0,0,0,0.35)] border border-black/10">
+                <div className="w-full relative aspect-[4/2.5] rounded-none overflow-hidden shadow-[20px_0_25px_-5px_rgba(0,0,0,0.35),-20px_0_25px_-5px_rgba(0,0,0,0.35)] border border-black/10 bg-[#1A120B]">
                   <Image
                     src={item.image}
                     alt={item.alt}
                     fill
                     className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                   />
+                  {/* Color tint layer to differentiate side images from center active image without blur */}
+                  <div className="slide-color-layer" />
                 </div>
               </div>
             )}

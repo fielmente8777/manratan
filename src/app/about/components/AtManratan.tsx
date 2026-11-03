@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SectionWithContainer } from "@/components/sectionComponants";
 
 interface Slide {
@@ -16,78 +16,245 @@ interface AtManratanProps {
   slides: Slide[];
 }
 
-const AtManratan = ({
-  title,
-  subTitle,
-  slides,
-}: AtManratanProps) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [prevIndex, setPrevIndex] = useState(slides.length - 1);
-  const [direction, setDirection] = useState<"next" | "prev">("next");
+// Layered deck slot coordinates:
+// Left margin (50px per step) is larger than top margin (25px per step).
+// Front card rests at bottom-right, middle and back cards stagger with prominent left margin.
+const DESKTOP_SLOTS = [
+  { x: "100px", y: "50px", a: 1, z: 3, shadow: "0 25px 50px -12px rgba(0, 0, 0, 0.45)" },
+  { x: "50px", y: "25px", a: 1, z: 2, shadow: "0 18px 36px -8px rgba(0, 0, 0, 0.35)" },
+  { x: "0px", y: "0px", a: 1, z: 1, shadow: "0 12px 24px -5px rgba(0, 0, 0, 0.25)" },
+];
 
-  const prevSlide = () => {
-    setDirection("prev");
-    setPrevIndex(activeIndex);
-    setActiveIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+// Mobile 3-Card Balanced Deck Slots:
+// Center card is full height (scale 1).
+// Side cards are scaled (scale 0.93) and positioned so that:
+// - Top sits lower than front card (staggered crown)
+// - Bottom curves inward and terminates cleanly above the front card's bottom curve
+const MOBILE_DECK_SLOTS = [
+  {
+    x: "0px",
+    y: "0px",
+    rotate: "0deg",
+    scale: 1,
+    zIndex: 10,
+    overlayOpacity: 0,
+    shadow: "0 20px 40px -10px rgba(0, 0, 0, 0.55)",
+  },
+  {
+    x: "20px",
+    y: "-6px",
+    rotate: "3deg",
+    scale: 0.93,
+    zIndex: 2,
+    overlayOpacity: 0.38,
+    shadow: "0 14px 28px -6px rgba(0, 0, 0, 0.35)",
+  },
+  {
+    x: "-20px",
+    y: "-6px",
+    rotate: "-3deg",
+    scale: 0.93,
+    zIndex: 1,
+    overlayOpacity: 0.38,
+    shadow: "0 10px 20px -4px rgba(0, 0, 0, 0.3)",
+  },
+];
+
+const AtManratan = ({ title, subTitle, slides }: AtManratanProps) => {
+  // 3 card elements in DOM, managed by order [slot0, slot1, slot2]
+  const [index, setIndex] = useState(0);
+  const [order, setOrder] = useState<number[]>([0, 1, 2]);
+  const [cardImages, setCardImages] = useState<string[]>([
+    slides[0]?.image || "",
+    slides[1 % (slides.length || 1)]?.image || "",
+    slides[2 % (slides.length || 1)]?.image || "",
+  ]);
+  const [copyState, setCopyState] = useState<"normal" | "leaving" | "entering">("normal");
+  const [isPaused, setIsPaused] = useState(false);
+  const isLockedRef = useRef(false);
+
+  // Mobile circular deck state: 1 in Center (Slot 0), 1 on Right (Slot 1), 1 on Left (Slot 2)
+  const [mobileIndex, setMobileIndex] = useState(0);
+  const [mobileOrder, setMobileOrder] = useState<number[]>([0, 1, 2]);
+  const [mobileCards, setMobileCards] = useState<Slide[]>([
+    slides[0] || { image: "", description: "" },
+    slides[1 % (slides.length || 1)] || { image: "", description: "" },
+    slides[(slides.length - 1) % (slides.length || 1)] || { image: "", description: "" },
+  ]);
+  const isMobileLockedRef = useRef(false);
+  const touchStartX = useRef<number | null>(null);
+
+  const goMobileNext = () => {
+    if (isMobileLockedRef.current || slides.length === 0) return;
+    isMobileLockedRef.current = true;
+
+    const nextIdx = (mobileIndex + 1) % slides.length;
+    // Current Slot 0 moves to Slot 2 (Left)
+    // Current Slot 1 moves to Slot 0 (Center)
+    // Current Slot 2 moves to Slot 1 (Right)
+    const newOrder = [mobileOrder[1], mobileOrder[2], mobileOrder[0]];
+
+    // The card moving to Slot 1 (Right) receives the upcoming right slide
+    setMobileCards((prev) => {
+      const updated = [...prev];
+      updated[mobileOrder[2]] = slides[(nextIdx + 1) % slides.length];
+      return updated;
+    });
+
+    setMobileOrder(newOrder);
+    setMobileIndex(nextIdx);
+
+    setTimeout(() => {
+      isMobileLockedRef.current = false;
+    }, 450);
   };
 
-  const nextSlide = () => {
-    setDirection("next");
-    setPrevIndex(activeIndex);
-    setActiveIndex((prev) => (prev + 1) % slides.length);
+  const goMobilePrev = () => {
+    if (isMobileLockedRef.current || slides.length === 0) return;
+    isMobileLockedRef.current = true;
+
+    const prevIdx = (mobileIndex - 1 + slides.length) % slides.length;
+    // Current Slot 0 moves to Slot 1 (Right)
+    // Current Slot 1 moves to Slot 2 (Left)
+    // Current Slot 2 moves to Slot 0 (Center)
+    const newOrder = [mobileOrder[2], mobileOrder[0], mobileOrder[1]];
+
+    // The card moving to Slot 2 (Left) receives the upcoming left slide
+    setMobileCards((prev) => {
+      const updated = [...prev];
+      updated[mobileOrder[1]] = slides[(prevIdx - 1 + slides.length) % slides.length];
+      return updated;
+    });
+
+    setMobileOrder(newOrder);
+    setMobileIndex(prevIdx);
+
+    setTimeout(() => {
+      isMobileLockedRef.current = false;
+    }, 450);
   };
 
+  // Synchronized slot shuffle matching khufus.com
+  const goNext = () => {
+    if (isLockedRef.current || slides.length === 0) return;
+    isLockedRef.current = true;
+
+    const nextIndex = (index + 1) % slides.length;
+    // Current slot 0 moves to slot 2, slot 1 moves to slot 0, slot 2 moves to slot 1
+    const nextOrder = [order[1], order[2], order[0]];
+
+    // Outgoing front card (order[0]) takes the upcoming deck image as it moves behind
+    setCardImages((prev) => {
+      const updated = [...prev];
+      updated[order[0]] = slides[(nextIndex + 2) % slides.length]?.image || "";
+      return updated;
+    });
+
+    // Content blur-swap transition (exact Khufu's 210ms curve)
+    setCopyState("leaving");
+    setTimeout(() => {
+      setIndex(nextIndex);
+      setCopyState("entering");
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setCopyState("normal");
+        });
+      });
+    }, 210);
+
+    // Apply new order to trigger 520ms CSS transform transition
+    setOrder(nextOrder);
+
+    setTimeout(() => {
+      isLockedRef.current = false;
+    }, 550);
+  };
+
+  const goPrev = () => {
+    if (isLockedRef.current || slides.length === 0) return;
+    isLockedRef.current = true;
+
+    const prevIndex = (index - 1 + slides.length) % slides.length;
+    // Current slot 2 steps up to slot 0, slot 0 moves to slot 1, slot 1 moves to slot 2
+    const prevOrder = [order[2], order[0], order[1]];
+
+    // Incoming front card (order[2]) takes the previous slide image
+    setCardImages((prev) => {
+      const updated = [...prev];
+      updated[order[2]] = slides[prevIndex]?.image || "";
+      return updated;
+    });
+
+    setCopyState("leaving");
+    setTimeout(() => {
+      setIndex(prevIndex);
+      setCopyState("entering");
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setCopyState("normal");
+        });
+      });
+    }, 210);
+
+    setOrder(prevOrder);
+
+    setTimeout(() => {
+      isLockedRef.current = false;
+    }, 550);
+  };
+
+  // Auto-play interval increased to 8.5 seconds (with pause on hover)
   useEffect(() => {
-    const interval = setInterval(() => {
-      setDirection("next");
-      setPrevIndex(activeIndex);
-      setActiveIndex((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    if (isPaused) return;
 
-    return () => clearInterval(interval);
-  }, [activeIndex, slides.length]);
+    const timer = setInterval(() => {
+      goNext();
+    }, 8500);
 
-  const activeSlide = slides[activeIndex];
+    return () => clearInterval(timer);
+  }, [index, order, isPaused]);
 
-  const previousIndex =
-    activeIndex === 0 ? slides.length - 1 : activeIndex - 1;
-  const prevLayer2Index =
-    prevIndex === 0 ? slides.length - 1 : prevIndex - 1;
+  // Mobile Auto-play interval (8.5 seconds)
+  useEffect(() => {
+    if (isPaused) return;
 
-  const layer1Index = (activeIndex + 2) % slides.length;
-  const prevLayer1Index = (prevIndex + 2) % slides.length;
+    const timer = setInterval(() => {
+      goMobileNext();
+    }, 8500);
 
-  const getSlideAnimClass = (
-    idx: number,
-    targetActive: number,
-    targetPrev: number,
-    offsetDistance: "sm" | "md" | "lg"
-  ) => {
-    const dist =
-      offsetDistance === "lg"
-        ? "translate-x-24"
-        : offsetDistance === "md"
-        ? "translate-x-16"
-        : "translate-x-10";
+    return () => clearInterval(timer);
+  }, [mobileIndex, mobileOrder, isPaused]);
 
-    const negDist =
-      offsetDistance === "lg"
-        ? "-translate-x-24"
-        : offsetDistance === "md"
-        ? "-translate-x-16"
-        : "-translate-x-10";
+  // Style generators for Desktop & Mobile
+  const getDesktopCardStyle = (cardId: number): React.CSSProperties => {
+    const slotIdx = order.indexOf(cardId);
+    const slot = DESKTOP_SLOTS[slotIdx >= 0 ? slotIdx : 0];
+    return {
+      transform: `translate3d(${slot.x}, ${slot.y}, 0)`,
+      opacity: slot.a,
+      zIndex: slot.z,
+      boxShadow: slot.shadow,
+    };
+  };
 
-    if (idx === targetActive) {
-      return "translate-x-0 opacity-100 scale-100 z-10 pointer-events-auto";
-    }
-    if (idx === targetPrev) {
-      return `${direction === "next" ? negDist : dist} opacity-0 scale-[0.98] z-0 pointer-events-none`;
-    }
-    return `${direction === "next" ? dist : negDist} opacity-0 scale-[0.98] z-0 pointer-events-none`;
+  const getMobileCardStyle = (cardId: number): React.CSSProperties => {
+    const slotIdx = mobileOrder.indexOf(cardId);
+    const slot = MOBILE_DECK_SLOTS[slotIdx >= 0 ? slotIdx : 0];
+    return {
+      transform: `translate3d(${slot.x}, ${slot.y}, 0) rotate(${slot.rotate}) scale(${slot.scale})`,
+      zIndex: slot.zIndex,
+      boxShadow: slot.shadow,
+      transformOrigin: "center center",
+      transition: "transform 450ms cubic-bezier(0.2, 0.9, 0.2, 1), box-shadow 450ms ease",
+      willChange: "transform",
+    };
   };
 
   return (
-    <SectionWithContainer sectionClassName="bg-tertiary">
+    <SectionWithContainer
+      defaultPadding={false}
+      sectionClassName="bg-tertiary pt-12 md:pt-20 pb-16 md:pb-28 lg:pb-32"
+    >
       {/* ================= TITLE ================= */}
       <div className="mb-8 md:mb-10 flex flex-col items-center justify-center text-center">
         <div className="relative inline-block text-left">
@@ -101,100 +268,93 @@ const AtManratan = ({
         </div>
       </div>
 
-      {/* ================= MOBILE SLIDER (ARCH DOME MOCKUP UI) ================= */}
-      <div className="block md:hidden w-full max-w-[320px] sm:max-w-[340px] mx-auto pt-8 px-2">
-        <div className="relative w-full h-[440px] mx-auto">
-          {/* Background Layer 2 (Deepest Arch Frame directly behind at top center) */}
-          <div className="absolute -top-6 inset-x-3 h-full rounded-t-[180px] overflow-hidden bg-[#5E534A]/30 border border-[#5E534A]/40 z-0 filter blur-[2.5px] opacity-80">
-            {slides.map((slide, idx) => (
-              <div
-                key={`m-l2-${idx}`}
-                className={`absolute inset-0 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${getSlideAnimClass(
-                  idx,
-                  layer1Index,
-                  prevLayer1Index,
-                  "sm"
-                )}`}
-              >
-                <Image
-                  src={slide.image}
-                  alt=""
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            ))}
-          </div>
+      {/* ================= MOBILE SLIDER (1 IN CENTER, 1 ON RIGHT, 1 ON LEFT) ================= */}
+      <div
+        className="block md:hidden w-full max-w-[360px] mx-auto pt-4 px-4"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        onTouchStart={(e) => {
+          touchStartX.current = e.touches[0].clientX;
+        }}
+        onTouchEnd={(e) => {
+          if (touchStartX.current === null) return;
+          const diffX = e.changedTouches[0].clientX - touchStartX.current;
+          if (diffX < -35) {
+            goMobileNext();
+          } else if (diffX > 35) {
+            goMobilePrev();
+          }
+          touchStartX.current = null;
+        }}
+      >
+        <div className="relative w-full h-[450px] mx-auto select-none">
+          {[0, 1, 2].map((cardId) => {
+            const slotIdx = mobileOrder.indexOf(cardId);
+            const slot = MOBILE_DECK_SLOTS[slotIdx >= 0 ? slotIdx : 0];
+            const slide = mobileCards[cardId];
 
-          {/* Background Layer 1 (Middle Arch Frame directly behind at top center) */}
-          <div className="absolute -top-3 inset-x-1.5 h-full rounded-t-[180px] overflow-hidden bg-[#5E534A]/50 border border-[#5E534A]/60 z-10 filter blur-[1.5px] opacity-90">
-            {slides.map((slide, idx) => (
+            return (
               <div
-                key={`m-l1-${idx}`}
-                className={`absolute inset-0 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${getSlideAnimClass(
-                  idx,
-                  previousIndex,
-                  prevLayer2Index,
-                  "md"
-                )}`}
+                key={`m-card-${cardId}`}
+                style={getMobileCardStyle(cardId)}
+                onClick={() => {
+                  if (slotIdx === 1) {
+                    goMobileNext();
+                  } else if (slotIdx === 2) {
+                    goMobilePrev();
+                  } else {
+                    goMobileNext();
+                  }
+                }}
+                className="absolute inset-x-0 bottom-0 top-0 w-[265px] xs:w-[285px] h-[450px] mx-auto rounded-[24px] overflow-hidden bg-primary cursor-pointer shadow-2xl"
               >
-                <Image
-                  src={slide.image}
-                  alt=""
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            ))}
-          </div>
-
-          {/* Front Main Arch Image Container */}
-          <div className="relative w-full h-full rounded-t-[180px] overflow-hidden shadow-lg z-20 group">
-            {slides.map((slide, idx) => (
-              <div
-                key={`m-front-${idx}`}
-                className={`absolute inset-0 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${getSlideAnimClass(
-                  idx,
-                  activeIndex,
-                  prevIndex,
-                  "lg"
-                )}`}
-              >
-                <Image
-                  src={slide.image}
-                  alt={title}
-                  fill
-                  priority={idx === 0}
-                  className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-                />
-              </div>
-            ))}
-
-            {/* Bottom Dark Gradient Overlay with Logo & Description */}
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent pt-16 pb-6 px-6 flex flex-col items-center justify-end text-center z-30 pointer-events-none">
-              {slides[0]?.logo && (
-                <div className="relative h-[45px] w-[130px] mb-7 pointer-events-auto">
+                {slide?.image && (
                   <Image
-                    src={slides[0].logo}
-                    alt="Swadika"
+                    src={slide.image}
+                    alt={title}
                     fill
-                    className="object-contain"
+                    priority={slotIdx === 0}
+                    className="object-cover"
                   />
-                </div>
-              )}
+                )}
 
-              <p key={activeIndex} className="animate-content text-white/90 text-xs leading-relaxed text-center font-light pointer-events-auto">
-                {activeSlide.description}
-              </p>
-            </div>
-          </div>
+                {/* Dark tint overlay for side cards to differentiate depth */}
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    backgroundColor: "#1A120B",
+                    opacity: slot.overlayOpacity,
+                    transition: "opacity 450ms cubic-bezier(0.2, 0.9, 0.2, 1)",
+                  }}
+                />
+
+                {/* Bottom Dark Gradient Overlay with Fixed Logo & Description */}
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/80 to-transparent pt-20 pb-7 px-5 flex flex-col items-center justify-end text-center pointer-events-none">
+                  {slide?.logo && (
+                    <div className="relative h-[65px] w-[175px] mb-3 pointer-events-auto">
+                      <Image
+                        src={slide.logo}
+                        alt="Swadika"
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                  )}
+
+                  <p className="text-white/95 text-[13px] leading-relaxed text-center font-light pointer-events-auto">
+                    {slide?.description}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
-        {/* Slide Navigation Controls Below Arch */}
+        {/* Slide Navigation Controls Below Cards */}
         <div className="flex items-center justify-center gap-6 mt-6 text-primary select-none">
           <button
             type="button"
-            onClick={prevSlide}
+            onClick={goMobilePrev}
             aria-label="Previous slide"
             className="text-lg p-2 hover:opacity-70 transition cursor-pointer"
           >
@@ -202,12 +362,12 @@ const AtManratan = ({
           </button>
 
           <span className="text-sm font-ivy font-['IvyOra_Display',serif] tracking-[0.07em] text-primary font-normal">
-            {activeIndex + 1}/{slides.length}
+            {mobileIndex + 1}/{slides.length}
           </span>
 
           <button
             type="button"
-            onClick={nextSlide}
+            onClick={goMobileNext}
             aria-label="Next slide"
             className="text-lg p-2 hover:opacity-70 transition cursor-pointer"
           >
@@ -216,116 +376,92 @@ const AtManratan = ({
         </div>
       </div>
 
-      {/* ================= DESKTOP SLIDER ================= */}
-      <div className="hidden md:block w-full">
+      {/* ================= DESKTOP SLIDER (KHUFU'S LAYERED CARD DECK) ================= */}
+      <div
+        className="hidden md:block w-full"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
         <div className="grid grid-cols-1 lg:grid-cols-[2fr_0.9fr] items-start">
-          {/* ================= 3-LAYERED IMAGE SLIDER (MATCHING HISTORY'S 2fr COLUMN) ================= */}
-          <div className="relative w-full h-[520px]">
-            {/* Layer 1 (Deepest Background Image - Starts at Left: 0, Blurred) */}
-            <div className="absolute left-0 top-0 w-[calc(100%-60px)] h-[480px] overflow-hidden z-0 shadow-md filter blur-[2.5px] opacity-80">
-              {slides.map((slide, idx) => (
+          {/* ================= 3D CARD LAYERED DECK ================= */}
+          <div className="relative w-full h-[540px] select-none">
+            {[0, 1, 2].map((cardId) => {
+              const slotIdx = order.indexOf(cardId);
+              return (
                 <div
-                  key={`layer1-${slide.image}-${idx}`}
-                  className={`absolute inset-0 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${getSlideAnimClass(
-                    idx,
-                    layer1Index,
-                    prevLayer1Index,
-                    "sm"
-                  )}`}
+                  key={`desk-card-${cardId}`}
+                  style={getDesktopCardStyle(cardId)}
+                  onClick={goNext}
+                  className="absolute top-0 left-0 w-[calc(100%-100px)] h-[490px] overflow-hidden rounded-xs cursor-pointer group exp-card-transition"
                 >
-                  <Image
-                    src={slide.image}
-                    alt=""
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              ))}
-            </div>
+                  {cardImages[cardId] && (
+                    <Image
+                      src={cardImages[cardId]}
+                      alt={title}
+                      fill
+                      priority={cardId === 0}
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
+                  )}
 
-            {/* Layer 2 (Middle Layered Image - Blurred) */}
-            <div className="absolute left-[30px] top-[20px] w-[calc(100%-60px)] h-[480px] overflow-hidden z-10 shadow-md filter blur-[1.5px] opacity-90">
-              {slides.map((slide, idx) => (
-                <div
-                  key={`layer2-${slide.image}-${idx}`}
-                  className={`absolute inset-0 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${getSlideAnimClass(
-                    idx,
-                    previousIndex,
-                    prevLayer2Index,
-                    "md"
-                  )}`}
-                >
-                  <Image
-                    src={slide.image}
-                    alt=""
-                    fill
-                    className="object-cover"
+                  {/* Dark/Warm Tint Overlay to Differentiate Background Layers */}
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      backgroundColor: "#1A120B",
+                      opacity: slotIdx === 0 ? 0 : slotIdx === 1 ? 0.32 : 0.52,
+                      transition: "opacity 520ms cubic-bezier(0.2, 0.9, 0.2, 1)",
+                    }}
                   />
                 </div>
-              ))}
-            </div>
-
-            {/* Layer 3 (Front Main Active Image - Crystal Clear, Ends exactly at 100% of 2fr Column) */}
-            <div
-              className="absolute left-[60px] top-[40px] w-[calc(100%-60px)] h-[480px] overflow-hidden z-20 shadow-2xl group cursor-pointer"
-              onClick={nextSlide}
-            >
-              {slides.map((slide, idx) => (
-                <div
-                  key={`layer3-${slide.image}-${idx}`}
-                  className={`absolute inset-0 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${getSlideAnimClass(
-                    idx,
-                    activeIndex,
-                    prevIndex,
-                    "lg"
-                  )}`}
-                >
-                  <Image
-                    src={slide.image}
-                    alt={title}
-                    fill
-                    priority={idx === 0}
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
-                </div>
-              ))}
-            </div>
+              );
+            })}
           </div>
 
-          {/* ================= CONTENT CARD (TOP MATCHES BACK IMAGE, BOTTOM MATCHES FRONT IMAGE, LOGO & TEXT CENTERED) ================= */}
+          {/* ================= CONTENT PANEL (WITH FIXED LOGO & ANIMATED COPY) ================= */}
           <div className="w-full lg:pl-10">
-            <div className="w-full h-[520px] bg-primary p-8 lg:p-10 flex flex-col justify-between shadow-2xl">
+            <div className="w-full h-[540px] bg-primary p-8 lg:p-10 flex flex-col justify-between shadow-2xl">
               <div aria-hidden="true" className="h-2" />
 
-              {/* Centered Logo & Description */}
-              <div className="my-auto flex flex-col items-center justify-center text-center">
+              {/* Centered Area: Fixed Logo + Animated Description */}
+              <div className="my-auto flex flex-col items-center justify-center text-center w-full">
+                {/* Fixed Logo (Prominent Size, Stable, Does NOT Animate on Slide Change) */}
                 {slides[0]?.logo && (
-                  <div className="relative h-[65px] w-[160px] mx-auto mb-14 lg:mb-16">
+                  <div className="relative h-[90px] w-[230px] lg:h-[95px] lg:w-[250px] mx-auto mb-10 lg:mb-12">
                     <Image
                       src={slides[0].logo}
                       alt="Swadika"
                       fill
+                      priority
                       className="object-contain"
                     />
                   </div>
                 )}
 
-                <p
-                  key={activeIndex}
-                  className="animate-content text-[16px] leading-7 text-white text-center font-light max-w-sm mx-auto"
+                {/* Animated Description Only */}
+                <div
+                  className={`w-full exp-copy-transition ${
+                    copyState === "leaving"
+                      ? "exp-copy-leaving"
+                      : copyState === "entering"
+                      ? "exp-copy-entering"
+                      : ""
+                  }`}
                 >
-                  {activeSlide.description}
-                </p>
+                  <p className="text-[16px] leading-7 text-white text-center font-light max-w-sm mx-auto">
+                    {slides[index]?.description}
+                  </p>
+                </div>
               </div>
 
-              {/* ================= SLIDE COUNT ================= */}
+              {/* ================= SLIDE COUNT & NEXT BUTTON ================= */}
               <button
                 type="button"
-                onClick={nextSlide}
+                onClick={goNext}
                 className="flex items-center gap-4 text-white text-[32px] leading-none w-fit hover:opacity-80 transition cursor-pointer font-ivy font-['IvyOra_Display',serif] tracking-[0.07em]"
               >
                 <span>
-                  {activeIndex + 1}/{slides.length}
+                  {index + 1}/{slides.length}
                 </span>
 
                 <span className="text-[32px] leading-none">›</span>

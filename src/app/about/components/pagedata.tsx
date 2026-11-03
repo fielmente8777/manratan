@@ -65,4 +65,51 @@ export const aboutData = {
       },
     ],
   },
+
+  diningGalleryData: [
+    {
+      image: "/restaurant/resturant-a.webp",
+      alt: "Swadika Restaurant Chandelier Dining Hall",
+    },
+    {
+      image: "/restaurant/resturant-b.webp",
+      alt: "Swadika Restaurant Chandelier Dining Hall",
+    },
+    {
+      image: "/restaurant/resturant-c.webp",
+      alt: "Swadika Restaurant Chandelier Dining Hall",
+    },
+    {
+      image: "/restaurant/resturant-d.webp",
+      alt: "Swadika Restaurant Chandelier Dining Hall",
+    },
+    {
+      image: "/restaurant/swadika3_11zon.webp",
+      alt: "Swadika Luxury Table Setup",
+    },
+    {
+      image: "/restaurant/resturant-f.webp",
+      alt: "Swadika Restaurant Chandelier Dining Hall",
+    },
+    {
+      image: "/restaurant/resturant-h.webp",
+      alt: "Swadika Restaurant Chandelier Dining Hall",
+    },
+    {
+      image: "/restaurant/dining_11zon.webp",
+      alt: "Poolside Breakfast and Beverage Spread",
+    },
+    {
+      image: "/restaurant/resturant-k.webp",
+      alt: "Swadika Restaurant Chandelier Dining Hall",
+    },
+    {
+      image: "/images/dining-3.jpg",
+      alt: "Elegant Restaurant Hospitality",
+    },
+    {
+      image: "/homopage/dining2_11zon.webp",
+      alt: "Outdoor Canopy Dining at Manratan Resort",
+    },
+  ],
 };

@@ -159,15 +159,15 @@ const ExperienceSection = ({
           </div>
         </div>
 
-        {/* 3. Description + Link (Below Images on Mobile) */}
-        <div className="mt-3.5 sm:mt-4">
-          <p className="text-primary/80 leading-relaxed text-sm">
+        {/* 3. Description + Link (Below Images on Mobile - Matching Home Page Typography & Spacing) */}
+        <div className="mt-6 sm:mt-7">
+          <p className="text-secondary text-xs sm:text-sm leading-6 max-w-full">
             {description}
           </p>
 
           <Link
             href={link.href}
-            className="inline-block mt-2.5 uppercase text-xs text-primary underline"
+            className="inline-block mt-4 text-primary text-[11px] uppercase tracking-[0.2em] underline underline-offset-4 decoration-[0.5px]"
           >
             {link.label}
           </Link>

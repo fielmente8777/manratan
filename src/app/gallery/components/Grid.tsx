@@ -20,6 +20,7 @@ const CATEGORIES = [
   "Reception",
   "Garden",
   "Restaurant",
+  "Narsinghgarh",
 ];
 
 const GalleryGrid = ({ images }: GalleryGridProps) => {

@@ -36,7 +36,7 @@ export const eventsPageData = {
     cards: [
       {
         id: "card-1",
-        title: "WELCOME TO ALL TEAMS NIGHT +++",
+        title: "WELCOME TO ALL TEAMS NIGHT",
         image: "/events/event1_11zon.webp",
         alt: "Welcome To All Teams Night",
       },

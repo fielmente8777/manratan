@@ -10,6 +10,10 @@ export const galleryData = {
   images: [
     // Mixed categories across the gallery grid
     {
+      image: "/homopage/narsinghgarh_11zon.webp",
+      alt: "Narsinghgarh",
+    },
+    {
       image: "/exterior/exterior1_11zon.webp",
       alt: "Exterior",
     },
@@ -18,12 +22,20 @@ export const galleryData = {
       alt: "Accommodation",
     },
     {
+      image: "/homopage/about_11zon.webp",
+      alt: "Narsinghgarh",
+    },
+    {
       image: "/restaurant/restaurant1_11zon_11zon.webp",
       alt: "Restaurant",
     },
     {
       image: "/reception/reception1_11zon.webp",
       alt: "Reception",
+    },
+    {
+      image: "/aboutpage/history_11zon.webp",
+      alt: "Narsinghgarh",
     },
     {
       image: "/roompage/Suite/Suite-banner_11zon.webp",
@@ -94,32 +106,64 @@ export const galleryData = {
       alt: "Restaurant",
     },
     {
+      image: "/restaurant/resturant-a.webp",
+      alt: "Restaurant",
+    },
+    {
       image: "/roompage/banner.jpg",
       alt: "Accommodation",
+    },
+    {
+      image: "/restaurant/resturant-b.webp",
+      alt: "Restaurant",
     },
     {
       image: "/roompage/Inter/Inter-room2_11zon.webp",
       alt: "Accommodation",
     },
     {
+      image: "/restaurant/resturant-c.webp",
+      alt: "Restaurant",
+    },
+    {
       image: "/roompage/Deluxe/Deluxe-room3_11zon.webp",
       alt: "Accommodation",
+    },
+    {
+      image: "/restaurant/resturant-d.webp",
+      alt: "Restaurant",
     },
     {
       image: "/roompage/Executive/Executive-room2_11zon.webp",
       alt: "Accommodation",
     },
     {
+      image: "/restaurant/resturant-e.webp",
+      alt: "Restaurant",
+    },
+    {
       image: "/roompage/Suite/Suite-room2_11zon.webp",
       alt: "Accommodation",
+    },
+    {
+      image: "/restaurant/resturant-f.webp",
+      alt: "Restaurant",
     },
     {
       image: "/roompage/Premium/Premium-room3_11zon.webp",
       alt: "Accommodation",
     },
     {
+      image: "/restaurant/resturant-g.webp",
+      alt: "Restaurant",
+    },
+    {
       image: "/roompage/Inter/Inter-room3_11zon.webp",
       alt: "Accommodation",
+    },
+    {
+      image: "/restaurant/resturant-h.webp",
+      alt: "Restaurant",
     },
     {
       image: "/roompage/Deluxe/Deluxe-room4_11zon.webp",
@@ -130,8 +174,16 @@ export const galleryData = {
       alt: "Accommodation",
     },
     {
+      image: "/restaurant/resturant-j.webp",
+      alt: "Restaurant",
+    },
+    {
       image: "/roompage/Suite/Suite-room3_11zon.webp",
       alt: "Accommodation",
+    },
+    {
+      image: "/restaurant/resturant-k.webp",
+      alt: "Restaurant",
     },
     {
       image: "/roompage/Premium/Premium-room4_11zon.webp",

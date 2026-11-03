@@ -70,7 +70,7 @@ const LandingFooter = () => {
                   href={contact.callCta}
                   className="font-dmsans font-normal not-italic text-[15px] sm:text-[18px] leading-[24px] sm:leading-[26px] tracking-normal align-middle text-white/80 hover:text-white transition"
                 >
-                  Call: +91 xxxxx xxxxx
+                  Call: {contact.phone[0]}
                 </a>
               </div>
 
@@ -82,7 +82,7 @@ const LandingFooter = () => {
                   href={`mailto:${contact.email}`}
                   className="font-dmsans font-normal not-italic text-[15px] sm:text-[18px] leading-[24px] sm:leading-[26px] tracking-normal align-middle text-white/80 hover:text-white transition"
                 >
-                  Email: demo@gmail.com
+                  Email: {contact.email}
                 </a>
               </div>
             </div>
