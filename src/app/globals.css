@@ -33,13 +33,28 @@
   --color-secondary: var(--secondary);
   --color-tertiary: var(--tertiary);
 
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-montserrat), "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, Menlo, monospace;
   --font-golden: "Golden Hopes";
   --font-ivy: var(--font-ivyora), "IvyOra Display";
   /* --font-ivyora: var(--font-ivyora), "IvyOra Display"; */
   --font-montserrat: var(--font-montserrat);
   --font-dmsans: var(--font-dmsans);
+
+  /* Manratan site tokens (2026 redesign) */
+  --color-ink: #221811;
+  --color-ink-soft: #2e2219;
+  --color-stone: #f3eee7;
+  --color-stone-deep: #e8e0d4;
+  --color-taupe: #5e534a;
+  --color-brass: #b08d57;
+  --color-brass-light: #d2b483;
+
+  --font-display: var(--font-ivyora), "IvyOra Display", Georgia, serif;
+  --font-script: "Golden Hopes", cursive;
+  --font-body: var(--font-montserrat), "Helvetica Neue", Arial, sans-serif;
+
+  --ease-lux: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -266,3 +281,147 @@ body {
 }
 
 
+
+/* ================= MANRATAN 2026: SITE STYLES ================= */
+.site-body {
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background: var(--color-stone);
+  text-rendering: optimizeLegibility;
+}
+
+/* Display heading: IvyOra, the approved uppercase treatment */
+.t-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.02;
+}
+.t-script {
+  font-family: var(--font-script);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.t-body {
+  font-size: 0.97rem;
+  line-height: 1.85;
+  color: var(--color-taupe);
+}
+.t-body-light {
+  font-size: 0.97rem;
+  line-height: 1.85;
+  color: rgb(243 238 231 / 0.78);
+}
+.t-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Text link with a brass hairline that draws in on hover */
+.link-line {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-bottom: 0.35rem;
+}
+.link-line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.35;
+}
+.link-line::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  background: var(--color-brass);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s var(--ease-lux);
+  z-index: 1;
+}
+.link-line:hover::before,
+.link-line:focus-visible::before {
+  transform: scaleX(1);
+}
+
+/* Keyboard focus that is visible on stone and on ink */
+.site-body :focus-visible {
+  outline: 1.5px solid var(--color-brass);
+  outline-offset: 3px;
+}
+
+/* Slow image drift on interactive cards only */
+.img-drift {
+  transition: transform 1.6s var(--ease-lux);
+}
+.group:hover .img-drift,
+.group:focus-visible .img-drift {
+  transform: scale(1.045);
+}
+
+/* Hero entrance: the one orchestrated motion moment */
+@keyframes heroRise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes heroFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.hero-rise { animation: heroRise 1.4s var(--ease-lux) both; }
+.hero-fade { animation: heroFade 2s ease both; }
+.delay-1 { animation-delay: 0.25s; }
+.delay-2 { animation-delay: 0.6s; }
+.delay-3 { animation-delay: 1s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise, .hero-fade { animation: none; }
+  .img-drift { transition: none; }
+  .group:hover .img-drift { transform: none; }
+}
+
+/* Gem marquee */
+@keyframes gemMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.gem-marquee { animation: gemMarquee 60s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .gem-marquee { animation: none; } }
+
+/* Booking bar date picker in the house style */
+.mr-booking .react-datepicker {
+  font-family: var(--font-body);
+  border: 1px solid var(--color-stone-deep);
+  border-radius: 0;
+  box-shadow: 0 30px 60px -30px rgb(34 24 17 / 0.45);
+}
+.mr-booking .react-datepicker__header {
+  background: var(--color-stone);
+  border-bottom: 1px solid var(--color-stone-deep);
+  border-radius: 0;
+}
+.mr-booking .react-datepicker__day--selected,
+.mr-booking .react-datepicker__day--in-range,
+.mr-booking .react-datepicker__day--in-selecting-range,
+.mr-booking .react-datepicker__day--keyboard-selected {
+  background: var(--color-ink) !important;
+  color: #fff !important;
+  border-radius: 0;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
