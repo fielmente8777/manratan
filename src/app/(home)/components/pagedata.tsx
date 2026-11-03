@@ -110,7 +110,7 @@ export const homePageData = {
     ],
 
     description:
-      "From grand destination weddings and pre wedding soirees on our expansive 4,000-guest Red Coral Lawn to celebrations in the Blue Sapphire Banquet and poolside mixers at the Blue Diamond Oasis, Manratan Resort crafts unforgettable celebrations elevated by regal grandeur, bespoke catering, and impeccable hospitality.",
+      "From grand destination weddings and pre wedding soirees on our expansive 4,000-guest Red Coral Lawn to celebrations in the Blue Sapphire Banquet and skylawn mixers at the Blue Diamond Oasis, Manratan Resort crafts unforgettable celebrations elevated by regal grandeur, bespoke catering, and impeccable hospitality.",
 
     link: {
       label: "EXPLORE",

@@ -54,7 +54,7 @@ export const aboutData = {
         image: "/restaurant/dining_11zon.webp",
         logo: "/images/about3.png",
         description:
-          "Experience refreshing poolside breakfasts, midday coolers, and relaxed open air dining surrounded by tranquil resort vistas.",
+          "Experience refreshing breakfasts, midday coolers, and relaxed open air dining surrounded by tranquil resort vistas.",
       },
       {
         image: "/restaurant/swadika3_11zon.webp",
