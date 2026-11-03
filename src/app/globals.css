@@ -11,7 +11,7 @@
 
 @font-face {
   font-family: "Golden Hopes";
-  src: url("/fonts/GoldenHopes_PERSONAL_USE_ONLY.otf") format("opentype");
+  src: url("/fonts/GoldenHopes_PERSONAL_USE_ONLY.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -19,7 +19,7 @@
 
 @font-face {
   font-family: "IvyOra Display";
-  src: url("/fonts/IvyOraDisplay-Regular.ttf") format("truetype");
+  src: url("/fonts/IvyOraDisplay-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -51,7 +51,7 @@
   --color-brass-light: #d2b483;
 
   --font-display: var(--font-ivyora), "IvyOra Display", Georgia, serif;
-  --font-script: "Golden Hopes", cursive;
+  --font-script: var(--font-golden-hopes), "Golden Hopes", cursive;
   --font-body: var(--font-montserrat), "Helvetica Neue", Arial, sans-serif;
 
   --ease-lux: cubic-bezier(0.22, 0.61, 0.36, 1);

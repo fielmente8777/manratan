@@ -9,9 +9,15 @@ import Footer from "@/components/site/Footer";
 import Chrome from "@/components/site/Chrome";
 import { site } from "@/data/site";
 
+// Display faces subset to Latin and served as WOFF2 (was ~450 KB of TTF/OTF).
 const ivyOra = localFont({
-  src: "../../public/fonts/IvyOraDisplay-Regular.ttf",
+  src: "../../public/fonts/IvyOraDisplay-Regular.woff2",
   variable: "--font-ivyora",
+  display: "swap",
+});
+const goldenHopes = localFont({
+  src: "../../public/fonts/GoldenHopes_PERSONAL_USE_ONLY.woff2",
+  variable: "--font-golden-hopes",
   display: "swap",
 });
 
@@ -84,7 +90,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${montserrat.variable} ${dmSans.variable} ${ivyOra.variable} h-full antialiased`}
+      className={`${montserrat.variable} ${dmSans.variable} ${ivyOra.variable} ${goldenHopes.variable} h-full antialiased`}
     >
       <body className="site-body min-h-full flex flex-col">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(hotelSchema) }} />

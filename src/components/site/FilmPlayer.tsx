@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { video, walkthrough } from "@/data/site";
 import { PlayIcon } from "./ui";
@@ -52,7 +53,6 @@ export default function FilmPlayer({ autoPlay = false, chapters = true, tone = "
         <video
           ref={ref}
           src={video.walkthrough}
-          poster={video.poster}
           preload="none"
           playsInline
           controls={started}
@@ -64,8 +64,10 @@ export default function FilmPlayer({ autoPlay = false, chapters = true, tone = "
           <button
             type="button"
             onClick={() => start(0)}
-            className="group absolute inset-0 flex flex-col items-center justify-center gap-5 bg-black/30 text-stone transition-colors hover:bg-black/20"
+            className="group absolute inset-0 isolate flex flex-col items-center justify-center gap-5 text-stone"
           >
+            <Image src={video.poster} alt="" fill sizes="(max-width: 1024px) 100vw, 900px" className="-z-10 object-cover" />
+            <span className="absolute inset-0 -z-10 bg-black/30 transition-colors group-hover:bg-black/20" />
             <span className="flex h-20 w-20 items-center justify-center rounded-full border border-stone/70 backdrop-blur-sm transition-transform duration-700 group-hover:scale-105">
               <PlayIcon className="w-6 h-6 translate-x-0.5" />
             </span>

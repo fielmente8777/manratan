@@ -73,6 +73,8 @@ export default function HomeHero() {
             width={479}
             height={203}
             preload
+            fetchPriority="high"
+            unoptimized
             className="mx-auto h-auto w-[min(70vw,360px)] drop-shadow-[0_4px_30px_rgba(0,0,0,0.35)]"
           />
         </h1>
