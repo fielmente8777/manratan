@@ -43,28 +43,31 @@ export const contactInformationData = {
 
 export const faqData = [
   {
-    question: "What are the check in and check out timings?",
+    question: "What are the check-in and check-out times?",
     answer:
-      "Our standard check in time is 2:00 PM and check out time is 11:00 AM. Early check in or late check out can be requested subject to availability.",
+      "Check-in is from 2:00 PM and check-out is by 11:00 AM. Early check-in or late check-out can be requested and is subject to availability.",
   },
   {
-    question: "Is complimentary WiFi available?",
-    answer:
-      "Yes, complimentary WiFi is available for guests throughout the resort.",
+    question: "Is Wi-Fi complimentary?",
+    answer: "Yes. Complimentary Wi-Fi is available throughout the resort.",
   },
   {
     question: "Does the resort have a restaurant?",
     answer:
-      "Yes, the resort offers dining options for guests.",
+      "Yes. Swadika, our pure vegetarian restaurant, serves North Indian, regional Malwa and global dishes in a chandelier-lit hall that seats up to 100 guests.",
   },
   {
-    question: "Is parking available at the resort?",
+    question: "Is parking available?",
+    answer: "Yes. Complimentary on-site parking is available for resort guests.",
+  },
+  {
+    question: "Can I host a wedding or event at Manratan?",
     answer:
-      "Yes, complimentary parking is available for resort guests.",
+      "Yes. The Blue Sapphire and Golden Sapphire banquet halls, the Sky Lawn, the poolside and the Red Coral Lawn (up to 4,000 guests) host weddings, receptions and corporate events. Call or WhatsApp us to plan yours.",
   },
   {
     question: "How can I make a reservation?",
     answer:
-      "You can make a reservation by contacting our reservations team or using the booking option available on our website.",
+      "Use the booking form on this website, call our reservations team or send us a WhatsApp message. We will confirm your dates and room.",
   },
 ];

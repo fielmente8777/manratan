@@ -1,6 +1,6 @@
 export const homePageData = {
   heroData: {
-    image: "/homopage/banner_11zon.webp",
+    image: "/media/facade-dusk.webp",
 
     location: "NARASINGARH, MP",
 
@@ -29,17 +29,17 @@ export const homePageData = {
 
     gallery: [
       {
-        image: "/homopage/about-new.webp",
+        image: "/media/aerial-greenery.webp",
         alt: "Heritage Architecture",
       },
       {
-        image: "/homopage/about-new1.webp",
+        image: "/media/aerial-approach.webp",
         alt: "Resort Aerial View",
       },
     ],
   },
   historyData: {
-    image: "/homopage/narsinghgarh_11zon.webp",
+    image: "/media/ngh-lake-temple.webp",
     title: "Royal Charm",
     subTitle: "of Narsinghgarh",
     description:
@@ -60,19 +60,19 @@ export const homePageData = {
     gallery: [
       {
         title: "Reception",
-        image: "/homopage/reception_11zon.webp",
+        image: "/media/reception-welcome.webp",
       },
       {
         title: "Room",
-        image: "/homopage/room_11zon.webp",
+        image: "/media/suite-bed.webp",
       },
       {
         title: "Restaurant",
-        image: "/homopage/dining_11zon.webp",
+        image: "/media/swadika-hall.webp",
       },
       {
         title: "Pool",
-        image: "/images/manratan-4.jpg",
+        image: "/media/pool-dusk.webp",
       },
     ],
 
@@ -88,22 +88,22 @@ export const homePageData = {
 
     gallery: [
       {
-        image: "/events/event1_11zon.webp",
+        image: "/media/golden-sapphire.webp",
         alt: "Wedding Event 1",
         video: "#",
       },
       {
-        image: "/events/event2_11zon.webp",
+        image: "/media/conference.webp",
         alt: "Wedding Event 2",
         video: "#",
       },
       {
-        image: "/events/event3_11zon.webp",
+        image: "/media/skylawn-above.webp",
         alt: "Wedding Event 3",
         video: "#",
       },
       {
-        image: "/events/event4_11zon.webp",
+        image: "/media/blue-sapphire-stage.webp",
         alt: "Wedding Event 4",
         video: "#",
       },
@@ -128,15 +128,15 @@ export const homePageData = {
 
     images: [
       {
-        image: "/homopage/dining_11zon.webp",
+        image: "/media/swadika-hall.webp",
         alt: "Dining Experience",
       },
       {
-        image: "/homopage/dining2_11zon.webp",
+        image: "/media/swadika-guests.webp",
         alt: "Restaurant",
       },
       {
-        image: "/homopage/dining3_11zon.webp",
+        image: "/media/swadika-room.webp",
         alt: "Fine Dining",
       },
     ],

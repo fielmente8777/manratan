@@ -1,33 +1,27 @@
-import ImageBanner from "@/components/banners/ImageBanner";
-import { homePageData } from "./(home)/components/pagedata";
-import About from "./(home)/components/About";
-import ExperienceSection from "./(home)/components/Experience";
-import Feature from "./(home)/components/Feature";
-import Event from "./(home)/components/Event";
-import Form1 from "@/components/forms/Form1";
-import Charm from "./(home)/components/Charm";
+import type { Metadata } from "next";
+import HomeHero from "./(home)/HomeHero";
+import RoomsRail from "./(home)/RoomsRail";
+import { About, Celebrations, EvolvesWithLight, PlacesNearby, Spaces, Swadika, Walkthrough } from "./(home)/sections";
+
+export const metadata: Metadata = {
+  title: { absolute: "Manratan Resort, Narsinghgarh | Luxury Resort, Wedding Venue & Pool" },
+  description:
+    "A resort in the green hills of Narsinghgarh, the Kashmir of Malwa: 65 rooms and suites, pure vegetarian dining at Swadika, the Blue Diamond pool, banquet halls and lawns for up to 4,000 guests.",
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (
     <main>
-      <ImageBanner {...homePageData.heroData} />
-
-      {/* Form rendered inside ImageBanner on top of hero image */}
-
-
-
-
-
-
-      <About {...homePageData.aboutData} />
-
-      <Charm {...homePageData.historyData} />
-
-      <Feature {...homePageData.featureGalleryData} />
-
-      <Event {...homePageData.eventsData} />
-
-      <ExperienceSection {...homePageData.experienceSection} />
+      <HomeHero />
+      <About />
+      <Walkthrough />
+      <Spaces />
+      <RoomsRail />
+      <Celebrations />
+      <EvolvesWithLight />
+      <Swadika />
+      <PlacesNearby />
     </main>
   );
 }

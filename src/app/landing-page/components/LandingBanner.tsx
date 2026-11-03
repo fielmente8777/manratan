@@ -20,7 +20,7 @@ export interface LandingBannerProps {
 }
 
 const LandingBanner: React.FC<LandingBannerProps> = ({
-  image = "/images/hero.jpg",
+  image = "/media/facade-dusk.webp",
   logo = "/images/nav.png",
   videoLink = "https://www.youtube.com",
   location = "Narsinghgarh, MP",

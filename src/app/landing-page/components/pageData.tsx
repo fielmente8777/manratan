@@ -60,9 +60,9 @@ export const LandingPageData = {
     ],
 
     images: [
-      "/aboutpage/history_11zon.webp",
-      "/homopage/narsinghgarh_11zon.webp",
-      "/homopage/about_11zon.webp",
+      "/media/ngh-chhatri.webp",
+      "/media/ngh-lake-temple.webp",
+      "/media/ngh-hilltop-temple.webp",
     ],
 
     buttons: [
@@ -151,10 +151,10 @@ export const LandingPageData = {
         title: "Deluxe Room",
 
         images: [
-          "/roompage/Deluxe/Deluxe-room1_11zon.webp",
-          "/roompage/Deluxe/Deluxe-room2_11zon.webp",
-          "/roompage/Deluxe/Deluxe-room3_11zon.webp",
-          "/roompage/Deluxe/Deluxe-room4_11zon.webp",
+          "/media/deluxe-1.webp",
+          "/media/deluxe-2.webp",
+          "/media/towel-swans.webp",
+          "/media/corridor.webp",
         ],
 
         amenities: [
@@ -188,10 +188,10 @@ export const LandingPageData = {
         title: "Deluxe Interconnected Room",
 
         images: [
-          "/roompage/Inter/Inter-room1_11zon.webp",
-          "/roompage/Inter/Inter-room2_11zon.webp",
-          "/roompage/Inter/Inter-room3_11zon.webp",
-          "/roompage/Inter/Inter-room4_11zon.webp",
+          "/media/inter-1.webp",
+          "/media/inter-2.webp",
+          "/media/inter-3.webp",
+          "/media/suite-swans.webp",
         ],
 
         amenities: [
@@ -225,10 +225,10 @@ export const LandingPageData = {
         title: "Executive Family Room",
 
         images: [
-          "/roompage/Executive/Executive-banner_11zon.webp",
-          "/roompage/Executive/Executive-room1_11zon.webp",
-          "/roompage/Executive/Executive-room2_11zon.webp",
-          "/roompage/Executive/Executive-room3_11zon.webp",
+          "/media/executive-1.webp",
+          "/media/executive-2.webp",
+          "/media/executive-3.webp",
+          "/media/executive-4.webp",
         ],
 
         amenities: [
@@ -262,10 +262,10 @@ export const LandingPageData = {
         title: "Premium Room",
 
         images: [
-          "/roompage/Premium/Premium-room1_11zon.webp",
-          "/roompage/Premium/Premium-room2_11zon.webp",
-          "/roompage/Premium/Premium-room3_11zon.webp",
-          "/roompage/Premium/Premium-room4_11zon.webp",
+          "/media/premium-1.webp",
+          "/media/premium-2.webp",
+          "/media/premium-bath.webp",
+          "/media/towel-swans.webp",
         ],
 
         amenities: [
@@ -299,10 +299,10 @@ export const LandingPageData = {
         title: "Suite Room",
 
         images: [
-          "/roompage/Suite/Suite-banner_11zon.webp",
-          "/roompage/Suite/Suite-room1_11zon.webp",
-          "/roompage/Suite/Suite-room2_11zon.webp",
-          "/roompage/Suite/Suite-room3_11zon.webp",
+          "/media/suite-1.webp",
+          "/media/suite-living.webp",
+          "/media/suite-bed.webp",
+          "/media/suite-bath.webp",
         ],
 
         amenities: [
@@ -347,15 +347,15 @@ export const LandingPageData = {
       "From a vibrant marigold strewn haldi by the pool to a royal baraat on our wide driveways and a star studded reception on the Red Coral Lawn, Manratan Resort is Narsinghgarh's ultimate wedding destination. With grand banquet halls, 65 on site luxury rooms for wedding guests, bespoke pure veg catering, and dedicated event coordinators, we turn your dream celebration into an unforgettable royal affair.",
 
     images: [
-      "/events/event8_11zon.webp",
-      "/events/event6_11zon.webp",
-      "/events/event5_11zon.webp",
-      "/events/event1_11zon.webp",
-      "/events/event2_11zon.webp",
-      "/events/event3_11zon.webp",
-      "/events/event4_11zon.webp",
-      "/events/event7_11zon.webp",
-      "/events/event9_11zon.webp",
+      "/media/blue-sapphire.webp",
+      "/media/blue-sapphire-tables.webp",
+      "/media/blue-sapphire-lounge.webp",
+      "/media/golden-sapphire.webp",
+      "/media/conference.webp",
+      "/media/skylawn-above.webp",
+      "/media/blue-sapphire-stage.webp",
+      "/media/golden-sapphire-2.webp",
+      "/media/blue-sapphire-detail.webp",
     ],
 
     button: {
