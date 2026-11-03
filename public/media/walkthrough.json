@@ -1,0 +1,41 @@
+{
+  "duration": 70.2,
+  "chapters": [
+    {
+      "title": "First light",
+      "start": 0.0
+    },
+    {
+      "title": "The lobby",
+      "start": 9.9
+    },
+    {
+      "title": "Rooms and suites",
+      "start": 16.5
+    },
+    {
+      "title": "Swadika",
+      "start": 29.7
+    },
+    {
+      "title": "Blue Diamond pool",
+      "start": 36.3
+    },
+    {
+      "title": "Sky Lawn",
+      "start": 42.9
+    },
+    {
+      "title": "Banquets",
+      "start": 46.2
+    },
+    {
+      "title": "Narsinghgarh",
+      "start": 56.1
+    },
+    {
+      "title": "Manratan by night",
+      "start": 66.0
+    }
+  ]
+}
