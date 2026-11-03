@@ -43,14 +43,14 @@ export const contactInformationData = {
 
 export const faqData = [
   {
-    question: "What are the check-in and check-out timings?",
+    question: "What are the check in and check out timings?",
     answer:
-      "Our standard check-in time is 2:00 PM and check-out time is 11:00 AM. Early check-in or late check-out can be requested subject to availability.",
+      "Our standard check in time is 2:00 PM and check out time is 11:00 AM. Early check in or late check out can be requested subject to availability.",
   },
   {
-    question: "Is complimentary Wi-Fi available?",
+    question: "Is complimentary WiFi available?",
     answer:
-      "Yes, complimentary Wi-Fi is available for guests throughout the resort.",
+      "Yes, complimentary WiFi is available for guests throughout the resort.",
   },
   {
     question: "Does the resort have a restaurant?",

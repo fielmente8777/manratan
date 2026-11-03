@@ -6,7 +6,7 @@ export const LandingPageData = {
     title: "A Royal MALWA RETREAT, BUILT FOR YOUR FINEST DAYS",
 
     description:
-      "Set amidst the scenic hills and tranquil countryside of Narsinghgarh—celebrated as the Kashmir of Malwa—Manratan Resort is the region's premier 4-star luxury destination. Spanning lush landscaped gardens along NH-46, the resort welcomes guests with 65 elegantly appointed rooms and suites, the pure-vegetarian Swadika restaurant, the Blue Diamond open-air swimming pool, and royal celebration lawns for grand weddings and serene getaways.",
+      "Set amidst the scenic hills and tranquil countryside of Narsinghgarh celebrated as the Kashmir of Malwa Manratan Resort is the region's premier 4-star luxury destination. Spanning lush landscaped gardens along NH-46, the resort welcomes guests with 65 elegantly appointed rooms and suites, the pure vegetarian Swadika restaurant, the Blue Diamond open air swimming pool, and royal celebration lawns for grand weddings and serene getaways.",
 
     location: "NH-46, Biaora Road · Narsinghgarh, Madhya Pradesh",
 
@@ -37,7 +37,7 @@ export const LandingPageData = {
       },
       {
         value: "Pure Veg",
-        label: "Swadika Multi-Cuisine Dining",
+        label: "Swadika Multi Cuisine Dining",
       },
     ],
   },
@@ -52,10 +52,10 @@ export const LandingPageData = {
       "Set right on NH-46 near the historic Narsinghgarh Fort and Chidi Kho Wildlife Sanctuary, Manratan Resort pairs seamless highway accessibility with the timeless tranquility of a private Malwa estate.",
 
     points: [
-      "Air-conditioned luxury rooms & suites with scenic garden and pool-facing views.",
-      "Swadika pure-vegetarian multi-cuisine dining serving authentic Indian and Malwa recipes.",
-      "Open-air swimming pool, poolside deck, and manicured lawns for morning relaxation.",
-      "24-hour in-room dining, power backup, high-speed Wi-Fi, and round-the-clock front desk.",
+      "Air conditioned luxury rooms & suites with scenic garden and pool facing views.",
+      "Swadika pure vegetarian multi cuisine dining serving authentic Indian and Malwa recipes.",
+      "Open air swimming pool, poolside deck, and manicured lawns for morning relaxation.",
+      "24-hour in room dining, power backup, high speed WiFi, and round the clock front desk.",
       "Minutes from Narsinghgarh Fort, Paras Ram Sagar Lake, and Bada Mahadev Temple.",
     ],
 
@@ -85,42 +85,42 @@ export const LandingPageData = {
       {
         title: "Swimming Pool",
         description:
-          "Crystal-clear open-air pool with comfortable loungers, poolside seating deck, and scenic garden vistas.",
+          "Crystal clear open air pool with comfortable loungers, poolside seating deck, and scenic garden vistas.",
       },
       {
-        title: "Multi-Cuisine Dining",
+        title: "Multi Cuisine Dining",
         description:
-          "Swadika 100% pure-veg restaurant serving North Indian, regional Malwa delicacies, and global cuisines in a chandelier-lit hall.",
+          "Swadika 100% pure veg restaurant serving North Indian, regional Malwa delicacies, and global cuisines in a chandelier lit hall.",
       },
       {
         title: "Ample Parking",
         description:
-          "Expansive, guarded on-site parking for over 200 vehicles, accommodating family stays and large wedding parties.",
+          "Expansive, guarded on site parking for over 200 vehicles, accommodating family stays and large wedding parties.",
       },
       {
         title: "Banquet & Lawns",
         description:
-          "The grand Blue Sapphire indoor banquet hall and sprawling Red Coral open-air lawn accommodating up to 4,000 guests.",
+          "The grand Blue Sapphire indoor banquet hall and sprawling Red Coral open air lawn accommodating up to 4,000 guests.",
       },
       {
         title: "AC Rooms & Suites",
         description:
-          "Climate-controlled rooms featuring king and twin beds, garden or pool views, ergonomic workstations, and LED TVs.",
+          "Climate controlled rooms featuring king and twin beds, garden or pool views, ergonomic workstations, and LED TVs.",
       },
       {
         title: "Landscaped Gardens",
         description:
-          "Expansive manicured green lawns framed by native flora, perfect for serene morning strolls, photo sessions, and open-air ceremonies.",
+          "Expansive manicured green lawns framed by native flora, perfect for serene morning strolls, photo sessions, and open air ceremonies.",
       },
       {
         title: "24/7 Room Service",
         description:
-          "Round-the-clock in-room dining, swift housekeeping, and attentive concierge service to meet every guest requirement.",
+          "Round the clock in room dining, swift housekeeping, and attentive concierge service to meet every guest requirement.",
       },
       {
         title: "Highway Location",
         description:
-          "Conveniently situated on NH-46, Biaora Road near the JIO petrol pump—effortlessly accessible from Bhopal (70 km) and Indore (210 km).",
+          "Conveniently situated on NH-46, Biaora Road near the JIO petrol pump effortlessly accessible from Bhopal (70 km) and Indore (210 km).",
       },
     ],
 
@@ -244,7 +244,7 @@ export const LandingPageData = {
         ],
 
         description:
-          "An exquisite executive family room offering expansive living space, lavish interiors, premium king bedding, and serene views overlooking our crystal-clear swimming pool.",
+          "An exquisite executive family room offering expansive living space, lavish interiors, premium king bedding, and serene views overlooking our crystal clear swimming pool.",
 
         buttons: [
           {
@@ -344,7 +344,7 @@ export const LandingPageData = {
     },
 
     description:
-      "From a vibrant marigold-strewn haldi by the pool to a royal baraat on our wide driveways and a star-studded reception on the Red Coral Lawn, Manratan Resort is Narsinghgarh's ultimate wedding destination. With grand banquet halls, 65 on-site luxury rooms for wedding guests, bespoke pure-veg catering, and dedicated event coordinators, we turn your dream celebration into an unforgettable royal affair.",
+      "From a vibrant marigold strewn haldi by the pool to a royal baraat on our wide driveways and a star studded reception on the Red Coral Lawn, Manratan Resort is Narsinghgarh's ultimate wedding destination. With grand banquet halls, 65 on site luxury rooms for wedding guests, bespoke pure veg catering, and dedicated event coordinators, we turn your dream celebration into an unforgettable royal affair.",
 
     images: [
       "/events/event8_11zon.webp",
@@ -412,7 +412,7 @@ export const LandingPageData = {
       {
         name: "Sunil Jain, Ujjain",
         review:
-          "Exceptional hospitality! The management attended to all our requirements with a smile. The food quality at Swadika is top-notch, especially the regional Malwa dishes. Wonderful resort!",
+          "Exceptional hospitality! The management attended to all our requirements with a smile. The food quality at Swadika is top notch, especially the regional Malwa dishes. Wonderful resort!",
       },
       {
         name: "Meenakshi Patel, Ahmedabad",
@@ -436,11 +436,11 @@ export const LandingPageData = {
       },
       {
         q: "Is parking available?",
-        a: "Yes, ample on-site parking is available for guests.",
+        a: "Yes, ample on site parking is available for guests.",
       },
       {
-        q: "What are the check-in and check-out timings?",
-        a: "Please confirm the check-in and check-out timings with the resort at the time of booking.",
+        q: "What are the check in and check out timings?",
+        a: "Please confirm the check in and check out timings with the resort at the time of booking.",
       },
       {
         q: "Can I book the resort for special occasions or celebrations?",

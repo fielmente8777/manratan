@@ -31,7 +31,7 @@ export const roomDetailsData = [
     amenities: [
       "HIGH SPEED WIFI",
       "DAILY HOUSE KEEPING",
-      "IN-ROOM DINING",
+      "IN ROOM DINING",
       "AIR CONDITIONING",
       "TEA & COFFEE MAKER",
       "LUXURY TOILETRIES",
@@ -77,7 +77,7 @@ export const roomDetailsData = [
     amenities: [
       "HIGH SPEED WIFI",
       "DAILY HOUSE KEEPING",
-      "IN-ROOM DINING",
+      "IN ROOM DINING",
       "INTERCONNECTED ROOMS",
       "AIR CONDITIONING",
       "PREMIUM COFFEE",
@@ -126,7 +126,7 @@ export const roomDetailsData = [
     amenities: [
       "HIGH SPEED WIFI",
       "DAILY HOUSE KEEPING",
-      "IN-ROOM DINING",
+      "IN ROOM DINING",
       "POOL ACCESS",
       "MINI BAR",
       "PREMIUM COFFEE",
@@ -176,7 +176,7 @@ export const roomDetailsData = [
     amenities: [
       "HIGH SPEED WIFI",
       "DAILY HOUSE KEEPING",
-      "IN-ROOM DINING",
+      "IN ROOM DINING",
       "AIR CONDITIONING",
       "TEA & COFFEE MAKER",
       "LUXURY TOILETRIES",
@@ -225,7 +225,7 @@ export const roomDetailsData = [
     amenities: [
       "HIGH SPEED WIFI",
       "DAILY HOUSE KEEPING",
-      "IN-ROOM DINING",
+      "IN ROOM DINING",
       "POOL ACCESS",
       "MINI BAR",
       "PREMIUM COFFEE",

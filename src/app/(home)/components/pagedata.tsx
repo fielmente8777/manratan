@@ -20,7 +20,7 @@ export const homePageData = {
 
     topContent: {
       description:
-        "Nestled in the scenic charm of Narsinghgarh—celebrated as the Kashmir of Malwa—Manratan Resort is a sanctuary where contemporary luxury meets timeless hospitality. Rooted in family warmth and a legacy of love, we offer 65 elegantly appointed rooms, signature pure-vegetarian dining at Swadika, a sparkling swimming pool, and magnificent open-air celebration venues.",
+        "Nestled in the scenic charm of Narsinghgarh celebrated as the Kashmir of Malwa Manratan Resort is a sanctuary where contemporary luxury meets timeless hospitality. Rooted in family warmth and a legacy of love, we offer 65 elegantly appointed rooms, signature pure vegetarian dining at Swadika, a sparkling swimming pool, and magnificent open air celebration venues.",
       link: {
         label: "KNOW MORE",
         href: "/about/",
@@ -77,7 +77,7 @@ export const homePageData = {
     ],
 
     bottomDescription:
-      "From our grand reception and 65 thoughtfully designed guest rooms to our chandelier-lit Swadika restaurant and serene outdoor swimming pool, every space at Manratan Resort is crafted to elevate your stay. Experience seamless hospitality, modern amenities, and warm personal care throughout your retreat.",
+      "From our grand reception and 65 thoughtfully designed guest rooms to our chandelier lit Swadika restaurant and serene outdoor swimming pool, every space at Manratan Resort is crafted to elevate your stay. Experience seamless hospitality, modern amenities, and warm personal care throughout your retreat.",
   },
 
   eventsData: {
@@ -110,7 +110,7 @@ export const homePageData = {
     ],
 
     description:
-      "From grand destination weddings and pre-wedding soirees on our expansive 4,000-guest Red Coral Lawn to celebrations in the Blue Sapphire Banquet and poolside mixers at the Blue Diamond Oasis, Manratan Resort crafts unforgettable celebrations elevated by regal grandeur, bespoke catering, and impeccable hospitality.",
+      "From grand destination weddings and pre wedding soirees on our expansive 4,000-guest Red Coral Lawn to celebrations in the Blue Sapphire Banquet and poolside mixers at the Blue Diamond Oasis, Manratan Resort crafts unforgettable celebrations elevated by regal grandeur, bespoke catering, and impeccable hospitality.",
 
     link: {
       label: "EXPLORE",
@@ -124,7 +124,7 @@ export const homePageData = {
     },
 
     description:
-      "Savour authentic Indian and global pure-vegetarian flavours at Swadika Restaurant. Beautifully illuminated by signature chandeliers, every meal is an unforgettable culinary experience prepared with the finest ingredients and warm hospitality.",
+      "Savour authentic Indian and global pure vegetarian flavours at Swadika Restaurant. Beautifully illuminated by signature chandeliers, every meal is an unforgettable culinary experience prepared with the finest ingredients and warm hospitality.",
 
     images: [
       {

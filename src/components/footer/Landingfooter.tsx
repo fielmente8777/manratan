@@ -21,7 +21,18 @@ export const DropDown = () => (
 );
 
 const Footer = () => {
-  const [isOpen, setIsOpen] = useState<number | null>(null);
+  const defaultOpenIndex = footerData.links.findIndex(
+    (s) => s.title.toUpperCase() === "LINKS"
+  );
+  const [openSections, setOpenSections] = useState<number[]>([
+    defaultOpenIndex !== -1 ? defaultOpenIndex : 0,
+  ]);
+
+  const toggleSection = (index: number) => {
+    setOpenSections((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+    );
+  };
   const pathName = usePathname();
 
   if (pathName?.startsWith("/landing-page")) {
@@ -67,7 +78,7 @@ const Footer = () => {
               {/* MOBILE ACCORDION VIEW */}
               <div className="lg:hidden border-b border-white/20 pb-4">
                 <button
-                  onClick={() => setIsOpen(isOpen === index ? null : index)}
+                  onClick={() => toggleSection(index)}
                   className="text-[17px] font-medium uppercase flex items-center justify-between w-full py-2 text-white text-left"
                   type="button"
                 >
@@ -75,7 +86,7 @@ const Footer = () => {
 
                   <span
                     className={`transition-transform duration-300 ${
-                      isOpen === index ? "rotate-180" : ""
+                      openSections.includes(index) ? "rotate-180" : ""
                     }`}
                   >
                     <DropDown />
@@ -84,7 +95,7 @@ const Footer = () => {
 
                 <ul
                   className={`flex flex-col gap-3 mt-3 pl-2 ${
-                    isOpen === index ? "block" : "hidden"
+                    openSections.includes(index) ? "block" : "hidden"
                   }`}
                 >
                   {section.items.map((item) => (

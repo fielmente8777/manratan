@@ -10,7 +10,7 @@ export const accommodationData = {
     subHeading: "Accommodation",
     paragraphs: [
       "Experience a stay where contemporary elegance meets exceptional comfort. Featuring 65 thoughtfully designed guest rooms and suites, Manratan Resort offers a tranquil haven with stylish interiors, plush bedding, and spacious layouts tailored for families, couples, and leisure travellers.",
-      "Wake up to serene garden, pool, and Malwa hill views while enjoying in-room comforts including climate-controlled air conditioning, complimentary high-speed Wi-Fi, tea and coffee facilities, and premium bath amenities. Whether you are here for a weekend retreat or a grand family celebration, every room makes you feel right at home.",
+      "Wake up to serene garden, pool, and Malwa hill views while enjoying in room comforts including climate controlled air conditioning, complimentary high speed WiFi, tea and coffee facilities, and premium bath amenities. Whether you are here for a weekend retreat or a grand family celebration, every room makes you feel right at home.",
     ],
   },
   rooms: [

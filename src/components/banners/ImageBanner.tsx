@@ -25,7 +25,7 @@ const ImageBanner = ({ image }: ImageBannerProps) => {
         alt="Hero Banner"
         fill
         priority
-        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+        className="object-cover object-[58.5%_center] lg:object-center transition-transform duration-700 ease-out group-hover:scale-105"
       />
 
       <LandingNavbar />

@@ -32,12 +32,12 @@ export default function EventsVideoGrid({ cards }: EventsVideoGridProps) {
                 className="object-cover object-center transform-gpu transition-transform duration-700 ease-out group-hover:scale-105"
               />
 
-              {/* Dark Gradient Overlay - pointer-events-none prevents any hover flicker */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none transition-opacity duration-500 group-hover:opacity-90" />
 
-              {/* Title Text Overlay */}
-              <div className="absolute top-6 left-6 right-6 z-10 pointer-events-none">
-                <h3 className="text-white text-lg sm:text-xl font-[serif] font-medium tracking-[0.08em] uppercase drop-shadow-md">
+
+
+              {/* Title Text Overlay - Positioned at Bottom, Centered on Mobile */}
+              <div className="absolute bottom-6 left-6 right-6 z-10 pointer-events-none text-center md:text-left">
+                <h3 className="text-white text-base sm:text-lg lg:text-xl font-[serif] font-medium tracking-[0.08em] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                   {card.title}
                 </h3>
               </div>

@@ -111,13 +111,13 @@ export const blogsData: BlogPost[] = [
 
     <h2>Expansive Lawns and Majestic Venues</h2>
     <p>
-      Whether you envision an intimate mehendi ceremony by our Blue Diamond Poolside Oasis or a royal wedding reception for 4,000 guests across our expansive Red Coral Lawn, Manratan Resort provides versatile venues tailored to every pre-wedding ritual and grand ceremony.
+      Whether you envision an intimate mehendi ceremony by our Blue Diamond Poolside Oasis or a royal wedding reception for 4,000 guests across our expansive Red Coral Lawn, Manratan Resort provides versatile venues tailored to every pre wedding ritual and grand ceremony.
     </p>
     <p>
-      Our Blue Sapphire Banquet Hall, accommodating 300 to 400 guests, features exquisite chandeliers and state-of-the-art acoustics, creating an enchanting indoor ambiance for sangeet nights and reception galas.
+      Our Blue Sapphire Banquet Hall, accommodating 300 to 400 guests, features exquisite chandeliers and state of the art acoustics, creating an enchanting indoor ambiance for sangeet nights and reception galas.
     </p>
 
-    <h2>Bespoke Pure-Vegetarian Catering</h2>
+    <h2>Bespoke Pure Vegetarian Catering</h2>
     <p>
       From royal Malwa thalis and live chaat counters to gourmet global delicacies, our culinary masters at Swadika create unforgettable dining spreads crafted to delight every palate.
     </p>
@@ -138,7 +138,7 @@ export const blogsData: BlogPost[] = [
     url: "/images/manratan-3.jpg",
     alt: "Wellness & Spa Rejuvenation",
     description:
-      "Escape the city rush and immerse yourself in peaceful morning walks, poolside relaxation, pure-veg nutrition, and serene Malwa landscapes.",
+      "Escape the city rush and immerse yourself in peaceful morning walks, poolside relaxation, pure veg nutrition, and serene Malwa landscapes.",
     meta: {
       title: "Holistic Wellness & Rejuvenation Retreats | Manratan Resort",
       description:
@@ -153,7 +153,7 @@ export const blogsData: BlogPost[] = [
     data: `
   <div>
     <p>
-      In today's fast-paced world, carving out time for mindful rest and physical rejuvenation is no longer a luxury—it is an essential journey toward balance. Tucked away in the serene foothills of Narsinghgarh, Manratan Resort offers an idyllic sanctuary where body, mind, and spirit unwind in unison.
+      In today's fast paced world, carving out time for mindful rest and physical rejuvenation is no longer a luxury it is an essential journey toward balance. Tucked away in the serene foothills of Narsinghgarh, Manratan Resort offers an idyllic sanctuary where body, mind, and spirit unwind in unison.
     </p>
 
     <h2>The Healing Power of Nature</h2>
@@ -166,9 +166,9 @@ export const blogsData: BlogPost[] = [
       Spend tranquil afternoons lounging beside our sparkling swimming pool, reading your favorite book, or simply soaking in the warm sun. The peaceful atmosphere fosters deep relaxation and mental clarity.
     </p>
 
-    <h2>Nourishing Pure-Veg Gastronomy</h2>
+    <h2>Nourishing Pure Veg Gastronomy</h2>
     <p>
-      True wellness begins from within. Our Swadika restaurant crafts wholesome, nutrient-dense pure-vegetarian meals made from fresh local produce, balancing authentic regional tastes with mindful nutrition.
+      True wellness begins from within. Our Swadika restaurant crafts wholesome, nutrient dense pure vegetarian meals made from fresh local produce, balancing authentic regional tastes with mindful nutrition.
     </p>
   </div>
   `,
@@ -182,11 +182,11 @@ export const blogsData: BlogPost[] = [
     url: "/images/manratan-4.jpg",
     alt: "Culinary Dining at Manratan",
     description:
-      "Discover royal regional recipes, fragrant spices, and gourmet multi-cuisine dining at Swadika Restaurant in Manratan Resort.",
+      "Discover royal regional recipes, fragrant spices, and gourmet multi cuisine dining at Swadika Restaurant in Manratan Resort.",
     meta: {
       title: "A Culinary Journey Through Malwa Flavors | Manratan Resort",
       description:
-        "Discover royal Malwa recipes, gourmet dining, and romantic open-air dinners at Manratan Resort.",
+        "Discover royal Malwa recipes, gourmet dining, and romantic open air dinners at Manratan Resort.",
       keyWords: [
         "Malwa cuisine resort",
         "Manratan fine dining",
@@ -197,17 +197,17 @@ export const blogsData: BlogPost[] = [
     data: `
   <div>
     <p>
-      The Malwa plateau in Central India is celebrated far and wide for its distinct culinary heritage—a harmonious marriage of subtle spices, rich gravies, slow-cooked grains, and delightful sweets that have delighted royal courts for centuries.
+      The Malwa plateau in Central India is celebrated far and wide for its distinct culinary heritage a harmonious marriage of subtle spices, rich gravies, slow cooked grains, and delightful sweets that have delighted royal courts for centuries.
     </p>
 
     <h2>Swadika: Where Every Meal Becomes an Experience</h2>
     <p>
-      At Swadika, the signature pure-vegetarian restaurant of Manratan Resort, our chefs honor this culinary legacy while introducing guests to popular global favorites in an ambiance illuminated by warm signature chandeliers.
+      At Swadika, the signature pure vegetarian restaurant of Manratan Resort, our chefs honor this culinary legacy while introducing guests to popular global favorites in an ambiance illuminated by warm signature chandeliers.
     </p>
 
     <h2>Signature Flavours to Savour</h2>
     <p>
-      Indulge in authentic Dal Bafla, tempered with aromatic desi ghee, tangy Sev Tamatar subzi, and fresh Bhutte ka Kees. Each dish is prepared with traditional time-honored techniques that bring out deep, authentic aromas.
+      Indulge in authentic Dal Bafla, tempered with aromatic desi ghee, tangy Sev Tamatar subzi, and fresh Bhutte ka Kees. Each dish is prepared with traditional time honored techniques that bring out deep, authentic aromas.
     </p>
 
     <h2>Curated Dining for Every Occasion</h2>
@@ -246,7 +246,7 @@ export const blogsData: BlogPost[] = [
 
     <h2>Friday Evening: Arrival & Unwinding</h2>
     <p>
-      Check into your spacious Deluxe or Pool-View Room, take a refreshing dip in the open-air swimming pool, and unwind with a hot gourmet dinner at Swadika Restaurant under the evening stars.
+      Check into your spacious Deluxe or Pool View Room, take a refreshing dip in the open air swimming pool, and unwind with a hot gourmet dinner at Swadika Restaurant under the evening stars.
     </p>
 
     <h2>Saturday: Exploring the 'Kashmir of Malwa'</h2>
@@ -256,7 +256,7 @@ export const blogsData: BlogPost[] = [
 
     <h2>Sunday: Leisure & Rejuvenation</h2>
     <p>
-      Enjoy a leisurely multi-course breakfast, stroll across our landscaped lawns, and take in the fresh countryside air before an effortless drive back home, feeling completely refreshed and renewed.
+      Enjoy a leisurely multi course breakfast, stroll across our landscaped lawns, and take in the fresh countryside air before an effortless drive back home, feeling completely refreshed and renewed.
     </p>
   </div>
   `,
@@ -264,17 +264,17 @@ export const blogsData: BlogPost[] = [
   {
     id: "6",
     slug: "eco-friendly-luxury-sustainable-hospitality",
-    title: "Eco-Friendly Luxury: Sustainable Hospitality at Its Finest",
+    title: "Eco Friendly Luxury: Sustainable Hospitality at Its Finest",
     date: "18 Jan, 2026",
     coverImage: "/images/acc-room11.jpg",
     url: "/images/acc-room11.jpg",
-    alt: "Sustainable Eco-Luxury Stay",
+    alt: "Sustainable Eco Luxury Stay",
     description:
       "Learn how Manratan Resort blends refined modern luxury with environmental stewardship, lush greenery, and conscious resort operations.",
     meta: {
-      title: "Eco-Friendly Luxury & Sustainable Hospitality | Manratan Resort",
+      title: "Eco Friendly Luxury & Sustainable Hospitality | Manratan Resort",
       description:
-        "Discover how Manratan Resort practices sustainable tourism, rainwater harvesting, and zero-plastic hospitality.",
+        "Discover how Manratan Resort practices sustainable tourism, rainwater harvesting, and zero plastic hospitality.",
       keyWords: [
         "Eco luxury resort MP",
         "Sustainable hospitality",
@@ -295,12 +295,12 @@ export const blogsData: BlogPost[] = [
 
     <h2>Energy Efficiency & Water Conservation</h2>
     <p>
-      From intelligent climate control in all 65 rooms to rainwater harvesting and energy-efficient LED illumination throughout our banquet venues and gardens, we prioritize low-impact operational practices.
+      From intelligent climate control in all 65 rooms to rainwater harvesting and energy efficient LED illumination throughout our banquet venues and gardens, we prioritize low impact operational practices.
     </p>
 
     <h2>Locally Sourced Goodness</h2>
     <p>
-      Our culinary team partners with regional farmers to source fresh seasonal vegetables, dairy, and grains for Swadika Restaurant, supporting local agrarian communities while serving farm-fresh food to our diners.
+      Our culinary team partners with regional farmers to source fresh seasonal vegetables, dairy, and grains for Swadika Restaurant, supporting local agrarian communities while serving farm fresh food to our diners.
     </p>
   </div>
   `,

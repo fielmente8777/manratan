@@ -21,7 +21,7 @@ const defaultStats: StatItem[] = [
   },
   {
     value: "65 Rooms",
-    label: "Pool-facing & garden view",
+    label: "Pool facing & garden view",
   },
   {
     value: "4,000 Guests",

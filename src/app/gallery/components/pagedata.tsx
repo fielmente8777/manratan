@@ -43,7 +43,7 @@ export const galleryData = {
     },
     {
       image: "/gardern/gardern1_11zon_11zon.webp",
-      alt: "Garden",
+      alt: "Sky Lawn",
     },
     {
       image: "/roompage/Executive/Executive-room1_11zon.webp",
@@ -71,7 +71,7 @@ export const galleryData = {
     },
     {
       image: "/gardern/gardern2_11zon.webp",
-      alt: "Garden",
+      alt: "Sky Lawn",
     },
     {
       image: "/roompage/Deluxe/Deluxe-room2_11zon.webp",

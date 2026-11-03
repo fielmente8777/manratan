@@ -56,7 +56,7 @@ const ContactInformation = ({
                 `}
               >
                 <div className="flex items-center gap-2 sm:gap-3 text-white">
-                  <span className="flex shrink-0 items-center justify-center transform scale-85 sm:scale-100">
+                  <span className="flex shrink-0 items-center justify-center w-6 sm:w-7">
                     {getIcon(item.type)}
                   </span>
 

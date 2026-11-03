@@ -26,41 +26,81 @@ const History = ({
   images = [],
   title,
   subTitle,
-  tagline,
-  subTagline,
   paragraphs,
   closingQuote,
   description,
 }: AboutHistoryProps) => {
-  const [desktopSwiper, setDesktopSwiper] = useState<SwiperType | null>(null);
-  const [mobileSwiper, setMobileSwiper] = useState<SwiperType | null>(null);
+  const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
 
   const slideList = images.length > 0 ? images : [image];
 
   return (
     <SectionWithContainer
       defaultPadding={false}
-      sectionClassName="bg-tertiary py-12 sm:py-16 lg:py-20"
+      sectionClassName="bg-[#E6E2DB] py-8 sm:py-12 lg:py-16"
     >
+      {/* ================= COMPONENT HEADER (CENTERED AT TOP) ================= */}
+      <div className="mb-6 sm:mb-8 lg:mb-10 flex flex-col items-center justify-center text-center">
+        <div className="relative inline-block text-left">
+          <h2
+            className="
+              text-primary
+              text-3xl
+              sm:text-4xl
+              lg:text-[46px]
+              font-[serif]
+              uppercase
+              leading-none
+              tracking-wide
+            "
+          >
+            <span>{title.slice(0, -1)}</span>
+            <span className="relative inline-block">
+              {title.slice(-1)}
+              <span
+                className="
+                  absolute
+                  top-full
+                  -left-1
+                  sm:-left-1.5
+                  mt-1
+                  sm:mt-1.5
+                  font-golden
+                  text-primary
+                  text-2xl
+                  sm:text-3xl
+                  lg:text-[28px]
+                  normal-case
+                  whitespace-nowrap
+                "
+              >
+                {subTitle}
+              </span>
+            </span>
+          </h2>
+
+          <div className="h-5 sm:h-6" aria-hidden="true" />
+        </div>
+      </div>
+
       <div
         className="
           grid
           grid-cols-1
-          lg:grid-cols-[1.28fr_1fr]
+          lg:grid-cols-[1.2fr_1fr]
           items-center
           gap-8
           lg:gap-10
           xl:gap-14
         "
       >
-        {/* ================= DESKTOP VIEW SLIDER (LEFT) ================= */}
+        {/* ================= IMAGE SLIDER (LEFT ON DESKTOP, TOP ON MOBILE) ================= */}
         <div
           className="
-            hidden
-            lg:block
-            lg:relative
+            relative
             group
-            h-[570px]
+            h-[360px]
+            sm:h-[450px]
             lg:h-[580px]
             overflow-hidden
             shadow-sm
@@ -73,9 +113,9 @@ const History = ({
             speed={600}
             autoplay={{ delay: 4000, disableOnInteraction: false }}
             className="w-full h-full"
-            onSwiper={(swiper) => setDesktopSwiper(swiper)}
+            onSwiper={(swiper) => setSwiperInstance(swiper)}
             renderSlide={(imgSrc, index) => (
-              <div className="relative w-full h-[570px] lg:h-[580px] overflow-hidden">
+              <div className="relative w-full h-[360px] sm:h-[450px] lg:h-[580px] overflow-hidden">
                 <Image
                   src={imgSrc}
                   alt={`${title} Resort - Heritage and Story of Narsinghgarh`}
@@ -90,145 +130,68 @@ const History = ({
             )}
           />
 
-          {/* Desktop Navigation Buttons */}
+          {/* Navigation Buttons */}
           <button
             type="button"
-            onClick={() => desktopSwiper?.slidePrev()}
+            onClick={() => swiperInstance?.slidePrev()}
             aria-label="Previous slide"
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/60 hover:bg-black/85 backdrop-blur-sm text-white text-2xl flex items-center justify-center transition-all shadow-lg cursor-pointer select-none"
+            className="absolute left-3 lg:left-4 top-1/2 -translate-y-1/2 z-20 w-10 lg:w-11 h-10 lg:h-11 rounded-full bg-black/60 hover:bg-black/85 backdrop-blur-sm text-white text-2xl flex items-center justify-center transition-all shadow-lg cursor-pointer select-none"
           >
             ‹
           </button>
           <button
             type="button"
-            onClick={() => desktopSwiper?.slideNext()}
+            onClick={() => swiperInstance?.slideNext()}
             aria-label="Next slide"
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/60 hover:bg-black/85 backdrop-blur-sm text-white text-2xl flex items-center justify-center transition-all shadow-lg cursor-pointer select-none"
+            className="absolute right-3 lg:right-4 top-1/2 -translate-y-1/2 z-20 w-10 lg:w-11 h-10 lg:h-11 rounded-full bg-black/60 hover:bg-black/85 backdrop-blur-sm text-white text-2xl flex items-center justify-center transition-all shadow-lg cursor-pointer select-none"
           >
             ›
           </button>
         </div>
 
-        {/* ================= RIGHT CONTENT (VERTICALLY CENTERED WITH IMAGE) ================= */}
+        {/* ================= RIGHT CONTENT ================= */}
         <div
           className="
             flex
             flex-col
             justify-center
-            py-6
+            py-2
             lg:py-0
             w-full
           "
         >
-          {/* TITLE */}
-          <div className="relative inline-block w-fit">
-            <h2
-              className="
-                text-primary
-                text-3xl
-                sm:text-4xl
-                lg:text-[44px]
-                font-[serif]
-                uppercase
-                leading-none
-                tracking-wide
-              "
-            >
-              <span>{title.slice(0, -1)}</span>
-              <span className="relative inline-block">
-                {title.slice(-1)}
-                <span
-                  className="
-                    absolute
-                    top-full
-                    -left-1
-                    sm:-left-1.5
-                    mt-1
-                    sm:mt-1.5
-                    font-golden
-                    text-primary
-                    text-2xl
-                    sm:text-3xl
-                    lg:text-[28px]
-                    normal-case
-                    whitespace-nowrap
-                  "
-                >
-                  {subTitle}
-                </span>
-              </span>
-            </h2>
+          {/* TRIBUTE SECTION (FROM SCREENSHOT 2) */}
+          <div className="w-full text-center">
+            {/* Headline */}
+            <h3 className="font-[serif] text-2xl sm:text-3xl lg:text-[31px] xl:text-[34px] leading-[1.25] text-primary font-normal">
+              It was{" "}
+              <span className="italic text-[#9E8568] font-[serif]">their name</span>{" "}
+              that
+              <br />
+              became our new beginning.
+            </h3>
 
-            <div className="h-5 sm:h-6" aria-hidden="true" />
+            {/* Divider Line Top */}
+            <div className="w-full border-t border-[#DCD4C7] mt-5 sm:mt-6 mb-4 sm:mb-5" />
+
+            {/* Sub Tribute */}
+            <div className="space-y-2 sm:space-y-2.5">
+              <p className="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-[#9E8568] font-medium">
+                GRANDMOTHER <span className="inline-block text-[8px] sm:text-[9px] mx-1.5 align-middle text-[#9E8568]">♦</span> MOTHER
+              </p>
+              <p className="font-[serif] italic text-primary text-[15.5px] sm:text-[17px] lg:text-[18px] leading-relaxed">
+                Named in honour of a beloved grandmother
+                <br className="hidden sm:inline" />
+                {" "}and mother, Manratan is a legacy of love.
+              </p>
+            </div>
+
+            {/* Divider Line Bottom */}
+            <div className="w-full border-b border-[#DCD4C7] mt-4 sm:mt-5 mb-5 sm:mb-6" />
           </div>
 
-          {/* ================= MOBILE VIEW SLIDER ================= */}
-          <div
-            className="
-              lg:hidden 
-              group
-              relative
-              mt-6
-              sm:mt-8
-              h-[350px]
-              sm:h-[450px]
-              overflow-hidden
-              shadow-md
-            "
-          >
-            <SwiperCarousel
-              data={slideList}
-              modules={[Autoplay]}
-              loop={true}
-              speed={600}
-              autoplay={{ delay: 4000, disableOnInteraction: false }}
-              className="w-full h-full"
-              onSwiper={(swiper) => setMobileSwiper(swiper)}
-              renderSlide={(imgSrc) => (
-                <div className="relative w-full h-[350px] sm:h-[450px] overflow-hidden">
-                  <Image
-                    src={imgSrc}
-                    alt={title}
-                    fill
-                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                  />
-                </div>
-              )}
-            />
-
-            {/* Mobile Navigation Buttons */}
-            <button
-              type="button"
-              onClick={() => mobileSwiper?.slidePrev()}
-              aria-label="Previous slide"
-              className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-sm text-white text-2xl flex items-center justify-center transition-colors shadow-lg cursor-pointer select-none"
-            >
-              ‹
-            </button>
-            <button
-              type="button"
-              onClick={() => mobileSwiper?.slideNext()}
-              aria-label="Next slide"
-              className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-sm text-white text-2xl flex items-center justify-center transition-colors shadow-lg cursor-pointer select-none"
-            >
-              ›
-            </button>
-          </div>
-
-          {/* CONTENT SECTION */}
-          <div className="mt-5 lg:mt-6 space-y-3 lg:space-y-3.5 text-secondary text-[13.5px] lg:text-[14px]">
-            {tagline && (
-              <p className="font-bold text-primary uppercase tracking-wide text-xs lg:text-[12.5px] leading-snug">
-                {tagline}
-              </p>
-            )}
-
-            {subTagline && (
-              <p className="font-medium text-primary text-xs lg:text-[12.5px] leading-snug">
-                {subTagline}
-              </p>
-            )}
-
+          {/* DESCRIPTION PARAGRAPHS */}
+          <div className="space-y-3 lg:space-y-3.5 text-secondary text-[13.5px] lg:text-[14px]">
             {paragraphs && paragraphs.length > 0 ? (
               paragraphs.map((p, idx) => (
                 <p key={idx} className="text-secondary text-[13.5px] lg:text-[14px] leading-[1.65]">
@@ -244,7 +207,7 @@ const History = ({
             )}
 
             {closingQuote && (
-              <p className="font-medium text-primary text-[13.5px] lg:text-[14px] leading-relaxed pt-0.5">
+              <p className="font-medium text-primary text-[13.5px] lg:text-[14px] leading-relaxed pt-1">
                 {closingQuote}
               </p>
             )}

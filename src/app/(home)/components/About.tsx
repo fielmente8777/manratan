@@ -1,12 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { SectionWithContainer } from "@/components/sectionComponants";
 import SwiperCarousel from "@/components/sliders/SwiperCarousel";
 import { Autoplay } from "swiper/modules";
-import type { Swiper as SwiperType } from "swiper";
 
 interface AboutProps {
   title: {
@@ -27,7 +25,6 @@ interface AboutProps {
 }
 
 const About = ({ title, topContent, gallery }: AboutProps) => {
-  const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
   const mobileSlides = gallery.length < 4 ? [...gallery, ...gallery] : gallery;
 
   return (
@@ -108,7 +105,6 @@ const About = ({ title, topContent, gallery }: AboutProps) => {
             speed={600}
             autoplay={{ delay: 4000, disableOnInteraction: false }}
             className="w-full h-full"
-            onSwiper={(swiper) => setSwiperInstance(swiper)}
             renderSlide={(item) => (
               <div className="relative w-full h-[360px] sm:h-[400px]">
                 <Image
@@ -120,24 +116,6 @@ const About = ({ title, topContent, gallery }: AboutProps) => {
               </div>
             )}
           />
-
-          {/* Navigation Controls (Vertically Centered on Image) */}
-          <button
-            type="button"
-            onClick={() => swiperInstance?.slidePrev()}
-            aria-label="Previous image"
-            className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/60 backdrop-blur-sm text-white text-2xl flex items-center justify-center hover:bg-black/80 transition-colors shadow-lg cursor-pointer select-none"
-          >
-            ‹
-          </button>
-          <button
-            type="button"
-            onClick={() => swiperInstance?.slideNext()}
-            aria-label="Next image"
-            className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/60 backdrop-blur-sm text-white text-2xl flex items-center justify-center hover:bg-black/80 transition-colors shadow-lg cursor-pointer select-none"
-          >
-            ›
-          </button>
         </div>
       </div>
 

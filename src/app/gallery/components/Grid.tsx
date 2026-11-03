@@ -18,7 +18,7 @@ const CATEGORIES = [
   "Exterior",
   "Accommodation",
   "Reception",
-  "Garden",
+  "Sky Lawn",
   "Restaurant",
   "Narsinghgarh",
 ];

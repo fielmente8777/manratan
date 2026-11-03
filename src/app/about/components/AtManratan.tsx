@@ -253,7 +253,7 @@ const AtManratan = ({ title, subTitle, slides }: AtManratanProps) => {
   return (
     <SectionWithContainer
       defaultPadding={false}
-      sectionClassName="bg-tertiary pt-12 md:pt-20 pb-16 md:pb-28 lg:pb-32"
+      sectionClassName="bg-tertiary py-10 sm:py-14 lg:py-20"
     >
       {/* ================= TITLE ================= */}
       <div className="mb-8 md:mb-10 flex flex-col items-center justify-center text-center">

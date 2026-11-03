@@ -2,7 +2,7 @@ export const eventsPageData = {
   meta: {
     title: "Events & Celebrations | Manratan Resort",
     description:
-      "Host grand destination weddings, celebrity celebrations, corporate retreats, and unforgettable pre-wedding events at Manratan Resort.",
+      "Host grand destination weddings, celebrity celebrations, corporate retreats, and unforgettable pre wedding events at Manratan Resort.",
   },
   heroData: {
     image: "/events/event5_11zon.webp",
@@ -25,7 +25,7 @@ export const eventsPageData = {
     ],
     headingLabel: "Crafted for Life's Grandest Milestones & Celebrations",
     description:
-      "At Manratan Resort, every celebration is an experience crafted to be remembered. From magnificent royal destination weddings and intimate gatherings to poolside soirées, pre-wedding shoots, and distinguished corporate retreats, every moment is elevated by elegant surroundings, gracious hospitality, and exceptional dining. Set amidst the scenic charm of Narsinghgarh, Manratan brings together the art of celebration and the warmth of belonging.",
+      "At Manratan Resort, every celebration is an experience crafted to be remembered. From magnificent royal destination weddings and intimate gatherings to poolside soirées, pre wedding shoots, and distinguished corporate retreats, every moment is elevated by elegant surroundings, gracious hospitality, and exceptional dining. Set amidst the scenic charm of Narsinghgarh, Manratan brings together the art of celebration and the warmth of belonging.",
   },
   tickerItems: [
     "EXPANSIVE LAWNS AND ROOMS",
@@ -61,10 +61,10 @@ export const eventsPageData = {
     },
     categories: [
       {
-        id: "pre-wedding",
-        title: "Pre-Wedding Events",
+        id: "pre wedding",
+        title: "Pre Wedding Events",
         image: "/events/event1_11zon.webp",
-        alt: "Pre-Wedding Sunset Couple",
+        alt: "Pre Wedding Sunset Couple",
       },
       {
         id: "destination-wedding",

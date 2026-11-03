@@ -60,10 +60,14 @@ export const BannerPlayIcon = ({ className = "" }: { className?: string }) => (
   </svg>
 );
 
-export const MailIcon = () => (
+export const MailIcon = ({
+  className = "w-[18px] h-[14px] sm:w-[22px] sm:h-[18px]",
+}: {
+  className?: string;
+} = {}) => (
   <svg
-    width={29}
-    height={23}
+    className={className}
+
     viewBox="0 0 29 23"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -75,10 +79,14 @@ export const MailIcon = () => (
   </svg>
 );
 
-export const PhoneIcon = () => (
+export const PhoneIcon = ({
+  className = "w-[16px] h-[16px] sm:w-[20px] sm:h-[20px]",
+}: {
+  className?: string;
+} = {}) => (
   <svg
-    width={26}
-    height={26}
+    className={className}
+
     viewBox="0 0 26 26"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -90,10 +98,14 @@ export const PhoneIcon = () => (
   </svg>
 );
 
-export const MapIcon = () => (
+export const MapIcon = ({
+  className = "w-[18px] h-[18px] sm:w-[22px] sm:h-[22px]",
+}: {
+  className?: string;
+} = {}) => (
   <svg
-    width={36}
-    height={36}
+    className={className}
+
     viewBox="0 0 36 36"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -106,6 +118,7 @@ export const MapIcon = () => (
       y={0}
       width={36}
       height={36}
+  
     >
       <rect width={36} height={36} fill="#A5A5A5" />
     </mask>

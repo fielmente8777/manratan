@@ -13,7 +13,10 @@ interface AboutStoryProps {
 
 const About = ({ intro }: AboutStoryProps) => {
   return (
-    <SectionWithContainer sectionClassName="bg-tertiary">
+    <SectionWithContainer
+      defaultPadding={false}
+      sectionClassName="bg-tertiary pt-12 md:pt-20 pb-10 sm:pb-14 md:pb-16"
+    >
       <div className="mx-auto max-w-[760px] text-center">
         <div className="relative inline-block">
           <h2
