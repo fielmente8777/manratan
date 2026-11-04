@@ -32,8 +32,8 @@ export const blogsData: BlogPost[] = [
     slug: "discovering-narasingarh-hidden-gem-malwa",
     title: "Discovering Narsinghgarh: The Hidden Gem of Malwa",
     date: "18 Jan, 2026",
-    coverImage: "/images/manratan-1.jpg",
-    url: "/images/manratan-1.jpg",
+    coverImage: "/homopage/narsinghgarh_11zon.webp",
+    url: "/homopage/narsinghgarh_11zon.webp",
     alt: "Manratan Resort View",
     description:
       "Explore Narsinghgarh, celebrated as the Kashmir of Malwa, featuring emerald wildlife sanctuaries, royal heritage, and luxury stays at Manratan Resort.",
@@ -87,8 +87,8 @@ export const blogsData: BlogPost[] = [
     slug: "destination-weddings-at-manratan-royal-affair",
     title: "Royal Destination Weddings at Manratan Resort",
     date: "18 Jan, 2026",
-    coverImage: "/images/manratan-2.jpg",
-    url: "/images/manratan-2.jpg",
+    coverImage: "/events/event7_11zon.webp",
+    url: "/events/event7_11zon.webp",
     alt: "Destination Weddings at Manratan",
     description:
       "Turn your dream wedding into a majestic affair with expansive lawns, royal decor, gourmet dining, and luxury hospitality at Manratan Resort.",
@@ -134,10 +134,10 @@ export const blogsData: BlogPost[] = [
     slug: "holistic-wellness-and-rejuvenation-retreat",
     title: "Holistic Wellness & Rejuvenation Retreats at Manratan",
     date: "18 Jan, 2026",
-    coverImage: "/images/manratan-3.jpg",
-    url: "/images/manratan-3.jpg",
-    alt: "Wellness & Spa Rejuvenation",
-    description:
+    coverImage: "/aboutpage/swadika1_11zon.webp",
+    url: "/aboutpage/swadika1_11zon.webp",
+      alt: "Wellness & Spa Rejuvenation",
+      description:
       "Escape the city rush and immerse yourself in peaceful morning walks, poolside relaxation, pure veg nutrition, and serene Malwa landscapes.",
     meta: {
       title: "Holistic Wellness & Rejuvenation Retreats | Manratan Resort",
@@ -178,8 +178,8 @@ export const blogsData: BlogPost[] = [
     slug: "culinary-journey-authentic-malwa-flavors",
     title: "A Culinary Journey Through Authentic Malwa Flavors",
     date: "18 Jan, 2026",
-    coverImage: "/images/manratan-4.jpg",
-    url: "/images/manratan-4.jpg",
+    coverImage: "/homopage/dining_11zon.webp",
+    url: "/homopage/dining_11zon.webp",
     alt: "Culinary Dining at Manratan",
     description:
       "Discover royal regional recipes, fragrant spices, and gourmet multi cuisine dining at Swadika Restaurant in Manratan Resort.",
@@ -222,8 +222,8 @@ export const blogsData: BlogPost[] = [
     slug: "weekend-getaway-guide-from-bhopal-indore",
     title: "The Ultimate Weekend Getaway Guide from Bhopal & Indore",
     date: "18 Jan, 2026",
-    coverImage: "/images/acc-room1.jpg",
-    url: "/images/acc-room1.jpg",
+    coverImage: "/aboutpage/history_11zon.webp",
+    url: "/aboutpage/history_11zon.webp",
     alt: "Weekend Escape Road Trip",
     description:
       "Plan a seamless road trip from Bhopal (70 km) or Indore (210 km) to the peaceful hills and luxury of Manratan Resort in Narsinghgarh.",
@@ -266,8 +266,8 @@ export const blogsData: BlogPost[] = [
     slug: "eco-friendly-luxury-sustainable-hospitality",
     title: "Eco Friendly Luxury: Sustainable Hospitality at Its Finest",
     date: "18 Jan, 2026",
-    coverImage: "/images/acc-room11.jpg",
-    url: "/images/acc-room11.jpg",
+    coverImage: "/aboutpage/swadika2_11zon.webp",
+    url: "/aboutpage/swadika2_11zon.webp",
     alt: "Sustainable Eco Luxury Stay",
     description:
       "Learn how Manratan Resort blends refined modern luxury with environmental stewardship, lush greenery, and conscious resort operations.",
