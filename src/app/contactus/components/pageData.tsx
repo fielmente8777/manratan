@@ -9,7 +9,7 @@ export const contactUsData = {
 
   button: {
     label: "View Google Map",
-    href: "https://maps.google.com/?q=Manratan+Resort+Narasingarh+MP",
+    href: "https://maps.google.com/?q=Manratan+Resort+Narsinghgarh+MP",
   },
 
   image: "/reception/reception1_11zon.webp",

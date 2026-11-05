@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: { default: "Manratan Resort, Narsinghgarh", template: "%s | Manratan Resort" },
   description:
-    "Manratan Resort, Narsinghgarh: 65 rooms and suites, Swadika pure vegetarian restaurant, the Blue Diamond pool, banquet halls and wedding lawns in the hills of Malwa, Madhya Pradesh.",
+    "Manratan Resort, where every heart finds its gem. 65 rooms and suites in Narsinghgarh, the Mini Kashmir of Malwa: Swadika pure vegetarian restaurant, the Blue Diamond pool, banquet halls and wedding lawns.",
   openGraph: {
     type: "website",
     siteName: "Manratan Resort",
@@ -59,10 +59,11 @@ const hotelSchema = {
   "@context": "https://schema.org",
   "@type": ["Hotel", "LodgingBusiness"],
   name: "Manratan Resort",
+  slogan: site.tagline,
   url: site.url,
   image: [`${site.url}/media/facade-dusk.webp`, `${site.url}/media/pool-dusk.webp`, `${site.url}/media/suite-1.webp`],
   description:
-    "Resort in Narsinghgarh, Madhya Pradesh with 65 rooms and suites, a pure vegetarian restaurant, an outdoor swimming pool, banquet halls and wedding lawns.",
+    "Resort in Narsinghgarh, Madhya Pradesh, the Mini Kashmir of Malwa, with 65 rooms and suites, a pure vegetarian restaurant, an outdoor swimming pool, a Pooja Room, a Parlour Room, banquet halls and wedding lawns.",
   telephone: site.contact.phone[0],
   email: site.contact.email,
   address: {
@@ -79,11 +80,13 @@ const hotelSchema = {
   amenityFeature: [
     { "@type": "LocationFeatureSpecification", name: "Outdoor swimming pool", value: true },
     { "@type": "LocationFeatureSpecification", name: "Restaurant", value: true },
-    { "@type": "LocationFeatureSpecification", name: "Free Wi-Fi", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Wi-Fi", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Pooja Room", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Parlour Room", value: true },
     { "@type": "LocationFeatureSpecification", name: "Parking", value: true },
     { "@type": "LocationFeatureSpecification", name: "Banquet hall", value: true },
   ],
-  servesCuisine: ["Vegetarian", "North Indian", "Malwa"],
+  servesCuisine: ["Vegetarian", "Indian", "Multi-cuisine"],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

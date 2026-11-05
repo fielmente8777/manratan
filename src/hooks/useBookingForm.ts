@@ -47,7 +47,7 @@ const initialFormData: BookingFormData = {
   checkOut: "",
   message: "",
   city: "",
-  guests: "1",
+  guests: "",
 };
 
 export const useBookingForm = ({
@@ -131,6 +131,12 @@ export const useBookingForm = ({
       isValid = false;
     }
 
+    // YYYY-MM-DD strings compare correctly as text.
+    if (formData.checkIn && formData.checkOut && formData.checkOut <= formData.checkIn) {
+      newErrors.checkOut = "Check-out must be after check-in";
+      isValid = false;
+    }
+
     setErrors(newErrors);
     return isValid;
   }, [formData, includeCheckIn, includeCheckOut, includePhone, includeEmail]);
@@ -167,6 +173,7 @@ export const useBookingForm = ({
       const descriptionPart: string[] = [];
       if (includeCheckIn) descriptionPart.push(`Check-in: ${formData.checkIn}`);
       if (includeCheckOut) descriptionPart.push(`Check-out: ${formData.checkOut}`);
+      if (formData.guests) descriptionPart.push(`Guests: ${formData.guests}`);
       if (includeMessage) descriptionPart.push(`Message: ${formData.message}`);
       if (formData.city) descriptionPart.push(`City: ${formData.city}`);
 
@@ -193,7 +200,8 @@ export const useBookingForm = ({
         resetForm();
         if (onSubmitSuccess) onSubmitSuccess();
         setTimeout(() => setSubmitSuccess(false), 3000);
-        window.open("/thank-you/", "_blank");
+        // Same tab: a new tab opened after an await is usually blocked as a pop-up.
+        window.location.assign("/thank-you/");
       } else {
         alert(data.message || "Something went wrong. Please try again.");
       }

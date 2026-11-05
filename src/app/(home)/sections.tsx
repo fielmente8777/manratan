@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import FilmPlayer from "@/components/site/FilmPlayer";
+import AmenityIcon from "@/components/site/AmenityIcon";
 import { Container, Diamond, LineLink, Title } from "@/components/site/ui";
-import { nearby, photo, venues, type Photo } from "@/data/site";
+import { amenities, fort, nearby, photo, redCoral, venues, walkthrough, type Photo, type Place } from "@/data/site";
 
 function Figure({ img, caption, className = "", sizes = "50vw", focus }: { img: Photo; caption?: string; className?: string; sizes?: string; focus?: string }) {
   return (
@@ -25,10 +26,13 @@ export function About() {
           <Title main="About" script="The Resort" />
           <div id="about-title">
             <p className="t-body max-w-[64ch]">
-              Set in the green hills of Narsinghgarh, the town they call the Kashmir of Malwa, Manratan Resort pairs
-              contemporary comfort with the warmth of a family that loves to host. Stay in one of 65 rooms and suites, dine on
-              pure vegetarian food at Swadika, spend the afternoon by the Blue Diamond pool and celebrate on lawns made for the
-              biggest occasions.
+              In the green hills of Narsinghgarh, the Mini Kashmir of Malwa, Manratan Resort pairs contemporary comfort with the
+              warmth of a family that loves to host. Stay in one of 65 rooms and suites, dine on pure vegetarian food at Swadika,
+              spend the afternoon by the Blue Diamond pool and celebrate on lawns made for the biggest occasions.
+            </p>
+            <p className="t-body mt-5 max-w-[64ch]">
+              The name is a tribute: Manratan was named in honour of a beloved grandmother and mother, and that sense of family runs
+              through every stay.
             </p>
             <LineLink href="/about" className="mt-8">Our legacy</LineLink>
           </div>
@@ -38,15 +42,16 @@ export function About() {
           <Figure
             img={photo("pool-breakfast", "Two guests sharing a floating breakfast in the Blue Diamond pool")}
             caption="Floating breakfast in the Blue Diamond pool"
-            className="h-[560px] md:h-[640px]"
+            className="h-[480px] md:h-[640px]"
             sizes="(max-width: 768px) 100vw, 33vw"
             focus="50% 60%"
           />
           <Figure
-            img={photo("ngh-lake-temple", "Jal Mandir on Paras Ram Sagar at sunset, with Narsinghgarh Fort above")}
-            caption="Jal Mandir and the fort, a short drive into Narsinghgarh"
-            className="h-[380px] md:h-[640px]"
+            img={photo("facade-bluehour", "Manratan Resort facade and forecourt at blue hour")}
+            caption="The forecourt at blue hour"
+            className="h-[300px] md:h-[640px]"
             sizes="(max-width: 768px) 100vw, 66vw"
+            focus="55% 50%"
           />
         </div>
       </Container>
@@ -57,6 +62,7 @@ export function About() {
 /* ------------------------------------------------------------------ */
 
 export function Walkthrough() {
+  const mins = Math.round(walkthrough.duration);
   return (
     <section id="walkthrough" className="scroll-mt-20 bg-ink py-24 text-stone md:py-32" aria-labelledby="walk-title">
       <Container>
@@ -65,8 +71,8 @@ export function Walkthrough() {
             <Title main="A walk through" script="Manratan" tone="light" />
           </div>
           <p className="t-body-light max-w-[54ch]">
-            Seventy seconds, from first light over the fields to the facade glowing at night. Pick a chapter to jump straight to
-            the rooms, Swadika, the pool, the banquet halls or Narsinghgarh itself.
+            About {mins} seconds, from first light over the fields to the facade lit up at night. Pick a chapter to jump straight to
+            the suites, Swadika, the pool, the banquet halls or Narsinghgarh itself.
           </p>
         </div>
         <FilmPlayer />
@@ -78,10 +84,10 @@ export function Walkthrough() {
 /* ------------------------------------------------------------------ */
 
 const spaces = [
-  { label: "Reception", focus: "31% 55%", href: "/about", line: "A namaste at the door, and the lobby's crystal chandeliers", img: photo("reception-welcome", "Reception team greeting guests with a namaste") },
-  { label: "Rooms", focus: "60% 50%", href: "/accommodation", line: "Five styles of room, from Deluxe to the Suite", img: photo("suite-bed", "Suite bed dressed in Manratan linen with towel art") },
-  { label: "Banquet", focus: "55% 50%", href: "/events", line: "Blue Sapphire and Golden Sapphire halls", img: photo("blue-sapphire-stage", "Blue Sapphire banquet hall with stage") },
-  { label: "Pool", focus: "50% 50%", href: "/gallery", line: "The Blue Diamond pool, by day and after dark", img: photo("pool-splash", "Guest splashing water at the Blue Diamond pool") },
+  { label: "Reception", focus: "31% 55%", href: "/gallery?category=lobby", line: "A namaste at the door, and the lobby's crystal chandeliers", img: photo("reception-welcome", "Reception team greeting guests with a namaste") },
+  { label: "Rooms", focus: "60% 50%", href: "/accommodation", line: "Five styles of room, from Deluxe to the Executive Suite", img: photo("suite-bed", "Executive Suite bed dressed in Manratan linen with towel art") },
+  { label: "Banquet", focus: "50% 50%", href: "/events", line: "Blue Sapphire and Golden Sapphire halls", img: photo("blue-sapphire-full", "Blue Sapphire banquet hall fully set for a celebration") },
+  { label: "Pool", focus: "50% 50%", href: "/gallery?category=swimming-pool", line: "The Blue Diamond pool, by day and after dark", img: photo("pool-splash", "Guest splashing water at the Blue Diamond pool") },
 ];
 
 export function Spaces() {
@@ -113,10 +119,66 @@ export function Spaces() {
         </div>
 
         <p className="t-body mt-12 max-w-[72ch]">
-          From the grand reception and 65 guest rooms to the chandelier-lit Swadika restaurant and the open-air Blue Diamond
-          pool, every space at Manratan is designed to make a stay feel effortless, with modern comforts and warm, personal care
+          From the grand reception and 65 guest rooms to the chandelier-lit Swadika restaurant and the open-air Blue Diamond pool,
+          every space at Manratan is designed to make a stay feel effortless, with modern comforts and warm, personal care
           throughout.
         </p>
+      </Container>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+
+export function Amenities() {
+  const featured = amenities.filter((a) => a.featured);
+  const rest = amenities.filter((a) => !a.featured);
+  return (
+    <section id="amenities" className="scroll-mt-20 bg-stone-deep py-24 md:py-32" aria-labelledby="amenities-title">
+      <Container>
+        <div className="grid gap-8 md:grid-cols-[0.85fr_1.4fr] md:items-end md:gap-16">
+          <div id="amenities-title">
+            <Title main="Amenities" script="Thoughtfully provided" />
+          </div>
+          <p className="t-body max-w-[60ch]">
+            Beyond the rooms and the pool, Manratan keeps a few spaces many resorts forget, so families and wedding parties have
+            everything they need under one roof.
+          </p>
+        </div>
+
+        <div className="mt-14 grid gap-4 md:grid-cols-2">
+          {featured.map((a) => (
+            <article key={a.name} className="relative overflow-hidden bg-ink px-8 py-10 text-stone sm:px-10 sm:py-12">
+              <Diamond className="absolute right-8 top-8 h-5 w-5 text-brass-light/70" />
+              <AmenityIcon name={a.icon} className="h-12 w-12 text-brass-light" />
+              <h3 className="t-display mt-6 text-[clamp(1.9rem,3vw,2.6rem)]">{a.name}</h3>
+              <p className="t-body-light mt-3 max-w-[40ch]">{a.note}</p>
+            </article>
+          ))}
+        </div>
+
+        <ul className="mt-4 grid gap-px overflow-hidden bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
+          {rest.map((a) => {
+            const body = (
+              <>
+                <AmenityIcon name={a.icon} className="h-8 w-8 text-brass" />
+                <p className="t-display mt-5 text-[1.2rem]">{a.name}</p>
+                <p className="t-body mt-2 text-[0.88rem] leading-relaxed">{a.note}</p>
+              </>
+            );
+            return (
+              <li key={a.name} className="bg-stone">
+                {a.href ? (
+                  <Link href={a.href} className="group block h-full p-7 transition-colors hover:bg-white">
+                    {body}
+                  </Link>
+                ) : (
+                  <div className="h-full p-7">{body}</div>
+                )}
+              </li>
+            );
+          })}
+        </ul>
       </Container>
     </section>
   );
@@ -132,27 +194,29 @@ export function Celebrations() {
           <Title main="Events" script="At Manratan Resort" align="center" tone="light" />
         </div>
         <p className="t-body-light mx-auto mt-8 max-w-[66ch] text-center">
-          Destination weddings and pre-wedding soirées, sangeet nights in the Blue Sapphire hall, sundowners on the Sky Lawn and
-          receptions for up to 4,000 guests on the Red Coral Lawn, with pure vegetarian catering and a team that has done it many
-          times before.
+          Destination weddings and pre-wedding soirées, sangeet nights in the Blue Sapphire hall, candlelight dinners by the pool
+          and receptions for up to 4,000 guests on the Red Coral Lawn, with pure vegetarian catering throughout.
         </p>
 
         <div className="mt-14 grid gap-4 sm:grid-cols-2 md:gap-6">
           {venues.map((v) => (
             <Link key={v.name} href="/events" className="group relative block aspect-[16/11] overflow-hidden">
               <Image src={v.image.src} alt={v.image.alt} fill sizes="(max-width: 640px) 100vw, 50vw" className="img-drift object-cover" />
-              <span className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
+              <span className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent" />
               <span className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
-                <span className="t-label text-stone/70">{v.kind}</span>
+                <span className="t-label text-stone/75">{v.kind}</span>
                 <span className="t-display mt-2 flex items-center gap-3 text-[clamp(1.6rem,2.6vw,2.4rem)]">
                   <Diamond className="h-4 w-4 text-brass-light" />
                   {v.name}
                 </span>
-                <span className="mt-2 block max-w-[44ch] text-sm text-stone/80">{v.detail}</span>
+                <span className="mt-2 block max-w-[46ch] text-sm text-stone/85">{v.detail}</span>
               </span>
             </Link>
           ))}
         </div>
+        <p className="mx-auto mt-10 max-w-[60ch] text-center text-sm text-stone/75">
+          <span className="t-label text-stone">{redCoral.name}</span> · {redCoral.kind.split(" · ")[1]} · {redCoral.detail.toLowerCase()}.
+        </p>
 
         <div className="mt-12 text-center">
           <LineLink href="/events" tone="light">Explore celebrations</LineLink>
@@ -168,25 +232,25 @@ export function EvolvesWithLight() {
   const frames = [
     { img: photo("skylawn-sunset-tall", "Sky Lawn seating as the sun sets over the hills"), when: "Late afternoon", where: "Sky Lawn", cls: "mt-16" },
     { img: photo("pool-dusk", "Blue Diamond pool from above at dusk, lights on"), when: "Dusk", where: "Blue Diamond pool", cls: "" },
-    { img: photo("facade-night", "Manratan Resort facade lit up at night"), when: "Night", where: "The facade", cls: "mt-28" },
   ];
+  const night = photo("facade-night-full", "Manratan Resort's full facade lit up at night, seen from the forecourt");
   return (
-    <section className="overflow-hidden bg-stone py-24 md:py-36">
+    <section className="overflow-hidden bg-stone py-24 md:py-36" aria-labelledby="light-title">
       <Container>
         <div className="grid items-center gap-14 lg:grid-cols-[0.85fr_1.4fr]">
-          <div>
+          <div id="light-title">
             <Title main="The experience evolves with the light" script="A softer, deeper atmosphere" size="md" />
             <p className="t-body mt-8 max-w-[48ch]">
               Afternoons on the Sky Lawn turn gold as the sun drops behind the hills. At dusk the pool lights come on, and by night
               the whole facade glows warm against the dark Malwa sky.
             </p>
-            <LineLink href="/gallery" className="mt-8">Explore the gallery</LineLink>
+            <LineLink href="/gallery?category=exteriors" className="mt-8">See the resort after dark</LineLink>
           </div>
-          <div className="grid grid-cols-3 gap-3 sm:gap-5">
+          <div className="grid grid-cols-2 gap-3 sm:gap-5">
             {frames.map((f) => (
               <figure key={f.when} className={f.cls}>
-                <div className="relative aspect-[3/5] overflow-hidden bg-ink/10">
-                  <Image src={f.img.src} alt={f.img.alt} fill sizes="(max-width: 1024px) 33vw, 22vw" className="object-cover" />
+                <div className="relative aspect-[3/4] overflow-hidden bg-ink/10">
+                  <Image src={f.img.src} alt={f.img.alt} fill sizes="(max-width: 1024px) 50vw, 30vw" className="object-cover" />
                 </div>
                 <figcaption className="mt-3 text-[0.72rem] uppercase tracking-[0.18em] text-taupe">
                   {f.when}
@@ -197,6 +261,19 @@ export function EvolvesWithLight() {
           </div>
         </div>
       </Container>
+
+      <figure className="relative mt-20 md:mt-28" aria-labelledby="night-title">
+        <div className="relative h-[70svh] min-h-[420px] w-full overflow-hidden bg-ink md:h-[86svh]">
+          <Image src={night.src} alt={night.alt} fill sizes="100vw" className="object-cover object-[58%_50%]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
+          <figcaption className="absolute inset-x-0 bottom-0">
+            <Container className="pb-10 text-stone md:pb-14">
+              <p id="night-title" className="t-display text-[clamp(2.2rem,5vw,4.4rem)] leading-none">Manratan by night</p>
+              <p className="mt-3 max-w-[46ch] text-sm text-stone/85">The facade lit from end to end, as guests arrive for an evening celebration.</p>
+            </Container>
+          </figcaption>
+        </div>
+      </figure>
     </section>
   );
 }
@@ -216,15 +293,15 @@ export function Swadika() {
               <Image src="/media/swadika-guests.webp" alt="Families enjoying lunch at Swadika" fill sizes="(max-width: 640px) 62vw, 26vw" className="object-cover" />
             </div>
           </div>
-          <div className="lg:pt-0 sm:pt-12">
+          <div className="sm:pt-12 lg:pt-0">
             <div id="swadika-title">
               <Title main="Swadika" script="Pure vegetarian dining" />
             </div>
             <p className="t-body mt-8 max-w-[46ch]">
-              North Indian favourites, regional Malwa recipes and global vegetarian dishes, cooked with fresh ingredients and served
-              under Swadika&apos;s chandeliers. The hall seats up to 100, so family lunches and festive dinners never feel crowded.
+              Authentic Indian and global flavours, all pure vegetarian, served in a contemporary hall lit by a signature chandelier.
+              Swadika seats 80 to 100, so family lunches and festive dinners never feel crowded.
             </p>
-            <LineLink href="/blogs/culinary-journey-authentic-malwa-flavors" className="mt-8">The flavours of Malwa</LineLink>
+            <LineLink href="/gallery?category=dining" className="mt-8">See Swadika</LineLink>
           </div>
         </div>
       </Container>
@@ -234,48 +311,110 @@ export function Swadika() {
 
 /* ------------------------------------------------------------------ */
 
-export function PlacesNearby() {
-  const [jal, fort, town, hill, chhatri] = nearby.featured;
-  const Card = ({ p, tall = false, sizes }: { p: (typeof nearby.featured)[number]; tall?: boolean; sizes: string }) => (
+function PlaceCard({ p, sizes }: { p: Place; sizes: string }) {
+  return (
     <article className="flex h-full flex-col">
-      <div className={`relative overflow-hidden bg-ink/10 ${tall ? "aspect-[4/3] lg:aspect-auto lg:flex-1" : "aspect-[4/3]"}`}>
-        <Image src={p.image.src} alt={p.image.alt} fill sizes={sizes} className="object-cover" />
-      </div>
+      {p.image && (
+        <div className="relative aspect-[4/3] overflow-hidden bg-ink/10">
+          <Image src={p.image.src} alt={p.image.alt} fill sizes={sizes} className="object-cover" />
+        </div>
+      )}
       <h3 className="t-display mt-5 text-[1.35rem]">{p.name}</h3>
       <p className="mt-1 text-[0.72rem] uppercase tracking-[0.2em] text-brass">{p.where}</p>
       <p className="t-body mt-2 max-w-[52ch] text-[0.92rem]">{p.note}</p>
     </article>
   );
+}
+
+/** Narsinghgarh Fort leads: photograph and text when a photo is supplied, a text-led panel until then. */
+function FortFeature() {
+  const facts = fort.facts && (
+    <ul className="mt-8 grid grid-cols-2 gap-px bg-stone/15 sm:grid-cols-4" aria-label="The fort in numbers">
+      {fort.facts.map((f) => {
+        const [n, ...rest] = f.split(" ");
+        return (
+          <li key={f} className="bg-ink px-3 py-4 text-center">
+            <span className="t-display block text-2xl">{n}</span>
+            <span className="mt-1 block text-[0.7rem] uppercase tracking-[0.16em] text-stone/70">{rest.join(" ")}</span>
+          </li>
+        );
+      })}
+    </ul>
+  );
+  const heading = (
+    <>
+      <p className="t-label text-brass-light">The heart of Narsinghgarh</p>
+      <h3 id="fort-title" className="t-display mt-4 text-[clamp(2.2rem,4.4vw,4rem)] leading-[1.02]">{fort.name}</h3>
+      <p className="mt-3 text-[0.75rem] uppercase tracking-[0.2em] text-stone/70">{fort.where}</p>
+    </>
+  );
+
+  if (fort.image) {
+    return (
+      <article className="grid overflow-hidden bg-ink text-stone lg:grid-cols-[1.25fr_1fr]" aria-labelledby="fort-title">
+        <div className="relative min-h-[320px] lg:min-h-[520px]">
+          <Image src={fort.image.src} alt={fort.image.alt} fill sizes="(max-width: 1024px) 100vw, 56vw" className="object-cover" />
+        </div>
+        <div className="flex flex-col justify-center px-8 py-12 sm:px-12 lg:py-16">
+          {heading}
+          <p className="t-body-light mt-6 max-w-[48ch]">{fort.note}</p>
+          {facts}
+        </div>
+      </article>
+    );
+  }
+
+  return (
+    <article
+      className="relative overflow-hidden bg-ink bg-[radial-gradient(ellipse_at_12%_0%,#3a2a1d,transparent_55%)] px-8 py-14 text-stone sm:px-12 lg:px-16 lg:py-20"
+      aria-labelledby="fort-title"
+    >
+      <Diamond className="absolute right-8 top-8 h-6 w-6 text-brass-light/60 lg:right-12 lg:top-12" />
+      <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-end lg:gap-16">
+        <div>{heading}</div>
+        <div>
+          <p className="t-body-light max-w-[52ch]">{fort.note}</p>
+          {facts}
+        </div>
+      </div>
+    </article>
+  );
+}
+
+export function PlacesNearby() {
   return (
     <section id="nearby" className="scroll-mt-20 bg-stone py-24 md:py-32" aria-labelledby="nearby-title">
       <Container>
         <div className="grid gap-8 md:grid-cols-[0.85fr_1.4fr] md:items-end md:gap-16">
           <div id="nearby-title">
-            <Title main="Places" script="Nearby" />
+            <Title main="Narsinghgarh" script="The Mini Kashmir of Malwa" />
           </div>
           <p className="t-body max-w-[60ch]">
-            Narsinghgarh keeps a fort on its ridge, a temple out on its lake and forest on every side. A few places worth building
-            into your stay:
+            A fort-palace on the hill, a temple out on the lake and forest on every side. Build a morning or an evening of your stay
+            around these:
           </p>
         </div>
 
+        <div className="mt-14">
+          <FortFeature />
+        </div>
+
         <div className="mt-14 grid gap-x-6 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
-          <div className="md:col-span-2 lg:row-span-2"><Card p={jal} tall sizes="(max-width: 1024px) 100vw, 66vw" /></div>
-          <Card p={fort} sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" />
-          <Card p={town} sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" />
-          <Card p={hill} sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" />
-          <Card p={chhatri} sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" />
-          <div className="md:col-span-2 lg:col-span-1 border-t border-ink/15 pt-6">
-            <p className="t-display text-[1.35rem]">Also worth the trip</p>
-            <ul className="mt-4 divide-y divide-ink/10">
-              {nearby.more.map((m) => (
-                <li key={m.name} className="py-4">
-                  <p className="font-medium text-ink text-[0.95rem]">{m.name}</p>
-                  <p className="t-body mt-1 text-[0.88rem] leading-relaxed">{m.note}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {nearby.featured.map((p) => (
+            <PlaceCard key={p.name} p={p} sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+          ))}
+        </div>
+
+        <div className="mt-16 border-t border-ink/15 pt-8">
+          <p className="t-display text-[1.35rem]">Also worth the trip</p>
+          <ul className="mt-4 grid gap-x-12 sm:grid-cols-2">
+            {nearby.more.map((m) => (
+              <li key={m.name} className="border-b border-ink/10 py-5">
+                <p className="text-[0.95rem] font-medium text-ink">{m.name}</p>
+                <p className="t-body mt-1 text-[0.88rem] leading-relaxed">{m.note}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </Container>
     </section>

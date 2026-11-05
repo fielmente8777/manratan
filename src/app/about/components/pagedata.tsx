@@ -10,7 +10,7 @@ export const aboutData = {
       title: "A Timeless Escape",
       subTitle: "Our Story",
       description:
-        "At Manratan Resort, we believe every stay should be more than just a place to spend the night. Located in the scenic surroundings of Narsinghgarh celebrated as the Kashmir of Malwa our resort brings together modern comfort, warm hospitality and thoughtfully designed spaces for a relaxing getaway. From well appointed rooms and refreshing poolside moments to delightful dining and beautiful views, every detail is designed to make your stay comfortable and memorable. Whether you are travelling with family, enjoying a peaceful escape or celebrating a special occasion, Manratan Resort offers the perfect setting to relax, reconnect and create lasting memories.",
+        "At Manratan Resort, we believe every stay should be more than just a place to spend the night. Located in the scenic surroundings of Narsinghgarh celebrated as the Mini Kashmir of Malwa our resort brings together modern comfort, warm hospitality and thoughtfully designed spaces for a relaxing getaway. From well appointed rooms and refreshing poolside moments to delightful dining and beautiful views, every detail is designed to make your stay comfortable and memorable. Whether you are travelling with family, enjoying a peaceful escape or celebrating a special occasion, Manratan Resort offers the perfect setting to relax, reconnect and create lasting memories.",
     },
   },
 

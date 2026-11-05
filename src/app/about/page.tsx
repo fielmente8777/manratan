@@ -25,7 +25,7 @@ export default function AboutPage() {
       <section className="py-24 md:py-32">
         <Container className="grid gap-14 lg:grid-cols-[1fr_1.1fr] lg:items-center">
           <div>
-            <Title main="A timeless escape" script="In the Kashmir of Malwa" size="md" />
+            <Title main="A timeless escape" script="In the Mini Kashmir of Malwa" size="md" />
             <p className="t-body mt-8 max-w-[58ch]">
               We believe a stay should be more than a place to spend the night. In the scenic surroundings of Narsinghgarh, Manratan
               brings together modern comfort, warm hospitality and thoughtfully designed spaces: well-appointed rooms, poolside
@@ -66,9 +66,9 @@ export default function AboutPage() {
           <Title main="At Manratan" script="Resort" />
           <div className="mt-14 grid gap-5 md:grid-cols-3">
             {[
-              { img: photo("swadika-room", "Swadika restaurant set for lunch"), t: "Swadika", d: "Pure vegetarian North Indian, Malwa and global dishes in a chandelier-lit hall for 100." },
-              { img: photo("pool-friends", "Two friends laughing at the edge of the Blue Diamond pool"), t: "Blue Diamond pool", d: "An open-air pool for slow afternoons, floating breakfasts and haldi mornings." },
-              { img: photo("skylawn-sunset", "Sky Lawn lounge at sunset"), t: "Sky Lawn", d: "A rooftop lawn for sundowners and cocktail evenings above the hills." },
+              { img: photo("swadika-room", "Swadika restaurant set for lunch"), t: "Swadika", d: "Pure vegetarian, multi-cuisine dining, Indian and global, under a signature chandelier, for 80 to 100 guests." },
+              { img: photo("pool-friends", "Two friends laughing at the edge of the Blue Diamond pool"), t: "Blue Diamond pool", d: "An open-air pool for slow afternoons and floating breakfasts, with candlelight dinners and proposals by the water." },
+              { img: photo("skylawn-sunset", "Sky Lawn lounge at sunset"), t: "Sky Lawn", d: "An intimate open-air terrace for up to 20 guests, made for sundowners and private celebrations." },
             ].map((c) => (
               <article key={c.t}>
                 <div className="relative aspect-[4/5] overflow-hidden bg-ink/10">

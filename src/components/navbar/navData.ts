@@ -2,7 +2,7 @@ export const navData = {
   logo: "/images/nav.png",
 
   location: {
-    label: "NARASINGARH, MP",
+    label: "NARSINGHGARH, MP",
     href: "#",
   },
 

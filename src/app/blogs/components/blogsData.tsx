@@ -36,14 +36,14 @@ export const blogsData: BlogPost[] = [
     url: "/media/ngh-lake-temple.webp",
     alt: "Jal Mandir on Paras Ram Sagar with Narsinghgarh Fort on the ridge",
     description:
-      "Explore Narsinghgarh, celebrated as the Kashmir of Malwa, featuring emerald wildlife sanctuaries, royal heritage, and luxury stays at Manratan Resort.",
+      "Explore Narsinghgarh, celebrated as the Mini Kashmir of Malwa, featuring emerald wildlife sanctuaries, royal heritage, and luxury stays at Manratan Resort.",
     meta: {
       title: "Discovering Narsinghgarh: The Hidden Gem of Malwa | Manratan Resort",
       description:
-        "Explore Narsinghgarh, the Kashmir of Malwa, featuring emerald wildlife sanctuaries, royal heritage, and luxury stays at Manratan Resort.",
+        "Explore Narsinghgarh, the Mini Kashmir of Malwa, featuring emerald wildlife sanctuaries, royal heritage, and luxury stays at Manratan Resort.",
       keyWords: [
         "Narsinghgarh resort",
-        "Kashmir of Malwa",
+        "Mini Kashmir of Malwa",
         "Manratan Resort",
         "Heritage resort Madhya Pradesh",
         "Chidi Kho sanctuary",
@@ -53,7 +53,7 @@ export const blogsData: BlogPost[] = [
     data: `
   <div>
     <p>
-      When wanderlust calls for places that whisper stories of regal grandeur while wrapping you in natural tranquility, Narsinghgarh emerges as a jewel waiting to be discovered. Often celebrated as the 'Kashmir of Malwa', this enchanted town in Madhya Pradesh captivates every traveler with its misty hills, pristine lakes, and rich royal heritage.
+      When wanderlust calls for places that whisper stories of regal grandeur while wrapping you in natural tranquility, Narsinghgarh emerges as a jewel waiting to be discovered. Often celebrated as the 'Mini Kashmir of Malwa', this enchanted town in Madhya Pradesh captivates every traveler with its misty hills, pristine lakes, and rich royal heritage.
     </p>
 
     <h2>The Royal Heritage of Narsinghgarh</h2>
@@ -249,7 +249,7 @@ export const blogsData: BlogPost[] = [
       Check into your Deluxe Room or Executive Family Room, take a refreshing dip in the open air swimming pool, and unwind over a hot dinner at Swadika Restaurant.
     </p>
 
-    <h2>Saturday: Exploring the 'Kashmir of Malwa'</h2>
+    <h2>Saturday: Exploring the 'Mini Kashmir of Malwa'</h2>
     <p>
       Spend your morning visiting the majestic Narsinghgarh Fort and Paras Ram Sagar lake. Later, explore the Chidi Kho Wildlife Sanctuary, an emerald forest teeming with peacocks, migratory birds, and serene water bodies.
     </p>

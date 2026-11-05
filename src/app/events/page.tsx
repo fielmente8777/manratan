@@ -3,12 +3,12 @@ import Image from "next/image";
 import PageHero from "@/components/site/PageHero";
 import BookButton from "@/components/site/BookButton";
 import { Container, Diamond, Title } from "@/components/site/ui";
-import { photo, site, venues } from "@/data/site";
+import { photo, redCoral, site, venues } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Weddings & Events in Narsinghgarh",
   description:
-    "Wedding and banquet venues at Manratan Resort, Narsinghgarh: the Blue Sapphire and Golden Sapphire halls, Sky Lawn, poolside and the Red Coral Lawn for up to 4,000 guests, with pure vegetarian catering.",
+    "Wedding and event venues at Manratan Resort, Narsinghgarh, the Mini Kashmir of Malwa: Blue Sapphire (300–400 guests) and Golden Sapphire (25–80) halls, the Blue Diamond poolside, Sky Lawn and the Red Coral Lawn for up to 4,000 guests, with pure vegetarian catering.",
   alternates: { canonical: "/events" },
 };
 
@@ -16,15 +16,15 @@ const occasions = [
   { name: "Destination weddings", note: "Rooms for the family, halls and lawns for every ceremony, all in one place." },
   { name: "Haldi, mehendi & sangeet", note: "Marigold mornings by the pool and music nights in the Blue Sapphire hall." },
   { name: "Receptions", note: "The Red Coral Lawn takes up to 4,000 guests under the open sky." },
-  { name: "Birthdays & anniversaries", note: "Sky Lawn sundowners or a long family dinner at Swadika." },
-  { name: "Corporate events", note: "Conference set-ups with stage, screen and podium, plus rooms for the team." },
-  { name: "Gala dinners", note: "Bespoke pure vegetarian menus, served the way you want them." },
+  { name: "Birthdays & anniversaries", note: "The Golden Sapphire hall, a Sky Lawn evening or a long family dinner at Swadika." },
+  { name: "Candlelight dinners & proposals", note: "A table for two by the Blue Diamond pool, and proposals arranged at the poolside." },
+  { name: "Corporate events", note: "Conference set-ups with screen and podium, a projector in the Golden Sapphire hall, and rooms for the team." },
 ];
 
 export default function EventsPage() {
   return (
     <main className="bg-stone">
-      <PageHero image={photo("blue-sapphire-stage", "Blue Sapphire banquet hall dressed for a wedding reception")} title="Celebrations" script="At Manratan" />
+      <PageHero image={photo("blue-sapphire-lounge", "Blue Sapphire banquet hall with lounge seating and stage")} title="Celebrations" script="At Manratan" />
 
       <section className="py-24 md:py-32">
         <Container className="grid gap-14 lg:grid-cols-[1fr_1.1fr] lg:items-center">
@@ -33,7 +33,7 @@ export default function EventsPage() {
             <p className="t-body mt-8 max-w-[56ch]">
               From royal destination weddings and intimate family gatherings to poolside soirées, pre-wedding shoots and corporate
               retreats, every celebration at Manratan comes with elegant spaces, gracious hospitality and food people remember. Set
-              in the scenic hills of Narsinghgarh, it brings together the art of celebration and the warmth of belonging.
+              in the scenic hills of Narsinghgarh, the Mini Kashmir of Malwa, it brings together the art of celebration and the warmth of belonging.
             </p>
             <div className="mt-10 grid max-w-md grid-cols-3 border-y border-ink/15 py-6 text-center">
               <div><p className="t-display text-3xl">4,000</p><p className="mt-1 text-xs text-taupe">guests on the Red Coral Lawn</p></div>
@@ -42,7 +42,7 @@ export default function EventsPage() {
             </div>
           </div>
           <div className="relative aspect-[4/3] overflow-hidden">
-            <Image src="/media/golden-sapphire.webp" alt="Golden Sapphire hall set in black and gold for a celebration" fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover" />
+            <Image src="/media/blue-sapphire-full.webp" alt="Blue Sapphire hall fully set for a celebration, seen end to end" fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover" />
           </div>
         </Container>
       </section>
@@ -72,12 +72,12 @@ export default function EventsPage() {
               </article>
             ))}
             <article className="border-t border-stone/15 pt-12 text-center">
-              <p className="t-label text-stone/60">Open-air lawn</p>
+              <p className="t-label text-stone/60">{redCoral.kind}</p>
               <h3 className="t-display mt-3 inline-flex items-center gap-3 text-[clamp(2rem,3.4vw,3.2rem)]">
                 <Diamond className="h-5 w-5 text-brass-light" />
-                Red Coral Lawn
+                {redCoral.name}
               </h3>
-              <p className="t-body-light mx-auto mt-4 max-w-[48ch]">Our largest venue: receptions and baraats for up to 4,000 guests under the open sky.</p>
+              <p className="t-body-light mx-auto mt-4 max-w-[48ch]">Our largest venue: {redCoral.detail.charAt(0).toLowerCase() + redCoral.detail.slice(1)}.</p>
             </article>
           </div>
         </Container>
@@ -98,8 +98,8 @@ export default function EventsPage() {
           </ul>
           <div className="mt-14 grid gap-4 sm:grid-cols-3">
             {[
-              photo("blue-sapphire-tables", "Blue Sapphire tables dressed in white with pink bows"),
-              photo("skylawn-above", "Sky Lawn seating set out for an evening, from above"),
+              photo("golden-sapphire-2", "Golden Sapphire hall set for a dinner"),
+              photo("blue-sapphire-stage", "Blue Sapphire hall set with a stage and decor"),
               photo("conference-podium", "Hall set for a conference with podium and screen"),
             ].map((p) => (
               <div key={p.src} className="relative aspect-[4/3] overflow-hidden">

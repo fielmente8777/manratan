@@ -2,7 +2,7 @@ export const homePageData = {
   heroData: {
     image: "/media/facade-dusk.webp",
 
-    location: "NARASINGARH, MP",
+    location: "NARSINGHGARH, MP",
 
     logo: "/images/logo.jpg",
 
@@ -20,7 +20,7 @@ export const homePageData = {
 
     topContent: {
       description:
-        "Nestled in the scenic charm of Narsinghgarh celebrated as the Kashmir of Malwa Manratan Resort is a sanctuary where contemporary luxury meets timeless hospitality. Rooted in family warmth and a legacy of love, we offer 65 elegantly appointed rooms, signature pure vegetarian dining at Swadika, a sparkling swimming pool, and magnificent open air celebration venues.",
+        "Nestled in the scenic charm of Narsinghgarh celebrated as the Mini Kashmir of Malwa Manratan Resort is a sanctuary where contemporary luxury meets timeless hospitality. Rooted in family warmth and a legacy of love, we offer 65 elegantly appointed rooms, signature pure vegetarian dining at Swadika, a sparkling swimming pool, and magnificent open air celebration venues.",
       link: {
         label: "KNOW MORE",
         href: "/about/",
@@ -43,7 +43,7 @@ export const homePageData = {
     title: "Royal Charm",
     subTitle: "of Narsinghgarh",
     description:
-      `<p>Surrounded by misty green hills, heritage forts, and the tranquil Chidi Kho wildlife sanctuary, Narsinghgarh has long been celebrated as the picturesque 'Kashmir of Malwa'. Steeped in rich history and royal traditions, it offers an idyllic escape from the bustling city rhythm.</p>
+      `<p>Surrounded by misty green hills, heritage forts, and the tranquil Chidi Kho wildlife sanctuary, Narsinghgarh has long been celebrated as the picturesque 'Mini Kashmir of Malwa'. Steeped in rich history and royal traditions, it offers an idyllic escape from the bustling city rhythm.</p>
       <br/>
       <p>Manratan Resort embraces this timeless legacy, offering guests a regal haven where natural serenity, refined architecture, and heartfelt service blend effortlessly. Whether you are exploring historic battlements or unwinding amidst pristine landscapes, every moment here connects you to the true spirit of Malwa.</p>`,
     note: "Live the Legacy of Narsinghgarh",

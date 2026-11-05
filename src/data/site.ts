@@ -15,16 +15,19 @@ export interface Photo {
   alt: string;
 }
 
-/** One graded photo from /public/media, with its real dimensions. */
+/** One photo from /public/media, with its real dimensions. */
 export const photo = (key: MediaKey, alt: string): Photo => {
   const [width, height] = manifest[key];
   return { src: `/media/${key}.webp`, width, height, alt };
 };
 
 export const video = {
+  /** 1280x720 loop for laptops and tablets in landscape. */
   heroLoop: "/media/hero-loop.mp4",
+  /** 720x1280 portrait cut of the same loop for phones. */
+  heroLoopMobile: "/media/hero-loop-mobile.mp4",
   walkthrough: "/media/walkthrough.mp4",
-  poster: "/media/aerial-greenery.webp",
+  poster: "/media/walkthrough-poster.webp",
 };
 
 export const walkthrough = film as {
@@ -34,13 +37,17 @@ export const walkthrough = film as {
 
 /* ------------------------------------------------------------------ */
 /* Resort facts                                                        */
+/* Sources: Manratan Brochure FINAL (Drive), client feedback Nov 2026. */
 /* ------------------------------------------------------------------ */
 
 export const site = {
   name: "Manratan Resort",
   place: "Narsinghgarh, Madhya Pradesh",
   short: "Narsinghgarh, MP",
-  tagline: "In the hills they call the Kashmir of Malwa",
+  /** Official line from the brochure ("Where every heart finds its gem"). */
+  tagline: "Where every heart finds its gem",
+  /** Destination positioning, always with "Mini". */
+  destination: "Narsinghgarh — The Mini Kashmir of Malwa",
   url: "https://manratanresort.com",
   contact,
   checkIn: "2:00 PM",
@@ -50,21 +57,22 @@ export const site = {
 export const navLinks = [
   { label: "Home", href: "/", image: photo("facade-dusk", "Manratan Resort at dusk") },
   { label: "Our story", href: "/about", image: photo("lobby-monogram", "The Manratan lobby") },
-  { label: "Rooms & suites", href: "/accommodation", image: photo("suite-1", "Suite with a view of the hills") },
-  { label: "Celebrations", href: "/events", image: photo("blue-sapphire", "Blue Sapphire banquet hall") },
+  { label: "Rooms & suites", href: "/accommodation", image: photo("suite-1", "Executive Suite with a view of the hills") },
+  { label: "Celebrations", href: "/events", image: photo("blue-sapphire-full", "Blue Sapphire banquet hall set for a celebration") },
   { label: "Gallery", href: "/gallery", image: photo("pool-dusk", "Blue Diamond pool from above") },
-  { label: "Journal", href: "/blogs", image: photo("ngh-lake-temple", "Narsinghgarh lake at sunset") },
+  { label: "Journal", href: "/blogs", image: photo("ngh-lake-temple", "Jal Mandir on Paras Ram Sagar, Narsinghgarh") },
   { label: "Contact", href: "/contactus", image: photo("reception-welcome", "Reception team welcome") },
 ];
 
 /* ------------------------------------------------------------------ */
-/* Rooms                                                               */
+/* Rooms (types and counts from the brochure)                          */
 /* ------------------------------------------------------------------ */
 
 export interface Room {
   id: string;
   focus?: string;
   name: string;
+  count: number;
   specs: string[];
   summary: string;
   intro: string;
@@ -80,16 +88,16 @@ export const rooms: Room[] = [
     id: "room-1",
     focus: "22% 50%",
     name: "Deluxe Room",
+    count: 25,
     specs: ["Twin or double bed", "Garden view"],
     summary: "Calm, warm-lit rooms looking out over the gardens.",
     intro:
-      "Refined comfort with garden views, warm wood finishes and plush bedding, made for a slow morning and an easy night's sleep.",
+      "Warm wood, soft lighting and fresh linen, with a writing desk and a garden view. A comfortable base for a family visit or a wedding weekend.",
     cover: photo("deluxe-1", "Deluxe Room with double bed and garden-facing curtains"),
     hero: photo("deluxe-1", "Deluxe Room at Manratan Resort"),
     gallery: [
-      photo("deluxe-1", "Deluxe Room with double bed"),
-      photo("deluxe-2", "Deluxe Room seating corner"),
-      photo("towel-swans", "Towel swans on a freshly made bed"),
+      photo("deluxe-1", "Deluxe Room with double bed and writing desk"),
+      photo("deluxe-2", "Deluxe Room with armchair and bedside table"),
     ],
     amenities: ["High-speed Wi-Fi", "Daily housekeeping", "In-room dining", "Air conditioning", "Tea & coffee maker", "Luxury toiletries"],
     meta: {
@@ -101,15 +109,16 @@ export const rooms: Room[] = [
   {
     id: "room-2",
     name: "Deluxe Interconnected Room",
+    count: 12,
     specs: ["Two connected rooms", "Pool & garden view"],
     summary: "Two rooms behind one door, for families travelling together.",
     intro:
-      "Made for families and wedding parties travelling together: two connected bedrooms that give everyone privacy and keep everyone close.",
+      "Two bedrooms joined by a connecting door, so a family or a group of friends can have their own space and still be together.",
     cover: photo("inter-1", "Deluxe Interconnected Room with two connected bedrooms"),
     hero: photo("inter-1", "Deluxe Interconnected Room at Manratan Resort"),
     gallery: [
-      photo("inter-1", "Two connected bedrooms"),
-      photo("inter-2", "Interconnected room bed and artwork"),
+      photo("inter-1", "Two bedrooms joined by a connecting door"),
+      photo("inter-2", "Interconnected room bed with window light"),
       photo("inter-3", "Guest at the room's writing desk"),
     ],
     amenities: ["High-speed Wi-Fi", "Daily housekeeping", "In-room dining", "Interconnected rooms", "Air conditioning", "Tea & coffee maker"],
@@ -122,68 +131,69 @@ export const rooms: Room[] = [
   {
     id: "room-3",
     name: "Executive Family Room",
-    specs: ["King bed", "Pool view"],
-    summary: "Generous space, richer finishes and a view of the pool.",
-    intro:
-      "An executive family room with room to spread out, lavish interiors and a calm view across the pool.",
-    cover: photo("executive-1", "Executive Family Room with towel swans on the beds"),
+    count: 8,
+    specs: ["Twin beds", "Pool view"],
+    summary: "Room for the whole family, with a view of the pool.",
+    intro: "A larger room for families, with two beds, a seating corner, a work desk and a dark-marble bathroom.",
+    cover: photo("executive-1", "Executive Family Room with two beds made up side by side"),
     hero: photo("executive-1", "Executive Family Room at Manratan Resort"),
     gallery: [
       photo("executive-1", "Executive Family Room beds"),
-      photo("executive-2", "Executive Family Room twin beds and art"),
-      photo("executive-3", "Executive Family Room seating and TV wall"),
+      photo("executive-2", "Executive Family Room twin beds and artwork"),
+      photo("executive-3", "Executive Family Room seating and television wall"),
       photo("executive-4", "Executive Family Room work desk"),
-      photo("executive-bath", "Marble bathroom with vessel basin"),
+      photo("executive-bath", "Dark-marble bathroom with vessel basin"),
     ],
-    amenities: ["High-speed Wi-Fi", "Daily housekeeping", "In-room dining", "Pool access", "Mini bar", "Premium coffee"],
+    amenities: ["High-speed Wi-Fi", "Daily housekeeping", "In-room dining", "Pool view", "Air conditioning", "Tea & coffee maker"],
     meta: {
       title: "Executive Family Room | Manratan Resort",
-      description: "Spacious pool-view Executive Family Room at Manratan Resort, Narsinghgarh.",
+      description: "Pool-view Executive Family Room with twin beds at Manratan Resort, Narsinghgarh.",
       keywords: ["Manratan Resort", "Executive room", "Family room", "Pool view room"],
     },
   },
   {
     id: "room-4",
     name: "Premium Room",
-    specs: ["King bed", "Nature view"],
-    summary: "A sofa by the window and the Malwa hills beyond it.",
+    count: 16,
+    specs: ["King bed", "Sofa-cum-bed", "Nature view"],
+    summary: "A king bed, a sofa-cum-bed by the window and the hills beyond.",
     intro:
-      "A quiet room with tasteful furnishings, warm ambient light and a sofa by the window looking out to the green beyond.",
-    cover: photo("premium-1", "Premium Room with king bed, sofa and window view"),
-    hero: photo("premium-1", "Premium Room at Manratan Resort"),
+      "A king bed and a sofa that opens into a second bed, set by a wide window over the green beyond. Easy for couples, and for a small family too.",
+    cover: photo("premium-2", "Premium Room with king bed, sofa and window view"),
+    hero: photo("premium-2", "Premium Room at Manratan Resort"),
     gallery: [
-      photo("premium-1", "Premium Room with sofa by the window"),
-      photo("premium-2", "Premium Room bed and lounge chair"),
+      photo("premium-2", "Premium Room with king bed and sofa by the window"),
+      photo("premium-1", "Premium Room with the sofa opened into a bed"),
       photo("premium-bath", "Rain shower in dark marble"),
     ],
-    amenities: ["High-speed Wi-Fi", "Daily housekeeping", "In-room dining", "Air conditioning", "Tea & coffee maker", "Luxury toiletries"],
+    amenities: ["High-speed Wi-Fi", "Daily housekeeping", "In-room dining", "Sofa-cum-bed", "Air conditioning", "Tea & coffee maker"],
     meta: {
       title: "Premium Room | Manratan Resort",
-      description: "Nature-view Premium Room with king bed at Manratan Resort, Narsinghgarh.",
-      keywords: ["Manratan Resort", "Premium Room", "Nature view room"],
+      description: "Nature-view Premium Room with king bed and sofa-cum-bed at Manratan Resort, Narsinghgarh.",
+      keywords: ["Manratan Resort", "Premium Room", "Sofa cum bed room", "Nature view room"],
     },
   },
   {
     id: "room-5",
-    name: "Suite",
+    name: "Executive Suite",
+    count: 2,
     specs: ["Master bedroom", "Private living room", "Panoramic view"],
-    summary: "A separate living room, a white marble bath and the widest view in the house.",
+    summary: "A separate living room, a white-marble bath and the widest view in the house.",
     intro:
-      "Our finest rooms: a private living room, a master bedroom dressed in Manratan linen, a white marble bath and panoramic views of the resort and hills.",
-    cover: photo("suite-1", "Suite bedroom with a panoramic window"),
-    hero: photo("suite-1", "Suite at Manratan Resort"),
+      "Our two finest rooms: a private living room, a master bedroom dressed in Manratan linen, a white-marble bathroom and wide windows over the resort and the hills.",
+    cover: photo("suite-1", "Executive Suite bedroom with a panoramic window"),
+    hero: photo("suite-1", "Executive Suite at Manratan Resort"),
     gallery: [
-      photo("suite-1", "Suite bedroom with panoramic window"),
-      photo("suite-living", "Suite living room"),
+      photo("suite-1", "Executive Suite bedroom with panoramic window"),
+      photo("suite-living", "Executive Suite living room"),
       photo("suite-bed", "Manratan cushions and towel art on the suite bed"),
-      photo("suite-swans", "Towel swans on the suite bed"),
-      photo("suite-bath", "White marble suite bathroom"),
+      photo("suite-bath", "White-marble suite bathroom"),
     ],
-    amenities: ["High-speed Wi-Fi", "Daily housekeeping", "In-room dining", "Private living room", "Mini bar", "Premium coffee"],
+    amenities: ["High-speed Wi-Fi", "Daily housekeeping", "In-room dining", "Private living room", "Air conditioning", "Tea & coffee maker"],
     meta: {
-      title: "Suite | Manratan Resort, Narsinghgarh",
-      description: "Suite with private living room and panoramic views at Manratan Resort, Narsinghgarh.",
-      keywords: ["Manratan Resort", "Suite", "Luxury suite Narsinghgarh"],
+      title: "Executive Suite | Manratan Resort, Narsinghgarh",
+      description: "Executive Suite with a private living room and panoramic views at Manratan Resort, Narsinghgarh.",
+      keywords: ["Manratan Resort", "Executive Suite", "Luxury suite Narsinghgarh"],
     },
   },
 ];
@@ -191,158 +201,212 @@ export const rooms: Room[] = [
 export const getRoom = (id: string) => rooms.find((r) => r.id === id);
 
 /* ------------------------------------------------------------------ */
-/* Celebration venues                                                  */
+/* Celebration venues (capacities from the brochure)                   */
 /* ------------------------------------------------------------------ */
 
 export const venues = [
   {
     name: "Blue Sapphire",
-    kind: "Banquet hall",
-    detail: "Chandeliers, a sapphire carpet and room for 300 to 400 guests",
-    image: photo("blue-sapphire", "Blue Sapphire banquet hall set for a celebration"),
+    kind: "Banquet hall · 300–400 guests",
+    detail: "Chandeliers and a sapphire carpet, for weddings, sangeet, mehendi, haldi, receptions and corporate events",
+    image: photo("blue-sapphire-full", "Blue Sapphire banquet hall fully set for a celebration"),
   },
   {
     name: "Golden Sapphire",
-    kind: "Banquet hall",
-    detail: "A warm, gold-lit hall for sangeets, receptions and gala dinners",
-    image: photo("golden-sapphire", "Golden Sapphire banquet hall in black and gold"),
-  },
-  {
-    name: "Sky Lawn",
-    kind: "Rooftop lawn",
-    detail: "Sundowners and cocktail evenings above the hills",
-    image: photo("skylawn-sunset", "Sky Lawn lounge at sunset"),
+    kind: "Banquet hall · 25–80 guests",
+    detail: "An intimate hall for birthdays, anniversaries, engagements and meetings, with a projector provided",
+    image: photo("golden-sapphire", "Golden Sapphire hall set in black and gold with balloon decor"),
   },
   {
     name: "Blue Diamond",
-    kind: "Poolside",
-    detail: "Haldi mornings and poolside soirées",
-    image: photo("pool-dusk", "Blue Diamond pool from above at dusk"),
+    kind: "Poolside · 300–400 guests",
+    detail: "Sundowners, poolside parties, pre-wedding mixers, candlelight dinners and proposals by the water",
+    image: photo("pool-dusk", "Blue Diamond pool from above at dusk, lights on"),
+  },
+  {
+    name: "Sky Lawn",
+    kind: "Open-air terrace · up to 20 guests",
+    detail: "An intimate open-air space for private celebrations and small gatherings",
+    image: photo("skylawn-sunset", "Sky Lawn lounge at sunset"),
   },
 ];
 
+/** Our largest venue (no photograph supplied yet). */
+export const redCoral = {
+  name: "Red Coral Lawn",
+  kind: "Open-air lawn · 500–4,000 guests",
+  detail: "Grand weddings, receptions, musical evenings, festivals and large corporate events under the open sky",
+};
+
 /* ------------------------------------------------------------------ */
-/* Places nearby                                                       */
+/* Amenities                                                           */
+/* Pooja Room and Parlour Room: brochure room list. Poolside dinners   */
+/* and proposals: client message, 5 Nov 2026. Venue figures: brochure. */
 /* ------------------------------------------------------------------ */
 
-export const nearby = {
+export type AmenityIcon =
+  | "pooja"
+  | "parlour"
+  | "pool"
+  | "candle"
+  | "dining"
+  | "hall"
+  | "lawn"
+  | "terrace"
+  | "bed"
+  | "wifi";
+
+export const amenities: { name: string; note: string; icon: AmenityIcon; featured?: boolean; href?: string }[] = [
+  { name: "Pooja Room", note: "A quiet room set aside for prayer and puja.", icon: "pooja", featured: true },
+  { name: "Parlour Room", note: "A private room to get ready in before a ceremony or an evening out.", icon: "parlour", featured: true },
+  { name: "Blue Diamond pool", note: "An open-air pool for slow afternoons, floating breakfasts and poolside parties.", icon: "pool", href: "/gallery?category=swimming-pool" },
+  { name: "Poolside candlelight dinners", note: "Dinner for two by the water, and proposals arranged at the poolside.", icon: "candle", href: "/gallery?category=swimming-pool" },
+  { name: "Swadika restaurant", note: "Pure vegetarian, multi-cuisine dining for 80 to 100 guests.", icon: "dining", href: "/gallery?category=dining" },
+  { name: "Banquet halls", note: "Blue Sapphire for 300–400 guests and Golden Sapphire for 25–80, projector provided.", icon: "hall", href: "/events" },
+  { name: "Red Coral Lawn", note: "Open-air lawn for celebrations of 500 to 4,000 guests.", icon: "lawn", href: "/events" },
+  { name: "Sky Lawn", note: "An open-air terrace for up to 20 guests.", icon: "terrace", href: "/events" },
+  { name: "65 rooms and suites", note: "From Deluxe and Interconnected rooms to two Executive Suites.", icon: "bed", href: "/accommodation" },
+  { name: "In every room", note: "High-speed Wi-Fi, air conditioning, in-room dining and daily housekeeping.", icon: "wifi", href: "/accommodation" },
+];
+
+/* ------------------------------------------------------------------ */
+/* Narsinghgarh                                                        */
+/* Facts: Rajgarh district (rajgarh.nic.in), Wikipedia "Narsinghgarh,  */
+/* Madhya Pradesh", MP Tourism. Fort first, by client direction.       */
+/* ------------------------------------------------------------------ */
+
+export interface Place {
+  name: string;
+  where: string;
+  note: string;
+  image: Photo | null;
+  facts?: string[];
+  /** Waiting on the client: shown in the change log, not on the site. */
+  pending?: string;
+}
+
+export const fort: Place = {
+  name: "Narsinghgarh Fort",
+  where: "350 feet above the town and Paras Ram Sagar",
+  note:
+    "The fort-palace of the Narsinghgarh rulers, raised in the late seventeenth century and their home until 1962. Its walls are mirrored in Paras Ram Sagar below, and from its ramparts the whole town opens out between the lake and the hills.",
+  facts: ["304 rooms", "4 halls", "12 courtyards", "64 verandahs"],
+  // No genuine photograph of the fort has been supplied yet; the site shows a typographic panel until it is.
+  image: null,
+  pending: "Genuine photograph of Narsinghgarh Fort (Drive: Vanisha › Narsinghgarh drone set, needs a web-size export)",
+};
+
+export const nearby: { featured: Place[]; more: { name: string; note: string }[] } = {
   featured: [
     {
       name: "Jal Mandir",
-      where: "Paras Ram Sagar, Narsinghgarh",
-      note: "A gilded temple standing out on the lake built by the town's founder, reached along a narrow causeway. Go at sunset, when the domes catch the last light.",
-      image: photo("ngh-lake-temple", "Jal Mandir on Paras Ram Sagar at sunset, Narsinghgarh Fort on the ridge behind"),
+      where: "In Paras Ram Sagar",
+      note: "A temple standing in the middle of the lake named for the town's founder, reached along a narrow causeway. At its best at sunset.",
+      image: photo("ngh-lake-temple", "Jal Mandir in Paras Ram Sagar at sunset"),
     },
     {
-      name: "Narsinghgarh Fort",
-      where: "On the ridge above the town",
-      note: "The fort-palace of the Narsinghgarh rulers, about 350 feet above the town and their residence until 1962. Its walls look down on the lake and the old quarter.",
-      image: photo("ngh-fort", "Narsinghgarh Fort on the forested ridge above the lake"),
+      name: "Narsinghgarh and its lake",
+      where: "The old town around Paras Ram Sagar",
+      note: "Rooftops wrapped around the water and green hills on every side: the view behind the name, the Mini Kashmir of Malwa.",
+      image: photo("ngh-lake-town", "Narsinghgarh town around Paras Ram Sagar, seen from above"),
     },
     {
-      name: "Narsinghgarh from above",
-      where: "The old town and its lake",
-      note: "Rooftops wrapped around the water and green hills on every side, the view behind the town's name, the Kashmir of Malwa.",
-      image: photo("ngh-lake-town", "Narsinghgarh town around its lake, seen from above"),
-    },
-    {
-      name: "Hilltop temple",
-      where: "Near Narsinghgarh",
-      note: "A long stone stairway climbs through the forest to a temple with views across the plains.",
-      image: photo("ngh-hilltop-temple", "Hilltop temple with a stone stairway through the forest"),
-    },
-    {
-      name: "Old chhatri on the hills",
-      where: "Near Narsinghgarh",
-      note: "A carved stone pavilion on open grassland, at its best in the golden hour.",
-      image: photo("ngh-chhatri", "Carved stone chhatri on a grassy hill at sunset"),
+      name: "Bara Khambha",
+      where: "On the grasslands near Narsinghgarh",
+      note: "A carved stone pillared pavilion standing alone on open grassland, at its best in the golden hour.",
+      image: photo("ngh-chhatri", "Bara Khambha, a carved stone pillared pavilion on grassland at sunset"),
+      pending: "Name per client. MP Tourism lists a pillared 'Solah Khamba' in the sanctuary; client to confirm name and spelling.",
     },
   ],
   more: [
     {
       name: "Chidikho Wildlife Sanctuary",
-      note: "57 sq km of protected forest around Chidikho Lake, known for peacocks, cheetal, sambar, nilgai and migratory birds.",
+      note: "About 57 sq km of forest around Chidikho Lake, set aside in 1978, with peacocks, chital, sambar, nilgai and migratory birds.",
     },
     {
-      name: "Swarn Jain Temple",
-      note: "A marble temple to Mallinath Swamy, worked in mirror and gold, in Narsinghgarh town.",
+      name: "Baijnath Mahadeo Temple",
+      note: "A temple on the heights above the town, with a wide view over the lakes, green hills and farmland, loveliest in autumn.",
     },
     {
       name: "Shyamji Sanka Temple",
-      note: "A protected 16th–17th century temple near the Parvati River, known for Malwi and Rajasthani wall paintings.",
+      note: "A 16th–17th century temple in Sanka village near Kotra, where the Shyamji-ka-mela is held every year in the month of Magh.",
     },
     {
       name: "Getting here",
-      note: "Bhopal is about 82 km away and Raja Bhoj Airport about 72 km. The nearest railway station is Biaora, about 33 km.",
+      note: "Bhopal airport is about 70 km away (around 1.5 hours) and the railway station about 30 km (around 30 minutes). Indore is about 210 km.",
     },
   ],
 };
 
 /* ------------------------------------------------------------------ */
 /* Gallery                                                             */
+/* Every photo appears once, in the category it belongs to.            */
 /* ------------------------------------------------------------------ */
 
 export const galleryCategories = [
-  "All",
-  "Property",
-  "Rooms",
-  "Swimming pool",
-  "Dining",
-  "Banquet",
-  "Lifestyle",
-  "Nearby attractions",
+  { label: "All", slug: "all" },
+  { label: "Swimming pool", slug: "swimming-pool" },
+  { label: "Rooms", slug: "rooms" },
+  { label: "Dining", slug: "dining" },
+  { label: "Banquet", slug: "banquet" },
+  { label: "Exteriors", slug: "exteriors" },
+  { label: "Lobby", slug: "lobby" },
+  { label: "Lifestyle", slug: "lifestyle" },
+  { label: "Nearby attractions", slug: "nearby-attractions" },
 ] as const;
 
-export type GalleryCategory = Exclude<(typeof galleryCategories)[number], "All">;
+export type GallerySlug = (typeof galleryCategories)[number]["slug"];
+export type GalleryCategory = Exclude<(typeof galleryCategories)[number]["label"], "All">;
 
 const g = (category: GalleryCategory, key: MediaKey, alt: string) => ({ category, ...photo(key, alt) });
 
 export const gallery = [
-  g("Property", "facade-dusk", "Manratan Resort facade at dusk"),
-  g("Lifestyle", "pool-breakfast", "Floating breakfast in the Blue Diamond pool"),
-  g("Property", "aerial-greenery", "Manratan Resort among fields at sunrise, from the air"),
-  g("Rooms", "suite-1", "Suite bedroom with panoramic window"),
-  g("Property", "reception-welcome", "Reception team greeting guests with a namaste"),
-  g("Nearby attractions", "ngh-lake-temple", "Temple on Paras Ram Sagar at sunset"),
-  g("Dining", "swadika-hall", "Swadika restaurant dining hall"),
-  g("Lifestyle", "pool-splash", "Guest splashing water at the pool"),
-  g("Banquet", "blue-sapphire-stage", "Blue Sapphire hall set with a stage"),
-  g("Property", "lobby-chandeliers", "Lobby with crystal chandeliers"),
-  g("Rooms", "suite-living", "Suite living room"),
-  g("Property", "skylawn-sunset-tall", "Sky Lawn seating at sunset"),
-  g("Property", "sunrise-front", "Manratan Resort at first light"),
-  g("Rooms", "premium-1", "Premium Room with sofa by the window"),
-  g("Banquet", "golden-sapphire", "Golden Sapphire hall in black and gold"),
-  g("Lifestyle", "pool-friends", "Friends laughing by the pool"),
-  g("Nearby attractions", "ngh-chhatri", "Stone chhatri on the hills at sunset"),
-  g("Dining", "swadika-guests", "Families dining at Swadika"),
-  g("Property", "facade-night", "Manratan Resort lit up at night"),
-  g("Rooms", "deluxe-1", "Deluxe Room"),
+  g("Exteriors", "facade-night-full", "Manratan Resort lit up at night"),
   g("Swimming pool", "pool-dusk", "Blue Diamond pool from above at dusk"),
-  g("Rooms", "suite-bath", "White marble suite bathroom"),
-  g("Banquet", "blue-sapphire-lounge", "Blue Sapphire hall lounge seating"),
-  g("Swimming pool", "pool-breakfast-2", "Breakfast tray floating in the pool"),
-  g("Property", "lobby-lounge", "Lobby lounge"),
-  g("Nearby attractions", "ngh-hilltop-temple", "Hilltop temple and forest stairway"),
-  g("Rooms", "executive-1", "Executive Family Room"),
-  g("Property", "skylawn-above", "Sky Lawn from above"),
-  g("Dining", "swadika-room", "Swadika tables set for lunch"),
-  g("Rooms", "inter-3", "Guest at the desk of an interconnected room"),
-  g("Banquet", "blue-sapphire-tables", "Blue Sapphire tables dressed in white"),
-  g("Property", "aerial-approach", "Approach to the resort from the air"),
-  g("Swimming pool", "pool-lounger", "Guest on a poolside lounger"),
-  g("Rooms", "towel-swans", "Towel swans on the bed"),
+  g("Rooms", "suite-1", "Executive Suite bedroom with panoramic window"),
+  g("Banquet", "blue-sapphire-full", "Blue Sapphire hall fully set for a celebration"),
+  g("Lobby", "lobby-chandeliers", "Lobby with crystal chandeliers"),
+  g("Dining", "swadika-hall", "Swadika restaurant dining hall"),
+  g("Exteriors", "aerial-greenery", "Manratan Resort among fields at sunrise, from the air"),
+  g("Nearby attractions", "ngh-lake-temple", "Jal Mandir in Paras Ram Sagar at sunset"),
   g("Swimming pool", "pool-day", "Blue Diamond pool in daylight, from above"),
-  g("Nearby attractions", "ngh-fort", "Narsinghgarh Fort above the lake"),
-  g("Nearby attractions", "ngh-lake-town", "Narsinghgarh town and lake from above"),
-  g("Lifestyle", "pool-guests", "Two guests by the Manratan sign at the pool"),
-  g("Rooms", "premium-2", "Premium Room"),
-  g("Banquet", "conference", "Hall set for a conference"),
-  g("Property", "lobby-monogram", "Lobby with the Manratan monogram wall"),
-  g("Rooms", "executive-3", "Executive Family Room seating"),
+  g("Rooms", "premium-2", "Premium Room with king bed and sofa by the window"),
+  g("Lifestyle", "pool-breakfast", "Two guests sharing a floating breakfast in the pool"),
+  g("Exteriors", "facade-bluehour", "Manratan Resort facade at blue hour"),
+  g("Banquet", "blue-sapphire-stage", "Blue Sapphire hall set with a stage"),
+  g("Rooms", "suite-living", "Executive Suite living room"),
   g("Swimming pool", "pool-friends-wide", "Two friends sitting at the pool edge"),
-  g("Rooms", "suite-swans", "Towel swans on the suite bed"),
-  g("Banquet", "blue-sapphire-detail", "Blue Sapphire chairs with pink bows"),
-  g("Property", "corridor", "Guest corridor"),
+  g("Exteriors", "facade-dusk", "Manratan Resort facade from the forecourt"),
+  g("Dining", "swadika-guests", "Families dining at Swadika"),
+  g("Lobby", "reception-welcome", "Reception team greeting guests with a namaste"),
+  g("Rooms", "premium-1", "Premium Room with the sofa opened into a bed"),
+  g("Banquet", "golden-sapphire", "Golden Sapphire hall in black and gold"),
+  g("Exteriors", "skylawn-sunset", "Sky Lawn seating at sunset"),
+  g("Nearby attractions", "ngh-lake-town", "Narsinghgarh and Paras Ram Sagar from above"),
+  g("Swimming pool", "pool-lounger", "Guest on a poolside lounger"),
+  g("Rooms", "suite-bath", "White-marble suite bathroom"),
+  g("Lobby", "lobby-lounge", "Lobby lounge with red velvet sofas"),
+  g("Exteriors", "sunrise-front", "Manratan Resort at first light"),
+  g("Rooms", "executive-1", "Executive Family Room"),
+  g("Banquet", "blue-sapphire", "Blue Sapphire hall before the tables are set"),
+  g("Swimming pool", "pool-splash", "Guest splashing water at the pool"),
+  g("Dining", "swadika-room", "Swadika tables set for lunch"),
+  g("Exteriors", "aerial-approach", "Approach to the resort from the air"),
+  g("Rooms", "deluxe-1", "Deluxe Room"),
+  g("Banquet", "blue-sapphire-lounge", "Blue Sapphire hall with lounge seating"),
+  g("Nearby attractions", "ngh-chhatri", "Bara Khambha on the grasslands at sunset"),
+  g("Lobby", "lobby-monogram", "Lobby with the Manratan monogram wall"),
+  g("Rooms", "premium-bath", "Premium Room rain shower in dark marble"),
+  g("Exteriors", "skylawn-above", "Sky Lawn from above"),
+  g("Swimming pool", "pool-breakfast-2", "Breakfast tray floating in the pool"),
+  g("Rooms", "executive-3", "Executive Family Room seating"),
+  g("Banquet", "golden-sapphire-2", "Golden Sapphire hall set for a dinner"),
+  g("Lifestyle", "inter-3", "Guest at the desk of an interconnected room"),
+  g("Exteriors", "facade-night", "Upper floors and Sky Lawn lit at night"),
   g("Rooms", "inter-1", "Deluxe Interconnected Room"),
+  g("Banquet", "conference", "Hall set for a conference"),
+  g("Lobby", "corridor", "Guest corridor"),
+  g("Rooms", "executive-bath", "Executive Family Room bathroom"),
+  g("Rooms", "deluxe-2", "Deluxe Room seating corner"),
+  g("Banquet", "blue-sapphire-tables", "Table setting in the Blue Sapphire hall"),
 ];

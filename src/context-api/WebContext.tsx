@@ -1,7 +1,18 @@
 "use client";
-import { createContext, useContext, useState } from "react";
+import { createContext, useCallback, useContext, useState } from "react";
+
+/** Dates and guests chosen in the hero booking bar, handed to the enquiry form. */
+export interface BookingPrefill {
+  checkIn: string; // YYYY-MM-DD, local date
+  checkOut: string; // YYYY-MM-DD, local date
+  adults: number;
+  children: number;
+}
 
 interface WebContextProps {
+  bookingPrefill: BookingPrefill | null;
+  /** Open the enquiry form, optionally pre-filled with stay dates and guests. */
+  openEnquiry: (prefill?: BookingPrefill | null) => void;
   imgCurrentIndex: number;
   imageArray: string[];
   isOpenPillarPopup: boolean;
@@ -26,6 +37,8 @@ interface WebContextProps {
 }
 
 export const WebContext = createContext<WebContextProps>({
+  bookingPrefill: null,
+  openEnquiry: () => {},
   imgCurrentIndex: 0,
   isOpenPopUpForm: false,
   isOpenFormPopUp: false,
@@ -64,6 +77,12 @@ export const WebProvider: React.FC<WebProviderProps> = ({ children }) => {
   const [isOpenPopUpForm2, setIsOpenPopUpForm2] = useState(false);
 
   const [isOpenNavBar, setIsOpenNavBar] = useState(false);
+  const [bookingPrefill, setBookingPrefill] = useState<BookingPrefill | null>(null);
+
+  const openEnquiry = useCallback((prefill?: BookingPrefill | null) => {
+    setBookingPrefill(prefill ?? null);
+    setIsOpenPopUpForm(true);
+  }, []);
 
   // image popup handler
   const handleImagePopup = (index: number, imageArray: string[]) => {
@@ -73,6 +92,8 @@ export const WebProvider: React.FC<WebProviderProps> = ({ children }) => {
   };
 
   const value = {
+    bookingPrefill,
+    openEnquiry,
     isOpenPopUpForm2,
     setIsOpenPopUpForm2,
     imageArray,

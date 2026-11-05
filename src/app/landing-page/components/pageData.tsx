@@ -6,7 +6,7 @@ export const LandingPageData = {
     title: "A Royal MALWA RETREAT, BUILT FOR YOUR FINEST DAYS",
 
     description:
-      "Set amidst the scenic hills and tranquil countryside of Narsinghgarh celebrated as the Kashmir of Malwa Manratan Resort is the region's premier 4-star luxury destination. Spanning lush landscaped gardens along NH-46, the resort welcomes guests with 65 elegantly appointed rooms and suites, the pure vegetarian Swadika restaurant, the Blue Diamond open air swimming pool, and royal celebration lawns for grand weddings and serene getaways.",
+      "Set amidst the scenic hills and tranquil countryside of Narsinghgarh celebrated as the Mini Kashmir of Malwa Manratan Resort is the region's premier 4-star luxury destination. Spanning lush landscaped gardens along NH-46, the resort welcomes guests with 65 elegantly appointed rooms and suites, the pure vegetarian Swadika restaurant, the Blue Diamond open air swimming pool, and royal celebration lawns for grand weddings and serene getaways.",
 
     location: "NH-46, Biaora Road · Narsinghgarh, Madhya Pradesh",
 
@@ -402,7 +402,7 @@ export const LandingPageData = {
       {
         name: "Dr. Vikram Singh, Jaipur",
         review:
-          "An oasis of calm right on NH-46. Beautiful swimming pool, excellent room service, and peaceful green surroundings. It genuinely feels like the Kashmir of Malwa. Will definitely visit again.",
+          "An oasis of calm right on NH-46. Beautiful swimming pool, excellent room service, and peaceful green surroundings. It genuinely feels like the Mini Kashmir of Malwa. Will definitely visit again.",
       },
       {
         name: "Neha Kulkarni, Pune",

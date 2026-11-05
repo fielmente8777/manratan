@@ -53,6 +53,7 @@ export default async function RoomPage({ params }: Params) {
         <Container className="max-w-[900px] text-center">
           <p className="t-body mx-auto max-w-[66ch] text-[1.02rem]">{room.intro}</p>
           <p className="t-display mt-14 text-[clamp(1.2rem,2.2vw,2rem)] tracking-[0.06em]">{room.specs.join("  •  ")}</p>
+          <p className="t-label mt-4 text-taupe">{room.count} {room.count === 1 ? "room" : "rooms"} of this style at Manratan</p>
         </Container>
       </section>
 

@@ -1,324 +1,270 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { forwardRef, useEffect, useId, useRef, useState, type ButtonHTMLAttributes } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { IoIosArrowDown } from "react-icons/io";
-import useBookingForm from "@/hooks/useBookingForm";
-
-// --- Clean SVG Icons matching Screenshot 3 ---
-const FillUserIcon = () => (
-  <svg
-    width={16}
-    height={16}
-    viewBox="0 0 16 16"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className="shrink-0 text-white"
-  >
-    <path
-      d="M7.99992 6.66665C9.47268 6.66665 10.6666 5.47274 10.6666 3.99998C10.6666 2.52722 9.47268 1.33331 7.99992 1.33331C6.52716 1.33331 5.33325 2.52722 5.33325 3.99998C5.33325 5.47274 6.52716 6.66665 7.99992 6.66665Z"
-      fill="currentColor"
-    />
-    <path
-      d="M13.3334 11.6667C13.3334 13.3234 13.3334 14.6667 8.00008 14.6667C2.66675 14.6667 2.66675 13.3234 2.66675 11.6667C2.66675 10.01 5.05475 8.66669 8.00008 8.66669C10.9454 8.66669 13.3334 10.01 13.3334 11.6667Z"
-      fill="currentColor"
-    />
-  </svg>
-);
-
-const FillCalenderIcon = () => (
-  <svg
-    width={16}
-    height={16}
-    viewBox="0 0 16 16"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className="shrink-0 text-white"
-  >
-    <path
-      d="M1.33325 12.6666C1.33325 13.8 2.19992 14.6666 3.33325 14.6666H12.6666C13.7999 14.6666 14.6666 13.8 14.6666 12.6666V7.33331H1.33325V12.6666ZM12.6666 2.66665H11.3333V1.99998C11.3333 1.59998 11.0666 1.33331 10.6666 1.33331C10.2666 1.33331 9.99992 1.59998 9.99992 1.99998V2.66665H5.99992V1.99998C5.99992 1.59998 5.73325 1.33331 5.33325 1.33331C4.93325 1.33331 4.66658 1.59998 4.66658 1.99998V2.66665H3.33325C2.19992 2.66665 1.33325 3.53331 1.33325 4.66665V5.99998H14.6666V4.66665C14.6666 3.53331 13.7999 2.66665 12.6666 2.66665Z"
-      fill="currentColor"
-    />
-  </svg>
-);
+import { useWebContext, type BookingPrefill } from "@/context-api/WebContext";
+import { addDays, formatShort, nightsBetween, startOfToday, toLocalISODate } from "@/utils/dates";
 
 export interface BookingFormProps {
+  /** Stack the fields vertically (used inside narrow panels). */
   gridView?: boolean;
   className?: string;
-  onSearch?: (data: {
-    name: string;
-    checkin: string;
-    checkout: string;
-    adults: number;
-    children: number;
-  }) => void;
+  /** Override what happens on submit; by default the enquiry form opens pre-filled. */
+  onSearch?: (data: { checkin: string; checkout: string; adults: number; children: number }) => void;
 }
 
-export default function BookingForm({
-  gridView = false,
-  className = "",
-  onSearch,
-}: BookingFormProps) {
+/**
+ * The trigger the date picker renders: a button, so phones don't raise the keyboard.
+ * react-datepicker clones this element and injects its own props (className, placeholder, value…),
+ * so our own props use names it never sets, and its className is merged rather than replacing ours.
+ */
+type TriggerProps = ButtonHTMLAttributes<HTMLButtonElement> & { fieldLabel: string; shown: string; emptyText: string; hint?: string };
+const DateTrigger = forwardRef<HTMLButtonElement, TriggerProps>(function DateTrigger(
+  { fieldLabel, shown, emptyText, hint, onClick, id, className, onKeyDown, onFocus, onBlur, disabled },
+  ref,
+) {
+  return (
+    <button
+      ref={ref}
+      id={id}
+      type="button"
+      onClick={onClick}
+      onKeyDown={onKeyDown}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      disabled={disabled}
+      aria-haspopup="dialog"
+      className={`mr-bf-field w-full text-left ${className ?? ""}`}
+    >
+      <span className="mr-bf-label">
+        {fieldLabel}
+        {hint && <span className="ml-2 normal-case tracking-normal text-white/70">{hint}</span>}
+      </span>
+      <span className={`mr-bf-value ${shown ? "" : "text-white/70"}`}>{shown || emptyText}</span>
+    </button>
+  );
+});
+
+export default function BookingForm({ gridView = false, className = "", onSearch }: BookingFormProps) {
+  const { openEnquiry } = useWebContext();
+  const [checkIn, setCheckIn] = useState<Date | null>(null);
+  const [checkOut, setCheckOut] = useState<Date | null>(null);
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
   const [guestOpen, setGuestOpen] = useState(false);
+  const [error, setError] = useState("");
+  const [narrow, setNarrow] = useState(false);
 
-  const [startDate, setStartDate] = useState<Date | null>(null);
-  const [endDate, setEndDate] = useState<Date | null>(null);
-
+  const outRef = useRef<DatePicker>(null);
   const guestRef = useRef<HTMLDivElement>(null);
+  const ids = useId();
 
-  // Hook for original form validation & submission exactly as before
-  const {
-    isSubmitting,
-    errors,
-    handleSubmit,
-    formData,
-    handleChange,
-    setFieldValue,
-  } = useBookingForm({
-    includeGuests: true,
-    includeCheckIn: true,
-    includeCheckOut: true,
-    includePhone: false,
-    includeEmail: false,
-    onSubmitSuccess: () => {
-      setStartDate(null);
-      setEndDate(null);
-    },
-  });
-
+  // On phones the calendar opens as a centred sheet instead of a popover that can run off-screen.
   useEffect(() => {
-    const handleOutsideClick = (e: MouseEvent) => {
-      if (guestRef.current && !guestRef.current.contains(e.target as Node)) {
-        setGuestOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleOutsideClick);
-    return () => document.removeEventListener("mousedown", handleOutsideClick);
+    const mq = window.matchMedia("(max-width: 767px)");
+    const update = () => setNarrow(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
   }, []);
 
-  const guestLabel =
-    children > 0
-      ? `${adults} Adult${adults !== 1 ? "s" : ""}, ${children} Child${children !== 1 ? "ren" : ""}`
-      : `${adults} ${adults === 1 ? "Adult" : "Adults"}`;
+  useEffect(() => {
+    if (!guestOpen) return;
+    const close = (e: MouseEvent | TouchEvent) => {
+      if (guestRef.current && !guestRef.current.contains(e.target as Node)) setGuestOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setGuestOpen(false);
+    document.addEventListener("mousedown", close);
+    document.addEventListener("touchstart", close);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", close);
+      document.removeEventListener("touchstart", close);
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [guestOpen]);
 
-  const handleDateChange = (dates: [Date | null, Date | null]) => {
-    const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
+  const today = startOfToday();
+  const nights = checkIn && checkOut ? nightsBetween(checkIn, checkOut) : 0;
 
-    if (start) {
-      setFieldValue("checkIn", start.toISOString().split("T")[0]);
-    } else {
-      setFieldValue("checkIn", "");
+  const pickCheckIn = (d: Date | null) => {
+    setError("");
+    setCheckIn(d);
+    if (d && (!checkOut || checkOut <= d)) {
+      setCheckOut(null);
+      // Move straight on to the check-out calendar.
+      window.setTimeout(() => outRef.current?.setOpen(true), 60);
     }
-
-    if (end) {
-      setFieldValue("checkOut", end.toISOString().split("T")[0]);
-    } else {
-      setFieldValue("checkOut", "");
-    }
   };
 
-  const handleAdultsChange = (val: number) => {
-    setAdults(val);
-    const label = `${val} Adults${children > 0 ? `, ${children} Children` : ""}`;
-    setFieldValue("guests", label);
+  const pickCheckOut = (d: Date | null) => {
+    setError("");
+    setCheckOut(d);
   };
 
-  const handleChildrenChange = (val: number) => {
-    setChildren(val);
-    const label = `${adults} Adults${val > 0 ? `, ${val} Children` : ""}`;
-    setFieldValue("guests", label);
-  };
+  const guestLabel = `${adults} ${adults === 1 ? "adult" : "adults"}${children ? `, ${children} ${children === 1 ? "child" : "children"}` : ""}`;
 
-  const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const submit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!checkIn) return setError("Choose a check-in date.");
+    if (!checkOut) return setError("Choose a check-out date.");
+    if (checkOut <= checkIn) return setError("Check-out must be after check-in.");
+    const data: BookingPrefill = {
+      checkIn: toLocalISODate(checkIn),
+      checkOut: toLocalISODate(checkOut),
+      adults,
+      children,
+    };
     if (onSearch) {
-      e.preventDefault();
-      onSearch({
-        name: formData.name,
-        checkin: formData.checkIn || "",
-        checkout: formData.checkOut || "",
-        adults,
-        children,
-      });
+      onSearch({ checkin: data.checkIn, checkout: data.checkOut, adults, children });
       return;
     }
-    handleSubmit(e);
+    openEnquiry(data);
+  };
+
+  const picker = {
+    // Render calendars at the end of <body>: the bar's backdrop blur and the hero's entrance animation
+    // otherwise become the containing block for the fixed-position phone sheet and misplace it.
+    portalId: "mr-datepicker-portal",
+    dateFormat: "EEE, d MMM",
+    withPortal: narrow,
+    popperPlacement: "top-start" as const,
+    popperClassName: "!z-[80]",
+    calendarClassName: "mr-calendar",
+    monthsShown: narrow ? 1 : 2,
+    showPopperArrow: false,
   };
 
   return (
-    <form
-      onSubmit={onFormSubmit}
-      className={`w-full max-w-5xl mx-auto ${className}`}
-    >
-      {/* Search Bar Container with frosted white background matching Screenshot 3 */}
+    <form onSubmit={submit} noValidate className={`w-full ${className}`} aria-label="Check availability">
       <div
-        className={`w-full bg-white/20 backdrop-blur-md border border-white/20 shadow-lg ${
-          gridView
-            ? "flex flex-col gap-0"
-            : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.1fr_1fr_1.2fr_auto] items-stretch"
+        className={`mr-booking-bar grid border border-white/25 bg-black/25 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.6)] backdrop-blur-md ${
+          gridView ? "grid-cols-1" : "grid-cols-2 lg:grid-cols-[1fr_1fr_1.05fr_auto]"
         }`}
       >
-        {/* 1. Name Field (Location ki jagah Your Name) */}
-        <div
-          className={`relative flex items-center gap-3 px-5 h-13 text-white ${
-            gridView
-              ? "border-b border-white/20"
-              : "border-b md:border-b-0 md:border-r border-white/20"
-          }`}
-        >
-          <FillUserIcon />
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Name"
-            className="w-full bg-transparent outline-none border-none text-sm text-white placeholder:text-white/80 font-normal tracking-wide"
+        <div className="border-b border-r border-white/20 lg:border-b-0">
+          <DatePicker
+            {...picker}
+            id={`${ids}-in`}
+            selected={checkIn}
+            onChange={pickCheckIn}
+            selectsStart
+            startDate={checkIn}
+            endDate={checkOut}
+            minDate={today}
+            customInput={<DateTrigger fieldLabel="Check-in" shown={checkIn ? formatShort(checkIn) : ""} emptyText="Add date" />}
+            ariaLabelledBy={`${ids}-in`}
           />
-
-          {errors.name && (
-            <p className="absolute -bottom-5 left-5 text-red-400 text-xs font-normal whitespace-nowrap pointer-events-none">
-              {errors.name}
-            </p>
-          )}
         </div>
 
-        {/* 2. Guests Selector with single user silhouette icon */}
-        <div
-          ref={guestRef}
-          onClick={() => setGuestOpen((prev) => !prev)}
-          className={`relative flex items-center justify-between gap-3 px-5 h-13 text-white cursor-pointer hover:bg-white/5 transition-colors select-none ${
-            gridView
-              ? "border-b border-white/20"
-              : "border-b md:border-b-0 lg:border-r border-white/20"
-          }`}
-        >
-          <div className="flex items-center gap-3 overflow-hidden">
-            <FillUserIcon />
-            <span className="text-sm font-normal text-white tracking-wide truncate">
-              {guestLabel}
-            </span>
-          </div>
-
-          <IoIosArrowDown
-            size={12}
-            className={`text-white/80 shrink-0 transition-transform duration-200 ${
-              guestOpen ? "rotate-180" : ""
-            }`}
+        <div className={`border-b border-white/20 lg:border-b-0 lg:border-r ${gridView ? "" : ""}`}>
+          <DatePicker
+            {...picker}
+            ref={outRef}
+            id={`${ids}-out`}
+            selected={checkOut}
+            onChange={pickCheckOut}
+            selectsEnd
+            startDate={checkIn}
+            endDate={checkOut}
+            minDate={checkIn ? addDays(checkIn, 1) : addDays(today, 1)}
+            openToDate={checkOut ?? (checkIn ? addDays(checkIn, 1) : undefined)}
+            customInput={
+              <DateTrigger
+                fieldLabel="Check-out"
+                shown={checkOut ? formatShort(checkOut) : ""}
+                emptyText="Add date"
+                hint={nights ? `${nights} ${nights === 1 ? "night" : "nights"}` : undefined}
+              />
+            }
           />
+        </div>
 
-          {/* Guest Counter Dropdown (Opens UPWARDS above the form so it never clips) */}
+        <div ref={guestRef} className={`relative border-b border-white/20 lg:border-b-0 lg:border-r ${gridView ? "" : "col-span-2 lg:col-span-1"}`}>
+          <button
+            type="button"
+            onClick={() => setGuestOpen((v) => !v)}
+            aria-expanded={guestOpen}
+            aria-controls={`${ids}-guests`}
+            className="mr-bf-field flex w-full items-center justify-between gap-3 text-left"
+          >
+            <span>
+              <span className="mr-bf-label">Guests</span>
+              <span className="mr-bf-value">{guestLabel}</span>
+            </span>
+            <IoIosArrowDown aria-hidden="true" className={`h-3 w-3 shrink-0 text-white/80 transition-transform ${guestOpen ? "rotate-180" : ""}`} />
+          </button>
           {guestOpen && (
             <div
-              className="absolute left-0 bottom-full mb-2 w-64 sm:w-72 z-50 bg-[#1c130d]/95 backdrop-blur-lg text-white p-4 shadow-2xl border border-white/20 rounded-md"
-              onClick={(e) => e.stopPropagation()}
+              id={`${ids}-guests`}
+              className="absolute bottom-full left-0 z-[80] mb-2 w-full min-w-[260px] border border-white/20 bg-[#1c130d]/95 p-5 text-white shadow-2xl backdrop-blur-lg"
             >
-              <GuestRow
-                label="Adults"
-                subtitle="Age 13+"
-                value={adults}
-                min={1}
-                onChange={handleAdultsChange}
-              />
-              <div className="border-t border-white/10 my-3" />
-              <GuestRow
-                label="Children"
-                subtitle="Ages 0-12"
-                value={children}
-                min={0}
-                onChange={handleChildrenChange}
-              />
+              <Counter label="Adults" sub="13 years and over" value={adults} min={1} max={12} onChange={setAdults} />
+              <div className="my-4 h-px bg-white/10" />
+              <Counter label="Children" sub="Up to 12 years" value={children} min={0} max={8} onChange={setChildren} />
+              <button type="button" onClick={() => setGuestOpen(false)} className="t-label mt-5 w-full border border-white/30 py-2.5 text-white hover:bg-white hover:text-ink">
+                Done
+              </button>
             </div>
           )}
         </div>
 
-        {/* 3. Dates Field (Range Picker opening upwards into banner) */}
-        <div
-          className={`relative flex items-center gap-3 px-5 h-13 text-white ${
-            gridView
-              ? "border-b border-white/20"
-              : "border-b md:border-b-0 lg:border-r border-white/20"
-          }`}
-        >
-          <FillCalenderIcon />
-          <DatePicker
-            selected={startDate}
-            onChange={handleDateChange}
-            startDate={startDate}
-            endDate={endDate}
-            selectsRange
-            minDate={new Date()}
-            placeholderText="Select Dates"
-            dateFormat="MMM d, yyyy"
-            popperPlacement="top-start"
-            calendarClassName="!z-[99999]"
-            popperClassName="!z-[99999]"
-            className="w-full bg-transparent outline-none border-none text-sm text-white placeholder:text-white/80 font-normal tracking-wide cursor-pointer"
-            wrapperClassName="w-full"
-          />
-
-          {errors.checkIn && (
-            <p className="absolute -bottom-5 left-5 text-red-400 text-xs font-normal whitespace-nowrap pointer-events-none">
-              {errors.checkIn}
-            </p>
-          )}
-        </div>
-
-        {/* 4. Action Button (Clean White button matching request) */}
         <button
           type="submit"
-          disabled={isSubmitting}
-          className="h-13 px-8 bg-white text-[#1C130D] text-[13px] font-medium tracking-widest uppercase hover:bg-white/90 active:scale-[0.99] transition-all whitespace-nowrap cursor-pointer flex items-center justify-center shadow-sm disabled:opacity-75"
+          className={`t-label flex min-h-16 items-center justify-center bg-stone px-9 text-ink transition-colors duration-300 hover:bg-white ${gridView ? "" : "col-span-2 lg:col-span-1"}`}
         >
-          {isSubmitting ? "Submitting..." : "FIND A ROOM"}
+          Check availability
         </button>
       </div>
+      <p aria-live="polite" className={`mt-2 min-h-5 text-[0.8rem] text-[#ffd9c7] ${error ? "" : "sr-only"}`}>
+        {error}
+      </p>
     </form>
   );
 }
 
-function GuestRow({
+function Counter({
   label,
-  subtitle,
+  sub,
   value,
   min,
+  max,
   onChange,
 }: {
   label: string;
-  subtitle?: string;
+  sub: string;
   value: number;
   min: number;
+  max: number;
   onChange: (v: number) => void;
 }) {
   return (
     <div className="flex items-center justify-between gap-4">
-      <div className="flex flex-col">
-        <span className="text-sm font-medium text-white">{label}</span>
-        {subtitle && (
-          <span className="text-[11px] text-white/50">{subtitle}</span>
-        )}
+      <div>
+        <p className="text-sm font-medium">{label}</p>
+        <p className="text-[11px] text-white/55">{sub}</p>
       </div>
-
       <div className="flex items-center gap-3">
         <button
           type="button"
-          onClick={() => value > min && onChange(value - 1)}
+          aria-label={`Fewer ${label.toLowerCase()}`}
+          onClick={() => onChange(Math.max(min, value - 1))}
           disabled={value <= min}
-          className="w-7 h-7 rounded-full border border-white/30 hover:bg-white/10 disabled:opacity-40 disabled:cursor-not-allowed transition flex items-center justify-center text-base leading-none text-white cursor-pointer select-none"
+          className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 hover:bg-white/10 disabled:opacity-35"
         >
           −
         </button>
-        <span className="w-5 text-center text-sm font-semibold text-white">
+        <span className="w-5 text-center text-sm tabular-nums" aria-live="polite">
           {value}
         </span>
         <button
           type="button"
-          onClick={() => onChange(value + 1)}
-          className="w-7 h-7 rounded-full border border-white/30 hover:bg-white/10 transition flex items-center justify-center text-base leading-none text-white cursor-pointer select-none"
+          aria-label={`More ${label.toLowerCase()}`}
+          onClick={() => onChange(Math.min(max, value + 1))}
+          disabled={value >= max}
+          className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 hover:bg-white/10 disabled:opacity-35"
         >
           +
         </button>

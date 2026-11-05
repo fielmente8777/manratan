@@ -9,14 +9,14 @@ import { photo, rooms } from "@/data/site";
 export const metadata: Metadata = {
   title: "Rooms & Suites in Narsinghgarh",
   description:
-    "Five room styles at Manratan Resort, Narsinghgarh: Deluxe, Deluxe Interconnected, Executive Family, Premium and the Suite. Garden, pool and hill views with Wi-Fi, AC and in-room dining.",
+    "65 rooms in five styles at Manratan Resort, Narsinghgarh: Deluxe, Deluxe Interconnected, Executive Family, Premium with sofa-cum-bed, and two Executive Suites. Garden, pool and hill views with Wi-Fi, AC and in-room dining.",
   alternates: { canonical: "/accommodation" },
 };
 
 export default function AccommodationPage() {
   return (
     <main>
-      <PageHero image={photo("suite-1", "Suite bedroom with a panoramic window over the hills")} title="Accommodation" focus="50% 55%" />
+      <PageHero image={photo("suite-1", "Executive Suite bedroom with a panoramic window over the hills")} title="Accommodation" focus="50% 55%" />
 
       <section className="bg-stone py-24 md:py-32">
         <Container className="max-w-[920px]">
@@ -50,7 +50,7 @@ export default function AccommodationPage() {
                   <div className={`mt-6 ${wide ? "md:grid md:grid-cols-[1fr_auto] md:items-end md:gap-10" : ""}`}>
                     <div>
                       <h2 className="t-display text-[clamp(1.6rem,2.4vw,2.2rem)]">{r.name}</h2>
-                      <p className="mt-2 text-[0.72rem] uppercase tracking-[0.2em] text-taupe">{r.specs.join("  •  ")}</p>
+                      <p className="mt-2 text-[0.72rem] uppercase tracking-[0.2em] text-taupe">{[...r.specs, `${r.count} ${r.count === 1 ? "room" : "rooms"}`].join("  •  ")}</p>
                       <p className="t-body mt-3 max-w-[50ch]">{r.summary}</p>
                     </div>
                     <div className="mt-6 flex flex-wrap items-center gap-x-8 gap-y-4 md:mt-6">

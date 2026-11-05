@@ -37,7 +37,14 @@ export default function RoomGallery({ images, roomName }: { images: Photo[]; roo
                 active === i ? "aspect-[4/3] md:aspect-[16/10]" : "aspect-[4/3] md:aspect-[16/10] md:scale-[0.86] opacity-70"
               }`}
             >
-              <Image src={img.src} alt={img.alt} fill sizes="(max-width: 768px) 90vw, 62vw" className="object-cover" />
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                sizes="(max-width: 768px) 90vw, 62vw"
+                // Portrait shots (washrooms) are shown whole rather than cropped to a letterbox.
+                className={img.height > img.width ? "bg-ink object-contain" : "object-cover"}
+              />
             </div>
           </SwiperSlide>
         ))}

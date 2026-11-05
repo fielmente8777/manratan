@@ -39,13 +39,13 @@ export const roomDetailsData = [
     meta: {
       title: "Deluxe Room - Manratan Resort",
       description:
-        "Experience luxury stay in our Deluxe Room at Manratan Resort, Narasingarh MP.",
+        "Experience luxury stay in our Deluxe Room at Manratan Resort, Narsinghgarh MP.",
       keyWords: [
         "Manratan Resort",
         "Deluxe Room",
         "Garden View Room",
         "Twin Bed Room",
-        "Narasingarh Resort",
+        "Narsinghgarh Resort",
       ],
     },
   },
@@ -85,7 +85,7 @@ export const roomDetailsData = [
     meta: {
       title: "Deluxe Interconnected Room - Manratan Resort",
       description:
-        "Book our Deluxe Interconnected Room at Manratan Resort, Narasingarh MP.",
+        "Book our Deluxe Interconnected Room at Manratan Resort, Narsinghgarh MP.",
       keyWords: [
         "Manratan Resort",
         "Interconnected Room",
@@ -134,7 +134,7 @@ export const roomDetailsData = [
     meta: {
       title: "Executive Family Room - Manratan Resort",
       description:
-        "Book our Executive Family Room at Manratan Resort, Narasingarh MP.",
+        "Book our Executive Family Room at Manratan Resort, Narsinghgarh MP.",
       keyWords: [
         "Manratan Resort",
         "Executive Room",
@@ -184,7 +184,7 @@ export const roomDetailsData = [
     meta: {
       title: "Premium Room - Manratan Resort",
       description:
-        "Experience peaceful living in our Premium Room at Manratan Resort, Narasingarh MP.",
+        "Experience peaceful living in our Premium Room at Manratan Resort, Narsinghgarh MP.",
       keyWords: [
         "Manratan Resort",
         "Premium Room",
@@ -233,7 +233,7 @@ export const roomDetailsData = [
     meta: {
       title: "Suite Room - Manratan Resort",
       description:
-        "Book our Suite Room at Manratan Resort, Narasingarh MP.",
+        "Book our Suite Room at Manratan Resort, Narsinghgarh MP.",
       keyWords: [
         "Manratan Resort",
         "Suite Room",
