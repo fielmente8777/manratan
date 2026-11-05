@@ -5,14 +5,16 @@ Usage:
     python3 scripts/media/render-films.py walkthrough     # walkthrough.mp4 (1600x900) + walkthrough.json + poster
     python3 scripts/media/render-films.py walkthrough --music path/to/licensed-track.mp3
 
-Each shot is a slow push-in (Ken Burns) on one photograph, joined with cross-dissolves.
+Each photo shot is a slow push-in (Ken Burns) on one photograph, joined with cross-dissolves.
 Shots are rendered from an 4x upscale so the motion is smooth rather than stepping a pixel at a time.
+A shot can also be real footage: ("clip:NAME", start, seconds) takes that stretch of public/media/NAME.mp4, which is
+already colour-graded by scripts/media/grade-footage.py, so film and site use the same grade.
 
 --music mixes a track under the walkthrough: trimmed to length, 2 s fade in, 3 s fade out, loudness-normalised
 to about -16 LUFS. Only pass a track the resort holds a licence for.
 
-When real walkthrough footage is available, replace the shot list in WALKTHROUGH with clips; the
-chapters file is written from the same list, so the site's chapter buttons stay in step.
+When more real walkthrough footage is available, grade it and swap clips into WALKTHROUGH; the chapters file is
+written from the same list, so the site's chapter buttons stay in step.
 """
 
 import json
@@ -51,6 +53,8 @@ WALKTHROUGH = [
     ("Sky Lawn", [("skylawn-sunset", "in")]),
     ("Banquets", [("blue-sapphire-stage", "in"), ("blue-sapphire-full", "out"), ("golden-sapphire", "in")]),
     ("Narsinghgarh", [("ngh-lake-temple", "in"), ("ngh-lake-town", "out"), ("ngh-chhatri", "in")]),
+    # Real footage: the drone pull-back from the candlelit table to the whole pool (half speed in pool-dinner.mp4).
+    ("Candlelight by the pool", [("clip:pool-dinner", 1.0, 8.0)]),
     ("Manratan by night", [("facade-bluehour", "in"), ("facade-night-full", "in")]),
 ]
 
@@ -99,8 +103,17 @@ def shot(src, dst, w, h, seconds, direction="in", focus=0.5, zoom=0.08):
          "-preset", "veryfast", "-crf", "16", "-an", dst])
 
 
-def join(clips, seconds, fade, out, crf, trim_start=0.0, music=None):
-    """Cross-dissolve the clips into one file."""
+def footage(name, start, seconds, dst, w, h):
+    """Take `seconds` of an already-graded clip in public/media, sized and timed to match the photo shots."""
+    run(["ffmpeg", "-y", "-v", "error", "-ss", f"{start}", "-i", os.path.join(MEDIA, f"{name}.mp4"), "-t", f"{seconds}",
+         "-vf", f"scale={w}:{h}:flags=lanczos,fps={FPS},format=yuv420p", "-c:v", "libx264", "-preset", "veryfast",
+         "-crf", "16", "-an", dst])
+
+
+def join(clips, durations, fade, out, crf, trim_start=0.0, music=None):
+    """Cross-dissolve the clips into one file. `durations` is one length per clip (or a single number for all)."""
+    if not isinstance(durations, (list, tuple)):
+        durations = [durations] * len(clips)
     inputs = []
     for c in clips:
         inputs += ["-i", c]
@@ -108,11 +121,11 @@ def join(clips, seconds, fade, out, crf, trim_start=0.0, music=None):
     last = "0:v"
     offset = 0.0
     for i in range(1, len(clips)):
-        offset += seconds - fade
+        offset += durations[i - 1] - fade
         label = f"v{i}"
         parts.append(f"[{last}][{i}:v]xfade=transition=fade:duration={fade}:offset={offset:.3f}[{label}]")
         last = label
-    total = offset + seconds
+    total = offset + durations[-1]
     if trim_start:
         parts.append(f"[{last}]trim=start={trim_start},setpts=PTS-STARTPTS[vt]")
         last = "vt"
@@ -163,16 +176,23 @@ def walkthrough(music=None):
     tmp = tempfile.mkdtemp()
     try:
         secs, fade = 3.6, 0.8
-        clips, chapters, n = [], [], 0
+        clips, durations, chapters, at = [], [], [], 0.0
         for title, shots in WALKTHROUGH:
-            chapters.append({"title": title, "start": round(max(0.0, n * (secs - fade)), 1)})
-            for key, d in shots:
-                dst = os.path.join(tmp, f"w-{n}.mp4")
-                shot(os.path.join(MEDIA, f"{key}.webp"), dst, 1600, 900, secs, d, 0.5, zoom=0.07)
+            chapters.append({"title": title, "start": round(at, 1)})
+            for spec in shots:
+                dst = os.path.join(tmp, f"w-{len(clips)}.mp4")
+                if spec[0].startswith("clip:"):
+                    _, start, length = spec
+                    footage(spec[0][5:], start, length, dst, 1600, 900)
+                else:
+                    key, d = spec
+                    length = secs
+                    shot(os.path.join(MEDIA, f"{key}.webp"), dst, 1600, 900, secs, d, 0.5, zoom=0.07)
                 clips.append(dst)
-                n += 1
+                durations.append(length)
+                at += length - fade
         out = os.path.join(MEDIA, "walkthrough.mp4")
-        total = join(clips, secs, fade, out, 27, music=music)
+        total = join(clips, durations, fade, out, 27, music=music)
         with open(os.path.join(MEDIA, "walkthrough.json"), "w") as fh:
             json.dump({"duration": round(total, 1), "chapters": chapters}, fh, indent=2)
             fh.write("\n")

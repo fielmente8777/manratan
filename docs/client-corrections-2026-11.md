@@ -7,7 +7,7 @@ Nothing here is deployed to production. Vercel builds a preview for this branch 
 
 ```bash
 npm ci && npm run build && npx next start -p 3000
-node scripts/qa/site-qa.cjs http://localhost:3000 qa-out          # 184 automated checks + screenshots
+node scripts/qa/site-qa.cjs http://localhost:3000 qa-out          # 209 automated checks + screenshots
 ```
 
 The QA script runs Chrome in the **Asia/Kolkata** time zone and never submits the enquiry form (that would send a real lead).
@@ -32,7 +32,8 @@ The QA script runs Chrome in the **Asia/Kolkata** time zone and never submits th
 | Amenities | New homepage section: **Pooja Room** and **Parlour Room** highlighted, then pool, poolside candlelight dinners and proposals (client message 5 Nov), Swadika, banquet halls, Red Coral Lawn, Sky Lawn, rooms and in-room amenities. All from the brochure or the client. |
 | Rooms | Each room's gallery shows only that room. Generic towel close-ups removed. Premium shows the sofa-cum-bed opened out. Portrait washroom photos shown whole instead of cropped. Room counts from the brochure (25/12/8/16/2). "Suite" renamed **Executive Suite** as in the brochure. |
 | Venues | Capacities from the brochure: Blue Sapphire 300–400, Golden Sapphire 25–80 (projector provided), Blue Diamond poolside 300–400, Sky Lawn up to 20, Red Coral Lawn 500–4,000, Swadika 80–100. |
-| Walkthrough film | Re-cut (65 s) with the Executive Suite, Premium sofa-cum-bed, Executive Family room, wide banquet and the night exterior as the closing chapter. 11.1 MB (was 12.1 MB). Chapters update automatically. |
+| Walkthrough film | Re-cut (72 s) with the Executive Suite, Premium sofa-cum-bed, Executive Family room, wide banquet, a real-footage chapter **Candlelight by the pool** (the client's drone clip) and the night exterior as the closing chapter. 12.1 MB. Chapters update automatically. |
+| Client footage, colour graded | The two clips sent on 5 Nov are graded and on the site. **The Manratan walk** (`IMG_5576.MP4`, the 1080×1920 original; `IMG_5576_1.mp4` is a lower-quality copy of the same edit) plays as a vertical reel under the walkthrough film, with its four stops (Reception, a guest room, Swadika, Blue Diamond pool) highlighted as it plays and clickable. The **poolside candlelight dinner** drone clip (`1000239934.mp4`) plays at half speed (real slow motion from the 60 fps source) as a full-width feature in the homepage Events section with a "Plan a poolside dinner" enquiry button, as the Blue Diamond venue on the Celebrations page, and in the film. Both are muted (the walk's soundtrack isn't licensed to us), load only when scrolled near (nothing extra on first load), pause off-screen, have a Pause/Play control, and don't autoplay for reduced-motion visitors. walk.mp4 1.2 MB, pool-dinner.mp4 3.0 MB. |
 | SEO | New home title/description, hotel schema `slogan` and Pooja/Parlour amenities, cuisine corrected to Indian/multi-cuisine, room pages and Celebrations metadata updated. |
 | Spelling | "Narasingarh" corrected to Narsinghgarh (the existing blog URL slug is left unchanged so links keep working). |
 
@@ -43,6 +44,8 @@ The QA script runs Chrome in the **Asia/Kolkata** time zone and never submits th
 - **Pooja Room / Parlour Room descriptions** — one line each; confirm the wording.
 - **Copy** — About, Swadika, venues, room intros, amenities and destination text rewritten to the brochure and sourced facts.
 - **Landing-page testimonials** — quotes mentioning "Kashmir of Malwa" were updated to "Mini"; confirm these are genuine guest quotes.
+- **Colour grade** — two passes: a per-shot balance (black point, white balance — the room's bed linen read blue — exposure, and noise reduction plus a lift for the night drone shot), then one shared look for every clip: a gentle S-curve, warm-gold highlights with whites kept clean, warm shadows with true blacks, richer reds and turquoise water, calmer greens. The look is saved as `scripts/media/manratan-look.cube`, a standard LUT the editors can load in Resolve, Premiere, Final Cut or CapCut to grade the full-length clips the same way. Split-screen before/after: `docs/media/grade-before-after.jpg`. Strength is easy to change if the client wants it warmer or more neutral.
+- **Burned-in logo on the walk** — the client's edit carries the Manratan logo top-right; it is kept (the Pause control sits top-left to stay clear of it).
 - **Photo processing** — the night exterior (gentle shadow lift, levels, light sharpening) and the banquet wide (levels, slight warmth, sharpening) were resized and adjusted only; no retouching, perspective correction or sky replacement.
 
 ### Blocked by a missing asset or access
@@ -54,7 +57,7 @@ The QA script runs Chrome in the **Asia/Kolkata** time zone and never submits th
 | Client-approved food photos | The Swadika folder has room shots only; no plated food. |
 | Additional pool photo | Vanisha › Pool contains only a vertical story collage. |
 | Licensed music for the walkthrough | Needs a track the resort holds a licence for. Then: `python3 scripts/media/render-films.py walkthrough --music track.mp3`. |
-| Real walkthrough footage | The Video folders hold 130 MB–1 GB raw clips; the film is still built from the edited photographs. |
+| More real footage | Two clips received and used (above). The Drive "Color Grade" folder (`Resturant.mp4` 495 MB, `lobby.mp4` 226 MB, `Banquet 1–3`, `Room1–4`, `Reception.mp4`, `welcome.mp4` 982 MB) is still out of reach: Drive won't hand over files that size here. Sending them in chat (as with `IMG_5576.MP4`), or 1080p exports under ~100 MB, lets the rest of the film move from photographs to footage with the same grade. |
 | Approved design / Sumit's walkthrough presentation | Not found in Drive. Needed to check layouts against the approved concept. |
 | "Sona Kunch" | No source found; not used anywhere. |
 | Night drone exteriors | Drive › Vanisha › Building Structure (`DJI_20260911213815…` to `…220006`), 13–17 MB; better than the phone photo now used. |
@@ -78,10 +81,13 @@ The QA script runs Chrome in the **Asia/Kolkata** time zone and never submits th
 | Layout shift | 0 | 0 |
 | Page weight | 0.7 MB | 2.2 MB (the phone video, loaded after the page is ready) |
 
+Re-measured on 5 Nov after adding the graded footage, side by side with the previous build (5 runs each, same machine, which was busier than for the table above): performance 83 vs 81, LCP 4.5 s vs 4.8 s, page weight 2.1 MB vs 2.2 MB. The new clips and their posters are not downloaded until a visitor scrolls near them.
+
 ## Re-rendering media
 
 - Photos: `python3 scripts/media/process-photos.py SOURCE KEY [--lift 0.12] [--warm 0.02]` → `public/media/KEY.webp` + manifest entry.
-- Films: `python3 scripts/media/render-films.py hero|walkthrough [--music licensed.mp3]`. Shot lists are at the top of the script.
+- Films: `python3 scripts/media/render-films.py hero|walkthrough [--music licensed.mp3]`. Shot lists are at the top of the script; a shot can be a stretch of graded footage (`("clip:pool-dinner", start, seconds)`).
+- Footage: `python3 scripts/media/grade-footage.py walk|pool-dinner SOURCE.mp4` grades and encodes `public/media/NAME.mp4` + poster; `compare walk SOURCE OUT_DIR` writes before/after stills; `lut` rebuilds the `.cube`. Per-shot balance settings are in `CLIPS` at the top of the script. Re-render the walkthrough after changing `pool-dinner`.
 
 ## Sources for destination facts
 

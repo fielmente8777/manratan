@@ -2,8 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import FilmPlayer from "@/components/site/FilmPlayer";
 import AmenityIcon from "@/components/site/AmenityIcon";
+import AmbientVideo from "@/components/site/AmbientVideo";
+import BookButton from "@/components/site/BookButton";
+import WalkReel from "./WalkReel";
 import { Container, Diamond, LineLink, Title } from "@/components/site/ui";
-import { amenities, fort, nearby, photo, redCoral, venues, walkthrough, type Photo, type Place } from "@/data/site";
+import { amenities, fort, nearby, photo, redCoral, venues, video, walkthrough, type Photo, type Place } from "@/data/site";
 
 function Figure({ img, caption, className = "", sizes = "50vw", focus }: { img: Photo; caption?: string; className?: string; sizes?: string; focus?: string }) {
   return (
@@ -76,6 +79,7 @@ export function Walkthrough() {
           </p>
         </div>
         <FilmPlayer />
+        <WalkReel />
       </Container>
     </section>
   );
@@ -198,7 +202,30 @@ export function Celebrations() {
           and receptions for up to 4,000 guests on the Red Coral Lawn, with pure vegetarian catering throughout.
         </p>
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 md:gap-6">
+        {/* Phones: the film, then the words under it, so nothing covers the couple. Larger screens: words over the
+            darker lower-left corner of the frame. */}
+        <div id="poolside" className="relative mt-14 scroll-mt-24">
+          <AmbientVideo
+            src={video.poolDinner}
+            poster={video.poolDinnerPoster}
+            alt="A couple at a candlelit table by the Blue Diamond pool at night, the camera rising to show the whole lit pool"
+            className="aspect-[4/5] w-full sm:aspect-video"
+            sizes="(max-width: 1400px) 100vw, 1320px"
+          />
+          <span className="pointer-events-none absolute inset-0 hidden bg-gradient-to-tr from-black/80 via-black/25 to-transparent sm:block" />
+          <div className="pt-7 sm:pointer-events-none sm:absolute sm:inset-x-0 sm:bottom-0 sm:p-10 lg:p-14">
+            <div className="sm:pointer-events-auto sm:max-w-[30rem]">
+              <p className="t-label text-stone/75">Blue Diamond · poolside</p>
+              <h3 className="t-display mt-3 text-[clamp(1.9rem,3.2vw,2.9rem)] leading-[1.08]">Candlelight dinners and proposals</h3>
+              <p className="mt-3 max-w-[44ch] text-sm leading-relaxed text-stone/85 sm:text-base">
+                A table for two by the water, dressed with rose petals and fairy lights. Tell us the date when you enquire.
+              </p>
+              <BookButton tone="light" className="mt-6 px-6 py-3">Plan a poolside dinner</BookButton>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-12 grid gap-4 sm:mt-6 sm:grid-cols-2 md:gap-6">
           {venues.map((v) => (
             <Link key={v.name} href="/events" className="group relative block aspect-[16/11] overflow-hidden">
               <Image src={v.image.src} alt={v.image.alt} fill sizes="(max-width: 640px) 100vw, 50vw" className="img-drift object-cover" />

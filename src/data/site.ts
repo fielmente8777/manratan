@@ -28,7 +28,21 @@ export const video = {
   heroLoopMobile: "/media/hero-loop-mobile.mp4",
   walkthrough: "/media/walkthrough.mp4",
   poster: "/media/walkthrough-poster.webp",
+  /** The model walk (client footage IMG_5576.MP4): reception, a guest room, Swadika, the pool. 720x1280, graded, muted. */
+  walk: "/media/walk.mp4",
+  walkPoster: "/media/walk-poster.webp",
+  /** Drone pull-back from a candlelit table to the whole Blue Diamond pool at night (client footage 1000239934.mp4), half speed, graded. */
+  poolDinner: "/media/pool-dinner.mp4",
+  poolDinnerPoster: "/media/pool-dinner-poster.webp",
 };
+
+/** Where the model walk goes, in seconds of walk.mp4 (cut points of the source edit). */
+export const walkStops = [
+  { title: "Reception", start: 0 },
+  { title: "A guest room", start: 2.96 },
+  { title: "Swadika", start: 5.48 },
+  { title: "Blue Diamond pool", start: 8.84 },
+];
 
 export const walkthrough = film as {
   duration: number;
@@ -222,6 +236,11 @@ export const venues = [
     kind: "Poolside · 300–400 guests",
     detail: "Sundowners, poolside parties, pre-wedding mixers, candlelight dinners and proposals by the water",
     image: photo("pool-dusk", "Blue Diamond pool from above at dusk, lights on"),
+    video: {
+      src: video.poolDinner,
+      poster: video.poolDinnerPoster,
+      alt: "A couple at a candlelit table by the Blue Diamond pool at night, the camera rising to show the whole lit pool",
+    },
   },
   {
     name: "Sky Lawn",

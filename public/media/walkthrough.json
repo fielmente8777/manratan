@@ -1,5 +1,5 @@
 {
-  "duration": 65.2,
+  "duration": 72.4,
   "chapters": [
     {
       "title": "First light",
@@ -34,8 +34,12 @@
       "start": 50.4
     },
     {
-      "title": "Manratan by night",
+      "title": "Candlelight by the pool",
       "start": 58.8
+    },
+    {
+      "title": "Manratan by night",
+      "start": 66.0
     }
   ]
 }

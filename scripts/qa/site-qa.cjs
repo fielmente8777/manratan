@@ -223,12 +223,15 @@ async function contentChecks(browser) {
   await walk.scrollIntoViewIfNeeded();
   await walk.getByRole("button", { name: /Play the walkthrough/ }).click();
   await page.waitForTimeout(3000);
-  let w = await walk.locator("video").evaluate((v) => ({ t: v.currentTime, paused: v.paused, w: v.videoWidth }));
+  const film = walk.locator('video[aria-label^="Walkthrough film"]');
+  let w = await film.evaluate((v) => ({ t: v.currentTime, paused: v.paused, w: v.videoWidth }));
   check("walkthrough plays", !w.paused && w.t > 1, `t=${w.t.toFixed(1)} width=${w.w}`);
   await walk.getByRole("button", { name: /Manratan by night/ }).click();
   await page.waitForTimeout(1500);
-  w = await walk.locator("video").evaluate((v) => ({ t: v.currentTime }));
-  check("walkthrough chapter 'Manratan by night' seeks", w.t > 58, `t=${w.t.toFixed(1)}`);
+  w = await film.evaluate((v) => ({ t: v.currentTime }));
+  check("walkthrough chapter 'Manratan by night' seeks", w.t > 65, `t=${w.t.toFixed(1)}`);
+  const chapters = await walk.getByRole("list", { name: "Chapters" }).innerText();
+  check("walkthrough has the real-footage chapter 'Candlelight by the pool'", /Candlelight by the pool/i.test(chapters));
   await walk.screenshot({ path: path.join(OUT, "walkthrough-night-chapter.png") });
 
   for (const [id, prefix] of [["room-1", "deluxe"], ["room-2", "inter"], ["room-3", "executive"], ["room-4", "premium"], ["room-5", "suite"]]) {
@@ -246,6 +249,75 @@ async function contentChecks(browser) {
   const robots = await page.locator("meta[name=robots]").getAttribute("content");
   check("thank-you page exists and is noindex", /noindex/.test(robots || ""), robots);
   await ctx.close();
+}
+
+// The graded client footage: lazy (nothing downloaded until near the screen), muted inline autoplay when in view,
+// a working Pause control, stops that seek, and no autoplay for reduced-motion visitors.
+async function footageChecks(browser, label, ctxOpts) {
+  const ctx = await browser.newContext(ctxOpts);
+  const page = await ctx.newPage();
+  const fetched = [];
+  page.on("request", (r) => /\/media\/(walk|pool-dinner)\.mp4/.test(r.url()) && fetched.push(r.url()));
+  await page.goto(BASE + "/", { waitUntil: "load" });
+  await page.waitForTimeout(2500);
+  check(`${label} footage not downloaded until scrolled to`, fetched.length === 0, fetched.join(", "));
+
+  const state = (loc) => loc.evaluate((v) => ({ src: v.currentSrc, paused: v.paused, t: v.currentTime, muted: v.muted, inline: v.playsInline, w: v.videoWidth, h: v.videoHeight }));
+  const reel = page.locator("#manratan-walk");
+  await reel.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(3000);
+  const wv = reel.locator("video");
+  let s = await state(wv);
+  check(`${label} Manratan walk plays when in view (muted, inline)`, s.src.endsWith("/media/walk.mp4") && !s.paused && s.t > 0.3 && s.muted && s.inline, `src=${s.src.split("/").pop()} t=${s.t.toFixed(1)} paused=${s.paused}`);
+  check(`${label} Manratan walk is the 720x1280 graded cut`, s.w === 720 && s.h === 1280, `${s.w}x${s.h}`);
+  await reel.getByRole("button", { name: "Swadika" }).click();
+  await page.waitForTimeout(1500);
+  s = await state(wv);
+  check(`${label} walk stop "Swadika" jumps to the restaurant and keeps playing`, s.t >= 5.4 && s.t < 8.8 && !s.paused, `t=${s.t.toFixed(2)} paused=${s.paused}`);
+  const inView = await wv.evaluate((v) => { const r = v.getBoundingClientRect(); return r.top >= -2 && r.bottom <= innerHeight + 2; });
+  check(`${label} walk stop brings the reel on screen`, inView);
+  await reel.getByRole("button", { name: "Pause video" }).click();
+  await page.waitForTimeout(300);
+  check(`${label} walk Pause control pauses`, (await state(wv)).paused);
+  if (label === "desktop") await reel.screenshot({ path: path.join(OUT, "manratan-walk.png") });
+
+  const pool = page.locator("#poolside");
+  await pool.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(3000);
+  const pv = pool.locator("video");
+  s = await state(pv);
+  check(`${label} poolside dinner film plays when in view`, s.src.endsWith("/media/pool-dinner.mp4") && !s.paused && s.t > 0.3 && s.muted, `t=${s.t.toFixed(1)} paused=${s.paused}`);
+  check(`${label} poolside feature has an enquiry button`, await pool.getByRole("button", { name: "Plan a poolside dinner" }).isVisible());
+  await page.addStyleTag({ content: "header{visibility:hidden !important}" });
+  await page.waitForTimeout(300);
+  await pool.screenshot({ path: path.join(OUT, `poolside-${label}.png`) });
+  // Scrolling away pauses it.
+  await page.locator("#nearby").scrollIntoViewIfNeeded();
+  await page.waitForTimeout(800);
+  check(`${label} poolside film pauses when scrolled away`, (await state(pv)).paused);
+
+  await page.goto(BASE + "/events", { waitUntil: "load" });
+  const ev = page.locator("[aria-labelledby=venues-title] video");
+  await ev.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(3000);
+  s = await state(ev);
+  check(`${label} events: Blue Diamond shows the poolside film`, s.src.endsWith("/media/pool-dinner.mp4") && !s.paused, `t=${s.t.toFixed(1)}`);
+  await ctx.close();
+
+  // Reduced motion: poster and Play button only; plays when asked.
+  const rctx = await browser.newContext({ ...ctxOpts, reducedMotion: "reduce" });
+  const rp = await rctx.newPage();
+  await rp.goto(BASE + "/", { waitUntil: "load" });
+  const rr = rp.locator("#manratan-walk");
+  await rr.scrollIntoViewIfNeeded();
+  await rp.waitForTimeout(2000);
+  s = await state(rr.locator("video"));
+  check(`${label} reduced motion: walk does not autoplay`, s.paused && s.t === 0, `paused=${s.paused} t=${s.t}`);
+  await rr.getByRole("button", { name: "Play video" }).click();
+  await rp.waitForTimeout(2000);
+  s = await state(rr.locator("video"));
+  check(`${label} reduced motion: Play starts the walk`, !s.paused && s.t > 0.2, `t=${s.t.toFixed(1)}`);
+  await rctx.close();
 }
 
 async function shots(browser, base, tag) {
@@ -303,6 +375,8 @@ async function shots(browser, base, tag) {
   await bookingFlow(browser, "mobile", mobile);
   await galleryChecks(browser);
   await contentChecks(browser);
+  await footageChecks(browser, "desktop", desktop);
+  await footageChecks(browser, "mobile", mobile);
   await pageAudit(browser, "desktop", desktop);
   await pageAudit(browser, "mobile", mobile);
   await shots(browser, BASE, "after");

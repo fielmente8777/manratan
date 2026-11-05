@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import PageHero from "@/components/site/PageHero";
 import BookButton from "@/components/site/BookButton";
+import AmbientVideo from "@/components/site/AmbientVideo";
 import { Container, Diamond, Title } from "@/components/site/ui";
 import { photo, redCoral, site, venues } from "@/data/site";
 
@@ -58,9 +59,13 @@ export default function EventsPage() {
           <div className="mt-16 space-y-20">
             {venues.map((v, i) => (
               <article key={v.name} className={`grid items-center gap-8 lg:grid-cols-[1.4fr_1fr] lg:gap-16 ${i % 2 ? "lg:[&>*:first-child]:order-2 lg:grid-cols-[1fr_1.4fr]" : ""}`}>
-                <div className="relative aspect-[16/10] overflow-hidden">
-                  <Image src={v.image.src} alt={v.image.alt} fill sizes="(max-width: 1024px) 100vw, 58vw" className="object-cover" />
-                </div>
+                {v.video ? (
+                  <AmbientVideo src={v.video.src} poster={v.video.poster} alt={v.video.alt} className="aspect-[16/10] w-full" sizes="(max-width: 1024px) 100vw, 58vw" />
+                ) : (
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <Image src={v.image.src} alt={v.image.alt} fill sizes="(max-width: 1024px) 100vw, 58vw" className="object-cover" />
+                  </div>
+                )}
                 <div>
                   <p className="t-label text-stone/60">{v.kind}</p>
                   <h3 className="t-display mt-3 flex items-center gap-3 text-[clamp(2rem,3.4vw,3.2rem)]">
