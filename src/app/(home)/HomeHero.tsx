@@ -25,7 +25,21 @@ export default function HomeHero() {
     const saver = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
     if (reduce || saver) return;
     const portrait = window.matchMedia("(max-width: 767px) and (orientation: portrait), (max-aspect-ratio: 4/5)").matches;
-    setSrc(portrait ? video.heroLoopMobile : video.heroLoop);
+    // Start the loop only once the page has loaded and gone idle, so the poster, fonts and headline paint
+    // first and the video never competes with them for bandwidth on a phone connection.
+    let idle = 0;
+    const begin = () => {
+      const ric = (window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number }).requestIdleCallback;
+      idle = ric ? ric(() => setSrc(portrait ? video.heroLoopMobile : video.heroLoop), { timeout: 2000 }) : window.setTimeout(() => setSrc(portrait ? video.heroLoopMobile : video.heroLoop), 300);
+    };
+    if (document.readyState === "complete") begin();
+    else window.addEventListener("load", begin, { once: true });
+    return () => {
+      window.removeEventListener("load", begin);
+      const cic = (window as Window & { cancelIdleCallback?: (id: number) => void }).cancelIdleCallback;
+      if (cic) cic(idle);
+      else window.clearTimeout(idle);
+    };
   }, []);
 
   // iOS and Android only autoplay when the element is muted *as a property* and inline.
@@ -89,7 +103,6 @@ export default function HomeHero() {
           playsInline
           autoPlay
           preload="auto"
-          poster={poster.src}
           onPlaying={() => setState("playing")}
           className={`absolute inset-0 -z-10 h-full w-full object-cover transition-opacity duration-[1400ms] ${
             state === "playing" || state === "paused" ? "opacity-100" : "opacity-0"

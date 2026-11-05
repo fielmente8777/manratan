@@ -260,6 +260,8 @@ async function shots(browser, base, tag) {
     await page.waitForTimeout(3500);
     await page.screenshot({ path: path.join(OUT, `${tag}-${d}-1-hero.png`) });
     await settle(page);
+    // The sticky header would otherwise cut across every section screenshot.
+    await page.addStyleTag({ content: "header{visibility:hidden !important}" });
     const sections = [
       ["2-nearby", "#nearby"],
       ["3-evening", "text=The experience evolves with the light"],
@@ -278,6 +280,7 @@ async function shots(browser, base, tag) {
     }
     await page.goto(base + "/events", { waitUntil: "load" });
     await settle(page);
+    await page.addStyleTag({ content: "header{visibility:hidden !important}" });
     const venues = page.locator("[aria-labelledby=venues-title]");
     await venues.scrollIntoViewIfNeeded();
     await page.waitForTimeout(600);
@@ -288,6 +291,12 @@ async function shots(browser, base, tag) {
 
 (async () => {
   const browser = await chromium.launch({ executablePath: "/usr/bin/google-chrome" });
+  if (process.argv.includes("--shots-only")) {
+    await shots(browser, BASE, "after");
+    if (BEFORE) await shots(browser, BEFORE, "before");
+    await browser.close();
+    return;
+  }
   await heroVideo(browser, "desktop", desktop, "/media/hero-loop.mp4");
   await heroVideo(browser, "mobile", mobile, "/media/hero-loop-mobile.mp4");
   await bookingFlow(browser, "desktop", desktop);

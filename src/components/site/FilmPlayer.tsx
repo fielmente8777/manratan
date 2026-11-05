@@ -54,7 +54,6 @@ export default function FilmPlayer({ autoPlay = false, chapters = true, tone = "
           ref={ref}
           src={video.walkthrough}
           preload="none"
-          poster={video.poster}
           playsInline
           controls={started}
           onTimeUpdate={onTime}

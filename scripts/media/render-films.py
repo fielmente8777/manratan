@@ -143,7 +143,7 @@ def hero():
     tmp = tempfile.mkdtemp()
     try:
         secs, fade = 5.0, 1.2
-        for name, w, h, crf, mobile in (("hero-loop", 1280, 720, 29, False), ("hero-loop-mobile", 720, 1280, 30, True)):
+        for name, w, h, crf, mobile in (("hero-loop", 1280, 720, 29, False), ("hero-loop-mobile", 720, 1280, 32, True)):
             clips = []
             seq = HERO + [HERO[0]]  # end on the opening shot so the loop has no seam
             for i, (key, focus, d) in enumerate(seq):

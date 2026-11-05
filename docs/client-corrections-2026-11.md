@@ -18,7 +18,7 @@ The QA script runs Chrome in the **Asia/Kolkata** time zone and never submits th
 
 | Area | What changed |
 |---|---|
-| Hero video on phones | It was switched off below 768 px, so phones only saw a still. Phones now get a portrait 720×1280 cut (`hero-loop-mobile.mp4`, 1.8 MB); desktops keep 1280×720 (2.5 MB, was 3.0 MB). Muted + inline set as properties so iOS/Android autoplay; if autoplay is blocked (e.g. Low Power Mode) a Play button shows over the poster; a Pause/Play control is always present. Skipped for reduced-motion or data-saver users. |
+| Hero video on phones | It was switched off below 768 px, so phones only saw a still. Phones now get a portrait 720×1280 cut (`hero-loop-mobile.mp4`, 1.4 MB), started only after the page has loaded so it never delays the first paint; desktops keep 1280×720 (2.5 MB, was 3.0 MB). Muted + inline set as properties so iOS/Android autoplay; if autoplay is blocked (e.g. Low Power Mode) a Play button shows over the poster; a Pause/Play control is always present. Skipped for reduced-motion or data-saver users. |
 | Booking widget | Separate **Check-in** and **Check-out** fields with labels, guests selector, nights count and range validation. "Check availability" opens the existing enquiry form pre-filled, which collects name/phone/email and posts to the same `nexon.eazotel.com` lead endpoint (the old hero form sent leads with no phone or email). |
 | Date bug | Dates were converted with `toISOString()`, which in IST sent the previous day (a stay picked for 15 Nov was submitted as 14 Nov). Now local dates; verified 15→18 Nov arrive as 15 and 18 Nov. |
 | Thank-you page | Successful enquiries opened `/thank-you/` in a new tab — the page didn't exist and the new tab is usually blocked. Added the page (no-index) and redirect in the same tab. |
@@ -65,6 +65,18 @@ The QA script runs Chrome in the **Asia/Kolkata** time zone and never submits th
 - Production deploy (needs approval).
 - Real-device test on iPhone Safari (tested in Chrome with iPhone emulation only).
 - Full rewrite of the six journal articles (only terminology corrected).
+
+## Performance (Lighthouse 12, mobile, median of 3 runs on a local production build)
+
+| | Before | After |
+|---|---|---|
+| Performance | 84 | 86 |
+| Accessibility | 91 | 96 |
+| Best practices / SEO | 100 / 100 | 100 / 100 |
+| Largest contentful paint | 4.4 s | 3.8 s |
+| Total blocking time | 123 ms | 153 ms |
+| Layout shift | 0 | 0 |
+| Page weight | 0.7 MB | 2.2 MB (the phone video, loaded after the page is ready) |
 
 ## Re-rendering media
 
