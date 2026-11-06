@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
-import { rooms } from "@/data/site";
+import { roomsPremiumFirst } from "@/data/site";
 import { Container, LineLink, Title } from "@/components/site/ui";
 
 export default function RoomsRail() {
@@ -39,7 +39,7 @@ export default function RoomsRail() {
         ref={rail}
         className="no-scrollbar mt-14 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-px-5 px-5 sm:scroll-px-8 sm:px-8 lg:px-[max(2.5rem,calc((100vw-1320px)/2+2.5rem))] lg:scroll-px-[max(2.5rem,calc((100vw-1320px)/2+2.5rem))]"
       >
-        {rooms.map((r) => (
+        {roomsPremiumFirst.map((r) => (
           <Link
             key={r.id}
             href={`/accommodation/${r.id}`}
@@ -56,6 +56,16 @@ export default function RoomsRail() {
         ))}
         <span className="w-px shrink-0" aria-hidden="true" />
       </div>
+
+      <Container>
+        <div className="mt-10 flex flex-col gap-4 border-t border-ink/15 pt-7 sm:flex-row sm:items-center sm:gap-8">
+          <p className="t-label shrink-0 text-taupe">Also at Manratan</p>
+          <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-ink">
+            <span>Pooja Room</span>
+            <span>Parlour Room</span>
+          </div>
+        </div>
+      </Container>
     </section>
   );
 }
