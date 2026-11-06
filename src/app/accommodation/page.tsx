@@ -4,7 +4,7 @@ import Link from "next/link";
 import PageHero from "@/components/site/PageHero";
 import BookButton from "@/components/site/BookButton";
 import { Container, LineLink, Title } from "@/components/site/ui";
-import { photo, rooms } from "@/data/site";
+import { photo, roomsPremiumFirst } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Rooms & Suites in Narsinghgarh",
@@ -38,8 +38,8 @@ export default function AccommodationPage() {
       <section className="bg-stone pb-28 md:pb-36">
         <Container>
           <div className="grid gap-x-6 gap-y-20 md:grid-cols-2">
-            {rooms.map((r, i) => {
-              const wide = i === rooms.length - 1;
+            {roomsPremiumFirst.map((r, i) => {
+              const wide = i === 0;
               return (
                 <article key={r.id} className={wide ? "md:col-span-2" : ""}>
                   <Link href={`/accommodation/${r.id}`} className="group block" aria-label={`View the ${r.name}`}>
