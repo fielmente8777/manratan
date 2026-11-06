@@ -4,7 +4,6 @@ import FilmPlayer from "@/components/site/FilmPlayer";
 import AmenityIcon from "@/components/site/AmenityIcon";
 import AmbientVideo from "@/components/site/AmbientVideo";
 import BookButton from "@/components/site/BookButton";
-import WalkReel from "./WalkReel";
 import { Container, Diamond, LineLink, Title } from "@/components/site/ui";
 import { amenities, fort, nearby, photo, redCoral, venues, video, walkthrough, type Photo, type Place } from "@/data/site";
 
@@ -79,7 +78,6 @@ export function Walkthrough() {
           </p>
         </div>
         <FilmPlayer />
-        <WalkReel />
       </Container>
     </section>
   );
@@ -135,49 +133,34 @@ export function Spaces() {
 /* ------------------------------------------------------------------ */
 
 export function Amenities() {
-  const featured = amenities.filter((a) => a.featured);
-  const rest = amenities.filter((a) => !a.featured);
   return (
-    <section id="amenities" className="scroll-mt-20 bg-stone-deep py-24 md:py-32" aria-labelledby="amenities-title">
+    <section id="amenities" className="scroll-mt-20 bg-stone-deep py-16 md:py-20" aria-labelledby="amenities-title">
       <Container>
-        <div className="grid gap-8 md:grid-cols-[0.85fr_1.4fr] md:items-end md:gap-16">
+        <div className="grid gap-5 md:grid-cols-[0.85fr_1.4fr] md:items-end md:gap-12">
           <div id="amenities-title">
-            <Title main="Amenities" script="Thoughtfully provided" />
+            <Title main="Amenities" script="At your convenience" />
           </div>
           <p className="t-body max-w-[60ch]">
-            Beyond the rooms and the pool, Manratan keeps a few spaces many resorts forget, so families and wedding parties have
-            everything they need under one roof.
+            Enjoy thoughtful conveniences during your stay, from leisure and dining to useful spaces for family gatherings and celebrations.
           </p>
         </div>
-
-        <div className="mt-14 grid gap-4 md:grid-cols-2">
-          {featured.map((a) => (
-            <article key={a.name} className="relative overflow-hidden bg-ink px-8 py-10 text-stone sm:px-10 sm:py-12">
-              <Diamond className="absolute right-8 top-8 h-5 w-5 text-brass-light/70" />
-              <AmenityIcon name={a.icon} className="h-12 w-12 text-brass-light" />
-              <h3 className="t-display mt-6 text-[clamp(1.9rem,3vw,2.6rem)]">{a.name}</h3>
-              <p className="t-body-light mt-3 max-w-[40ch]">{a.note}</p>
-            </article>
-          ))}
-        </div>
-
-        <ul className="mt-4 grid gap-px overflow-hidden bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
-          {rest.map((a) => {
+        <ul className="mt-10 grid gap-px overflow-hidden bg-ink/10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {amenities.map((a) => {
             const body = (
               <>
-                <AmenityIcon name={a.icon} className="h-8 w-8 text-brass" />
-                <p className="t-display mt-5 text-[1.2rem]">{a.name}</p>
-                <p className="t-body mt-2 text-[0.88rem] leading-relaxed">{a.note}</p>
+                <AmenityIcon name={a.icon} className="h-7 w-7 text-brass" />
+                <p className="t-display mt-3 text-[1.12rem]">{a.name}</p>
+                <p className="t-body mt-2 text-[0.85rem] leading-relaxed">{a.note}</p>
               </>
             );
             return (
               <li key={a.name} className="bg-stone">
                 {a.href ? (
-                  <Link href={a.href} className="group block h-full p-7 transition-colors hover:bg-white">
+                  <Link href={a.href} className="block h-full p-5 transition-colors hover:bg-white md:p-6">
                     {body}
                   </Link>
                 ) : (
-                  <div className="h-full p-7">{body}</div>
+                  <div className="h-full p-5 md:p-6">{body}</div>
                 )}
               </li>
             );
