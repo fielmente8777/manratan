@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import PageHero from "@/components/site/PageHero";
 import BookButton from "@/components/site/BookButton";
 import { Container, Diamond, LineLink } from "@/components/site/ui";
-import { getRoom, rooms, site } from "@/data/site";
+import { getRoom, rooms, roomsPremiumFirst, site } from "@/data/site";
 import RoomGallery from "./RoomGallery";
 
 type Params = { params: Promise<{ id: string }> };
@@ -32,7 +32,7 @@ export default async function RoomPage({ params }: Params) {
   const room = getRoom(id);
   if (!room) notFound();
 
-  const others = rooms.filter((r) => r.id !== room.id);
+  const others = roomsPremiumFirst.filter((r) => r.id !== room.id);
   const breadcrumb = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
