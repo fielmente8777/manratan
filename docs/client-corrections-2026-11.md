@@ -1,5 +1,27 @@
 # Manratan — client corrections, November 2026
 
+## Client feedback — 6 November 2026 (latest)
+
+### Implemented on staging, photography untouched
+- Home room rail and /accommodation listing now lead with the **Executive Suite**, followed by Premium, Executive Family, Interconnected and Deluxe; existing room URL IDs are preserved. Related-room cards follow the same sequence.
+- The two oversized Pooja Room / Parlour Room hero cards were removed. The amenities section is now a standard compact, equal-sized grid; a small Pooja/Parlour mention appears next to the accommodation rail.
+- **The model walk reel is temporarily hidden, not deleted**. The client says its version is not the finalized walkthrough; do not republish it until Sumit's approved inspiration / final edit is obtained. The main property walkthrough remains available.
+- The existing separate poolside candlelight dinner / proposal video remains unchanged as the client likes it.
+- All property photography and film source media are deliberately unchanged in this round.
+
+### Pending client input / media production
+- Final approved **model walkthrough reference** (Sumanth/Sumit presentation or the inspiration website); replace hidden reel only once approved.
+- Licensed background music for the property walkthrough, and a refreshed edit if the client specifies one. Do not represent the current silent slideshow as the approved final film.
+- Final corrected photographs for exterior by night, the fort and drone views, edited main building, the selected pool model shot and other approved imagery. **Do not make image replacements in this round**.
+- Client edits/approval of all website copy. Editable content document: https://docs.google.com/document/d/1q5xucK8HHGxZKjDkqjKAXikAZJkbrL01GHHZXCcqdlU/edit
+- Site advertises 65 rooms but current room-category counts add up to 63; seek property confirmation before changing factual copy.
+
+### Release status
+- Staging review only. **No production promotion until client approvals, final media and editorial sign-off.**
+
+---
+
+
 Branch: `fix/client-corrections-nov26` (based on `redesign/raffles-2026`, the version the client reviewed).
 Nothing here is deployed to production. Vercel builds a preview for this branch on every push.
 
