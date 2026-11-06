@@ -87,7 +87,7 @@ export function Walkthrough() {
 
 const spaces = [
   { label: "Reception", focus: "31% 55%", href: "/gallery?category=lobby", line: "A namaste at the door, and the lobby's crystal chandeliers", img: photo("reception-welcome", "Reception team greeting guests with a namaste") },
-  { label: "Rooms", focus: "60% 50%", href: "/accommodation", line: "Five styles of room, from Deluxe to the Executive Suite", img: photo("suite-bed", "Executive Suite bed dressed in Manratan linen with towel art") },
+  { label: "Rooms", focus: "60% 50%", href: "/accommodation", line: "Five styles of room, from the Executive Suite to Deluxe", img: photo("suite-bed", "Executive Suite bed dressed in Manratan linen with towel art") },
   { label: "Banquet", focus: "50% 50%", href: "/events", line: "Blue Sapphire and Golden Sapphire halls", img: photo("blue-sapphire-full", "Blue Sapphire banquet hall fully set for a celebration") },
   { label: "Pool", focus: "50% 50%", href: "/gallery?category=swimming-pool", line: "The Blue Diamond pool, by day and after dark", img: photo("pool-splash", "Guest splashing water at the Blue Diamond pool") },
 ];
