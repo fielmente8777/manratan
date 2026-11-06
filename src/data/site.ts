@@ -212,6 +212,9 @@ export const rooms: Room[] = [
   },
 ];
 
+/** Presentation order: lead with the Executive Suite, then Premium through Deluxe. Room IDs remain unchanged for existing URLs. */
+export const roomsPremiumFirst: Room[] = [...rooms].reverse();
+
 export const getRoom = (id: string) => rooms.find((r) => r.id === id);
 
 /* ------------------------------------------------------------------ */
