@@ -20,7 +20,7 @@ export default function PageHero({ image, title, script, intro, height = "tall",
         fill
         preload
         sizes="100vw"
-        quality={85}
+        quality={90}
         className="-z-10 object-cover hero-fade"
         style={{ objectPosition: focus }}
       />
