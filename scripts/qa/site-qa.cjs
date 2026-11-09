@@ -222,8 +222,9 @@ async function contentChecks(browser) {
   const walk = page.locator("#walkthrough");
   await walk.scrollIntoViewIfNeeded();
   await walk.getByRole("button", { name: /Play the walkthrough/ }).click();
-  await page.waitForTimeout(3000);
   const film = walk.locator('video[aria-label^="Walkthrough film"]');
+  // Up to 8 s for the first second to play: the 12 MB film can buffer slowly while the reels on the page load too.
+  await film.evaluate((v) => new Promise((r) => { const t0 = Date.now(); const tick = () => (v.currentTime > 1 || Date.now() - t0 > 8000 ? r() : setTimeout(tick, 200)); tick(); }));
   let w = await film.evaluate((v) => ({ t: v.currentTime, paused: v.paused, w: v.videoWidth }));
   check("walkthrough plays", !w.paused && w.t > 1, `t=${w.t.toFixed(1)} width=${w.w}`);
   await walk.getByRole("button", { name: /Manratan by night/ }).click();

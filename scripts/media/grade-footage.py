@@ -10,12 +10,15 @@ The grade is done in two passes, the way a colourist works:
 
 1. Balance, per shot: black point, white balance, exposure and (for night footage) noise reduction, so every shot
    starts neutral and matches the shots around it. These are the BALANCE filters in CLIPS below.
-2. Look, shared by every clip: manratan-look.cube, a 33-point 3D LUT built by make_lut() in this file. A gentle
-   S-curve, warm-gold highlights, warm (never muddy) shadows with true blacks kept black, richer reds and
-   turquoise water, slightly calmer greens, and whites protected so linen and marble stay clean.
+2. Look, shared by every clip: manratan-look.cube, a 33-point 3D LUT built by make_lut() in this file (version 2,
+   9 Nov 2026, deliberately visible): a filmic S-curve with soft highlight roll-off, champagne-gold highlights,
+   rust-warm shadows with true blacks kept black, richer reds, gold and turquoise water, greens calmed toward
+   olive, skin kept natural, whites protected so linen and marble stay clean.
+3. Finishing: a soft vignette on both clips, and on the night film a gentle glow around the lights.
 
 The .cube file is a standard Rec.709 LUT, so the editors can load the same look in DaVinci Resolve, Premiere Pro,
-Final Cut or CapCut and apply it to the full-length clips after their own balance pass.
+Final Cut or CapCut and apply it to the full-length clips after their own balance pass (vignette and glow are
+separate finishing steps, not baked into the LUT).
 
 Audio is always dropped: the clips are used as muted loops, and the music on the source edit isn't licensed to us.
 """
@@ -39,12 +42,16 @@ CLIPS = {
     # IMG_5576.MP4: the model walk, 1080x1920, 25 fps. Four shots, a black frame at the head and 0.3 s of black at the tail.
     "walk": {
         "shots": [
-            # (start, end, balance filters)
-            (0.08, 3.04, "colorlevels=rimin=0.055:gimin=0.055:bimin=0.055,eq=gamma=1.03,colorbalance=rm=0.006:gm=0.002:bm=-0.008"),  # reception: flat blacks, grey-magenta cast
-            (3.04, 5.56, "colorlevels=rimin=0.06:gimin=0.06:bimin=0.06,eq=gamma=1.03,colorbalance=rh=0.025:bh=-0.03:rm=0.004:bm=-0.006"),  # room: bed linen read blue
-            (5.56, 8.92, "colorlevels=rimin=0.05:gimin=0.05:bimin=0.05,eq=gamma=1.04,colorbalance=rm=0.004:bm=-0.004"),  # Swadika
-            (8.92, 11.0, "colorlevels=rimin=0.09:gimin=0.09:bimin=0.09:rimax=0.985:gimax=0.985:bimax=0.985,eq=gamma=1.02"),  # poolside at dusk
+            # (start, end, balance filters). Black point, per-channel white point (which also neutralises the cast)
+            # and gamma were measured over six frames of each shot: 0.3 / 99.7 percentile luma and the mean of
+            # near-neutral pixels. The cast is corrected 30-80 %, not fully, so each place keeps its own light.
+            (0.08, 3.04, "colorlevels=rimin=0.062:gimin=0.062:bimin=0.062:rimax=0.979:gimax=0.984:bimax=1.0,eq=gamma=1.2"),  # reception: lifted blacks, slight blue-grey cast, dark
+            (3.04, 5.56, "colorlevels=rimin=0.064:gimin=0.064:bimin=0.064:rimax=0.949:gimax=0.946:bimax=0.92,eq=gamma=0.93"),  # room: yellow linen
+            (5.56, 8.92, "colorlevels=rimin=0.041:gimin=0.041:bimin=0.041:rimax=0.93:gimax=0.924:bimax=0.915,eq=gamma=1.02"),  # Swadika: dull highlights
+            (8.92, 11.0, "colorlevels=rimin=0.067:gimin=0.067:bimin=0.067:rimax=0.938:gimax=0.938:bimax=0.925,eq=gamma=1.04"),  # poolside at dusk: flat, washed out (cast only 30 % corrected: the dusk sky stays warm)
         ],
+        # Finishing after the look: a soft vignette to hold the eye on the walk.
+        "finish": "vignette=angle=0.3",
         "size": (720, 1280),
         "fps": 25,
         "crf": 25,
@@ -56,8 +63,12 @@ CLIPS = {
     # Played at half speed (every source frame kept, so the slow motion is real, not interpolated).
     "pool-dinner": {
         "shots": [
-            (0.0, 9.45, "hqdn3d=3:2.5:5:4,curves=master='0/0 0.03/0.03 0.12/0.19 0.35/0.5 0.7/0.84 1/1'"),
+            # Night: denoise, then open the midtones (median luma 0.07 in the source) without lifting the black sky.
+            (0.0, 9.45, "hqdn3d=3:2.5:5:4,curves=master='0/0 0.03/0.025 0.1/0.17 0.3/0.46 0.6/0.78 0.85/0.94 1/1'"),
         ],
+        # Finishing after the look: a gentle glow on the fairy lights, lamps and reflections, and a soft vignette.
+        "glow": 0.32,
+        "finish": "vignette=angle=0.36",
         "size": (1280, 720),
         "fps": 30000 / 1001,
         "crf": 25,
@@ -107,37 +118,50 @@ def _bump(h, centre, width):
 
 
 def look(rgb):
-    """The Manratan look on display-referred Rec.709 RGB in 0..1 (any shape ending in 3)."""
+    """The Manratan look on display-referred Rec.709 RGB in 0..1 (any shape ending in 3).
+
+    Version 2 (9 Nov 2026): a clearly visible grade. The first version was so gentle the client could not see it.
+    """
     from scipy.interpolate import PchipInterpolator
 
     lab = _to_oklab(rgb)
     L, a, b = lab[..., 0], lab[..., 1], lab[..., 2]
 
-    # 1. Contrast: a soft S on perceptual lightness. Blacks and whites stay where they are.
-    curve = PchipInterpolator([0, 0.12, 0.35, 0.6, 0.85, 0.97, 1.0], [0, 0.095, 0.322, 0.615, 0.882, 0.978, 1.0])
+    # 1. Contrast: a filmic S on perceptual lightness: deeper shadows, brighter mids, highlights rolled off softly
+    #    so marble, linen and sky never clip harshly. Black stays black.
+    curve = PchipInterpolator(
+        [0, 0.06, 0.15, 0.35, 0.6, 0.85, 0.95, 1.0],
+        [0, 0.05, 0.14, 0.36, 0.645, 0.887, 0.965, 0.99],
+    )
     L2 = curve(np.clip(L, 0, 1))
 
-    # 2. Colour by hue (OKLCh hue in degrees: red ~25, skin/orange ~55, yellow ~100, green ~140, turquoise ~200, blue ~260).
     C = np.hypot(a, b)
     h = np.degrees(np.arctan2(b, a)) % 360
+    # Skin and warm wood a touch brighter in the midtones, so faces never go muddy under the contrast.
+    L2 = L2 + 0.03 * _bump(h, 52, 26) * _smoothstep(0.02, 0.05, C) * _smoothstep(0.3, 0.45, L2) * (1 - _smoothstep(0.75, 0.9, L2))
+
+    # 2. Colour by hue (OKLCh hue in degrees: red ~25, skin/orange ~55, gold ~85, green ~140, turquoise ~200, blue ~260).
     gain = (
-        1.06
-        + 0.07 * _bump(h, 20, 40)  # reds: velvet, roses, the canopy
-        - 0.03 * _bump(h, 55, 25)  # skin: barely touched
-        - 0.09 * _bump(h, 140, 55)  # greens: calmer, less video-green
-        + 0.10 * _bump(h, 205, 45)  # turquoise: the pool
+        1.12
+        + 0.12 * _bump(h, 20, 40)  # reds: her top, the velvet canopy, roses
+        - 0.07 * _bump(h, 55, 22)  # skin: kept natural
+        + 0.03 * _bump(h, 85, 25)  # gold: brass, fairy lights, warm lamps
+        - 0.16 * _bump(h, 140, 55)  # greens: calmer, toward olive
+        + 0.08 * _bump(h, 205, 45)  # turquoise: the pool
     )
-    shift = -6 * _bump(h, 145, 45) - 7 * _bump(h, 255, 35)  # greens toward olive, blues toward turquoise
-    # Chroma near white and black is mostly noise or cast, and colours that are already rich would clip: leave both alone.
-    gain = 1 + (gain - 1) * _smoothstep(0.02, 0.2, L2) * (1 - _smoothstep(0.9, 1.0, L2)) * (1 - _smoothstep(0.1, 0.22, C))
+    shift = -8 * _bump(h, 145, 45) - 10 * _bump(h, 255, 35)  # greens toward olive, blues toward turquoise
+    # Chroma near white and black is mostly noise or cast, and colours that are already rich would clip: ease off there.
+    gain = 1 + (gain - 1) * _smoothstep(0.02, 0.18, L2) * (1 - _smoothstep(0.92, 1.0, L2)) * (1 - _smoothstep(0.14, 0.26, C))
     C2 = C * gain
     h2 = np.radians(h + shift)
 
-    # 3. Split tone: warm shadows (but true black stays black), gold highlights (but white stays white).
-    shadows = _smoothstep(0.0, 0.18, L2) * (1 - _smoothstep(0.18, 0.55, L2))
-    highs = _smoothstep(0.55, 0.88, L2) * (1 - _smoothstep(0.9, 1.0, L2))
-    ta = 0.0035 * shadows + 0.003 * highs
-    tb = 0.007 * shadows + 0.0105 * highs
+    # 3. Warm split tone: rust in the shadows (true black stays black), a touch of warmth in the mids,
+    #    champagne gold in the highlights (pure white stays clean).
+    shadows = _smoothstep(0.0, 0.16, L2) * (1 - _smoothstep(0.16, 0.5, L2))
+    mids = _smoothstep(0.25, 0.5, L2) * (1 - _smoothstep(0.5, 0.8, L2))
+    highs = _smoothstep(0.55, 0.86, L2) * (1 - _smoothstep(0.93, 1.0, L2))
+    ta = 0.006 * shadows + 0.0025 * mids + 0.005 * highs
+    tb = 0.008 * shadows + 0.008 * mids + 0.019 * highs
 
     # 4. Back to RGB, pulling chroma in (never lightness) wherever a colour would leave the Rec.709 gamut.
     out = np.zeros_like(lab)
@@ -161,7 +185,7 @@ def make_lut(path=LUT, n=33):
     rgb = np.stack([r, gg, b], axis=-1).reshape(-1, 3)
     out = look(rgb)
     with open(path, "w") as fh:
-        fh.write('TITLE "Manratan look"\n')
+        fh.write('TITLE "Manratan look v2"\n')
         fh.write("# Rec.709 in, Rec.709 out. Apply after a neutral balance pass. Made by scripts/media/grade-footage.py\n")
         fh.write(f"LUT_3D_SIZE {n}\nDOMAIN_MIN 0.0 0.0 0.0\nDOMAIN_MAX 1.0 1.0 1.0\n")
         for row in out:
@@ -196,10 +220,18 @@ def graph(clip, graded=True):
     else:
         parts[-1] = parts[-1].replace("[s0]", "[j]")
     tail = "[j]"
-    chain = []
     if graded:
-        chain.append(f"lut3d=file='{LUT}':interp=tetrahedral")
-    chain.append(f"scale={w}:{h}:flags=lanczos")
+        # The look, then (night film only) a glow: blur what is near white and screen it back over the picture.
+        parts.append(f"{tail}lut3d=file='{LUT}':interp=tetrahedral,format=gbrp[lk]")
+        tail = "[lk]"
+        if cfg.get("glow"):
+            parts.append(f"{tail}split[gb][gh]")
+            parts.append("[gh]curves=all='0/0 0.72/0 1/1',gblur=sigma=10[gl]")
+            parts.append(f"[gb][gl]blend=all_mode=screen:all_opacity={cfg['glow']}[jg]")
+            tail = "[jg]"
+    chain = [f"scale={w}:{h}:flags=lanczos"]
+    if graded and cfg.get("finish"):
+        chain.append(cfg["finish"])
     if cfg["speed"] != 1.0:
         chain.append(f"setpts=PTS/{cfg['speed']}")
     chain.append(f"fps={cfg['fps']}")
@@ -242,7 +274,10 @@ def compare(clip, source, out_dir):
         for graded in (False, True):
             vf = f"scale={w}:{h}:flags=lanczos"
             if graded:
-                vf = f"{bal},lut3d=file='{LUT}':interp=tetrahedral," + vf
+                pre = f"{bal},lut3d=file='{LUT}':interp=tetrahedral,format=gbrp"
+                if cfg.get("glow"):
+                    pre += f",split[gb][gh];[gh]curves=all='0/0 0.72/0 1/1',gblur=sigma=10[gl];[gb][gl]blend=all_mode=screen:all_opacity={cfg['glow']}"
+                vf = pre + "," + vf + (f",{cfg['finish']}" if cfg.get("finish") else "")
             name = os.path.join(out_dir, f"{clip}-{i}-{'after' if graded else 'before'}.png")
             run(["ffmpeg", "-y", "-v", "error", "-ss", f"{t:.2f}", "-i", source, "-frames:v", "1", "-vf", vf, name])
         print(f"shot {i}: {t:.2f}s")

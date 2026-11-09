@@ -4,6 +4,7 @@ import FilmPlayer from "@/components/site/FilmPlayer";
 import AmenityIcon from "@/components/site/AmenityIcon";
 import AmbientVideo from "@/components/site/AmbientVideo";
 import BookButton from "@/components/site/BookButton";
+import WalkReel from "./WalkReel";
 import { Container, Diamond, LineLink, Title } from "@/components/site/ui";
 import { amenities, fort, nearby, photo, redCoral, venues, video, walkthrough, type Photo, type Place } from "@/data/site";
 
@@ -78,6 +79,7 @@ export function Walkthrough() {
           </p>
         </div>
         <FilmPlayer />
+        <WalkReel />
       </Container>
     </section>
   );
