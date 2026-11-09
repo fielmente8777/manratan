@@ -34,7 +34,7 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="relative aspect-[16/10] overflow-hidden">
-            <Image src="/media/lobby-monogram.webp" alt="The Manratan lobby with the monogram wall and red velvet sofas" fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover" />
+            <Image src="/media/lobby-monogram.webp" alt="The Manratan lobby with the monogram wall and red velvet sofas" fill quality={85} sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover" />
           </div>
         </Container>
       </section>
@@ -42,7 +42,7 @@ export default function AboutPage() {
       <section className="bg-ink py-24 text-stone md:py-36" aria-labelledby="name-title">
         <Container className="grid gap-16 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="relative min-h-[460px] overflow-hidden lg:min-h-0">
-            <Image src="/media/reception-welcome.webp" alt="Reception team greeting guests with a namaste" fill sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
+            <Image src="/media/reception-welcome.webp" alt="Reception team greeting guests with a namaste" fill quality={85} sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
           </div>
           <div>
             <div id="name-title">
@@ -72,7 +72,7 @@ export default function AboutPage() {
             ].map((c) => (
               <article key={c.t}>
                 <div className="relative aspect-[4/5] overflow-hidden bg-ink/10">
-                  <Image src={c.img.src} alt={c.img.alt} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+                  <Image src={c.img.src} alt={c.img.alt} fill quality={85} sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
                 </div>
                 <h3 className="t-display mt-5 text-[1.4rem]">{c.t}</h3>
                 <p className="t-body mt-2 max-w-[40ch] text-[0.92rem]">{c.d}</p>
