@@ -43,7 +43,7 @@ export default function EventsPage() {
             </div>
           </div>
           <div className="relative aspect-[4/3] overflow-hidden">
-            <Image src="/media/blue-sapphire-full.webp" alt="Blue Sapphire hall fully set for a celebration, seen end to end" fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover" />
+            <Image src="/media/blue-sapphire-full.webp" alt="Blue Sapphire hall fully set for a celebration, seen end to end" fill quality={85} sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover" />
           </div>
         </Container>
       </section>
@@ -63,7 +63,7 @@ export default function EventsPage() {
                   <AmbientVideo src={v.video.src} poster={v.video.poster} alt={v.video.alt} className="aspect-[16/10] w-full" sizes="(max-width: 1024px) 100vw, 58vw" />
                 ) : (
                   <div className="relative aspect-[16/10] overflow-hidden">
-                    <Image src={v.image.src} alt={v.image.alt} fill sizes="(max-width: 1024px) 100vw, 58vw" className="object-cover" />
+                    <Image src={v.image.src} alt={v.image.alt} fill quality={85} sizes="(max-width: 1024px) 100vw, 58vw" className="object-cover" />
                   </div>
                 )}
                 <div>
@@ -108,7 +108,7 @@ export default function EventsPage() {
               photo("conference-podium", "Hall set for a conference with podium and screen"),
             ].map((p) => (
               <div key={p.src} className="relative aspect-[4/3] overflow-hidden">
-                <Image src={p.src} alt={p.alt} fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover" />
+                <Image src={p.src} alt={p.alt} fill quality={85} sizes="(max-width: 640px) 100vw, 33vw" className="object-cover" />
               </div>
             ))}
           </div>
