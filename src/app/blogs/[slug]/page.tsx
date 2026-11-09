@@ -74,7 +74,7 @@ export default async function BlogPostPage({ params }: Props) {
             {more.map((m) => (
               <Link key={m.slug} href={`/blogs/${m.slug}`} className="group block">
                 <div className="relative aspect-[4/3] overflow-hidden bg-ink/10">
-                  <Image src={m.coverImage} alt={m.alt} fill sizes="(max-width: 768px) 100vw, 33vw" className="img-drift object-cover" />
+                  <Image src={m.coverImage} alt={m.alt} fill quality={85} sizes="(max-width: 768px) 100vw, 33vw" className="img-drift object-cover" />
                 </div>
                 <h3 className="t-display mt-4 text-[1.2rem] leading-snug">{m.title}</h3>
               </Link>
