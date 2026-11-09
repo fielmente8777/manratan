@@ -44,7 +44,7 @@ export default function AccommodationPage() {
                 <article key={r.id} className={wide ? "md:col-span-2" : ""}>
                   <Link href={`/accommodation/${r.id}`} className="group block" aria-label={`View the ${r.name}`}>
                     <div className={`relative overflow-hidden bg-ink/10 ${wide ? "aspect-[4/5] md:aspect-[16/7]" : "aspect-[4/5]"}`}>
-                      <Image src={r.cover.src} alt={r.cover.alt} fill sizes={wide ? "100vw" : "(max-width: 768px) 100vw, 50vw"} className="img-drift object-cover" style={r.focus ? { objectPosition: r.focus } : undefined} />
+                      <Image src={r.cover.src} alt={r.cover.alt} fill quality={85} sizes={wide ? "100vw" : "(max-width: 768px) 100vw, 50vw"} className="img-drift object-cover" style={r.focus ? { objectPosition: r.focus } : undefined} />
                     </div>
                   </Link>
                   <div className={`mt-6 ${wide ? "md:grid md:grid-cols-[1fr_auto] md:items-end md:gap-10" : ""}`}>
