@@ -41,6 +41,7 @@ export default function RoomGallery({ images, roomName }: { images: Photo[]; roo
                 src={img.src}
                 alt={img.alt}
                 fill
+                quality={90}
                 sizes="(max-width: 768px) 90vw, 62vw"
                 // Portrait shots (washrooms) are shown whole rather than cropped to a letterbox.
                 className={img.height > img.width ? "bg-ink object-contain" : "object-cover"}
