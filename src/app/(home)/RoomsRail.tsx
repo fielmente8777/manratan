@@ -47,7 +47,7 @@ export default function RoomsRail() {
             className="group w-[80vw] shrink-0 snap-start sm:w-[46vw] lg:w-[380px]"
           >
             <div className="relative aspect-[4/5] overflow-hidden bg-ink/10">
-              <Image src={r.cover.src} alt={r.cover.alt} fill sizes="(max-width: 640px) 80vw, (max-width: 1024px) 46vw, 380px" className="img-drift object-cover" style={r.focus ? { objectPosition: r.focus } : undefined} />
+              <Image src={r.cover.src} alt={r.cover.alt} fill quality={85} sizes="(max-width: 640px) 80vw, (max-width: 1024px) 46vw, 380px" className="img-drift object-cover" style={r.focus ? { objectPosition: r.focus } : undefined} />
             </div>
             <h3 className="t-display mt-5 text-[1.4rem]">{r.name}</h3>
             <p className="mt-1.5 text-[0.72rem] uppercase tracking-[0.2em] text-taupe">{r.specs.join("  •  ")}</p>
