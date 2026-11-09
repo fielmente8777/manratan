@@ -129,6 +129,7 @@ export default function GalleryGrid() {
               alt={it.alt}
               width={it.width}
               height={it.height}
+              quality={85}
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               className="img-drift h-auto w-full"
             />
@@ -161,7 +162,7 @@ export default function GalleryGrid() {
             </button>
           </div>
           <div className="relative flex-1">
-            <Image key={current.src} src={current.src} alt={current.alt} fill sizes="100vw" className="object-contain px-2 sm:px-20" />
+            <Image key={current.src} src={current.src} alt={current.alt} fill sizes="100vw" quality={90} className="object-contain px-2 sm:px-20" />
             {items.length > 1 && (
               <>
                 <button type="button" aria-label="Previous photo" onClick={() => go(-1)} className="absolute left-2 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/45 sm:left-6">
