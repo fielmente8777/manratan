@@ -89,7 +89,7 @@ export default function HomeHero() {
         fill
         preload
         fetchPriority="high"
-        quality={85}
+        quality={90}
         sizes="100vw"
         className="-z-20 object-cover object-[50%_40%]"
       />
