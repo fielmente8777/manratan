@@ -23,7 +23,7 @@ export default function BlogsPage() {
         <Container>
           <Link href={`/blogs/${lead.slug}`} className="group grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-center lg:gap-16">
             <div className="relative aspect-[16/10] overflow-hidden bg-ink/10">
-              <Image src={lead.coverImage} alt={lead.alt} fill sizes="(max-width: 1024px) 100vw, 58vw" className="img-drift object-cover" />
+              <Image src={lead.coverImage} alt={lead.alt} fill quality={85} sizes="(max-width: 1024px) 100vw, 58vw" className="img-drift object-cover" />
             </div>
             <div>
               <p className="text-xs tracking-[0.18em] uppercase text-taupe">{lead.date}</p>
@@ -37,7 +37,7 @@ export default function BlogsPage() {
             {rest.map((post) => (
               <Link key={post.slug} href={`/blogs/${post.slug}`} className="group block">
                 <div className="relative aspect-[4/3] overflow-hidden bg-ink/10">
-                  <Image src={post.coverImage} alt={post.alt} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="img-drift object-cover" />
+                  <Image src={post.coverImage} alt={post.alt} fill quality={85} sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="img-drift object-cover" />
                 </div>
                 <p className="mt-5 text-xs tracking-[0.18em] uppercase text-taupe">{post.date}</p>
                 <h2 className="t-display mt-2 text-[1.35rem] leading-snug">{post.title}</h2>
