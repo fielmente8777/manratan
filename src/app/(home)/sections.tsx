@@ -11,7 +11,7 @@ function Figure({ img, caption, className = "", sizes = "50vw", focus }: { img: 
   return (
     <figure>
       <div className={`relative w-full overflow-hidden bg-ink/10 ${className}`}>
-        <Image src={img.src} alt={img.alt} fill sizes={sizes} className="object-cover" style={focus ? { objectPosition: focus } : undefined} />
+        <Image src={img.src} alt={img.alt} fill quality={85} sizes={sizes} className="object-cover" style={focus ? { objectPosition: focus } : undefined} />
       </div>
       {caption && <figcaption className="mt-3 text-[0.78rem] tracking-wide text-taupe">{caption}</figcaption>}
     </figure>
@@ -108,7 +108,7 @@ export function Spaces() {
               href={s.href}
               className="group relative min-w-[74vw] flex-1 snap-start overflow-hidden transition-[flex-grow] duration-[900ms] ease-[var(--ease-lux)] sm:min-w-[46vw] md:min-w-0 md:hover:grow-[2.3] md:focus-visible:grow-[2.3]"
             >
-              <Image src={s.img.src} alt={s.img.alt} fill sizes="(max-width: 768px) 74vw, 40vw" className="img-drift object-cover" style={{ objectPosition: s.focus }} />
+              <Image src={s.img.src} alt={s.img.alt} fill quality={85} sizes="(max-width: 768px) 74vw, 40vw" className="img-drift object-cover" style={{ objectPosition: s.focus }} />
               <span className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
               <span className="absolute inset-x-0 bottom-0 p-6 text-stone">
                 <span className="t-script block text-right text-[2.4rem] leading-none">{s.label}</span>
@@ -211,7 +211,7 @@ export function Celebrations() {
         <div className="mt-12 grid gap-4 sm:mt-6 sm:grid-cols-2 md:gap-6">
           {venues.map((v) => (
             <Link key={v.name} href="/events" className="group relative block aspect-[16/11] overflow-hidden">
-              <Image src={v.image.src} alt={v.image.alt} fill sizes="(max-width: 640px) 100vw, 50vw" className="img-drift object-cover" />
+              <Image src={v.image.src} alt={v.image.alt} fill quality={85} sizes="(max-width: 640px) 100vw, 50vw" className="img-drift object-cover" />
               <span className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent" />
               <span className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
                 <span className="t-label text-stone/75">{v.kind}</span>
@@ -260,7 +260,7 @@ export function EvolvesWithLight() {
             {frames.map((f) => (
               <figure key={f.when} className={f.cls}>
                 <div className="relative aspect-[3/4] overflow-hidden bg-ink/10">
-                  <Image src={f.img.src} alt={f.img.alt} fill sizes="(max-width: 1024px) 50vw, 30vw" className="object-cover" />
+                  <Image src={f.img.src} alt={f.img.alt} fill quality={85} sizes="(max-width: 1024px) 50vw, 30vw" className="object-cover" />
                 </div>
                 <figcaption className="mt-3 text-[0.72rem] uppercase tracking-[0.18em] text-taupe">
                   {f.when}
@@ -274,7 +274,7 @@ export function EvolvesWithLight() {
 
       <figure className="relative mt-20 md:mt-28" aria-labelledby="night-title">
         <div className="relative h-[70svh] min-h-[420px] w-full overflow-hidden bg-ink md:h-[86svh]">
-          <Image src={night.src} alt={night.alt} fill sizes="100vw" className="object-cover object-[58%_50%]" />
+          <Image src={night.src} alt={night.alt} fill quality={85} sizes="100vw" className="object-cover object-[58%_50%]" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
           <figcaption className="absolute inset-x-0 bottom-0">
             <Container className="pb-10 text-stone md:pb-14">
@@ -297,10 +297,10 @@ export function Swadika() {
         <div className="grid items-center gap-14 lg:grid-cols-[1.35fr_1fr] lg:gap-20">
           <div className="relative">
             <div className="relative aspect-[4/3] overflow-hidden">
-              <Image src="/media/swadika-hall.webp" alt="Swadika restaurant with teal velvet chairs and chandeliers" fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover" />
+              <Image src="/media/swadika-hall.webp" alt="Swadika restaurant with teal velvet chairs and chandeliers" fill quality={85} sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover" />
             </div>
             <div className="relative mt-4 aspect-[4/3] w-[62%] overflow-hidden border-[10px] border-stone-deep sm:absolute sm:-bottom-14 sm:-right-[8%] sm:mt-0 sm:w-[46%]">
-              <Image src="/media/swadika-guests.webp" alt="Families enjoying lunch at Swadika" fill sizes="(max-width: 640px) 62vw, 26vw" className="object-cover" />
+              <Image src="/media/swadika-guests.webp" alt="Families enjoying lunch at Swadika" fill quality={85} sizes="(max-width: 640px) 62vw, 26vw" className="object-cover" />
             </div>
           </div>
           <div className="sm:pt-12 lg:pt-0">
@@ -326,7 +326,7 @@ function PlaceCard({ p, sizes }: { p: Place; sizes: string }) {
     <article className="flex h-full flex-col">
       {p.image && (
         <div className="relative aspect-[4/3] overflow-hidden bg-ink/10">
-          <Image src={p.image.src} alt={p.image.alt} fill sizes={sizes} className="object-cover" />
+          <Image src={p.image.src} alt={p.image.alt} fill quality={85} sizes={sizes} className="object-cover" />
         </div>
       )}
       <h3 className="t-display mt-5 text-[1.35rem]">{p.name}</h3>
@@ -363,7 +363,7 @@ function FortFeature() {
     return (
       <article className="grid overflow-hidden bg-ink text-stone lg:grid-cols-[1.25fr_1fr]" aria-labelledby="fort-title">
         <div className="relative min-h-[320px] lg:min-h-[520px]">
-          <Image src={fort.image.src} alt={fort.image.alt} fill sizes="(max-width: 1024px) 100vw, 56vw" className="object-cover" />
+          <Image src={fort.image.src} alt={fort.image.alt} fill quality={85} sizes="(max-width: 1024px) 100vw, 56vw" className="object-cover" />
         </div>
         <div className="flex flex-col justify-center px-8 py-12 sm:px-12 lg:py-16">
           {heading}
