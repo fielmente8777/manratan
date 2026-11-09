@@ -1,17 +1,17 @@
 """Prepare supplied photographs for the web.
 
 Usage:
-    python3 scripts/media/process-photos.py SOURCE KEY [--max 1920] [--lift 0.0] [--warm 0.0]
+    python3 scripts/media/process-photos.py SOURCE KEY [--max 2560] [--lift 0.0] [--warm 0.0]
 
 Writes public/media/KEY.webp and records its size in src/data/media-manifest.json.
 
 What it does, and only this:
   * honours EXIF orientation, converts to sRGB 8-bit
-  * resizes so the long edge is at most --max pixels (Lanczos)
+  * preserves more resolution: long edge at most --max pixels (Lanczos)
   * optional gentle shadow lift (--lift, 0..0.3) for dark night frames
   * optional white-balance nudge (--warm, -0.1..0.1; negative cools)
   * light auto-levels (clips 0.3% at each end) and a mild unsharp mask
-  * saves WebP quality 82
+  * saves WebP quality 90 with no intermediate lossy re-encoding
 
 No retouching, sky replacement or object removal is done here.
 """
@@ -52,7 +52,7 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("source")
     ap.add_argument("key")
-    ap.add_argument("--max", type=int, default=1920)
+    ap.add_argument("--max", type=int, default=2560)
     ap.add_argument("--lift", type=float, default=0.0)
     ap.add_argument("--warm", type=float, default=0.0)
     ap.add_argument("--crop", type=str, default="", help="left,top,right,bottom as fractions 0..1")
@@ -72,7 +72,7 @@ def main() -> None:
     im = im.filter(ImageFilter.UnsharpMask(radius=1.2, percent=45, threshold=3))
 
     out = os.path.join(MEDIA, f"{a.key}.webp")
-    im.save(out, "WEBP", quality=82, method=6)
+    im.save(out, "WEBP", quality=90, method=6)
 
     with open(MANIFEST) as fh:
         manifest = json.load(fh)
