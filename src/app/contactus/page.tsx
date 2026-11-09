@@ -49,7 +49,7 @@ export default function ContactPage() {
 
       <section className="grid lg:grid-cols-2">
         <div className="relative order-2 min-h-[380px] lg:order-1 lg:min-h-[600px]">
-          <Image src={lobby.src} alt={lobby.alt} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
+          <Image src={lobby.src} alt={lobby.alt} fill quality={85} sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
         </div>
         <div className="order-1 bg-ink px-5 py-20 text-stone sm:px-12 lg:order-2 lg:px-16 xl:px-24">
           <dl className="divide-y divide-stone/15">
