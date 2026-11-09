@@ -370,7 +370,7 @@ body {
 }
 .group:hover .img-drift,
 .group:focus-visible .img-drift {
-  transform: scale(1.045);
+  transform: scale(1.015);
 }
 
 /* Hero entrance: the one orchestrated motion moment */
