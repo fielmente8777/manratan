@@ -11,6 +11,8 @@ type Props = {
   /** Show the chapter list beside (lg) or under the film. */
   chapters?: boolean;
   tone?: "dark" | "light";
+  startAt?: number;
+  endAt?: number;
 };
 
 const fmt = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
@@ -19,7 +21,7 @@ const fmt = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).p
  * The Manratan walkthrough: one film in chapters, from first light to night.
  * Native controls once playing; chapter buttons seek to each part.
  */
-export default function FilmPlayer({ autoPlay = false, chapters = true, tone = "dark" }: Props) {
+export default function FilmPlayer({ autoPlay = false, chapters = true, tone = "dark", startAt = 0, endAt }: Props) {
   const ref = useRef<HTMLVideoElement>(null);
   const [started, setStarted] = useState(false);
   const [current, setCurrent] = useState(0);
@@ -33,11 +35,12 @@ export default function FilmPlayer({ autoPlay = false, chapters = true, tone = "
   };
 
   useEffect(() => {
-    if (autoPlay) start(0);
-  }, [autoPlay]);
+    if (autoPlay) start(startAt);
+  }, [autoPlay, startAt]);
 
   const onTime = () => {
     const t = ref.current?.currentTime ?? 0;
+    if (endAt !== undefined && t >= endAt) ref.current?.pause();
     let idx = 0;
     walkthrough.chapters.forEach((c, i) => {
       if (t >= c.start - 0.05) idx = i;

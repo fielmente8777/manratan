@@ -54,21 +54,39 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-[transform,background-color] duration-700 ease-[var(--ease-lux)] ${
+        className={`max_screen_width fixed inset-x-0 top-0 z-50 transition-[transform,background-color] duration-700 ease-[var(--ease-lux)] ${
           hidden && !open ? "-translate-y-full" : "translate-y-0"
         } ${solid ? "bg-ink/95 backdrop-blur-md" : "bg-gradient-to-b from-black/45 to-transparent"}`}
       >
         <div className="relative mx-auto flex h-[76px] max-w-[1600px] items-center justify-between px-5 sm:px-8 lg:px-10 text-stone">
-          {/* Left: location (approved design) */}
-          <a
-            href={site.contact.mapUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="t-label hidden md:inline-flex items-center gap-2 text-stone/90 hover:text-white transition-colors"
-          >
-            <PinIcon />
-            {site.short}
-          </a>
+          {/* Left: menu, then location */}
+          <div className="flex items-center gap-6 lg:gap-8">
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              aria-expanded={open}
+              aria-controls="site-menu"
+              className="t-label inline-flex items-center gap-3 py-2"
+            >
+              <span className="relative block h-3 w-7" aria-hidden="true">
+                <span className={`absolute left-0 h-px w-7 bg-current transition-transform duration-500 ${open ? "top-1.5 rotate-45" : "top-0"}`} />
+                <span className={`absolute left-0 h-px bg-current transition-all duration-500 ${open ? "top-1.5 w-7 -rotate-45" : "top-3 w-5"}`} />
+              </span>
+              <span>{open ? "Close" : "Menu"}</span>
+            </button>
+
+            <span className="hidden md:block h-4 w-px bg-stone/30" aria-hidden="true" />
+
+            <a
+              href={site.contact.mapUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="t-label hidden md:inline-flex items-center gap-2 text-stone/90 hover:text-white transition-colors"
+            >
+              <PinIcon />
+              {site.short}
+            </a>
+          </div>
 
           {/* Centre: monogram */}
           <Link
@@ -78,34 +96,17 @@ export default function Header() {
               showLogo ? "opacity-100" : "opacity-0 pointer-events-none"
             }`}
           >
-            <Image src="/images/nav.png" alt="Manratan Resort" width={118} height={50} className="h-[46px] w-auto" preload />
+            <Image src="/images/nav.png" alt="Manratan Resort" width={118} height={50} className="h-[28px] w-auto sm:h-[46px]" preload />
           </Link>
 
-          <span className="md:hidden" />
-
-          {/* Right: book + menu */}
-          <div className="flex items-center gap-5 sm:gap-7">
-            <button
-              type="button"
-              onClick={() => setIsOpenPopUpForm(true)}
-              className="t-label hidden sm:inline-flex border border-stone/50 px-5 py-2.5 hover:bg-stone hover:text-ink transition-colors duration-500"
-            >
-              Book your stay
-            </button>
-            <button
-              type="button"
-              onClick={() => setOpen((v) => !v)}
-              aria-expanded={open}
-              aria-controls="site-menu"
-              className="t-label inline-flex items-center gap-3 py-2"
-            >
-              <span>{open ? "Close" : "Menu"}</span>
-              <span className="relative block h-3 w-7" aria-hidden="true">
-                <span className={`absolute left-0 h-px w-7 bg-current transition-transform duration-500 ${open ? "top-1.5 rotate-45" : "top-0"}`} />
-                <span className={`absolute left-0 h-px bg-current transition-all duration-500 ${open ? "top-1.5 w-7 -rotate-45" : "top-3 w-5"}`} />
-              </span>
-            </button>
-          </div>
+          {/* Right: book (solid dull white, full white on hover) */}
+          <button
+            type="button"
+            onClick={() => setIsOpenPopUpForm(true)}
+            className="t-label inline-flex rounded-full bg-stone px-3 py-2 text-ink transition-colors duration-300 hover:bg-white max-sm:!text-[9px] max-sm:!tracking-[0.1em] sm:px-7 sm:py-3"
+          >
+            Book your stay
+          </button>
         </div>
       </header>
 

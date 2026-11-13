@@ -1,21 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
-import FilmPlayer from "@/components/site/FilmPlayer";
 import AmenityIcon from "@/components/site/AmenityIcon";
 import AmbientVideo from "@/components/site/AmbientVideo";
 import BookButton from "@/components/site/BookButton";
-import WalkReel from "./WalkReel";
+import WalkthroughSection from "./Walkthrough";
 import SpacesGrid from "./SpacesGrid";
-import { Container, Diamond, LineLink, Title } from "@/components/site/ui";
+import SpacesGallery from "./SpacesGallery";
+import SwadikaSlider from "./SwadikaSlider";
+import EventsGrid from "./EventsGrid";
+import Narsinghgarh from "./Narsinghgarh";
+import { Diamond, LineLink, Title } from "@/components/site/ui";
+import { Container, Section, SectionWithContainer } from "@/components/sectionComponants";
+import { WhatsAppIcon } from "@/utils/icons";
 import {
   amenities,
   fort,
   nearby,
   photo,
-  redCoral,
-  venues,
+  site,
   video,
-  walkthrough,
   type Photo,
   type Place,
 } from "@/data/site";
@@ -59,53 +62,47 @@ function Figure({
 
 export function About() {
   return (
-    <section className="bg-stone py-20 md:py-28" aria-labelledby="about-title">
-      <Container>
-        {/* Single grid: heading + description in row 1, images in row 2 — same column widths so text aligns exactly with images */}
-        <div className="grid gap-5 md:grid-cols-[1fr_2fr]">
-          {/* Row 1 col 1 — heading */}
-          <div className="pb-6 md:pb-10">
-            <Title main="About" script="The Resort" />
+    <SectionWithContainer defaultPadding={false} sectionClassName="bg-stone py-20 md:py-28" sectionProps={{ "aria-labelledby": "about-title" }}>
+        <div className="mx-auto flex max-w-[1040px] flex-col items-center text-center">
+          {/* Ornament: hairline · rhombus · hairline */}
+          <div className="flex items-center gap-5 text-brass" aria-hidden="true">
+            <span className="h-px w-16 bg-current/70 sm:w-20" />
+            <span className="block h-3 w-3 rotate-45 border border-current" />
+            <span className="h-px w-16 bg-current/70 sm:w-20" />
           </div>
 
-          {/* Row 1 col 2 — description, right-aligned with the large image below */}
-          <div id="about-title" className="pb-6 md:pb-10">
-            <p className="t-body">
-              In the green hills of Narsinghgarh, the Mini Kashmir of Malwa,
-              Manratan Resort pairs contemporary comfort with the warmth of a
-              family that loves to host. Stay in one of 65 rooms and suites,
-              dine on pure vegetarian food at Swadika, spend the afternoon by
-              the Blue Diamond pool and celebrate on lawns made for the biggest
-              occasions.
-            </p>
-            <p className="t-body mt-5">
-              The name is a tribute: Manratan was named in honour of a beloved
-              grandmother and mother, and that sense of family runs through
-              every stay.
-            </p>
-            <LineLink href="/about" className="mt-8">
-              Our story
-            </LineLink>
+          <p className="t-label mt-10 text-taupe">Welcome to Manratan</p>
+
+          <div id="about-title" className="mt-6">
+            <Title main="Our Story" script="a legacy of love" align="center" size="xl" />
           </div>
 
-          {/* Row 2 col 1 — small image */}
-          {/* <Figure
-            img={photo("pool-breakfast", "Two guests sharing a floating breakfast in the Blue Diamond pool")}
-            className="h-[300px] md:h-[380px] lg:h-[600px]"
-            sizes="(max-width: 768px) 100vw, 33vw"
-            focus="50% 60%"
-          /> */}
+          <p className="font-ivy mt-12 text-[clamp(1.45rem,2.5vw,2.2rem)] leading-[1.4] text-ink">
+            It was their name that became our new beginning &ndash; named in
+            honour of a beloved grandmother and mother.
+          </p>
 
-          {/* Row 2 col 2 — large image */}
-          {/* <Figure
-            img={photo("facade-bluehour", "Manratan Resort facade and forecourt at blue hour")}
-            className="h-[300px] md:h-[380px] lg:h-[600px]"
-            sizes="(max-width: 768px) 100vw, 66vw"
-            focus="55% 50%"
-          /> */}
+          <p className="t-body mt-8 max-w-[62ch] text-[1.02rem]">
+            Set amid the green hills of Narsinghgarh, Manratan Resort brings
+            together contemporary comfort and warm, family-run hospitality: 65
+            rooms and suites, pure-vegetarian dining at Swadika, the Blue
+            Diamond pool, and lawns made for life&rsquo;s grandest celebrations.
+          </p>
+
+          <LineLink href="/about" className="mt-12">
+            Discover our legacy
+            <ArrowIcon />
+          </LineLink>
         </div>
-      </Container>
-    </section>
+    </SectionWithContainer>
+  );
+}
+
+function ArrowIcon({ className = "h-3 w-5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 22 12" fill="none" aria-hidden="true" className={className}>
+      <path d="M0 6h20M15 1l5 5-5 5" stroke="currentColor" strokeWidth="1.1" />
+    </svg>
   );
 }
 
@@ -117,11 +114,11 @@ export function RoyalCharm() {
     "Jal Mandir temple on Paras Ram Sagar lake, Narsinghgarh, at sunset"
   );
   return (
-    <section
-      className="bg-[#E6E2DB] py-20 md:py-28"
-      aria-labelledby="charm-title"
+    <SectionWithContainer
+      defaultPadding={false}
+      sectionClassName="bg-[#E6E2DB] py-20 md:py-28"
+      sectionProps={{ "aria-labelledby": "charm-title" }}
     >
-      <Container>
         <div className="grid gap-10 lg:grid-cols-[1.55fr_1fr] lg:items-center lg:gap-14">
           <div className="relative h-[380px] overflow-hidden lg:h-[560px]">
             <Image
@@ -158,37 +155,14 @@ export function RoyalCharm() {
             </p>
           </div>
         </div>
-      </Container>
-    </section>
+    </SectionWithContainer>
   );
 }
 
 /* ------------------------------------------------------------------ */
 
 export function Walkthrough() {
-  const mins = Math.round(walkthrough.duration);
-  return (
-    <section
-      id="walkthrough"
-      className="scroll-mt-20 bg-ink py-24 text-stone md:py-32"
-      aria-labelledby="walk-title"
-    >
-      <Container>
-        <div className="mb-12 grid gap-8 lg:grid-cols-2 lg:items-end">
-          <div id="walk-title">
-            <Title main="A walk through" script="Manratan" tone="light" />
-          </div>
-          <p className="t-body-light max-w-[54ch]">
-            About {mins} seconds, from first light over the fields to the facade
-            lit up at night. Pick a chapter to jump straight to the suites,
-            Swadika, the pool, the banquet halls or Narsinghgarh itself.
-          </p>
-        </div>
-        <FilmPlayer />
-        <WalkReel />
-      </Container>
-    </section>
-  );
+  return <WalkthroughSection />;
 }
 
 /* ------------------------------------------------------------------ */
@@ -217,89 +191,57 @@ const spaces = [
     label: "Reception",
     focus: "31% 55%",
     href: "/gallery?category=lobby",
-    line: "A namaste at the door, and the lobby's crystal chandeliers",
-    img: photo(
-      "reception-welcome",
-      "Reception team greeting guests with a namaste"
-    ),
+    line: "A namaste at the door, under crystal chandeliers",
+    img: photo("reception-welcome", "Reception team greeting guests with a namaste"),
   },
   {
-    label: "Rooms",
-    focus: "60% 50%",
-    href: "/accommodation",
-    line: "Five styles of room, from the Executive Suite to Deluxe",
-    img: photo(
-      "suite-bed",
-      "Executive Suite bed dressed in Manratan linen with towel art"
-    ),
+    label: "Swadika",
+    focus: "50% 50%",
+    href: "/gallery?category=dining",
+    line: "Pure vegetarian dining in a chandelier-lit hall",
+    img: photo("swadika-wide", "Swadika restaurant with teal velvet chairs, gold chandeliers and tall windows"),
   },
   {
     label: "Banquet",
     focus: "50% 50%",
     href: "/events",
-    line: "Blue Sapphire and Golden Sapphire halls",
-    img: photo(
-      "blue-sapphire-full",
-      "Blue Sapphire banquet hall fully set for a celebration"
-    ),
+    line: "The Blue Sapphire and Golden Sapphire halls",
+    img: photo("banquet-hall", "Banquet hall with crystal chandeliers, round tables and a floral stage"),
+  },
+  {
+    label: "Sky Lawn",
+    focus: "42% 60%",
+    href: "/events",
+    line: "Open-air evenings as the sun sets over the hills",
+    img: photo("skylawn-terrace", "Sky Lawn lounge seating beside the resort at sunset, hills beyond"),
   },
   {
     label: "Pool",
     focus: "50% 50%",
     href: "/gallery?category=swimming-pool",
     line: "The Blue Diamond pool, by day and after dark",
-    img: photo("pool-splash", "Guest splashing water at the Blue Diamond pool"),
+    img: photo("pool-floating", "Guest floating in the Blue Diamond pool beside a floating breakfast"),
   },
 ];
 export function Spaces() {
   return (
-    <section className="bg-stone py-24 md:py-32" aria-labelledby="spaces-title">
-      <Container>
-        <div id="spaces-title">
-          <Title main="Manratan" script="Resort" />
-        </div>
-        <p className="t-body mt-6 max-w-[56ch]">
-          Spaces made for slow mornings, long lunches and the biggest
-          celebrations of your year.
-        </p>
-
-        <div className="no-scrollbar mt-12 flex h-[520px] snap-x snap-mandatory gap-3 overflow-x-auto md:h-[620px] md:overflow-visible">
-          {spaces.map((s) => (
-            <Link
-              key={s.label}
-              href={s.href}
-              className="group relative min-w-[74vw] flex-1 snap-start overflow-hidden transition-[flex-grow] duration-[900ms] ease-[var(--ease-lux)] sm:min-w-[46vw] md:min-w-0 md:hover:grow-[2.3] md:focus-visible:grow-[2.3]"
-            >
-              <Image
-                src={s.img.src}
-                alt={s.img.alt}
-                fill
-                quality={85}
-                sizes="(max-width: 768px) 74vw, 40vw"
-                className="img-drift object-cover"
-                style={{ objectPosition: s.focus }}
-              />
-              <span className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-              <span className="absolute inset-x-0 bottom-0 p-6 text-stone">
-                <span className="t-script block text-right text-[2.4rem] leading-none">
-                  {s.label}
-                </span>
-                <span className="mt-3 block max-h-0 overflow-hidden text-right text-sm text-stone/85 opacity-0 transition-all duration-700 group-hover:max-h-16 group-hover:opacity-100 group-focus-visible:max-h-16 group-focus-visible:opacity-100 max-md:max-h-16 max-md:opacity-100">
-                  {s.line}
-                </span>
-              </span>
-            </Link>
-          ))}
+    <SectionWithContainer defaultPadding={false} sectionClassName="bg-stone py-24 md:py-32" sectionProps={{ "aria-labelledby": "spaces-title" }}>
+        <div className="grid gap-6 lg:grid-cols-[auto_minmax(0,1fr)] lg:items-center lg:gap-12">
+          <div id="spaces-title">
+            <Title main="Manratan" script="Resort" />
+          </div>
+          <p className="t-body max-w-[52ch] lg:justify-self-end lg:whitespace-nowrap">
+            <span className="lg:block">Spaces made for slow mornings, long lunches</span>{" "}
+            <span className="lg:block">and the biggest celebrations of your year.</span>
+          </p>
         </div>
 
-        <p className="t-body mt-12 max-w-[72ch]">
-          From the grand reception and 65 guest rooms to the chandelier-lit
-          Swadika restaurant and the open-air Blue Diamond pool, every space at
-          Manratan is designed to make a stay feel effortless, with modern
-          comforts and warm, personal care throughout.
+        <SpacesGallery spaces={spaces} />
+
+        <p className="t-body mt-12 lg:whitespace-nowrap">
+          From the grand reception to Swadika, the Sky Lawn and the Blue Diamond pool, every space is made to feel effortless.
         </p>
-      </Container>
-    </section>
+    </SectionWithContainer>
   );
 }
 
@@ -307,50 +249,61 @@ export function Spaces() {
 
 export function Amenities() {
   return (
-    <section
-      id="amenities"
-      className="scroll-mt-20 bg-stone-deep py-16 md:py-20"
-      aria-labelledby="amenities-title"
+    <SectionWithContainer
+      defaultPadding={false}
+      sectionId="amenities"
+      sectionClassName="scroll-mt-20 bg-ink pb-16 pt-10 text-stone md:pb-20"
+      sectionProps={{ "aria-labelledby": "amenities-title" }}
     >
-      <Container>
-        <div className="grid gap-5 md:grid-cols-[0.85fr_1.4fr] md:items-end md:gap-12">
-          <div id="amenities-title">
-            <Title main="Amenities" script="At your convenience" />
+        <div className="flex flex-col items-center">
+          <div className="mb-7 flex items-center gap-4 text-brass-light" aria-hidden="true">
+            <span className="h-px w-16 bg-current/70" />
+            <svg viewBox="0 0 14 20" fill="none" className="h-5 w-3.5">
+              <path d="m7 2 5 8-5 8-5-8 5-8Z" stroke="currentColor" />
+            </svg>
+            <span className="h-px w-16 bg-current/70" />
           </div>
-          <p className="t-body max-w-[60ch]">
-            Enjoy thoughtful conveniences during your stay, from leisure and
-            dining to useful spaces for family gatherings and celebrations.
-          </p>
+          <h2 id="amenities-title" className="text-center">
+            <span className="t-display block text-[clamp(2.5rem,4.6vw,4rem)]">Amenities</span>
+            <span className="t-script -mt-1 block text-[clamp(1.8rem,3vw,2.75rem)] text-brass-light sm:translate-x-8">
+              at your convenience
+            </span>
+          </h2>
         </div>
-        <ul className="mt-10 grid gap-px overflow-hidden bg-ink/10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <ul className="mx-auto mt-12 grid max-w-[1120px] grid-cols-2 gap-3 md:mt-20 md:gap-4 lg:grid-cols-4">
           {amenities.map((a) => {
             const body = (
               <>
-                <AmenityIcon name={a.icon} className="h-7 w-7 text-brass" />
-                <p className="t-display mt-3 text-[1.12rem]">{a.name}</p>
-                <p className="t-body mt-2 text-[0.85rem] leading-relaxed">
-                  {a.note}
-                </p>
+                <AmenityIcon name={a.icon} className="h-12 w-12 shrink-0 text-brass-light md:h-14 md:w-14" />
+                <div className="mt-2 flex flex-col items-center justify-center">
+                  <h3 className="t-display max-w-[22ch] text-[0.95rem] leading-[1.2] sm:text-[1.125rem] md:text-[1.25rem]">
+                    {a.name}
+                  </h3>
+                  {a.icon === "dining" && (
+                    <p className="mt-2 text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-brass-light">
+                      Pure vegetarian
+                    </p>
+                  )}
+                </div>
               </>
             );
             return (
-              <li key={a.name} className="bg-stone">
+              <li key={a.name} className="overflow-hidden rounded-[14px] border border-brass-light/30 bg-white/[0.02]">
                 {a.href ? (
                   <Link
                     href={a.href}
-                    className="block h-full p-5 transition-colors hover:bg-white md:p-6"
+                    className="flex h-full min-h-[160px] flex-col items-center justify-center px-3 py-4 text-center transition-colors duration-300 hover:bg-brass-light/[0.06] focus-visible:bg-brass-light/[0.06] md:min-h-[180px] md:px-4 md:py-4"
                   >
                     {body}
                   </Link>
                 ) : (
-                  <div className="h-full p-5 md:p-6">{body}</div>
+                  <div className="flex h-full min-h-[160px] flex-col items-center justify-center px-3 py-4 text-center md:min-h-[180px] md:px-4 md:py-4">{body}</div>
                 )}
               </li>
             );
           })}
         </ul>
-      </Container>
-    </section>
+    </SectionWithContainer>
   );
 }
 
@@ -358,11 +311,11 @@ export function Amenities() {
 
 export function Celebrations() {
   return (
-    <section
-      className="bg-ink py-24 text-stone md:py-32"
-      aria-labelledby="events-title"
+    <SectionWithContainer
+      defaultPadding={false}
+      sectionClassName="bg-ink py-24 text-stone md:py-32"
+      sectionProps={{ "aria-labelledby": "events-title" }}
     >
-      <Container>
         <div id="events-title">
           <Title
             main="Events"
@@ -378,75 +331,14 @@ export function Celebrations() {
           catering throughout.
         </p>
 
-        {/* Phones: the film, then the words under it, so nothing covers the couple. Larger screens: words over the
-            darker lower-left corner of the frame. */}
-        <div id="poolside" className="relative mt-14 scroll-mt-24">
-          <AmbientVideo
-            src={video.poolDinner}
-            poster={video.poolDinnerPoster}
-            alt="A couple at a candlelit table by the Blue Diamond pool at night, the camera rising to show the whole lit pool"
-            className="aspect-[4/5] w-full sm:aspect-video"
-            sizes="(max-width: 1400px) 100vw, 1320px"
-          />
-          <span className="pointer-events-none absolute inset-0 hidden bg-gradient-to-tr from-black/80 via-black/25 to-transparent sm:block" />
-          <div className="pt-7 sm:pointer-events-none sm:absolute sm:inset-x-0 sm:bottom-0 sm:p-10 lg:p-14">
-            <div className="sm:pointer-events-auto sm:max-w-[30rem]">
-              <p className="t-label text-stone/75">Blue Diamond · poolside</p>
-              <h3 className="t-display mt-3 text-[clamp(1.9rem,3.2vw,2.9rem)] leading-[1.08]">
-                Candlelight dinners and proposals
-              </h3>
-              <p className="mt-3 max-w-[44ch] text-sm leading-relaxed text-stone/85 sm:text-base">
-                A table for two by the water, dressed with rose petals and fairy
-                lights. Tell us the date when you enquire.
-              </p>
-              <BookButton tone="light" className="mt-6 px-6 py-3">
-                Plan a poolside dinner
-              </BookButton>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-12 grid gap-4 sm:mt-6 sm:grid-cols-2 md:gap-6">
-          {venues.map((v) => (
-            <Link
-              key={v.name}
-              href="/events"
-              className="group relative block aspect-[16/11] overflow-hidden"
-            >
-              <Image
-                src={v.image.src}
-                alt={v.image.alt}
-                fill
-                quality={85}
-                sizes="(max-width: 640px) 100vw, 50vw"
-                className="img-drift object-cover"
-              />
-              <span className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent" />
-              <span className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
-                <span className="t-label text-stone/75">{v.kind}</span>
-                <span className="t-display mt-2 flex items-center gap-3 text-[clamp(1.6rem,2.6vw,2.4rem)]">
-                  <Diamond className="h-4 w-4 text-brass-light" />
-                  {v.name}
-                </span>
-                <span className="mt-2 block max-w-[46ch] text-sm text-stone/85">
-                  {v.detail}
-                </span>
-              </span>
-            </Link>
-          ))}
-        </div>
-        <p className="mx-auto mt-10 max-w-[60ch] text-center text-sm text-stone/75">
-          <span className="t-label text-stone">{redCoral.name}</span> ·{" "}
-          {redCoral.kind.split(" · ")[1]} · {redCoral.detail.toLowerCase()}.
-        </p>
+        <EventsGrid />
 
         <div className="mt-12 text-center">
           <LineLink href="/events" tone="light">
             Explore celebrations
           </LineLink>
         </div>
-      </Container>
-    </section>
+    </SectionWithContainer>
   );
 }
 
@@ -473,10 +365,6 @@ export function EvolvesWithLight() {
       cls: "",
     },
   ];
-  const night = photo(
-    "facade-night-full",
-    "Manratan Resort's full facade lit up at night, seen from the forecourt"
-  );
   return (
     <section
       className="overflow-hidden bg-stone py-24 md:py-36"
@@ -524,86 +412,102 @@ export function EvolvesWithLight() {
         </div>
       </Container>
 
-      <figure className="relative mt-20 md:mt-28" aria-labelledby="night-title">
-        <div className="relative h-[70svh] min-h-[420px] w-full overflow-hidden bg-ink md:h-[86svh]">
-          <Image
-            src={night.src}
-            alt={night.alt}
-            fill
-            quality={85}
-            sizes="100vw"
-            className="object-cover object-[58%_50%]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
-          <figcaption className="absolute inset-x-0 bottom-0">
-            <Container className="pb-10 text-stone md:pb-14">
-              <p
-                id="night-title"
-                className="t-display text-[clamp(2.2rem,5vw,4.4rem)] leading-none"
-              >
-                Manratan by night
-              </p>
-              <p className="mt-3 max-w-[46ch] text-sm text-stone/85">
-                The facade lit from end to end, as guests arrive for an evening
-                celebration.
-              </p>
-            </Container>
-          </figcaption>
-        </div>
-      </figure>
     </section>
   );
 }
 
 /* ------------------------------------------------------------------ */
 
-export function Swadika() {
+export function ManratanByNight() {
+  const night = photo(
+    "facade-night-full",
+    "Manratan Resort's full facade lit up at night, seen from the forecourt"
+  );
   return (
-    <section
-      className="bg-stone-deep py-24 md:py-36"
+    <Section defaultPadding={false} className="bg-stone" aria-label="Manratan by night">
+      <figure className="relative" aria-labelledby="night-title">
+        <AmbientVideo
+          src={video.heroLoop}
+          poster={night.src}
+          alt={night.alt}
+          sizes="100vw"
+          objectPosition="58% 50%"
+          controlAt="top-right"
+          className="night-zoom h-[70svh] min-h-[420px] w-full md:h-[min(86svh,900px)]"
+        >
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
+          <figcaption className="absolute inset-x-0 bottom-0">
+            <Container className="pb-10 text-stone max-md:text-center md:pb-14">
+              <p
+                id="night-title"
+                className="t-display text-[clamp(2.2rem,5vw,4.4rem)] leading-none"
+              >
+                Manratan by night
+              </p>
+              <p className="mx-auto mt-3 max-w-[46ch] text-sm text-stone/85 md:mx-0">
+                The facade lit from end to end, as guests arrive for an evening
+                celebration.
+              </p>
+            </Container>
+          </figcaption>
+        </AmbientVideo>
+      </figure>
+    </Section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+
+export function Swadika() {
+  const tags = ["Pure vegetarian", "Indian & global", "80–100 guests"];
+  return (
+    <Section
+      defaultPadding={false}
+      className="overflow-hidden bg-stone py-24 md:py-32"
       aria-labelledby="swadika-title"
     >
       <Container>
-        <div className="grid items-center gap-14 lg:grid-cols-[1.35fr_1fr] lg:gap-20">
-          <div className="relative">
-            <div className="relative aspect-[4/3] overflow-hidden">
-              <Image
-                src="/media/swadika-hall.webp"
-                alt="Swadika restaurant with teal velvet chairs and chandeliers"
-                fill
-                quality={85}
-                sizes="(max-width: 1024px) 100vw, 55vw"
-                className="object-cover"
-              />
-            </div>
-            <div className="relative mt-4 aspect-[4/3] w-[62%] overflow-hidden border-[10px] border-stone-deep sm:absolute sm:-bottom-14 sm:-right-[8%] sm:mt-0 sm:w-[46%]">
-              <Image
-                src="/media/swadika-guests.webp"
-                alt="Families enjoying lunch at Swadika"
-                fill
-                quality={85}
-                sizes="(max-width: 640px) 62vw, 26vw"
-                className="object-cover"
-              />
-            </div>
+        <div className="relative mx-auto flex max-w-[760px] flex-col items-center text-center">
+          {/* Script watermark behind the heading */}
+          <span
+            className="t-script pointer-events-none absolute -top-14 left-[38%] select-none whitespace-nowrap text-[clamp(6rem,13vw,12rem)] text-ink/[0.05] sm:-top-20"
+            aria-hidden="true"
+          >
+            Swadika
+          </span>
+
+          <p className="t-label relative text-[0.62rem] text-taupe">
+            Swadika · Pure-vegetarian restaurant
+          </p>
+          <div id="swadika-title" className="relative mt-6 max-w-[640px]">
+            <Title
+              main="Local flavours meet exceptional dining"
+              script="authentic flavours, thoughtfully served"
+              align="center"
+              size="md"
+            />
           </div>
-          <div className="sm:pt-12 lg:pt-0">
-            <div id="swadika-title">
-              <Title main="Swadika" script="Pure vegetarian dining" />
-            </div>
-            <p className="t-body mt-8 max-w-[46ch]">
-              Authentic Indian and global flavours, all pure vegetarian, served
-              in a contemporary hall lit by a signature chandelier. Swadika
-              seats 80 to 100, so family lunches and festive dinners never feel
-              crowded.
-            </p>
-            <LineLink href="/gallery?category=dining" className="mt-8">
-              See Swadika
-            </LineLink>
-          </div>
+          <p className="t-body relative mt-8 max-w-[52ch] text-[0.92rem]">
+            Swadika, our multi-cuisine restaurant, serves authentic Indian and
+            global flavours in an elegant, contemporary hall lit by a signature
+            chandelier &ndash; seating 80 to 100 guests for long family lunches
+            and festive dinners alike.
+          </p>
+          <ul className="relative mt-7 flex flex-wrap justify-center gap-2.5">
+            {tags.map((t) => (
+              <li
+                key={t}
+                className="rounded-full border border-ink/25 px-4 py-2 text-[0.6rem] uppercase tracking-[0.2em] text-ink/80"
+              >
+                {t}
+              </li>
+            ))}
+          </ul>
         </div>
       </Container>
-    </section>
+
+      <SwadikaSlider />
+    </Section>
   );
 }
 
@@ -711,51 +615,53 @@ function FortFeature() {
 }
 
 export function PlacesNearby() {
+  return <Narsinghgarh />;
+}
+
+/* ------------------------------------------------------------------ */
+
+export function EscapeCTA() {
+  const img = photo("suite-1", "Executive Suite with a wide window over the green hills");
   return (
-    <section
-      id="nearby"
-      className="scroll-mt-20 bg-stone py-24 md:py-32"
-      aria-labelledby="nearby-title"
-    >
-      <Container>
-        <div className="grid gap-8 md:grid-cols-[0.85fr_1.4fr] md:items-end md:gap-16">
-          <div id="nearby-title">
-            <Title main="Narsinghgarh" script="The Mini Kashmir of Malwa" />
+    <Section defaultPadding={false} className="bg-stone py-16 md:py-24" aria-labelledby="escape-title">
+      <div className="mx-auto w-full max-w-[1600px] px-4 sm:px-8 lg:px-10">
+        <div className="relative isolate flex min-h-[620px] flex-col items-center justify-center overflow-hidden rounded-[22px] bg-ink text-stone sm:rounded-[28px] lg:min-h-[640px]">
+          <Image
+            src={img.src}
+            alt={img.alt}
+            fill
+            quality={85}
+            sizes="(max-width: 1024px) 100vw, 75vw"
+            className="-z-20 object-cover object-[30%_50%]"
+          />
+          {/* Phones: fade up from the bottom. Desktop: fade into the dark right side. */}
+          <div className="absolute inset-0 -z-10 bg-[#1e140d]/65" />
+
+          <div className="w-full max-w-[900px] px-6 py-16 text-center sm:px-12 lg:py-20">
+            <p className="t-label text-brass-light">Relax · Reconnect · Rejuvenate</p>
+            <div id="escape-title" className="mt-6">
+              <Title main="A perfect escape" script="for memorable stays & celebrations" align="center" tone="light" size="lg" />
+            </div>
+            <p className="font-ivy mx-auto mt-8 max-w-[22ch] text-[clamp(1.35rem,2.1vw,1.9rem)] leading-[1.35] text-stone">
+              Where timeless luxury meets impeccable hospitality.
+            </p>
+            <div className="mt-9 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+              <BookButton tone="light" className="rounded-full px-8 py-4 sm:px-10">
+                Book your stay
+              </BookButton>
+              <a
+                href={site.contact.WhatsappCta}
+                target="_blank"
+                rel="noreferrer"
+                className="t-label inline-flex items-center justify-center gap-2.5 rounded-full border border-stone/40 px-8 py-4 text-stone transition-colors duration-500 hover:border-stone hover:bg-stone hover:text-ink sm:px-10"
+              >
+                <WhatsAppIcon className="h-5 w-5 shrink-0" />
+                WhatsApp us
+              </a>
+            </div>
           </div>
-          <p className="t-body max-w-[60ch]">
-            A fort-palace on the hill, a temple out on the lake and forest on
-            every side. Build a morning or an evening of your stay around these:
-          </p>
         </div>
-
-        <div className="mt-14">
-          <FortFeature />
-        </div>
-
-        <div className="mt-14 grid gap-x-6 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
-          {nearby.featured.map((p) => (
-            <PlaceCard
-              key={p.name}
-              p={p}
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            />
-          ))}
-        </div>
-
-        <div className="mt-16 border-t border-ink/15 pt-8">
-          <p className="t-display text-[1.35rem]">Also worth the trip</p>
-          <ul className="mt-4 grid gap-x-12 sm:grid-cols-2">
-            {nearby.more.map((m) => (
-              <li key={m.name} className="border-b border-ink/10 py-5">
-                <p className="text-[0.95rem] font-medium text-ink">{m.name}</p>
-                <p className="t-body mt-1 text-[0.88rem] leading-relaxed">
-                  {m.note}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </Container>
-    </section>
+      </div>
+    </Section>
   );
 }

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import HomeHero from "./(home)/HomeHero";
 import RoomsRail from "./(home)/RoomsRail";
-import { About, Amenities, Celebrations, EvolvesWithLight, PlacesNearby, RoyalCharm, Spaces, Swadika, Walkthrough } from "./(home)/sections";
+import { About, Amenities, Celebrations, EscapeCTA, EvolvesWithLight, ManratanByNight, PlacesNearby, RoyalCharm, Spaces, Swadika, Walkthrough } from "./(home)/sections";
 
 export const metadata: Metadata = {
   title: { absolute: "Manratan Resort, Narsinghgarh | Where Every Heart Finds Its Gem" },
@@ -12,18 +12,21 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main>
+    <main className="home-page">
       <HomeHero />
       <About />
-      <RoyalCharm />
-      {/* <Walkthrough /> */}
+
+      <Walkthrough />
       <Spaces />
       <Amenities />
       <RoomsRail />
       <Celebrations />
-      <EvolvesWithLight />
+      {/* <EvolvesWithLight /> */}
+      <ManratanByNight />
       <Swadika />
+      {/* <RoyalCharm /> */}
       <PlacesNearby />
+      <EscapeCTA />
     </main>
   );
 }

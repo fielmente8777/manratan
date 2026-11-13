@@ -37,14 +37,17 @@ export default function AmenityIcon({ name, className = "h-8 w-8" }: { name: Nam
     ),
     dining: (
       <>
-        <path d="M10 5v8a2.5 2.5 0 0 0 5 0V5M12.5 5v22" {...common} />
-        <path d="M21.5 27V5c-2.4 1.6-3.5 4.6-3.5 8 0 2.4 1.4 3.6 3.5 3.6" {...common} />
+        <path d="M3 5v6a2 2 0 0 0 4 0V5M5 5v22M27 27V5c2 2 2.5 5 2.5 8H27" {...common} />
+        <circle cx="16" cy="17" r="7" {...common} />
+        <circle cx="16" cy="17" r="5" {...common} />
+        <path d="M13.5 19.5c-1.5-4 1.5-6 5-5-1 4-3 5.5-5 5ZM13.5 19.5l4-4" {...common} />
       </>
     ),
     hall: (
       <>
-        <path d="M16 4.5 4.5 10h23L16 4.5Z" {...common} />
-        <path d="M7 10v14M12 10v14M20 10v14M25 10v14M4 24h24M3 27.5h26" {...common} />
+        <path d="M16 3v4M10 6v2c0 5 12 5 12 0V6M13 11v2M19 11v2" {...common} />
+        <circle cx="16" cy="14" r="1" {...common} />
+        <path d="M7 20h18M8 20v5c3 2 5 2 8 0 3 2 5 2 8 0v-5M8 25v4M24 25v4M3.5 16v13M3.5 25H6v4M28.5 16v13M28.5 25H26v4" {...common} />
       </>
     ),
     lawn: (
@@ -65,6 +68,29 @@ export default function AmenityIcon({ name, className = "h-8 w-8" }: { name: Nam
       <>
         <path d="M4 24V9M4 18h24v6M28 24v-4" {...common} />
         <path d="M4 18v-3.5c0-1 .8-1.8 1.8-1.8h5.4c1 0 1.8.8 1.8 1.8V18M13 18v-2.5c0-1 .8-1.8 1.8-1.8h9.4c1.5 0 2.8 1.3 2.8 2.8V18" {...common} />
+      </>
+    ),
+    parking: (
+      <>
+        <rect x="8" y="3" width="16" height="18" rx="3" {...common} />
+        <path d="M13.5 17V7h3.8a3.2 3.2 0 0 1 0 6.4h-3.8M16 21v8M12 30h8" {...common} />
+      </>
+    ),
+    "front-desk": (
+      <>
+        <circle cx="25" cy="8" r="4.5" {...common} />
+        <path d="M25 5.5V8l2 1.3M3 19h21M4 19v9h19v-9M4 24h19M10 18a4 4 0 0 1 8 0M14 14v-1M12.5 13h3" {...common} />
+      </>
+    ),
+    "room-service": (
+      <>
+        <circle cx="16" cy="5" r="1.5" {...common} />
+        <path d="M16 6.5V9M5 24a11 11 0 0 1 22 0M3 24h26M5 27h22M9 19c.8-2.3 2.3-3.8 4.2-4.6" {...common} />
+      </>
+    ),
+    garden: (
+      <>
+        <path d="M3 17h26M5 17a11 11 0 0 1 22 0M16 6V3M7 17v10M12 17v10M20 17v10M25 17v10M2 27h28M3 27l1-3 1 3M27 27l1-3 1 3" {...common} />
       </>
     ),
     wifi: (

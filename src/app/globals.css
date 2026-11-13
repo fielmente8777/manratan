@@ -394,6 +394,20 @@ body {
   .group:hover .img-drift { transform: none; }
 }
 
+/* Manratan by night: slow zoom-in on the clip and its poster */
+@keyframes nightZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.14); }
+}
+.night-zoom > img,
+.night-zoom > video {
+  animation: nightZoom 16s var(--ease-lux) infinite alternate;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .night-zoom > img, .night-zoom > video { animation: none; }
+}
+
 /* Gem marquee */
 @keyframes gemMarquee {
   from { transform: translateX(0); }
@@ -427,8 +441,8 @@ body {
 .mr-booking-bar .react-datepicker-wrapper { display: block; width: 100%; }
 .mr-bf-field {
   display: block;
-  min-height: 4rem;
-  padding: 0.8rem 1.25rem;
+  min-height: 3.25rem;
+  padding: 0.55rem 1.1rem;
   color: #fff;
   cursor: pointer;
   transition: background-color 0.3s var(--ease-lux);
@@ -437,15 +451,15 @@ body {
 .mr-bf-field:focus-visible { outline: 1.5px solid var(--color-brass-light); outline-offset: -3px; }
 .mr-bf-label {
   display: block;
-  font-size: 0.64rem;
+  font-size: 0.58rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: rgb(255 255 255 / 0.78);
 }
 .mr-bf-value {
   display: block;
-  margin-top: 0.3rem;
-  font-size: 0.95rem;
+  margin-top: 0.2rem;
+  font-size: 0.86rem;
   letter-spacing: 0.02em;
   white-space: nowrap;
   overflow: hidden;
@@ -490,3 +504,13 @@ body {
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; }
+
+.home-page [aria-labelledby="escape-title"] .t-script > span { transform: none; translate: none; }
+
+@media (max-width: 767px) {
+  .home-page h1, .home-page h2, .home-page h3,
+  .home-page .t-body, .home-page .t-body-light { text-align: center; }
+  .home-page .t-body, .home-page .t-body-light { margin-inline: auto; }
+  .home-page h2 > .t-script { padding-left: 0; transform: none; translate: none; }
+  .home-page h2 > .t-script > span { transform: none; translate: none; }
+}

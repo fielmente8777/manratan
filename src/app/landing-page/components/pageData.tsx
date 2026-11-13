@@ -151,7 +151,7 @@ export const LandingPageData = {
         title: "Deluxe Room",
 
         images: [
-          "/media/deluxe-1.webp",
+          "/media/deluxe-new.webp",
           "/media/deluxe-2.webp",
           "/media/towel-swans.webp",
           "/media/corridor.webp",

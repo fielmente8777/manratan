@@ -100,17 +100,17 @@ export interface Room {
 export const rooms: Room[] = [
   {
     id: "room-1",
-    focus: "22% 50%",
+    focus: "5% 50%",
     name: "Deluxe Room",
     count: 25,
     specs: ["Twin or double bed", "Garden view"],
     summary: "Calm, warm-lit rooms looking out over the gardens.",
     intro:
       "Warm wood, soft lighting and fresh linen, with a writing desk and a garden view. A comfortable base for a family visit or a wedding weekend.",
-    cover: photo("deluxe-1", "Deluxe Room with double bed and garden-facing curtains"),
-    hero: photo("deluxe-1", "Deluxe Room at Manratan Resort"),
+    cover: photo("deluxe-new", "Deluxe Room with double bed, warm-lit curtains and a writing desk"),
+    hero: photo("deluxe-new", "Deluxe Room at Manratan Resort"),
     gallery: [
-      photo("deluxe-1", "Deluxe Room with double bed and writing desk"),
+      photo("deluxe-new", "Deluxe Room with double bed, writing desk and wall-mounted TV"),
       photo("deluxe-2", "Deluxe Room with armchair and bedside table"),
     ],
     amenities: ["High-speed Wi-Fi", "Daily housekeeping", "In-room dining", "Air conditioning", "Tea & coffee maker", "Luxury toiletries"],
@@ -276,19 +276,21 @@ export type AmenityIcon =
   | "lawn"
   | "terrace"
   | "bed"
-  | "wifi";
+  | "wifi"
+  | "parking"
+  | "front-desk"
+  | "room-service"
+  | "garden";
 
 export const amenities: { name: string; note: string; icon: AmenityIcon; featured?: boolean; href?: string }[] = [
-  { name: "Pooja Room", note: "A quiet room set aside for prayer and puja.", icon: "pooja", featured: true },
-  { name: "Parlour Room", note: "A private room to get ready in before a ceremony or an evening out.", icon: "parlour", featured: true },
-  { name: "Blue Diamond pool", note: "An open-air pool for slow afternoons, floating breakfasts and poolside parties.", icon: "pool", href: "/gallery?category=swimming-pool" },
-  { name: "Poolside candlelight dinners", note: "Dinner for two by the water, and proposals arranged at the poolside.", icon: "candle", href: "/gallery?category=swimming-pool" },
   { name: "Swadika restaurant", note: "Pure vegetarian, multi-cuisine dining for 80 to 100 guests.", icon: "dining", href: "/gallery?category=dining" },
-  { name: "Banquet halls", note: "Blue Sapphire for 300–400 guests and Golden Sapphire for 25–80, projector provided.", icon: "hall", href: "/events" },
-  { name: "Red Coral Lawn", note: "Open-air lawn for celebrations of 500 to 4,000 guests.", icon: "lawn", href: "/events" },
-  { name: "Sky Lawn", note: "An open-air terrace for up to 20 guests.", icon: "terrace", href: "/events" },
-  { name: "65 rooms and suites", note: "From Deluxe and Interconnected rooms to two Executive Suites.", icon: "bed", href: "/accommodation" },
-  { name: "In every room", note: "High-speed Wi-Fi, air conditioning, in-room dining and daily housekeeping.", icon: "wifi", href: "/accommodation" },
+  { name: "Outdoor swimming pool", note: "The open-air Blue Diamond pool.", icon: "pool", href: "/gallery?category=swimming-pool" },
+  { name: "Free Wi-Fi", note: "High-speed Wi-Fi during your stay.", icon: "wifi" },
+  { name: "Free parking", note: "On-site parking for guests.", icon: "parking" },
+  { name: "24-hour front desk", note: "Round-the-clock reception and assistance.", icon: "front-desk" },
+  { name: "Room service", note: "In-room dining and attentive service.", icon: "room-service" },
+  { name: "Banquet & conference facilities", note: "Blue Sapphire and Golden Sapphire halls, with a projector provided.", icon: "hall", href: "/events" },
+  { name: "Garden & outdoor event space", note: "Red Coral Lawn and Sky Lawn for open-air celebrations.", icon: "garden", href: "/events" },
 ];
 
 /* ------------------------------------------------------------------ */

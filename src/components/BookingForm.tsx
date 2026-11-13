@@ -206,7 +206,7 @@ export default function BookingForm({ gridView = false, className = "", onSearch
         {/* Submit */}
         <button
           type="submit"
-          className={`t-label flex min-h-16 items-center justify-center bg-stone px-9 text-ink transition-colors duration-300 hover:bg-white ${
+          className={`t-label flex min-h-13 items-center justify-center bg-stone px-7 text-ink transition-colors duration-300 hover:bg-white ${
             gridView ? "" : "col-span-2 lg:col-span-1"
           } whitespace-nowrap`}
         >

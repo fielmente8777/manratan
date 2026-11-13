@@ -1,0 +1,81 @@
+.walk {
+  overflow: hidden;
+  scroll-margin-top: 5rem;
+  background: #1c130e;
+  color: #d9cdbd;
+  padding: clamp(96px, 9vw, 136px) 0;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: clamp(40px, 5vw, 88px);
+  align-items: center;
+}
+
+.heading { display: flex; flex-direction: column; gap: 30px; }
+.eyebrow { font-size: 11px; font-weight: 600; line-height: 1.5; letter-spacing: .24em; text-transform: uppercase; color: #d8be8e; }
+.title { font-family: var(--font-display); font-weight: 400; font-size: clamp(42px, 4.4vw, 64px); line-height: 1.02; text-transform: uppercase; color: #f6efe4; text-wrap: balance; }
+.script { display: block; font-family: var(--font-script); text-transform: none; font-size: .82em; line-height: 1; margin-top: -.04em; padding-left: 2.2em; color: #d8be8e; }
+.count { display: flex; align-items: baseline; gap: 10px; font-family: var(--font-display); color: #c9a46c; }
+.count b { font-weight: 400; font-size: clamp(72px, 7vw, 104px); line-height: .9; }
+.count > span { font-size: 24px; color: #8f8172; }
+.desktopControls { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+.buttons { display: flex; gap: 12px; }
+.control { width: 56px; height: 56px; flex: none; border-radius: 50%; display: grid; place-items: center; padding: 0; cursor: pointer; background: transparent; color: #f6efe4; border: 1px solid rgb(216 190 142 / .55); transition: background .3s, color .3s, border-color .3s; }
+.control:hover { background: #c9a46c; color: #221811; border-color: #c9a46c; }
+.filmLink { display: inline-flex; align-items: center; min-height: 44px; font-size: 11px; font-weight: 600; line-height: 1.4; letter-spacing: .22em; text-transform: uppercase; color: #f6efe4; }
+.filmLink svg { flex: none; }
+
+.stage { position: relative; display: flex; gap: 14px; height: 620px; scroll-margin-top: 6rem; }
+.panel { position: relative; flex: 1 1 0%; min-width: 0; padding: 0; border: 0; border-radius: 999px 999px 22px 22px; overflow: hidden; background: #2e211a; color: #f6efe4; text-align: left; cursor: pointer; transition: flex-grow 1.1s cubic-bezier(.7, 0, .2, 1), box-shadow .8s; -webkit-tap-highlight-color: transparent; }
+.panel.active { flex-grow: 2.45; cursor: default; box-shadow: 0 0 0 1px rgb(216 190 142 / .6), 0 36px 80px rgb(0 0 0 / .45); }
+.media { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.55) saturate(.7); transition: filter .9s; }
+.panel:hover .media { filter: brightness(.78) saturate(.9); }
+.active .media { filter: none; }
+.panel:not(.active) video { opacity: 0; }
+.panel video { transition: opacity .35s ease, filter .7s ease; }
+.shade { position: absolute; inset: auto 0 0; height: 45%; background: linear-gradient(0deg, rgb(20 13 9 / .82), rgb(20 13 9 / 0)); pointer-events: none; }
+.desktopProgress { position: absolute; left: 22%; right: 22%; top: 9%; height: 2px; border-radius: 2px; background: rgb(246 239 228 / .28); overflow: hidden; }
+.desktopProgress i, .segments i { position: absolute; inset: 0; background: #f6efe4; transform-origin: left; transition: transform .2s linear; }
+.label { position: absolute; left: 50%; bottom: 24px; display: flex; align-items: center; gap: 12px; white-space: nowrap; writing-mode: vertical-rl; transform: translateX(-50%) rotate(180deg); }
+.active .label { left: 26px; writing-mode: horizontal-tb; transform: none; flex-direction: column; align-items: flex-start; gap: 8px; }
+.labelNumber { font-size: 10px; font-weight: 600; line-height: 1; letter-spacing: .22em; color: #d8be8e; }
+.labelTitle { font-family: var(--font-display); font-weight: 400; font-size: 22px; line-height: 1; text-transform: uppercase; color: #f6efe4; }
+.active .labelTitle { font-size: 28px; }
+.mobileUi, .mobileFooter { display: none; }
+
+@media (max-width: 900px) {
+  .walk { padding: 72px 0 64px; }
+  .container { max-width: 520px; }
+  .layout { display: flex; flex-direction: column; align-items: stretch; gap: 28px; }
+  .heading { gap: 22px; text-align: center; }
+  .script { padding-left: 0; }
+  .title { font-size: clamp(36px, 10vw, 48px); }
+  .count, .desktopControls { display: none; }
+  .stage { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 12px; row-gap: 24px; height: auto; }
+  .panel { grid-row: 2; flex: none; aspect-ratio: 4 / 5; border-radius: 999px 999px 12px 12px; }
+  .panel.active { grid-column: 1 / -1; grid-row: 1; aspect-ratio: 3 / 4; border-radius: 22px; box-shadow: 0 0 0 1px rgb(216 190 142 / .6), 0 12px 24px rgb(0 0 0 / .25); }
+  .media { filter: brightness(.72) saturate(.85); }
+  .active .media { filter: none; }
+  .shade { height: 55%; }
+  .label { left: 50%; bottom: 10px; width: 90%; transform: translateX(-50%); flex-direction: column; align-items: center; gap: 4px; text-align: center; writing-mode: horizontal-tb; white-space: normal; }
+  .labelNumber { font-size: 9px; }
+  .labelTitle { font-size: 13px; line-height: 1.15; }
+  .active .label { left: 20px; right: 20px; bottom: 22px; width: auto; transform: none; align-items: center; text-align: center; gap: 6px; }
+  .active .labelNumber { font-size: 10px; }
+  .active .labelTitle { font-size: 26px; line-height: 1.05; }
+  .desktopProgress { display: none; }
+  .mobileUi { display: block; position: absolute; inset: 0 0 auto; width: 100%; aspect-ratio: 3 / 4; z-index: 3; pointer-events: none; }
+  .segments { position: absolute; left: 16px; right: 16px; top: 16px; display: flex; gap: 5px; }
+  .segments > span { position: relative; flex: 1; height: 3px; border-radius: 3px; background: rgb(246 239 228 / .3); overflow: hidden; }
+  .tapZones { position: absolute; inset: 84px 0 96px; display: flex; pointer-events: auto; touch-action: pan-y; }
+  .tapZones button { flex: 1; background: transparent; border: 0; padding: 0; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .mobileControls { position: absolute; right: 14px; top: 32px; display: flex; gap: 8px; pointer-events: auto; }
+  .mobileControls .control { width: 44px; height: 44px; border-color: rgb(246 239 228 / .45); background: rgb(28 19 14 / .38); backdrop-filter: blur(8px); }
+  .mobileFooter { display: flex; align-items: center; justify-content: center; text-align: center; }
+  .mobileFooter > p { font-size: 10px; font-weight: 600; line-height: 1.4; letter-spacing: .2em; text-transform: uppercase; color: #8f8172; }
+}
+
+@keyframes reveal { from { opacity: .35; transform: scale(.985); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .walk *, .walk *::before, .walk *::after { animation: none !important; transition: none !important; } }

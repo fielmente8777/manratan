@@ -103,7 +103,7 @@ export default async function RoomPage({ params }: Params) {
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {others.map((r) => (
               <Link key={r.id} href={`/accommodation/${r.id}`} className="group block">
-                <div className="relative aspect-[4/5] overflow-hidden bg-ink/10">
+                <div className="relative aspect-[5/6] overflow-hidden bg-ink/10">
                   <Image src={r.cover.src} alt={r.cover.alt} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" className="img-drift object-cover" style={r.focus ? { objectPosition: r.focus } : undefined} />
                 </div>
                 <h3 className="t-display mt-4 text-[1.2rem]">{r.name}</h3>

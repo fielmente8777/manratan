@@ -1,0 +1,10 @@
+.rail { position: relative; container-type: inline-size; margin-top: 56px; }
+.previous, .next { position: absolute; top: calc(100cqw * 5 / 8); transform: translateY(-50%); z-index: 5; }
+.previous { left: 8px; }
+.next { right: 8px; }
+@media (min-width: 640px) { .previous, .next { top: calc((100cqw - 24px) / 2 * 5 / 8); } }
+@media (min-width: 768px) {
+  .previous { left: 0; transform: translate(-50%, -50%); }
+  .next { right: 0; transform: translate(50%, -50%); }
+}
+@media (min-width: 1024px) { .previous, .next { top: calc((100cqw - 48px) / 3 * 5 / 8); } }

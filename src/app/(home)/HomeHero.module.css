@@ -1,0 +1,85 @@
+.visual {
+  position: absolute;
+  inset: 0;
+  z-index: -10;
+  isolation: isolate;
+}
+
+@media (max-width: 767px) {
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(420px, 60svh) auto;
+    min-height: 0;
+  }
+
+  .visual {
+    position: relative;
+    inset: auto;
+    grid-area: 1 / 1;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .heading {
+    position: relative;
+    grid-area: 1 / 1;
+    z-index: 1;
+    padding-bottom: 88px;
+  }
+
+  .bookingLayout,
+  .bookingRow {
+    display: contents;
+    animation: none;
+  }
+
+  .formPanel {
+    position: relative;
+    grid-area: 2 / 1;
+    padding: 24px 16px;
+    border-top: 1px solid rgb(210 180 131 / .3);
+    background: var(--color-ink-soft);
+    z-index: 1;
+  }
+
+  .formPanel :global(.mr-booking-bar) {
+    border-color: rgb(210 180 131 / .3);
+    background: var(--color-ink);
+    backdrop-filter: none;
+  }
+
+  .formPanel :global(.mr-booking-bar) > div:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .controls {
+    position: relative;
+    grid-area: 1 / 1;
+    align-self: end;
+    padding: 0 16px 20px;
+    z-index: 2;
+  }
+
+  .watchButton {
+    gap: 12px;
+    padding: 8px 8px 8px 16px;
+    border: 1px solid rgb(210 180 131 / .45);
+    border-radius: 999px;
+    background: rgb(34 24 17 / .65);
+    backdrop-filter: blur(10px);
+  }
+
+  .watchButton > span:first-child > span {
+    display: none;
+  }
+
+  .watchButton > span:last-child {
+    width: 40px;
+    height: 40px;
+    border-color: transparent;
+    background: var(--color-brass-light);
+    color: var(--color-ink);
+  }
+}
