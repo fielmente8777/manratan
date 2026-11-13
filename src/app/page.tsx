@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import HomeHero from "./(home)/HomeHero";
 import RoomsRail from "./(home)/RoomsRail";
-import { About, Amenities, Celebrations, EvolvesWithLight, PlacesNearby, Spaces, Swadika, Walkthrough } from "./(home)/sections";
+import { About, Amenities, Celebrations, EvolvesWithLight, PlacesNearby, RoyalCharm, Spaces, Swadika, Walkthrough } from "./(home)/sections";
 
 export const metadata: Metadata = {
   title: { absolute: "Manratan Resort, Narsinghgarh | Where Every Heart Finds Its Gem" },
@@ -15,7 +15,8 @@ export default function Home() {
     <main>
       <HomeHero />
       <About />
-      <Walkthrough />
+      <RoyalCharm />
+      {/* <Walkthrough /> */}
       <Spaces />
       <Amenities />
       <RoomsRail />

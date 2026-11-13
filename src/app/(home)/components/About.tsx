@@ -96,7 +96,7 @@ const About = ({ title, topContent, gallery }: AboutProps) => {
       </div>
 
       {/* ================= MOBILE VIEW SLIDER (COMES IMMEDIATELY AFTER HEADING ON MOBILE) ================= */}
-      <div className="block md:hidden w-full relative mt-6">
+      {/* <div className="block md:hidden w-full relative mt-6">
         <div className="relative w-full h-[360px] sm:h-[400px] overflow-hidden group shadow-md">
           <SwiperCarousel
             data={mobileSlides}
@@ -117,7 +117,7 @@ const About = ({ title, topContent, gallery }: AboutProps) => {
             )}
           />
         </div>
-      </div>
+      </div> */}
 
       {/* ================= MOBILE VIEW DESCRIPTION + LINK (COMES AFTER SLIDER ON MOBILE) ================= */}
       <div className="block md:hidden mt-6">
@@ -144,7 +144,7 @@ const About = ({ title, topContent, gallery }: AboutProps) => {
       </div>
 
       {/* ================= DESKTOP IMAGES (100% UNTOUCHED & UNCHANGEABLE) ================= */}
-      <div className="hidden md:grid grid-cols-[1fr_2fr] gap-6">
+      {/* <div className="hidden md:grid grid-cols-[1fr_2fr] gap-6">
         {gallery.map((item, index) => (
           <div
             key={index}
@@ -165,7 +165,7 @@ const About = ({ title, topContent, gallery }: AboutProps) => {
             />
           </div>
         ))}
-      </div>
+      </div> */}
     </SectionWithContainer>
   );
 };

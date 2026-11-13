@@ -5,22 +5,21 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { IoIosArrowDown } from "react-icons/io";
 import { useWebContext, type BookingPrefill } from "@/context-api/WebContext";
-import { addDays, formatShort, nightsBetween, startOfToday, toLocalISODate } from "@/utils/dates";
+import { formatShort, nightsBetween, startOfToday, toLocalISODate } from "@/utils/dates";
 
 export interface BookingFormProps {
-  /** Stack the fields vertically (used inside narrow panels). */
   gridView?: boolean;
   className?: string;
-  /** Override what happens on submit; by default the enquiry form opens pre-filled. */
   onSearch?: (data: { checkin: string; checkout: string; adults: number; children: number }) => void;
 }
 
-/**
- * The trigger the date picker renders: a button, so phones don't raise the keyboard.
- * react-datepicker clones this element and injects its own props (className, placeholder, value…),
- * so our own props use names it never sets, and its className is merged rather than replacing ours.
- */
-type TriggerProps = ButtonHTMLAttributes<HTMLButtonElement> & { fieldLabel: string; shown: string; emptyText: string; hint?: string };
+type TriggerProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  fieldLabel: string;
+  shown: string;
+  emptyText: string;
+  hint?: string;
+};
+
 const DateTrigger = forwardRef<HTMLButtonElement, TriggerProps>(function DateTrigger(
   { fieldLabel, shown, emptyText, hint, onClick, id, className, onKeyDown, onFocus, onBlur, disabled },
   ref,
@@ -42,13 +41,14 @@ const DateTrigger = forwardRef<HTMLButtonElement, TriggerProps>(function DateTri
         {fieldLabel}
         {hint && <span className="ml-2 normal-case tracking-normal text-white/70">{hint}</span>}
       </span>
-      <span className={`mr-bf-value ${shown ? "" : "text-white/70"}`}>{shown || emptyText}</span>
+      <span className={`mr-bf-value ${shown ? "" : "text-white/60"}`}>{shown || emptyText}</span>
     </button>
   );
 });
 
 export default function BookingForm({ gridView = false, className = "", onSearch }: BookingFormProps) {
   const { openEnquiry } = useWebContext();
+  const [name, setName] = useState("");
   const [checkIn, setCheckIn] = useState<Date | null>(null);
   const [checkOut, setCheckOut] = useState<Date | null>(null);
   const [adults, setAdults] = useState(2);
@@ -57,11 +57,9 @@ export default function BookingForm({ gridView = false, className = "", onSearch
   const [error, setError] = useState("");
   const [narrow, setNarrow] = useState(false);
 
-  const outRef = useRef<DatePicker>(null);
   const guestRef = useRef<HTMLDivElement>(null);
   const ids = useId();
 
-  // On phones the calendar opens as a centred sheet instead of a popover that can run off-screen.
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 767px)");
     const update = () => setNarrow(mq.matches);
@@ -89,19 +87,10 @@ export default function BookingForm({ gridView = false, className = "", onSearch
   const today = startOfToday();
   const nights = checkIn && checkOut ? nightsBetween(checkIn, checkOut) : 0;
 
-  const pickCheckIn = (d: Date | null) => {
+  const pickRange = (dates: [Date | null, Date | null]) => {
     setError("");
-    setCheckIn(d);
-    if (d && (!checkOut || checkOut <= d)) {
-      setCheckOut(null);
-      // Move straight on to the check-out calendar.
-      window.setTimeout(() => outRef.current?.setOpen(true), 60);
-    }
-  };
-
-  const pickCheckOut = (d: Date | null) => {
-    setError("");
-    setCheckOut(d);
+    setCheckIn(dates[0]);
+    setCheckOut(dates[1]);
   };
 
   const guestLabel = `${adults} ${adults === 1 ? "adult" : "adults"}${children ? `, ${children} ${children === 1 ? "child" : "children"}` : ""}`;
@@ -111,12 +100,7 @@ export default function BookingForm({ gridView = false, className = "", onSearch
     if (!checkIn) return setError("Choose a check-in date.");
     if (!checkOut) return setError("Choose a check-out date.");
     if (checkOut <= checkIn) return setError("Check-out must be after check-in.");
-    const data: BookingPrefill = {
-      checkIn: toLocalISODate(checkIn),
-      checkOut: toLocalISODate(checkOut),
-      adults,
-      children,
-    };
+    const data: BookingPrefill = { checkIn: toLocalISODate(checkIn), checkOut: toLocalISODate(checkOut), adults, children };
     if (onSearch) {
       onSearch({ checkin: data.checkIn, checkout: data.checkOut, adults, children });
       return;
@@ -125,8 +109,6 @@ export default function BookingForm({ gridView = false, className = "", onSearch
   };
 
   const picker = {
-    // Render calendars at the end of <body>: the bar's backdrop blur and the hero's entrance animation
-    // otherwise become the containing block for the fixed-position phone sheet and misplace it.
     portalId: "mr-datepicker-portal",
     dateFormat: "EEE, d MMM",
     withPortal: narrow,
@@ -141,60 +123,70 @@ export default function BookingForm({ gridView = false, className = "", onSearch
     <form onSubmit={submit} noValidate className={`w-full ${className}`} aria-label="Check availability">
       <div
         className={`mr-booking-bar grid border border-white/25 bg-black/25 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.6)] backdrop-blur-md ${
-          gridView ? "grid-cols-1" : "grid-cols-2 lg:grid-cols-[1fr_1fr_1.05fr_auto]"
+          gridView ? "grid-cols-1" : "grid-cols-2 lg:grid-cols-[1fr_1.6fr_1fr_auto]"
         }`}
       >
-        <div className="border-b border-r border-white/20 lg:border-b-0">
-          <DatePicker
-            {...picker}
-            id={`${ids}-in`}
-            selected={checkIn}
-            onChange={pickCheckIn}
-            selectsStart
-            startDate={checkIn}
-            endDate={checkOut}
-            minDate={today}
-            customInput={<DateTrigger fieldLabel="Check-in" shown={checkIn ? formatShort(checkIn) : ""} emptyText="Add date" />}
-            ariaLabelledBy={`${ids}-in`}
-          />
+        {/* Name */}
+        <div className="border-b border-white/20 lg:border-b-0 lg:border-r">
+          <label htmlFor={`${ids}-name`} className="mr-bf-field flex flex-col">
+            <span className="mr-bf-label">Name</span>
+            <input
+              id={`${ids}-name`}
+              type="text"
+              name="heroName"
+              placeholder="Your name"
+              autoComplete="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="mr-bf-value w-full bg-transparent text-white outline-none placeholder:text-white/60"
+            />
+          </label>
         </div>
 
-        <div className={`border-b border-white/20 lg:border-b-0 lg:border-r ${gridView ? "" : ""}`}>
+        {/* Combined Check-in & Check-out — single range field */}
+        <div className={`border-b border-white/20 lg:border-b-0 lg:border-r ${gridView ? "" : "col-span-2 lg:col-span-1"}`}>
+          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
           <DatePicker
             {...picker}
-            ref={outRef}
-            id={`${ids}-out`}
-            selected={checkOut}
-            onChange={pickCheckOut}
-            selectsEnd
+            selectsRange={true as any}
             startDate={checkIn}
             endDate={checkOut}
-            minDate={checkIn ? addDays(checkIn, 1) : addDays(today, 1)}
-            openToDate={checkOut ?? (checkIn ? addDays(checkIn, 1) : undefined)}
+            onChange={(dates: unknown) => pickRange(dates as [Date | null, Date | null])}
+            minDate={today}
+            id={`${ids}-dates`}
             customInput={
               <DateTrigger
-                fieldLabel="Check-out"
-                shown={checkOut ? formatShort(checkOut) : ""}
-                emptyText="Add date"
+                fieldLabel="Check-in & out"
+                shown={
+                  checkIn && checkOut
+                    ? `${formatShort(checkIn)} – ${formatShort(checkOut)}`
+                    : checkIn
+                    ? formatShort(checkIn)
+                    : ""
+                }
+                emptyText="Add dates"
                 hint={nights ? `${nights} ${nights === 1 ? "night" : "nights"}` : undefined}
               />
             }
           />
         </div>
 
+        {/* Guests */}
         <div ref={guestRef} className={`relative border-b border-white/20 lg:border-b-0 lg:border-r ${gridView ? "" : "col-span-2 lg:col-span-1"}`}>
           <button
             type="button"
             onClick={() => setGuestOpen((v) => !v)}
             aria-expanded={guestOpen}
             aria-controls={`${ids}-guests`}
-            className="mr-bf-field flex w-full items-center justify-between gap-3 text-left"
+            className="mr-bf-field w-full text-left"
           >
-            <span>
-              <span className="mr-bf-label">Guests</span>
-              <span className="mr-bf-value">{guestLabel}</span>
-            </span>
-            <IoIosArrowDown aria-hidden="true" className={`h-3 w-3 shrink-0 text-white/80 transition-transform ${guestOpen ? "rotate-180" : ""}`} />
+            <div className="flex items-center justify-between gap-3">
+              <span>
+                <span className="mr-bf-label">Guests</span>
+                <span className="mr-bf-value">{guestLabel}</span>
+              </span>
+              <IoIosArrowDown aria-hidden="true" className={`h-3 w-3 shrink-0 text-white/80 transition-transform ${guestOpen ? "rotate-180" : ""}`} />
+            </div>
           </button>
           {guestOpen && (
             <div
@@ -211,13 +203,17 @@ export default function BookingForm({ gridView = false, className = "", onSearch
           )}
         </div>
 
+        {/* Submit */}
         <button
           type="submit"
-          className={`t-label flex min-h-16 items-center justify-center bg-stone px-9 text-ink transition-colors duration-300 hover:bg-white ${gridView ? "" : "col-span-2 lg:col-span-1"}`}
+          className={`t-label flex min-h-16 items-center justify-center bg-stone px-9 text-ink transition-colors duration-300 hover:bg-white ${
+            gridView ? "" : "col-span-2 lg:col-span-1"
+          } whitespace-nowrap`}
         >
           Check availability
         </button>
       </div>
+
       <p aria-live="polite" className={`mt-2 min-h-5 text-[0.8rem] text-[#ffd9c7] ${error ? "" : "sr-only"}`}>
         {error}
       </p>
@@ -226,19 +222,9 @@ export default function BookingForm({ gridView = false, className = "", onSearch
 }
 
 function Counter({
-  label,
-  sub,
-  value,
-  min,
-  max,
-  onChange,
+  label, sub, value, min, max, onChange,
 }: {
-  label: string;
-  sub: string;
-  value: number;
-  min: number;
-  max: number;
-  onChange: (v: number) => void;
+  label: string; sub: string; value: number; min: number; max: number; onChange: (v: number) => void;
 }) {
   return (
     <div className="flex items-center justify-between gap-4">
@@ -253,21 +239,15 @@ function Counter({
           onClick={() => onChange(Math.max(min, value - 1))}
           disabled={value <= min}
           className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 hover:bg-white/10 disabled:opacity-35"
-        >
-          −
-        </button>
-        <span className="w-5 text-center text-sm tabular-nums" aria-live="polite">
-          {value}
-        </span>
+        >−</button>
+        <span className="w-5 text-center text-sm tabular-nums" aria-live="polite">{value}</span>
         <button
           type="button"
           aria-label={`More ${label.toLowerCase()}`}
           onClick={() => onChange(Math.min(max, value + 1))}
           disabled={value >= max}
           className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 hover:bg-white/10 disabled:opacity-35"
-        >
-          +
-        </button>
+        >+</button>
       </div>
     </div>
   );

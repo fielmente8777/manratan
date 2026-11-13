@@ -374,7 +374,8 @@ export const galleryCategories = [
   { label: "Exteriors", slug: "exteriors" },
   { label: "Lobby", slug: "lobby" },
   { label: "Lifestyle", slug: "lifestyle" },
-  { label: "Nearby attractions", slug: "nearby-attractions" },
+    { label: "Narsinghgarh", slug: "Narsinghgarh" },
+  // { label: "Nearby attractions", slug: "nearby-attractions" },
 ] as const;
 
 export type GallerySlug = (typeof galleryCategories)[number]["slug"];
@@ -383,15 +384,15 @@ export type GalleryCategory = Exclude<(typeof galleryCategories)[number]["label"
 const g = (category: GalleryCategory, key: MediaKey, alt: string) => ({ category, ...photo(key, alt) });
 
 export const gallery = [
-  g("Exteriors", "facade-night-full", "Manratan Resort lit up at night"),
+  // g("Exteriors", "facade-night-full", "Manratan Resort lit up at night"),
   g("Swimming pool", "pool-dusk", "Blue Diamond pool from above at dusk"),
   g("Rooms", "suite-1", "Executive Suite bedroom with panoramic window"),
   g("Banquet", "blue-sapphire-full", "Blue Sapphire hall fully set for a celebration"),
   g("Lobby", "lobby-chandeliers", "Lobby with crystal chandeliers"),
   g("Dining", "swadika-hall", "Swadika restaurant dining hall"),
   g("Exteriors", "aerial-greenery", "Manratan Resort among fields at sunrise, from the air"),
-  g("Nearby attractions", "ngh-lake-temple", "Jal Mandir in Paras Ram Sagar at sunset"),
-  g("Swimming pool", "pool-day", "Blue Diamond pool in daylight, from above"),
+  // g("Nearby attractions", "ngh-lake-temple", "Jal Mandir in Paras Ram Sagar at sunset"),
+  // g("Swimming pool", "pool-day", "Blue Diamond pool in daylight, from above"),
   g("Rooms", "premium-2", "Premium Room with king bed and sofa by the window"),
   g("Lifestyle", "pool-breakfast", "Two guests sharing a floating breakfast in the pool"),
   g("Exteriors", "facade-bluehour", "Manratan Resort facade at blue hour"),
@@ -404,7 +405,7 @@ export const gallery = [
   g("Rooms", "premium-1", "Premium Room with the sofa opened into a bed"),
   g("Banquet", "golden-sapphire", "Golden Sapphire hall in black and gold"),
   g("Exteriors", "skylawn-sunset", "Sky Lawn seating at sunset"),
-  g("Nearby attractions", "ngh-lake-town", "Narsinghgarh and Paras Ram Sagar from above"),
+  // g("Nearby attractions", "ngh-lake-town", "Narsinghgarh and Paras Ram Sagar from above"),
   g("Swimming pool", "pool-lounger", "Guest on a poolside lounger"),
   g("Rooms", "suite-bath", "White-marble suite bathroom"),
   g("Lobby", "lobby-lounge", "Lobby lounge with red velvet sofas"),
@@ -416,7 +417,7 @@ export const gallery = [
   g("Exteriors", "aerial-approach", "Approach to the resort from the air"),
   g("Rooms", "deluxe-1", "Deluxe Room"),
   g("Banquet", "blue-sapphire-lounge", "Blue Sapphire hall with lounge seating"),
-  g("Nearby attractions", "ngh-chhatri", "Bara Khambha on the grasslands at sunset"),
+  // g("Nearby attractions", "ngh-chhatri", "Bara Khambha on the grasslands at sunset"),
   g("Lobby", "lobby-monogram", "Lobby with the Manratan monogram wall"),
   g("Rooms", "premium-bath", "Premium Room rain shower in dark marble"),
   g("Exteriors", "skylawn-above", "Sky Lawn from above"),

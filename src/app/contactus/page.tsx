@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Container, Title } from "@/components/site/ui";
+import { MailIcon, PhoneIcon, MapIcon } from "@/utils/icons";
 import { photo, site } from "@/data/site";
 import { faqData } from "./components/pageData";
 
@@ -27,13 +28,15 @@ export default function ContactPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       <section className="grid lg:grid-cols-2">
-        <div className="flex flex-col justify-center px-5 py-20 sm:px-12 lg:px-16 xl:px-24">
-          <Title as="h1" main="Contact us" script="Let's plan your stay" />
-          <Image src="/images/bell.png" alt="" width={720} height={175} className="mt-10 h-auto w-full max-w-[420px] opacity-80" aria-hidden="true" />
+        <div className="flex flex-col items-center justify-center px-5 py-20 text-center sm:px-12 lg:px-16 xl:px-24">
+          <Title as="h1" main="Contact us" script="Let's plan your stay" align="center" />
+          <div className="relative mt-10 w-full" style={{ aspectRatio: "4.11 / 1" }}>
+            <Image src="/images/bell.png" alt="" fill className="object-contain opacity-80" aria-hidden="true" />
+          </div>
           <p className="t-body mt-10 max-w-[44ch]">
             From booking questions to special requests, we are a message away. We look forward to welcoming you to Manratan.
           </p>
-          <div className="mt-10 flex flex-wrap gap-4">
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
             <a href={contact.mapUrl} target="_blank" rel="noreferrer" className="t-label bg-ink px-8 py-4 text-stone transition-colors hover:bg-ink-soft">
               View on Google Maps
             </a>
@@ -53,21 +56,32 @@ export default function ContactPage() {
         </div>
         <div className="order-1 bg-ink px-5 py-20 text-stone sm:px-12 lg:order-2 lg:px-16 xl:px-24">
           <dl className="divide-y divide-stone/15">
-            <div className="pb-8">
-              <dt className="t-display text-2xl">Email</dt>
-              <dd className="mt-3 text-stone/80"><a href={`mailto:${contact.email}`} className="hover:text-white break-all">{contact.email}</a></dd>
+            <div className="pb-8 sm:py-10">
+              <div className="flex items-center gap-3">
+                <span className="shrink-0"><MailIcon /></span>
+                <dt className="t-display text-xl sm:text-2xl uppercase tracking-widest">Email</dt>
+              </div>
+              <dd className="mt-4 text-stone/80">
+                <a href={`mailto:${contact.email}`} className="hover:text-white break-all">{contact.email}</a>
+              </dd>
             </div>
-            <div className="py-8">
-              <dt className="t-display text-2xl">Phone</dt>
-              <dd className="mt-3 space-y-1 text-stone/80">
+            <div className="py-8 sm:py-10">
+              <div className="flex items-center gap-3">
+                <span className="shrink-0"><PhoneIcon /></span>
+                <dt className="t-display text-xl sm:text-2xl uppercase tracking-widest">Phone</dt>
+              </div>
+              <dd className="mt-4 space-y-1 text-stone/80">
                 {contact.phone.map((p) => (
                   <a key={p} href={`tel:${p.replace(/\s/g, "")}`} className="block hover:text-white">{p}</a>
                 ))}
               </dd>
             </div>
-            <div className="pt-8">
-              <dt className="t-display text-2xl">Address</dt>
-              <dd className="mt-3 max-w-[40ch] leading-relaxed text-stone/80">
+            <div className="pt-8 sm:pt-10">
+              <div className="flex items-center gap-3">
+                <span className="shrink-0"><MapIcon /></span>
+                <dt className="t-display text-xl sm:text-2xl uppercase tracking-widest">Address</dt>
+              </div>
+              <dd className="mt-4 max-w-[40ch] leading-relaxed text-stone/80">
                 <address className="not-italic">{contact.address}</address>
               </dd>
             </div>

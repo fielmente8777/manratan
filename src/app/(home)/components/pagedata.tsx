@@ -22,7 +22,7 @@ export const homePageData = {
       description:
         "Nestled in the scenic charm of Narsinghgarh celebrated as the Mini Kashmir of Malwa Manratan Resort is a sanctuary where contemporary luxury meets timeless hospitality. Rooted in family warmth and a legacy of love, we offer 65 elegantly appointed rooms, signature pure vegetarian dining at Swadika, a sparkling swimming pool, and magnificent open air celebration venues.",
       link: {
-        label: "KNOW MORE",
+        label: "Our Story",
         href: "/about/",
       },
     },

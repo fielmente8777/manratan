@@ -9,10 +9,10 @@ export const galleryData = {
 
   images: [
     // Mixed categories across the gallery grid
-    {
-      image: "/homopage/narsinghgarh_11zon.webp",
-      alt: "Narsinghgarh",
-    },
+    // {
+    //   image: "/homopage/narsinghgarh_11zon.webp",
+    //   alt: "Narsinghgarh",
+    // },
     {
       image: "/exterior/exterior1_11zon.webp",
       alt: "Exterior",
