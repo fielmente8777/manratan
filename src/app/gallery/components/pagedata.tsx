@@ -18,10 +18,6 @@ export const galleryData = {
       alt: "Exterior",
     },
     {
-      image: "/roompage/Deluxe/Deluxe-room1_11zon.webp",
-      alt: "Accommodation",
-    },
-    {
       image: "/homopage/about_11zon.webp",
       alt: "Narsinghgarh",
     },
@@ -34,28 +30,24 @@ export const galleryData = {
       alt: "Reception",
     },
     {
-      image: "/aboutpage/history_11zon.webp",
-      alt: "Narsinghgarh",
+      image: "/media/mrw-lobby-a.webp",
+      alt: "Reception",
     },
     {
-      image: "/roompage/Suite/Suite-banner_11zon.webp",
-      alt: "Accommodation",
+      image: "/media/mrw-lobby-b.webp",
+      alt: "Reception",
+    },
+    {
+      image: "/aboutpage/history_11zon.webp",
+      alt: "Narsinghgarh",
     },
     {
       image: "/gardern/gardern1_11zon_11zon.webp",
       alt: "Sky Lawn",
     },
     {
-      image: "/roompage/Executive/Executive-room1_11zon.webp",
-      alt: "Accommodation",
-    },
-    {
       image: "/exterior/exterior2_11zon.webp",
       alt: "Exterior",
-    },
-    {
-      image: "/roompage/Premium/Premium-room1_11zon.webp",
-      alt: "Accommodation",
     },
     {
       image: "/restaurant/restaurant2_11zon_11zon.webp",
@@ -66,24 +58,12 @@ export const galleryData = {
       alt: "Reception",
     },
     {
-      image: "/roompage/Inter/Inter-room1_11zon.webp",
-      alt: "Accommodation",
-    },
-    {
       image: "/gardern/gardern2_11zon.webp",
       alt: "Sky Lawn",
     },
     {
-      image: "/roompage/Deluxe/Deluxe-room2_11zon.webp",
-      alt: "Accommodation",
-    },
-    {
       image: "/exterior/exterior3_11zon.webp",
       alt: "Exterior",
-    },
-    {
-      image: "/roompage/Executive/Executive-banner_11zon.webp",
-      alt: "Accommodation",
     },
     {
       image: "/restaurant/dining_11zon.webp",
@@ -94,14 +74,6 @@ export const galleryData = {
       alt: "Reception",
     },
     {
-      image: "/roompage/Suite/Suite-room1_11zon.webp",
-      alt: "Accommodation",
-    },
-    {
-      image: "/roompage/Premium/Premium-room2_11zon.webp",
-      alt: "Accommodation",
-    },
-    {
       image: "/restaurant/swadika3_11zon.webp",
       alt: "Restaurant",
     },
@@ -110,125 +82,149 @@ export const galleryData = {
       alt: "Restaurant",
     },
     {
-      image: "/roompage/banner.jpg",
-      alt: "Accommodation",
-    },
-    {
       image: "/restaurant/resturant-b.webp",
       alt: "Restaurant",
-    },
-    {
-      image: "/roompage/Inter/Inter-room2_11zon.webp",
-      alt: "Accommodation",
     },
     {
       image: "/restaurant/resturant-c.webp",
       alt: "Restaurant",
     },
     {
-      image: "/roompage/Deluxe/Deluxe-room3_11zon.webp",
-      alt: "Accommodation",
-    },
-    {
       image: "/restaurant/resturant-d.webp",
       alt: "Restaurant",
-    },
-    {
-      image: "/roompage/Executive/Executive-room2_11zon.webp",
-      alt: "Accommodation",
     },
     {
       image: "/restaurant/resturant-e.webp",
       alt: "Restaurant",
     },
     {
-      image: "/roompage/Suite/Suite-room2_11zon.webp",
-      alt: "Accommodation",
-    },
-    {
       image: "/restaurant/resturant-f.webp",
       alt: "Restaurant",
-    },
-    {
-      image: "/roompage/Premium/Premium-room3_11zon.webp",
-      alt: "Accommodation",
     },
     {
       image: "/restaurant/resturant-g.webp",
       alt: "Restaurant",
     },
     {
-      image: "/roompage/Inter/Inter-room3_11zon.webp",
-      alt: "Accommodation",
-    },
-    {
       image: "/restaurant/resturant-h.webp",
       alt: "Restaurant",
-    },
-    {
-      image: "/roompage/Deluxe/Deluxe-room4_11zon.webp",
-      alt: "Accommodation",
-    },
-    {
-      image: "/roompage/Executive/Executive-room3_11zon.webp",
-      alt: "Accommodation",
     },
     {
       image: "/restaurant/resturant-j.webp",
       alt: "Restaurant",
     },
     {
-      image: "/roompage/Suite/Suite-room3_11zon.webp",
-      alt: "Accommodation",
-    },
-    {
       image: "/restaurant/resturant-k.webp",
       alt: "Restaurant",
     },
-    {
-      image: "/roompage/Premium/Premium-room4_11zon.webp",
-      alt: "Accommodation",
-    },
-    {
-      image: "/roompage/Inter/Inter-room4_11zon.webp",
-      alt: "Accommodation",
-    },
-    {
-      image: "/roompage/Executive/Executive-room4_11zon.webp",
-      alt: "Accommodation",
-    },
-    {
-      image: "/roompage/Suite/Suite-room4_11zon.webp",
-      alt: "Accommodation",
-    },
 
     {
-      image: "/roompage/Deluxe/Deluxe-room5_11zon.webp",
-      alt: "Accommodation",
+      image: "/media/mrw-resturant-a.webp",
+      alt: "Restaurant",
     },
     {
-      image: "/roompage/Executive/Executive-room5_11zon.webp",
-      alt: "Accommodation",
+      image: "/media/mrw-resturant-k.webp",
+      alt: "Restaurant",
     },
     {
-      image: "/roompage/Inter/Inter-room5_11zon.webp",
-      alt: "Accommodation",
+      image: "/media/mrw-resturant-b.webp",
+      alt: "Restaurant",
     },
     {
-      image: "/roompage/Premium/Premium-room5_11zon.webp",
-      alt: "Accommodation",
+      image: "/media/mrw-resturant-c.webp",
+      alt: "Restaurant",
     },
     {
-      image: "/roompage/Suite/Suite-room5_11zon.webp",
-      alt: "Accommodation",
+      image: "/media/mrw-resturant-d.webp",
+      alt: "Restaurant",
     },
     {
-      image: "/roompage/Deluxe/Deluxe-room6_11zon.webp",
-      alt: "Accommodation",
+      image: "/media/mrw-resturant-e.webp",
+      alt: "Restaurant",
     },
     {
-      image: "/roompage/Premium/Premium-room6_11zon_11zon.webp",
-      alt: "Accommodation",
+      image: "/media/mrw-resturant-f.webp",
+      alt: "Restaurant",
     },
+    {
+      image: "/media/mrw-resturant-g.webp",
+      alt: "Restaurant",
+    },
+    {
+      image: "/media/mrw-resturant-h.webp",
+      alt: "Restaurant",
+    },
+    {
+      image: "/media/mrw-resturant-j.webp",
+      alt: "Restaurant",
+    },
+    {
+      image: "/media/mrw-narsinghghar-a.webp",
+      alt: "Narsinghgarh",
+    },
+    {
+      image: "/media/mrw-narsinghghar-b.webp",
+      alt: "Narsinghgarh",
+    },
+    {
+      image: "/media/mrw-narsinghghar-c.webp",
+      alt: "Narsinghgarh",
+    },
+    {
+      image: "/media/mrw-narsinghghar-d.webp",
+      alt: "Narsinghgarh",
+    },
+    {
+      image: "/media/mrw-narsinghghar-e.webp",
+      alt: "Narsinghgarh",
+    },
+    {
+      image: "/media/mrw-narsinghghar-f.webp",
+      alt: "Narsinghgarh",
+    },
+    {
+      image: "/media/mrw-narsinghghar-g.webp",
+      alt: "Narsinghgarh",
+    },
+    {
+      image: "/media/mrw-lifestyle-a.webp",
+      alt: "Lifestyle",
+    },
+    {
+      image: "/media/mrw-lifestyle-b.webp",
+      alt: "Lifestyle",
+    },
+    {
+      image: "/media/mrw-lifestyle-c.webp",
+      alt: "Lifestyle",
+    },
+    {
+      image: "/media/mrw-lifestyle-f.webp",
+      alt: "Lifestyle",
+    },
+    {
+      image: "/media/mrw-lifestyle-d.webp",
+      alt: "Lifestyle",
+    },
+    {
+      image: "/media/mrw-lifestyle-e.webp",
+      alt: "Lifestyle",
+    },
+
+    // --- Removed Images (Commented out / Kept for reference) ---
+    // { image: "/media/facade-dusk.webp", alt: "Exterior" },
+    // { image: "/media/pool-friends-wide.webp", alt: "Swimming pool" },
+    // { image: "/media/pool-lounger.webp", alt: "Swimming pool" },
+    // { image: "/media/inter-3.webp", alt: "Accommodation" },
+    // { image: "/media/mrw-deluxe-room-f.webp", alt: "Accommodation" },
+    // { image: "/media/mrw-inter-room-c.webp", alt: "Accommodation" },
+    // { image: "/media/mrw-inter-room-e.webp", alt: "Accommodation" },
+    // { image: "/media/mrw-premium-room-b.webp", alt: "Accommodation" },
+    // { image: "/media/mrw-premium-room-e.webp", alt: "Accommodation" },
+    // { image: "/media/mrw-resturant-i.webp", alt: "Restaurant" },
+    // { image: "/media/mrw-resturant-l.webp", alt: "Restaurant" },
+    // { image: "/media/mrw-resturant-m.webp", alt: "Restaurant" },
+    // { image: "/media/mrw-resturant-n.webp", alt: "Restaurant" },
+    // { image: "/media/mrw-resturant-o.webp", alt: "Restaurant" },
   ],
 };

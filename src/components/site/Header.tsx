@@ -103,7 +103,7 @@ export default function Header() {
           <button
             type="button"
             onClick={() => setIsOpenPopUpForm(true)}
-            className="t-label inline-flex rounded-full bg-stone px-3 py-2 text-ink transition-colors duration-300 hover:bg-white max-sm:!text-[9px] max-sm:!tracking-[0.1em] sm:px-7 sm:py-3"
+            className="t-label inline-flex rounded-none bg-stone px-3 py-2 text-ink transition-colors duration-300 hover:bg-white max-sm:!text-[9px] max-sm:!tracking-[0.1em] sm:px-7 sm:py-3"
           >
             Book your stay
           </button>

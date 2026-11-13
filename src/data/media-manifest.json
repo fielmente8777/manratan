@@ -1,266 +1,482 @@
 {
-"aerial-approach": [
-1448,
-1086
-],
-"aerial-greenery": [
-1448,
-1086
-],
-"blue-sapphire": [
-1672,
-941
-],
-"blue-sapphire-detail": [
-1672,
-941
-],
-"blue-sapphire-full": [
-1920,
-1080
-],
-"blue-sapphire-lounge": [
-1672,
-941
-],
-"blue-sapphire-stage": [
-1671,
-941
-],
-"blue-sapphire-tables": [
-1672,
-941
-],
-"conference": [
-1672,
-941
-],
-"conference-podium": [
-1672,
-941
-],
-"corridor": [
-1672,
-941
-],
-"deluxe-1": [
-1920,
-1081
-],
-"deluxe-2": [
-1920,
-1081
-],
-"executive-1": [
-1672,
-941
-],
-"executive-2": [
-1672,
-941
-],
-"executive-3": [
-1672,
-941
-],
-"executive-4": [
-1672,
-941
-],
-"executive-bath": [
-941,
-1672
-],
-"facade-bluehour": [
-1500,
-1000
-],
-"facade-dusk": [
-1448,
-1086
-],
-"facade-night": [
-1448,
-1086
-],
-"facade-night-full": [
-1920,
-1280
-],
-"golden-sapphire": [
-1672,
-941
-],
-"golden-sapphire-2": [
-1672,
-941
-],
-"inter-1": [
-1672,
-941
-],
-"inter-2": [
-941,
-1412
-],
-"inter-3": [
-941,
-1672
-],
-"lobby-chandeliers": [
-1672,
-941
-],
-"lobby-lounge": [
-1672,
-941
-],
-"lobby-monogram": [
-1672,
-941
-],
-"ngh-chhatri": [
-1448,
-1086
-],
-"ngh-fort": [
-790,
-410
-],
-"ngh-hilltop-temple": [
-1448,
-1086
-],
-"ngh-lake-temple": [
-1448,
-1086
-],
-"ngh-lake-town": [
-1448,
-1086
-],
-"pool-breakfast": [
-941,
-1672
-],
-"pool-breakfast-2": [
-941,
-1672
-],
-"pool-day": [
-1401,
-836
-],
-"pool-dusk": [
-1578,
-996
-],
-"pool-friends": [
-1081,
-1920
-],
-"pool-friends-wide": [
-1920,
-1081
-],
-"pool-guests": [
-941,
-1672
-],
-"pool-lounger": [
-1081,
-1920
-],
-"pool-splash": [
-1081,
-1920
-],
-"premium-1": [
-1672,
-941
-],
-"premium-2": [
-1448,
-1086
-],
-"premium-bath": [
-941,
-1672
-],
-"reception-welcome": [
-1672,
-941
-],
-"skylawn-above": [
-1448,
-1086
-],
-"skylawn-sunset": [
-1672,
-941
-],
-"skylawn-sunset-tall": [
-1086,
-1448
-],
-"suite-1": [
-1672,
-941
-],
-"suite-bath": [
-1448,
-1086
-],
-"suite-bed": [
-1672,
-941
-],
-"suite-living": [
-1448,
-1086
-],
-"suite-swans": [
-941,
-1672
-],
-"sunrise-front": [
-1920,
-1042
-],
-"swadika-guests": [
-1120,
-941
-],
-"swadika-hall": [
-1672,
-941
-],
-"swadika-room": [
-1672,
-941
-],
-"towel-swans": [
-941,
-1672
-],
-"deluxe-new": [
-1600,
-900
-],
-"swadika-wide": [
-1672,
-941
-],
-"pool-floating": [
-1280,
-720
-],
-"skylawn-terrace": [
-1672,
-941
-],
-"banquet-hall": [
-1672,
-941
-]
+  "aerial-approach": [
+    1448,
+    1086
+  ],
+  "aerial-greenery": [
+    1448,
+    1086
+  ],
+  "blue-sapphire": [
+    1672,
+    941
+  ],
+  "blue-sapphire-detail": [
+    1672,
+    941
+  ],
+  "blue-sapphire-full": [
+    1920,
+    1080
+  ],
+  "blue-sapphire-lounge": [
+    1672,
+    941
+  ],
+  "blue-sapphire-stage": [
+    1671,
+    941
+  ],
+  "blue-sapphire-tables": [
+    1672,
+    941
+  ],
+  "conference": [
+    1672,
+    941
+  ],
+  "conference-podium": [
+    1672,
+    941
+  ],
+  "corridor": [
+    1672,
+    941
+  ],
+  "deluxe-1": [
+    1920,
+    1081
+  ],
+  "deluxe-2": [
+    1920,
+    1081
+  ],
+  "executive-1": [
+    1672,
+    941
+  ],
+  "executive-2": [
+    1672,
+    941
+  ],
+  "executive-3": [
+    1672,
+    941
+  ],
+  "executive-4": [
+    1672,
+    941
+  ],
+  "executive-bath": [
+    941,
+    1672
+  ],
+  "facade-bluehour": [
+    1500,
+    1000
+  ],
+  "facade-dusk": [
+    1448,
+    1086
+  ],
+  "facade-night": [
+    1448,
+    1086
+  ],
+  "facade-night-full": [
+    1920,
+    1280
+  ],
+  "golden-sapphire": [
+    1672,
+    941
+  ],
+  "golden-sapphire-2": [
+    1672,
+    941
+  ],
+  "inter-1": [
+    1672,
+    941
+  ],
+  "inter-2": [
+    941,
+    1412
+  ],
+  "inter-3": [
+    941,
+    1672
+  ],
+  "lobby-chandeliers": [
+    1672,
+    941
+  ],
+  "lobby-lounge": [
+    1672,
+    941
+  ],
+  "lobby-monogram": [
+    1672,
+    941
+  ],
+  "ngh-chhatri": [
+    1448,
+    1086
+  ],
+  "ngh-fort": [
+    790,
+    410
+  ],
+  "ngh-hilltop-temple": [
+    1448,
+    1086
+  ],
+  "ngh-lake-temple": [
+    1448,
+    1086
+  ],
+  "ngh-lake-town": [
+    1448,
+    1086
+  ],
+  "pool-breakfast": [
+    941,
+    1672
+  ],
+  "pool-breakfast-2": [
+    941,
+    1672
+  ],
+  "pool-day": [
+    1401,
+    836
+  ],
+  "pool-dusk": [
+    1578,
+    996
+  ],
+  "pool-friends": [
+    1081,
+    1920
+  ],
+  "pool-friends-wide": [
+    1920,
+    1081
+  ],
+  "pool-guests": [
+    941,
+    1672
+  ],
+  "pool-lounger": [
+    1081,
+    1920
+  ],
+  "pool-splash": [
+    1081,
+    1920
+  ],
+  "premium-1": [
+    1672,
+    941
+  ],
+  "premium-2": [
+    1448,
+    1086
+  ],
+  "premium-bath": [
+    941,
+    1672
+  ],
+  "reception-welcome": [
+    1672,
+    941
+  ],
+  "skylawn-above": [
+    1448,
+    1086
+  ],
+  "skylawn-sunset": [
+    1672,
+    941
+  ],
+  "skylawn-sunset-tall": [
+    1086,
+    1448
+  ],
+  "suite-1": [
+    1672,
+    941
+  ],
+  "suite-bath": [
+    1448,
+    1086
+  ],
+  "suite-bed": [
+    1672,
+    941
+  ],
+  "suite-living": [
+    1448,
+    1086
+  ],
+  "suite-swans": [
+    941,
+    1672
+  ],
+  "sunrise-front": [
+    1920,
+    1042
+  ],
+  "swadika-guests": [
+    1120,
+    941
+  ],
+  "swadika-hall": [
+    1672,
+    941
+  ],
+  "swadika-room": [
+    1672,
+    941
+  ],
+  "towel-swans": [
+    941,
+    1672
+  ],
+  "deluxe-new": [
+    1600,
+    900
+  ],
+  "swadika-wide": [
+    1672,
+    941
+  ],
+  "pool-floating": [
+    1280,
+    720
+  ],
+  "skylawn-terrace": [
+    1672,
+    941
+  ],
+  "banquet-hall": [
+    1672,
+    941
+  ],
+  "mrw-deluxe-room-a": [
+    6240,
+    3512
+  ],
+  "mrw-deluxe-room-b": [
+    6240,
+    3512
+  ],
+  "mrw-deluxe-room-c": [
+    6240,
+    3512
+  ],
+  "mrw-deluxe-room-d": [
+    6240,
+    3512
+  ],
+  "mrw-deluxe-room-e": [
+    3512,
+    6240
+  ],
+  "mrw-resturant-a": [
+    3512,
+    6240
+  ],
+  "mrw-resturant-b": [
+    6240,
+    3512
+  ],
+  "mrw-resturant-c": [
+    3512,
+    6240
+  ],
+  "mrw-resturant-d": [
+    3512,
+    6240
+  ],
+  "mrw-resturant-e": [
+    3512,
+    6240
+  ],
+  "mrw-resturant-f": [
+    6240,
+    3512
+  ],
+  "mrw-resturant-g": [
+    3512,
+    6240
+  ],
+  "mrw-resturant-h": [
+    6240,
+    3512
+  ],
+  "mrw-resturant-j": [
+    3512,
+    6240
+  ],
+  "mrw-resturant-k": [
+    3512,
+    6240
+  ],
+  "pool-dinner-poster": [
+    1280,
+    720
+  ],
+  "skylawn-b": [
+    4032,
+    2268
+  ],
+  "skylawn": [
+    4032,
+    3024
+  ],
+  "walk-poster": [
+    720,
+    1280
+  ],
+  "walkthrough-poster": [
+    1600,
+    900
+  ],
+  "mrw-executive-room-a": [
+    6240,
+    3512
+  ],
+  "mrw-executive-room-b": [
+    4032,
+    3024
+  ],
+  "mrw-executive-room-c": [
+    6240,
+    3512
+  ],
+  "mrw-executive-room-d": [
+    6240,
+    3512
+  ],
+  "mrw-executive-room-e": [
+    3512,
+    6240
+  ],
+  "mrw-executive-room-f": [
+    6240,
+    3512
+  ],
+  "mrw-inter-room-a": [
+    4032,
+    2268
+  ],
+  "mrw-inter-room-b": [
+    4032,
+    2268
+  ],
+  "mrw-inter-room-d": [
+    6240,
+    3512
+  ],
+  "mrw-premium-room-a": [
+    4032,
+    2268
+  ],
+  "mrw-premium-room-c": [
+    3512,
+    6240
+  ],
+  "mrw-premium-room-d": [
+    4176,
+    6264
+  ],
+  "mrw-premium-room-f": [
+    3512,
+    6240
+  ],
+  "mrw-suite-room-a": [
+    6240,
+    3512
+  ],
+  "mrw-suite-room-b": [
+    4032,
+    2268
+  ],
+  "mrw-suite-room-c": [
+    6240,
+    3512
+  ],
+  "mrw-suite-room-d": [
+    4032,
+    3024
+  ],
+  "mrw-suite-room-e": [
+    6240,
+    3512
+  ],
+  "mrw-suite-room-f": [
+    4032,
+    3024
+  ],
+  "mrw-lobby-a": [
+    5712,
+    4284
+  ],
+  "mrw-lobby-b": [
+    6240,
+    3512
+  ],
+  "mrw-narsinghghar-a": [
+    1186,
+    767
+  ],
+  "mrw-narsinghghar-b": [
+    1170,
+    758
+  ],
+  "mrw-narsinghghar-c": [
+    1133,
+    734
+  ],
+  "mrw-narsinghghar-d": [
+    1474,
+    953
+  ],
+  "mrw-narsinghghar-e": [
+    1448,
+    1086
+  ],
+  "mrw-narsinghghar-f": [
+    1448,
+    1086
+  ],
+  "mrw-narsinghghar-g": [
+    1448,
+    1086
+  ],
+  "mrw-lifestyle-a": [
+    3512,
+    6240
+  ],
+  "mrw-lifestyle-b": [
+    6240,
+    3512
+  ],
+  "mrw-lifestyle-c": [
+    6240,
+    3512
+  ],
+  "mrw-lifestyle-d": [
+    6240,
+    3512
+  ],
+  "mrw-lifestyle-e": [
+    3512,
+    6240
+  ],
+  "mrw-lifestyle-f": [
+    3512,
+    6240
+  ]
 }

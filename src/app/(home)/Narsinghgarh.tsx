@@ -57,7 +57,7 @@ export default function Narsinghgarh() {
             <li><b>30 km</b>Railway station &middot; 30 mins</li>
             <li><b>210 km</b>Indore &middot; 3&ndash;4 hrs</li>
           </ul>
-          <LineLink href="#nearby-places">Live the legacy <span aria-hidden="true">&rarr;</span></LineLink>
+          <LineLink href="/about">Live the legacy <span aria-hidden="true">&rarr;</span></LineLink>
         </div>
       </figure>
 
