@@ -926,13 +926,26 @@ export default function EventsView() {
             scroll-snap-align: start;
           }
           .ev-close-card {
-            justify-content: flex-start;
+            min-height: 480px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
           }
           .ev-close-scrim {
             background: rgba(25, 17, 11, 0.66);
           }
           .ev-close-txt {
-            margin: 0 24px;
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 48px 24px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
           }
         }
         @media (max-width: 760px) {
@@ -982,36 +995,63 @@ export default function EventsView() {
           .ev-close-card {
             min-height: auto;
             border-radius: 24px;
-            justify-content: flex-start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
           }
           .ev-close-txt {
-            margin: 0 20px;
-            padding: 44px 0;
-            gap: 20px;
+            width: 100%;
             max-width: 100%;
+            margin: 0 auto;
+            padding: 44px 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+          }
+          .ev-close-txt .ev-eyebrow {
+            text-align: center;
           }
           .ev-close-txt .ev-title {
+            text-align: center;
             font-size: clamp(28px, 7.5vw, 36px);
             line-height: 1.1;
           }
           .ev-close-txt .ev-script {
             font-size: clamp(32px, 8.5vw, 44px);
-            padding-left: 0.6em;
+            padding-left: 0;
+            text-align: center;
           }
           .ev-close-txt .ev-lead {
+            text-align: center;
             font-size: 16px;
             line-height: 1.5;
+            max-width: 28em;
+            margin: 0 auto;
           }
           .ev-close-btns {
             width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            display: flex;
             flex-direction: column;
-            align-items: stretch;
+            align-items: center;
+            justify-content: center;
             gap: 12px;
           }
           .ev-close-btns .ev-btn {
             width: 100%;
+            display: inline-flex;
+            align-items: center;
             justify-content: center;
-            padding: 14px 20px;
+            text-align: center;
+            padding: 14px 18px;
+            font-size: 10.5px;
+            letter-spacing: 0.16em;
             box-sizing: border-box;
           }
         }
@@ -1044,8 +1084,7 @@ export default function EventsView() {
             padding-left: 0.3em;
           }
           .ev-close-txt {
-            margin: 0 16px;
-            padding: 38px 0;
+            padding: 38px 16px;
             gap: 18px;
           }
           .ev-close-txt .ev-title {
@@ -1053,11 +1092,19 @@ export default function EventsView() {
           }
           .ev-close-txt .ev-script {
             font-size: clamp(28px, 8.2vw, 38px);
-            padding-left: 0.4em;
+            padding-left: 0;
           }
           .ev-close-txt .ev-lead {
             font-size: 15px;
             line-height: 1.55;
+          }
+          .ev-close-btns {
+            max-width: 100%;
+          }
+          .ev-close-btns .ev-btn {
+            padding: 14px 14px;
+            font-size: 10px;
+            letter-spacing: 0.14em;
           }
         }
         @media (max-width: 600px) {
