@@ -16,7 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...rooms.map((r) => page(`/accommodation/${r.slug}`, 0.8)),
     page("/events", 0.9),
     page("/gallery", 0.7),
-    page("/about", 0.6),
+    page("/our-story", 0.6),
     page("/contactus", 0.7),
     page("/blogs", 0.6, "weekly"),
     ...blogsData.map((b) => page(`/blogs/${b.slug}`, 0.5)),

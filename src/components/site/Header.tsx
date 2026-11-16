@@ -13,6 +13,7 @@ const overHero = (path: string) =>
   path === "/" ||
   path.startsWith("/accommodation") ||
   path.startsWith("/about") ||
+  path.startsWith("/our-story") ||
   path.startsWith("/events") ||
   path.startsWith("/blogs");
 

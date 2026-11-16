@@ -1,6 +1,6 @@
 export const aboutData = {
   hero: {
-    image: "/aboutpage/banner_11zon.webp",
+    image: "/about-banner.jpg",
     tagline: "About",
     title: "Manratan",
     subTitle: "Resort",
@@ -15,7 +15,7 @@ export const aboutData = {
   },
 
   aboutHistoryData: {
-    image: "/aboutpage/history_11zon.webp",
+    image: "/reception1_11zon.webp",
     images: [
       "/aboutpage/history_11zon.webp",
       "/homopage/narsinghgarh_11zon.webp",

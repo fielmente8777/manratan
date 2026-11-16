@@ -74,7 +74,7 @@ export const site = {
 
 export const navLinks = [
   { label: "Home", href: "/", image: photo("facade-dusk", "Manratan Resort at dusk") },
-  { label: "Our story", href: "/about", image: photo("lobby-monogram", "The Manratan lobby") },
+  { label: "Our story", href: "/our-story", image: photo("lobby-monogram", "The Manratan lobby") },
   { label: "Rooms & suites", href: "/accommodation", image: photo("suite-1", "Executive Suite with a view of the hills") },
   { label: "Celebrations", href: "/events", image: photo("blue-sapphire-full", "Blue Sapphire banquet hall set for a celebration") },
   { label: "Gallery", href: "/gallery", image: photo("pool-dusk", "Blue Diamond pool from above") },

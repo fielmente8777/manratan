@@ -8,7 +8,7 @@ import { site } from "@/data/site";
 import { Container } from "@/components/sectionComponants";
 
 const explore = [
-  { label: "Our story", href: "/about" },
+  { label: "Our story", href: "/our-story" },
   { label: "Rooms & suites", href: "/accommodation" },
   { label: "Weddings & events", href: "/events" },
   { label: "Swadika", href: "/#swadika" },
