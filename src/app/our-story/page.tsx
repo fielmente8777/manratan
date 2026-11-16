@@ -97,13 +97,13 @@ export default function OurStoryPage() {
 
       <section className="bg-ink py-14 sm:py-20 md:py-36 text-stone overflow-hidden" aria-labelledby="name-title">
         <Container>
-          <div className="grid gap-10 lg:gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch lg:translate-x-8 xl:translate-x-[54px]">
+          <div className="grid gap-10 lg:gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             {/* Desktop view image */}
-            <div className="hidden lg:block group relative min-h-[380px] overflow-hidden lg:min-h-0">
-              <Image src="/media/reception-welcome.webp" alt="Reception team greeting guests with a namaste" fill quality={85} sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+            <div className="hidden lg:block group relative aspect-[4/5] w-full min-h-[480px] overflow-hidden">
+              <Image src="/aboutpage/banner_11zon.webp" alt="Manratan Resort banner" fill quality={85} sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
             </div>
 
-            <div>
+            <div className="flex flex-col justify-center w-full">
               <div id="name-title">
                 <Title main="Manratan" script="A name with a story" tone="light" />
               </div>
@@ -111,8 +111,8 @@ export default function OurStoryPage() {
               {/* Mobile view image: after heading, before description */}
               <div className="group relative mt-4 mb-4 sm:mt-6 sm:mb-6 aspect-[4/3] w-full overflow-hidden lg:hidden">
                 <Image
-                  src="/media/reception-welcome.webp"
-                  alt="Reception team greeting guests with a namaste"
+                  src="/aboutpage/banner_11zon.webp"
+                  alt="Manratan Resort banner"
                   fill
                   quality={85}
                   sizes="100vw"
@@ -120,9 +120,9 @@ export default function OurStoryPage() {
                 />
               </div>
 
-              <div className="mt-5 sm:mt-8 lg:mt-10 space-y-5 sm:space-y-6">
+              <div className="mt-5 sm:mt-8 lg:mt-10 space-y-5 sm:space-y-6 w-full">
                 {story.map((p) => (
-                  <p key={p.slice(0, 20)} className="t-body-light max-w-[58ch]">{p}</p>
+                  <p key={p.slice(0, 20)} className="t-body-light w-full max-w-none">{p}</p>
                 ))}
               </div>
             </div>
