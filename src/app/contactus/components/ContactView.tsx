@@ -755,6 +755,40 @@ export default function ContactView() {
           .mr-hero-title .mr-script {
             padding-left: 0.8em;
           }
+          .mr-ct-form {
+            padding: 22px 18px;
+            gap: 16px;
+            border-radius: 20px;
+          }
+          .mr-ct-form-t {
+            font-size: 26px;
+          }
+          .mr-ct-fields {
+            gap: 14px;
+          }
+          .mr-fld {
+            gap: 4px;
+          }
+          .mr-fld input,
+          .mr-fld input[type="text"],
+          .mr-fld input[type="date"],
+          .mr-fld input[type="tel"],
+          .mr-fld input[type="email"],
+          .mr-fld select,
+          .mr-fld textarea {
+            padding: 6px 0;
+            font-size: 14px;
+          }
+          .mr-fld textarea {
+            min-height: 48px;
+          }
+          .mr-ct-foot {
+            gap: 12px;
+          }
+          .mr-ct-foot .mr-btn {
+            width: 100%;
+            justify-content: center;
+          }
         }
       `}</style>
 
