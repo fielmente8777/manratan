@@ -3,6 +3,9 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { A11y, Autoplay } from "swiper/modules";
+import "swiper/css";
 
 const gems = [
   {
@@ -882,6 +885,11 @@ export default function EventsView() {
         }
 
         /* Responsive Breakpoints */
+        @media (min-width: 901px) {
+          .ev-gems-mobile {
+            display: none !important;
+          }
+        }
         @media (max-width: 1100px) {
           .ev-occ-grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -895,34 +903,11 @@ export default function EventsView() {
             border-left: 0;
             border-top: 1px solid rgba(34, 24, 17, 0.14);
           }
-          .ev-gems {
-            flex-direction: column;
-            height: auto;
-            gap: 10px;
+          .ev-gems-desktop {
+            display: none !important;
           }
-          .ev-gem {
-            flex: none;
-            height: 96px;
-            transition: height 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
-          }
-          .ev-gem.is-on {
-            height: 460px;
-          }
-          .ev-gem-v {
-            writing-mode: horizontal-tb;
-            transform: none;
-            left: 72px;
-            bottom: auto;
-            top: 36px;
-            font-size: 20px;
-          }
-          .ev-gem-ico {
-            top: 30px;
-          }
-          .ev-gem-body {
-            left: 22px;
-            right: 22px;
-            bottom: 24px;
+          .ev-gems-mobile {
+            display: block !important;
           }
           .ev-reel-row {
             display: flex;
@@ -1161,7 +1146,7 @@ export default function EventsView() {
             </p>
           </div>
 
-          <div className="ev-gems">
+          <div className="ev-gems ev-gems-desktop">
             {gems.map((g, idx) => {
               const isOn = activeGem === idx;
               return (
@@ -1197,6 +1182,49 @@ export default function EventsView() {
                 </button>
               );
             })}
+          </div>
+
+          <div className="ev-gems-mobile">
+            <Swiper
+              modules={[Autoplay, A11y]}
+              slidesPerView={1}
+              spaceBetween={14}
+              speed={850}
+              loop
+              autoplay={{ delay: 3500, disableOnInteraction: false }}
+              a11y={{ containerMessage: "Venues at Manratan Resort" }}
+              className="mt-8 [--swiper-wrapper-transition-timing-function:var(--ease-lux)]"
+            >
+              {gems.map((g) => (
+                <SwiperSlide key={g.num}>
+                  <div className="group relative block h-[460px] sm:h-[520px] w-full overflow-hidden rounded-[20px] bg-[#221811]">
+                    <Image
+                      src={g.img}
+                      alt={g.alt}
+                      fill
+                      quality={88}
+                      sizes="(max-width: 900px) 100vw, 50vw"
+                      className="img-drift object-cover"
+                    />
+                    <span className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    <span className="absolute top-5 right-6 z-10 text-[11px] font-semibold tracking-[0.22em] text-[#EADBC2]">
+                      {g.num}
+                    </span>
+                    <span className="absolute inset-x-0 bottom-0 p-6 text-center text-stone z-10">
+                      <span className="block text-[11px] font-semibold uppercase tracking-[0.22em] text-[#E3C78F] mb-1.5">
+                        {g.cap}
+                      </span>
+                      <span className="t-script block text-[2.6rem] leading-none text-[#F6EFE4] mb-2.5">
+                        {g.name}
+                      </span>
+                      <span className="block text-sm text-stone/85 max-w-sm mx-auto leading-relaxed">
+                        {g.desc}
+                      </span>
+                    </span>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
       </section>
