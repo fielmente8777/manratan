@@ -239,7 +239,7 @@ export function Spaces() {
     <SectionWithContainer defaultPadding={false} sectionClassName="bg-stone py-24 md:py-32" sectionProps={{ "aria-labelledby": "spaces-title" }}>
         <div className="grid gap-6 lg:grid-cols-[auto_minmax(0,1fr)] lg:items-center lg:gap-12">
           <div id="spaces-title">
-            <Title main="Manratan" script="Resort" />
+            <Title main="EXPERIENCE MANRATAN" script="Relax, Dine & Reconnect" />
           </div>
           <p className="t-body max-w-[52ch] lg:justify-self-end lg:whitespace-nowrap">
             <span className="lg:block">Spaces made for slow mornings, long lunches</span>{" "}
@@ -463,8 +463,9 @@ export function Swadika() {
   const tags = ["Pure vegetarian", "Indian & global", "80–100 guests"];
   return (
     <Section
+      id="swadika"
       defaultPadding={false}
-      className="overflow-hidden bg-stone py-24 md:py-32"
+      className="scroll-mt-24 overflow-hidden bg-stone py-24 md:py-32"
       aria-labelledby="swadika-title"
     >
       <Container>

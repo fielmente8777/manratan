@@ -2154,3 +2154,15 @@
 @media (max-width: 380px) {
   .accommodation-page .amen-name { font-size: 15px; }
 }
+
+/* Keep accommodation booking forms and guest pickers free of shadows. */
+.accommodation-page .mr-booking-bar,
+.accommodation-page [id$="-guests"] {
+  box-shadow: none;
+}
+@media (max-width: 767px) {
+  .accommodation-page .close-actions,
+  .accommodation-page .rm-cta {
+    justify-content: center;
+  }
+}

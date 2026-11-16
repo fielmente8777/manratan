@@ -222,13 +222,13 @@ export default function RoomDetailContent({ room }: { room: RoomDetailData }) {
         />
         <div className="hero-scrim" aria-hidden="true" />
         <div className="ab-hero-copy wrap">
-          <nav className="crumb" aria-label="Breadcrumb">
+          {/* <nav className="crumb" aria-label="Breadcrumb">
             <a href="/">Home</a>
             <span aria-hidden="true">/</span>
             <a href="/accommodation">Rooms &amp; suites</a>
             <span aria-hidden="true">/</span>
             <span>{room.name}</span>
-          </nav>
+          </nav> */}
           <h1 className="hero-title" style={{ textAlign: "center" }}>
             <span className="hero-big">{room.name}</span>
             <span className="script" style={{ paddingLeft: "1.4em" }}>

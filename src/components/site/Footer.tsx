@@ -11,7 +11,7 @@ const explore = [
   { label: "Our story", href: "/about" },
   { label: "Rooms & suites", href: "/accommodation" },
   { label: "Weddings & events", href: "/events" },
-  { label: "Swadika", href: "/gallery?category=dining" },
+  { label: "Swadika", href: "/#swadika" },
   { label: "Gallery", href: "/gallery" },
   { label: "Journal", href: "/blogs" },
   { label: "Contact Us", href: "/contactus" },

@@ -33,8 +33,8 @@ const places = [
   {
     title: "Chidikho",
     note: "Wildlife sanctuary & lake",
-    image: "chidikho-wildlife-v2",
-    alt: "A lion resting on rocks surrounded by green foliage",
+    image: "chidikho-deer-v3",
+    alt: "A deer with velvet-covered antlers against a warm golden background",
   },
   {
     title: "Shyamji Sanka Temple",

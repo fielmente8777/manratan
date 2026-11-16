@@ -31,11 +31,11 @@ export default function AccommodationContent() {
         />
         <div className="hero-scrim" aria-hidden="true"></div>
         <div className="ab-hero-copy wrap">
-          <nav className="crumb" aria-label="Breadcrumb">
+          {/* <nav className="crumb" aria-label="Breadcrumb">
             <a href="/">{"Home"}</a>
             <span aria-hidden="true">{"/"}</span>
             <span>{"Rooms & suites"}</span>
-          </nav>
+          </nav> */}
           <h1 className="hero-title" style={{ textAlign: "center" }}>
             <span className="hero-big">{"Rooms & Suites"}</span>
             <span className="script" style={{ paddingLeft: "1.4em" }}>
@@ -846,7 +846,7 @@ export default function AccommodationContent() {
                   "Tell us your dates and who is coming. Our reservations team will find the right room for you."
                 }
               </p>
-              <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+              <div className="close-actions" style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
                 <a className="btn btn-gold" href="#book">
                   {"Check availability"}
                 </a>

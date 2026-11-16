@@ -120,6 +120,20 @@ export default function BookingForm({ variant = "hero", gridView = false, classN
     showPopperArrow: false,
   };
 
+  const guestPopup = guestOpen && (
+            <div
+              id={`${ids}-guests`}
+              className={`absolute bottom-full left-0 z-[80] mb-2 w-full border border-white/20 bg-[#1c130d]/95 p-4 text-white shadow-2xl backdrop-blur-lg ${variant === "room" ? "" : "lg:min-w-[280px] lg:p-5"}`}
+            >
+              <Counter label="Adults" sub="13 years and over" value={adults} min={1} max={12} onChange={setAdults} />
+              <div className="my-4 h-px bg-white/10" />
+              <Counter label="Children" sub="Up to 12 years" value={children} min={0} max={8} onChange={setChildren} />
+              <button type="button" onClick={() => setGuestOpen(false)} className="t-label mt-5 w-full border border-white/30 py-2.5 text-white hover:bg-white hover:text-ink">
+                Done
+              </button>
+            </div>
+          );
+
   if (variant === "room") {
     const shownDate = (date: Date | null) => date?.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }) ?? "";
     return <form onSubmit={submit} noValidate className={`room-booking ${className}`} aria-label="Check availability">
@@ -131,15 +145,24 @@ export default function BookingForm({ variant = "hero", gridView = false, classN
           onChange={(date: Date | null) => { setCheckOut(date); setError(""); }}
           minDate={addDays(checkIn ?? today, 1)} customInput={<DateTrigger fieldLabel="Check-out" shown={shownDate(checkOut)} emptyText="Add date" />} />
       </div>
-      <label className="room-booking-guests" htmlFor={`${ids}-room-guests`}>
-        <span>Guests</span>
-        <select id={`${ids}-room-guests`} aria-label="Guests" value={`${adults}-${children}`} onChange={(event) => {
-          const [adultCount, childCount] = event.target.value.split("-").map(Number); setAdults(adultCount); setChildren(childCount);
-        }}>
-          {Array.from({ length: 12 }, (_, index) => index + 1).map((count) => <option key={count} value={`${count}-0`}>{count} {count === 1 ? "Adult" : "Adults"}</option>)}
-          <option value="2-1">2 Adults, 1 Child</option><option value="2-2">2 Adults, 2 Children</option>
-        </select>
-      </label>
+      <div ref={guestRef} className="room-booking-guests relative min-w-0">
+        <button
+          type="button"
+          className="mr-bf-field w-full text-left"
+          onClick={() => setGuestOpen((value) => !value)}
+          aria-expanded={guestOpen}
+          aria-controls={`${ids}-guests`}
+        >
+          <span className="flex items-center justify-between gap-3">
+            <span>
+              <span className="mr-bf-label">Guests</span>
+              <span className="mr-bf-value">{guestLabel}</span>
+            </span>
+            <IoIosArrowDown aria-hidden="true" className={`h-3 w-3 shrink-0 transition-transform ${guestOpen ? "rotate-180" : ""}`} />
+          </span>
+        </button>
+        {guestPopup}
+      </div>
       <button type="submit" className="room-booking-submit">Check availability</button>
       <p aria-live="polite" className={error ? "room-booking-error" : "sr-only"}>{error}</p>
     </form>;
@@ -214,19 +237,7 @@ export default function BookingForm({ variant = "hero", gridView = false, classN
               <IoIosArrowDown aria-hidden="true" className={`h-3 w-3 shrink-0 text-white/80 transition-transform ${guestOpen ? "rotate-180" : ""}`} />
             </div>
           </button>
-          {guestOpen && (
-            <div
-              id={`${ids}-guests`}
-              className="absolute bottom-full left-0 z-[80] mb-2 w-full border border-white/20 bg-[#1c130d]/95 p-4 text-white shadow-2xl backdrop-blur-lg lg:min-w-[280px] lg:p-5"
-            >
-              <Counter label="Adults" sub="13 years and over" value={adults} min={1} max={12} onChange={setAdults} />
-              <div className="my-4 h-px bg-white/10" />
-              <Counter label="Children" sub="Up to 12 years" value={children} min={0} max={8} onChange={setChildren} />
-              <button type="button" onClick={() => setGuestOpen(false)} className="t-label mt-5 w-full border border-white/30 py-2.5 text-white hover:bg-white hover:text-ink">
-                Done
-              </button>
-            </div>
-          )}
+          {guestPopup}
         </div>
 
         {/* Submit */}
@@ -251,7 +262,7 @@ function Counter({
   label: string; sub: string; value: number; min: number; max: number; onChange: (v: number) => void;
 }) {
   return (
-    <div className="flex items-center justify-between gap-4">
+    <div className="mr-guest-counter flex items-center justify-between gap-4">
       <div>
         <p className="text-sm font-medium">{label}</p>
         <p className="text-[11px] text-white/55">{sub}</p>

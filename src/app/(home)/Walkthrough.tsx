@@ -32,11 +32,6 @@ export default function Walkthrough() {
   useEffect(() => {
     const stage = stageRef.current;
     if (!stage) return;
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- initialize from browser playback preferences
-    if (reduceMotion || saveData) setPlaying(false);
-
     const nearby = new IntersectionObserver((entries) => {
       if (entries.some((entry) => entry.isIntersecting)) {
         setLoad(true);
@@ -171,6 +166,7 @@ export default function Walkthrough() {
                   poster={stop.poster}
                   muted={muted || active !== index}
                   playsInline
+                  autoPlay={active === index && shouldPlay}
                   preload={load ? "auto" : "none"}
                   aria-hidden="true"
                   tabIndex={-1}
