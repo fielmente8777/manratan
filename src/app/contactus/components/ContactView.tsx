@@ -680,8 +680,54 @@ export default function ContactView() {
           color: #54473C;
         }
 
+        .mr-gh-wrap {
+          display: grid;
+          grid-template-columns: repeat(12, minmax(0, 1fr));
+          column-gap: clamp(20px, 2.8vw, 40px);
+          row-gap: 24px;
+          align-items: center;
+        }
+        .mr-gh-fig {
+          grid-column: 1 / span 7;
+          grid-row: 1 / span 2;
+          margin: 0;
+        }
+        .mr-gh-head {
+          grid-column: 9 / span 4;
+          grid-row: 1;
+          align-self: end;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+        .mr-gh-body {
+          grid-column: 9 / span 4;
+          grid-row: 2;
+          align-self: start;
+          display: flex;
+          flex-direction: column;
+          gap: 26px;
+        }
+
         /* Responsive */
         @media (max-width: 900px) {
+          .mr-gh-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+          }
+          .mr-gh-head {
+            order: 1;
+            width: 100%;
+          }
+          .mr-gh-fig {
+            order: 2;
+            width: 100%;
+          }
+          .mr-gh-body {
+            order: 3;
+            width: 100%;
+          }
           .mr-grid12 > * {
             grid-column: 1 / -1 !important;
             margin-top: 0 !important;
@@ -968,8 +1014,14 @@ export default function ContactView() {
 
       {/* ============ GETTING HERE ============ */}
       <section className="mr-sec mr-sand" id="getting-here" aria-labelledby="gh-title">
-        <div className="mr-wrap mr-grid12" style={{ alignItems: "center" }}>
-          <figure style={{ gridColumn: "1 / span 7", margin: 0 }}>
+        <div className="mr-wrap mr-gh-wrap">
+          <div className="mr-gh-head">
+            <p className="mr-eyebrow">Getting here</p>
+            <h2 className="mr-title" id="gh-title">
+              On NH-46<span className="mr-script">in Narsinghgarh</span>
+            </h2>
+          </div>
+          <figure className="mr-gh-fig">
             <div className="mr-ph" style={{ aspectRatio: "16 / 10", borderRadius: "20px" }}>
               <Image
                 src="/contact/3818a080cb8483c7fd9da712ae025096.jpg"
@@ -981,18 +1033,7 @@ export default function ContactView() {
               />
             </div>
           </figure>
-          <div
-            style={{
-              gridColumn: "9 / span 4",
-              display: "flex",
-              flexDirection: "column",
-              gap: "26px",
-            }}
-          >
-            <p className="mr-eyebrow">Getting here</p>
-            <h2 className="mr-title" id="gh-title">
-              On NH-46<span className="mr-script">in Narsinghgarh</span>
-            </h2>
+          <div className="mr-gh-body">
             <ul className="mr-gh-list">
               <li>
                 <span>Bhopal Airport</span>
