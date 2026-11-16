@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getRoom } from "@/data/site";
 
 interface RoomItem {
   id?: string;
@@ -10,7 +11,8 @@ interface RoomItem {
 }
 
 const RoomCard = ({ id, title, subtitle, image, alt }: RoomItem) => {
-  const href = id ? `/accommodation/${id}` : "#";
+  const room = id ? getRoom(id) : undefined;
+  const href = room ? `/accommodation/${room.slug}` : "#";
 
   return (
     <article className="group flex flex-col gap-3 sm:gap-4 w-full h-full">

@@ -21,8 +21,8 @@ const places = [
   {
     title: "Jal Mandir",
     note: "Temple in Paras Ram Sagar",
-    image: "jal-mandir",
-    alt: "Aerial view of Paras Ram Sagar lake and the town of Narsinghgarh",
+    image: "jal-mandir-aerial-v2",
+    alt: "Jal Mandir in Paras Ram Sagar lake, with Narsinghgarh town and fort behind it",
   },
   {
     title: "Solah Khamba",
@@ -33,8 +33,8 @@ const places = [
   {
     title: "Chidikho",
     note: "Wildlife sanctuary & lake",
-    image: "chidikho",
-    alt: "Entrance gate of the Narsinghgarh (Chidikho) Wildlife Sanctuary",
+    image: "chidikho-wildlife-v2",
+    alt: "A lion resting on rocks surrounded by green foliage",
   },
   {
     title: "Shyamji Sanka Temple",
@@ -51,14 +51,8 @@ const places = [
   {
     title: "Hanuman Gadi",
     note: "Hanuman temple",
-    image: "hanuman",
-    alt: "A temple with a carved spire among trees",
-  },
-  {
-    title: "Baijnath Mahadeo",
-    note: "Hilltop temple",
-    image: "baijnath",
-    alt: "Carved stone temple pavilion",
+    image: "hanuman-aerial-v2",
+    alt: "Aerial view of Hanuman Gadi temple surrounded by green hills and its approach road",
   },
 ];
 

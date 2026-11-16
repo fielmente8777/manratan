@@ -5,9 +5,10 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { IoIosArrowDown } from "react-icons/io";
 import { useWebContext, type BookingPrefill } from "@/context-api/WebContext";
-import { formatShort, nightsBetween, startOfToday, toLocalISODate } from "@/utils/dates";
+import { addDays, formatShort, nightsBetween, startOfToday, toLocalISODate } from "@/utils/dates";
 
 export interface BookingFormProps {
+  variant?: "hero" | "room";
   gridView?: boolean;
   className?: string;
   onSearch?: (data: { checkin: string; checkout: string; adults: number; children: number }) => void;
@@ -46,7 +47,7 @@ const DateTrigger = forwardRef<HTMLButtonElement, TriggerProps>(function DateTri
   );
 });
 
-export default function BookingForm({ gridView = false, className = "", onSearch }: BookingFormProps) {
+export default function BookingForm({ variant = "hero", gridView = false, className = "", onSearch }: BookingFormProps) {
   const { openEnquiry } = useWebContext();
   const [name, setName] = useState("");
   const [checkIn, setCheckIn] = useState<Date | null>(null);
@@ -118,6 +119,31 @@ export default function BookingForm({ gridView = false, className = "", onSearch
     monthsShown: narrow ? 1 : 2,
     showPopperArrow: false,
   };
+
+  if (variant === "room") {
+    const shownDate = (date: Date | null) => date?.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }) ?? "";
+    return <form onSubmit={submit} noValidate className={`room-booking ${className}`} aria-label="Check availability">
+      <div className="room-booking-dates">
+        <DatePicker {...picker} id={`${ids}-checkin`} selected={checkIn} startDate={checkIn} endDate={checkOut} selectsStart
+          onChange={(date: Date | null) => { setCheckIn(date); if (date && checkOut && checkOut <= date) setCheckOut(null); setError(""); }}
+          minDate={today} customInput={<DateTrigger fieldLabel="Check-in" shown={shownDate(checkIn)} emptyText="Add date" />} />
+        <DatePicker {...picker} id={`${ids}-checkout`} selected={checkOut} startDate={checkIn} endDate={checkOut} selectsEnd
+          onChange={(date: Date | null) => { setCheckOut(date); setError(""); }}
+          minDate={addDays(checkIn ?? today, 1)} customInput={<DateTrigger fieldLabel="Check-out" shown={shownDate(checkOut)} emptyText="Add date" />} />
+      </div>
+      <label className="room-booking-guests" htmlFor={`${ids}-room-guests`}>
+        <span>Guests</span>
+        <select id={`${ids}-room-guests`} aria-label="Guests" value={`${adults}-${children}`} onChange={(event) => {
+          const [adultCount, childCount] = event.target.value.split("-").map(Number); setAdults(adultCount); setChildren(childCount);
+        }}>
+          {Array.from({ length: 12 }, (_, index) => index + 1).map((count) => <option key={count} value={`${count}-0`}>{count} {count === 1 ? "Adult" : "Adults"}</option>)}
+          <option value="2-1">2 Adults, 1 Child</option><option value="2-2">2 Adults, 2 Children</option>
+        </select>
+      </label>
+      <button type="submit" className="room-booking-submit">Check availability</button>
+      <p aria-live="polite" className={error ? "room-booking-error" : "sr-only"}>{error}</p>
+    </form>;
+  }
 
   return (
     <form onSubmit={submit} noValidate className={`min-w-0 w-full ${className}`} aria-label="Check availability">

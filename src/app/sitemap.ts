@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     page("/", 1, "weekly"),
     page("/accommodation", 0.9),
-    ...rooms.map((r) => page(`/accommodation/${r.id}`, 0.8)),
+    ...rooms.map((r) => page(`/accommodation/${r.slug}`, 0.8)),
     page("/events", 0.9),
     page("/gallery", 0.7),
     page("/about", 0.6),

@@ -533,16 +533,34 @@ body {
 
 /* Photos zoom within their existing frames; keep logos and icons still. */
 @media (hover: hover) {
-  .site-body main img:not([alt=""]):not([src*="/images/nav"]):not([src*="/images/footer"]):not([src*="logo"]):not([src$=".svg"]) {
+  .site-body main img:not([alt=""]):not([src*="/images/nav"]):not([src*="/images/footer"]):not([src*="logo"]):not([src$=".svg"]):not([data-no-hover]) {
     transition: transform 1.2s var(--ease-lux), opacity 0.7s ease, filter 0.9s ease;
   }
-  .site-body main :is(div, a, figure, button):hover > img:not([alt=""]):not([src*="/images/nav"]):not([src*="/images/footer"]):not([src*="logo"]):not([src$=".svg"]) {
+  .site-body main :is(div, a, figure, button):hover > img:not([alt=""]):not([src*="/images/nav"]):not([src*="/images/footer"]):not([src*="logo"]):not([src$=".svg"]):not([data-no-hover]) {
     transform: scale(1.06);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .site-body main img { transition-duration: 0s !important; }
+}
+
+/* Slide movement and center emphasis share their duration and easing. */
+.swadika-slider { --swadika-ease: cubic-bezier(0.4, 0, 0.2, 1); }
+.site-body main .swadika-slider .swiper-slide { position: relative; z-index: 1; }
+.site-body main .swadika-slider .swiper-slide-active { z-index: 2; }
+.site-body main .swadika-slider .swiper-slide figure {
+  transform: scale(calc(1 + var(--slide-emphasis, 0) * 0.06));
+  transform-origin: center bottom;
+  opacity: calc(0.45 + var(--slide-emphasis, 0) * 0.55);
+  transition: transform var(--swadika-transition, 1400ms) var(--swadika-ease), opacity var(--swadika-transition, 1400ms) var(--swadika-ease);
+}
+.site-body main .swadika-slider .swiper-slide img {
+  transform: scale(calc(1 + var(--slide-emphasis, 0) * 0.06));
+  transition: transform var(--swadika-transition, 1400ms) var(--swadika-ease);
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-body main .swadika-slider .swiper-slide figure { transition-duration: 0s; }
 }
 
 @media (max-width: 767px) {

@@ -14,6 +14,7 @@ const explore = [
   { label: "Swadika", href: "/gallery?category=dining" },
   { label: "Gallery", href: "/gallery" },
   { label: "Journal", href: "/blogs" },
+  { label: "Contact Us", href: "/contactus" },
 ];
 const gettingHere = [
   { from: "Bhopal Airport", detail: "approx. 70 km · 1.5 hrs" },

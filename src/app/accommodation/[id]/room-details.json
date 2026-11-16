@@ -1,0 +1,619 @@
+{
+  "room-4": {
+    "name": "Premium Room",
+    "hero": {
+      "src": "/room-detail-reference/f0252e30d215acb82a369beb8f5f50bf.jpg",
+      "alt": "Premium Room with king bed and sofa by the window"
+    },
+    "heroScript": "with a view of the green",
+    "eyebrow": "Room · 16 of this style",
+    "title": "King bed",
+    "script": "and a view",
+    "intro": "A king bed and a sofa that opens into a second bed, set by a wide window over the green beyond. Easy for couples, and for a small family too.",
+    "specs": [
+      {
+        "label": "Bed",
+        "value": "King bed",
+        "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 18v-7h18v7M3 14.5h18M5 11V7.5h6V11M13 11V7.5h6V11M3 18v2M21 18v2\"></path></svg>"
+      },
+      {
+        "label": "Extra bed",
+        "value": "Sofa-cum-bed",
+        "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12V9a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3\"></path><path d=\"M3 12.5a1.5 1.5 0 0 1 3 0V15h12v-2.5a1.5 1.5 0 0 1 3 0V18H3z\"></path><path d=\"M5 18v2M19 18v2\"></path></svg>"
+      },
+      {
+        "label": "View",
+        "value": "Nature view",
+        "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"1.5\"></rect><path d=\"M3 17l5-5 4 4 3-3 6 5\"></path><circle cx=\"16\" cy=\"9\" r=\"1.6\"></circle></svg>"
+      }
+    ],
+    "photos": [
+      {
+        "src": "/room-detail-reference/f0252e30d215acb82a369beb8f5f50bf.jpg",
+        "alt": "Premium Room with king bed and sofa by the window"
+      },
+      {
+        "src": "/room-detail-reference/a7384392eeef8dafc740846da7281f66.jpg",
+        "alt": "Premium Room with the sofa opened into a bed"
+      },
+      {
+        "src": "/room-detail-reference/41eeeec97ad3c8e92e1f0590dac634e3.jpg",
+        "alt": "Rain shower in dark marble"
+      }
+    ],
+    "amenityTitle": "In your room",
+    "amenities": [
+      {
+        "label": "High-speed Wi-Fi",
+        "icon": "<svg stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" viewbox=\"0 0 64 64\" aria-hidden=\"true\"><path d=\"M8 27a34 34 0 0 1 48 0\"></path><path d=\"M15 34.5a24 24 0 0 1 34 0\"></path><path d=\"M22.5 42a13.5 13.5 0 0 1 19 0\"></path><circle cx=\"32\" cy=\"49\" r=\"2.4\" fill=\"currentColor\"></circle></svg>"
+      },
+      {
+        "label": "Daily housekeeping",
+        "icon": "<svg stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" viewbox=\"0 0 64 64\" aria-hidden=\"true\"><rect x=\"12\" y=\"40\" width=\"40\" height=\"12\" rx=\"2\"></rect><rect x=\"16\" y=\"28\" width=\"32\" height=\"12\" rx=\"2\"></rect><rect x=\"20\" y=\"16\" width=\"24\" height=\"12\" rx=\"2\"></rect><path d=\"M12 46h40M16 34h32M20 22h24\"></path><path d=\"M52 8v8M48 12h8\"></path></svg>"
+      },
+      {
+        "label": "In-room dining",
+        "icon": "<svg stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" viewbox=\"0 0 64 64\" aria-hidden=\"true\"><path d=\"M10 44a22 22 0 0 1 44 0\"></path><path d=\"M6 44h52\"></path><path d=\"M10 50h44\"></path><path d=\"M32 22v-3\"></path><circle cx=\"32\" cy=\"16.5\" r=\"2.5\"></circle><path d=\"M19 36a14 14 0 0 1 8-8\"></path></svg>"
+      },
+      {
+        "label": "Air conditioning",
+        "icon": "<svg stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" viewbox=\"0 0 64 64\" aria-hidden=\"true\"><path d=\"M32 6v52M9.5 19l45 26M9.5 45l45-26\"></path><path d=\"M26 10l6 5 6-5M26 54l6-5 6 5M10 27l7.5-2.5L16 17M48 47l-1.5-7.5L54 37M10 37l7.5 2.5L16 47M48 17l-1.5 7.5L54 27\"></path></svg>"
+      },
+      {
+        "label": "Tea & coffee maker",
+        "icon": "<svg stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" viewbox=\"0 0 64 64\" aria-hidden=\"true\"><path d=\"M12 28h34v10a14 14 0 0 1-14 14h-6a14 14 0 0 1-14-14z\"></path><path d=\"M46 32h4a6 6 0 0 1 0 12h-5\"></path><path d=\"M8 56h42\"></path><path d=\"M22 20c0-4 4-4 4-8M30 20c0-4 4-4 4-8\"></path></svg>"
+      }
+    ],
+    "bookingTitle": "Book this room",
+    "policies": [
+      {
+        "label": "Check-in",
+        "value": "from 2:00 PM"
+      },
+      {
+        "label": "Check-out",
+        "value": "by 11:00 AM"
+      }
+    ],
+    "bookingHelp": "Early arrival or a late departure can be arranged when the room is free; just ask when you book.",
+    "phone": "tel:+919171172205",
+    "phoneLabel": "Call +91 91711 72205",
+    "otherEyebrow": "Other rooms",
+    "otherTitle": "You may",
+    "otherScript": "also like",
+    "otherRooms": [
+      {
+        "href": "/accommodation/executive-suite",
+        "name": "Executive Suite",
+        "summary": "Master bedroom · Panoramic view",
+        "image": {
+          "src": "/room-detail-reference/4434b49f370d9431e97678d7fb0767b1.jpg",
+          "alt": "Executive Suite bedroom with a panoramic window"
+        }
+      },
+      {
+        "href": "/accommodation/executive-family-room",
+        "name": "Executive Family Room",
+        "summary": "Twin beds · Pool view",
+        "image": {
+          "src": "/room-detail-reference/4dccf3c70be945be9694b8a9841d5b22.jpg",
+          "alt": "Executive Family Room with two beds"
+        }
+      },
+      {
+        "href": "/accommodation/deluxe-interconnected-room",
+        "name": "Deluxe Interconnected",
+        "summary": "Two connected rooms · Pool & garden view",
+        "image": {
+          "src": "/room-detail-reference/73f38aa930e39f06b393dd84005492dc.jpg",
+          "alt": "Deluxe Interconnected Room with two connected bedrooms"
+        }
+      },
+      {
+        "href": "/accommodation/deluxe-room",
+        "name": "Deluxe Room",
+        "summary": "Twin or double · Garden view",
+        "image": {
+          "src": "/room-detail-reference/ee837becad6523c696faf319c7d4af5a.jpg",
+          "alt": "Deluxe Room with double bed and writing desk"
+        }
+      }
+    ]
+  },
+  "room-3": {
+    "name": "Executive Family Room",
+    "hero": {
+      "src": "/room-detail-reference/4dccf3c70be945be9694b8a9841d5b22.jpg",
+      "alt": "Executive Family Room beds"
+    },
+    "heroScript": "room for everyone",
+    "eyebrow": "Family room · 8 of this style",
+    "title": "Made for",
+    "script": "the whole family",
+    "intro": "A larger room for families, with two beds, a seating corner, a work desk and a dark-marble bathroom.",
+    "specs": [
+      {
+        "label": "Beds",
+        "value": "Twin beds",
+        "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 18v-7h18v7M3 14.5h18M5 11V7.5h6V11M13 11V7.5h6V11M3 18v2M21 18v2\"></path></svg>"
+      },
+      {
+        "label": "Space",
+        "value": "Seating corner & desk",
+        "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12V9a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3\"></path><path d=\"M3 12.5a1.5 1.5 0 0 1 3 0V15h12v-2.5a1.5 1.5 0 0 1 3 0V18H3z\"></path><path d=\"M5 18v2M19 18v2\"></path></svg>"
+      },
+      {
+        "label": "View",
+        "value": "Pool view",
+        "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"1.5\"></rect><path d=\"M3 17l5-5 4 4 3-3 6 5\"></path><circle cx=\"16\" cy=\"9\" r=\"1.6\"></circle></svg>"
+      }
+    ],
+    "photos": [
+      {
+        "src": "/room-detail-reference/4dccf3c70be945be9694b8a9841d5b22.jpg",
+        "alt": "Executive Family Room beds"
+      },
+      {
+        "src": "/room-detail-reference/f7af03d9c66f104859633bdb58076c28.jpg",
+        "alt": "Executive Family Room twin beds and artwork"
+      },
+      {
+        "src": "/room-detail-reference/4d4a98c62d8250a5cf6c5c52348050c2.jpg",
+        "alt": "Executive Family Room seating and television wall"
+      },
+      {
+        "src": "/room-detail-reference/7047fb6a736d5d268e6f80f2d96ab642.jpg",
+        "alt": "Executive Family Room work desk"
+      },
+      {
+        "src": "/room-detail-reference/236cc8bc19888d4ebf280ca7cecdedbb.jpg",
+        "alt": "Dark-marble bathroom with vessel basin"
+      }
+    ],
+    "amenityTitle": "In your room",
+    "amenities": [
+      {
+        "label": "High-speed Wi-Fi",
+        "icon": "<svg stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" viewbox=\"0 0 64 64\" aria-hidden=\"true\"><path d=\"M8 27a34 34 0 0 1 48 0\"></path><path d=\"M15 34.5a24 24 0 0 1 34 0\"></path><path d=\"M22.5 42a13.5 13.5 0 0 1 19 0\"></path><circle cx=\"32\" cy=\"49\" r=\"2.4\" fill=\"currentColor\"></circle></svg>"
+      },
+      {
+        "label": "Daily housekeeping",
+        "icon": "<svg stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" viewbox=\"0 0 64 64\" aria-hidden=\"true\"><rect x=\"12\" y=\"40\" width=\"40\" height=\"12\" rx=\"2\"></rect><rect x=\"16\" y=\"28\" width=\"32\" height=\"12\" rx=\"2\"></rect><rect x=\"20\" y=\"16\" width=\"24\" height=\"12\" rx=\"2\"></rect><path d=\"M12 46h40M16 34h32M20 22h24\"></path><path d=\"M52 8v8M48 12h8\"></path></svg>"
+      },
+      {
+        "label": "In-room dining",
+        "icon": "<svg stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" viewbox=\"0 0 64 64\" aria-hidden=\"true\"><path d=\"M10 44a22 22 0 0 1 44 0\"></path><path d=\"M6 44h52\"></path><path d=\"M10 50h44\"></path><path d=\"M32 22v-3\"></path><circle cx=\"32\" cy=\"16.5\" r=\"2.5\"></circle><path d=\"M19 36a14 14 0 0 1 8-8\"></path></svg>"
+      },
+      {
+        "label": "Air conditioning",
+        "icon": "<svg stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" viewbox=\"0 0 64 64\" aria-hidden=\"true\"><path d=\"M32 6v52M9.5 19l45 26M9.5 45l45-26\"></path><path d=\"M26 10l6 5 6-5M26 54l6-5 6 5M10 27l7.5-2.5L16 17M48 47l-1.5-7.5L54 37M10 37l7.5 2.5L16 47M48 17l-1.5 7.5L54 27\"></path></svg>"
+      },
+      {
+        "label": "Tea & coffee maker",
+        "icon": "<svg stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" viewbox=\"0 0 64 64\" aria-hidden=\"true\"><path d=\"M12 28h34v10a14 14 0 0 1-14 14h-6a14 14 0 0 1-14-14z\"></path><path d=\"M46 32h4a6 6 0 0 1 0 12h-5\"></path><path d=\"M8 56h42\"></path><path d=\"M22 20c0-4 4-4 4-8M30 20c0-4 4-4 4-8\"></path></svg>"
+      }
+    ],
+    "bookingTitle": "Book this room",
+    "policies": [
+      {
+        "label": "Check-in",
+        "value": "from 2:00 PM"
+      },
+      {
+        "label": "Check-out",
+        "value": "by 11:00 AM"
+      }
+    ],
+    "bookingHelp": "Early arrival or a late departure can be arranged when the room is free; just ask when you book.",
+    "phone": "tel:+919171172205",
+    "phoneLabel": "Call +91 91711 72205",
+    "otherEyebrow": "Other rooms",
+    "otherTitle": "You may",
+    "otherScript": "also like",
+    "otherRooms": [
+      {
+        "href": "/accommodation/executive-suite",
+        "name": "Executive Suite",
+        "summary": "Master bedroom · Panoramic view",
+        "image": {
+          "src": "/room-detail-reference/4434b49f370d9431e97678d7fb0767b1.jpg",
+          "alt": "Executive Suite bedroom with a panoramic window"
+        }
+      },
+      {
+        "href": "/accommodation/premium-room",
+        "name": "Premium Room",
+        "summary": "King bed · Nature view",
+        "image": {
+          "src": "/room-detail-reference/f0252e30d215acb82a369beb8f5f50bf.jpg",
+          "alt": "Premium Room with king bed, sofa and window view"
+        }
+      },
+      {
+        "href": "/accommodation/deluxe-interconnected-room",
+        "name": "Deluxe Interconnected",
+        "summary": "Two connected rooms · Pool & garden view",
+        "image": {
+          "src": "/room-detail-reference/73f38aa930e39f06b393dd84005492dc.jpg",
+          "alt": "Deluxe Interconnected Room with two connected bedrooms"
+        }
+      },
+      {
+        "href": "/accommodation/deluxe-room",
+        "name": "Deluxe Room",
+        "summary": "Twin or double · Garden view",
+        "image": {
+          "src": "/room-detail-reference/ee837becad6523c696faf319c7d4af5a.jpg",
+          "alt": "Deluxe Room with double bed and writing desk"
+        }
+      }
+    ]
+  },
+  "room-2": {
+    "name": "Deluxe Interconnected Room",
+    "hero": {
+      "src": "/room-detail-reference/73f38aa930e39f06b393dd84005492dc.jpg",
+      "alt": "Two bedrooms joined by a connecting door"
+    },
+    "heroScript": "together, with space",
+    "eyebrow": "Family room · 12 of this style",
+    "title": "Two rooms",
+    "script": "one door",
+    "intro": "Two bedrooms joined by a connecting door, so a family or a group of friends can have their own space and still be together.",
+    "specs": [
+      {
+        "label": "Layout",
+        "value": "Two connected rooms",
+        "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M2.5 21h19M4 21V4.5A1.5 1.5 0 0 1 5.5 3h4A1.5 1.5 0 0 1 11 4.5V21M13 21V4.5A1.5 1.5 0 0 1 14.5 3h4A1.5 1.5 0 0 1 20 4.5V21\"></path><circle cx=\"9\" cy=\"12\" r=\".8\" fill=\"currentColor\"></circle><circle cx=\"15\" cy=\"12\" r=\".8\" fill=\"currentColor\"></circle></svg>"
+      },
+      {
+        "label": "Ideal for",
+        "value": "Families & friends",
+        "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"9\" cy=\"8\" r=\"3\"></circle><path d=\"M3.5 20a5.5 5.5 0 0 1 11 0\"></path><circle cx=\"17\" cy=\"9\" r=\"2.4\"></circle><path d=\"M15.5 14.6A4.5 4.5 0 0 1 21 19\"></path></svg>"
+      },
+      {
+        "label": "View",
+        "value": "Pool & garden view",
+        "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"1.5\"></rect><path d=\"M3 17l5-5 4 4 3-3 6 5\"></path><circle cx=\"16\" cy=\"9\" r=\"1.6\"></circle></svg>"
+      }
+    ],
+    "photos": [
+      {
+        "src": "/room-detail-reference/73f38aa930e39f06b393dd84005492dc.jpg",
+        "alt": "Two bedrooms joined by a connecting door"
+      },
+      {
+        "src": "/room-detail-reference/e5ffa0c4d33b22a9eac48c5f4b6477a0.jpg",
+        "alt": "Interconnected room bed with window light"
+      },
+      {
+        "src": "/room-detail-reference/66847150ac24e87d6303f8edbb0238da.jpg",
+        "alt": "Guest at the room’s writing desk"
+      }
+    ],
+    "amenityTitle": "In your room",
+    "amenities": [
+      {
+        "label": "High-speed Wi-Fi",
+        "icon": "<svg stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" viewbox=\"0 0 64 64\" aria-hidden=\"true\"><path d=\"M8 27a34 34 0 0 1 48 0\"></path><path d=\"M15 34.5a24 24 0 0 1 34 0\"></path><path d=\"M22.5 42a13.5 13.5 0 0 1 19 0\"></path><circle cx=\"32\" cy=\"49\" r=\"2.4\" fill=\"currentColor\"></circle></svg>"
+      },
+      {
+        "label": "Daily housekeeping",
+        "icon": "<svg stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" viewbox=\"0 0 64 64\" aria-hidden=\"true\"><rect x=\"12\" y=\"40\" width=\"40\" height=\"12\" rx=\"2\"></rect><rect x=\"16\" y=\"28\" width=\"32\" height=\"12\" rx=\"2\"></rect><rect x=\"20\" y=\"16\" width=\"24\" height=\"12\" rx=\"2\"></rect><path d=\"M12 46h40M16 34h32M20 22h24\"></path><path d=\"M52 8v8M48 12h8\"></path></svg>"
+      },
+      {
+        "label": "In-room dining",
+        "icon": "<svg stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" viewbox=\"0 0 64 64\" aria-hidden=\"true\"><path d=\"M10 44a22 22 0 0 1 44 0\"></path><path d=\"M6 44h52\"></path><path d=\"M10 50h44\"></path><path d=\"M32 22v-3\"></path><circle cx=\"32\" cy=\"16.5\" r=\"2.5\"></circle><path d=\"M19 36a14 14 0 0 1 8-8\"></path></svg>"
+      },
+      {
+        "label": "Air conditioning",
+        "icon": "<svg stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" viewbox=\"0 0 64 64\" aria-hidden=\"true\"><path d=\"M32 6v52M9.5 19l45 26M9.5 45l45-26\"></path><path d=\"M26 10l6 5 6-5M26 54l6-5 6 5M10 27l7.5-2.5L16 17M48 47l-1.5-7.5L54 37M10 37l7.5 2.5L16 47M48 17l-1.5 7.5L54 27\"></path></svg>"
+      },
+      {
+        "label": "Tea & coffee maker",
+        "icon": "<svg stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" viewbox=\"0 0 64 64\" aria-hidden=\"true\"><path d=\"M12 28h34v10a14 14 0 0 1-14 14h-6a14 14 0 0 1-14-14z\"></path><path d=\"M46 32h4a6 6 0 0 1 0 12h-5\"></path><path d=\"M8 56h42\"></path><path d=\"M22 20c0-4 4-4 4-8M30 20c0-4 4-4 4-8\"></path></svg>"
+      }
+    ],
+    "bookingTitle": "Book this room",
+    "policies": [
+      {
+        "label": "Check-in",
+        "value": "from 2:00 PM"
+      },
+      {
+        "label": "Check-out",
+        "value": "by 11:00 AM"
+      }
+    ],
+    "bookingHelp": "Early arrival or a late departure can be arranged when the room is free; just ask when you book.",
+    "phone": "tel:+919171172205",
+    "phoneLabel": "Call +91 91711 72205",
+    "otherEyebrow": "Other rooms",
+    "otherTitle": "You may",
+    "otherScript": "also like",
+    "otherRooms": [
+      {
+        "href": "/accommodation/executive-suite",
+        "name": "Executive Suite",
+        "summary": "Master bedroom · Panoramic view",
+        "image": {
+          "src": "/room-detail-reference/4434b49f370d9431e97678d7fb0767b1.jpg",
+          "alt": "Executive Suite bedroom with a panoramic window"
+        }
+      },
+      {
+        "href": "/accommodation/premium-room",
+        "name": "Premium Room",
+        "summary": "King bed · Nature view",
+        "image": {
+          "src": "/room-detail-reference/f0252e30d215acb82a369beb8f5f50bf.jpg",
+          "alt": "Premium Room with king bed, sofa and window view"
+        }
+      },
+      {
+        "href": "/accommodation/executive-family-room",
+        "name": "Executive Family Room",
+        "summary": "Twin beds · Pool view",
+        "image": {
+          "src": "/room-detail-reference/4dccf3c70be945be9694b8a9841d5b22.jpg",
+          "alt": "Executive Family Room with two beds"
+        }
+      },
+      {
+        "href": "/accommodation/deluxe-room",
+        "name": "Deluxe Room",
+        "summary": "Twin or double · Garden view",
+        "image": {
+          "src": "/room-detail-reference/ee837becad6523c696faf319c7d4af5a.jpg",
+          "alt": "Deluxe Room with double bed and writing desk"
+        }
+      }
+    ]
+  },
+  "room-1": {
+    "name": "Deluxe Room",
+    "hero": {
+      "src": "/room-detail-reference/ee837becad6523c696faf319c7d4af5a.jpg",
+      "alt": "Deluxe Room with double bed, writing desk and wall-mounted TV"
+    },
+    "heroScript": "warm, calm and easy",
+    "eyebrow": "Room · 25 of this style",
+    "title": "Warm wood",
+    "script": "soft light",
+    "intro": "Warm wood, soft lighting and fresh linen, with a writing desk and a garden view. A comfortable base for a family visit or a wedding weekend.",
+    "specs": [
+      {
+        "label": "Beds",
+        "value": "Twin or double",
+        "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 18v-7h18v7M3 14.5h18M5 11V7.5h6V11M13 11V7.5h6V11M3 18v2M21 18v2\"></path></svg>"
+      },
+      {
+        "label": "Work",
+        "value": "Writing desk",
+        "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 10h18M5 10v10M19 10v10M13 10v6h6\"></path><path d=\"M8 10V6h5v4\"></path></svg>"
+      },
+      {
+        "label": "View",
+        "value": "Garden view",
+        "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"1.5\"></rect><path d=\"M3 17l5-5 4 4 3-3 6 5\"></path><circle cx=\"16\" cy=\"9\" r=\"1.6\"></circle></svg>"
+      }
+    ],
+    "photos": [
+      {
+        "src": "/room-detail-reference/ee837becad6523c696faf319c7d4af5a.jpg",
+        "alt": "Deluxe Room with double bed, writing desk and wall-mounted TV"
+      },
+      {
+        "src": "/room-detail-reference/0b47fe2e8cd05c3c8177a6c16a225c05.jpg",
+        "alt": "Deluxe Room with armchair and bedside table"
+      }
+    ],
+    "amenityTitle": "In your room",
+    "amenities": [
+      {
+        "label": "High-speed Wi-Fi",
+        "icon": "<svg stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" viewbox=\"0 0 64 64\" aria-hidden=\"true\"><path d=\"M8 27a34 34 0 0 1 48 0\"></path><path d=\"M15 34.5a24 24 0 0 1 34 0\"></path><path d=\"M22.5 42a13.5 13.5 0 0 1 19 0\"></path><circle cx=\"32\" cy=\"49\" r=\"2.4\" fill=\"currentColor\"></circle></svg>"
+      },
+      {
+        "label": "Daily housekeeping",
+        "icon": "<svg stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" viewbox=\"0 0 64 64\" aria-hidden=\"true\"><rect x=\"12\" y=\"40\" width=\"40\" height=\"12\" rx=\"2\"></rect><rect x=\"16\" y=\"28\" width=\"32\" height=\"12\" rx=\"2\"></rect><rect x=\"20\" y=\"16\" width=\"24\" height=\"12\" rx=\"2\"></rect><path d=\"M12 46h40M16 34h32M20 22h24\"></path><path d=\"M52 8v8M48 12h8\"></path></svg>"
+      },
+      {
+        "label": "In-room dining",
+        "icon": "<svg stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" viewbox=\"0 0 64 64\" aria-hidden=\"true\"><path d=\"M10 44a22 22 0 0 1 44 0\"></path><path d=\"M6 44h52\"></path><path d=\"M10 50h44\"></path><path d=\"M32 22v-3\"></path><circle cx=\"32\" cy=\"16.5\" r=\"2.5\"></circle><path d=\"M19 36a14 14 0 0 1 8-8\"></path></svg>"
+      },
+      {
+        "label": "Air conditioning",
+        "icon": "<svg stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" viewbox=\"0 0 64 64\" aria-hidden=\"true\"><path d=\"M32 6v52M9.5 19l45 26M9.5 45l45-26\"></path><path d=\"M26 10l6 5 6-5M26 54l6-5 6 5M10 27l7.5-2.5L16 17M48 47l-1.5-7.5L54 37M10 37l7.5 2.5L16 47M48 17l-1.5 7.5L54 27\"></path></svg>"
+      },
+      {
+        "label": "Tea & coffee maker",
+        "icon": "<svg stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" viewbox=\"0 0 64 64\" aria-hidden=\"true\"><path d=\"M12 28h34v10a14 14 0 0 1-14 14h-6a14 14 0 0 1-14-14z\"></path><path d=\"M46 32h4a6 6 0 0 1 0 12h-5\"></path><path d=\"M8 56h42\"></path><path d=\"M22 20c0-4 4-4 4-8M30 20c0-4 4-4 4-8\"></path></svg>"
+      },
+      {
+        "label": "Luxury toiletries",
+        "icon": "<svg stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" viewbox=\"0 0 64 64\" aria-hidden=\"true\"><path d=\"M24 22h16v6l4 6v20a4 4 0 0 1-4 4H24a4 4 0 0 1-4-4V34l4-6z\"></path><path d=\"M26 22v-6h12v6M32 16V9h8\"></path><path d=\"M20 40h24\"></path></svg>"
+      }
+    ],
+    "bookingTitle": "Book this room",
+    "policies": [
+      {
+        "label": "Check-in",
+        "value": "from 2:00 PM"
+      },
+      {
+        "label": "Check-out",
+        "value": "by 11:00 AM"
+      }
+    ],
+    "bookingHelp": "Early arrival or a late departure can be arranged when the room is free; just ask when you book.",
+    "phone": "tel:+919171172205",
+    "phoneLabel": "Call +91 91711 72205",
+    "otherEyebrow": "Other rooms",
+    "otherTitle": "You may",
+    "otherScript": "also like",
+    "otherRooms": [
+      {
+        "href": "/accommodation/executive-suite",
+        "name": "Executive Suite",
+        "summary": "Master bedroom · Panoramic view",
+        "image": {
+          "src": "/room-detail-reference/4434b49f370d9431e97678d7fb0767b1.jpg",
+          "alt": "Executive Suite bedroom with a panoramic window"
+        }
+      },
+      {
+        "href": "/accommodation/premium-room",
+        "name": "Premium Room",
+        "summary": "King bed · Nature view",
+        "image": {
+          "src": "/room-detail-reference/f0252e30d215acb82a369beb8f5f50bf.jpg",
+          "alt": "Premium Room with king bed, sofa and window view"
+        }
+      },
+      {
+        "href": "/accommodation/executive-family-room",
+        "name": "Executive Family Room",
+        "summary": "Twin beds · Pool view",
+        "image": {
+          "src": "/room-detail-reference/4dccf3c70be945be9694b8a9841d5b22.jpg",
+          "alt": "Executive Family Room with two beds"
+        }
+      },
+      {
+        "href": "/accommodation/deluxe-interconnected-room",
+        "name": "Deluxe Interconnected",
+        "summary": "Two connected rooms · Pool & garden view",
+        "image": {
+          "src": "/room-detail-reference/73f38aa930e39f06b393dd84005492dc.jpg",
+          "alt": "Deluxe Interconnected Room with two connected bedrooms"
+        }
+      }
+    ]
+  },
+  "room-5": {
+    "name": "Executive Suite",
+    "hero": {
+      "src": "/room-detail-reference/4434b49f370d9431e97678d7fb0767b1.jpg",
+      "alt": "Executive Suite bedroom with a panoramic window over the hills"
+    },
+    "heroScript": "our two finest rooms",
+    "eyebrow": "Suite · 2 of this style",
+    "title": "Room to",
+    "script": "spread out",
+    "intro": "A private living room, a master bedroom dressed in Manratan linen, a white-marble bathroom and wide windows over the resort and the hills.",
+    "specs": [
+      {
+        "label": "Bedroom",
+        "value": "Master bedroom",
+        "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 18v-7h18v7M3 14.5h18M5 11V7.5h6V11M13 11V7.5h6V11M3 18v2M21 18v2\"></path></svg>"
+      },
+      {
+        "label": "Living",
+        "value": "Private living room",
+        "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12V9a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3\"></path><path d=\"M3 12.5a1.5 1.5 0 0 1 3 0V15h12v-2.5a1.5 1.5 0 0 1 3 0V18H3z\"></path><path d=\"M5 18v2M19 18v2\"></path></svg>"
+      },
+      {
+        "label": "View",
+        "value": "Panoramic view",
+        "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"1.5\"></rect><path d=\"M3 17l5-5 4 4 3-3 6 5\"></path><circle cx=\"16\" cy=\"9\" r=\"1.6\"></circle></svg>"
+      }
+    ],
+    "photos": [
+      {
+        "src": "/room-detail-reference/4434b49f370d9431e97678d7fb0767b1.jpg",
+        "alt": "Executive Suite bedroom with a panoramic window"
+      },
+      {
+        "src": "/room-detail-reference/73c62d41018b83f97f6087d2a566c056.jpg",
+        "alt": "Executive Suite living room with sofa and armchair"
+      },
+      {
+        "src": "/room-detail-reference/35bf4a435d6dcb948a374f191309a7bf.jpg",
+        "alt": "Manratan cushions and towel art on the suite bed"
+      },
+      {
+        "src": "/room-detail-reference/3e988821da4c0a53e15dfd8b792f2795.jpg",
+        "alt": "White-marble suite bathroom"
+      }
+    ],
+    "amenityTitle": "In your suite",
+    "amenities": [
+      {
+        "label": "High-speed Wi-Fi",
+        "icon": "<svg stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" viewbox=\"0 0 64 64\" aria-hidden=\"true\"><path d=\"M8 27a34 34 0 0 1 48 0\"></path><path d=\"M15 34.5a24 24 0 0 1 34 0\"></path><path d=\"M22.5 42a13.5 13.5 0 0 1 19 0\"></path><circle cx=\"32\" cy=\"49\" r=\"2.4\" fill=\"currentColor\"></circle></svg>"
+      },
+      {
+        "label": "Daily housekeeping",
+        "icon": "<svg stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" viewbox=\"0 0 64 64\" aria-hidden=\"true\"><rect x=\"12\" y=\"40\" width=\"40\" height=\"12\" rx=\"2\"></rect><rect x=\"16\" y=\"28\" width=\"32\" height=\"12\" rx=\"2\"></rect><rect x=\"20\" y=\"16\" width=\"24\" height=\"12\" rx=\"2\"></rect><path d=\"M12 46h40M16 34h32M20 22h24\"></path><path d=\"M52 8v8M48 12h8\"></path></svg>"
+      },
+      {
+        "label": "In-room dining",
+        "icon": "<svg stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" viewbox=\"0 0 64 64\" aria-hidden=\"true\"><path d=\"M10 44a22 22 0 0 1 44 0\"></path><path d=\"M6 44h52\"></path><path d=\"M10 50h44\"></path><path d=\"M32 22v-3\"></path><circle cx=\"32\" cy=\"16.5\" r=\"2.5\"></circle><path d=\"M19 36a14 14 0 0 1 8-8\"></path></svg>"
+      },
+      {
+        "label": "Air conditioning",
+        "icon": "<svg stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" viewbox=\"0 0 64 64\" aria-hidden=\"true\"><path d=\"M32 6v52M9.5 19l45 26M9.5 45l45-26\"></path><path d=\"M26 10l6 5 6-5M26 54l6-5 6 5M10 27l7.5-2.5L16 17M48 47l-1.5-7.5L54 37M10 37l7.5 2.5L16 47M48 17l-1.5 7.5L54 27\"></path></svg>"
+      },
+      {
+        "label": "Tea & coffee maker",
+        "icon": "<svg stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" viewbox=\"0 0 64 64\" aria-hidden=\"true\"><path d=\"M12 28h34v10a14 14 0 0 1-14 14h-6a14 14 0 0 1-14-14z\"></path><path d=\"M46 32h4a6 6 0 0 1 0 12h-5\"></path><path d=\"M8 56h42\"></path><path d=\"M22 20c0-4 4-4 4-8M30 20c0-4 4-4 4-8\"></path></svg>"
+      }
+    ],
+    "bookingTitle": "Book this suite",
+    "policies": [
+      {
+        "label": "Check-in",
+        "value": "from 2:00 PM"
+      },
+      {
+        "label": "Check-out",
+        "value": "by 11:00 AM"
+      }
+    ],
+    "bookingHelp": "Early arrival or a late departure can be arranged when the room is free; just ask when you book.",
+    "phone": "tel:+919171172205",
+    "phoneLabel": "Call +91 91711 72205",
+    "otherEyebrow": "Other rooms",
+    "otherTitle": "You may",
+    "otherScript": "also like",
+    "otherRooms": [
+      {
+        "href": "/accommodation/premium-room",
+        "name": "Premium Room",
+        "summary": "King bed · Nature view",
+        "image": {
+          "src": "/room-detail-reference/f0252e30d215acb82a369beb8f5f50bf.jpg",
+          "alt": "Premium Room with king bed, sofa and window view"
+        }
+      },
+      {
+        "href": "/accommodation/executive-family-room",
+        "name": "Executive Family Room",
+        "summary": "Twin beds · Pool view",
+        "image": {
+          "src": "/room-detail-reference/4dccf3c70be945be9694b8a9841d5b22.jpg",
+          "alt": "Executive Family Room with two beds"
+        }
+      },
+      {
+        "href": "/accommodation/deluxe-interconnected-room",
+        "name": "Deluxe Interconnected",
+        "summary": "Two connected rooms · Pool & garden view",
+        "image": {
+          "src": "/room-detail-reference/73f38aa930e39f06b393dd84005492dc.jpg",
+          "alt": "Deluxe Interconnected Room with two connected bedrooms"
+        }
+      },
+      {
+        "href": "/accommodation/deluxe-room",
+        "name": "Deluxe Room",
+        "summary": "Twin or double · Garden view",
+        "image": {
+          "src": "/room-detail-reference/ee837becad6523c696faf319c7d4af5a.jpg",
+          "alt": "Deluxe Room with double bed and writing desk"
+        }
+      }
+    ]
+  }
+}

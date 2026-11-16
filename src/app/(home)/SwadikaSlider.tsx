@@ -63,20 +63,31 @@ const slides = [
 const looped = [...slides, ...slides];
 const pad = (n: number) => String(n).padStart(2, "0");
 
+function syncSlideZoom(instance: SwiperType) {
+  instance.slides.forEach((slide) => {
+    const progress = (slide as HTMLElement & { progress?: number }).progress ?? 0;
+    slide.style.setProperty("--slide-emphasis", String(Math.max(0, 1 - Math.abs(progress))));
+  });
+}
+
 export default function SwadikaSlider() {
   const [swiper, setSwiper] = useState<SwiperType | null>(null);
   const [active, setActive] = useState(4);
 
   return (
-    <div className="mt-14 md:mt-20">
+    <div className="swadika-slider mt-14 md:mt-20">
       <Swiper
         modules={[Autoplay, A11y]}
         onSwiper={setSwiper}
+        watchSlidesProgress
+        onInit={syncSlideZoom}
+        onSetTranslate={syncSlideZoom}
+        onSetTransition={(instance, duration) => instance.el.style.setProperty("--swadika-transition", `${duration}ms`)}
         onRealIndexChange={(s) => setActive(s.realIndex % slides.length)}
         initialSlide={4}
         centeredSlides
         loop
-        speed={1000}
+        speed={1400}
         autoplay={{ delay: 3500, disableOnInteraction: false, pauseOnMouseEnter: false }}
         slidesPerView="auto"
         spaceBetween={14}
@@ -86,7 +97,7 @@ export default function SwadikaSlider() {
           1440: { spaceBetween: 28 },
         }}
         a11y={{ prevSlideMessage: "Previous photo", nextSlideMessage: "Next photo" }}
-        className="!overflow-visible [--swiper-wrapper-transition-timing-function:var(--ease-lux)] [&_.swiper-wrapper]:items-end"
+        className="!overflow-visible [--swiper-wrapper-transition-timing-function:var(--swadika-ease)] [&_.swiper-wrapper]:items-end"
       >
         {looped.map((s, i) => (
           <SwiperSlide key={i} className={`!h-auto ${s.widthClass}`}>
@@ -96,7 +107,7 @@ export default function SwadikaSlider() {
                   isActive ? "opacity-100" : "opacity-45"
                 }`}
               >
-                <Image src={s.src} alt={s.alt} fill quality={85} sizes={s.sizes} className="object-cover" />
+                <Image data-no-hover="true" src={s.src} alt={s.alt} fill quality={85} sizes={s.sizes} className="object-cover" />
                 <span
                   className={`absolute inset-0 bg-gradient-to-t from-black/60 via-black/5 to-transparent transition-opacity duration-700 ${isActive ? "opacity-100" : "opacity-0"}`}
                   aria-hidden="true"
