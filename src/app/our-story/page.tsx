@@ -233,7 +233,7 @@ export default function OurStoryPage() {
         primaryButton={
           <Link
             href="/#nearby"
-            className="inline-flex items-center justify-center rounded-full bg-[#f3eee7] px-7 py-3 text-[0.7rem] font-medium tracking-[0.18em] text-[#221811] uppercase shadow-sm transition-transform hover:scale-[1.02]"
+            className="inline-flex h-[44px] sm:h-[46px] w-[170px] sm:w-[185px] items-center justify-center rounded-full border border-transparent bg-[#f3eee7] text-[0.7rem] font-medium tracking-[0.18em] text-[#221811] uppercase shadow-sm transition-transform hover:scale-[1.02]"
           >
             PLACES NEARBY
           </Link>
@@ -241,7 +241,7 @@ export default function OurStoryPage() {
         secondaryButton={
           <BookButton
             tone="outline-light"
-            className="inline-flex items-center justify-center rounded-full px-7 py-3 text-[0.7rem] font-medium tracking-[0.18em] uppercase transition-all"
+            className="!inline-flex !h-[44px] sm:!h-[46px] !w-[170px] sm:!w-[185px] !items-center !justify-center !rounded-full !px-0 !py-0 !text-[0.7rem] !font-medium !tracking-[0.18em] !uppercase transition-all"
           >
             BOOK YOUR STAY
           </BookButton>
