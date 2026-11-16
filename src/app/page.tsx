@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import HomeHero from "./(home)/HomeHero";
 import RoomsRail from "./(home)/RoomsRail";
 import PlacesToDiscover from "./(home)/PlacesToDiscover";
-import ScrollReveal from "@/components/site/ScrollReveal";
 import { About, Amenities, Celebrations, EscapeCTA, EvolvesWithLight, ManratanByNight, PlacesNearby, RoyalCharm, Spaces, Swadika, Walkthrough } from "./(home)/sections";
 
 export const metadata: Metadata = {
@@ -15,7 +14,6 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="home-page">
-      <ScrollReveal />
       <HomeHero />
       <About />
 

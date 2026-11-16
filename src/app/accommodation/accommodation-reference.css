@@ -1549,31 +1549,12 @@
   padding: 0 22px;
 }
 
-/* scroll-driven reveals (no effect where unsupported) */
+/* Image parallax; text and image reveals use the shared ScrollReveal. */
 @supports (animation-timeline: view()) {
-  .accommodation-page .rv {
-    animation: accommodation-rvUp linear both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 70%;
-  }
-  .accommodation-page .rv-img {
-    animation: accommodation-rvClip linear both;
-    animation-timeline: view();
-    animation-range: entry 0% cover 40%;
-  }
   .accommodation-page .px {
     animation: accommodation-pxMove linear both;
     animation-timeline: view();
     animation-range: cover 0% cover 100%;
-  }
-  .accommodation-page .amen-grid .rv:nth-child(4n + 2) {
-    animation-range: entry 8% entry 78%;
-  }
-  .accommodation-page .amen-grid .rv:nth-child(4n + 3) {
-    animation-range: entry 16% entry 86%;
-  }
-  .accommodation-page .amen-grid .rv:nth-child(4n + 4) {
-    animation-range: entry 24% entry 94%;
   }
 }
 @keyframes accommodation-rvUp {
@@ -1730,10 +1711,14 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .accommodation-page *:not(.sl-carousel .swiper-wrapper),
+  .accommodation-page *:not(.fx-in),
   .accommodation-page *::before,
   .accommodation-page *::after {
     animation: none !important;
+  }
+  .accommodation-page *:not(.sl-carousel .swiper-wrapper),
+  .accommodation-page *::before,
+  .accommodation-page *::after {
     transition: none !important;
   }
 }
@@ -2106,12 +2091,6 @@
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
-}
-.accommodation-page .amen-grid.amen-6 .rv:nth-child(3n + 2) {
-  animation-range: entry 8% entry 78%;
-}
-.accommodation-page .amen-grid.amen-6 .rv:nth-child(3n + 3) {
-  animation-range: entry 16% entry 86%;
 }
 @media (max-width: 900px) {
   .accommodation-page .amen-grid.amen-6 {
