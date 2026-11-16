@@ -68,7 +68,6 @@ export default function ContactView() {
   const handleCheckOutChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
     if (formData.checkIn && val && val <= formData.checkIn) {
-      alert("Check-out date must be after check-in date.");
       return;
     }
     setFormData((prev) => ({ ...prev, checkOut: val }));
@@ -488,11 +487,17 @@ export default function ContactView() {
         }
         /* Native datepicker styling without outline box */
         .mr-fld input[type="date"] {
+          position: relative;
+          cursor: pointer;
           border: 0 !important;
           border-bottom: 1px solid rgba(34, 24, 17, 0.25) !important;
           outline: none !important;
           box-shadow: none !important;
           color: #221811;
+        }
+        .mr-fld input[type="date"]:invalid::-webkit-datetime-edit,
+        .mr-fld input[type="date"][value=""]::-webkit-datetime-edit {
+          color: rgba(34, 24, 17, 0.45);
         }
         .mr-fld input[type="date"]:focus,
         .mr-fld input[type="date"]:focus-visible {
@@ -1028,22 +1033,10 @@ export default function ContactView() {
                   <input
                     id="c-in"
                     name="checkIn"
-                    type={formData.checkIn ? "date" : "text"}
+                    type="date"
                     min={todayStr}
-                    placeholder="Add date"
                     value={formData.checkIn}
                     onChange={handleCheckInChange}
-                    onFocus={(e) => {
-                      e.target.type = "date";
-                      try {
-                        if ("showPicker" in HTMLInputElement.prototype) {
-                          e.target.showPicker();
-                        }
-                      } catch {}
-                    }}
-                    onBlur={(e) => {
-                      if (!e.target.value) e.target.type = "text";
-                    }}
                   />
                 </div>
                 <div className="mr-fld">
@@ -1051,22 +1044,10 @@ export default function ContactView() {
                   <input
                     id="c-out"
                     name="checkOut"
-                    type={formData.checkOut ? "date" : "text"}
+                    type="date"
                     min={formData.checkIn || todayStr}
-                    placeholder="Add date"
                     value={formData.checkOut}
                     onChange={handleCheckOutChange}
-                    onFocus={(e) => {
-                      e.target.type = "date";
-                      try {
-                        if ("showPicker" in HTMLInputElement.prototype) {
-                          e.target.showPicker();
-                        }
-                      } catch {}
-                    }}
-                    onBlur={(e) => {
-                      if (!e.target.value) e.target.type = "text";
-                    }}
                   />
                 </div>
                 <div className="mr-fld full">
