@@ -760,6 +760,37 @@ export default function ContactView() {
             gap: 16px;
             border-radius: 20px;
           }
+          .mr-ct-grid {
+            margin-top: 36px;
+            gap: 36px;
+          }
+          .mr-ct-info {
+            gap: 16px;
+          }
+          .mr-ct-item {
+            gap: 6px;
+            padding-bottom: 16px;
+          }
+          .mr-ct-k {
+            font-size: 9px;
+            margin-bottom: 2px;
+          }
+          .mr-ct-v {
+            font-size: 17px;
+            line-height: 1.35;
+          }
+          .mr-ct-addr {
+            font-size: 15px;
+            line-height: 1.5;
+          }
+          .mr-lead {
+            font-size: 18px;
+            line-height: 1.45;
+          }
+          .mr-ci-btns .mr-btn {
+            padding: 12px 20px;
+            font-size: 11px;
+          }
           .mr-ct-form-t {
             font-size: 26px;
           }
@@ -786,6 +817,22 @@ export default function ContactView() {
             gap: 12px;
           }
           .mr-ct-foot .mr-btn {
+            width: 100%;
+            justify-content: center;
+          }
+        }
+        @media (max-width: 480px) {
+          .mr-ct-v {
+            font-size: 16px;
+          }
+          .mr-ct-addr {
+            font-size: 14px;
+          }
+          .mr-ci-btns {
+            flex-direction: column;
+            width: 100%;
+          }
+          .mr-ci-btns .mr-btn {
             width: 100%;
             justify-content: center;
           }
@@ -882,7 +929,7 @@ export default function ContactView() {
                 </address>
               </div>
 
-              <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", marginTop: "6px" }}>
+              <div className="mr-ci-btns" style={{ display: "flex", gap: "12px", flexWrap: "wrap", marginTop: "6px" }}>
                 <a
                   className="mr-btn mr-btn-ink"
                   href="https://wa.me/919171172205"
