@@ -232,7 +232,7 @@ async function contentChecks(browser) {
   w = await film.evaluate((v) => ({ t: v.currentTime }));
   check("walkthrough chapter 'Manratan by night' seeks", w.t > 65, `t=${w.t.toFixed(1)}`);
   const chapters = await walk.getByRole("list", { name: "Chapters" }).innerText();
-  check("walkthrough has the real-footage chapter 'Candlelight by the pool'", /Candlelight by the pool/i.test(chapters));
+  check("walkthrough omits the candlelight chapter", !/Candlelight by the pool/i.test(chapters));
   await walk.screenshot({ path: path.join(OUT, "walkthrough-night-chapter.png") });
 
   for (const [id, prefix] of [["room-1", "deluxe"], ["room-2", "inter"], ["room-3", "executive"], ["room-4", "premium"], ["room-5", "suite"]]) {

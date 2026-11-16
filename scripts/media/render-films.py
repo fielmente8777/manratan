@@ -6,7 +6,7 @@ Usage:
     python3 scripts/media/render-films.py walkthrough --music path/to/licensed-track.mp3
 
 Each photo shot is a slow push-in (Ken Burns) on one photograph, joined with cross-dissolves.
-Shots are rendered from an 4x upscale so the motion is smooth rather than stepping a pixel at a time.
+Shots are rendered from a 2x upscale so the motion is smooth rather than stepping a pixel at a time.
 A shot can also be real footage: ("clip:NAME", start, seconds) takes that stretch of public/media/NAME.mp4, which is
 already colour-graded by scripts/media/grade-footage.py, so film and site use the same grade.
 
@@ -18,6 +18,7 @@ written from the same list, so the site's chapter buttons stay in step.
 """
 
 import json
+import re
 import os
 import shutil
 import subprocess
@@ -27,6 +28,7 @@ import tempfile
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 MEDIA = os.path.join(ROOT, "public", "media")
 FPS = 30
+FFMPEG = os.environ.get("FFMPEG", "ffmpeg")
 
 # (photo key, horizontal focus 0..1 for portrait crops, push direction)
 HERO = [
@@ -42,24 +44,23 @@ HERO = [
 HERO_MOBILE_SWAP = {"skylawn-sunset": ("skylawn-sunset-tall", 0.5)}
 
 WALKTHROUGH = [
-    ("First light", [("aerial-greenery", "in"), ("sunrise-front", "in")]),
-    ("Arrival and the lobby", [("facade-dusk", "in"), ("reception-welcome", "out"), ("lobby-chandeliers", "in")]),
-    (
-        "Rooms and suites",
-        [("suite-1", "in"), ("suite-living", "out"), ("suite-bath", "in"), ("premium-1", "in"), ("executive-1", "out")],
-    ),
+    ("First light", [("clip:first-light", 0.0, 40.0)]),
+    ("Reception and lobby", [("film-ref-14", "in"), ("film-ref-13", "out"), ("film-ref-15", "in"), ("film-ref-16", "out")]),
+    ("Rooms and suites", [("suite-1", "in"), ("suite-living", "out"), ("suite-bath", "in"), ("premium-1", "in"), ("executive-1", "out")]),
     ("Swadika", [("swadika-hall", "in"), ("swadika-guests", "out")]),
-    ("Blue Diamond pool", [("pool-dusk", "in"), ("pool-friends-wide", "out")]),
+    ("Blue Diamond pool", [("film-pool-1", "in"), ("film-ref-8", "out")]),
     ("Sky Lawn", [("skylawn-sunset", "in")]),
-    ("Banquets", [("blue-sapphire-stage", "in"), ("blue-sapphire-full", "out"), ("golden-sapphire", "in")]),
-    ("Narsinghgarh", [("ngh-lake-temple", "in"), ("ngh-lake-town", "out"), ("ngh-chhatri", "in")]),
-    # Real footage: the drone pull-back from the candlelit table to the whole pool (half speed in pool-dinner.mp4).
-    ("Candlelight by the pool", [("clip:pool-dinner", 1.0, 8.0)]),
-    ("Manratan by night", [("facade-bluehour", "in"), ("facade-night-full", "in")]),
+    ("Banquets", [("film-banquet-1", "in"), ("film-banquet-2", "out"), ("film-banquet-3", "in")]),
+    ("Narsinghgarh", [("film-ref-9", "in"), ("film-ref-10", "out"), ("film-ref-17", "in"), ("film-ref-11", "out"), ("film-ref-12", "in")]),
+    # Removed on client request; retain the chapter here for reference.
+    # ("Candlelight by the pool", [("clip:pool-dinner", 1.0, 8.0)]),
+    ("Manratan by night", [("night/gallery-4.jpg", "in"), ("night/gallery-3.jpg", "in"), ("night/gallery-1.jpg", "in"), ("night/gallery-1.jpg", "mirror"), ("night/gallery-6.jpg", "in"), ("night/gallery-5.jpg", "in")]),
 ]
 
 
 def run(cmd):
+    if cmd[0] == FFMPEG:
+        cmd = [*cmd[:-1], "-threads", "2", cmd[-1]]
     r = subprocess.run(cmd, capture_output=True, text=True)
     if r.returncode != 0:
         sys.stderr.write(r.stderr[-3000:])
@@ -67,13 +68,11 @@ def run(cmd):
 
 
 def probe_size(path):
-    out = subprocess.run(
-        ["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height", "-of", "csv=p=0", path],
-        capture_output=True,
-        text=True,
-    ).stdout.strip()
-    w, h = out.split(",")
-    return int(w), int(h)
+    result = subprocess.run([FFMPEG, "-hide_banner", "-i", path], capture_output=True, text=True, errors="replace")
+    size = re.search(r"Video:.*?(\d{2,5})x(\d{2,5})", result.stderr)
+    if not size:
+        raise RuntimeError(f"Could not read image dimensions: {path}")
+    return int(size[1]), int(size[2])
 
 
 def shot(src, dst, w, h, seconds, direction="in", focus=0.5, zoom=0.08):
@@ -89,23 +88,23 @@ def shot(src, dst, w, h, seconds, direction="in", focus=0.5, zoom=0.08):
         cw, ch = iw, round(iw / target)
         cx, cy = 0, (ih - ch) // 2
     frames = round(seconds * FPS)
-    up_w, up_h = w * 4, h * 4
+    up_w, up_h = w * 2, h * 2
     if direction == "in":
         z = f"1+{zoom}*on/{frames}"
     else:
         z = f"1+{zoom}-{zoom}*on/{frames}"
     vf = (
-        f"crop={cw}:{ch}:{cx}:{cy},scale={up_w}:{up_h}:flags=lanczos,"
+        f"crop={cw}:{ch}:{cx}:{cy}," + ("hflip," if direction == "mirror" else "") + f"scale={up_w}:{up_h}:flags=lanczos,"
         f"zoompan=z='{z}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d={frames}:s={w}x{h}:fps={FPS},"
         "format=yuv420p"
     )
-    run(["ffmpeg", "-y", "-v", "error", "-i", src, "-vf", vf, "-frames:v", str(frames), "-c:v", "libx264",
+    run([FFMPEG, "-y", "-v", "error", "-i", src, "-vf", vf, "-frames:v", str(frames), "-c:v", "libx264",
          "-preset", "veryfast", "-crf", "16", "-an", dst])
 
 
 def footage(name, start, seconds, dst, w, h):
     """Take `seconds` of an already-graded clip in public/media, sized and timed to match the photo shots."""
-    run(["ffmpeg", "-y", "-v", "error", "-ss", f"{start}", "-i", os.path.join(MEDIA, f"{name}.mp4"), "-t", f"{seconds}",
+    run([FFMPEG, "-y", "-v", "error", "-ss", f"{start}", "-i", os.path.join(MEDIA, f"{name}.mp4"), "-t", f"{seconds}",
          "-vf", f"scale={w}:{h}:flags=lanczos,fps={FPS},format=yuv420p", "-c:v", "libx264", "-preset", "veryfast",
          "-crf", "16", "-an", dst])
 
@@ -116,7 +115,7 @@ def join(clips, durations, fade, out, crf, trim_start=0.0, music=None):
         durations = [durations] * len(clips)
     inputs = []
     for c in clips:
-        inputs += ["-i", c]
+        inputs += ["-threads", "1", "-i", c]
     parts = []
     last = "0:v"
     offset = 0.0
@@ -131,7 +130,7 @@ def join(clips, durations, fade, out, crf, trim_start=0.0, music=None):
         last = "vt"
         total -= trim_start
     fc = ";".join(parts)
-    cmd = ["ffmpeg", "-y", "-v", "error", *inputs]
+    cmd = [FFMPEG, "-y", "-v", "error", "-filter_complex_threads", "1", *inputs]
     if music:
         cmd += ["-i", music]
     cmd += ["-filter_complex", fc + (";" if fc else "")]
@@ -178,6 +177,7 @@ def walkthrough(music=None):
         secs, fade = 3.6, 0.8
         clips, durations, chapters, at = [], [], [], 0.0
         for title, shots in WALKTHROUGH:
+            print(f"Rendering {title}", flush=True)
             chapters.append({"title": title, "start": round(at, 1)})
             for spec in shots:
                 dst = os.path.join(tmp, f"w-{len(clips)}.mp4")
@@ -187,20 +187,20 @@ def walkthrough(music=None):
                 else:
                     key, d = spec
                     length = secs
-                    shot(os.path.join(MEDIA, f"{key}.webp"), dst, 1600, 900, secs, d, 0.5, zoom=0.07)
+                    shot(os.path.join(MEDIA, key if key.endswith(".jpg") else f"{key}.webp"), dst, 1600, 900, secs, d, 0.5, zoom=0.07)
                 clips.append(dst)
                 durations.append(length)
                 at += length - fade
-        out = os.path.join(MEDIA, "walkthrough.mp4")
+        out = os.path.join(MEDIA, "walkthrough-v2.mp4")
         total = join(clips, durations, fade, out, 27, music=music)
         with open(os.path.join(MEDIA, "walkthrough.json"), "w") as fh:
             json.dump({"duration": round(total, 1), "chapters": chapters}, fh, indent=2)
             fh.write("\n")
         # Poster: the opening frame, so the player doesn't jump when it starts.
-        run(["ffmpeg", "-y", "-v", "error", "-ss", "0.5", "-i", out, "-frames:v", "1", "-vf", "scale=1600:-2",
+        run([FFMPEG, "-y", "-v", "error", "-ss", "0.5", "-i", out, "-frames:v", "1", "-vf", "scale=1600:-2",
              os.path.join(tmp, "poster.png")])
-        run(["ffmpeg", "-y", "-v", "error", "-i", os.path.join(tmp, "poster.png"), "-c:v", "libwebp", "-quality", "80",
-             os.path.join(MEDIA, "walkthrough-poster.webp")])
+        run([FFMPEG, "-y", "-v", "error", "-i", os.path.join(tmp, "poster.png"), "-c:v", "libwebp", "-quality", "80",
+             os.path.join(MEDIA, "walkthrough-poster-v2.webp")])
         print(out, f"{total:.1f}s", os.path.getsize(out) // 1024, "KB", "audio" if music else "no audio")
     finally:
         shutil.rmtree(tmp, ignore_errors=True)

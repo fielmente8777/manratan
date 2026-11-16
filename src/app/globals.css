@@ -370,7 +370,7 @@ body {
 }
 .group:hover .img-drift,
 .group:focus-visible .img-drift {
-  transform: scale(1.015);
+  transform: scale(1.06);
 }
 
 /* Hero entrance: the one orchestrated motion moment */
@@ -466,6 +466,13 @@ body {
   text-overflow: ellipsis;
 }
 
+@media (max-width: 767px) {
+  .mr-booking-bar > div { min-width: 0; }
+  .mr-booking-bar .mr-bf-field { min-height: 4.25rem; padding: 0.8rem 1rem; }
+  .mr-booking-bar .mr-bf-label { font-size: 0.65rem; line-height: 1.5; letter-spacing: 0.16em; }
+  .mr-booking-bar .mr-bf-value { font-size: 1rem; line-height: 1.5; }
+}
+
 /* Calendar in the house style; keyed to the calendar itself so the phone sheet (rendered in a portal) matches too */
 .mr-calendar.react-datepicker {
   font-family: var(--font-body);
@@ -506,6 +513,37 @@ body {
 .no-scrollbar { scrollbar-width: none; }
 
 .home-page [aria-labelledby="escape-title"] .t-script > span { transform: none; translate: none; }
+
+/* Midori's soft fade-up as each content block enters the viewport. */
+@keyframes contentFadeUp {
+  from { opacity: 0; transform: translate3d(0, 28px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+.fx-ready:not(.fx-in):not(:focus-within) { opacity: 0; }
+.fx-in { animation: contentFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--fx-i, 0) * 0.12s) backwards; }
+
+@keyframes contentFadeOnly {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fx-in { animation-name: contentFadeOnly; animation-duration: 0.4s; animation-delay: 0s; }
+}
+
+/* Photos zoom within their existing frames; keep logos and icons still. */
+@media (hover: hover) {
+  .site-body main img:not([alt=""]):not([src*="/images/nav"]):not([src*="/images/footer"]):not([src*="logo"]):not([src$=".svg"]) {
+    transition: transform 1.2s var(--ease-lux), opacity 0.7s ease, filter 0.9s ease;
+  }
+  .site-body main :is(div, a, figure, button):hover > img:not([alt=""]):not([src*="/images/nav"]):not([src*="/images/footer"]):not([src*="logo"]):not([src$=".svg"]) {
+    transform: scale(1.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-body main img { transition-duration: 0s !important; }
+}
 
 @media (max-width: 767px) {
   .home-page h1, .home-page h2, .home-page h3,

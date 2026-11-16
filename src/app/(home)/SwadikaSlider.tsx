@@ -8,6 +8,19 @@ import type { Swiper as SwiperType } from "swiper";
 import { Container } from "@/components/sectionComponants";
 import "swiper/css";
 
+const foodSlides = [1, 2, 3].map((number) => ({
+  src: `/media/swadika-food${number}.jpg`,
+  alt: `Vegetarian food served at Swadika, photograph ${number}`,
+  caption: "Fresh flavours from the Swadika kitchen",
+  widthClass: number === 2
+    ? "!w-[80vw] sm:!w-[min(66vw,460px)]"
+    : "!w-[54vw] sm:!w-[min(33vw,260px)]",
+  aspectClass: number === 2 ? "aspect-[4096/2305]" : "aspect-[2305/4096]",
+  sizes: number === 2
+    ? "(max-width: 640px) 80vw, (max-width: 697px) 66vw, 460px"
+    : "(max-width: 640px) 54vw, (max-width: 788px) 33vw, 260px",
+}));
+
 const slides = [
   {
     src: "/media/swadika-hall.webp",
@@ -17,6 +30,7 @@ const slides = [
     aspectClass: "aspect-square",
     sizes: "(max-width: 640px) 66vw, (max-width: 800px) 40vw, 320px",
   },
+  foodSlides[0],
   {
     src: "/media/swadika-guests.webp",
     alt: "Families enjoying lunch together at Swadika",
@@ -25,6 +39,7 @@ const slides = [
     aspectClass: "aspect-[26/35]",
     sizes: "(max-width: 640px) 54vw, (max-width: 788px) 33vw, 260px",
   },
+  foodSlides[1],
   {
     src: "/media/swadika-room.webp",
     alt: "Swadika restaurant set for service",
@@ -33,13 +48,14 @@ const slides = [
     aspectClass: "aspect-[2/1]",
     sizes: "(max-width: 640px) 80vw, (max-width: 970px) 66vw, 640px",
   },
+  foodSlides[2],
   {
-    src: "/homopage/dining2_11zon.webp",
+    src: "/homopage/dining2_11zon.jpg",
     alt: "A floating breakfast spread beside the Blue Diamond pool",
     caption: "Breakfast by the Blue Diamond pool",
-    widthClass: "!w-[76vw] sm:!w-[min(56vw,540px)]",
-    aspectClass: "aspect-[54/35]",
-    sizes: "(max-width: 640px) 76vw, (max-width: 965px) 56vw, 540px",
+    widthClass: "!w-[54vw] sm:!w-[min(33vw,260px)]",
+    aspectClass: "aspect-[941/1672]",
+    sizes: "(max-width: 640px) 54vw, (max-width: 788px) 33vw, 260px",
   },
 ];
 
@@ -49,7 +65,7 @@ const pad = (n: number) => String(n).padStart(2, "0");
 
 export default function SwadikaSlider() {
   const [swiper, setSwiper] = useState<SwiperType | null>(null);
-  const [active, setActive] = useState(2);
+  const [active, setActive] = useState(4);
 
   return (
     <div className="mt-14 md:mt-20">
@@ -57,7 +73,7 @@ export default function SwadikaSlider() {
         modules={[Autoplay, A11y]}
         onSwiper={setSwiper}
         onRealIndexChange={(s) => setActive(s.realIndex % slides.length)}
-        initialSlide={2}
+        initialSlide={4}
         centeredSlides
         loop
         speed={1000}

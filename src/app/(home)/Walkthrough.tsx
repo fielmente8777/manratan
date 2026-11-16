@@ -219,7 +219,7 @@ export default function Walkthrough() {
             </div>
           </div>
 
-          <div className={styles.mobileFooter}><p>Tap a stop to jump</p></div>
+          {/* <div className={styles.mobileFooter}><p>Tap a stop to jump</p></div> */}
         </div>
     </SectionWithContainer>
   );
