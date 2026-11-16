@@ -63,21 +63,21 @@
   }
 
   .watchButton {
-    gap: 12px;
-    padding: 8px 8px 8px 16px;
+    gap: 0;
+    padding: 4px;
     border: 1px solid rgb(210 180 131 / .45);
     border-radius: 999px;
     background: rgb(34 24 17 / .65);
     backdrop-filter: blur(10px);
   }
 
-  .watchButton > span:first-child > span {
+  .watchButton > span:first-child {
     display: none;
   }
 
   .watchButton > span:last-child {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-color: transparent;
     background: var(--color-brass-light);
     color: var(--color-ink);

@@ -48,10 +48,10 @@ export function Title({ main, script, as: Tag = "h2", align = "left", tone = "da
   const scriptSizes = { md: "text-[clamp(1.35rem,2vw,1.9rem)]", lg: "text-[clamp(1.6rem,2.6vw,2.5rem)]", xl: "text-[clamp(1.9rem,3.2vw,3.2rem)]" };
   const color = tone === "dark" ? "text-ink" : "text-stone";
   return (
-    <Tag className={`${color} ${align === "center" ? "text-center" : ""} ${className}`}>
+    <Tag className={`flex flex-col gap-3 ${color} ${align === "center" ? "text-center" : ""} ${className}`}>
       <span className={`t-display block ${sizes[size]}`}>{main}</span>
       {script && (
-        <span className={`t-script block ${scriptSizes[size]} -mt-[0.1em] ${scriptClassName ? scriptClassName : (align === "center" ? "" : "pl-[22%] sm:pl-[18%]")}`}>
+        <span className={`t-script mt-0 block ${scriptSizes[size]} ${scriptClassName ? scriptClassName : (align === "center" ? "" : "pl-[22%] sm:pl-[18%]")}`}>
           <span className={align === "center" ? "inline-block translate-x-[18%]" : ""}>{script}</span>
         </span>
       )}

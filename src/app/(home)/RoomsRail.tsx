@@ -42,8 +42,8 @@ export default function RoomsRail() {
             1024: { slidesPerView: 3 },
           }}
           loop
-          speed={900}
-          autoplay={{ delay: 3500, disableOnInteraction: false, pauseOnMouseEnter: true }}
+          speed={1200}
+          autoplay={{ delay: 2500, disableOnInteraction: false, pauseOnMouseEnter: true }}
           a11y={{ containerMessage: "Rooms and suites", prevSlideMessage: "Previous rooms", nextSlideMessage: "Next rooms" }}
           onFocusCapture={() => swiper.current?.autoplay.pause()}
           onBlurCapture={(event) => {
@@ -75,8 +75,8 @@ export default function RoomsRail() {
         <div className="mt-6 flex flex-col items-center gap-3 border-t border-ink/15 pt-5 md:mt-10 md:flex-row md:gap-8 md:pt-7">
           <p className="t-label shrink-0 text-taupe">Also at Manratan</p>
           <div className="flex flex-wrap justify-center gap-3 text-sm text-ink">
-            <span className="rounded-full border border-ink/20 bg-white/30 px-5 py-2 shadow-[0_2px_8px_rgba(34,24,17,0.08)]">Pooja Room</span>
-            <span className="rounded-full border border-ink/20 bg-white/30 px-5 py-2 shadow-[0_2px_8px_rgba(34,24,17,0.08)]">Parlour Room</span>
+            <span className="rounded-full border border-ink/20 px-5 py-2">Pooja Room</span>
+            <span className="rounded-full border border-ink/20 px-5 py-2">Parlour Room</span>
           </div>
         </div>
     </SectionWithContainer>

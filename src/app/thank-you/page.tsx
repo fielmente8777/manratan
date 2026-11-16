@@ -21,7 +21,7 @@ export default function ThankYouPage() {
       <div className="max-w-[560px]">
         <Diamond className="mx-auto h-6 w-6 text-brass-light" />
         <h1 className="t-display mt-6 text-[clamp(2.4rem,6vw,4rem)]">Thank you</h1>
-        <p className="t-script mt-1 text-[clamp(1.6rem,3vw,2.2rem)]">Your enquiry is with us</p>
+        <p className="t-script mt-3 text-[clamp(1.6rem,3vw,2.2rem)]">Your enquiry is with us</p>
         <p className="t-body-light mx-auto mt-6 max-w-[46ch]">
           Our reservations team will call or write back to confirm availability and rates for your dates.
         </p>

@@ -146,7 +146,7 @@ export default function HomeHero() {
           />
         </h1>
         <p
-          className="hero-rise delay-1 t-script mt-3 text-[clamp(1.5rem,3.2vw,2.8rem)] leading-tight text-stone drop-shadow-[0_2px_18px_rgba(0,0,0,0.45)] sm:mt-4 sm:text-[clamp(1.75rem,3.2vw,2.8rem)]"
+          className="hero-rise delay-1 t-script mt-3 text-[clamp(1.5rem,3.2vw,2.8rem)] leading-tight text-stone drop-shadow-[0_2px_18px_rgba(0,0,0,0.45)] sm:mt-3 sm:text-[clamp(1.75rem,3.2vw,2.8rem)]"
           aria-hidden="true"
         >
           {site.tagline}
@@ -193,6 +193,7 @@ export default function HomeHero() {
               type="button"
               onClick={() => setFilmOpen(true)}
               aria-haspopup="dialog"
+              aria-label="Watch the Manratan film"
               className={`${styles.watchButton} group inline-flex items-center gap-4 text-stone lg:col-start-3 lg:row-start-1 lg:mb-3 lg:justify-self-end`}
             >
               <span className="t-label text-right leading-relaxed">

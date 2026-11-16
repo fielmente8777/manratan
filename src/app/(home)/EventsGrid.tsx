@@ -16,14 +16,14 @@ type Card = {
 
 const cards: Card[] = [
   {
-    title: "Destination wedding",
-    img: { src: "/events/event6_11zon.webp", alt: "A royal wedding celebration at Manratan Resort" },
+    title: "Destination Wedding",
+    img: { src: "/media/film-banquet-3.webp", alt: "Banquet hall arranged with black and gold tables at Manratan Resort" },
     clip: video.walkthrough,
     start: 39.2, // Sky Lawn, then the banquets
   },
   {
     title: "Curated Events",
-    img: photo("blue-sapphire-full", "Blue Sapphire banquet hall fully set for a celebration"),
+    img: { src: "/media/film-banquet-2.webp", alt: "Banquet hall set with white chairs and a projector screen at Manratan Resort" },
     clip: video.walkthrough,
     start: 42, // Banquets
   },

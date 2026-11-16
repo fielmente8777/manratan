@@ -63,7 +63,7 @@ const Legacy: React.FC<LegacySectionProps> = ({
             <span className="not-italic font-normal uppercase"> CHARM</span>
           </h2>
 
-          <p className="font-golden font-normal not-italic text-[22px] sm:text-[34px] leading-[30px] sm:leading-[36px] tracking-[0.05em] text-[#221811] ml-[92px] sm:ml-[180px] -mt-1 sm:mt-[2px]">
+          <p className="font-golden font-normal not-italic text-[22px] sm:text-[34px] leading-[30px] sm:leading-[36px] tracking-[0.05em] text-[#221811] ml-[92px] sm:ml-[180px] mt-3">
             {subtitle}
           </p>
         </div>
@@ -194,7 +194,7 @@ const Legacy: React.FC<LegacySectionProps> = ({
               <span className="not-italic font-normal uppercase"> CHARM</span>
             </h2>
 
-            <p className="font-golden font-normal not-italic text-[40px] leading-[48px] tracking-[0.07em] text-[#221811] ml-[240px] mt-[2px]">
+            <p className="font-golden font-normal not-italic text-[40px] leading-[48px] tracking-[0.07em] text-[#221811] ml-[240px] mt-3">
               {subtitle}
             </p>
           </div>

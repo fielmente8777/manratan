@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import AmenityIcon from "@/components/site/AmenityIcon";
-import AmbientVideo from "@/components/site/AmbientVideo";
+import NightGallery from "./NightGallery";
 import BookButton from "@/components/site/BookButton";
 import WalkthroughSection from "./Walkthrough";
 import SpacesGrid from "./SpacesGrid";
@@ -18,7 +18,6 @@ import {
   nearby,
   photo,
   site,
-  video,
   type Photo,
   type Place,
 } from "@/data/site";
@@ -73,21 +72,33 @@ export function About() {
 
           <p className="t-label mt-10 text-taupe">Welcome to Manratan</p>
 
-          <div id="about-title" className="mt-6">
-            <Title main="Our Story" script="a legacy of love" align="center" size="xl" />
+          <div className="mt-6 w-full">
+            <div id="about-title">
+              <Title main="Our Story" script="a legacy of love" align="center" size="xl" />
+            </div>
+
+            <p className="font-ivy mt-12 w-full text-[clamp(1.45rem,2.5vw,2.2rem)] leading-[1.4] text-ink">
+              It was their name that became our new beginning &ndash; named in
+              honour of a beloved grandmother and mother.
+            </p>
+
+            <p className="t-body mt-8 w-full text-[1.02rem]">
+              Set amid the green hills of Narsinghgarh, Manratan Resort brings
+              together contemporary comfort and warm, family-run hospitality: 65
+              rooms and suites, pure-vegetarian dining at Swadika, the Blue
+              Diamond pool, and lawns made for life&rsquo;s grandest celebrations.
+            </p>
+
+            <p className="t-body mt-8 w-full text-[1.02rem]">
+              From grand weddings, dreamy proposals, sangeet nights and milestone
+              celebrations to corporate retreats, birthday bashes and family
+              get-togethers, Manratan has a place for every occasion. Celebrating
+              love, success, a new beginning or recovering from a breakup? We&apos;ve
+              got you covered! With warm hospitality, personalised service and
+              beautiful spaces, we make every gathering special, even when the
+              reason is complicated.
+            </p>
           </div>
-
-          <p className="font-ivy mt-12 text-[clamp(1.45rem,2.5vw,2.2rem)] leading-[1.4] text-ink">
-            It was their name that became our new beginning &ndash; named in
-            honour of a beloved grandmother and mother.
-          </p>
-
-          <p className="t-body mt-8 max-w-[62ch] text-[1.02rem]">
-            Set amid the green hills of Narsinghgarh, Manratan Resort brings
-            together contemporary comfort and warm, family-run hospitality: 65
-            rooms and suites, pure-vegetarian dining at Swadika, the Blue
-            Diamond pool, and lawns made for life&rsquo;s grandest celebrations.
-          </p>
 
           <LineLink href="/our-story" className="mt-12">
             Discover our legacy
@@ -264,8 +275,8 @@ export function Amenities() {
             <span className="h-px w-16 bg-current/70" />
           </div>
           <h2 id="amenities-title" className="text-center">
-            <span className="t-display block text-[clamp(2.5rem,4.6vw,4rem)]">Amenities</span>
-            <span className="t-script -mt-1 block text-[clamp(1.8rem,3vw,2.75rem)] text-brass-light sm:translate-x-8">
+            <span className="t-display block text-[clamp(2.5rem,4.6vw,4rem)] leading-[1.2]!">Amenities</span>
+            <span className="t-script mt-3 block text-[clamp(1.8rem,3vw,2.75rem)] leading-[1.25]! text-brass-light sm:translate-x-8">
               at your convenience
             </span>
           </h2>
@@ -275,12 +286,12 @@ export function Amenities() {
             const body = (
               <>
                 <AmenityIcon name={a.icon} className="h-12 w-12 shrink-0 text-brass-light md:h-14 md:w-14" />
-                <div className="mt-2 flex flex-col items-center justify-center">
-                  <h3 className="t-display max-w-[22ch] text-[0.95rem] leading-[1.2] sm:text-[1.125rem] md:text-[1.25rem]">
+                <div className="mt-4 flex flex-col items-center justify-center">
+                  <h3 className="t-display max-w-[22ch] text-[0.95rem] leading-[1.45]! sm:text-[1.125rem] md:text-[1.25rem]">
                     {a.name}
                   </h3>
                   {a.icon === "dining" && (
-                    <p className="mt-2 text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-brass-light">
+                    <p className="mt-2 text-[0.6rem] font-semibold uppercase leading-relaxed tracking-[0.16em] text-brass-light">
                       Pure vegetarian
                     </p>
                   )}
@@ -292,12 +303,12 @@ export function Amenities() {
                 {a.href ? (
                   <Link
                     href={a.href}
-                    className="flex h-full min-h-[160px] flex-col items-center justify-center px-3 py-4 text-center transition-colors duration-300 hover:bg-brass-light/[0.06] focus-visible:bg-brass-light/[0.06] md:min-h-[180px] md:px-4 md:py-4"
+                    className="flex h-full min-h-[176px] flex-col items-center justify-center px-4 py-6 text-center transition-colors duration-300 hover:bg-brass-light/[0.06] focus-visible:bg-brass-light/[0.06] md:min-h-[196px] md:px-5"
                   >
                     {body}
                   </Link>
                 ) : (
-                  <div className="flex h-full min-h-[160px] flex-col items-center justify-center px-3 py-4 text-center md:min-h-[180px] md:px-4 md:py-4">{body}</div>
+                  <div className="flex h-full min-h-[176px] flex-col items-center justify-center px-4 py-6 text-center md:min-h-[196px] md:px-5">{body}</div>
                 )}
               </li>
             );
@@ -419,38 +430,28 @@ export function EvolvesWithLight() {
 /* ------------------------------------------------------------------ */
 
 export function ManratanByNight() {
-  const night = photo(
-    "facade-night-full",
-    "Manratan Resort's full facade lit up at night, seen from the forecourt"
-  );
   return (
     <Section defaultPadding={false} className="bg-stone" aria-label="Manratan by night">
       <figure className="relative" aria-labelledby="night-title">
-        <AmbientVideo
-          src={video.heroLoop}
-          poster={night.src}
-          alt={night.alt}
-          sizes="100vw"
-          objectPosition="58% 50%"
-          controlAt="top-right"
-          className="night-zoom h-[70svh] min-h-[420px] w-full md:h-[min(86svh,900px)]"
-        >
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
-          <figcaption className="absolute inset-x-0 bottom-0">
-            <Container className="pb-10 text-stone max-md:text-center md:pb-14">
-              <p
-                id="night-title"
-                className="t-display text-[clamp(2.2rem,5vw,4.4rem)] leading-none"
-              >
-                Manratan by night
-              </p>
-              <p className="mx-auto mt-3 max-w-[46ch] text-sm text-stone/85 md:mx-0">
-                The facade lit from end to end, as guests arrive for an evening
-                celebration.
-              </p>
-            </Container>
-          </figcaption>
-        </AmbientVideo>
+        <NightGallery />
+        <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
+        <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 z-10">
+          <Container className="pb-16 text-center text-stone md:pb-20">
+            <div id="night-title" className="mx-auto w-fit">
+              <Title
+                main="Manratan"
+                script="by night"
+                align="center"
+                tone="light"
+                className="[&>.t-script>span]:translate-x-0"
+              />
+            </div>
+            {/* <p className="mx-auto mt-3 max-w-[46ch] text-sm text-stone/85">
+              The facade lit from end to end, as guests arrive for an evening
+              celebration.
+            </p> */}
+          </Container>
+        </figcaption>
       </figure>
     </Section>
   );
@@ -479,12 +480,13 @@ export function Swadika() {
           <p className="t-label relative text-[0.62rem] text-taupe">
             Swadika · Pure-vegetarian restaurant
           </p>
-          <div id="swadika-title" className="relative mt-6 max-w-[640px]">
+          <div id="swadika-title" className="relative mt-6 max-w-[700px]">
             <Title
-              main="Local flavours meet exceptional dining"
+              main="THE ART OF EXCEPTIONAL DINING"
               script="authentic flavours, thoughtfully served"
               align="center"
               size="md"
+              className="flex flex-col gap-3 [&>.t-script]:mt-0 [&>.t-script>span]:translate-x-0"
             />
           </div>
           <p className="t-body relative mt-8 max-w-[52ch] text-[0.92rem]">

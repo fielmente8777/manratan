@@ -19,7 +19,7 @@ interface Props {
 
 const box = "bg-white border border-[#E5E0D8] flex items-center gap-2.5 rounded-[3px] h-[44px] px-3 shadow-sm";
 const text =
-  "w-full bg-transparent outline-none text-[14px] font-montserrat font-normal not-italic leading-none tracking-[0.03em] text-[#221811] placeholder:text-[#5E534A]/80 placeholder:font-montserrat placeholder:font-normal placeholder:text-[14px] placeholder:tracking-[0.03em]";
+  "min-w-0 w-full bg-transparent outline-none text-[16px] sm:text-[14px] font-montserrat font-normal not-italic leading-none tracking-[0.03em] text-[#221811] placeholder:text-[#5E534A]/80 placeholder:font-montserrat placeholder:font-normal placeholder:text-[16px] sm:placeholder:text-[14px] placeholder:tracking-[0.03em]";
 
 const Form2: React.FC<Props> = ({ gridView = false, formDomain = "manratanresort.com", formHid, className = "" }) => {
   const { bookingPrefill } = useWebContext();
@@ -128,7 +128,7 @@ const Form2: React.FC<Props> = ({ gridView = false, formDomain = "manratanresort
             {f.type === "tel" && (
               <div className="relative shrink-0">
                 <select
-                  className="appearance-none bg-transparent ps-1 pe-4 text-[14px] text-[#221811] focus:outline-none"
+                  className="appearance-none bg-transparent ps-1 pe-4 text-[16px] text-[#221811] focus:outline-none sm:text-[14px]"
                   name="countryCode"
                   value={formData.countryCode}
                   onChange={(e) => setFieldValue("countryCode", e.target.value)}
@@ -162,7 +162,7 @@ const Form2: React.FC<Props> = ({ gridView = false, formDomain = "manratanresort
         </div>
       ))}
 
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         <div className="relative">
           <div className={box}>
             <span className="shrink-0 text-[#221811]">

@@ -120,14 +120,14 @@ export default function BookingForm({ gridView = false, className = "", onSearch
   };
 
   return (
-    <form onSubmit={submit} noValidate className={`w-full ${className}`} aria-label="Check availability">
+    <form onSubmit={submit} noValidate className={`min-w-0 w-full ${className}`} aria-label="Check availability">
       <div
         className={`mr-booking-bar grid border border-white/25 bg-black/25 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.6)] backdrop-blur-md ${
-          gridView ? "grid-cols-1" : "grid-cols-2 lg:grid-cols-[1fr_1.6fr_1fr_auto]"
+          gridView ? "grid-cols-1" : "grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)_minmax(0,1fr)_auto]"
         }`}
       >
         {/* Name */}
-        <div className="border-b border-white/20 lg:border-b-0 lg:border-r">
+        <div className={`min-w-0 border-b border-white/20 ${gridView ? "" : "lg:border-b-0 lg:border-r"}`}>
           <label htmlFor={`${ids}-name`} className="mr-bf-field flex flex-col">
             <span className="mr-bf-label">Name</span>
             <input
@@ -144,7 +144,7 @@ export default function BookingForm({ gridView = false, className = "", onSearch
         </div>
 
         {/* Combined Check-in & Check-out — single range field */}
-        <div className={`border-b border-white/20 lg:border-b-0 lg:border-r ${gridView ? "" : "col-span-2 lg:col-span-1"}`}>
+        <div className={`min-w-0 border-b border-white/20 ${gridView ? "" : "lg:border-b-0 lg:border-r"}`}>
           {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
           <DatePicker
             {...picker}
@@ -172,7 +172,7 @@ export default function BookingForm({ gridView = false, className = "", onSearch
         </div>
 
         {/* Guests */}
-        <div ref={guestRef} className={`relative border-b border-white/20 lg:border-b-0 lg:border-r ${gridView ? "" : "col-span-2 lg:col-span-1"}`}>
+        <div ref={guestRef} className={`relative min-w-0 border-b border-white/20 ${gridView ? "" : "lg:border-b-0 lg:border-r"}`}>
           <button
             type="button"
             onClick={() => setGuestOpen((v) => !v)}
@@ -191,7 +191,7 @@ export default function BookingForm({ gridView = false, className = "", onSearch
           {guestOpen && (
             <div
               id={`${ids}-guests`}
-              className="absolute bottom-full left-0 z-[80] mb-2 w-full min-w-[260px] border border-white/20 bg-[#1c130d]/95 p-5 text-white shadow-2xl backdrop-blur-lg"
+              className="absolute bottom-full left-0 z-[80] mb-2 w-full border border-white/20 bg-[#1c130d]/95 p-4 text-white shadow-2xl backdrop-blur-lg lg:min-w-[280px] lg:p-5"
             >
               <Counter label="Adults" sub="13 years and over" value={adults} min={1} max={12} onChange={setAdults} />
               <div className="my-4 h-px bg-white/10" />
@@ -206,9 +206,7 @@ export default function BookingForm({ gridView = false, className = "", onSearch
         {/* Submit */}
         <button
           type="submit"
-          className={`t-label flex min-h-13 items-center justify-center bg-stone px-7 text-ink transition-colors duration-300 hover:bg-white ${
-            gridView ? "" : "col-span-2 lg:col-span-1"
-          } whitespace-nowrap`}
+          className="t-label flex min-h-13 items-center justify-center bg-stone px-5 py-4 text-ink transition-colors duration-300 hover:bg-white lg:px-7"
         >
           Check availability
         </button>
