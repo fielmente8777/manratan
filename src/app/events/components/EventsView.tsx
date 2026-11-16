@@ -89,8 +89,8 @@ const occasions = [
     desc: "Marigold mornings by the pool and music nights in the Blue Sapphire hall.",
     venue: "Blue Diamond · Blue Sapphire",
     dot: "#4A78C0",
-    img: "/events-page/haldi-ceremony.jpg",
-    alt: "Vibrant poolside Haldi ceremony setup with marigold flowers",
+    img: "/haldi.jpeg",
+    alt: "Vibrant Haldi ceremony setup with marigold flowers",
   },
   {
     title: "Receptions",
