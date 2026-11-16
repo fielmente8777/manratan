@@ -35,10 +35,11 @@ type TitleProps = {
   tone?: "dark" | "light";
   size?: "md" | "lg" | "xl";
   className?: string;
+  scriptClassName?: string;
 };
 
 /** Approved heading pattern: IvyOra uppercase with a script line set under it. */
-export function Title({ main, script, as: Tag = "h2", align = "left", tone = "dark", size = "lg", className = "" }: TitleProps) {
+export function Title({ main, script, as: Tag = "h2", align = "left", tone = "dark", size = "lg", className = "", scriptClassName = "" }: TitleProps) {
   const sizes = {
     md: "text-[clamp(1.75rem,2.6vw,2.6rem)]",
     lg: "text-[clamp(2.25rem,4.2vw,4rem)]",
@@ -50,7 +51,7 @@ export function Title({ main, script, as: Tag = "h2", align = "left", tone = "da
     <Tag className={`${color} ${align === "center" ? "text-center" : ""} ${className}`}>
       <span className={`t-display block ${sizes[size]}`}>{main}</span>
       {script && (
-        <span className={`t-script block ${scriptSizes[size]} -mt-[0.1em] ${align === "center" ? "" : "pl-[22%] sm:pl-[18%]"}`}>
+        <span className={`t-script block ${scriptSizes[size]} -mt-[0.1em] ${scriptClassName ? scriptClassName : (align === "center" ? "" : "pl-[22%] sm:pl-[18%]")}`}>
           <span className={align === "center" ? "inline-block translate-x-[18%]" : ""}>{script}</span>
         </span>
       )}

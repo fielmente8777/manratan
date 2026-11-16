@@ -26,7 +26,7 @@ export const footerData: FooterData = {
       title: "LINKS",
       items: [
         { label: "Home", href: "/" },
-        { label: "About Us", href: "/about" },
+        { label: "Our Story", href: "/our-story" },
         { label: "Accommodation", href: "/accommodation" },
         { label: "Gallery", href: "/gallery" },
         { label: "Events", href: "/events" },

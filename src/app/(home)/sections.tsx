@@ -89,7 +89,7 @@ export function About() {
             Diamond pool, and lawns made for life&rsquo;s grandest celebrations.
           </p>
 
-          <LineLink href="/about" className="mt-12">
+          <LineLink href="/our-story" className="mt-12">
             Discover our legacy
             <ArrowIcon />
           </LineLink>
@@ -620,44 +620,110 @@ export function PlacesNearby() {
 
 /* ------------------------------------------------------------------ */
 
-export function EscapeCTA() {
-  const img = photo("suite-1", "Executive Suite with a wide window over the green hills");
+export interface EscapeCTAProps {
+  image?: { src: string; alt: string };
+  kicker?: string;
+  main?: string;
+  script?: string;
+  desc?: React.ReactNode;
+  align?: "center" | "left";
+  primaryButton?: React.ReactNode;
+  secondaryButton?: React.ReactNode;
+  className?: string;
+  bg?: string;
+  scriptClassName?: string;
+}
+
+export function EscapeCTA({
+  image,
+  kicker = "Relax · Reconnect · Rejuvenate",
+  main = "A perfect escape",
+  script = "for memorable stays & celebrations",
+  desc = "Where timeless luxury meets impeccable hospitality.",
+  align = "center",
+  primaryButton,
+  secondaryButton,
+  className = "",
+  bg,
+  scriptClassName,
+}: EscapeCTAProps = {}) {
+  const defaultImg = photo("suite-1", "Executive Suite with a wide window over the green hills");
+  const img = image || defaultImg;
+  const isLeft = align === "left";
+
   return (
-    <Section defaultPadding={false} className="bg-stone py-16 md:py-24" aria-labelledby="escape-title">
-      <div className="mx-auto w-full max-w-[1600px] px-4 sm:px-8 lg:px-10">
-        <div className="relative isolate flex min-h-[620px] flex-col items-center justify-center overflow-hidden rounded-[22px] bg-ink text-stone sm:rounded-[28px] lg:min-h-[640px]">
+    <Section defaultPadding={false} className={`${bg || "bg-stone"} py-16 md:py-24 ${className}`} aria-labelledby="escape-title">
+      <div className={`mx-auto w-full ${isLeft ? "max-w-[1360px]" : "max-w-[1600px]"} px-4 sm:px-8 lg:px-10`}>
+        <div className={`group relative isolate flex ${isLeft ? "min-h-[500px] sm:min-h-[540px] lg:min-h-[560px] items-center justify-start" : "min-h-[620px] lg:min-h-[640px] items-center justify-center"} overflow-hidden rounded-[24px] bg-ink text-stone sm:rounded-[32px]`}>
           <Image
             src={img.src}
             alt={img.alt}
             fill
-            quality={85}
+            quality={90}
             sizes="(max-width: 1024px) 100vw, 75vw"
-            className="-z-20 object-cover object-[30%_50%]"
+            className={`-z-20 object-cover ${isLeft ? "object-[center_35%]" : "object-[30%_50%]"} transition-transform duration-700 ease-out group-hover:scale-105`}
           />
-          {/* Phones: fade up from the bottom. Desktop: fade into the dark right side. */}
-          <div className="absolute inset-0 -z-10 bg-[#1e140d]/65" />
+          {/* Overlay */}
+          <div className={`absolute inset-0 -z-10 ${isLeft ? "bg-gradient-to-r from-ink/85 via-ink/45 to-transparent sm:w-[75%] lg:w-[68%]" : "bg-[#1e140d]/65"}`} />
 
-          <div className="w-full max-w-[900px] px-6 py-16 text-center sm:px-12 lg:py-20">
-            <p className="t-label text-brass-light">Relax · Reconnect · Rejuvenate</p>
-            <div id="escape-title" className="mt-6">
-              <Title main="A perfect escape" script="for memorable stays & celebrations" align="center" tone="light" size="lg" />
+          <div className={`w-full ${isLeft ? "max-w-[780px] px-8 py-12 sm:px-14 sm:py-16 lg:px-20 lg:py-20 text-left" : "max-w-[900px] px-6 py-16 text-center sm:px-12 lg:py-20"}`}>
+            {kicker && (
+              <p className={`text-[0.68rem] sm:text-[0.72rem] font-medium tracking-[0.25em] uppercase text-brass-light`}>
+                {kicker}
+              </p>
+            )}
+            <div id="escape-title" className="mt-4 sm:mt-5">
+              {isLeft && main === "ROYAL CHARM" ? (
+                <div className="relative inline-block text-left text-stone">
+                  <h2 className="sr-only">{main} {script}</h2>
+                  <div aria-hidden="true">
+                    <span className="t-display block text-[clamp(2.25rem,4.2vw,4rem)] tracking-[0.03em] text-stone">
+                      ROY<span className="relative">A<span className="t-script absolute left-0 top-full -mt-2 sm:-mt-2.5 whitespace-nowrap text-[clamp(2rem,3.45vw,3.2rem)] normal-case tracking-normal text-brass-light">of Narsinghgarh</span></span>L CHARM
+                    </span>
+                    <span className="t-script block invisible text-[clamp(2rem,3.45vw,3.2rem)] -mt-2 sm:-mt-2.5 select-none pointer-events-none" aria-hidden="true">
+                      of Narsinghgarh
+                    </span>
+                  </div>
+                </div>
+              ) : (
+                <Title
+                  main={main}
+                  script={script}
+                  align={align}
+                  tone="light"
+                  size="lg"
+                  scriptClassName={scriptClassName || (isLeft ? "pl-[14%] sm:pl-[12%] text-brass-light" : "")}
+                />
+              )}
             </div>
-            <p className="font-ivy mx-auto mt-8 max-w-[22ch] text-[clamp(1.35rem,2.1vw,1.9rem)] leading-[1.35] text-stone">
-              Where timeless luxury meets impeccable hospitality.
-            </p>
-            <div className="mt-9 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-              <BookButton tone="light" className="rounded-full px-8 py-4 sm:px-10">
-                Book your stay
-              </BookButton>
-              <a
-                href={site.contact.WhatsappCta}
-                target="_blank"
-                rel="noreferrer"
-                className="t-label inline-flex items-center justify-center gap-2.5 rounded-full border border-stone/40 px-8 py-4 text-stone transition-colors duration-500 hover:border-stone hover:bg-stone hover:text-ink sm:px-10"
-              >
-                <WhatsAppIcon className="h-5 w-5 shrink-0" />
-                WhatsApp us
-              </a>
+            {desc && (
+              typeof desc === "string" ? (
+                <p className={`font-ivy mt-6 text-[clamp(1.35rem,2.1vw,1.85rem)] font-normal leading-[1.35] text-stone ${isLeft ? "max-w-[55ch]" : "mx-auto max-w-[22ch] text-center"}`}>
+                  {desc}
+                </p>
+              ) : (
+                <div className={`font-ivy mt-6 text-[clamp(1.35rem,2.1vw,1.85rem)] font-normal leading-[1.35] text-stone ${isLeft ? "max-w-[55ch]" : "text-center"}`}>
+                  {desc}
+                </div>
+              )
+            )}
+            <div className={`mt-8 sm:mt-9 flex flex-wrap items-center gap-3.5 sm:gap-4 ${isLeft ? "justify-start" : "justify-center"}`}>
+              {primaryButton ? primaryButton : (
+                <BookButton tone="light" className="rounded-full px-8 py-4 sm:px-10">
+                  Book your stay
+                </BookButton>
+              )}
+              {secondaryButton ? secondaryButton : (
+                <a
+                  href={site.contact.WhatsappCta}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="t-label inline-flex items-center justify-center gap-2.5 rounded-full border border-stone/40 px-8 py-4 text-stone transition-colors duration-500 hover:border-stone hover:bg-stone hover:text-ink sm:px-10"
+                >
+                  <WhatsAppIcon className="h-5 w-5 shrink-0" />
+                  WhatsApp us
+                </a>
+              )}
             </div>
           </div>
         </div>

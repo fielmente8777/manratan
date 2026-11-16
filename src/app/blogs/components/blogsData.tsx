@@ -87,8 +87,8 @@ export const blogsData: BlogPost[] = [
     slug: "destination-weddings-at-manratan-royal-affair",
     title: "Royal Destination Weddings at Manratan Resort",
     date: "18 Jan, 2026",
-    coverImage: "/media/blue-sapphire-stage.webp",
-    url: "/media/blue-sapphire-stage.webp",
+    coverImage: "/event-banner.jpg",
+    url: "/event-banner.jpg",
     alt: "Blue Sapphire banquet hall dressed for a wedding",
     description:
       "Turn your dream wedding into a majestic affair with expansive lawns, royal decor, gourmet dining, and luxury hospitality at Manratan Resort.",
@@ -129,6 +129,7 @@ export const blogsData: BlogPost[] = [
   </div>
   `,
   },
+  /* Hidden as requested:
   {
     id: "3",
     slug: "holistic-wellness-and-rejuvenation-retreat",
@@ -173,6 +174,7 @@ export const blogsData: BlogPost[] = [
   </div>
   `,
   },
+  */
   {
     id: "4",
     slug: "culinary-journey-authentic-malwa-flavors",

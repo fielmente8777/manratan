@@ -13,7 +13,7 @@ type Props = {
 /** Full-bleed opening image with the approved centred title and a scroll cue. */
 export default function PageHero({ image, title, script, intro, height = "tall", focus = "center" }: Props) {
   return (
-    <section className={`relative isolate flex w-full items-end overflow-hidden bg-ink text-stone ${height === "full" ? "min-h-[100svh]" : "min-h-[78svh]"}`}>
+    <section className={`group relative isolate flex w-full items-end overflow-hidden bg-ink text-stone ${height === "full" ? "min-h-[100svh]" : "min-h-[78svh]"}`}>
       <Image
         src={image.src}
         alt={image.alt}
@@ -21,7 +21,7 @@ export default function PageHero({ image, title, script, intro, height = "tall",
         preload
         sizes="100vw"
         quality={90}
-        className="-z-10 object-cover hero-fade"
+        className="-z-10 object-cover hero-fade transition-transform duration-1000 ease-out group-hover:scale-105"
         style={{ objectPosition: focus }}
       />
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/35 via-black/10 to-black/60" />

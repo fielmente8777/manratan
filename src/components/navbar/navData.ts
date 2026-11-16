@@ -8,7 +8,7 @@ export const navData = {
 
   links: [
     { label: "Home", href: "/" },
-    { label: "Our Story", href: "/about" },
+    { label: "Our Story", href: "/our-story" },
     { label: "Accommodation", href: "/accommodation" },
     { label: "Gallery", href: "/gallery" },
     { label: "Events", href: "/events" },

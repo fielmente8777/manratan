@@ -10,7 +10,7 @@ export default function BookButton({
   className = "",
 }: {
   children?: ReactNode;
-  tone?: "dark" | "light" | "outline";
+  tone?: "dark" | "light" | "outline" | "outline-light";
   className?: string;
 }) {
   const { setIsOpenPopUpForm } = useWebContext();
@@ -18,6 +18,7 @@ export default function BookButton({
     dark: "bg-ink text-stone hover:bg-ink-soft",
     light: "bg-stone text-ink hover:bg-white",
     outline: "border border-ink/40 text-ink hover:bg-ink hover:text-stone",
+    "outline-light": "border border-stone/60 text-stone hover:border-white hover:bg-white/10 hover:text-white",
   }[tone];
   return (
     <button
