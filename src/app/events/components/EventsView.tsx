@@ -982,6 +982,18 @@ export default function EventsView() {
             font-size: clamp(44px, 11vw, 66px);
             padding-left: 0.4em;
           }
+          .ev-reel-row {
+            display: flex;
+            flex-direction: column;
+            overflow-x: visible;
+            margin-right: 0;
+            padding-right: 0;
+            gap: 24px;
+          }
+          .ev-reel-row > li {
+            flex: none;
+            width: 100%;
+          }
           .ev-close-card {
             min-height: auto;
             border-radius: 24px;
