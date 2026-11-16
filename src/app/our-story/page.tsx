@@ -173,7 +173,10 @@ export default function OurStoryPage() {
                 d: "Indian and global multi-cuisine dining under a signature chandelier.",
               },
               {
-                img: photo("pool-friends", "Two friends laughing at the edge of the Blue Diamond pool"),
+                img: {
+                  src: "/homopage/dining2_11zon.webp",
+                  alt: "Blue Diamond Pool at Manratan Resort",
+                },
                 tag: "OPEN-AIR POOL",
                 t: "BLUE DIAMOND POOL",
                 d: "Slow afternoons, floating breakfasts and candlelit dinners by the water.",
