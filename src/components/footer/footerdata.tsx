@@ -19,7 +19,7 @@ export interface FooterData {
 }
 
 export const footerData: FooterData = {
-  logo: "/images/footer.png",
+  logo: "/bright-images/images/footer.png",
 
   links: [
     {

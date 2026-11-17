@@ -21,7 +21,7 @@ export default function ContactPage() {
   };
 
   return (
-    <main>
+    <main className="max_screen_width">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "Manratan Resort",
     locale: "en_IN",
-    images: [{ url: "/media/facade-dusk.webp", width: 1448, height: 1086, alt: "Manratan Resort at dusk" }],
+    images: [{ url: "/bright-images/media/facade-dusk.webp", width: 1448, height: 1086, alt: "Manratan Resort at dusk" }],
   },
   twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true },
@@ -62,7 +62,7 @@ const hotelSchema = {
   name: "Manratan Resort",
   slogan: site.tagline,
   url: site.url,
-  image: [`${site.url}/media/facade-dusk.webp`, `${site.url}/media/pool-dusk.webp`, `${site.url}/media/suite-1.webp`],
+  image: [`${site.url}/bright-images/media/facade-dusk.webp`, `${site.url}/bright-images/media/pool-dusk.webp`, `${site.url}/bright-images/media/suite-1.webp`],
   description:
     "Resort in Narsinghgarh, Madhya Pradesh, the Mini Kashmir of Malwa, with 65 rooms and suites, a pure vegetarian restaurant, an outdoor swimming pool, a Pooja Room, a Parlour Room, banquet halls and wedding lawns.",
   telephone: site.contact.phone[0],

@@ -51,7 +51,7 @@ const GallerySection: React.FC<GallerySectionProps> = ({
         style={{ opacity: 1 }}
       >
         <img
-          src="/landing/bg-image2.png"
+          src="/bright-images/landing/bg-image2.png"
           alt="Gallery Background Ornament"
           width={401}
           height={354}

@@ -74,7 +74,7 @@ const SectionHeading: React.FC<SectionHeadingDescProps> = ({
           {logo && (
             <div className="w-16 aspect-square relative">
               <Image
-                src={"/logo-2.png"}
+                src={"/bright-images/logo-2.png"}
                 alt="logo"
                 fill
                 className="object-cover"

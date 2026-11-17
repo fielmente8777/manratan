@@ -1,10 +1,10 @@
 export const homePageData = {
   heroData: {
-    image: "/media/facade-dusk.webp",
+    image: "/bright-images/media/facade-dusk.webp",
 
     location: "NARSINGHGARH, MP",
 
-    logo: "/images/logo.jpg",
+    logo: "/bright-images/images/logo.jpg",
 
     videoLink: "#",
 
@@ -29,17 +29,17 @@ export const homePageData = {
 
     gallery: [
       {
-        image: "/media/aerial-greenery.webp",
+        image: "/bright-images/media/aerial-greenery.webp",
         alt: "Heritage Architecture",
       },
       {
-        image: "/media/aerial-approach.webp",
+        image: "/bright-images/media/aerial-approach.webp",
         alt: "Resort Aerial View",
       },
     ],
   },
   historyData: {
-    image: "/media/ngh-lake-temple.webp",
+    image: "/bright-images/media/ngh-lake-temple.webp",
     title: "Royal Charm",
     subTitle: "of Narsinghgarh",
     description:
@@ -60,19 +60,19 @@ export const homePageData = {
     gallery: [
       {
         title: "Reception",
-        image: "/media/reception-welcome.webp",
+        image: "/bright-images/media/reception-welcome.webp",
       },
       {
         title: "Room",
-        image: "/media/suite-bed.webp",
+        image: "/bright-images/media/suite-bed.webp",
       },
       {
         title: "Restaurant",
-        image: "/media/swadika-hall.webp",
+        image: "/bright-images/media/swadika-hall.webp",
       },
       {
         title: "Pool",
-        image: "/media/pool-dusk.webp",
+        image: "/bright-images/media/pool-dusk.webp",
       },
     ],
 
@@ -88,22 +88,22 @@ export const homePageData = {
 
     gallery: [
       {
-        image: "/media/golden-sapphire.webp",
+        image: "/bright-images/media/golden-sapphire.webp",
         alt: "Wedding Event 1",
         video: "#",
       },
       {
-        image: "/media/conference.webp",
+        image: "/bright-images/media/conference.webp",
         alt: "Wedding Event 2",
         video: "#",
       },
       {
-        image: "/media/skylawn-above.webp",
+        image: "/bright-images/media/skylawn-above.webp",
         alt: "Wedding Event 3",
         video: "#",
       },
       {
-        image: "/media/blue-sapphire-stage.webp",
+        image: "/bright-images/media/blue-sapphire-stage.webp",
         alt: "Wedding Event 4",
         video: "#",
       },
@@ -114,7 +114,7 @@ export const homePageData = {
 
     link: {
       label: "EXPLORE",
-      href: "/events/",
+      href: "/bright-images/events/",
     },
   },
   experienceSection: {
@@ -128,15 +128,15 @@ export const homePageData = {
 
     images: [
       {
-        image: "/media/swadika-hall.webp",
+        image: "/bright-images/media/swadika-hall.webp",
         alt: "Dining Experience",
       },
       {
-        image: "/media/swadika-guests.webp",
+        image: "/bright-images/media/swadika-guests.webp",
         alt: "Restaurant",
       },
       {
-        image: "/media/swadika-room.webp",
+        image: "/bright-images/media/swadika-room.webp",
         alt: "Fine Dining",
       },
     ],

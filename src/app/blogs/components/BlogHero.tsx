@@ -14,7 +14,7 @@ interface BlogHeroProps {
 const BlogHero = ({
   title = "MANRATAN",
   subTitle = "Blogs",
-  bgImage = "/images/reception1.jpeg",
+  bgImage = "/bright-images/images/reception1.jpeg",
   alt = "Manratan Resort Blogs",
 }: BlogHeroProps) => {
   return (

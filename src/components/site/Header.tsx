@@ -97,7 +97,7 @@ export default function Header() {
               showLogo ? "opacity-100" : "opacity-0 pointer-events-none"
             }`}
           >
-            <Image src="/images/nav.png" alt="Manratan Resort" width={118} height={50} className="h-[28px] w-auto sm:h-[46px]" preload />
+            <Image src="/bright-images/images/nav.png" alt="Manratan Resort" width={118} height={50} className="h-[28px] w-auto sm:h-[46px]" preload />
           </Link>
 
           {/* Right: book (solid dull white, full white on hover) */}

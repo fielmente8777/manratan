@@ -41,7 +41,7 @@ export default function Narsinghgarh() {
       <figure className={styles.film}>
         <div className={styles.frame}>
           <Image
-            src="/media/narsinghgarh-film.jpg"
+            src="/bright-images/media/narsinghgarh-film.jpg"
             alt="Narsinghgarh Fort on its green hill above the old town"
             fill
             unoptimized

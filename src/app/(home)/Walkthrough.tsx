@@ -53,39 +53,53 @@ export default function Walkthrough() {
     };
   }, []);
 
-  // Pre-seek inactive clips to their next start so chapter changes do not buffer on a fresh seek.
   useEffect(() => {
     videos.current.forEach((element, index) => {
       if (!element) return;
-      if (index !== active) {
-        element.pause();
-        if (Math.abs(element.currentTime - stops[index].start) > 0.05) element.currentTime = stops[index].start;
-      } else if (element.currentTime < stops[index].start || element.currentTime >= stops[index].end) {
-        element.currentTime = stops[index].start;
-      }
-    });
-  }, [active, load]);
-
-  useEffect(() => {
-    let cancelled = false;
-    videos.current.forEach((element, index) => {
-      if (!element) return;
-      element.muted = index === active ? muted : true;
-      if (index === active && shouldPlay && load) {
-        void element.play().catch(() => {
-          if (!cancelled) setPlaying(false);
-        });
+      if (index === active) {
+        element.muted = muted;
+        element.defaultMuted = true;
+        element.playsInline = true;
+        if (shouldPlay && load) {
+          if (element.currentTime < stops[index].start - 0.25 || element.currentTime >= stops[index].end) {
+            element.currentTime = stops[index].start;
+          }
+          const p = element.play();
+          if (p !== undefined) {
+            p.catch((err) => {
+              if (err?.name === "NotAllowedError") {
+                setPlaying(false);
+              }
+            });
+          }
+        } else {
+          element.pause();
+        }
       } else {
         element.pause();
+        element.muted = true;
+        if (Math.abs(element.currentTime - stops[index].start) > 0.05) {
+          element.currentTime = stops[index].start;
+        }
       }
     });
-    return () => { cancelled = true; };
   }, [active, shouldPlay, muted, load]);
 
   const pick = (index: number) => {
+    const next = (index + stops.length) % stops.length;
     setLoad(true);
-    setActive((index + stops.length) % stops.length);
+    setActive(next);
     setPlaying(true);
+    const cur = videos.current[next];
+    if (cur) {
+      if (cur.currentTime < stops[next].start - 0.25 || cur.currentTime >= stops[next].end) {
+        cur.currentTime = stops[next].start;
+      }
+      cur.muted = muted;
+      cur.defaultMuted = true;
+      cur.playsInline = true;
+      void cur.play().catch(() => {});
+    }
   };
   const navigate = (direction: 1 | -1) => {
     if (swipe.current.suppressTap) {
@@ -96,7 +110,30 @@ export default function Walkthrough() {
   };
   const togglePlay = () => {
     setLoad(true);
-    setPlaying((value) => !value);
+    const next = !playing;
+    setPlaying(next);
+    const cur = videos.current[active];
+    if (cur) {
+      if (next) {
+        if (cur.currentTime < stops[active].start - 0.25 || cur.currentTime >= stops[active].end) {
+          cur.currentTime = stops[active].start;
+        }
+        cur.muted = muted;
+        cur.defaultMuted = true;
+        cur.playsInline = true;
+        void cur.play().catch(() => {});
+      } else {
+        cur.pause();
+      }
+    }
+  };
+  const toggleMute = () => {
+    const nextMuted = !muted;
+    setMuted(nextMuted);
+    const cur = videos.current[active];
+    if (cur) {
+      cur.muted = nextMuted;
+    }
   };
   const controls = (mobile = false) => (
     <div className={mobile ? styles.mobileControls : styles.buttons}>
@@ -108,7 +145,7 @@ export default function Walkthrough() {
           </svg>
         ) : <PlayIcon className="h-4 w-4" />}
       </button>
-      <button type="button" className={styles.control} onClick={() => setMuted((value) => !value)} aria-label={muted ? "Turn sound on" : "Turn sound off"} aria-pressed={!muted}>
+      <button type="button" className={styles.control} onClick={toggleMute} aria-label={muted ? "Turn sound on" : "Turn sound off"} aria-pressed={!muted}>
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M3 8v4h3l4 3V5L6 8z" />
           {muted ? <path d="m14 8 4 4m0-4-4 4" /> : <path d="M13.5 7.5a3.5 3.5 0 0 1 0 5m2-7a6.5 6.5 0 0 1 0 9" />}
@@ -166,21 +203,24 @@ export default function Walkthrough() {
                   poster={stop.poster}
                   muted={muted || active !== index}
                   playsInline
-                  autoPlay={active === index && shouldPlay}
                   preload={load ? "auto" : "none"}
                   aria-hidden="true"
                   tabIndex={-1}
                   className={styles.media}
                   onLoadedMetadata={(event) => {
-                    event.currentTarget.currentTime = stop.start;
+                    if (Math.abs(event.currentTarget.currentTime - stop.start) > 0.1) {
+                      event.currentTarget.currentTime = stop.start;
+                    }
                   }}
                   onTimeUpdate={(event) => {
                     if (active !== index) return;
                     const time = event.currentTarget.currentTime;
                     setProgress({ index, value: Math.max(0, Math.min(1, (time - stop.start) / (stop.end - stop.start))) });
-                    if (shouldPlay && time >= stop.end) setActive((index + 1) % stops.length);
+                    if (shouldPlay && time >= stop.end) {
+                      pick(index + 1);
+                    }
                   }}
-                  onEnded={() => { if (active === index && shouldPlay) setActive((index + 1) % stops.length); }}
+                  onEnded={() => { if (active === index && shouldPlay) pick(index + 1); }}
                 />
                 <span className={styles.shade} aria-hidden="true" />
                 {active === index && <span className={styles.desktopProgress} aria-hidden="true"><i style={{ transform: `scaleX(${currentProgress})` }} /></span>}

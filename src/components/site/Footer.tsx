@@ -43,7 +43,7 @@ export default function Footer() {
     <footer className="max_screen_width bg-ink text-base text-stone">
       <Container className="pb-10 pt-12 md:pt-20">
         <div className="flex flex-col items-center gap-8 text-center md:flex-row md:justify-between md:text-left">
-          <Link href="/" aria-label="Manratan Resort home"><Image src="/images/footer.png" alt="Manratan Resort" width={220} height={68} className="h-auto w-[180px] sm:w-[190px]" /></Link>
+          <Link href="/" aria-label="Manratan Resort home"><Image src="/bright-images/images/footer.png" alt="Manratan Resort" width={220} height={68} className="h-auto w-[180px] sm:w-[190px]" /></Link>
           <p className="t-script text-[clamp(1.9rem,3.2vw,2.9rem)] text-brass">{site.tagline}</p>
         </div>
         <div className="mt-10 h-px bg-stone/15 md:mt-14" aria-hidden="true" />

@@ -35,7 +35,7 @@ const Legacy: React.FC<LegacySectionProps> = ({
   buttons,
 }) => {
   const { setIsOpenPopUpForm } = useWebContext();
-  const rawImages = images && images.length > 0 ? images : ["/landing/image1.jpg"];
+  const rawImages = images && images.length > 0 ? images : ["/bright-images/landing/image1.jpg"];
   const displayImages =
     rawImages.length < 6
       ? [...rawImages, ...rawImages, ...rawImages]

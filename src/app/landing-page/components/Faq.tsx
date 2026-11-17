@@ -35,7 +35,7 @@ const Faq: React.FC<FaqProps> = ({
         className="pointer-events-none absolute bottom-0 left-[-120px] sm:left-[-160px] lg:left-[-205px] z-0 w-[240px] h-[212px] sm:w-[320px] sm:h-[283px] lg:w-[401px] lg:h-[353.99px] flex items-center justify-start"
       >
         <img
-          src="/landing/bg-image1.png"
+          src="/bright-images/landing/bg-image1.png"
           alt="FAQ Background Ornament"
           width={401}
           height={354}

@@ -1,5 +1,5 @@
 export const navData = {
-  logo: "/images/nav.png",
+  logo: "/bright-images/images/nav.png",
 
   location: {
     label: "NARSINGHGARH, MP",

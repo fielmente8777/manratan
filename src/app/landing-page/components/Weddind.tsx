@@ -46,14 +46,14 @@ const WeddingSection: React.FC<WeddingSectionProps> = ({
         <div
           className="relative w-full lg:h-[673px] min-h-0 lg:min-h-[673px] overflow-hidden p-4 sm:p-8 lg:pt-[64px] lg:pb-[64px] lg:px-[31px] flex flex-col justify-center bg-no-repeat bg-center"
           style={{
-            backgroundImage: "url('/landing/Wedding-bg.png')",
+            backgroundImage: "url('/bright-images/landing/Wedding-bg.png')",
             backgroundSize: "cover",
           }}
         >
           {/* Background Image */}
           <div className="absolute inset-0 -z-10 w-full h-full">
             <Image
-              src="/landing/Wedding-bg.png"
+              src="/bright-images/landing/Wedding-bg.png"
               alt="Wedding celebration background"
               fill
               priority

@@ -60,9 +60,9 @@ export const LandingPageData = {
     ],
 
     images: [
-      "/media/ngh-chhatri.webp",
-      "/media/ngh-lake-temple.webp",
-      "/media/ngh-hilltop-temple.webp",
+      "/bright-images/media/ngh-chhatri.webp",
+      "/bright-images/media/ngh-lake-temple.webp",
+      "/bright-images/media/ngh-hilltop-temple.webp",
     ],
 
     buttons: [
@@ -151,10 +151,10 @@ export const LandingPageData = {
         title: "Deluxe Room",
 
         images: [
-          "/media/deluxe-new.webp",
-          "/media/deluxe-2.webp",
-          "/media/towel-swans.webp",
-          "/media/corridor.webp",
+          "/bright-images/media/deluxe-new.webp",
+          "/bright-images/media/deluxe-2.webp",
+          "/bright-images/media/towel-swans.webp",
+          "/bright-images/media/corridor.webp",
         ],
 
         amenities: [
@@ -188,10 +188,10 @@ export const LandingPageData = {
         title: "Deluxe Interconnected Room",
 
         images: [
-          "/media/inter-1.webp",
-          "/media/inter-2.webp",
-          "/media/inter-3.webp",
-          "/media/suite-swans.webp",
+          "/bright-images/media/inter-1.webp",
+          "/bright-images/media/inter-2.webp",
+          "/bright-images/media/inter-3.webp",
+          "/bright-images/media/suite-swans.webp",
         ],
 
         amenities: [
@@ -225,10 +225,10 @@ export const LandingPageData = {
         title: "Executive Family Room",
 
         images: [
-          "/media/executive-1.webp",
-          "/media/executive-2.webp",
-          "/media/executive-3.webp",
-          "/media/executive-4.webp",
+          "/bright-images/media/executive-1.webp",
+          "/bright-images/media/executive-2.webp",
+          "/bright-images/media/executive-3.webp",
+          "/bright-images/media/executive-4.webp",
         ],
 
         amenities: [
@@ -262,10 +262,10 @@ export const LandingPageData = {
         title: "Premium Room",
 
         images: [
-          "/media/premium-1.webp",
-          "/media/premium-2.webp",
-          "/media/premium-bath.webp",
-          "/media/towel-swans.webp",
+          "/bright-images/media/premium-1.webp",
+          "/bright-images/media/premium-2.webp",
+          "/bright-images/media/premium-bath.webp",
+          "/bright-images/media/towel-swans.webp",
         ],
 
         amenities: [
@@ -299,10 +299,10 @@ export const LandingPageData = {
         title: "Suite Room",
 
         images: [
-          "/media/suite-1.webp",
-          "/media/suite-living.webp",
-          "/media/suite-bed.webp",
-          "/media/suite-bath.webp",
+          "/bright-images/media/suite-1.webp",
+          "/bright-images/media/suite-living.webp",
+          "/bright-images/media/suite-bed.webp",
+          "/bright-images/media/suite-bath.webp",
         ],
 
         amenities: [
@@ -347,15 +347,15 @@ export const LandingPageData = {
       "From a vibrant marigold strewn haldi by the pool to a royal baraat on our wide driveways and a star studded reception on the Red Coral Lawn, Manratan Resort is Narsinghgarh's ultimate wedding destination. With grand banquet halls, 65 on site luxury rooms for wedding guests, bespoke pure veg catering, and dedicated event coordinators, we turn your dream celebration into an unforgettable royal affair.",
 
     images: [
-      "/media/blue-sapphire.webp",
-      "/media/blue-sapphire-tables.webp",
-      "/media/blue-sapphire-lounge.webp",
-      "/media/golden-sapphire.webp",
-      "/media/conference.webp",
-      "/media/skylawn-above.webp",
-      "/media/blue-sapphire-stage.webp",
-      "/media/golden-sapphire-2.webp",
-      "/media/blue-sapphire-detail.webp",
+      "/bright-images/media/blue-sapphire.webp",
+      "/bright-images/media/blue-sapphire-tables.webp",
+      "/bright-images/media/blue-sapphire-lounge.webp",
+      "/bright-images/media/golden-sapphire.webp",
+      "/bright-images/media/conference.webp",
+      "/bright-images/media/skylawn-above.webp",
+      "/bright-images/media/blue-sapphire-stage.webp",
+      "/bright-images/media/golden-sapphire-2.webp",
+      "/bright-images/media/blue-sapphire-detail.webp",
     ],
 
     button: {

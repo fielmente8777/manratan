@@ -25,7 +25,7 @@ export default function OurStoryPage() {
     <main className="bg-stone">
       <PageHero
         image={{
-          src: "/about-banner.jpg",
+          src: "/bright-images/about-banner.jpg",
           width: 2400,
           height: 1800,
           alt: "Manratan Resort aerial view",
@@ -66,7 +66,7 @@ export default function OurStoryPage() {
               {/* Mobile view image: right after "spend the night" */}
               <div className="group relative mt-7 aspect-[4/3] w-full overflow-hidden lg:hidden">
                 <Image
-                  src="/reception1_11zon.webp"
+                  src="/bright-images/reception1_11zon.webp"
                   alt="The Manratan lobby reception and seating lounge"
                   fill
                   quality={90}
@@ -83,7 +83,7 @@ export default function OurStoryPage() {
             {/* Desktop view image */}
             <div className="hidden lg:block group relative aspect-[4/3] w-full overflow-hidden lg:-translate-x-3 xl:-translate-x-5">
               <Image
-                src="/reception1_11zon.webp"
+                src="/bright-images/reception1_11zon.webp"
                 alt="The Manratan lobby reception and seating lounge"
                 fill
                 quality={90}
@@ -100,7 +100,7 @@ export default function OurStoryPage() {
           <div className="grid gap-10 lg:gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             {/* Desktop view image */}
             <div className="hidden lg:block group relative aspect-[4/5] w-full min-h-[480px] overflow-hidden">
-              <Image src="/aboutpage/banner_11zon.webp" alt="Manratan Resort banner" fill quality={85} sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+              <Image src="/bright-images/aboutpage/banner_11zon.webp" alt="Manratan Resort banner" fill quality={85} sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
             </div>
 
             <div className="flex flex-col justify-center w-full">
@@ -111,7 +111,7 @@ export default function OurStoryPage() {
               {/* Mobile view image: after heading, before description */}
               <div className="group relative mt-4 mb-4 sm:mt-6 sm:mb-6 aspect-[4/3] w-full overflow-hidden lg:hidden">
                 <Image
-                  src="/aboutpage/banner_11zon.webp"
+                  src="/bright-images/aboutpage/banner_11zon.webp"
                   alt="Manratan Resort banner"
                   fill
                   quality={85}
@@ -174,7 +174,7 @@ export default function OurStoryPage() {
               },
               {
                 img: {
-                  src: "/homopage/dining2_11zon.webp",
+                  src: "/bright-images/homopage/dining2_11zon.webp",
                   alt: "Blue Diamond Pool at Manratan Resort",
                 },
                 tag: "OPEN-AIR POOL",
@@ -219,7 +219,7 @@ export default function OurStoryPage() {
       <EscapeCTA
         align="left"
         bg="bg-[#EAE5DC]"
-        image={{ src: "/media/mrw-narsinghghar-a.webp", alt: "Narsinghgarh Fort on green hills" }}
+        image={{ src: "/bright-images/media/mrw-narsinghghar-a.webp", alt: "Narsinghgarh Fort on green hills" }}
         kicker="ESCAPE TO THE KASHMIR OF MALWA"
         main="ROYAL CHARM"
         script="of Narsinghgarh"

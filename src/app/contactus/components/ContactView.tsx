@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { IoIosArrowDown } from "react-icons/io";
+import { FaWhatsapp } from "react-icons/fa";
 import { countries } from "@/utils/constent";
 import { startOfToday, toLocalISODate } from "@/utils/dates";
 
@@ -84,881 +86,106 @@ export default function ContactView() {
   };
 
   return (
-    <div className="mr-contact-root">
-      <style jsx global>{`
-        @font-face {
-          font-family: 'IvyOra Display';
-          src: url('/contact/3a117a2c7158f445282c120ea244476a.woff2') format('woff2');
-          font-weight: 400;
-          font-style: normal;
-          font-display: swap;
-        }
-        @font-face {
-          font-family: 'Golden Hopes';
-          src: url('/contact/4c32b90e5c2a3f44a94f81486a4cde7e.woff2') format('woff2');
-          font-weight: 400;
-          font-style: normal;
-          font-display: swap;
-        }
-
-        .mr-contact-root {
-          font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
-          color: #54473C;
-          background: #FBF7EF;
-          -webkit-font-smoothing: antialiased;
-          overflow-x: clip;
-          position: relative;
-        }
-        .mr-contact-root * {
-          box-sizing: border-box;
-        }
-        .mr-contact-root a {
-          text-decoration: none;
-          color: inherit;
-        }
-
-        .mr-wrap {
-          max-width: 1440px;
-          margin: 0 auto;
-          padding-left: clamp(20px, 5.6vw, 80px);
-          padding-right: clamp(20px, 5.6vw, 80px);
-        }
-        .mr-sec {
-          position: relative;
-          padding-top: clamp(88px, 9vw, 132px);
-          padding-bottom: clamp(88px, 9vw, 132px);
-        }
-        .mr-sec > .mr-wrap {
-          position: relative;
-          z-index: 1;
-        }
-        .mr-sand {
-          background: #F2EADD;
-        }
-
-        .mr-eyebrow {
-          font: 600 11px/1.5 'Montserrat', sans-serif;
-          letter-spacing: 0.24em;
-          text-transform: uppercase;
-          color: #7A5F3A;
-          margin: 0;
-        }
-        .mr-title {
-          font-family: 'IvyOra Display', Georgia, 'Times New Roman', serif;
-          font-weight: 400;
-          font-size: clamp(40px, 4.5vw, 64px);
-          line-height: 1.02;
-          letter-spacing: 0;
-          text-transform: uppercase;
-          color: #221811;
-          margin: 0;
-          text-wrap: balance;
-        }
-        .mr-script {
-          display: block;
-          font-family: 'Golden Hopes', 'Brush Script MT', cursive;
-          font-weight: 400;
-          text-transform: none;
-          letter-spacing: 0;
-          font-size: 0.8em;
-          line-height: 1;
-          margin-top: -0.06em;
-          padding-left: 2.2em;
-          color: #221811;
-        }
-        .mr-center {
-          text-align: center;
-        }
-        .mr-center .mr-script {
-          padding-left: 1.8em;
-        }
-        .mr-lead {
-          font-family: 'IvyOra Display', Georgia, serif;
-          font-weight: 400;
-          font-size: clamp(22px, 2vw, 28px);
-          line-height: 1.4;
-          color: #221811;
-          margin: 0;
-          text-wrap: pretty;
-        }
-        .mr-body {
-          font-size: 15px;
-          line-height: 1.85;
-          margin: 0;
-          max-width: 34em;
-          text-wrap: pretty;
-        }
-        .mr-small {
-          font-size: 13px;
-          line-height: 1.7;
-          margin: 0;
-        }
-        .mr-link {
-          display: inline-flex;
-          align-items: center;
-          gap: 14px;
-          min-height: 44px;
-          font: 600 11px/1 'Montserrat', sans-serif;
-          letter-spacing: 0.22em;
-          text-transform: uppercase;
-          color: #221811;
-          text-decoration: none;
-          border-bottom: 1px solid currentColor;
-          align-self: flex-start;
-          transition: gap 0.4s, color 0.3s;
-        }
-        .mr-link:hover {
-          color: #7A5F3A;
-          gap: 22px;
-        }
-
-        .mr-btn {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 12px;
-          min-height: 52px;
-          padding: 0 30px;
-          border-radius: 999px;
-          font: 600 11px/1 'Montserrat', sans-serif;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          text-decoration: none;
-          border: 1px solid transparent;
-          cursor: pointer;
-          white-space: nowrap;
-          transition: background 0.35s, color 0.35s, transform 0.35s;
-        }
-        .mr-btn:hover {
-          transform: translateY(-2px);
-        }
-        .mr-btn-ink,
-        .mr-contact-root a.mr-btn-ink,
-        .mr-contact-root button.mr-btn-ink {
-          background: #221811;
-          color: #F6EFE4;
-        }
-        .mr-btn-ink:hover,
-        .mr-contact-root a.mr-btn-ink:hover,
-        .mr-contact-root button.mr-btn-ink:hover {
-          background: #3A2A1E;
-          color: #F6EFE4;
-        }
-        .mr-ct-outline,
-        .mr-contact-root a.mr-ct-outline {
-          background: transparent;
-          color: #221811;
-          border-color: rgba(34, 24, 17, 0.35);
-        }
-        .mr-ct-outline:hover,
-        .mr-contact-root a.mr-ct-outline:hover {
-          background: #221811;
-          color: #F6EFE4;
-        }
-
-        .mr-grid12 {
-          display: grid;
-          grid-template-columns: repeat(12, minmax(0, 1fr));
-          column-gap: clamp(20px, 2.8vw, 40px);
-          row-gap: 48px;
-        }
-        .mr-ph {
-          overflow: hidden;
-          border-radius: 16px;
-          position: relative;
-        }
-        .mr-ph img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
-        }
-        .mr-ph:hover img {
-          transform: scale(1.06);
-        }
-
-        /* Hero */
-        .mr-hero {
-          position: relative;
-          min-height: 640px;
-          display: flex;
-          flex-direction: column;
-          color: #F6EFE4;
-          background: #221811;
-          overflow: hidden;
-        }
-        .mr-hero-img {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: 50% 36%;
-          transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
-        }
-        .mr-hero:hover .mr-hero-img {
-          transform: scale(1.05);
-        }
-        .mr-hero-scrim {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(
-            180deg,
-            rgba(25, 17, 11, 0.55) 0%,
-            rgba(25, 17, 11, 0.25) 30%,
-            rgba(25, 17, 11, 0.72) 100%
-          );
-        }
-        .mr-ab-hero-copy {
-          position: relative;
-          z-index: 2;
-          margin-top: auto;
-          padding-bottom: clamp(96px, 10vw, 136px);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 22px;
-          text-align: center;
-        }
-        .mr-hero-title {
-          margin: 0;
-          font-family: 'IvyOra Display', Georgia, serif;
-          font-weight: 400;
-          color: #F6EFE4;
-          text-transform: uppercase;
-          line-height: 0.98;
-          text-align: center;
-        }
-        .mr-hero-big {
-          display: block;
-          font-size: clamp(48px, 6.8vw, 96px);
-          letter-spacing: 0.02em;
-        }
-        .mr-hero-title .mr-script {
-          color: #F6EFE4;
-          font-size: clamp(44px, 5.8vw, 88px);
-          padding-left: 1.4em;
-          margin-top: -0.04em;
-        }
-
-        /* Panel */
-        .mr-panel {
-          position: relative;
-          z-index: 3;
-          margin-top: -44px;
-          border-radius: 44px 44px 0 0;
-          background: #FBF7EF;
-          padding-top: 0;
-        }
-        .mr-bell {
-          display: flex;
-          justify-content: center;
-          overflow: hidden;
-        }
-        .mr-bell img {
-          width: min(720px, 100%);
-          height: auto;
-        }
-
-        /* Contact Grid */
-        .mr-ct-grid {
-          display: grid;
-          grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-          gap: clamp(40px, 6vw, 96px);
-          align-items: center;
-          margin-top: clamp(64px, 7vw, 96px);
-        }
-        .mr-ct-info {
-          display: flex;
-          flex-direction: column;
-          gap: 30px;
-          align-self: center;
-        }
-        .mr-ct-item {
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-          padding-bottom: 26px;
-          border-bottom: 1px solid rgba(34, 24, 17, 0.14);
-        }
-        .mr-ct-k {
-          margin: 0 0 4px;
-          font: 600 10px/1.4 'Montserrat', sans-serif;
-          letter-spacing: 0.24em;
-          text-transform: uppercase;
-          color: #7A5F3A;
-        }
-        .mr-ct-v {
-          font: 400 24px/1.3 'IvyOra Display', Georgia, serif;
-          color: #221811;
-          text-decoration: none;
-          width: fit-content;
-        }
-        .mr-ct-v:hover {
-          color: #7A5F3A;
-        }
-        .mr-ct-addr {
-          font: 400 20px/1.45 'IvyOra Display', Georgia, serif;
-          font-style: normal;
-          color: #221811;
-        }
-
-        /* Form */
-        .mr-ct-form {
-          background: #FFFDF8;
-          border: 1px solid rgba(34, 24, 17, 0.1);
-          border-radius: 24px;
-          padding: clamp(28px, 4vw, 48px);
-          box-shadow: 0 40px 80px -40px rgba(34, 24, 17, 0.25);
-          display: flex;
-          flex-direction: column;
-          gap: 28px;
-        }
-        .mr-ct-form-t {
-          margin: 0;
-          font: 400 32px/1.1 'IvyOra Display', Georgia, serif;
-          text-transform: uppercase;
-          color: #221811;
-        }
-        .mr-ct-fields {
-          display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 22px 24px;
-        }
-        .mr-fld {
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-        }
-        .mr-fld.full {
-          grid-column: 1 / -1;
-        }
-        .mr-fld label {
-          font: 600 10px/1.4 'Montserrat', sans-serif;
-          letter-spacing: 0.22em;
-          text-transform: uppercase;
-          color: #7A5F3A;
-        }
-        .mr-fld label span {
-          letter-spacing: 0.06em;
-          text-transform: none;
-          color: #8C7D6E;
-          font-weight: 500;
-        }
-        .mr-fld input,
-        .mr-fld input[type="text"],
-        .mr-fld input[type="date"],
-        .mr-fld input[type="tel"],
-        .mr-fld input[type="email"],
-        .mr-fld select,
-        .mr-fld textarea {
-          font: 400 15px/1.4 'Montserrat', sans-serif;
-          color: #221811;
-          background: transparent;
-          border: 0 !important;
-          border-bottom: 1px solid rgba(34, 24, 17, 0.25) !important;
-          padding: 10px 0;
-          border-radius: 0;
-          outline: none !important;
-          box-shadow: none !important;
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          appearance: none;
-          width: 100%;
-          transition: border-color 0.3s;
-        }
-        .mr-fld input:focus,
-        .mr-fld input:focus-visible,
-        .mr-fld select:focus,
-        .mr-fld select:focus-visible,
-        .mr-fld textarea:focus,
-        .mr-fld textarea:focus-visible {
-          outline: none !important;
-          box-shadow: none !important;
-          border: 0 !important;
-          border-bottom: 1px solid #221811 !important;
-        }
-        .mr-fld input::placeholder,
-        .mr-fld textarea::placeholder {
-          color: rgba(34, 24, 17, 0.45);
-        }
-        .mr-fld textarea {
-          resize: vertical;
-        }
-        /* Native datepicker styling without outline box */
-        .mr-fld input[type="date"] {
-          position: relative;
-          cursor: pointer;
-          border: 0 !important;
-          border-bottom: 1px solid rgba(34, 24, 17, 0.25) !important;
-          outline: none !important;
-          box-shadow: none !important;
-          color: #221811;
-        }
-        .mr-fld input[type="date"]:invalid::-webkit-datetime-edit,
-        .mr-fld input[type="date"][value=""]::-webkit-datetime-edit {
-          color: rgba(34, 24, 17, 0.45);
-        }
-        .mr-fld input[type="date"]:focus,
-        .mr-fld input[type="date"]:focus-visible {
-          border: 0 !important;
-          border-bottom: 1px solid #221811 !important;
-          outline: none !important;
-          box-shadow: none !important;
-        }
-        .mr-fld input[type="date"]::-webkit-datetime-edit,
-        .mr-fld input[type="date"]::-webkit-datetime-edit-fields-wrapper,
-        .mr-fld input[type="date"]::-webkit-datetime-edit-text,
-        .mr-fld input[type="date"]::-webkit-datetime-edit-month-field,
-        .mr-fld input[type="date"]::-webkit-datetime-edit-day-field,
-        .mr-fld input[type="date"]::-webkit-datetime-edit-year-field {
-          outline: none !important;
-          border: none !important;
-          background: transparent;
-        }
-        .mr-fld input[type="date"]::-webkit-calendar-picker-indicator {
-          cursor: pointer;
-          opacity: 0.6;
-          outline: none !important;
-        }
-        .mr-ct-phone {
-          display: flex;
-          align-items: flex-end;
-          gap: 12px;
-        }
-        .mr-ct-phone-code {
-          position: relative;
-          width: 72px;
-          flex: none;
-        }
-        .mr-ct-phone-code select {
-          width: 100%;
-          padding-right: 18px;
-          cursor: pointer;
-          appearance: none;
-          -webkit-appearance: none;
-          background: transparent;
-          outline: none !important;
-        }
-        .mr-ct-phone-code select:focus,
-        .mr-ct-phone-code select:focus-visible {
-          outline: none !important;
-          box-shadow: none !important;
-        }
-        .mr-ct-phone-arrow {
-          pointer-events: none;
-          position: absolute;
-          right: 2px;
-          top: 50%;
-          transform: translateY(-50%);
-          font-size: 11px;
-          color: #7A5F3A;
-        }
-        .mr-ct-form button:focus,
-        .mr-ct-form button:focus-visible {
-          outline: none !important;
-          box-shadow: none !important;
-        }
-        .mr-ct-foot {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 16px;
-          flex-wrap: wrap;
-        }
-        .mr-ct-foot .mr-small {
-          color: #6B5D50;
-        }
-
-        /* Getting Here */
-        .mr-gh-list {
-          list-style: none;
-          margin: 0;
-          padding: 0;
-          border-top: 1px solid rgba(34, 24, 17, 0.16);
-        }
-        .mr-gh-list li {
-          display: grid;
-          grid-template-columns: 1fr auto;
-          align-items: baseline;
-          gap: 4px 16px;
-          padding: 18px 0;
-          border-bottom: 1px solid rgba(34, 24, 17, 0.16);
-        }
-        .mr-gh-list span {
-          font: 600 10px/1.4 'Montserrat', sans-serif;
-          letter-spacing: 0.22em;
-          text-transform: uppercase;
-          color: #7A5F3A;
-        }
-        .mr-gh-list b {
-          font: 400 24px/1 'IvyOra Display', Georgia, serif;
-          color: #221811;
-          grid-row: span 2;
-          align-self: center;
-        }
-        .mr-gh-list em {
-          font-style: normal;
-          font-size: 13px;
-          color: #54473C;
-        }
-
-        /* FAQs */
-        .mr-faq {
-          border-top: 1px solid rgba(34, 24, 17, 0.16);
-        }
-        .mr-faq-q {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 24px;
-          width: 100%;
-          padding: 26px 0;
-          background: none;
-          border: 0;
-          cursor: pointer;
-          text-align: left;
-          font: 400 21px/1.3 'IvyOra Display', Georgia, serif;
-          text-transform: uppercase;
-          color: #221811;
-          transition: color 0.3s;
-        }
-        .mr-faq-q:hover {
-          color: #7A5F3A;
-        }
-        .mr-faq-q:focus-visible {
-          outline: 2px solid #B08D57;
-          outline-offset: 4px;
-        }
-        .mr-faq-ic {
-          position: relative;
-          width: 36px;
-          height: 36px;
-          flex: none;
-          border-radius: 50%;
-          border: 1px solid rgba(34, 24, 17, 0.3);
-          color: #221811;
-          transition: background 0.3s, border-color 0.3s, color 0.3s;
-        }
-        .mr-faq-ic::before,
-        .mr-faq-ic::after {
-          content: '';
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          width: 12px;
-          height: 1px;
-          background: currentColor;
-          transform: translate(-50%, -50%);
-          transition: transform 0.4s;
-        }
-        .mr-faq-ic::after {
-          transform: translate(-50%, -50%) rotate(90deg);
-        }
-        .mr-faq-it {
-          border-bottom: 1px solid rgba(34, 24, 17, 0.16);
-        }
-        .mr-faq-it.is-open .mr-faq-ic {
-          background: #221811;
-          border-color: #221811;
-          color: #F6EFE4;
-        }
-        .mr-faq-it.is-open .mr-faq-ic::after {
-          transform: translate(-50%, -50%) rotate(0deg);
-        }
-        .mr-faq-a {
-          display: grid;
-          grid-template-rows: 0fr;
-          transition: grid-template-rows 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
-        }
-        .mr-faq-it.is-open .mr-faq-a {
-          grid-template-rows: 1fr;
-        }
-        .mr-faq-a > div {
-          overflow: hidden;
-        }
-        .mr-faq-a p {
-          margin: 0;
-          padding: 0 64px 26px 0;
-          font-size: 15px;
-          line-height: 1.8;
-          color: #54473C;
-        }
-
-        .mr-gh-wrap {
-          display: grid;
-          grid-template-columns: repeat(12, minmax(0, 1fr));
-          column-gap: clamp(20px, 2.8vw, 40px);
-          row-gap: 24px;
-          align-items: center;
-        }
-        .mr-gh-fig {
-          grid-column: 1 / span 7;
-          grid-row: 1 / span 2;
-          margin: 0;
-        }
-        .mr-gh-head {
-          grid-column: 9 / span 4;
-          grid-row: 1;
-          align-self: end;
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-        }
-        .mr-gh-body {
-          grid-column: 9 / span 4;
-          grid-row: 2;
-          align-self: start;
-          display: flex;
-          flex-direction: column;
-          gap: 26px;
-        }
-
-        /* Responsive */
-        @media (max-width: 900px) {
-          .mr-gh-wrap {
-            display: flex;
-            flex-direction: column;
-            gap: 28px;
-          }
-          .mr-gh-head {
-            order: 1;
-            width: 100%;
-          }
-          .mr-gh-fig {
-            order: 2;
-            width: 100%;
-          }
-          .mr-gh-body {
-            order: 3;
-            width: 100%;
-          }
-          .mr-grid12 > * {
-            grid-column: 1 / -1 !important;
-            margin-top: 0 !important;
-          }
-          .mr-ct-grid {
-            grid-template-columns: minmax(0, 1fr);
-          }
-          .mr-ct-fields {
-            grid-template-columns: minmax(0, 1fr);
-          }
-          .mr-faq-q {
-            font-size: 17px;
-          }
-          .mr-faq-a p {
-            padding-right: 0;
-          }
-        }
-        @media (max-width: 760px) {
-          .mr-panel {
-            border-radius: 28px 28px 0 0;
-          }
-          .mr-hero {
-            min-height: 520px;
-          }
-          .mr-hero-title .mr-script {
-            padding-left: 0.8em;
-          }
-          .mr-ct-form {
-            padding: 22px 18px;
-            gap: 16px;
-            border-radius: 20px;
-          }
-          .mr-ct-grid {
-            margin-top: 36px;
-            gap: 36px;
-          }
-          .mr-ct-info {
-            gap: 16px;
-          }
-          .mr-ct-item {
-            gap: 6px;
-            padding-bottom: 16px;
-          }
-          .mr-ct-k {
-            font-size: 9px;
-            margin-bottom: 2px;
-          }
-          .mr-ct-v {
-            font-size: 17px;
-            line-height: 1.35;
-          }
-          .mr-ct-addr {
-            font-size: 15px;
-            line-height: 1.5;
-          }
-          .mr-lead {
-            font-size: 18px;
-            line-height: 1.45;
-          }
-          .mr-ci-btns .mr-btn {
-            padding: 12px 20px;
-            font-size: 11px;
-          }
-          .mr-ct-form-t {
-            font-size: 26px;
-          }
-          .mr-ct-fields {
-            gap: 14px;
-          }
-          .mr-fld {
-            gap: 4px;
-          }
-          .mr-fld input,
-          .mr-fld input[type="text"],
-          .mr-fld input[type="date"],
-          .mr-fld input[type="tel"],
-          .mr-fld input[type="email"],
-          .mr-fld select,
-          .mr-fld textarea {
-            padding: 6px 0;
-            font-size: 14px;
-          }
-          .mr-fld textarea {
-            min-height: 48px;
-          }
-          .mr-ct-foot {
-            gap: 12px;
-          }
-          .mr-ct-foot .mr-btn {
-            width: 100%;
-            justify-content: center;
-          }
-        }
-        @media (max-width: 480px) {
-          .mr-ct-v {
-            font-size: 16px;
-          }
-          .mr-ct-addr {
-            font-size: 14px;
-          }
-          .mr-ci-btns {
-            flex-direction: column;
-            width: 100%;
-          }
-          .mr-ci-btns .mr-btn {
-            width: 100%;
-            justify-content: center;
-          }
-        }
-      `}</style>
-
+    <div className="max_screen_width relative font-sans text-[#54473C] bg-[#FBF7EF] overflow-x-clip antialiased mx-auto">
       {/* ============ HERO ============ */}
-      <header className="mr-hero">
+      <header className="relative min-h-[520px] md:min-h-[640px] flex flex-col text-[#F6EFE4] bg-[#221811] overflow-hidden group">
         <Image
-          className="mr-hero-img"
-          src="/contact/667bce410c47b5664b47aa936e0306fb.jpg"
+          className="absolute inset-0 w-full h-full object-cover object-[50%_36%] transition-transform duration-1000 ease-out group-hover:scale-105"
+          src="/bright-images/contact/667bce410c47b5664b47aa936e0306fb.jpg"
           alt="The Manratan reception team greeting guests with a namaste"
           fill
           priority
           sizes="100vw"
           quality={92}
         />
-        <div className="mr-hero-scrim" aria-hidden="true" />
-        <div className="mr-ab-hero-copy mr-wrap">
-          {/* Note: User specifically requested: "home contact wali line hatado" */}
-          <h1 className="mr-hero-title">
-            <span className="mr-hero-big">Contact Us</span>
-            <span className="mr-script">let’s plan your stay</span>
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-[#19110b]/55 via-[#19110b]/25 to-[#19110b]/72 pointer-events-none"
+          aria-hidden="true"
+        />
+        <div className="relative z-[2] mt-auto pb-[clamp(96px,10vw,136px)] flex flex-col items-center gap-[22px] text-center max-w-[1440px] mx-auto px-[clamp(20px,5.6vw,80px)] w-full">
+          <h1 className="m-0 font-display font-normal text-[#F6EFE4] uppercase leading-[0.98] text-center">
+            <span className="block text-[clamp(48px,6.8vw,96px)] tracking-[0.02em]">
+              Contact Us
+            </span>
+            <span className="block font-script font-normal normal-case tracking-normal text-[clamp(44px,5.8vw,88px)] text-[#F6EFE4] pl-[0.8em] md:pl-[1.4em] -mt-[0.04em]">
+              let’s plan your stay
+            </span>
           </h1>
         </div>
       </header>
 
       {/* ============ REACH US + ENQUIRY ============ */}
-      <section className="mr-panel" id="enquire" aria-labelledby="reach-title">
-        <div
-          className="mr-wrap"
-          style={{
-            position: "relative",
-            zIndex: 2,
-            paddingTop: "clamp(72px, 7vw, 104px)",
-            paddingBottom: "clamp(88px, 9vw, 132px)",
-          }}
-        >
-          <div className="mr-bell" aria-hidden="true">
+      <section className="relative z-[3] -mt-[44px] rounded-t-[28px] md:rounded-t-[44px] bg-[#FBF7EF] pt-0" id="enquire" aria-labelledby="reach-title">
+        <div className="relative z-[2] max-w-[1440px] mx-auto px-[clamp(20px,5.6vw,80px)] pt-[clamp(72px,7vw,104px)] pb-[clamp(88px,9vw,132px)]">
+          <div className="flex justify-center overflow-hidden" aria-hidden="true">
             <Image
-              src="/contact/59c1f39cea474b4a6be5caa4ed8a7b43.png"
+              src="/bright-images/contact/59c1f39cea474b4a6be5caa4ed8a7b43.png"
               alt=""
               width={720}
               height={175}
               priority
-              style={{ width: "min(720px, 100%)", height: "auto" }}
+              className="w-[min(720px,100%)] h-auto"
             />
           </div>
 
-          <div
-            className="mr-center"
-            style={{
-              maxWidth: "720px",
-              margin: "32px auto 0",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "18px",
-            }}
-          >
-            <p className="mr-eyebrow">At your service</p>
-            <p className="mr-lead" id="reach-title">
+          <div className="max-w-[720px] mx-auto mt-8 flex flex-col items-center gap-[18px] text-center">
+            <p className="m-0 font-sans font-semibold text-[11px] leading-[1.5] tracking-[0.24em] uppercase text-[#7A5F3A]">
+              At your service
+            </p>
+            <p className="m-0 font-display font-normal text-[18px] md:text-[clamp(22px,2vw,28px)] leading-[1.4] text-[#221811] text-pretty" id="reach-title">
               From booking questions to special requests, we are a message away. We look forward to welcoming you to Manratan.
             </p>
           </div>
 
-          <div className="mr-ct-grid">
-            <div className="mr-ct-info">
-              <div className="mr-ct-item">
-                <p className="mr-ct-k">Call</p>
-                <a className="mr-ct-v" href="tel:+919171172205">
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-9 md:gap-[clamp(40px,6vw,96px)] items-center mt-9 md:mt-[clamp(64px,7vw,96px)]">
+            {/* Contact Details */}
+            <div className="flex flex-col gap-4 md:gap-[30px] self-center">
+              <div className="flex flex-col gap-1.5 md:gap-2 pb-4 md:pb-[26px] border-b border-[#221811]/14">
+                <p className="m-0 mb-0.5 md:mb-1 font-sans font-semibold text-[9px] md:text-[10px] leading-[1.4] tracking-[0.24em] uppercase text-[#7A5F3A]">
+                  Call
+                </p>
+                <a className="font-display font-normal text-[16px] sm:text-[17px] md:text-[24px] leading-[1.3] text-[#221811] hover:text-[#7A5F3A] transition-colors w-fit" href="tel:+919171172205">
                   +91 91711 72205
                 </a>
-                <a className="mr-ct-v" href="tel:+919171172206">
+                <a className="font-display font-normal text-[16px] sm:text-[17px] md:text-[24px] leading-[1.3] text-[#221811] hover:text-[#7A5F3A] transition-colors w-fit" href="tel:+919171172206">
                   +91 91711 72206
                 </a>
-                <a className="mr-ct-v" href="tel:+919171172208">
+                <a className="font-display font-normal text-[16px] sm:text-[17px] md:text-[24px] leading-[1.3] text-[#221811] hover:text-[#7A5F3A] transition-colors w-fit" href="tel:+919171172208">
                   +91 91711 72208
                 </a>
               </div>
 
-              <div className="mr-ct-item">
-                <p className="mr-ct-k">Email</p>
-                <a className="mr-ct-v" href="mailto:reservation@manratanresort.com">
+              <div className="flex flex-col gap-1.5 md:gap-2 pb-4 md:pb-[26px] border-b border-[#221811]/14">
+                <p className="m-0 mb-0.5 md:mb-1 font-sans font-semibold text-[9px] md:text-[10px] leading-[1.4] tracking-[0.24em] uppercase text-[#7A5F3A]">
+                  Email
+                </p>
+                <a className="font-display font-normal text-[16px] sm:text-[17px] md:text-[24px] leading-[1.3] text-[#221811] hover:text-[#7A5F3A] transition-colors w-fit break-all" href="mailto:reservation@manratanresort.com">
                   reservation@manratanresort.com
                 </a>
               </div>
 
-              <div className="mr-ct-item">
-                <p className="mr-ct-k">Visit</p>
-                <address className="mr-ct-addr">
+              <div className="flex flex-col gap-1.5 md:gap-2 pb-4 md:pb-[26px] border-b border-[#221811]/14">
+                <p className="m-0 mb-0.5 md:mb-1 font-sans font-semibold text-[9px] md:text-[10px] leading-[1.4] tracking-[0.24em] uppercase text-[#7A5F3A]">
+                  Visit
+                </p>
+                <address className="font-display font-normal text-[14px] sm:text-[15px] md:text-[20px] leading-[1.45] sm:leading-[1.5] not-italic text-[#221811]">
                   NH-46, Biaora Road, Narsinghgarh,<br />
                   Dist. Rajgarh, Madhya Pradesh – 465669
                 </address>
               </div>
 
-              <div className="mr-ci-btns" style={{ display: "flex", gap: "12px", flexWrap: "wrap", marginTop: "6px" }}>
+              <div className="flex flex-col sm:flex-row gap-3 flex-wrap mt-1.5 w-full sm:w-auto">
                 <a
-                  className="mr-btn mr-btn-ink"
+                  className="inline-flex items-center justify-center gap-3 min-h-[52px] px-[30px] rounded-full font-sans font-semibold text-[11px] tracking-[0.2em] uppercase text-[#F6EFE4] bg-[#221811] hover:bg-[#3A2A1E] transition-all duration-300 hover:-translate-y-0.5 cursor-pointer whitespace-nowrap"
                   href="https://wa.me/919171172205"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M3.5 20.5l1.3-4A8.5 8.5 0 1 1 8 19.6z" />
-                    <path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.6-2-1-1 1c-1-.4-2-1.4-2.4-2.4l1-1-1-2z" />
-                  </svg>
+                  <FaWhatsapp className="w-4 h-4 shrink-0 text-[16px]" />
                   WhatsApp us
                 </a>
                 <a
-                  className="mr-btn mr-ct-outline"
+                  className="inline-flex items-center justify-center gap-3 min-h-[52px] px-[30px] rounded-full font-sans font-semibold text-[11px] tracking-[0.2em] uppercase text-[#221811] hover:text-[#F6EFE4] bg-transparent hover:bg-[#221811] border border-[#221811]/35 transition-all duration-300 hover:-translate-y-0.5 cursor-pointer whitespace-nowrap"
                   href="https://maps.google.com/?q=Manratan+Resort+Narsinghgarh+MP"
                   target="_blank"
                   rel="noreferrer"
@@ -968,13 +195,42 @@ export default function ContactView() {
               </div>
             </div>
 
-            <form className="mr-ct-form" aria-labelledby="form-title" onSubmit={handleSubmit}>
-              <h2 className="mr-ct-form-t" id="form-title">
+            {/* Form */}
+            <form
+              className="bg-[#FFFDF8] border border-[#221811]/10 rounded-[20px] md:rounded-[24px] p-[22px_18px] md:p-[clamp(28px,4vw,48px)] shadow-[0_40px_80px_-40px_rgba(34,24,17,0.25)] flex flex-col gap-4 md:gap-7 [&_input]:!outline-none [&_input]:focus:!outline-none [&_input]:focus-visible:!outline-none [&_select]:!outline-none [&_select]:focus:!outline-none [&_select]:focus-visible:!outline-none [&_textarea]:!outline-none [&_textarea]:focus:!outline-none [&_textarea]:focus-visible:!outline-none [&_input]:!shadow-none [&_select]:!shadow-none [&_textarea]:!shadow-none"
+              aria-labelledby="form-title"
+              onSubmit={handleSubmit}
+            >
+              <style>{`
+                #enquire input,
+                #enquire select,
+                #enquire textarea,
+                #enquire button[type="submit"] {
+                  outline: none !important;
+                  box-shadow: none !important;
+                }
+                #enquire input:focus,
+                #enquire input:focus-visible,
+                #enquire select:focus,
+                #enquire select:focus-visible,
+                #enquire textarea:focus,
+                #enquire textarea:focus-visible,
+                #enquire button[type="submit"]:focus,
+                #enquire button[type="submit"]:focus-visible {
+                  outline: none !important;
+                  outline-offset: 0 !important;
+                  box-shadow: none !important;
+                  -webkit-tap-highlight-color: transparent !important;
+                }
+              `}</style>
+              <h2 className="m-0 font-display font-normal text-[26px] md:text-[32px] leading-[1.1] uppercase text-[#221811]" id="form-title">
                 Send an enquiry
               </h2>
-              <div className="mr-ct-fields">
-                <div className="mr-fld full">
-                  <label htmlFor="c-name">Full name</label>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 md:gap-[22px_24px]">
+                <div className="sm:col-span-2 flex flex-col gap-1 md:gap-2">
+                  <label htmlFor="c-name" className="font-sans font-semibold text-[10px] leading-[1.4] tracking-[0.22em] uppercase text-[#7A5F3A]">
+                    Full name
+                  </label>
                   <input
                     id="c-name"
                     name="name"
@@ -983,25 +239,29 @@ export default function ContactView() {
                     autoComplete="name"
                     value={formData.name}
                     onChange={handleChange}
+                    className="font-sans font-normal text-[14px] md:text-[15px] leading-[1.4] text-[#221811] bg-transparent border-0 border-b border-[#221811]/25 py-1.5 md:py-2.5 rounded-none outline-none ring-0 !outline-none focus:outline-none focus:ring-0 focus:!outline-none focus:border-[#221811] focus-visible:outline-none focus-visible:!outline-none focus-visible:ring-0 focus-visible:!ring-0 w-full transition-colors placeholder:text-[#221811]/45"
                   />
                 </div>
-                <div className="mr-fld">
-                  <label htmlFor="c-phone">Phone</label>
-                  <div className="mr-ct-phone">
-                    <div className="mr-ct-phone-code">
+                <div className="flex flex-col gap-1 md:gap-2">
+                  <label htmlFor="c-phone" className="font-sans font-semibold text-[10px] leading-[1.4] tracking-[0.22em] uppercase text-[#7A5F3A]">
+                    Phone
+                  </label>
+                  <div className="flex items-end gap-3">
+                    <div className="relative w-[72px] shrink-0">
                       <select
                         aria-label="Country code"
                         name="countryCode"
                         value={formData.countryCode}
                         onChange={handleChange}
+                        className="w-full pr-[18px] py-1.5 md:py-2.5 bg-transparent border-0 border-b border-[#221811]/25 focus:border-[#221811] outline-none ring-0 !outline-none focus:outline-none focus:ring-0 focus:!outline-none focus-visible:outline-none focus-visible:!outline-none focus-visible:ring-0 focus-visible:!ring-0 appearance-none font-sans text-[14px] md:text-[15px] text-[#221811] cursor-pointer"
                       >
                         {countries.map((c, i) => (
-                          <option key={`${c.code}-${i}`} value={c.code} style={{ background: "#FFFFFF", color: "#221811" }}>
+                          <option key={`${c.code}-${i}`} value={c.code} className="bg-white text-[#221811]">
                             {c.code}
                           </option>
                         ))}
                       </select>
-                      <span className="mr-ct-phone-arrow" aria-hidden="true">
+                      <span className="pointer-events-none absolute right-[2px] top-1/2 -translate-y-1/2 text-[11px] text-[#7A5F3A]" aria-hidden="true">
                         <IoIosArrowDown />
                       </span>
                     </div>
@@ -1013,11 +273,14 @@ export default function ContactView() {
                       autoComplete="tel"
                       value={formData.phone}
                       onChange={handleChange}
+                      className="font-sans font-normal text-[14px] md:text-[15px] leading-[1.4] text-[#221811] bg-transparent border-0 border-b border-[#221811]/25 py-1.5 md:py-2.5 rounded-none outline-none ring-0 !outline-none focus:outline-none focus:ring-0 focus:!outline-none focus:border-[#221811] focus-visible:outline-none focus-visible:!outline-none focus-visible:ring-0 focus-visible:!ring-0 w-full transition-colors placeholder:text-[#221811]/45"
                     />
                   </div>
                 </div>
-                <div className="mr-fld">
-                  <label htmlFor="c-email">Email</label>
+                <div className="flex flex-col gap-1 md:gap-2">
+                  <label htmlFor="c-email" className="font-sans font-semibold text-[10px] leading-[1.4] tracking-[0.22em] uppercase text-[#7A5F3A]">
+                    Email
+                  </label>
                   <input
                     id="c-email"
                     name="email"
@@ -1026,10 +289,13 @@ export default function ContactView() {
                     autoComplete="email"
                     value={formData.email}
                     onChange={handleChange}
+                    className="font-sans font-normal text-[14px] md:text-[15px] leading-[1.4] text-[#221811] bg-transparent border-0 border-b border-[#221811]/25 py-1.5 md:py-2.5 rounded-none outline-none ring-0 !outline-none focus:outline-none focus:ring-0 focus:!outline-none focus:border-[#221811] focus-visible:outline-none focus-visible:!outline-none focus-visible:ring-0 focus-visible:!ring-0 w-full transition-colors placeholder:text-[#221811]/45"
                   />
                 </div>
-                <div className="mr-fld">
-                  <label htmlFor="c-in">Check-in</label>
+                <div className="flex flex-col gap-1 md:gap-2">
+                  <label htmlFor="c-in" className="font-sans font-semibold text-[10px] leading-[1.4] tracking-[0.22em] uppercase text-[#7A5F3A]">
+                    Check-in
+                  </label>
                   <input
                     id="c-in"
                     name="checkIn"
@@ -1037,10 +303,13 @@ export default function ContactView() {
                     min={todayStr}
                     value={formData.checkIn}
                     onChange={handleCheckInChange}
+                    className="font-sans font-normal text-[14px] md:text-[15px] leading-[1.4] text-[#221811] bg-transparent border-0 border-b border-[#221811]/25 py-1.5 md:py-2.5 rounded-none outline-none ring-0 !outline-none focus:outline-none focus:ring-0 focus:!outline-none focus:border-[#221811] focus-visible:outline-none focus-visible:!outline-none focus-visible:ring-0 focus-visible:!ring-0 w-full transition-colors cursor-pointer"
                   />
                 </div>
-                <div className="mr-fld">
-                  <label htmlFor="c-out">Check-out</label>
+                <div className="flex flex-col gap-1 md:gap-2">
+                  <label htmlFor="c-out" className="font-sans font-semibold text-[10px] leading-[1.4] tracking-[0.22em] uppercase text-[#7A5F3A]">
+                    Check-out
+                  </label>
                   <input
                     id="c-out"
                     name="checkOut"
@@ -1048,11 +317,12 @@ export default function ContactView() {
                     min={formData.checkIn || todayStr}
                     value={formData.checkOut}
                     onChange={handleCheckOutChange}
+                    className="font-sans font-normal text-[14px] md:text-[15px] leading-[1.4] text-[#221811] bg-transparent border-0 border-b border-[#221811]/25 py-1.5 md:py-2.5 rounded-none outline-none ring-0 !outline-none focus:outline-none focus:ring-0 focus:!outline-none focus:border-[#221811] focus-visible:outline-none focus-visible:!outline-none focus-visible:ring-0 focus-visible:!ring-0 w-full transition-colors cursor-pointer"
                   />
                 </div>
-                <div className="mr-fld full">
-                  <label htmlFor="c-msg">
-                    Message <span>(optional)</span>
+                <div className="sm:col-span-2 flex flex-col gap-1 md:gap-2">
+                  <label htmlFor="c-msg" className="font-sans font-semibold text-[10px] leading-[1.4] tracking-[0.22em] uppercase text-[#7A5F3A]">
+                    Message <span className="tracking-[0.06em] normal-case text-[#8C7D6E] font-medium">(optional)</span>
                   </label>
                   <textarea
                     id="c-msg"
@@ -1060,12 +330,18 @@ export default function ContactView() {
                     rows={3}
                     value={formData.message}
                     onChange={handleChange}
+                    className="font-sans font-normal text-[14px] md:text-[15px] leading-[1.4] text-[#221811] bg-transparent border-0 border-b border-[#221811]/25 py-1.5 md:py-2.5 rounded-none outline-none ring-0 !outline-none focus:outline-none focus:ring-0 focus:!outline-none focus:border-[#221811] focus-visible:outline-none focus-visible:!outline-none focus-visible:ring-0 focus-visible:!ring-0 w-full transition-colors min-h-[48px] resize-y placeholder:text-[#221811]/45"
                   />
                 </div>
               </div>
-              <div className="mr-ct-foot">
-                <p className="mr-small">Our team will confirm your dates and rates.</p>
-                <button className="mr-btn mr-btn-ink" type="submit">
+              <div className="flex items-center justify-between gap-3 md:gap-4 flex-wrap">
+                <p className="m-0 font-sans text-[13px] leading-[1.7] text-[#6B5D50]">
+                  Our team will confirm your dates and rates.
+                </p>
+                <button
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 min-h-[52px] px-[30px] rounded-full font-sans font-semibold text-[11px] tracking-[0.2em] uppercase text-[#F6EFE4] bg-[#221811] hover:bg-[#3A2A1E] transition-all duration-300 hover:-translate-y-0.5 cursor-pointer whitespace-nowrap outline-none focus:outline-none focus-visible:outline-none !outline-none focus:!outline-none focus-visible:!outline-none"
+                  type="submit"
+                >
                   Send enquiry
                 </button>
               </div>
@@ -1075,96 +351,149 @@ export default function ContactView() {
       </section>
 
       {/* ============ GETTING HERE ============ */}
-      <section className="mr-sec mr-sand" id="getting-here" aria-labelledby="gh-title">
-        <div className="mr-wrap mr-gh-wrap">
-          <div className="mr-gh-head">
-            <p className="mr-eyebrow">Getting here</p>
-            <h2 className="mr-title" id="gh-title">
-              On NH-46<span className="mr-script">in Narsinghgarh</span>
-            </h2>
-          </div>
-          <figure className="mr-gh-fig">
-            <div className="mr-ph" style={{ aspectRatio: "16 / 10", borderRadius: "20px" }}>
-              <Image
-                src="/contact/3818a080cb8483c7fd9da712ae025096.jpg"
-                alt="The lobby lounge with crystal chandeliers and red velvet sofas"
-                fill
-                quality={90}
-                sizes="(max-width: 900px) 100vw, 60vw"
-                style={{ objectFit: "cover" }}
-              />
+      <section className="relative py-[clamp(88px,9vw,132px)] bg-[#F2EADD]" id="getting-here" aria-labelledby="gh-title">
+        <div className="max-w-[1440px] mx-auto px-[clamp(20px,5.6vw,80px)]">
+          <div className="flex flex-col lg:grid lg:grid-cols-12 gap-7 lg:gap-x-[clamp(20px,2.8vw,40px)] lg:gap-y-6 lg:items-center">
+            {/* Header: Desktop Row 1 Col 9-12 | Mobile Order 1 */}
+            <div className="order-1 lg:order-none lg:col-start-9 lg:col-span-4 lg:row-start-1 lg:self-end flex flex-col gap-3">
+              <p className="m-0 font-sans font-semibold text-[11px] leading-[1.5] tracking-[0.24em] uppercase text-[#7A5F3A]">
+                Getting here
+              </p>
+              <h2 className="m-0 font-display font-normal text-[clamp(40px,4.5vw,64px)] leading-[1.02] uppercase text-[#221811] text-balance" id="gh-title">
+                On NH-46
+                <span className="block font-script font-normal normal-case tracking-normal text-[0.8em] leading-none -mt-[0.06em] pl-[2.2em] text-[#221811]">
+                  in Narsinghgarh
+                </span>
+              </h2>
             </div>
-          </figure>
-          <div className="mr-gh-body">
-            <ul className="mr-gh-list">
-              <li>
-                <span>Bhopal Airport</span>
-                <b>70 km</b>
-                <em>approx. 1.5 hrs</em>
-              </li>
-              <li>
-                <span>Railway station</span>
-                <b>30 km</b>
-                <em>approx. 30 mins</em>
-              </li>
-              <li>
-                <span>Indore</span>
-                <b>210 km</b>
-                <em>approx. 3–4 hrs</em>
-              </li>
-            </ul>
-            <a
-              className="mr-link"
-              href="https://maps.google.com/?q=Manratan+Resort+Narsinghgarh+MP"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Get directions
-              <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
-                <path d="M0 5h16M12 1l4 4-4 4" stroke="currentColor" strokeWidth="1.2" />
-              </svg>
-            </a>
+
+            {/* Figure: Desktop Row 1-2 Col 1-7 | Mobile Order 2 */}
+            <figure className="order-2 lg:order-none lg:col-span-7 lg:row-span-2 m-0 group">
+              <div className="relative aspect-[16/10] overflow-hidden rounded-[20px]">
+                <Image
+                  src="/bright-images/contact/3818a080cb8483c7fd9da712ae025096.jpg"
+                  alt="The lobby lounge with crystal chandeliers and red velvet sofas"
+                  fill
+                  quality={90}
+                  sizes="(max-width: 900px) 100vw, 60vw"
+                  className="object-cover transition-transform duration-[800ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-105"
+                />
+              </div>
+            </figure>
+
+            {/* Body: Desktop Row 2 Col 9-12 | Mobile Order 3 */}
+            <div className="order-3 lg:order-none lg:col-start-9 lg:col-span-4 lg:row-start-2 lg:self-start flex flex-col gap-[26px]">
+              <ul className="list-none m-0 p-0 border-t border-[#221811]/16">
+                <li className="grid grid-cols-[1fr_auto] items-baseline gap-x-4 gap-y-1 py-[18px] border-b border-[#221811]/16">
+                  <span className="font-sans font-semibold text-[10px] leading-[1.4] tracking-[0.22em] uppercase text-[#7A5F3A]">
+                    Bhopal Airport
+                  </span>
+                  <b className="font-display font-normal text-[24px] leading-none text-[#221811] row-span-2 self-center">
+                    70 km
+                  </b>
+                  <em className="not-italic font-sans text-[13px] text-[#54473C]">
+                    approx. 1.5 hrs
+                  </em>
+                </li>
+                <li className="grid grid-cols-[1fr_auto] items-baseline gap-x-4 gap-y-1 py-[18px] border-b border-[#221811]/16">
+                  <span className="font-sans font-semibold text-[10px] leading-[1.4] tracking-[0.22em] uppercase text-[#7A5F3A]">
+                    Railway station
+                  </span>
+                  <b className="font-display font-normal text-[24px] leading-none text-[#221811] row-span-2 self-center">
+                    30 km
+                  </b>
+                  <em className="not-italic font-sans text-[13px] text-[#54473C]">
+                    approx. 30 mins
+                  </em>
+                </li>
+                <li className="grid grid-cols-[1fr_auto] items-baseline gap-x-4 gap-y-1 py-[18px] border-b border-[#221811]/16">
+                  <span className="font-sans font-semibold text-[10px] leading-[1.4] tracking-[0.22em] uppercase text-[#7A5F3A]">
+                    Indore
+                  </span>
+                  <b className="font-display font-normal text-[24px] leading-none text-[#221811] row-span-2 self-center">
+                    210 km
+                  </b>
+                  <em className="not-italic font-sans text-[13px] text-[#54473C]">
+                    approx. 3–4 hrs
+                  </em>
+                </li>
+              </ul>
+              <a
+                className="inline-flex items-center gap-3.5 hover:gap-5 min-h-[44px] font-sans font-semibold text-[11px] tracking-[0.22em] uppercase text-[#221811] hover:text-[#7A5F3A] border-b border-current self-start transition-all duration-300"
+                href="https://maps.google.com/?q=Manratan+Resort+Narsinghgarh+MP"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Get directions
+                <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true" className="transition-transform duration-300">
+                  <path d="M0 5h16M12 1l4 4-4 4" stroke="currentColor" strokeWidth="1.2" />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ============ FAQS ============ */}
-      <section className="mr-sec" id="faqs" aria-labelledby="faq-title">
-        <div className="mr-wrap mr-grid12" style={{ alignItems: "start" }}>
-          <div
-            style={{
-              gridColumn: "1 / span 4",
-              display: "flex",
-              flexDirection: "column",
-              gap: "24px",
-            }}
-          >
-            <p className="mr-eyebrow">FAQs</p>
-            <h2 className="mr-title" id="faq-title">
-              Stay<span className="mr-script">informed</span>
+      <section className="relative py-[clamp(88px,9vw,132px)] bg-[#FBF7EF]" id="faqs" aria-labelledby="faq-title">
+        <div className="max-w-[1440px] mx-auto px-[clamp(20px,5.6vw,80px)] grid grid-cols-12 gap-x-[clamp(20px,2.8vw,40px)] gap-y-12 items-start">
+          <div className="col-span-12 lg:col-span-4 flex flex-col gap-6">
+            <p className="m-0 font-sans font-semibold text-[11px] leading-[1.5] tracking-[0.24em] uppercase text-[#7A5F3A]">
+              FAQs
+            </p>
+            <h2 className="m-0 font-display font-normal text-[clamp(40px,4.5vw,64px)] leading-[1.02] uppercase text-[#221811]" id="faq-title">
+              Stay
+              <span className="block font-script font-normal normal-case tracking-normal text-[0.8em] leading-none pl-[1.8em] text-[#221811]">
+                informed
+              </span>
             </h2>
-            <p className="mr-body">Can’t find your answer? Call or WhatsApp our reservations team.</p>
+            <p className="m-0 font-sans text-[15px] leading-[1.85] text-[#54473C] max-w-[34em] text-pretty">
+              Can’t find your answer? Call or WhatsApp our reservations team.
+            </p>
           </div>
 
-          <div className="mr-faq" style={{ gridColumn: "6 / span 7" }}>
+          <div className="col-span-12 lg:col-start-6 lg:col-span-7 border-t border-[#221811]/16">
             {faqs.map((f, idx) => {
               const isOpen = openFaq === idx;
               return (
-                <div key={f.q} className={`mr-faq-it ${isOpen ? "is-open" : ""}`}>
-                  <h3 style={{ margin: 0 }}>
+                <div key={f.q} className="border-b border-[#221811]/16">
+                  <h3 className="m-0">
                     <button
-                      className="mr-faq-q"
+                      className="flex items-center justify-between gap-6 w-full py-[26px] bg-transparent border-0 cursor-pointer text-left font-display font-normal text-[17px] md:text-[21px] leading-[1.3] uppercase text-[#221811] hover:text-[#7A5F3A] transition-colors focus-visible:outline-2 focus-visible:outline-[#B08D57] focus-visible:outline-offset-4"
                       type="button"
                       aria-expanded={isOpen}
                       onClick={() => setOpenFaq(isOpen ? null : idx)}
                     >
                       {f.q}
-                      <span className="mr-faq-ic" aria-hidden="true" />
+                      <span
+                        className={`relative w-9 h-9 shrink-0 rounded-full border transition-all duration-300 flex items-center justify-center ${
+                          isOpen
+                            ? "bg-[#221811] border-[#221811] text-[#F6EFE4]"
+                            : "bg-transparent border-[#221811]/30 text-[#221811]"
+                        }`}
+                        aria-hidden="true"
+                      >
+                        {/* Minus / horizontal line */}
+                        <span className="w-3 h-px bg-current transition-transform duration-300" />
+                        {/* Plus / vertical line (hidden or rotated to 0 when open) */}
+                        <span
+                          className={`w-px h-3 bg-current absolute transition-transform duration-300 ${
+                            isOpen ? "rotate-90 opacity-0" : "rotate-0 opacity-100"
+                          }`}
+                        />
+                      </span>
                     </button>
                   </h3>
-                  <div className="mr-faq-a" role="region">
-                    <div>
-                      <p>{f.a}</p>
+                  <div
+                    className={`grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.2,0.7,0.2,1)] ${
+                      isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                    }`}
+                    role="region"
+                  >
+                    <div className="overflow-hidden">
+                      <p className="m-0 pt-0 pb-[26px] pr-0 md:pr-16 font-sans text-[15px] leading-[1.8] text-[#54473C]">
+                        {f.a}
+                      </p>
                     </div>
                   </div>
                 </div>

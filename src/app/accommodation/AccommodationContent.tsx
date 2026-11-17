@@ -25,7 +25,7 @@ export default function AccommodationContent() {
       <header className="hero ab-hero acc-hero">
         <img
           className="hero-img"
-          src="/accommodation-reference/4434b49f370d9431e97678d7fb0767b1.jpg"
+          src="/bright-images/accommodation-reference/4434b49f370d9431e97678d7fb0767b1.jpg"
           alt="Executive Suite bedroom with a panoramic window over the hills"
           style={{ objectPosition: "50% 50%" }}
         />
@@ -162,7 +162,7 @@ export default function AccommodationContent() {
               aria-hidden="true"
             >
               <img
-                src="/accommodation-reference/73c62d41018b83f97f6087d2a566c056.jpg"
+                src="/bright-images/accommodation-reference/73c62d41018b83f97f6087d2a566c056.jpg"
                 alt="Executive Suite living room with sofa, armchair and floor-to-ceiling window"
                 loading="lazy"
               />
@@ -264,7 +264,7 @@ export default function AccommodationContent() {
               aria-hidden="true"
             >
               <img
-                src="/accommodation-reference/f0252e30d215acb82a369beb8f5f50bf.jpg"
+                src="/bright-images/accommodation-reference/f0252e30d215acb82a369beb8f5f50bf.jpg"
                 alt="Premium Room with king bed, sofa and window view"
                 loading="lazy"
               />
@@ -366,7 +366,7 @@ export default function AccommodationContent() {
               aria-hidden="true"
             >
               <img
-                src="/accommodation-reference/4dccf3c70be945be9694b8a9841d5b22.jpg"
+                src="/bright-images/accommodation-reference/4dccf3c70be945be9694b8a9841d5b22.jpg"
                 alt="Executive Family Room with two beds made up side by side"
                 loading="lazy"
               />
@@ -466,7 +466,7 @@ export default function AccommodationContent() {
               aria-hidden="true"
             >
               <img
-                src="/accommodation-reference/73f38aa930e39f06b393dd84005492dc.jpg"
+                src="/bright-images/accommodation-reference/73f38aa930e39f06b393dd84005492dc.jpg"
                 alt="Deluxe Interconnected Room with two connected bedrooms"
                 loading="lazy"
               />
@@ -566,7 +566,7 @@ export default function AccommodationContent() {
               aria-hidden="true"
             >
               <img
-                src="/accommodation-reference/ee837becad6523c696faf319c7d4af5a.jpg"
+                src="/bright-images/accommodation-reference/ee837becad6523c696faf319c7d4af5a.jpg"
                 alt="Deluxe Room with double bed, warm-lit curtains and a writing desk"
                 loading="lazy"
               />
@@ -831,7 +831,7 @@ export default function AccommodationContent() {
         <div className="wrap">
           <div className="close-card rv">
             <img
-              src="/accommodation-reference/1ff8fae4a595e88dc0e19896b4804a26.jpg"
+              src="/bright-images/accommodation-reference/1ff8fae4a595e88dc0e19896b4804a26.jpg"
               alt="A guest reading by a tall window that looks out over green countryside"
             />
             <div className="close-scrim" aria-hidden="true"></div>

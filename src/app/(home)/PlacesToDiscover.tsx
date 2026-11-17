@@ -72,7 +72,7 @@ function PlaceTile({
       className={`${styles.tile} ${mobile ? styles.mobileTile : styles[`tile${index + 1}`]}`}
     >
       <Image
-        src={`/media/narsinghgarh-${place.image}.jpg`}
+        src={`/bright-images/media/narsinghgarh-${place.image}.jpg`}
         alt={place.alt}
         fill
         unoptimized
@@ -153,7 +153,7 @@ export default function PlacesToDiscover() {
           &rarr;
         </button>
       </div>
-      {open !== null && <PhotoLightbox initialIndex={open} onClose={closeGallery} photos={places.map(place => ({ src: `/media/narsinghgarh-${place.image}.jpg`, alt: place.alt, title: place.title }))} />}
+      {open !== null && <PhotoLightbox initialIndex={open} onClose={closeGallery} photos={places.map(place => ({ src: `/bright-images/media/narsinghgarh-${place.image}.jpg`, alt: place.alt, title: place.title }))} />}
     </SectionWithContainer>
   );
 }

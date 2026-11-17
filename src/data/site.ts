@@ -22,7 +22,7 @@ export const photo = (key: MediaKey, alt: string): Photo => {
     throw new Error(`Missing dimensions for media "${key}". Add this image to src/data/media-manifest.json.`);
   }
   const [width, height] = dimensions;
-  return { src: `/media/${key}.webp`, width, height, alt };
+  return { src: `/bright-images/media/${key}.webp`, width, height, alt };
 };
 
 export const video = {

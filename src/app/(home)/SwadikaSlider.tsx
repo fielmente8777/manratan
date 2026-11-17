@@ -9,7 +9,7 @@ import { Container } from "@/components/sectionComponants";
 import "swiper/css";
 
 const foodSlides = [1, 2, 3].map((number) => ({
-  src: `/media/swadika-food${number}.jpg`,
+  src: `/bright-images/media/swadika-food${number}.jpg`,
   alt: `Vegetarian food served at Swadika, photograph ${number}`,
   caption: "Fresh flavours from the Swadika kitchen",
   widthClass: number === 2
@@ -23,7 +23,7 @@ const foodSlides = [1, 2, 3].map((number) => ({
 
 const slides = [
   {
-    src: "/media/swadika-hall.webp",
+    src: "/bright-images/media/swadika-hall.webp",
     alt: "Swadika dining hall with teal velvet chairs and chandeliers",
     caption: "The chandelier-lit Swadika hall",
     widthClass: "!w-[66vw] sm:!w-[min(40vw,320px)]",
@@ -32,7 +32,7 @@ const slides = [
   },
   foodSlides[0],
   {
-    src: "/media/swadika-guests.webp",
+    src: "/bright-images/media/swadika-guests.webp",
     alt: "Families enjoying lunch together at Swadika",
     caption: "Tables laid for a long family lunch",
     widthClass: "!w-[54vw] sm:!w-[min(33vw,260px)]",
@@ -41,7 +41,7 @@ const slides = [
   },
   foodSlides[1],
   {
-    src: "/media/swadika-room.webp",
+    src: "/bright-images/media/swadika-room.webp",
     alt: "Swadika restaurant set for service",
     caption: "Indian and global, all pure vegetarian",
     widthClass: "!w-[80vw] sm:!w-[min(66vw,640px)]",
@@ -50,7 +50,7 @@ const slides = [
   },
   foodSlides[2],
   {
-    src: "/homopage/dining2_11zon.jpg",
+    src: "/bright-images/homopage/dining2_11zon.jpg",
     alt: "A floating breakfast spread beside the Blue Diamond pool",
     caption: "Breakfast by the Blue Diamond pool",
     widthClass: "!w-[54vw] sm:!w-[min(33vw,260px)]",

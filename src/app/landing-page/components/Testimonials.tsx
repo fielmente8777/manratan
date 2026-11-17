@@ -29,7 +29,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({
       <div className="mt-[16px] flex items-center justify-center gap-6 sm:gap-[32px] w-full max-w-[206px] h-[32px] sm:h-[42px] mx-auto">
         <div className="relative h-[30px] sm:h-[42px] w-[95px] sm:w-[132px] flex items-center justify-center shrink-0">
           <Image
-            src="/landing/MakeMyTrip.png"
+            src="/bright-images/landing/MakeMyTrip.png"
             alt="MakeMyTrip"
             width={132}
             height={42}
@@ -38,7 +38,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({
         </div>
         <div className="relative h-[30px] sm:h-[42px] w-[30px] sm:w-[42px] flex items-center justify-center shrink-0">
           <Image
-            src="/landing/google.png"
+            src="/bright-images/landing/google.png"
             alt="Google"
             width={42}
             height={42}

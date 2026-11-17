@@ -132,7 +132,7 @@ export default function HomeHero() {
             Manratan Resort, Narsinghgarh. {site.tagline}
           </span>
           <Image
-            src="/images/nav.png"
+            src="/bright-images/images/nav.png"
             alt=""
             width={479}
             height={203}

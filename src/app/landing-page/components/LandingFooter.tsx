@@ -34,7 +34,7 @@ const LandingFooter = () => {
           <div className="flex items-start">
             <div className="relative h-[52px] sm:h-[65px] w-[160px] sm:w-[200px] shrink-0">
               <Image
-                src="/images/nav.png"
+                src="/bright-images/images/nav.png"
                 alt="Manratan Resort"
                 fill
                 className="object-contain object-left"

@@ -40,7 +40,7 @@ const AboutIntro: React.FC<AboutIntroProps> = ({
         style={{ opacity: 1 }}
       >
         <img
-          src="/landing/bg-image1.png"
+          src="/bright-images/landing/bg-image1.png"
           alt="Mandala Background"
           width={401}
           height={354}

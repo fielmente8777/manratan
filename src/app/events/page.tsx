@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function EventsPage() {
   return (
-    <main>
+    <main className="max_screen_width">
       <EventsView />
     </main>
   );
