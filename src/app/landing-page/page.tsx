@@ -11,12 +11,10 @@ import WeddingSection from "./components/Weddind";
 import GallerySection from "./components/Gallery";
 import Testimonials from "./components/Testimonials";
 import Faq from "./components/Faq";
-import ScrollReveal from "@/components/site/ScrollReveal";
 
 export default function Home() {
   return (
     <main className="w-full overflow-x-clip">
-      <ScrollReveal />
       <LandingBanner {...homePageData.heroData} />
       <AboutIntro {...LandingPageData.aboutIntro} />
       <StatsBar {...LandingPageData.statsBar} />

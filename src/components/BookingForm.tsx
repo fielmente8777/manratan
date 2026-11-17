@@ -5,9 +5,10 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { IoIosArrowDown } from "react-icons/io";
 import { useWebContext, type BookingPrefill } from "@/context-api/WebContext";
-import { formatShort, nightsBetween, startOfToday, toLocalISODate } from "@/utils/dates";
+import { addDays, formatShort, nightsBetween, startOfToday, toLocalISODate } from "@/utils/dates";
 
 export interface BookingFormProps {
+  variant?: "hero" | "room";
   gridView?: boolean;
   className?: string;
   onSearch?: (data: { checkin: string; checkout: string; adults: number; children: number }) => void;
@@ -46,7 +47,7 @@ const DateTrigger = forwardRef<HTMLButtonElement, TriggerProps>(function DateTri
   );
 });
 
-export default function BookingForm({ gridView = false, className = "", onSearch }: BookingFormProps) {
+export default function BookingForm({ variant = "hero", gridView = false, className = "", onSearch }: BookingFormProps) {
   const { openEnquiry } = useWebContext();
   const [name, setName] = useState("");
   const [checkIn, setCheckIn] = useState<Date | null>(null);
@@ -119,6 +120,54 @@ export default function BookingForm({ gridView = false, className = "", onSearch
     showPopperArrow: false,
   };
 
+  const guestPopup = guestOpen && (
+            <div
+              id={`${ids}-guests`}
+              className={`absolute bottom-full left-0 z-[80] mb-2 w-full border border-white/20 bg-[#1c130d]/95 p-4 text-white shadow-2xl backdrop-blur-lg ${variant === "room" ? "" : "lg:min-w-[280px] lg:p-5"}`}
+            >
+              <Counter label="Adults" sub="13 years and over" value={adults} min={1} max={12} onChange={setAdults} />
+              <div className="my-4 h-px bg-white/10" />
+              <Counter label="Children" sub="Up to 12 years" value={children} min={0} max={8} onChange={setChildren} />
+              <button type="button" onClick={() => setGuestOpen(false)} className="t-label mt-5 w-full border border-white/30 py-2.5 text-white hover:bg-white hover:text-ink">
+                Done
+              </button>
+            </div>
+          );
+
+  if (variant === "room") {
+    const shownDate = (date: Date | null) => date?.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }) ?? "";
+    return <form onSubmit={submit} noValidate className={`room-booking ${className}`} aria-label="Check availability">
+      <div className="room-booking-dates">
+        <DatePicker {...picker} id={`${ids}-checkin`} selected={checkIn} startDate={checkIn} endDate={checkOut} selectsStart
+          onChange={(date: Date | null) => { setCheckIn(date); if (date && checkOut && checkOut <= date) setCheckOut(null); setError(""); }}
+          minDate={today} customInput={<DateTrigger fieldLabel="Check-in" shown={shownDate(checkIn)} emptyText="Add date" />} />
+        <DatePicker {...picker} id={`${ids}-checkout`} selected={checkOut} startDate={checkIn} endDate={checkOut} selectsEnd
+          onChange={(date: Date | null) => { setCheckOut(date); setError(""); }}
+          minDate={addDays(checkIn ?? today, 1)} customInput={<DateTrigger fieldLabel="Check-out" shown={shownDate(checkOut)} emptyText="Add date" />} />
+      </div>
+      <div ref={guestRef} className="room-booking-guests relative min-w-0">
+        <button
+          type="button"
+          className="mr-bf-field w-full text-left"
+          onClick={() => setGuestOpen((value) => !value)}
+          aria-expanded={guestOpen}
+          aria-controls={`${ids}-guests`}
+        >
+          <span className="flex items-center justify-between gap-3">
+            <span>
+              <span className="mr-bf-label">Guests</span>
+              <span className="mr-bf-value">{guestLabel}</span>
+            </span>
+            <IoIosArrowDown aria-hidden="true" className={`h-3 w-3 shrink-0 transition-transform ${guestOpen ? "rotate-180" : ""}`} />
+          </span>
+        </button>
+        {guestPopup}
+      </div>
+      <button type="submit" className="room-booking-submit">Check availability</button>
+      <p aria-live="polite" className={error ? "room-booking-error" : "sr-only"}>{error}</p>
+    </form>;
+  }
+
   return (
     <form onSubmit={submit} noValidate className={`min-w-0 w-full ${className}`} aria-label="Check availability">
       <div
@@ -188,19 +237,7 @@ export default function BookingForm({ gridView = false, className = "", onSearch
               <IoIosArrowDown aria-hidden="true" className={`h-3 w-3 shrink-0 text-white/80 transition-transform ${guestOpen ? "rotate-180" : ""}`} />
             </div>
           </button>
-          {guestOpen && (
-            <div
-              id={`${ids}-guests`}
-              className="absolute bottom-full left-0 z-[80] mb-2 w-full border border-white/20 bg-[#1c130d]/95 p-4 text-white shadow-2xl backdrop-blur-lg lg:min-w-[280px] lg:p-5"
-            >
-              <Counter label="Adults" sub="13 years and over" value={adults} min={1} max={12} onChange={setAdults} />
-              <div className="my-4 h-px bg-white/10" />
-              <Counter label="Children" sub="Up to 12 years" value={children} min={0} max={8} onChange={setChildren} />
-              <button type="button" onClick={() => setGuestOpen(false)} className="t-label mt-5 w-full border border-white/30 py-2.5 text-white hover:bg-white hover:text-ink">
-                Done
-              </button>
-            </div>
-          )}
+          {guestPopup}
         </div>
 
         {/* Submit */}
@@ -225,7 +262,7 @@ function Counter({
   label: string; sub: string; value: number; min: number; max: number; onChange: (v: number) => void;
 }) {
   return (
-    <div className="flex items-center justify-between gap-4">
+    <div className="mr-guest-counter flex items-center justify-between gap-4">
       <div>
         <p className="text-sm font-medium">{label}</p>
         <p className="text-[11px] text-white/55">{sub}</p>

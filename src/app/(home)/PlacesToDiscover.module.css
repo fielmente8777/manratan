@@ -16,14 +16,14 @@
 .tile4 { grid-column: 3; grid-row: 2; }
 .tile5 { grid-column: 1; grid-row: 3; }
 .tile6 { grid-column: 2; grid-row: 3; }
-.tile7 { grid-column: 3; grid-row: 3; }
-.tile8 { grid-column: 4; grid-row: 3; }
+.tile7 { grid-column: 3 / span 2; grid-row: 3; }
 .mobileGallery { display: none; }
 @media (max-width: 900px) {
   .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 180px; grid-auto-flow: dense; gap: 10px; }
   .bento > .tile { grid-column: auto; grid-row: auto; }
   .bento > .tile1 { grid-column: 1 / -1; grid-row: span 2; }
   .bento > .tile3 { grid-row: span 2; }
+  .bento > .tile7 { grid-column: 1 / -1; }
   .tile h3 { font-size: 18px; }
 }
 @media (max-width: 767px) {

@@ -88,6 +88,7 @@ export const navLinks = [
 
 export interface Room {
   id: string;
+  slug: string;
   focus?: string;
   name: string;
   count: number;
@@ -104,6 +105,7 @@ export interface Room {
 export const rooms: Room[] = [
   {
     id: "room-1",
+    slug: "deluxe-room",
     focus: "5% 50%",
     name: "Deluxe Room",
     count: 25,
@@ -126,6 +128,7 @@ export const rooms: Room[] = [
   },
   {
     id: "room-2",
+    slug: "deluxe-interconnected-room",
     name: "Deluxe Interconnected Room",
     count: 12,
     specs: ["Two connected rooms", "Pool & garden view"],
@@ -148,6 +151,7 @@ export const rooms: Room[] = [
   },
   {
     id: "room-3",
+    slug: "executive-family-room",
     name: "Executive Family Room",
     count: 8,
     specs: ["Twin beds", "Pool view"],
@@ -171,6 +175,7 @@ export const rooms: Room[] = [
   },
   {
     id: "room-4",
+    slug: "premium-room",
     name: "Premium Room",
     count: 16,
     specs: ["King bed", "Sofa-cum-bed", "Nature view"],
@@ -193,6 +198,7 @@ export const rooms: Room[] = [
   },
   {
     id: "room-5",
+    slug: "executive-suite",
     name: "Executive Suite",
     count: 2,
     specs: ["Master bedroom", "Private living room", "Panoramic view"],
@@ -219,7 +225,7 @@ export const rooms: Room[] = [
 /** Presentation order: lead with the Executive Suite, then Premium through Deluxe. Room IDs remain unchanged for existing URLs. */
 export const roomsPremiumFirst: Room[] = [...rooms].reverse();
 
-export const getRoom = (id: string) => rooms.find((r) => r.id === id);
+export const getRoom = (id: string) => rooms.find((r) => r.id === id || r.slug === id);
 
 /* ------------------------------------------------------------------ */
 /* Celebration venues (capacities from the brochure)                   */

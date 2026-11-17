@@ -49,13 +49,13 @@ export default function Narsinghgarh() {
           />
           <div className={styles.scrim} aria-hidden="true" />
           <button
-            className={styles.play}
+            className={`${styles.play} flex h-14 w-14 items-center justify-center rounded-full border-2 border-stone/90 text-stone transition-transform duration-700 hover:scale-110`}
             type="button"
             aria-label="Play the Narsinghgarh film"
             aria-haspopup="dialog"
             onClick={() => setFilmOpen(true)}
           >
-            <PlayIcon className="h-6 w-6 translate-x-0.5" />
+            <PlayIcon className="h-5 w-5 translate-x-0.5" />
           </button>
           <figcaption className={styles.tag}>
             <span className="t-label">The film</span>

@@ -7,6 +7,7 @@ import PopUpForm from "@/components/pop-up/PopUpForm";
 import Header from "@/components/site/Header";
 import Footer from "@/components/site/Footer";
 import Chrome from "@/components/site/Chrome";
+import ScrollReveal from "@/components/site/ScrollReveal";
 import { site } from "@/data/site";
 
 // Display faces subset to Latin and served as WOFF2 (was ~450 KB of TTF/OTF).
@@ -104,6 +105,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Chrome>
             <Header />
           </Chrome>
+          <ScrollReveal />
           <div id="content" className="flex-1">{children}</div>
           <Chrome>
             <Footer />
