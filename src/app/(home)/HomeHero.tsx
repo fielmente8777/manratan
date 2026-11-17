@@ -30,9 +30,6 @@ export default function HomeHero() {
       navigator as Navigator & { connection?: { saveData?: boolean } }
     ).connection?.saveData;
     if (reduce || saver) return;
-    const portrait = window.matchMedia(
-      "(max-width: 767px) and (orientation: portrait), (max-aspect-ratio: 4/5)"
-    ).matches;
     let idle = 0;
     const begin = () => {
       const ric = (
@@ -44,11 +41,11 @@ export default function HomeHero() {
         }
       ).requestIdleCallback;
       idle = ric
-        ? ric(() => setSrc(portrait ? video.heroLoopMobile : video.heroLoop), {
+        ? ric(() => setSrc(video.walkthrough), {
             timeout: 2000,
           })
         : window.setTimeout(
-            () => setSrc(portrait ? video.heroLoopMobile : video.heroLoop),
+            () => setSrc(video.walkthrough),
             300
           );
     };
