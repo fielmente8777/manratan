@@ -472,7 +472,7 @@ export function Swadika() {
         <div className="relative mx-auto flex max-w-[760px] flex-col items-center text-center">
           {/* Script watermark behind the heading */}
           <span
-            className="t-script pointer-events-none absolute -top-14 left-[38%] select-none whitespace-nowrap text-[clamp(6rem,13vw,12rem)] text-ink/[0.05] sm:-top-20"
+            className="t-script pointer-events-none absolute -top-10 left-[62%] -translate-x-1/2 select-none whitespace-nowrap text-[clamp(4.8rem,20vw,6.5rem)] text-ink/[0.05] sm:-top-20 sm:left-[38%] sm:translate-x-0 sm:text-[clamp(6rem,13vw,12rem)]"
             aria-hidden="true"
           >
             Swadika
