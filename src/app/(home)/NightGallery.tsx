@@ -7,15 +7,12 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-// Photo order follows the supplied Figma reference, left to right.
-// The ZIP repeats photo 3; its mirrored display matches reference photo 4.
 const photos = [
-  { file: 4, alt: "Manratan Resort's illuminated facade and gardens from above" },
-  { file: 3, alt: "Manratan Resort's illuminated entrance viewed from the front" },
-  { file: 1, alt: "Manratan Resort and its forecourt at night from the right" },
-  { file: 1, alt: "Mirrored aerial view of Manratan Resort and its forecourt at night", mirrored: true },
-  { file: 6, alt: "Wide front view of Manratan Resort and the driveway at night" },
-  { file: 5, alt: "Wide aerial view of Manratan Resort's illuminated grounds at night" },
+  { src: "/media/night/new-gallery.webp", alt: "Manratan Resort illuminated at night" },
+  { src: "/media/night/new-gallery-1.webp", alt: "Manratan Resort illuminated facade and gardens at night" },
+  { src: "/media/night/new-gallery-2.webp", alt: "Manratan Resort illuminated entrance at night" },
+  { src: "/media/night/new-gallery-3.webp", alt: "Manratan Resort aerial view at night" },
+  { src: "/media/night/new-gallery-4.webp", alt: "Manratan Resort grounds and driveway at night" },
 ];
 
 export default function NightGallery() {
@@ -40,12 +37,12 @@ export default function NightGallery() {
       {photos.map((photo, index) => (
         <SwiperSlide key={index}>
           <Image
-            src={`/media/night/gallery-${photo.file}.jpg`}
+            src={photo.src}
             alt={photo.alt}
             fill
             quality={85}
             sizes="100vw"
-            className={`object-cover ${photo.mirrored ? "-scale-x-100" : ""}`}
+            className="object-cover"
           />
         </SwiperSlide>
       ))}

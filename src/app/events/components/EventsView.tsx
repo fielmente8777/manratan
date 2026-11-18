@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { FaWhatsapp } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -1441,20 +1442,7 @@ export default function EventsView() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <svg
-                    width="15"
-                    height="15"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M3.5 20.5l1.3-4A8.5 8.5 0 1 1 8 19.6z" />
-                    <path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.6-2-1-1 1c-1-.4-2-1.4-2.4-2.4l1-1-1-2z" />
-                  </svg>
+                  <FaWhatsapp className="w-4 h-4 shrink-0 text-[16px]" />
                   WhatsApp the events team
                 </a>
               </div>

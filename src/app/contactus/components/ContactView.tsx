@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { IoIosArrowDown } from "react-icons/io";
+import { FaWhatsapp } from "react-icons/fa";
 import { countries } from "@/utils/constent";
 import { startOfToday, toLocalISODate } from "@/utils/dates";
 
@@ -941,20 +942,7 @@ export default function ContactView() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M3.5 20.5l1.3-4A8.5 8.5 0 1 1 8 19.6z" />
-                    <path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.6-2-1-1 1c-1-.4-2-1.4-2.4-2.4l1-1-1-2z" />
-                  </svg>
+                  <FaWhatsapp className="w-4 h-4 shrink-0 text-[16px]" />
                   WhatsApp us
                 </a>
                 <a
