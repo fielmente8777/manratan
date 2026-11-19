@@ -30,7 +30,7 @@ export const video = {
   heroLoop: "/media/hero-loop.mp4",
   /** 720x1280 portrait cut of the same loop for phones. */
   heroLoopMobile: "/media/hero-loop-mobile.mp4",
-  walkthrough: "/media/walkthrough-v2.mp4",
+  walkthrough: "/media/walkthrough-v2.mp4?v=3",
   poster: "/final-view/first-light1.webp",
   /** The model walk (client footage IMG_5576.MP4): reception, a guest room, Swadika, the pool. 720x1280, graded, muted. */
   walk: "/media/walk.mp4",

@@ -13,50 +13,37 @@ type LoopState = "idle" | "playing" | "paused" | "blocked";
 
 export default function HomeHero() {
   const vidRef = useRef<HTMLVideoElement>(null);
-  const [src, setSrc] = useState<string | null>(null);
-  const [state, setState] = useState<LoopState>("idle");
+  const [isPlaying, setIsPlaying] = useState(true);
   const [filmOpen, setFilmOpen] = useState(false);
 
   useEffect(() => {
-    const reduce = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    const saver = (
-      navigator as Navigator & { connection?: { saveData?: boolean } }
-    ).connection?.saveData;
-    if (reduce || saver) return;
-    let idle = 0;
-    const begin = () => {
-      setSrc(video.walkthrough);
-    };
-    if (document.readyState === "complete" || document.readyState === "interactive") {
-      idle = window.setTimeout(begin, 200);
-    } else {
-      window.addEventListener("load", begin, { once: true });
-      idle = window.setTimeout(begin, 1000);
-    }
-    return () => {
-      window.removeEventListener("load", begin);
-      window.clearTimeout(idle);
-    };
-  }, []);
-
-  useEffect(() => {
     const v = vidRef.current;
-    if (!v || !src) return;
+    if (!v) return;
     v.muted = true;
     v.defaultMuted = true;
     v.playsInline = true;
-    const attemptPlay = () => {
+    const play = () => {
       v.muted = true;
       v.play()
-        .then(() => setState("playing"))
-        .catch(() => {
-          setState("paused");
-        });
+        .then(() => setIsPlaying(true))
+        .catch(() => setIsPlaying(false));
     };
-    attemptPlay();
-  }, [src]);
+    play();
+    const onUserTouch = () => {
+      if (v.paused) {
+        v.muted = true;
+        v.play().then(() => setIsPlaying(true)).catch(() => {});
+      }
+    };
+    window.addEventListener("touchstart", onUserTouch, { once: true, passive: true });
+    window.addEventListener("click", onUserTouch, { once: true });
+    window.addEventListener("scroll", onUserTouch, { once: true, passive: true });
+    return () => {
+      window.removeEventListener("touchstart", onUserTouch);
+      window.removeEventListener("click", onUserTouch);
+      window.removeEventListener("scroll", onUserTouch);
+    };
+  }, []);
 
   const toggle = useCallback(() => {
     const v = vidRef.current;
@@ -65,11 +52,11 @@ export default function HomeHero() {
       v.muted = true;
       void v
         .play()
-        .then(() => setState("playing"))
-        .catch(() => setState("blocked"));
+        .then(() => setIsPlaying(true))
+        .catch(() => setIsPlaying(false));
     } else {
       v.pause();
-      setState("paused");
+      setIsPlaying(false);
     }
   }, []);
 
@@ -88,56 +75,39 @@ export default function HomeHero() {
           fetchPriority="high"
           unoptimized
           sizes="100vw"
-          className="-z-20 object-cover object-[50%_40%]"
+          className="z-0 object-cover object-[50%_40%]"
         />
-        {src && (
-          <video
-            ref={vidRef}
-            key={src}
-            src={src}
-            poster="/final-view/first-light1.webp"
-            muted
-            loop
-            playsInline
-            autoPlay
-            preload="auto"
-            onLoadedData={() => {
-              const v = vidRef.current;
-              if (v && v.paused) {
-                v.muted = true;
-                v.play().then(() => setState("playing")).catch(() => {});
-              }
-            }}
-            onPlaying={() => setState("playing")}
-            className={`absolute inset-0 -z-10 h-full w-full object-cover transition-opacity duration-[1400ms] ${
-              state === "playing" || state === "paused"
-                ? "opacity-100"
-                : "opacity-0"
-            }`}
-            aria-hidden="true"
-            tabIndex={-1}
-          />
-        )}
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/25 via-black/5 to-black/55" />
+        <video
+          ref={vidRef}
+          src={video.walkthrough}
+          poster="/final-view/first-light1.webp"
+          muted
+          loop
+          playsInline
+          autoPlay
+          preload="auto"
+          className="absolute inset-0 z-[1] h-full w-full object-cover"
+          aria-hidden="true"
+          tabIndex={-1}
+        />
+        <div className="absolute inset-0 z-[2] bg-gradient-to-b from-black/25 via-black/5 to-black/55 pointer-events-none" />
       </div>
 
-            {src && (
-              <button
-                type="button"
-                onClick={toggle}
-                className={`${styles.pauseButton} t-label inline-flex items-center gap-2 text-[0.62rem] text-stone/80 hover:text-stone`}
-                aria-label={state === "playing" ? "Pause background video" : "Play background video"}
-              >
-                {state === "playing" ? (
-                  <svg viewBox="0 0 16 16" className="h-3 w-3" aria-hidden="true">
-                    <path d="M4 2h3v12H4zM9 2h3v12H9z" fill="currentColor" />
-                  </svg>
-                ) : (
-                  <PlayIcon className="h-3 w-3" />
-                )}
-                <span>{state === "playing" ? "Pause" : "Play"}</span>
-              </button>
-            )}
+      <button
+        type="button"
+        onClick={toggle}
+        className={`${styles.pauseButton} t-label inline-flex items-center gap-2 text-[0.62rem] text-stone/80 hover:text-stone`}
+        aria-label={isPlaying ? "Pause background video" : "Play background video"}
+      >
+        {isPlaying ? (
+          <svg viewBox="0 0 16 16" className="h-3 w-3" aria-hidden="true">
+            <path d="M4 2h3v12H4zM9 2h3v12H9z" fill="currentColor" />
+          </svg>
+        ) : (
+          <PlayIcon className="h-3 w-3" />
+        )}
+        <span>{isPlaying ? "Pause" : "Play"}</span>
+      </button>
 
       <div className={`${styles.heading} flex flex-1 flex-col items-center justify-center px-5 pb-6 pt-24 text-center md:pb-8 md:pt-28`}>
         <h1 className="hero-rise">
@@ -200,7 +170,7 @@ export default function HomeHero() {
         </div>
       </div>
 
-      {filmOpen && <FilmModal onClose={() => setFilmOpen(false)} bgVideo={vidRef} resumeBg={state === "playing"} />}
+      {filmOpen && <FilmModal onClose={() => setFilmOpen(false)} bgVideo={vidRef} resumeBg={isPlaying} />}
 
 
     </Section>
