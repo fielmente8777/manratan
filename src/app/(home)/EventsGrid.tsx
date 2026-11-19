@@ -18,8 +18,8 @@ const cards: Card[] = [
   {
     title: "Destination Wedding",
     img: { src: "/media/film-banquet-3.webp", alt: "Banquet hall arranged with black and gold tables at Manratan Resort" },
-    video: "/final-view/wedding (1).mp4",
-    clip: "/final-view/wedding (1).mp4",
+    video: "/final-view/wedding-newest (1).mp4",
+    clip: "/final-view/wedding-newest (1).mp4",
   },
   {
     title: "Curated Events",
