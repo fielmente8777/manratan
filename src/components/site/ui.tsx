@@ -97,3 +97,12 @@ export function PlayIcon({ className = "w-4 h-4" }: { className?: string }) {
     </svg>
   );
 }
+
+/** Larger film glyph, optically centred inside the existing transparent control. */
+export function FilmPlayIcon({ className = "h-7 w-7" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path d="m7 4.5 13 7.5-13 7.5v-15Z" fill="currentColor" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
+    </svg>
+  );
+}

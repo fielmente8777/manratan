@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { SectionWithContainer } from "@/components/sectionComponants";
-import { LineLink, PlayIcon, Title } from "@/components/site/ui";
+import { FilmPlayIcon, LineLink, Title } from "@/components/site/ui";
 import FilmModal from "@/components/site/FilmModal";
 import styles from "./Narsinghgarh.module.css";
 import { walkthrough } from "@/data/site";
@@ -55,7 +55,7 @@ export default function Narsinghgarh() {
             aria-haspopup="dialog"
             onClick={() => setFilmOpen(true)}
           >
-            <PlayIcon className="h-5 w-5 translate-x-0.5" />
+            <FilmPlayIcon />
           </button>
           <figcaption className={styles.tag}>
             <span className="t-label">The film</span>

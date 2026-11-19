@@ -4,15 +4,10 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import BookingForm from "@/components/BookingForm";
 import FilmModal from "@/components/site/FilmModal";
-import { PlayIcon } from "@/components/site/ui";
+import { FilmPlayIcon, PlayIcon } from "@/components/site/ui";
 import { Section } from "@/components/sectionComponants";
-import { photo, site, video } from "@/data/site";
+import { site, video } from "@/data/site";
 import styles from "./HomeHero.module.css";
-
-const poster = photo(
-  "facade-dusk",
-  "Manratan Resort at dusk, seen from the forecourt"
-);
 
 type LoopState = "idle" | "playing" | "paused" | "blocked";
 
@@ -94,8 +89,8 @@ export default function HomeHero() {
     >
       <div className={styles.visual}>
         <Image
-          src={poster.src}
-          alt={poster.alt}
+          src={video.poster}
+          alt="Manratan Resort, from the current resort film"
           fill
           preload
           fetchPriority="high"
@@ -108,6 +103,7 @@ export default function HomeHero() {
             ref={vidRef}
             key={src}
             src={src}
+            poster={video.poster}
             muted
             loop
             playsInline
@@ -125,6 +121,24 @@ export default function HomeHero() {
         )}
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/25 via-black/5 to-black/55" />
       </div>
+
+            {src && (
+              <button
+                type="button"
+                onClick={toggle}
+                className={`${styles.pauseButton} t-label inline-flex items-center gap-2 text-[0.62rem] text-stone/80 hover:text-stone`}
+                aria-label={state === "playing" ? "Pause background video" : "Play background video"}
+              >
+                {state === "playing" ? (
+                  <svg viewBox="0 0 16 16" className="h-3 w-3" aria-hidden="true">
+                    <path d="M4 2h3v12H4zM9 2h3v12H9z" fill="currentColor" />
+                  </svg>
+                ) : (
+                  <PlayIcon className="h-3 w-3" />
+                )}
+                <span>{state === "playing" ? "Pause" : "Play"}</span>
+              </button>
+            )}
 
       <div className={`${styles.heading} flex flex-1 flex-col items-center justify-center px-5 pb-6 pt-24 text-center md:pb-8 md:pt-28`}>
         <h1 className="hero-rise">
@@ -162,43 +176,25 @@ export default function HomeHero() {
       </div>
 
       <div className={`${styles.bookingLayout} hero-rise delay-2 relative w-full px-4 pb-4 sm:px-8 sm:pb-6 lg:px-10`}>
-        <div className={`${styles.bookingRow} mx-auto flex max-w-[1500px] flex-col-reverse items-stretch gap-4 lg:grid lg:grid-cols-[1fr_minmax(0,860px)_1fr] lg:items-end lg:gap-6`}>
+        <div className={`${styles.bookingRow} mx-auto flex max-w-[1500px] flex-col-reverse items-stretch gap-4 lg:grid lg:grid-cols-[minmax(72px,1fr)_minmax(0,860px)_minmax(72px,1fr)] lg:items-center lg:gap-6`}>
           <div className={`${styles.formPanel} w-full lg:col-start-2 lg:row-start-1`}>
             <BookingForm />
           </div>
           <div className={`${styles.controls} flex items-center justify-between gap-4 lg:contents`}>
-            {src ? (
-              <button
-                type="button"
-                onClick={toggle}
-                className="t-label inline-flex items-center gap-2 lg:col-start-1 lg:row-start-1 lg:mb-7 lg:justify-self-start text-[0.62rem] text-stone/80 hover:text-stone"
-                aria-label={state === "playing" ? "Pause background video" : "Play background video"}
-              >
-                {state === "playing" ? (
-                  <svg viewBox="0 0 16 16" className="h-3 w-3" aria-hidden="true">
-                    <path d="M4 2h3v12H4zM9 2h3v12H9z" fill="currentColor" />
-                  </svg>
-                ) : (
-                  <PlayIcon className="h-3 w-3" />
-                )}
-                <span>{state === "playing" ? "Pause" : "Play"}</span>
-              </button>
-            ) : (
-              <span />
-            )}
+            <span />
             <button
               type="button"
               onClick={() => setFilmOpen(true)}
               aria-haspopup="dialog"
               aria-label="Watch the Manratan film"
-              className={`${styles.watchButton} group inline-flex items-center gap-4 text-stone lg:col-start-3 lg:row-start-1 lg:mb-3 lg:justify-self-end`}
+              className={`${styles.watchButton} group inline-flex items-center gap-4 text-stone lg:col-start-3 lg:row-start-1 lg:justify-self-end`}
             >
               <span className="t-label text-right leading-relaxed">
                 Watch the film
                 <span className="block normal-case tracking-normal text-[0.8rem] text-stone/75">A walk through Manratan</span>
               </span>
               <span className="flex h-12 w-12 items-center justify-center rounded-full border border-stone/70 backdrop-blur-sm transition-colors duration-500 group-hover:bg-stone group-hover:text-ink sm:h-16 sm:w-16">
-                <PlayIcon className="h-5 w-5 translate-x-0.5" />
+                <FilmPlayIcon />
               </span>
             </button>
           </div>
@@ -207,15 +203,7 @@ export default function HomeHero() {
 
       {filmOpen && <FilmModal onClose={() => setFilmOpen(false)} bgVideo={vidRef} resumeBg={state === "playing"} />}
 
-      {state === "blocked" && (
-        <button
-          type="button"
-          onClick={toggle}
-          className="absolute right-4 top-24 z-10 inline-flex items-center gap-2 rounded-full border border-stone/50 bg-black/30 px-4 py-2 text-xs text-stone backdrop-blur-sm"
-        >
-          <PlayIcon className="h-3 w-3" /> Play video
-        </button>
-      )}
+
     </Section>
   );
 }

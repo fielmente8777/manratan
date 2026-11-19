@@ -33,16 +33,17 @@
 .media { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.55) saturate(.7); transition: filter .9s; }
 .panel:hover .media { filter: brightness(.78) saturate(.9); }
 .active .media { filter: none; }
-.panel:not(.active) video { opacity: 0; }
-.panel video { transition: opacity .35s ease, filter .7s ease; }
+.panel video { opacity: 0; transition: opacity .65s ease, filter .7s ease; }
+.panel.active video.videoReady { opacity: 1; }
 .shade { position: absolute; inset: auto 0 0; height: 45%; background: linear-gradient(0deg, rgb(20 13 9 / .82), rgb(20 13 9 / 0)); pointer-events: none; }
-.desktopProgress { position: absolute; left: 22%; right: 22%; top: 9%; height: 2px; border-radius: 2px; background: rgb(246 239 228 / .28); overflow: hidden; }
-.desktopProgress i, .segments i { position: absolute; inset: 0; background: #f6efe4; transform-origin: left; transition: transform .2s linear; }
 .label { position: absolute; left: 50%; bottom: 24px; display: flex; align-items: center; gap: 12px; white-space: nowrap; writing-mode: vertical-rl; transform: translateX(-50%) rotate(180deg); }
-.active .label { left: 26px; writing-mode: horizontal-tb; transform: none; flex-direction: column; align-items: flex-start; gap: 8px; }
+.label { opacity: 1; transition: opacity .45s ease; }
+.active .label { opacity: 0; }
+.labelExpanded { position: absolute; left: 26px; bottom: 24px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; opacity: 0; transform: translateY(6px); transition: opacity .65s ease, transform .65s ease; }
+.active .labelExpanded { opacity: 1; transform: none; }
 .labelNumber { font-size: 10px; font-weight: 600; line-height: 1; letter-spacing: .22em; color: #d8be8e; }
 .labelTitle { font-family: var(--font-display); font-weight: 400; font-size: 22px; line-height: 1; text-transform: uppercase; color: #f6efe4; }
-.active .labelTitle { font-size: 28px; }
+.labelExpanded .labelTitle { font-size: 28px; }
 .mobileUi, .mobileFooter { display: none; }
 
 @media (max-width: 900px) {
@@ -54,7 +55,7 @@
   .title { font-size: clamp(36px, 10vw, 48px); }
   .count, .desktopControls { display: none; }
   .stage { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 12px; row-gap: 24px; height: auto; }
-  .panel { grid-row: 2; flex: none; aspect-ratio: 4 / 5; border-radius: 999px 999px 12px 12px; }
+  .panel { grid-row: 2; flex: none; aspect-ratio: 4 / 5; border-radius: 999px 999px 12px 12px; transform-origin: top left; }
   .panel.active { grid-column: 1 / -1; grid-row: 1; aspect-ratio: 3 / 4; border-radius: 22px; box-shadow: 0 0 0 1px rgb(216 190 142 / .6), 0 12px 24px rgb(0 0 0 / .25); }
   .media { filter: brightness(.72) saturate(.85); }
   .active .media { filter: none; }
@@ -62,13 +63,10 @@
   .label { left: 50%; bottom: 10px; width: 90%; transform: translateX(-50%); flex-direction: column; align-items: center; gap: 4px; text-align: center; writing-mode: horizontal-tb; white-space: normal; }
   .labelNumber { font-size: 9px; }
   .labelTitle { font-size: 13px; line-height: 1.15; }
-  .active .label { left: 20px; right: 20px; bottom: 22px; width: auto; transform: none; align-items: center; text-align: center; gap: 6px; }
-  .active .labelNumber { font-size: 10px; }
-  .active .labelTitle { font-size: 26px; line-height: 1.05; }
-  .desktopProgress { display: none; }
+  .labelExpanded { left: 20px; right: 20px; bottom: 22px; align-items: center; text-align: center; gap: 6px; }
+  .labelExpanded .labelNumber { font-size: 10px; }
+  .labelExpanded .labelTitle { font-size: 26px; line-height: 1.05; }
   .mobileUi { display: block; position: absolute; inset: 0 0 auto; width: 100%; aspect-ratio: 3 / 4; z-index: 3; pointer-events: none; }
-  .segments { position: absolute; left: 16px; right: 16px; top: 16px; display: flex; gap: 5px; }
-  .segments > span { position: relative; flex: 1; height: 3px; border-radius: 3px; background: rgb(246 239 228 / .3); overflow: hidden; }
   .tapZones { position: absolute; inset: 84px 0 96px; display: flex; pointer-events: auto; touch-action: pan-y; }
   .tapZones button { flex: 1; background: transparent; border: 0; padding: 0; cursor: pointer; -webkit-tap-highlight-color: transparent; }
   .mobileControls { position: absolute; right: 14px; top: 32px; display: flex; gap: 8px; pointer-events: auto; }

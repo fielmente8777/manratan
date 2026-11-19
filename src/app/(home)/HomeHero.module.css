@@ -5,6 +5,12 @@
   isolation: isolate;
 }
 
+.pauseButton { position: absolute; top: 96px; right: clamp(20px, 3vw, 40px); z-index: 3; min-height: 44px; }
+
+@media (min-width: 1024px) and (max-width: 1399px) {
+  .watchButton > span:first-child { display: none; }
+}
+
 @media (max-width: 767px) {
   .hero {
     display: grid;

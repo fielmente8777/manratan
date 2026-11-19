@@ -402,7 +402,7 @@
 .room-detail-page .sl-carousel .swiper-wrapper { transition-timing-function: cubic-bezier(.4,0,.2,1); }
 .room-detail-page .sl-carousel img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
 .room-detail-page .room-booking { display: grid; gap: 24px; }
-.room-detail-page .room-booking-dates { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
+.room-detail-page .room-booking-dates { display: grid; grid-template-columns: minmax(0,1fr); }
 .room-detail-page .room-booking-dates .react-datepicker-wrapper { width: 100%; min-width: 0; }
 .room-detail-page .room-booking .mr-bf-field { width: 100%; padding: 0 0 12px; min-height: 80px; border: 0; border-bottom: 1px solid #22181140; border-radius: 0; background: transparent; color: #54473c; }
 .room-detail-page .room-booking .mr-bf-label { display: block; font-size: 10px; font-weight: 600; line-height: 1.5; letter-spacing: .22em; text-transform: uppercase; color: #806039; }
@@ -419,3 +419,4 @@
 @media (max-width: 380px) {
   .room-detail-page .room-booking-dates { grid-template-columns: 1fr; }
 }
+.room-detail-page .mr-bf-hint { color: var(--color-taupe); }

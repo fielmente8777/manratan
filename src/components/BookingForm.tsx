@@ -5,7 +5,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { IoIosArrowDown } from "react-icons/io";
 import { useWebContext, type BookingPrefill } from "@/context-api/WebContext";
-import { addDays, formatShort, nightsBetween, startOfToday, toLocalISODate } from "@/utils/dates";
+import { formatShort, nightsBetween, startOfToday, toLocalISODate } from "@/utils/dates";
 
 export interface BookingFormProps {
   variant?: "hero" | "room";
@@ -40,7 +40,7 @@ const DateTrigger = forwardRef<HTMLButtonElement, TriggerProps>(function DateTri
     >
       <span className="mr-bf-label">
         {fieldLabel}
-        {hint && <span className="ml-2 normal-case tracking-normal text-white/70">{hint}</span>}
+        {hint && <span className="mr-bf-hint ml-2 normal-case tracking-normal">{hint}</span>}
       </span>
       <span className={`mr-bf-value ${shown ? "" : "text-white/60"}`}>{shown || emptyText}</span>
     </button>
@@ -116,7 +116,7 @@ export default function BookingForm({ variant = "hero", gridView = false, classN
     popperPlacement: "top-start" as const,
     popperClassName: "!z-[80]",
     calendarClassName: "mr-calendar",
-    monthsShown: narrow ? 1 : 2,
+    monthsShown: 1,
     showPopperArrow: false,
   };
 
@@ -135,15 +135,14 @@ export default function BookingForm({ variant = "hero", gridView = false, classN
           );
 
   if (variant === "room") {
-    const shownDate = (date: Date | null) => date?.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }) ?? "";
     return <form onSubmit={submit} noValidate className={`room-booking ${className}`} aria-label="Check availability">
       <div className="room-booking-dates">
-        <DatePicker {...picker} id={`${ids}-checkin`} selected={checkIn} startDate={checkIn} endDate={checkOut} selectsStart
-          onChange={(date: Date | null) => { setCheckIn(date); if (date && checkOut && checkOut <= date) setCheckOut(null); setError(""); }}
-          minDate={today} customInput={<DateTrigger fieldLabel="Check-in" shown={shownDate(checkIn)} emptyText="Add date" />} />
-        <DatePicker {...picker} id={`${ids}-checkout`} selected={checkOut} startDate={checkIn} endDate={checkOut} selectsEnd
-          onChange={(date: Date | null) => { setCheckOut(date); setError(""); }}
-          minDate={addDays(checkIn ?? today, 1)} customInput={<DateTrigger fieldLabel="Check-out" shown={shownDate(checkOut)} emptyText="Add date" />} />
+        <DatePicker {...picker} id={`${ids}-dates`} selectsRange
+          startDate={checkIn} endDate={checkOut} onChange={pickRange}
+          minDate={today} allowSameDay={false}
+          customInput={<DateTrigger fieldLabel="Check-in & out"
+            shown={checkIn && checkOut ? `${formatShort(checkIn)} – ${formatShort(checkOut)}` : checkIn ? `${formatShort(checkIn)} – Check-out` : ""}
+            emptyText="Add dates" hint={nights ? `${nights} ${nights === 1 ? "night" : "nights"}` : undefined} />} />
       </div>
       <div ref={guestRef} className="room-booking-guests relative min-w-0">
         <button
@@ -194,14 +193,14 @@ export default function BookingForm({ variant = "hero", gridView = false, classN
 
         {/* Combined Check-in & Check-out — single range field */}
         <div className={`min-w-0 border-b border-white/20 ${gridView ? "" : "lg:border-b-0 lg:border-r"}`}>
-          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
           <DatePicker
             {...picker}
-            selectsRange={true as any}
+            selectsRange
             startDate={checkIn}
             endDate={checkOut}
-            onChange={(dates: unknown) => pickRange(dates as [Date | null, Date | null])}
+            onChange={pickRange}
             minDate={today}
+            allowSameDay={false}
             id={`${ids}-dates`}
             customInput={
               <DateTrigger

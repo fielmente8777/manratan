@@ -4,7 +4,7 @@
 .frame > img { object-fit: cover; transition: transform 2.4s var(--ease-lux); }
 .frame:hover > img { transform: scale(1.04); }
 .scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgb(25 17 11 / .05) 35%, rgb(25 17 11 / .6)); pointer-events: none; }
-.play { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+.play { position: absolute; left: 50%; top: 50%; translate: -50% -50%; background: transparent; }
 .tag { position: absolute; left: 32px; bottom: 28px; color: #f6efe4; }
 .tag b { display: block; margin-top: 8px; font: 400 26px/1.1 var(--font-display); text-transform: uppercase; }
 .bar { display: flex; align-items: center; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap; padding: 22px 4px 0; }

@@ -448,6 +448,8 @@ body {
   transition: background-color 0.3s var(--ease-lux);
 }
 .mr-bf-field:hover { background: rgb(255 255 255 / 0.07); }
+.mr-bf-hint { color: rgb(243 238 231 / .7); }
+.mr-booking-bar .mr-bf-field { display: flex; flex-direction: column; justify-content: center; }
 .mr-bf-field:focus-visible { outline: 1.5px solid var(--color-brass-light); outline-offset: -3px; }
 .mr-bf-label {
   display: block;
@@ -476,27 +478,34 @@ body {
 /* Calendar in the house style; keyed to the calendar itself so the phone sheet (rendered in a portal) matches too */
 .mr-calendar.react-datepicker {
   font-family: var(--font-body);
-  border: 1px solid var(--color-stone-deep);
+  background: var(--color-stone);
+  border: 1px solid var(--color-brass);
   border-radius: 0;
   box-shadow: 0 30px 60px -30px rgb(34 24 17 / 0.45);
   color: var(--color-ink);
 }
 .mr-calendar .react-datepicker__header {
-  background: var(--color-stone);
-  border-bottom: 1px solid var(--color-stone-deep);
+  background: var(--color-ink);
+  border-bottom: 1px solid var(--color-brass);
+  padding-top: 16px;
   border-radius: 0;
 }
-.mr-calendar .react-datepicker__current-month { font-family: var(--font-display); font-weight: 400; letter-spacing: 0.04em; }
+.mr-calendar .react-datepicker__current-month { font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; letter-spacing: 0.04em; color: var(--color-stone); }
+.mr-calendar .react-datepicker__day-name { color: var(--color-brass-light); font-size: .7rem; }
+.mr-calendar .react-datepicker__day-names { margin: 0; padding-block: 4px; background: var(--color-ink); }
+.mr-calendar .react-datepicker__navigation { top: 12px; }
+.mr-calendar .react-datepicker__navigation-icon::before { border-color: var(--color-brass-light); }
 .mr-calendar .react-datepicker__day,
-.mr-calendar .react-datepicker__day-name { width: 2.35rem; line-height: 2.35rem; margin: 0.1rem; }
-.mr-calendar .react-datepicker__day { border-radius: 0; }
+.mr-calendar .react-datepicker__day-name { width: 2.25rem; line-height: 2.25rem; margin: 0.1rem; }
+.mr-calendar .react-datepicker__day { border-radius: 0; color: var(--color-ink); }
+.mr-calendar .react-datepicker__day:not(.react-datepicker__day--disabled):hover { background: var(--color-brass-light); color: var(--color-ink); }
 .mr-calendar .react-datepicker__day--in-range,
 .mr-calendar .react-datepicker__day--in-selecting-range { background: var(--color-stone-deep) !important; color: var(--color-ink) !important; }
 .mr-calendar .react-datepicker__day--selected,
 .mr-calendar .react-datepicker__day--range-start,
 .mr-calendar .react-datepicker__day--range-end {
-  background: var(--color-ink) !important;
-  color: #fff !important;
+  background: var(--color-brass) !important;
+  color: var(--color-ink) !important;
 }
 .mr-calendar .react-datepicker__day--keyboard-selected:not(.react-datepicker__day--selected):not(.react-datepicker__day--range-start):not(.react-datepicker__day--range-end) {
   background: transparent !important;
@@ -508,6 +517,10 @@ body {
 #mr-datepicker-portal { position: relative; z-index: 100000; }
 .mr-calendar .react-datepicker__day--disabled { opacity: 0.35; }
 .react-datepicker__portal { background: rgb(20 13 9 / 0.82); }
+@media (max-width: 359px) {
+  .mr-calendar .react-datepicker__day,
+  .mr-calendar .react-datepicker__day-name { width: 2rem; line-height: 2.25rem; }
+}
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; }

@@ -15,9 +15,12 @@ function SpaceContent({ space, expanded = true }: { space: Space; expanded?: boo
     <>
       <Image src={space.img.src} alt={space.img.alt} fill quality={85} sizes="(max-width: 768px) 100vw, 50vw" className="img-drift object-cover" style={{ objectPosition: space.focus }} />
       <span className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-      <span className="absolute inset-x-0 bottom-0 p-6 text-center text-stone md:text-right">
+      <span aria-hidden={expanded} className={`absolute inset-x-0 bottom-0 p-6 text-center text-stone transition-opacity duration-500 md:text-right ${expanded ? "opacity-0" : "opacity-100"}`}>
         <span className="t-script block text-[2.4rem] leading-none">{space.label}</span>
-        <span className={`mt-3 block overflow-hidden text-sm text-stone/85 transition-[max-height,opacity] duration-500 ${expanded ? "max-h-20 opacity-100" : "max-h-0 opacity-0"}`}>{space.line}</span>
+      </span>
+      <span aria-hidden={!expanded} className={`absolute inset-x-0 bottom-0 p-6 text-center text-stone transition-[opacity,transform] duration-700 md:text-right ${expanded ? "translate-y-0 opacity-100 delay-150" : "translate-y-2 opacity-0"}`}>
+        <span className="t-script block text-[2.4rem] leading-none">{space.label}</span>
+        <span className="mt-3 block text-sm text-stone/85">{space.line}</span>
       </span>
     </>
   );
@@ -30,6 +33,7 @@ export default function SpacesGallery({ spaces }: { spaces: Space[] }) {
       <div
         className="mt-12 hidden h-[620px] gap-3 md:flex"
         aria-label="Spaces at Manratan Resort"
+        data-no-reveal
         onMouseLeave={() => setActive(2)}
         onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setActive(2); }}
       >

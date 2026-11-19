@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { PlayIcon } from "@/components/site/ui";
 import { SectionWithContainer } from "@/components/sectionComponants";
 import styles from "./Walkthrough.module.css";
@@ -18,6 +18,7 @@ const number = (index: number) => String(index + 1).padStart(2, "0");
 export default function Walkthrough() {
   const stageRef = useRef<HTMLDivElement>(null);
   const videos = useRef<(HTMLVideoElement | null)[]>([]);
+  const mediaRetries = useRef(stops.map(() => 0));
   const swipe = useRef({ x: 0, y: 0, suppressTap: false });
   const [active, setActive] = useState(0);
   const [playing, setPlaying] = useState(true);
@@ -25,9 +26,50 @@ export default function Walkthrough() {
   const [load, setLoad] = useState(false);
   const [visible, setVisible] = useState(false);
   const [pageVisible, setPageVisible] = useState(true);
-  const [progress, setProgress] = useState({ index: 0, value: 0 });
+  const [ready, setReady] = useState(() => stops.map(() => false));
+  const previousRects = useRef<{ element: HTMLElement; rect: DOMRect }[] | null>(null);
   const shouldPlay = playing && visible && pageVisible;
-  const currentProgress = progress.index === active ? progress.value : 0;
+
+  const goTo = useCallback((index: number) => {
+    // Animate the existing phone card positions, without changing the layout.
+    if (window.matchMedia("(max-width: 900px)").matches &&
+        !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const panels = stageRef.current?.querySelectorAll<HTMLElement>("[data-walk-panel]");
+      previousRects.current = panels ? Array.from(panels, (element) => ({
+        element, rect: element.getBoundingClientRect(),
+      })) : null;
+    }
+    setActive((index + stops.length) % stops.length);
+  }, []);
+
+  useLayoutEffect(() => {
+    const previous = previousRects.current;
+    previousRects.current = null;
+    if (!previous) return;
+    const animations = previous.map(({ element, rect }) => {
+      const next = element.getBoundingClientRect();
+      return element.animate([
+        { transform: `translate(${rect.left - next.left}px, ${rect.top - next.top}px) scale(${rect.width / next.width}, ${rect.height / next.height})` },
+        { transform: "none" },
+      ], { duration: 700, easing: "cubic-bezier(.22,.61,.36,1)" });
+    });
+    return () => animations.forEach((animation) => animation.cancel());
+  }, [active]);
+
+  useEffect(() => {
+    if (!shouldPlay || !load) return;
+    let frame = 0;
+    const advance = () => {
+      const element = videos.current[active];
+      if (element && element.currentTime >= stops[active].end) {
+        goTo(active + 1);
+        return;
+      }
+      frame = requestAnimationFrame(advance);
+    };
+    frame = requestAnimationFrame(advance);
+    return () => cancelAnimationFrame(frame);
+  }, [active, shouldPlay, load, goTo]);
 
   useEffect(() => {
     const stage = stageRef.current;
@@ -55,36 +97,54 @@ export default function Walkthrough() {
 
   // Pre-seek inactive clips to their next start so chapter changes do not buffer on a fresh seek.
   useEffect(() => {
+    const resets: number[] = [];
     videos.current.forEach((element, index) => {
-      if (!element) return;
+      if (!element || element.readyState < 1) return;
       if (index !== active) {
         element.pause();
-        if (Math.abs(element.currentTime - stops[index].start) > 0.05) element.currentTime = stops[index].start;
+        if (Math.abs(element.currentTime - stops[index].start) > 0.05) {
+          // Keep the outgoing frame intact until its fade and card movement finish.
+          resets.push(window.setTimeout(() => {
+            element.currentTime = stops[index].start;
+          }, 1150));
+        }
       } else if (element.currentTime < stops[index].start || element.currentTime >= stops[index].end) {
         element.currentTime = stops[index].start;
       }
     });
+    return () => resets.forEach(window.clearTimeout);
   }, [active, load]);
 
   useEffect(() => {
     let cancelled = false;
+    const listeners: { element: HTMLVideoElement; play: () => void }[] = [];
     videos.current.forEach((element, index) => {
       if (!element) return;
       element.muted = index === active ? muted : true;
       if (index === active && shouldPlay && load) {
-        void element.play().catch(() => {
-          if (!cancelled) setPlaying(false);
-        });
+        const play = () => {
+          if (cancelled || element.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) return;
+          void element.play().catch((error: unknown) => {
+            // Seeking may abort a pending play; canplay retries after the frame is ready.
+            if (!cancelled && !(error instanceof DOMException && error.name === "AbortError")) setPlaying(false);
+          });
+        };
+        element.addEventListener("canplay", play);
+        listeners.push({ element, play });
+        play();
       } else {
         element.pause();
       }
     });
-    return () => { cancelled = true; };
+    return () => {
+      cancelled = true;
+      listeners.forEach(({ element, play }) => element.removeEventListener("canplay", play));
+    };
   }, [active, shouldPlay, muted, load]);
 
   const pick = (index: number) => {
     setLoad(true);
-    setActive((index + stops.length) % stops.length);
+    goTo(index);
     setPlaying(true);
   };
   const navigate = (direction: 1 | -1) => {
@@ -128,7 +188,7 @@ export default function Walkthrough() {
       containerClassName={styles.container}
       sectionProps={{ "aria-labelledby": "walk-title" }}
     >
-        <div className={styles.layout}>
+        <div className={styles.layout} data-no-reveal>
           <div className={styles.heading}>
             <p className={styles.eyebrow}>Filmed at the resort</p>
             <h2 id="walk-title" className={styles.title}>
@@ -154,46 +214,43 @@ export default function Walkthrough() {
             {stops.map((stop, index) => (
               <button
                 key={stop.title}
+                data-walk-panel
                 type="button"
                 className={`${styles.panel} ${active === index ? styles.active : ""}`}
                 aria-pressed={active === index}
                 onClick={() => { if (active !== index || !playing) pick(index); }}
               >
-                <Image src={stop.poster} alt={stop.alt} fill quality={85} sizes="(max-width: 900px) 480px, 380px" className={styles.media} />
+                <Image src={stop.poster} alt={stop.alt} fill quality={85} sizes="(max-width: 900px) 480px, 380px" className={styles.media} data-no-hover />
                 <video
                   ref={(element) => { videos.current[index] = element; }}
                   src={load ? source : undefined}
                   poster={stop.poster}
                   muted={muted || active !== index}
                   playsInline
-                  autoPlay={active === index && shouldPlay}
                   preload={load ? "auto" : "none"}
                   aria-hidden="true"
                   tabIndex={-1}
-                  className={styles.media}
+                  className={`${styles.media} ${ready[index] ? styles.videoReady : ""}`}
+                  onCanPlay={() => setReady((values) => values[index] ? values : values.map((value, i) => i === index ? true : value))}
+                  onError={(event) => {
+                    // Recover a failed initial media load once; retain the poster if it still fails.
+                    if (load && mediaRetries.current[index] === 0) {
+                      mediaRetries.current[index] += 1;
+                      event.currentTarget.load();
+                    }
+                  }}
                   onLoadedMetadata={(event) => {
                     event.currentTarget.currentTime = stop.start;
                   }}
-                  onTimeUpdate={(event) => {
-                    if (active !== index) return;
-                    const time = event.currentTarget.currentTime;
-                    setProgress({ index, value: Math.max(0, Math.min(1, (time - stop.start) / (stop.end - stop.start))) });
-                    if (shouldPlay && time >= stop.end) setActive((index + 1) % stops.length);
-                  }}
-                  onEnded={() => { if (active === index && shouldPlay) setActive((index + 1) % stops.length); }}
+                  onEnded={() => { if (active === index && shouldPlay) goTo(index + 1); }}
                 />
                 <span className={styles.shade} aria-hidden="true" />
-                {active === index && <span className={styles.desktopProgress} aria-hidden="true"><i style={{ transform: `scaleX(${currentProgress})` }} /></span>}
-                <span className={styles.label}><span className={styles.labelNumber}>{number(index)}</span><span className={styles.labelTitle}>{stop.title}</span></span>
+                <span className={styles.label} aria-hidden={active === index}><span className={styles.labelNumber}>{number(index)}</span><span className={styles.labelTitle}>{stop.title}</span></span>
+                <span className={styles.labelExpanded} aria-hidden={active !== index}><span className={styles.labelNumber}>{number(index)}</span><span className={styles.labelTitle}>{stop.title}</span></span>
               </button>
             ))}
 
             <div className={styles.mobileUi}>
-              <div className={styles.segments} aria-hidden="true">
-                {stops.map((stop, index) => (
-                  <span key={stop.title}><i style={{ transform: `scaleX(${index < active ? 1 : index === active ? currentProgress : 0})` }} /></span>
-                ))}
-              </div>
               <div
                 className={styles.tapZones}
                 onTouchStart={(event) => {

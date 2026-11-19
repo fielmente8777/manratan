@@ -237,11 +237,11 @@ const spaces = [
 export function Spaces() {
   return (
     <SectionWithContainer defaultPadding={false} sectionClassName="bg-stone py-24 md:py-32" sectionProps={{ "aria-labelledby": "spaces-title" }}>
-        <div className="grid gap-6 lg:grid-cols-[auto_minmax(0,1fr)] lg:items-center lg:gap-12">
+        <div className="grid gap-6 lg:grid-cols-[auto_minmax(0,1fr)] lg:items-center lg:gap-12" data-no-reveal>
           <div id="spaces-title">
             <Title main="EXPERIENCE MANRATAN" script="Relax, Dine & Reconnect" />
           </div>
-          <p className="t-body max-w-[52ch] lg:justify-self-end lg:whitespace-nowrap">
+          <p className="t-body max-w-[52ch] lg:justify-self-end">
             <span className="lg:block">Spaces made for slow mornings, long lunches</span>{" "}
             <span className="lg:block">and the biggest celebrations of your year.</span>
           </p>
@@ -249,7 +249,7 @@ export function Spaces() {
 
         <SpacesGallery spaces={spaces} />
 
-        <p className="t-body mt-12 lg:whitespace-nowrap">
+        <p className="t-body mt-12">
           From the grand reception to Swadika, the Sky Lawn and the Blue Diamond pool, every space is made to feel effortless.
         </p>
     </SectionWithContainer>
@@ -303,12 +303,12 @@ export function Amenities() {
                 {a.href ? (
                   <Link
                     href={a.href}
-                    className="flex h-full min-h-[176px] flex-col items-center justify-center px-4 py-6 text-center transition-colors duration-300 hover:bg-brass-light/[0.06] focus-visible:bg-brass-light/[0.06] md:min-h-[196px] md:px-5"
+                    className="flex h-full min-h-[176px] flex-col items-center justify-start px-4 py-6 text-center transition-colors duration-300 hover:bg-brass-light/[0.06] focus-visible:bg-brass-light/[0.06] md:min-h-[196px] md:px-5"
                   >
                     {body}
                   </Link>
                 ) : (
-                  <div className="flex h-full min-h-[176px] flex-col items-center justify-center px-4 py-6 text-center md:min-h-[196px] md:px-5">{body}</div>
+                  <div className="flex h-full min-h-[176px] flex-col items-center justify-start px-4 py-6 text-center md:min-h-[196px] md:px-5">{body}</div>
                 )}
               </li>
             );
@@ -432,7 +432,7 @@ export function EvolvesWithLight() {
 export function ManratanByNight() {
   return (
     <Section defaultPadding={false} className="bg-stone" aria-label="Manratan by night">
-      <figure className="relative" aria-labelledby="night-title">
+      <figure className="relative" aria-labelledby="night-title" data-no-reveal>
         <NightGallery />
         <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
         <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 z-10">
