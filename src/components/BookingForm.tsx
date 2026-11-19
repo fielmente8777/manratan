@@ -47,6 +47,56 @@ const DateTrigger = forwardRef<HTMLButtonElement, TriggerProps>(function DateTri
   );
 });
 
+type RoomTriggerProps = {
+  checkIn: Date | null;
+  checkOut: Date | null;
+  onClick?: () => void;
+  id?: string;
+  onKeyDown?: React.KeyboardEventHandler<HTMLButtonElement>;
+  onFocus?: React.FocusEventHandler<HTMLButtonElement>;
+  onBlur?: React.FocusEventHandler<HTMLButtonElement>;
+  disabled?: boolean;
+};
+
+const RoomDateTrigger = forwardRef<HTMLButtonElement, RoomTriggerProps>(function RoomDateTrigger(
+  { checkIn, checkOut, onClick, id, onKeyDown, onFocus, onBlur, disabled },
+  ref,
+) {
+  return (
+    <button
+      ref={ref}
+      id={id}
+      type="button"
+      onClick={onClick}
+      onKeyDown={onKeyDown}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      disabled={disabled}
+      aria-haspopup="dialog"
+      className="w-full text-left bg-transparent p-0 border-0 outline-none cursor-pointer"
+    >
+      <div className="grid grid-cols-2 gap-5">
+        <div className="border-b border-[#221811]/25 pb-2">
+          <span className="block text-[10.5px] font-semibold tracking-[0.22em] uppercase text-[#7a5f3a]">
+            CHECK-IN
+          </span>
+          <span className={`block mt-1.5 text-[16px] font-normal ${checkIn ? "text-[#221811]" : "text-[#54473c]/75"}`}>
+            {checkIn ? formatShort(checkIn) : "Add date"}
+          </span>
+        </div>
+        <div className="border-b border-[#221811]/25 pb-2">
+          <span className="block text-[10.5px] font-semibold tracking-[0.22em] uppercase text-[#7a5f3a]">
+            CHECK-OUT
+          </span>
+          <span className={`block mt-1.5 text-[16px] font-normal ${checkOut ? "text-[#221811]" : "text-[#54473c]/75"}`}>
+            {checkOut ? formatShort(checkOut) : "Add date"}
+          </span>
+        </div>
+      </div>
+    </button>
+  );
+});
+
 export default function BookingForm({ variant = "hero", gridView = false, className = "", onSearch }: BookingFormProps) {
   const { openEnquiry } = useWebContext();
   const [name, setName] = useState("");
@@ -94,7 +144,7 @@ export default function BookingForm({ variant = "hero", gridView = false, classN
     setCheckOut(dates[1]);
   };
 
-  const guestLabel = `${adults} ${adults === 1 ? "adult" : "adults"}${children ? `, ${children} ${children === 1 ? "child" : "children"}` : ""}`;
+  const guestLabel = `${adults} ${adults === 1 ? "Adult" : "Adults"}${children ? `, ${children} ${children === 1 ? "Child" : "Children"}` : ""}`;
 
   const submit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -135,36 +185,45 @@ export default function BookingForm({ variant = "hero", gridView = false, classN
           );
 
   if (variant === "room") {
-    return <form onSubmit={submit} noValidate className={`room-booking ${className}`} aria-label="Check availability">
-      <div className="room-booking-dates">
-        <DatePicker {...picker} id={`${ids}-dates`} selectsRange
-          startDate={checkIn} endDate={checkOut} onChange={pickRange}
-          minDate={today} allowSameDay={false}
-          customInput={<DateTrigger fieldLabel="Check-in & out"
-            shown={checkIn && checkOut ? `${formatShort(checkIn)} – ${formatShort(checkOut)}` : checkIn ? `${formatShort(checkIn)} – Check-out` : ""}
-            emptyText="Add dates" hint={nights ? `${nights} ${nights === 1 ? "night" : "nights"}` : undefined} />} />
-      </div>
-      <div ref={guestRef} className="room-booking-guests relative min-w-0">
-        <button
-          type="button"
-          className="mr-bf-field w-full text-left"
-          onClick={() => setGuestOpen((value) => !value)}
-          aria-expanded={guestOpen}
-          aria-controls={`${ids}-guests`}
-        >
-          <span className="flex items-center justify-between gap-3">
-            <span>
-              <span className="mr-bf-label">Guests</span>
-              <span className="mr-bf-value">{guestLabel}</span>
-            </span>
-            <IoIosArrowDown aria-hidden="true" className={`h-3 w-3 shrink-0 transition-transform ${guestOpen ? "rotate-180" : ""}`} />
-          </span>
-        </button>
-        {guestPopup}
-      </div>
-      <button type="submit" className="room-booking-submit">Check availability</button>
-      <p aria-live="polite" className={error ? "room-booking-error" : "sr-only"}>{error}</p>
-    </form>;
+    return (
+      <form onSubmit={submit} noValidate className={`room-booking ${className}`} aria-label="Check availability">
+        <div className="room-booking-dates">
+          <DatePicker
+            {...picker}
+            id={`${ids}-dates`}
+            selectsRange
+            startDate={checkIn}
+            endDate={checkOut}
+            onChange={pickRange}
+            minDate={today}
+            allowSameDay={false}
+            customInput={<RoomDateTrigger checkIn={checkIn} checkOut={checkOut} />}
+          />
+        </div>
+        <div ref={guestRef} className="room-booking-guests relative min-w-0">
+          <button
+            type="button"
+            className="w-full text-left bg-transparent p-0 border-0 outline-none cursor-pointer"
+            onClick={() => setGuestOpen((value) => !value)}
+            aria-expanded={guestOpen}
+            aria-controls={`${ids}-guests`}
+          >
+            <div className="border-b border-[#221811]/25 pb-2">
+              <span className="block text-[10.5px] font-semibold tracking-[0.22em] uppercase text-[#7a5f3a]">
+                GUESTS
+              </span>
+              <div className="flex items-center justify-between mt-1.5 text-[16px] font-normal text-[#221811]">
+                <span>{guestLabel}</span>
+                <IoIosArrowDown aria-hidden="true" className={`h-3.5 w-3.5 text-[#221811]/75 transition-transform ${guestOpen ? "rotate-180" : ""}`} />
+              </div>
+            </div>
+          </button>
+          {guestPopup}
+        </div>
+        <button type="submit" className="room-booking-submit">Check availability</button>
+        <p aria-live="polite" className={error ? "room-booking-error" : "sr-only"}>{error}</p>
+      </form>
+    );
   }
 
   return (

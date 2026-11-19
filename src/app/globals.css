@@ -522,10 +522,18 @@ body {
   .mr-calendar .react-datepicker__day-name { width: 2rem; line-height: 2.25rem; }
 }
 
+input[type="date"] {
+  accent-color: var(--color-ink);
+  color-scheme: light;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(34%) sepia(21%) saturate(950%) hue-rotate(355deg) brightness(92%) contrast(88%);
+}
+
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; }
 
-.home-page [aria-labelledby="escape-title"] .t-script > span { transform: none; translate: none; }
 
 /* Midori's soft fade-up as each content block enters the viewport. */
 @keyframes contentFadeUp {

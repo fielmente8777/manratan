@@ -25,13 +25,14 @@ export default function OurStoryPage() {
     <main className="bg-stone">
       <PageHero
         image={{
-          src: "/about-banner.jpg",
+          src: "/final-view/first-light2.webp",
           width: 2400,
           height: 1800,
-          alt: "Manratan Resort aerial view",
+          alt: "Manratan Resort",
         }}
         title="Our story"
         script="Manratan Resort"
+        showLine={false}
       />
 
       <section className="py-20 md:py-28 lg:py-32">
@@ -219,7 +220,7 @@ export default function OurStoryPage() {
       <EscapeCTA
         align="left"
         bg="bg-[#EAE5DC]"
-        image={{ src: "/media/mrw-narsinghghar-a.webp", alt: "Narsinghgarh Fort on green hills" }}
+        image={{ src: "/final-view/narsinghgarh1.webp", alt: "Narsinghgarh Fort on green hills" }}
         kicker="ESCAPE TO THE KASHMIR OF MALWA"
         main="ROYAL CHARM"
         script="of Narsinghgarh"

@@ -72,10 +72,34 @@ function ReferenceGallery({
 }) {
   const slider = useRef<SwiperInstance | null>(null);
   const [active, setActive] = useState(0);
-  const go = (index: number) => {
-    const next = (index + photos.length) % photos.length;
-    slider.current?.slideToLoop(next, 1400);
+
+  const handlePrev = () => {
+    if (slider.current) {
+      slider.current.slidePrev(1000);
+      if (!slider.current.autoplay.running) {
+        slider.current.autoplay.start();
+      }
+    }
   };
+
+  const handleNext = () => {
+    if (slider.current) {
+      slider.current.slideNext(1000);
+      if (!slider.current.autoplay.running) {
+        slider.current.autoplay.start();
+      }
+    }
+  };
+
+  const handleSegClick = (index: number) => {
+    if (slider.current) {
+      slider.current.slideToLoop(index, 1000);
+      if (!slider.current.autoplay.running) {
+        slider.current.autoplay.start();
+      }
+    }
+  };
+
   return (
     <div
       className="sl"
@@ -86,24 +110,40 @@ function ReferenceGallery({
         className="sl-carousel"
         modules={[A11y, Autoplay]}
         slidesPerView={1}
-        loop
-        speed={1400}
-        autoplay={{ delay: 4000, disableOnInteraction: false, pauseOnMouseEnter: true, waitForTransition: true }}
+        loop={true}
+        speed={1000}
+        autoplay={{
+          delay: 3500,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: false,
+          waitForTransition: true,
+        }}
         lazyPreloadPrevNext={photos.length - 1}
-        onSwiper={(instance) => { slider.current = instance; }}
+        onSwiper={(instance) => {
+          slider.current = instance;
+        }}
         onRealIndexChange={(instance) => setActive(instance.realIndex)}
         tabIndex={0}
         aria-label="Photos, swipe or use the arrows"
         onKeyDown={(event) => {
-          if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+          if (event.key === "ArrowRight") {
             event.preventDefault();
-            go(active + (event.key === "ArrowRight" ? 1 : -1));
+            handleNext();
+          } else if (event.key === "ArrowLeft") {
+            event.preventDefault();
+            handlePrev();
           }
         }}
       >
         {photos.map((photo, index) => (
           <SwiperSlide key={photo.src + index}>
-            <img src={photo.src} alt={photo.alt} loading="eager" decoding="async" data-no-hover />
+            <img
+              src={photo.src}
+              alt={photo.alt}
+              loading="eager"
+              decoding="async"
+              data-no-hover
+            />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -116,7 +156,7 @@ function ReferenceGallery({
               className={`sl-seg${index === active ? " is-on" : ""}`}
               aria-label={`Photo ${index + 1}`}
               aria-current={index === active ? "true" : undefined}
-              onClick={() => go(index)}
+              onClick={() => handleSegClick(index)}
             />
           ))}
         </div>
@@ -125,10 +165,10 @@ function ReferenceGallery({
             className="arrow"
             type="button"
             aria-label="Previous photo"
-            onClick={() => go(active - 1)}
+            onClick={handlePrev}
           >
             <svg
-              width="18"
+              width="16"
               height="10"
               viewBox="0 0 18 10"
               fill="none"
@@ -138,21 +178,24 @@ function ReferenceGallery({
                 d="M18 5H2M6 1L2 5l4 4"
                 stroke="currentColor"
                 strokeWidth="1.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </button>
           <p className="sl-num" aria-live="polite">
-            {String(active + 1).padStart(2, "0")}{" "}
-            <span>/ {String(photos.length).padStart(2, "0")}</span>
+            <span>{String(active + 1).padStart(2, "0")}</span>
+            <span className="sl-slash">/</span>
+            <span>{String(photos.length).padStart(2, "0")}</span>
           </p>
           <button
             className="arrow"
             type="button"
             aria-label="Next photo"
-            onClick={() => go(active + 1)}
+            onClick={handleNext}
           >
             <svg
-              width="18"
+              width="16"
               height="10"
               viewBox="0 0 18 10"
               fill="none"
@@ -162,6 +205,8 @@ function ReferenceGallery({
                 d="M0 5h16M12 1l4 4-4 4"
                 stroke="currentColor"
                 strokeWidth="1.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </button>
@@ -256,7 +301,6 @@ export default function RoomDetailContent({ room }: { room: RoomDetailData }) {
                 </div>
               ))}
             </dl>
-            <ReferenceGallery photos={room.photos} name={room.name} />
             <div className="rd-inc">
               <p className="eyebrow">{room.amenityTitle}</p>
               <ul className="rd-list">
@@ -270,6 +314,9 @@ export default function RoomDetailContent({ room }: { room: RoomDetailData }) {
             </div>
           </div>
           <RoomBookingPanel room={room} />
+        </div>
+        <div className="wrap rd-gallery-wrap">
+          <ReferenceGallery photos={room.photos} name={room.name} />
         </div>
       </section>
       <section

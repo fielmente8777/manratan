@@ -25,7 +25,7 @@ export default function AccommodationContent() {
       <header className="hero ab-hero acc-hero">
         <img
           className="hero-img"
-          src="/accommodation-reference/4434b49f370d9431e97678d7fb0767b1.jpg"
+          src="/final-view/Suite-banner_11zon.webp"
           alt="Executive Suite bedroom with a panoramic window over the hills"
           style={{ objectPosition: "50% 50%" }}
         />
@@ -93,7 +93,7 @@ export default function AccommodationContent() {
         style={{ paddingTop: "clamp(40px, 4vw, 64px)" }}
       >
         <div className="wrap">
-          <div className="gems-head rv">
+          <div className="gems-head rv" style={{ alignItems: "center" }}>
             <div
               style={{ display: "flex", flexDirection: "column", gap: "22px" }}
             >
@@ -162,7 +162,7 @@ export default function AccommodationContent() {
               aria-hidden="true"
             >
               <img
-                src="/accommodation-reference/73c62d41018b83f97f6087d2a566c056.jpg"
+                src="/final-view/Suite-room1_11zon.webp"
                 alt="Executive Suite living room with sofa, armchair and floor-to-ceiling window"
                 loading="lazy"
               />
@@ -264,7 +264,7 @@ export default function AccommodationContent() {
               aria-hidden="true"
             >
               <img
-                src="/accommodation-reference/f0252e30d215acb82a369beb8f5f50bf.jpg"
+                src="/final-view/Premium-room1_11zon.webp"
                 alt="Premium Room with king bed, sofa and window view"
                 loading="lazy"
               />
@@ -366,7 +366,7 @@ export default function AccommodationContent() {
               aria-hidden="true"
             >
               <img
-                src="/accommodation-reference/4dccf3c70be945be9694b8a9841d5b22.jpg"
+                src="/final-view/Executive-room1_11zon.webp"
                 alt="Executive Family Room with two beds made up side by side"
                 loading="lazy"
               />
@@ -466,7 +466,7 @@ export default function AccommodationContent() {
               aria-hidden="true"
             >
               <img
-                src="/accommodation-reference/73f38aa930e39f06b393dd84005492dc.jpg"
+                src="/final-view/Inter-room1_11zon.webp"
                 alt="Deluxe Interconnected Room with two connected bedrooms"
                 loading="lazy"
               />
@@ -566,7 +566,7 @@ export default function AccommodationContent() {
               aria-hidden="true"
             >
               <img
-                src="/accommodation-reference/ee837becad6523c696faf319c7d4af5a.jpg"
+                src="/final-view/Deluxe-room1_11zon.webp"
                 alt="Deluxe Room with double bed, warm-lit curtains and a writing desk"
                 loading="lazy"
               />

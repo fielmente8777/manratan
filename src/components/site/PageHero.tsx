@@ -8,10 +8,11 @@ type Props = {
   intro?: string;
   height?: "full" | "tall";
   focus?: string;
+  showLine?: boolean;
 };
 
 /** Full-bleed opening image with the approved centred title and a scroll cue. */
-export default function PageHero({ image, title, script, intro, height = "tall", focus = "center" }: Props) {
+export default function PageHero({ image, title, script, intro, height = "tall", focus = "center", showLine = false }: Props) {
   return (
     <section className={`group relative isolate flex w-full items-end overflow-hidden bg-ink text-stone ${height === "full" ? "min-h-[100svh]" : "min-h-[78svh]"}`}>
       <Image
@@ -31,7 +32,7 @@ export default function PageHero({ image, title, script, intro, height = "tall",
           {script && <span className="t-script block text-[clamp(1.8rem,3.4vw,3.2rem)] mt-3"><span className="inline-block translate-x-[14%]">{script}</span></span>}
         </h1>
         {intro && <p className="hero-rise delay-1 mx-auto mt-6 max-w-xl text-[0.98rem] leading-relaxed text-stone/85">{intro}</p>}
-        <span className="hero-fade delay-2 mx-auto mt-10 block h-12 w-px bg-stone/60" aria-hidden="true" />
+        {showLine && <span className="hero-fade delay-2 mx-auto mt-10 block h-12 w-px bg-stone/60" aria-hidden="true" />}
       </div>
     </section>
   );

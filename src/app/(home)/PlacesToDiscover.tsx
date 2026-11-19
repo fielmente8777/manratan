@@ -15,43 +15,43 @@ const places = [
   {
     title: "Narsinghgarh Fort",
     note: "Hilltop fort-palace",
-    image: "fort",
+    src: "/media/narsinghgarh-fort.jpg",
     alt: "Aerial view of Narsinghgarh Fort on a forested hill",
   },
   {
     title: "Jal Mandir",
     note: "Temple in Paras Ram Sagar",
-    image: "jal-mandir-aerial-v2",
+    src: "/final-view/narsinghgarh3.webp",
     alt: "Jal Mandir in Paras Ram Sagar lake, with Narsinghgarh town and fort behind it",
   },
   {
     title: "Solah Khamba",
     note: "16th-century memorial",
-    image: "solah-khamba",
+    src: "/final-view/narsinghgarh2.webp",
     alt: "The carved red-stone pillars of Solah Khamba",
   },
   {
     title: "Chidikho",
     note: "Wildlife sanctuary & lake",
-    image: "chidikho-deer-v3",
+    src: "/media/narsinghgarh-chidikho-deer-v3.jpg",
     alt: "A deer with velvet-covered antlers against a warm golden background",
   },
   {
     title: "Shyamji Sanka Temple",
     note: "Painted temple walls",
-    image: "shyamji",
+    src: "/media/narsinghgarh-shyamji.jpg",
     alt: "Shyamji Sanka Temple at dusk",
   },
   {
     title: "Bada Mahadev",
     note: "Shiva temple",
-    image: "bada-mahadev",
+    src: "/media/narsinghgarh-bada-mahadev.jpg",
     alt: "Temples by the water",
   },
   {
     title: "Hanuman Gadi",
     note: "Hanuman temple",
-    image: "hanuman-aerial-v2",
+    src: "/final-view/narsinghgarh4.webp",
     alt: "Aerial view of Hanuman Gadi temple surrounded by green hills and its approach road",
   },
 ];
@@ -72,7 +72,7 @@ function PlaceTile({
       className={`${styles.tile} ${mobile ? styles.mobileTile : styles[`tile${index + 1}`]}`}
     >
       <Image
-        src={`/media/narsinghgarh-${place.image}.jpg`}
+        src={place.src}
         alt={place.alt}
         fill
         unoptimized
@@ -114,7 +114,7 @@ export default function PlacesToDiscover() {
       </div>
       <div className={styles.bento}>
         {places.map((place, index) => (
-          <PlaceTile key={place.image} place={place} index={index} onOpen={() => openGallery(index)} />
+          <PlaceTile key={place.title} place={place} index={index} onOpen={() => openGallery(index)} />
         ))}
       </div>
       <div className={styles.mobileGallery}>
@@ -131,7 +131,7 @@ export default function PlacesToDiscover() {
           a11y={{ containerMessage: "Places around Narsinghgarh" }}
         >
           {places.map((place, index) => (
-            <SwiperSlide key={place.image}>
+            <SwiperSlide key={place.title}>
               <PlaceTile place={place} index={index} mobile onOpen={() => openGallery(index)} />
             </SwiperSlide>
           ))}
@@ -153,7 +153,7 @@ export default function PlacesToDiscover() {
           &rarr;
         </button>
       </div>
-      {open !== null && <PhotoLightbox initialIndex={open} onClose={closeGallery} photos={places.map(place => ({ src: `/media/narsinghgarh-${place.image}.jpg`, alt: place.alt, title: place.title }))} />}
+      {open !== null && <PhotoLightbox initialIndex={open} onClose={closeGallery} photos={places.map(place => ({ src: place.src, alt: place.alt, title: place.title }))} />}
     </SectionWithContainer>
   );
 }

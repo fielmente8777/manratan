@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { PlayIcon } from "@/components/site/ui";
 import { photo, video } from "@/data/site";
 
 type Card = {
   title: string;
   img: { src: string; alt: string };
+  video?: string;
   focus?: string;
   /** Film to play in the popup, and where to start it (seconds). */
   clip: string;
@@ -18,8 +18,8 @@ const cards: Card[] = [
   {
     title: "Destination Wedding",
     img: { src: "/media/film-banquet-3.webp", alt: "Banquet hall arranged with black and gold tables at Manratan Resort" },
-    clip: video.walkthrough,
-    start: 39.2, // Sky Lawn, then the banquets
+    video: "/final-view/destination-wedding-video.mp4",
+    clip: "/final-view/destination-wedding-video.mp4",
   },
   {
     title: "Curated Events",
@@ -30,7 +30,8 @@ const cards: Card[] = [
   {
     title: "Poolside Events",
     img: { src: video.poolDinnerPoster, alt: "A candlelit table by the Blue Diamond pool at night" },
-    clip: video.poolDinner,
+    video: "/final-view/pool-side-events-video.mp4",
+    clip: "/final-view/pool-side-events-video.mp4",
   },
   {
     title: "Staycation",
@@ -55,20 +56,29 @@ export default function EventsGrid() {
             aria-label={`Play film: ${c.title}`}
             className="group relative block aspect-[16/10] w-full overflow-hidden bg-black text-stone sm:aspect-[27/14]"
           >
-            <Image
-              src={c.img.src}
-              alt={c.img.alt}
-              fill
-              quality={85}
-              sizes="(max-width: 640px) 100vw, 50vw"
-              className="img-drift object-cover"
-              style={c.focus ? { objectPosition: c.focus } : undefined}
-            />
+            {c.video ? (
+              <video
+                src={c.video}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            ) : (
+              <Image
+                src={c.img.src}
+                alt={c.img.alt}
+                fill
+                quality={85}
+                sizes="(max-width: 640px) 100vw, 50vw"
+                className="img-drift object-cover"
+                style={c.focus ? { objectPosition: c.focus } : undefined}
+              />
+            )}
             <span className="absolute inset-0 bg-black/35 transition-colors duration-700 group-hover:bg-black/20" aria-hidden="true" />
-            <span className="absolute inset-0 flex flex-col items-center justify-center gap-5 pt-10">
-              <span className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-stone/90 transition-transform duration-700 group-hover:scale-110">
-                <PlayIcon className="h-5 w-5 translate-x-0.5" />
-              </span>
+            <span className="absolute inset-0 flex items-center justify-center">
               <span className="font-ivy text-[clamp(1.5rem,2.3vw,2.1rem)] leading-none drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
                 {c.title}
               </span>

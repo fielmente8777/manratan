@@ -31,7 +31,7 @@ export const video = {
   /** 720x1280 portrait cut of the same loop for phones. */
   heroLoopMobile: "/media/hero-loop-mobile.mp4",
   walkthrough: "/media/walkthrough-v2.mp4",
-  poster: "/media/walkthrough-poster-v2.webp",
+  poster: "/final-view/first-light1.webp",
   /** The model walk (client footage IMG_5576.MP4): reception, a guest room, Swadika, the pool. 720x1280, graded, muted. */
   walk: "/media/walk.mp4",
   walkPoster: "/media/walk-poster.webp",
@@ -113,11 +113,14 @@ export const rooms: Room[] = [
     summary: "Calm, warm-lit rooms looking out over the gardens.",
     intro:
       "Warm wood, soft lighting and fresh linen, with a writing desk and a garden view. A comfortable base for a family visit or a wedding weekend.",
-    cover: photo("deluxe-new", "Deluxe Room with double bed, warm-lit curtains and a writing desk"),
-    hero: photo("deluxe-new", "Deluxe Room at Manratan Resort"),
+    cover: { src: "/final-view/Deluxe-room1_11zon.webp", width: 6240, height: 3512, alt: "Deluxe Room with double bed, warm-lit curtains and a writing desk" },
+    hero: { src: "/final-view/Deluxe-room1_11zon.webp", width: 6240, height: 3512, alt: "Deluxe Room at Manratan Resort" },
     gallery: [
-      photo("deluxe-new", "Deluxe Room with double bed, writing desk and wall-mounted TV"),
-      photo("deluxe-2", "Deluxe Room with armchair and bedside table"),
+      { src: "/final-view/Deluxe-room1_11zon.webp", width: 6240, height: 3512, alt: "Deluxe Room with double bed, writing desk and wall-mounted TV" },
+      { src: "/final-view/Deluxe-room2_11zon.webp", width: 6240, height: 3512, alt: "Deluxe Room with armchair and bedside table" },
+      { src: "/final-view/Deluxe-room3_11zon.webp", width: 6240, height: 3512, alt: "Deluxe Room spacious layout" },
+      { src: "/final-view/Deluxe-room4_11zon.webp", width: 6240, height: 3512, alt: "Deluxe Room comfortable seating and natural lighting" },
+      { src: "/final-view/Deluxe-room5_11zon.webp", width: 3512, height: 6240, alt: "Deluxe Room amenities and details" },
     ],
     amenities: ["High-speed Wi-Fi", "Daily housekeeping", "In-room dining", "Air conditioning", "Tea & coffee maker", "Luxury toiletries"],
     meta: {
@@ -135,12 +138,12 @@ export const rooms: Room[] = [
     summary: "Two rooms behind one door, for families travelling together.",
     intro:
       "Two bedrooms joined by a connecting door, so a family or a group of friends can have their own space and still be together.",
-    cover: photo("inter-1", "Deluxe Interconnected Room with two connected bedrooms"),
-    hero: photo("inter-1", "Deluxe Interconnected Room at Manratan Resort"),
+    cover: { src: "/final-view/Inter-room1_11zon.webp", width: 4032, height: 2268, alt: "Deluxe Interconnected Room with two connected bedrooms" },
+    hero: { src: "/final-view/Inter-room1_11zon.webp", width: 4032, height: 2268, alt: "Deluxe Interconnected Room at Manratan Resort" },
     gallery: [
-      photo("inter-1", "Two bedrooms joined by a connecting door"),
-      photo("inter-2", "Interconnected room bed with window light"),
-      photo("inter-3", "Guest at the room's writing desk"),
+      { src: "/final-view/Inter-room1_11zon.webp", width: 4032, height: 2268, alt: "Two bedrooms joined by a connecting door" },
+      { src: "/final-view/Inter-room2_11zon.webp", width: 4032, height: 2268, alt: "Interconnected room bed with window light" },
+      { src: "/final-view/Inter-room4_11zon.webp", width: 6240, height: 3512, alt: "Interconnected room comfortable family setup" },
     ],
     amenities: ["High-speed Wi-Fi", "Daily housekeeping", "In-room dining", "Interconnected rooms", "Air conditioning", "Tea & coffee maker"],
     meta: {
@@ -157,14 +160,13 @@ export const rooms: Room[] = [
     specs: ["Twin beds", "Pool view"],
     summary: "Room for the whole family, with a view of the pool.",
     intro: "A larger room for families, with two beds, a seating corner, a work desk and a dark-marble bathroom.",
-    cover: photo("executive-1", "Executive Family Room with two beds made up side by side"),
-    hero: photo("executive-1", "Executive Family Room at Manratan Resort"),
+    cover: { src: "/final-view/Executive-room1_11zon.webp", width: 6240, height: 3512, alt: "Executive Family Room with two beds made up side by side" },
+    hero: { src: "/final-view/Executive-banner_11zon.webp", width: 6240, height: 3512, alt: "Executive Family Room at Manratan Resort" },
     gallery: [
-      photo("executive-1", "Executive Family Room beds"),
-      photo("executive-2", "Executive Family Room twin beds and artwork"),
-      photo("executive-3", "Executive Family Room seating and television wall"),
-      photo("executive-4", "Executive Family Room work desk"),
-      photo("executive-bath", "Dark-marble bathroom with vessel basin"),
+      { src: "/final-view/Executive-room1_11zon.webp", width: 6240, height: 3512, alt: "Executive Family Room beds" },
+      { src: "/final-view/Executive-room2_11zon.webp", width: 4032, height: 3024, alt: "Executive Family Room twin beds and artwork" },
+      { src: "/final-view/Executive-room3_11zon.webp", width: 6240, height: 3512, alt: "Executive Family Room seating and television wall" },
+      { src: "/final-view/Executive-room4_11zon.webp", width: 6240, height: 3512, alt: "Executive Family Room work desk" },
     ],
     amenities: ["High-speed Wi-Fi", "Daily housekeeping", "In-room dining", "Pool view", "Air conditioning", "Tea & coffee maker"],
     meta: {
@@ -182,12 +184,12 @@ export const rooms: Room[] = [
     summary: "A king bed, a sofa-cum-bed by the window and the hills beyond.",
     intro:
       "A king bed and a sofa that opens into a second bed, set by a wide window over the green beyond. Easy for couples, and for a small family too.",
-    cover: photo("premium-2", "Premium Room with king bed, sofa and window view"),
-    hero: photo("premium-2", "Premium Room at Manratan Resort"),
+    cover: { src: "/final-view/Premium-room1_11zon.webp", width: 4032, height: 2268, alt: "Premium Room with king bed, sofa and window view" },
+    hero: { src: "/final-view/Premium-room1_11zon.webp", width: 4032, height: 2268, alt: "Premium Room at Manratan Resort" },
     gallery: [
-      photo("premium-2", "Premium Room with king bed and sofa by the window"),
-      photo("premium-1", "Premium Room with the sofa opened into a bed"),
-      photo("premium-bath", "Rain shower in dark marble"),
+      { src: "/final-view/Premium-room1_11zon.webp", width: 4032, height: 2268, alt: "Premium Room with king bed and sofa by the window" },
+      { src: "/final-view/Premium-room2_11zon.webp", width: 4032, height: 2268, alt: "Premium Room with the sofa opened into a bed" },
+      { src: "/final-view/Premium-room4_11zon.webp", width: 4176, height: 6264, alt: "Premium Room wide window view" },
     ],
     amenities: ["High-speed Wi-Fi", "Daily housekeeping", "In-room dining", "Sofa-cum-bed", "Air conditioning", "Tea & coffee maker"],
     meta: {
@@ -205,13 +207,14 @@ export const rooms: Room[] = [
     summary: "A separate living room, a white-marble bath and the widest view in the house.",
     intro:
       "Our two finest rooms: a private living room, a master bedroom dressed in Manratan linen, a white-marble bathroom and wide windows over the resort and the hills.",
-    cover: photo("suite-1", "Executive Suite bedroom with a panoramic window"),
-    hero: photo("suite-1", "Executive Suite at Manratan Resort"),
+    cover: { src: "/final-view/Suite-room1_11zon.webp", width: 4032, height: 2268, alt: "Executive Suite bedroom with a panoramic window" },
+    hero: { src: "/final-view/Suite-banner_11zon.webp", width: 6240, height: 3512, alt: "Executive Suite at Manratan Resort" },
     gallery: [
-      photo("suite-1", "Executive Suite bedroom with panoramic window"),
-      photo("suite-living", "Executive Suite living room"),
-      photo("suite-bed", "Manratan cushions and towel art on the suite bed"),
-      photo("suite-bath", "White-marble suite bathroom"),
+      { src: "/final-view/Suite-room1_11zon.webp", width: 4032, height: 2268, alt: "Executive Suite bedroom with a panoramic window" },
+      { src: "/final-view/Suite-room2_11zon.webp", width: 6240, height: 3512, alt: "Executive Suite living room with sofa and armchair" },
+      { src: "/final-view/Suite-room3_11zon.webp", width: 4032, height: 3024, alt: "Executive Suite luxury details and amenities" },
+      { src: "/final-view/Suite-room4_11zon.webp", width: 6240, height: 3512, alt: "Executive Suite spacious interior" },
+      { src: "/final-view/Suite-room5_11zon.webp", width: 4032, height: 3024, alt: "Executive Suite master bathroom" },
     ],
     amenities: ["High-speed Wi-Fi", "Daily housekeeping", "In-room dining", "Private living room", "Air conditioning", "Tea & coffee maker"],
     meta: {

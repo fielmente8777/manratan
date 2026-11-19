@@ -1893,7 +1893,7 @@
 /* ---- accommodation page ---- */
 .accommodation-page .gems-head {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   gap: 24px 48px;
   flex-wrap: wrap;
@@ -2130,6 +2130,30 @@
   margin: 0 auto;
   transform: translateY(-50%);
   background: #221811;
+  border-radius: 12px;
+}
+.accommodation-page .accommodation-booking .mr-booking-bar {
+  border-radius: 12px;
+}
+@media (min-width: 1024px) {
+  .accommodation-page .accommodation-booking .mr-booking-bar > div:first-child {
+    border-top-left-radius: 11px;
+    border-bottom-left-radius: 11px;
+  }
+  .accommodation-page .accommodation-booking .mr-booking-bar button[type="submit"] {
+    border-top-right-radius: 11px;
+    border-bottom-right-radius: 11px;
+  }
+}
+@media (max-width: 1023px) {
+  .accommodation-page .accommodation-booking .mr-booking-bar > div:first-child {
+    border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
+  }
+  .accommodation-page .accommodation-booking .mr-booking-bar button[type="submit"] {
+    border-bottom-left-radius: 11px;
+    border-bottom-right-radius: 11px;
+  }
 }
 .accommodation-page .script {
   margin-top: 12px;
@@ -2139,6 +2163,7 @@
     transform: none;
     padding: 16px;
     margin-bottom: 40px;
+    border-radius: 16px;
   }
   .accommodation-page .acc-hero {
     min-height: 600px;

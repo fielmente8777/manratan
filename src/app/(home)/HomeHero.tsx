@@ -89,7 +89,7 @@ export default function HomeHero() {
     >
       <div className={styles.visual}>
         <Image
-          src={video.poster}
+          src="/final-view/first-light1.webp"
           alt="Manratan Resort, from the current resort film"
           fill
           preload
@@ -103,7 +103,7 @@ export default function HomeHero() {
             ref={vidRef}
             key={src}
             src={src}
-            poster={video.poster}
+            poster="/final-view/first-light1.webp"
             muted
             loop
             playsInline

@@ -48,21 +48,21 @@ export default function Footer() {
         </div>
         <div className="mt-10 h-px bg-stone/15 md:mt-14" aria-hidden="true" />
 
-        <div className="mt-6 grid gap-5 md:mt-14 md:grid-cols-2 md:gap-12 lg:grid-cols-4 lg:gap-10">
-          <FooterGroup title="Visit" id="visit" expanded={open === "visit"} onToggle={() => toggle("visit")} className="md:order-1">
+        <div className="mt-6 grid gap-5 md:mt-14 md:grid-cols-2 md:gap-12 lg:flex lg:flex-row lg:justify-between lg:items-start lg:gap-8">
+          <FooterGroup title="Visit" id="visit" expanded={open === "visit"} onToggle={() => toggle("visit")} className="md:order-1 lg:shrink-0">
             <address className="text-base not-italic leading-[1.9] text-stone/70">NH-46, Biaora Road,<br />Narsinghgarh, Dist. Rajgarh,<br />Madhya Pradesh &ndash; 465669</address>
             <a href={contact.mapUrl} target="_blank" rel="noreferrer" className="link-line t-label mt-6 !text-base text-stone">Get directions</a>
           </FooterGroup>
-          <FooterGroup title="Explore" id="explore" expanded={open === "explore"} onToggle={() => toggle("explore")} className="md:order-4">
+          <FooterGroup title="Explore" id="explore" expanded={open === "explore"} onToggle={() => toggle("explore")} className="md:order-4 lg:shrink-0">
             <nav aria-label="Footer"><ul className="space-y-3 text-base text-stone/90">{explore.map((link) => <li key={link.href}><Link href={link.href} className="transition-colors hover:text-brass-light">{link.label}</Link></li>)}</ul></nav>
           </FooterGroup>
-          <FooterGroup title="Getting here" id="getting-here" expanded={open === "getting-here"} onToggle={() => toggle("getting-here")} className="md:order-3">
+          <FooterGroup title="Getting here" id="getting-here" expanded={open === "getting-here"} onToggle={() => toggle("getting-here")} className="md:order-3 lg:shrink-0">
             <ul className="space-y-4 text-base leading-[1.6]">{gettingHere.map((place) => <li key={place.from}><span className="block text-stone/60">{place.from}</span><span className="block text-stone/90">{place.detail}</span></li>)}</ul>
           </FooterGroup>
-          <FooterGroup title="Reservations" id="reservations" expanded={open === "reservations"} onToggle={() => toggle("reservations")} className="md:order-2">
+          <FooterGroup title="Reservations" id="reservations" expanded={open === "reservations"} onToggle={() => toggle("reservations")} className="md:order-2 lg:shrink-0">
             <ul className="space-y-4 text-base text-stone/90">
               {contact.phone.map((phone) => <li key={phone}><a href={`tel:${phone.replace(/\s/g, "")}`} className="inline-flex items-center gap-3 hover:text-white"><FiPhone className="h-4 w-4 shrink-0 text-brass" aria-hidden="true" />{phone}</a></li>)}
-              <li><a href={`mailto:${contact.email}`} className="inline-flex items-center gap-3 break-all hover:text-white"><FiMail className="h-4 w-4 shrink-0 text-brass" aria-hidden="true" />{contact.email}</a></li>
+              <li><a href={`mailto:${contact.email}`} className="inline-flex items-center gap-3 hover:text-white"><FiMail className="h-4 w-4 shrink-0 text-brass" aria-hidden="true" /><span className="whitespace-nowrap sm:whitespace-normal lg:whitespace-nowrap">{contact.email}</span></a></li>
             </ul>
           </FooterGroup>
         </div>

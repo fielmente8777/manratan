@@ -74,7 +74,7 @@ export default function Narsinghgarh() {
               <b>210 km</b>Indore &middot; 3&ndash;4 hrs
             </li>
           </ul>
-          <LineLink href="/our-story">Live the legacy <span aria-hidden="true">&rarr;</span></LineLink>
+          <LineLink href="/contactus">Live the legacy <span aria-hidden="true">&rarr;</span></LineLink>
         </div>
       </figure>
 

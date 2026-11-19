@@ -2,7 +2,7 @@
   "room-4": {
     "name": "Premium Room",
     "hero": {
-      "src": "/room-detail-reference/f0252e30d215acb82a369beb8f5f50bf.jpg",
+      "src": "/final-view/Premium-room1_11zon.webp",
       "alt": "Premium Room with king bed and sofa by the window"
     },
     "heroScript": "with a view of the green",
@@ -29,16 +29,16 @@
     ],
     "photos": [
       {
-        "src": "/room-detail-reference/f0252e30d215acb82a369beb8f5f50bf.jpg",
+        "src": "/final-view/Premium-room1_11zon.webp",
         "alt": "Premium Room with king bed and sofa by the window"
       },
       {
-        "src": "/room-detail-reference/a7384392eeef8dafc740846da7281f66.jpg",
+        "src": "/final-view/Premium-room2_11zon.webp",
         "alt": "Premium Room with the sofa opened into a bed"
       },
       {
-        "src": "/room-detail-reference/41eeeec97ad3c8e92e1f0590dac634e3.jpg",
-        "alt": "Rain shower in dark marble"
+        "src": "/final-view/Premium-room4_11zon.webp",
+        "alt": "Premium Room wide window view"
       }
     ],
     "amenityTitle": "In your room",
@@ -87,7 +87,7 @@
         "name": "Executive Suite",
         "summary": "Master bedroom · Panoramic view",
         "image": {
-          "src": "/room-detail-reference/4434b49f370d9431e97678d7fb0767b1.jpg",
+          "src": "/final-view/Suite-room1_11zon.webp",
           "alt": "Executive Suite bedroom with a panoramic window"
         }
       },
@@ -96,7 +96,7 @@
         "name": "Executive Family Room",
         "summary": "Twin beds · Pool view",
         "image": {
-          "src": "/room-detail-reference/4dccf3c70be945be9694b8a9841d5b22.jpg",
+          "src": "/final-view/Executive-room1_11zon.webp",
           "alt": "Executive Family Room with two beds"
         }
       },
@@ -105,7 +105,7 @@
         "name": "Deluxe Interconnected",
         "summary": "Two connected rooms · Pool & garden view",
         "image": {
-          "src": "/room-detail-reference/73f38aa930e39f06b393dd84005492dc.jpg",
+          "src": "/final-view/Inter-room1_11zon.webp",
           "alt": "Deluxe Interconnected Room with two connected bedrooms"
         }
       },
@@ -114,7 +114,7 @@
         "name": "Deluxe Room",
         "summary": "Twin or double · Garden view",
         "image": {
-          "src": "/room-detail-reference/ee837becad6523c696faf319c7d4af5a.jpg",
+          "src": "/final-view/Deluxe-room1_11zon.webp",
           "alt": "Deluxe Room with double bed and writing desk"
         }
       }
@@ -123,7 +123,7 @@
   "room-3": {
     "name": "Executive Family Room",
     "hero": {
-      "src": "/room-detail-reference/4dccf3c70be945be9694b8a9841d5b22.jpg",
+      "src": "/final-view/Executive-banner_11zon.webp",
       "alt": "Executive Family Room beds"
     },
     "heroScript": "room for everyone",
@@ -150,24 +150,20 @@
     ],
     "photos": [
       {
-        "src": "/room-detail-reference/4dccf3c70be945be9694b8a9841d5b22.jpg",
+        "src": "/final-view/Executive-room1_11zon.webp",
         "alt": "Executive Family Room beds"
       },
       {
-        "src": "/room-detail-reference/f7af03d9c66f104859633bdb58076c28.jpg",
+        "src": "/final-view/Executive-room2_11zon.webp",
         "alt": "Executive Family Room twin beds and artwork"
       },
       {
-        "src": "/room-detail-reference/4d4a98c62d8250a5cf6c5c52348050c2.jpg",
+        "src": "/final-view/Executive-room3_11zon.webp",
         "alt": "Executive Family Room seating and television wall"
       },
       {
-        "src": "/room-detail-reference/7047fb6a736d5d268e6f80f2d96ab642.jpg",
+        "src": "/final-view/Executive-room4_11zon.webp",
         "alt": "Executive Family Room work desk"
-      },
-      {
-        "src": "/room-detail-reference/236cc8bc19888d4ebf280ca7cecdedbb.jpg",
-        "alt": "Dark-marble bathroom with vessel basin"
       }
     ],
     "amenityTitle": "In your room",
@@ -216,7 +212,7 @@
         "name": "Executive Suite",
         "summary": "Master bedroom · Panoramic view",
         "image": {
-          "src": "/room-detail-reference/4434b49f370d9431e97678d7fb0767b1.jpg",
+          "src": "/final-view/Suite-room1_11zon.webp",
           "alt": "Executive Suite bedroom with a panoramic window"
         }
       },
@@ -225,7 +221,7 @@
         "name": "Premium Room",
         "summary": "King bed · Nature view",
         "image": {
-          "src": "/room-detail-reference/f0252e30d215acb82a369beb8f5f50bf.jpg",
+          "src": "/final-view/Premium-room1_11zon.webp",
           "alt": "Premium Room with king bed, sofa and window view"
         }
       },
@@ -234,7 +230,7 @@
         "name": "Deluxe Interconnected",
         "summary": "Two connected rooms · Pool & garden view",
         "image": {
-          "src": "/room-detail-reference/73f38aa930e39f06b393dd84005492dc.jpg",
+          "src": "/final-view/Inter-room1_11zon.webp",
           "alt": "Deluxe Interconnected Room with two connected bedrooms"
         }
       },
@@ -243,7 +239,7 @@
         "name": "Deluxe Room",
         "summary": "Twin or double · Garden view",
         "image": {
-          "src": "/room-detail-reference/ee837becad6523c696faf319c7d4af5a.jpg",
+          "src": "/final-view/Deluxe-room1_11zon.webp",
           "alt": "Deluxe Room with double bed and writing desk"
         }
       }
@@ -252,7 +248,7 @@
   "room-2": {
     "name": "Deluxe Interconnected Room",
     "hero": {
-      "src": "/room-detail-reference/73f38aa930e39f06b393dd84005492dc.jpg",
+      "src": "/final-view/Inter-room1_11zon.webp",
       "alt": "Two bedrooms joined by a connecting door"
     },
     "heroScript": "together, with space",
@@ -279,16 +275,16 @@
     ],
     "photos": [
       {
-        "src": "/room-detail-reference/73f38aa930e39f06b393dd84005492dc.jpg",
+        "src": "/final-view/Inter-room1_11zon.webp",
         "alt": "Two bedrooms joined by a connecting door"
       },
       {
-        "src": "/room-detail-reference/e5ffa0c4d33b22a9eac48c5f4b6477a0.jpg",
+        "src": "/final-view/Inter-room2_11zon.webp",
         "alt": "Interconnected room bed with window light"
       },
       {
-        "src": "/room-detail-reference/66847150ac24e87d6303f8edbb0238da.jpg",
-        "alt": "Guest at the room’s writing desk"
+        "src": "/final-view/Inter-room4_11zon.webp",
+        "alt": "Interconnected room comfortable family setup"
       }
     ],
     "amenityTitle": "In your room",
@@ -337,7 +333,7 @@
         "name": "Executive Suite",
         "summary": "Master bedroom · Panoramic view",
         "image": {
-          "src": "/room-detail-reference/4434b49f370d9431e97678d7fb0767b1.jpg",
+          "src": "/final-view/Suite-room1_11zon.webp",
           "alt": "Executive Suite bedroom with a panoramic window"
         }
       },
@@ -346,7 +342,7 @@
         "name": "Premium Room",
         "summary": "King bed · Nature view",
         "image": {
-          "src": "/room-detail-reference/f0252e30d215acb82a369beb8f5f50bf.jpg",
+          "src": "/final-view/Premium-room1_11zon.webp",
           "alt": "Premium Room with king bed, sofa and window view"
         }
       },
@@ -355,7 +351,7 @@
         "name": "Executive Family Room",
         "summary": "Twin beds · Pool view",
         "image": {
-          "src": "/room-detail-reference/4dccf3c70be945be9694b8a9841d5b22.jpg",
+          "src": "/final-view/Executive-room1_11zon.webp",
           "alt": "Executive Family Room with two beds"
         }
       },
@@ -364,7 +360,7 @@
         "name": "Deluxe Room",
         "summary": "Twin or double · Garden view",
         "image": {
-          "src": "/room-detail-reference/ee837becad6523c696faf319c7d4af5a.jpg",
+          "src": "/final-view/Deluxe-room1_11zon.webp",
           "alt": "Deluxe Room with double bed and writing desk"
         }
       }
@@ -373,7 +369,7 @@
   "room-1": {
     "name": "Deluxe Room",
     "hero": {
-      "src": "/room-detail-reference/ee837becad6523c696faf319c7d4af5a.jpg",
+      "src": "/final-view/Deluxe-room1_11zon.webp",
       "alt": "Deluxe Room with double bed, writing desk and wall-mounted TV"
     },
     "heroScript": "warm, calm and easy",
@@ -400,12 +396,24 @@
     ],
     "photos": [
       {
-        "src": "/room-detail-reference/ee837becad6523c696faf319c7d4af5a.jpg",
+        "src": "/final-view/Deluxe-room1_11zon.webp",
         "alt": "Deluxe Room with double bed, writing desk and wall-mounted TV"
       },
       {
-        "src": "/room-detail-reference/0b47fe2e8cd05c3c8177a6c16a225c05.jpg",
+        "src": "/final-view/Deluxe-room2_11zon.webp",
         "alt": "Deluxe Room with armchair and bedside table"
+      },
+      {
+        "src": "/final-view/Deluxe-room3_11zon.webp",
+        "alt": "Deluxe Room spacious layout"
+      },
+      {
+        "src": "/final-view/Deluxe-room4_11zon.webp",
+        "alt": "Deluxe Room comfortable seating and natural lighting"
+      },
+      {
+        "src": "/final-view/Deluxe-room5_11zon.webp",
+        "alt": "Deluxe Room amenities and details"
       }
     ],
     "amenityTitle": "In your room",
@@ -458,7 +466,7 @@
         "name": "Executive Suite",
         "summary": "Master bedroom · Panoramic view",
         "image": {
-          "src": "/room-detail-reference/4434b49f370d9431e97678d7fb0767b1.jpg",
+          "src": "/final-view/Suite-room1_11zon.webp",
           "alt": "Executive Suite bedroom with a panoramic window"
         }
       },
@@ -467,7 +475,7 @@
         "name": "Premium Room",
         "summary": "King bed · Nature view",
         "image": {
-          "src": "/room-detail-reference/f0252e30d215acb82a369beb8f5f50bf.jpg",
+          "src": "/final-view/Premium-room1_11zon.webp",
           "alt": "Premium Room with king bed, sofa and window view"
         }
       },
@@ -476,7 +484,7 @@
         "name": "Executive Family Room",
         "summary": "Twin beds · Pool view",
         "image": {
-          "src": "/room-detail-reference/4dccf3c70be945be9694b8a9841d5b22.jpg",
+          "src": "/final-view/Executive-room1_11zon.webp",
           "alt": "Executive Family Room with two beds"
         }
       },
@@ -485,7 +493,7 @@
         "name": "Deluxe Interconnected",
         "summary": "Two connected rooms · Pool & garden view",
         "image": {
-          "src": "/room-detail-reference/73f38aa930e39f06b393dd84005492dc.jpg",
+          "src": "/final-view/Inter-room1_11zon.webp",
           "alt": "Deluxe Interconnected Room with two connected bedrooms"
         }
       }
@@ -494,7 +502,7 @@
   "room-5": {
     "name": "Executive Suite",
     "hero": {
-      "src": "/room-detail-reference/4434b49f370d9431e97678d7fb0767b1.jpg",
+      "src": "/final-view/Suite-banner_11zon.webp",
       "alt": "Executive Suite bedroom with a panoramic window over the hills"
     },
     "heroScript": "our two finest rooms",
@@ -521,20 +529,24 @@
     ],
     "photos": [
       {
-        "src": "/room-detail-reference/4434b49f370d9431e97678d7fb0767b1.jpg",
+        "src": "/final-view/Suite-room1_11zon.webp",
         "alt": "Executive Suite bedroom with a panoramic window"
       },
       {
-        "src": "/room-detail-reference/73c62d41018b83f97f6087d2a566c056.jpg",
+        "src": "/final-view/Suite-room2_11zon.webp",
         "alt": "Executive Suite living room with sofa and armchair"
       },
       {
-        "src": "/room-detail-reference/35bf4a435d6dcb948a374f191309a7bf.jpg",
-        "alt": "Manratan cushions and towel art on the suite bed"
+        "src": "/final-view/Suite-room3_11zon.webp",
+        "alt": "Executive Suite luxury details and amenities"
       },
       {
-        "src": "/room-detail-reference/3e988821da4c0a53e15dfd8b792f2795.jpg",
-        "alt": "White-marble suite bathroom"
+        "src": "/final-view/Suite-room4_11zon.webp",
+        "alt": "Executive Suite spacious interior"
+      },
+      {
+        "src": "/final-view/Suite-room5_11zon.webp",
+        "alt": "Executive Suite master bathroom"
       }
     ],
     "amenityTitle": "In your suite",
@@ -583,7 +595,7 @@
         "name": "Premium Room",
         "summary": "King bed · Nature view",
         "image": {
-          "src": "/room-detail-reference/f0252e30d215acb82a369beb8f5f50bf.jpg",
+          "src": "/final-view/Premium-room1_11zon.webp",
           "alt": "Premium Room with king bed, sofa and window view"
         }
       },
@@ -592,7 +604,7 @@
         "name": "Executive Family Room",
         "summary": "Twin beds · Pool view",
         "image": {
-          "src": "/room-detail-reference/4dccf3c70be945be9694b8a9841d5b22.jpg",
+          "src": "/final-view/Executive-room1_11zon.webp",
           "alt": "Executive Family Room with two beds"
         }
       },
@@ -601,7 +613,7 @@
         "name": "Deluxe Interconnected",
         "summary": "Two connected rooms · Pool & garden view",
         "image": {
-          "src": "/room-detail-reference/73f38aa930e39f06b393dd84005492dc.jpg",
+          "src": "/final-view/Inter-room1_11zon.webp",
           "alt": "Deluxe Interconnected Room with two connected bedrooms"
         }
       },
@@ -610,7 +622,7 @@
         "name": "Deluxe Room",
         "summary": "Twin or double · Garden view",
         "image": {
-          "src": "/room-detail-reference/ee837becad6523c696faf319c7d4af5a.jpg",
+          "src": "/final-view/Deluxe-room1_11zon.webp",
           "alt": "Deluxe Room with double bed and writing desk"
         }
       }

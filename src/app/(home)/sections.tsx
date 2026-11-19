@@ -203,35 +203,60 @@ const spaces = [
     focus: "31% 55%",
     href: "/gallery?category=lobby",
     line: "A namaste at the door, under crystal chandeliers",
-    img: photo("reception-welcome", "Reception team greeting guests with a namaste"),
+    img: {
+      src: "/final-view/reception.webp",
+      width: 2400,
+      height: 1600,
+      alt: "Reception team greeting guests with a namaste",
+    },
   },
   {
     label: "Swadika",
     focus: "50% 50%",
     href: "/gallery?category=dining",
     line: "Pure vegetarian dining in a chandelier-lit hall",
-    img: photo("swadika-wide", "Swadika restaurant with teal velvet chairs, gold chandeliers and tall windows"),
+    img: {
+      src: "/final-view/swadika.webp",
+      width: 2400,
+      height: 1600,
+      alt: "Swadika restaurant with teal velvet chairs, gold chandeliers and tall windows",
+    },
   },
   {
     label: "Banquet",
     focus: "50% 50%",
     href: "/events",
     line: "The Blue Sapphire and Golden Sapphire halls",
-    img: photo("banquet-hall", "Banquet hall with crystal chandeliers, round tables and a floral stage"),
+    img: {
+      src: "/final-view/banquet.webp",
+      width: 2400,
+      height: 1600,
+      alt: "Banquet hall with crystal chandeliers, round tables and a floral stage",
+    },
   },
   {
     label: "Sky Lawn",
     focus: "42% 60%",
     href: "/events",
     line: "Open-air evenings as the sun sets over the hills",
-    img: photo("skylawn-terrace", "Sky Lawn lounge seating beside the resort at sunset, hills beyond"),
+    img: {
+      src: "/final-view/skylawn.webp",
+      width: 2400,
+      height: 1600,
+      alt: "Sky Lawn lounge seating beside the resort at sunset, hills beyond",
+    },
   },
   {
     label: "Pool",
     focus: "50% 50%",
     href: "/gallery?category=swimming-pool",
     line: "The Blue Diamond pool, by day and after dark",
-    img: photo("pool-floating", "Guest floating in the Blue Diamond pool beside a floating breakfast"),
+    img: {
+      src: "/final-view/pool.jpeg",
+      width: 2400,
+      height: 1600,
+      alt: "Guest floating in the Blue Diamond pool beside a floating breakfast",
+    },
   },
 ];
 export function Spaces() {
@@ -472,7 +497,7 @@ export function Swadika() {
         <div className="relative mx-auto flex max-w-[760px] flex-col items-center text-center">
           {/* Script watermark behind the heading */}
           <span
-            className="t-script pointer-events-none absolute -top-14 left-[38%] select-none whitespace-nowrap text-[clamp(6rem,13vw,12rem)] text-ink/[0.05] sm:-top-20"
+            className="t-script pointer-events-none absolute -top-10 left-[62%] -translate-x-1/2 select-none whitespace-nowrap text-[clamp(4.8rem,20vw,6.5rem)] text-ink/[0.05] sm:-top-20 sm:left-[38%] sm:translate-x-0 sm:text-[clamp(6rem,13vw,12rem)]"
             aria-hidden="true"
           >
             Swadika
@@ -657,7 +682,7 @@ export function EscapeCTA({
   return (
     <Section defaultPadding={false} className={`${bg || "bg-stone"} py-16 md:py-24 ${className}`} aria-labelledby="escape-title">
       <div className={`mx-auto w-full ${isLeft ? "max-w-[1360px]" : "max-w-[1600px]"} px-4 sm:px-8 lg:px-10`}>
-        <div className={`group relative isolate flex ${isLeft ? "min-h-[500px] sm:min-h-[540px] lg:min-h-[560px] items-center justify-start" : "min-h-[620px] lg:min-h-[640px] items-center justify-center"} overflow-hidden rounded-[24px] bg-ink text-stone sm:rounded-[32px]`}>
+        <div className={`group relative isolate flex ${isLeft ? "min-h-[500px] sm:min-h-[540px] lg:min-h-[560px] items-center justify-start" : "min-h-[520px] sm:min-h-[620px] lg:min-h-[640px] items-center justify-center"} overflow-hidden rounded-[24px] bg-ink text-stone sm:rounded-[32px]`}>
           <Image
             src={img.src}
             alt={img.alt}
@@ -669,13 +694,13 @@ export function EscapeCTA({
           {/* Overlay */}
           <div className={`absolute inset-0 -z-10 ${isLeft ? "bg-gradient-to-r from-ink/85 via-ink/45 to-transparent sm:w-[75%] lg:w-[68%]" : "bg-[#1e140d]/65"}`} />
 
-          <div className={`w-full ${isLeft ? "max-w-[780px] px-8 py-12 sm:px-14 sm:py-16 lg:px-20 lg:py-20 text-left" : "max-w-[900px] px-6 py-16 text-center sm:px-12 lg:py-20"}`}>
+          <div className={`w-full min-w-0 max-w-full ${isLeft ? "max-w-[780px] px-8 py-12 sm:px-14 sm:py-16 lg:px-20 lg:py-20 text-left" : "max-w-[900px] px-4 py-12 text-center sm:px-12 sm:py-16 lg:py-20"}`}>
             {kicker && (
-              <p className={`text-[0.68rem] sm:text-[0.72rem] font-medium tracking-[0.25em] uppercase text-brass-light`}>
+              <p className={`text-[0.62rem] sm:text-[0.72rem] font-medium tracking-[0.16em] sm:tracking-[0.25em] uppercase text-brass-light break-words`}>
                 {kicker}
               </p>
             )}
-            <div id="escape-title" className="mt-4 sm:mt-5">
+            <div id="escape-title" className="mt-4 sm:mt-5 max-w-full">
               {isLeft && main === "ROYAL CHARM" ? (
                 <div className="relative inline-block text-left text-stone">
                   <h2 className="sr-only">{main} {script}</h2>
@@ -695,24 +720,25 @@ export function EscapeCTA({
                   align={align}
                   tone="light"
                   size="lg"
-                  scriptClassName={scriptClassName || (isLeft ? "pl-[14%] sm:pl-[12%] text-brass-light" : "")}
+                  className="max-sm:[&>.t-display]:text-[1.85rem] max-sm:[&>.t-display]:leading-[1.15] max-sm:[&>.t-script]:text-[1.35rem] max-sm:[&>.t-script]:mt-1 max-sm:[&>.t-script>span]:translate-x-0"
+                  scriptClassName={scriptClassName || (isLeft ? "pl-[14%] sm:pl-[12%] text-brass-light" : "text-brass-light")}
                 />
               )}
             </div>
             {desc && (
               typeof desc === "string" ? (
-                <p className={`font-ivy mt-6 text-[clamp(1.35rem,2.1vw,1.85rem)] font-normal leading-[1.35] text-stone ${isLeft ? "max-w-[55ch]" : "mx-auto max-w-[22ch] text-center"}`}>
+                <p className={`font-ivy mt-5 sm:mt-6 text-[1.15rem] sm:text-[clamp(1.35rem,2.1vw,1.85rem)] font-normal leading-[1.35] text-stone ${isLeft ? "max-w-[55ch]" : "mx-auto max-w-[26ch] sm:max-w-[22ch] text-center"}`}>
                   {desc}
                 </p>
               ) : (
-                <div className={`font-ivy mt-6 text-[clamp(1.35rem,2.1vw,1.85rem)] font-normal leading-[1.35] text-stone ${isLeft ? "max-w-[55ch]" : "text-center"}`}>
+                <div className={`font-ivy mt-5 sm:mt-6 text-[1.15rem] sm:text-[clamp(1.35rem,2.1vw,1.85rem)] font-normal leading-[1.35] text-stone ${isLeft ? "max-w-[55ch]" : "text-center"}`}>
                   {desc}
                 </div>
               )
             )}
-            <div className={`mt-8 sm:mt-9 flex flex-wrap items-center gap-3.5 sm:gap-4 ${isLeft ? "justify-start" : "justify-center"}`}>
+            <div className={`mt-7 sm:mt-9 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 ${isLeft ? "sm:justify-start" : "sm:justify-center"}`}>
               {primaryButton ? primaryButton : (
-                <BookButton tone="light" className="rounded-full px-8 py-4 sm:px-10">
+                <BookButton tone="light" className="w-full sm:w-auto rounded-full px-7 py-3.5 sm:px-10 sm:py-4 text-center justify-center">
                   Book your stay
                 </BookButton>
               )}
@@ -721,7 +747,7 @@ export function EscapeCTA({
                   href={site.contact.WhatsappCta}
                   target="_blank"
                   rel="noreferrer"
-                  className="t-label inline-flex items-center justify-center gap-2.5 rounded-full border border-stone/40 px-8 py-4 text-stone transition-colors duration-500 hover:border-stone hover:bg-stone hover:text-ink sm:px-10"
+                  className="t-label w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full border border-stone/40 px-7 py-3.5 text-stone transition-colors duration-500 hover:border-stone hover:bg-stone hover:text-ink sm:px-10 sm:py-4"
                 >
                   <WhatsAppIcon className="h-5 w-5 shrink-0" />
                   WhatsApp us

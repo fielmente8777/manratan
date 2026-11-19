@@ -52,7 +52,7 @@ export function Title({ main, script, as: Tag = "h2", align = "left", tone = "da
       <span className={`t-display block ${sizes[size]}`}>{main}</span>
       {script && (
         <span className={`t-script mt-0 block ${scriptSizes[size]} ${scriptClassName ? scriptClassName : (align === "center" ? "" : "pl-[22%] sm:pl-[18%]")}`}>
-          <span className={align === "center" ? "inline-block translate-x-[18%]" : ""}>{script}</span>
+          <span className={align === "center" ? "inline-block max-sm:translate-x-0 sm:translate-x-[18%]" : ""}>{script}</span>
         </span>
       )}
     </Tag>

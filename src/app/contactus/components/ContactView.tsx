@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { IoIosArrowDown } from "react-icons/io";
 import { FaWhatsapp } from "react-icons/fa";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { countries } from "@/utils/constent";
 import { startOfToday, toLocalISODate } from "@/utils/dates";
 
@@ -47,7 +49,10 @@ export default function ContactView() {
     message: "",
   });
 
-  const todayStr = toLocalISODate(startOfToday());
+  const [checkInDate, setCheckInDate] = useState<Date | null>(null);
+  const [checkOutDate, setCheckOutDate] = useState<Date | null>(null);
+
+  const today = startOfToday();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -56,42 +61,46 @@ export default function ContactView() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleCheckInChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const val = e.target.value;
+  const handleCheckInChange = (d: Date | null) => {
+    setCheckInDate(d);
     setFormData((prev) => {
+      const val = d ? toLocalISODate(d) : "";
       const next = { ...prev, checkIn: val };
-      if (val && prev.checkOut && prev.checkOut <= val) {
+      if (d && checkOutDate && checkOutDate <= d) {
+        setCheckOutDate(null);
         next.checkOut = "";
       }
       return next;
     });
   };
 
-  const handleCheckOutChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const val = e.target.value;
-    if (formData.checkIn && val && val <= formData.checkIn) {
-      return;
-    }
-    setFormData((prev) => ({ ...prev, checkOut: val }));
+  const handleCheckOutChange = (d: Date | null) => {
+    setCheckOutDate(d);
+    setFormData((prev) => ({
+      ...prev,
+      checkOut: d ? toLocalISODate(d) : "",
+    }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.checkIn && formData.checkOut && formData.checkOut <= formData.checkIn) {
+    if (checkInDate && checkOutDate && checkOutDate <= checkInDate) {
       alert("Check-out date must be after check-in date.");
       return;
     }
-    const text = `*New Website Enquiry*\nName: ${formData.name}\nPhone: ${formData.countryCode} ${formData.phone}\nEmail: ${formData.email || "Not specified"}\nCheck-in: ${formData.checkIn || "Not specified"}\nCheck-out: ${formData.checkOut || "Not specified"}\nMessage: ${formData.message || "None"}`;
+    const checkInStr = checkInDate ? toLocalISODate(checkInDate) : formData.checkIn;
+    const checkOutStr = checkOutDate ? toLocalISODate(checkOutDate) : formData.checkOut;
+    const text = `*New Website Enquiry*\nName: ${formData.name}\nPhone: ${formData.countryCode} ${formData.phone}\nEmail: ${formData.email || "Not specified"}\nCheck-in: ${checkInStr || "Not specified"}\nCheck-out: ${checkOutStr || "Not specified"}\nMessage: ${formData.message || "None"}`;
     window.open(`https://wa.me/919171172205?text=${encodeURIComponent(text)}`, "_blank");
   };
 
   return (
     <div className="max_screen_width relative font-sans text-[#54473C] bg-[#FBF7EF] overflow-x-clip antialiased mx-auto">
       {/* ============ HERO ============ */}
-      <header className="relative min-h-[520px] md:min-h-[640px] flex flex-col text-[#F6EFE4] bg-[#221811] overflow-hidden group">
+      <header className="group relative min-h-[520px] md:min-h-[640px] flex flex-col text-[#F6EFE4] bg-[#221811] overflow-hidden">
         <Image
-          className="absolute inset-0 w-full h-full object-cover object-[50%_36%] transition-transform duration-1000 ease-out group-hover:scale-105"
-          src="/contact/667bce410c47b5664b47aa936e0306fb.jpg"
+          className="absolute inset-0 w-full h-full object-cover object-[50%_36%] transition-transform duration-[800ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-105"
+          src="/final-view/reception.webp"
           alt="The Manratan reception team greeting guests with a namaste"
           fill
           priority
@@ -99,11 +108,11 @@ export default function ContactView() {
           quality={92}
         />
         <div
-          className="absolute inset-0 bg-gradient-to-b from-[#19110b]/55 via-[#19110b]/25 to-[#19110b]/72 pointer-events-none"
+          className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40 pointer-events-none"
           aria-hidden="true"
         />
         <div className="relative z-[2] mt-auto pb-[clamp(96px,10vw,136px)] flex flex-col items-center gap-[22px] text-center max-w-[1440px] mx-auto px-[clamp(20px,5.6vw,80px)] w-full">
-          <h1 className="m-0 font-display font-normal text-[#F6EFE4] uppercase leading-[0.98] text-center">
+          <h1 className="m-0 font-display font-normal text-[#F6EFE4] uppercase leading-[0.98] text-center drop-shadow-[0_2px_18px_rgba(0,0,0,0.5)]">
             <span className="block text-[clamp(48px,6.8vw,96px)] tracking-[0.02em]">
               Contact Us
             </span>
@@ -296,29 +305,55 @@ export default function ContactView() {
                   <label htmlFor="c-in" className="font-sans font-semibold text-[10px] leading-[1.4] tracking-[0.22em] uppercase text-[#7A5F3A]">
                     Check-in
                   </label>
-                  <input
-                    id="c-in"
-                    name="checkIn"
-                    type="date"
-                    min={todayStr}
-                    value={formData.checkIn}
-                    onChange={handleCheckInChange}
-                    className="font-sans font-normal text-[14px] md:text-[15px] leading-[1.4] text-[#221811] bg-transparent border-0 border-b border-[#221811]/25 py-1.5 md:py-2.5 rounded-none outline-none ring-0 !outline-none focus:outline-none focus:ring-0 focus:!outline-none focus:border-[#221811] focus-visible:outline-none focus-visible:!outline-none focus-visible:ring-0 focus-visible:!ring-0 w-full transition-colors cursor-pointer"
-                  />
+                  <div className="relative w-full">
+                    <DatePicker
+                      id="c-in"
+                      selected={checkInDate}
+                      onChange={handleCheckInChange}
+                      minDate={today}
+                      dateFormat="dd/MM/yyyy"
+                      placeholderText="dd / mm / yyyy"
+                      calendarClassName="mr-calendar"
+                      popperClassName="!z-[9999]"
+                      className="font-sans font-normal text-[14px] md:text-[15px] leading-[1.4] text-[#221811] bg-transparent border-0 border-b border-[#221811]/25 py-1.5 md:py-2.5 pr-7 rounded-none outline-none ring-0 !outline-none focus:outline-none focus:ring-0 focus:!outline-none focus:border-[#221811] w-full transition-colors cursor-pointer placeholder:text-[#221811]/45"
+                      wrapperClassName="w-full block"
+                    />
+                    <span className="pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-[#7A5F3A]" aria-hidden="true">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                      </svg>
+                    </span>
+                  </div>
                 </div>
                 <div className="flex flex-col gap-1 md:gap-2">
                   <label htmlFor="c-out" className="font-sans font-semibold text-[10px] leading-[1.4] tracking-[0.22em] uppercase text-[#7A5F3A]">
                     Check-out
                   </label>
-                  <input
-                    id="c-out"
-                    name="checkOut"
-                    type="date"
-                    min={formData.checkIn || todayStr}
-                    value={formData.checkOut}
-                    onChange={handleCheckOutChange}
-                    className="font-sans font-normal text-[14px] md:text-[15px] leading-[1.4] text-[#221811] bg-transparent border-0 border-b border-[#221811]/25 py-1.5 md:py-2.5 rounded-none outline-none ring-0 !outline-none focus:outline-none focus:ring-0 focus:!outline-none focus:border-[#221811] focus-visible:outline-none focus-visible:!outline-none focus-visible:ring-0 focus-visible:!ring-0 w-full transition-colors cursor-pointer"
-                  />
+                  <div className="relative w-full">
+                    <DatePicker
+                      id="c-out"
+                      selected={checkOutDate}
+                      onChange={handleCheckOutChange}
+                      minDate={checkInDate || today}
+                      dateFormat="dd/MM/yyyy"
+                      placeholderText="dd / mm / yyyy"
+                      calendarClassName="mr-calendar"
+                      popperClassName="!z-[9999]"
+                      className="font-sans font-normal text-[14px] md:text-[15px] leading-[1.4] text-[#221811] bg-transparent border-0 border-b border-[#221811]/25 py-1.5 md:py-2.5 pr-7 rounded-none outline-none ring-0 !outline-none focus:outline-none focus:ring-0 focus:!outline-none focus:border-[#221811] w-full transition-colors cursor-pointer placeholder:text-[#221811]/45"
+                      wrapperClassName="w-full block"
+                    />
+                    <span className="pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-[#7A5F3A]" aria-hidden="true">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                      </svg>
+                    </span>
+                  </div>
                 </div>
                 <div className="sm:col-span-2 flex flex-col gap-1 md:gap-2">
                   <label htmlFor="c-msg" className="font-sans font-semibold text-[10px] leading-[1.4] tracking-[0.22em] uppercase text-[#7A5F3A]">
@@ -371,7 +406,7 @@ export default function ContactView() {
             <figure className="order-2 lg:order-none lg:col-span-7 lg:row-span-2 m-0 group">
               <div className="relative aspect-[16/10] overflow-hidden rounded-[20px]">
                 <Image
-                  src="/contact/3818a080cb8483c7fd9da712ae025096.jpg"
+                  src="/final-view/lobby2.webp"
                   alt="The lobby lounge with crystal chandeliers and red velvet sofas"
                   fill
                   quality={90}
