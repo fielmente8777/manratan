@@ -28,7 +28,25 @@ import tempfile
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 MEDIA = os.path.join(ROOT, "public", "media")
 FPS = 30
-FFMPEG = os.environ.get("FFMPEG", "ffmpeg")
+FFMPEG = os.environ.get("FFMPEG")
+if not FFMPEG or not shutil.which(FFMPEG):
+    _winget = r"C:\Users\iknow\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-9.0.2-full_build\bin\ffmpeg.exe"
+    if os.path.exists(_winget):
+        FFMPEG = _winget
+    else:
+        FFMPEG = "ffmpeg"
+
+def resolve_image(key):
+    if os.path.isabs(key) and os.path.exists(key):
+        return key
+    for base in [MEDIA, os.path.join(ROOT, "public"), os.path.join(ROOT, "public", "final-view")]:
+        p = os.path.normpath(os.path.join(base, key))
+        if os.path.exists(p):
+            return p
+        for ext in [".webp", ".jpg", ".jpeg", ".png"]:
+            if os.path.exists(p + ext):
+                return p + ext
+    raise FileNotFoundError(f"Cannot resolve image for key: {key}")
 
 # (photo key, horizontal focus 0..1 for portrait crops, push direction)
 HERO = [
@@ -44,17 +62,54 @@ HERO = [
 HERO_MOBILE_SWAP = {"skylawn-sunset": ("skylawn-sunset-tall", 0.5)}
 
 WALKTHROUGH = [
-    ("First light", [("clip:first-light", 0.0, 40.0)]),
-    ("Reception and lobby", [("film-ref-14", "in"), ("film-ref-13", "out"), ("film-ref-15", "in"), ("film-ref-16", "out")]),
-    ("Rooms and suites", [("suite-1", "in"), ("suite-living", "out"), ("suite-bath", "in"), ("premium-1", "in"), ("executive-1", "out")]),
-    ("Swadika", [("swadika-hall", "in"), ("swadika-guests", "out")]),
-    ("Blue Diamond pool", [("film-pool-1", "in"), ("film-ref-8", "out")]),
-    ("Sky Lawn", [("skylawn-sunset", "in")]),
-    ("Banquets", [("film-banquet-1", "in"), ("film-banquet-2", "out"), ("film-banquet-3", "in")]),
-    ("Narsinghgarh", [("film-ref-9", "in"), ("film-ref-10", "out"), ("film-ref-17", "in"), ("film-ref-11", "out"), ("film-ref-12", "in")]),
-    # Removed on client request; retain the chapter here for reference.
-    # ("Candlelight by the pool", [("clip:pool-dinner", 1.0, 8.0)]),
-    ("Manratan by night", [("night/gallery-4.jpg", "in"), ("night/gallery-3.jpg", "in"), ("night/gallery-1.jpg", "in"), ("night/gallery-1.jpg", "mirror"), ("night/gallery-6.jpg", "in"), ("night/gallery-5.jpg", "in")]),
+    ("First light", [
+        ("../final-view/first-light1.webp", "in"),
+        ("../final-view/first-light2.webp", "out"),
+        ("../final-view/first-light3.webp", "in"),
+    ]),
+    ("Reception and lobby", [
+        ("../final-view/reception.webp", "in"),
+        ("../final-view/lobby2.webp", "out"),
+        ("../final-view/lobby3.webp", "in"),
+        ("../final-view/lobby4.webp", "out"),
+    ]),
+    ("Rooms and suites", [
+        ("suite-1", "in"),
+        ("suite-living", "out"),
+        ("suite-bath", "in"),
+        ("premium-1", "in"),
+        ("executive-1", "out"),
+    ]),
+    ("Swadika", [
+        ("swadika-hall", "in"),
+        ("swadika-guests", "out"),
+    ]),
+    ("Blue Diamond pool", [
+        ("../final-view/pool.jpeg", "in"),
+        ("film-ref-8", "out"),
+    ]),
+    ("Sky Lawn", [
+        ("skylawn-sunset", "in"),
+    ]),
+    ("Banquets", [
+        ("film-banquet-1", "in"),
+        ("film-banquet-2", "out"),
+        ("film-banquet-3", "in"),
+    ]),
+    ("Narsinghgarh", [
+        ("film-ref-9", "in"),
+        ("../final-view/narsinghgarh1.webp", "out"),
+        ("../final-view/narsinghgarh2.webp", "in"),
+        ("../final-view/narsinghgarh3.webp", "out"),
+        ("../final-view/narsinghgarh4.webp", "in"),
+    ]),
+    ("Manratan by night", [
+        ("night/new-gallery.webp", "in"),
+        ("night/new-gallery-1.webp", "out"),
+        ("night/new-gallery-2.webp", "in"),
+        ("night/new-gallery-3.webp", "out"),
+        ("night/new-gallery-4.webp", "in"),
+    ]),
 ]
 
 
@@ -187,7 +242,7 @@ def walkthrough(music=None):
                 else:
                     key, d = spec
                     length = secs
-                    shot(os.path.join(MEDIA, key if key.endswith(".jpg") else f"{key}.webp"), dst, 1600, 900, secs, d, 0.5, zoom=0.07)
+                    shot(resolve_image(key), dst, 1600, 900, secs, d, 0.5, zoom=0.07)
                 clips.append(dst)
                 durations.append(length)
                 at += length - fade
@@ -197,10 +252,11 @@ def walkthrough(music=None):
             json.dump({"duration": round(total, 1), "chapters": chapters}, fh, indent=2)
             fh.write("\n")
         # Poster: the opening frame, so the player doesn't jump when it starts.
-        run([FFMPEG, "-y", "-v", "error", "-ss", "0.5", "-i", out, "-frames:v", "1", "-vf", "scale=1600:-2",
+        run([FFMPEG, "-y", "-v", "error", "-i", out, "-frames:v", "1", "-vf", "scale=1600:-2",
              os.path.join(tmp, "poster.png")])
-        run([FFMPEG, "-y", "-v", "error", "-i", os.path.join(tmp, "poster.png"), "-c:v", "libwebp", "-quality", "80",
+        run([FFMPEG, "-y", "-v", "error", "-i", os.path.join(tmp, "poster.png"), "-c:v", "libwebp", "-quality", "90",
              os.path.join(MEDIA, "walkthrough-poster-v2.webp")])
+        shutil.copyfile(os.path.join(MEDIA, "walkthrough-poster-v2.webp"), os.path.join(MEDIA, "walkthrough-poster.webp"))
         print(out, f"{total:.1f}s", os.path.getsize(out) // 1024, "KB", "audio" if music else "no audio")
     finally:
         shutil.rmtree(tmp, ignore_errors=True)

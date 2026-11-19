@@ -27,32 +27,17 @@ export default function HomeHero() {
     if (reduce || saver) return;
     let idle = 0;
     const begin = () => {
-      const ric = (
-        window as Window & {
-          requestIdleCallback?: (
-            cb: () => void,
-            o?: { timeout: number }
-          ) => number;
-        }
-      ).requestIdleCallback;
-      idle = ric
-        ? ric(() => setSrc(video.walkthrough), {
-            timeout: 2000,
-          })
-        : window.setTimeout(
-            () => setSrc(video.walkthrough),
-            300
-          );
+      setSrc(video.walkthrough);
     };
-    if (document.readyState === "complete") begin();
-    else window.addEventListener("load", begin, { once: true });
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+      idle = window.setTimeout(begin, 200);
+    } else {
+      window.addEventListener("load", begin, { once: true });
+      idle = window.setTimeout(begin, 1000);
+    }
     return () => {
       window.removeEventListener("load", begin);
-      const cic = (
-        window as Window & { cancelIdleCallback?: (id: number) => void }
-      ).cancelIdleCallback;
-      if (cic) cic(idle);
-      else window.clearTimeout(idle);
+      window.clearTimeout(idle);
     };
   }, []);
 
@@ -62,8 +47,15 @@ export default function HomeHero() {
     v.muted = true;
     v.defaultMuted = true;
     v.playsInline = true;
-    const p = v.play();
-    if (p) p.catch(() => setState("blocked"));
+    const attemptPlay = () => {
+      v.muted = true;
+      v.play()
+        .then(() => setState("playing"))
+        .catch(() => {
+          setState("paused");
+        });
+    };
+    attemptPlay();
   }, [src]);
 
   const toggle = useCallback(() => {
@@ -109,6 +101,13 @@ export default function HomeHero() {
             playsInline
             autoPlay
             preload="auto"
+            onLoadedData={() => {
+              const v = vidRef.current;
+              if (v && v.paused) {
+                v.muted = true;
+                v.play().then(() => setState("playing")).catch(() => {});
+              }
+            }}
             onPlaying={() => setState("playing")}
             className={`absolute inset-0 -z-10 h-full w-full object-cover transition-opacity duration-[1400ms] ${
               state === "playing" || state === "paused"
