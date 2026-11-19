@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { SectionWithContainer } from "@/components/sectionComponants";
-import { FilmPlayIcon, LineLink, Title } from "@/components/site/ui";
+import { LineLink, Title } from "@/components/site/ui";
 import FilmModal from "@/components/site/FilmModal";
 import styles from "./Narsinghgarh.module.css";
 import { walkthrough } from "@/data/site";
@@ -39,24 +39,30 @@ export default function Narsinghgarh() {
       </div>
 
       <figure className={styles.film}>
-        <div className={styles.frame}>
-          <Image
-            src="/media/narsinghgarh-film.jpg"
-            alt="Narsinghgarh Fort on its green hill above the old town"
-            fill
-            unoptimized
-            sizes="(max-width: 1200px) 100vw, 1120px"
+        <div
+          className={`${styles.frame} cursor-pointer`}
+          onClick={() => setFilmOpen(true)}
+          role="button"
+          tabIndex={0}
+          aria-label="Play the Narsinghgarh film"
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              setFilmOpen(true);
+            }
+          }}
+        >
+          <video
+            src="/final-view/narsinghar (1).mp4"
+            poster="/media/narsinghgarh-film.jpg"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className="absolute inset-0 h-full w-full object-cover"
           />
           <div className={styles.scrim} aria-hidden="true" />
-          <button
-            className={`${styles.play} flex h-14 w-14 items-center justify-center rounded-full border-2 border-stone/90 text-stone transition-transform duration-700 hover:scale-110`}
-            type="button"
-            aria-label="Play the Narsinghgarh film"
-            aria-haspopup="dialog"
-            onClick={() => setFilmOpen(true)}
-          >
-            <FilmPlayIcon />
-          </button>
           <figcaption className={styles.tag}>
             <span className="t-label">The film</span>
             <b>Narsinghgarh</b>
@@ -81,8 +87,7 @@ export default function Narsinghgarh() {
       {filmOpen && (
         <FilmModal
           title="Narsinghgarh — The Mini Kashmir of Malwa"
-          startAt={chapterStart}
-          endAt={chapterEnd}
+          src="/final-view/narsinghar (1).mp4"
           chapters={false}
           onClose={() => setFilmOpen(false)}
         />

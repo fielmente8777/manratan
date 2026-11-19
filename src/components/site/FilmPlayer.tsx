@@ -6,6 +6,7 @@ import { video, walkthrough } from "@/data/site";
 import { PlayIcon } from "./ui";
 
 type Props = {
+  src?: string;
   /** Start playing as soon as the player mounts (used in the hero modal). */
   autoPlay?: boolean;
   /** Show the chapter list beside (lg) or under the film. */
@@ -21,7 +22,7 @@ const fmt = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).p
  * The Manratan walkthrough: one film in chapters, from first light to night.
  * Native controls once playing; chapter buttons seek to each part.
  */
-export default function FilmPlayer({ autoPlay = false, chapters = true, tone = "dark", startAt = 0, endAt }: Props) {
+export default function FilmPlayer({ src, autoPlay = false, chapters = true, tone = "dark", startAt = 0, endAt }: Props) {
   const ref = useRef<HTMLVideoElement>(null);
   const [started, setStarted] = useState(false);
   const [current, setCurrent] = useState(0);
@@ -55,7 +56,7 @@ export default function FilmPlayer({ autoPlay = false, chapters = true, tone = "
       <div className="relative aspect-video w-full overflow-hidden bg-black">
         <video
           ref={ref}
-          src={video.walkthrough}
+          src={src || video.walkthrough}
           preload="none"
           playsInline
           controls={started}

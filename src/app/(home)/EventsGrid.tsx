@@ -18,26 +18,27 @@ const cards: Card[] = [
   {
     title: "Destination Wedding",
     img: { src: "/media/film-banquet-3.webp", alt: "Banquet hall arranged with black and gold tables at Manratan Resort" },
-    video: "/final-view/destination-wedding-video.mp4",
-    clip: "/final-view/destination-wedding-video.mp4",
+    video: "/final-view/wedding (1).mp4",
+    clip: "/final-view/wedding (1).mp4",
   },
   {
     title: "Curated Events",
     img: { src: "/media/film-banquet-2.webp", alt: "Banquet hall set with white chairs and a projector screen at Manratan Resort" },
-    clip: video.walkthrough,
-    start: 42, // Banquets
+    video: "/final-view/curated event (1).mp4",
+    clip: "/final-view/curated event (1).mp4",
   },
   {
     title: "Poolside Events",
     img: { src: video.poolDinnerPoster, alt: "A candlelit table by the Blue Diamond pool at night" },
-    video: "/final-view/pool-side-events-video.mp4",
-    clip: "/final-view/pool-side-events-video.mp4",
+    video: "/final-view/pool.mp4",
+    clip: "/final-view/pool.mp4",
   },
   {
     title: "Staycation",
     img: photo("suite-bed", "Executive Suite bed dressed in Manratan linen"),
     focus: "60% 50%",
-    clip: video.walk,
+    video: "/final-view/stay cation (1).mp4",
+    clip: "/final-view/stay cation (1).mp4",
   },
 ];
 

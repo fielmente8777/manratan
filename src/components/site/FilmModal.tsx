@@ -13,6 +13,7 @@ export default function FilmModal({
   startAt = 0,
   endAt,
   chapters = true,
+  src,
 }: {
   onClose: () => void;
   bgVideo?: RefObject<HTMLVideoElement | null>;
@@ -21,6 +22,7 @@ export default function FilmModal({
   startAt?: number;
   endAt?: number;
   chapters?: boolean;
+  src?: string;
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -60,7 +62,7 @@ export default function FilmModal({
             Close
           </button>
         </div>
-        <FilmPlayer autoPlay startAt={startAt} endAt={endAt} chapters={chapters} />
+        <FilmPlayer src={src} autoPlay startAt={startAt} endAt={endAt} chapters={chapters} />
       </div>
     </dialog>,
     document.body,
