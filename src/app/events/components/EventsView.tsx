@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { FaWhatsapp } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -133,992 +134,11 @@ export default function EventsView() {
   const [activeGem, setActiveGem] = useState<number>(2);
 
   return (
-    <div className="mr-events-root">
-      <style jsx global>{`
-        @font-face {
-          font-family: 'IvyOra Display';
-          src: url('/events-page/3a117a2c7158f445282c120ea244476a.woff2') format('woff2');
-          font-weight: 400;
-          font-style: normal;
-          font-display: swap;
-        }
-        @font-face {
-          font-family: 'Golden Hopes';
-          src: url('/events-page/4c32b90e5c2a3f44a94f81486a4cde7e.woff2') format('woff2');
-          font-weight: 400;
-          font-style: normal;
-          font-display: swap;
-        }
-
-        .mr-events-root {
-          font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
-          color: #54473C;
-          background: #FBF7EF;
-          -webkit-font-smoothing: antialiased;
-          overflow-x: clip;
-          position: relative;
-        }
-        .mr-events-root * {
-          box-sizing: border-box;
-        }
-        .mr-events-root a {
-          text-decoration: none;
-          color: inherit;
-        }
-
-        .ev-wrap {
-          max-width: 1440px;
-          margin: 0 auto;
-          padding-left: clamp(20px, 5.6vw, 80px);
-          padding-right: clamp(20px, 5.6vw, 80px);
-        }
-        .ev-sec {
-          position: relative;
-          padding-top: clamp(88px, 9vw, 132px);
-          padding-bottom: clamp(88px, 9vw, 132px);
-        }
-        .ev-sec > .ev-wrap {
-          position: relative;
-          z-index: 1;
-        }
-        .ev-sand {
-          background: #F2EADD;
-        }
-        .ev-maroon {
-          background: #3A1114;
-          color: #E8D9C4;
-        }
-
-        .ev-eyebrow {
-          font: 600 11px/1.5 'Montserrat', sans-serif;
-          letter-spacing: 0.24em;
-          text-transform: uppercase;
-          color: #7A5F3A;
-          margin: 0;
-        }
-        .ev-maroon .ev-eyebrow {
-          color: #D8BE8E;
-        }
-
-        .ev-title {
-          font-family: 'IvyOra Display', Georgia, 'Times New Roman', serif;
-          font-weight: 400;
-          font-size: clamp(40px, 4.5vw, 64px);
-          line-height: 1.02;
-          letter-spacing: 0;
-          text-transform: uppercase;
-          color: #221811;
-          margin: 0;
-          text-wrap: balance;
-        }
-        .ev-maroon .ev-title {
-          color: #F6EFE4;
-        }
-
-        .ev-script {
-          display: block;
-          font-family: 'Golden Hopes', 'Brush Script MT', cursive;
-          font-weight: 400;
-          text-transform: none;
-          letter-spacing: 0;
-          font-size: 0.8em;
-          line-height: 1;
-          margin-top: -0.06em;
-          padding-left: 2.2em;
-          color: #221811;
-        }
-        .ev-maroon .ev-script {
-          color: #E3C78F;
-        }
-        .ev-center {
-          text-align: center;
-        }
-        .ev-center .ev-script {
-          padding-left: 1.8em;
-        }
-
-        .ev-lead {
-          font-family: 'IvyOra Display', Georgia, serif;
-          font-weight: 400;
-          font-size: clamp(22px, 2vw, 28px);
-          line-height: 1.4;
-          color: #221811;
-          margin: 0;
-          text-wrap: pretty;
-        }
-        .ev-body {
-          font-size: 15px;
-          line-height: 1.85;
-          margin: 0;
-          max-width: 34em;
-          text-wrap: pretty;
-        }
-        .ev-maroon .ev-body {
-          color: #E8D9C4;
-        }
-
-        .ev-link {
-          display: inline-flex;
-          align-items: center;
-          gap: 14px;
-          min-height: 44px;
-          font: 600 11px/1 'Montserrat', sans-serif;
-          letter-spacing: 0.22em;
-          text-transform: uppercase;
-          color: #221811;
-          text-decoration: none;
-          border-bottom: 1px solid currentColor;
-          align-self: flex-start;
-          transition: gap 0.4s, color 0.3s;
-        }
-        .ev-link:hover {
-          color: #7A5F3A;
-          gap: 22px;
-        }
-        .ev-maroon .ev-link {
-          color: #F6EFE4;
-        }
-        .ev-maroon .ev-link:hover {
-          color: #E3C78F;
-        }
-
-        .ev-btn {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 12px;
-          min-height: 52px;
-          padding: 0 30px;
-          border-radius: 999px;
-          font: 600 11px/1 'Montserrat', sans-serif;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          text-decoration: none;
-          border: 1px solid transparent;
-          cursor: pointer;
-          white-space: nowrap;
-          transition: background 0.35s, color 0.35s, transform 0.35s;
-        }
-        .ev-btn:hover {
-          transform: translateY(-2px);
-        }
-        .ev-btn-gold,
-        .mr-events-root a.ev-btn-gold {
-          background: #C9A46C;
-          color: #221811;
-        }
-        .ev-btn-gold:hover,
-        .mr-events-root a.ev-btn-gold:hover {
-          background: #D8BE8E;
-          color: #221811;
-        }
-        .ev-btn-ghost,
-        .mr-events-root a.ev-btn-ghost {
-          background: transparent;
-          color: #F6EFE4;
-          border-color: rgba(246, 239, 228, 0.55);
-        }
-        .ev-btn-ghost:hover,
-        .mr-events-root a.ev-btn-ghost:hover {
-          background: #F6EFE4;
-          color: #221811;
-        }
-
-        .ev-orn {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 14px;
-          color: #9C7A45;
-        }
-        .ev-orn span {
-          display: block;
-          width: 64px;
-          height: 1px;
-          background: currentColor;
-          opacity: 0.6;
-        }
-
-        /* Hero */
-        .ev-hero-box {
-          position: relative;
-          min-height: clamp(560px, 58vw, 760px);
-          display: flex;
-          flex-direction: column;
-          color: #F6EFE4;
-          background: #221811;
-          overflow: hidden;
-        }
-        .ev-hero-img {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: 50% 55%;
-          transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
-        }
-        .ev-hero-box:hover .ev-hero-img {
-          transform: scale(1.05);
-        }
-        .ev-hero-scrim {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(
-            180deg,
-            rgba(25, 17, 11, 0.55) 0%,
-            rgba(25, 17, 11, 0.2) 30%,
-            rgba(25, 17, 11, 0.72) 100%
-          );
-        }
-        .ev-hero-copy {
-          position: relative;
-          z-index: 2;
-          margin-top: auto;
-          padding-bottom: clamp(96px, 10vw, 136px);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 22px;
-          text-align: center;
-        }
-        .ev-hero-title {
-          margin: 0;
-          font-family: 'IvyOra Display', Georgia, serif;
-          font-weight: 400;
-          color: #F6EFE4;
-          text-transform: uppercase;
-          line-height: 0.98;
-          text-align: center;
-        }
-        .ev-hero-big {
-          display: block;
-          font-size: clamp(48px, 6.8vw, 96px);
-          letter-spacing: 0.02em;
-        }
-        .ev-hero-title .ev-script {
-          color: #F6EFE4;
-          font-size: clamp(44px, 5.8vw, 88px);
-          padding-left: 1.4em;
-          margin-top: -0.04em;
-        }
-
-        /* Intro Panel */
-        .ev-panel {
-          position: relative;
-          z-index: 3;
-          margin-top: -44px;
-          border-radius: 44px 44px 0 0;
-          background: #FBF7EF;
-          padding-top: 0;
-        }
-        .ev-panel-wrap {
-          position: relative;
-          z-index: 2;
-          padding-top: clamp(88px, 8vw, 120px);
-          padding-bottom: clamp(88px, 9vw, 132px);
-        }
-        .ev-intro-head {
-          max-width: 820px;
-          margin: 0 auto;
-          text-align: center;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 28px;
-        }
-        .ev-stats {
-          display: flex;
-          max-width: 960px;
-          margin: clamp(56px, 6vw, 80px) auto 0;
-          padding: 0;
-          border-top: 1px solid rgba(34, 24, 17, 0.14);
-          border-bottom: 1px solid rgba(34, 24, 17, 0.14);
-        }
-        .ev-stats div {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 10px;
-          padding: 30px 16px;
-          text-align: center;
-        }
-        .ev-stats div + div {
-          border-left: 1px solid rgba(34, 24, 17, 0.14);
-        }
-        .ev-stats dt {
-          font: 400 clamp(36px, 3.6vw, 52px)/1 'IvyOra Display', Georgia, serif;
-          color: #221811;
-        }
-        .ev-stats dd {
-          margin: 0;
-          font: 600 10px/1.5 'Montserrat', sans-serif;
-          letter-spacing: 0.22em;
-          text-transform: uppercase;
-          color: #7A5F3A;
-        }
-
-        /* Venues – Expanding Gem Panels */
-        .ev-gems-head {
-          display: flex;
-          align-items: flex-end;
-          justify-content: space-between;
-          gap: 24px 48px;
-          flex-wrap: wrap;
-        }
-        .ev-gems-head .ev-body {
-          max-width: 30em;
-        }
-        .ev-gems {
-          display: flex;
-          gap: 12px;
-          height: 660px;
-          margin-top: clamp(48px, 5vw, 64px);
-        }
-        .ev-gem {
-          position: relative;
-          flex: 1 1 0;
-          min-width: 0;
-          display: block;
-          padding: 0;
-          border: 0;
-          border-radius: 22px;
-          overflow: hidden;
-          background: #221811;
-          color: #F6EFE4;
-          text-align: left;
-          cursor: pointer;
-          isolation: isolate;
-          transition: flex-grow 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
-        }
-        .ev-gem.is-on {
-          flex-grow: 3.6;
-          cursor: default;
-        }
-        .ev-gem:focus-visible {
-          outline: 2px solid #7A5F3A;
-          outline-offset: 4px;
-        }
-        .ev-gem-img-wrap {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
-        }
-        .ev-gem:hover .ev-gem-img-wrap {
-          transform: scale(1.05);
-        }
-        .ev-gem-scrim {
-          position: absolute;
-          inset: 0;
-          z-index: 1;
-          background: linear-gradient(
-            0deg,
-            rgba(25, 17, 11, 0.82) 0%,
-            rgba(25, 17, 11, 0.2) 46%,
-            rgba(25, 17, 11, 0.08) 100%
-          );
-          transition: background 0.8s;
-        }
-        .ev-gem:not(.is-on) .ev-gem-scrim {
-          background: linear-gradient(
-            0deg,
-            rgba(25, 17, 11, 0.78) 0%,
-            rgba(25, 17, 11, 0.42) 100%
-          );
-        }
-        .ev-gem-ico {
-          position: absolute;
-          top: 24px;
-          left: 24px;
-          z-index: 2;
-          width: 34px;
-          height: 34px;
-        }
-        .ev-gem-n {
-          position: absolute;
-          top: 30px;
-          right: 26px;
-          z-index: 2;
-          font: 600 10px/1 'Montserrat', sans-serif;
-          letter-spacing: 0.22em;
-          color: #EADBC2;
-        }
-        .ev-gem-v {
-          position: absolute;
-          left: 50%;
-          bottom: 34px;
-          z-index: 2;
-          display: block;
-          white-space: nowrap;
-          font: 400 24px/1 'IvyOra Display', Georgia, serif;
-          text-transform: uppercase;
-          letter-spacing: 0.02em;
-          writing-mode: vertical-rl;
-          transform: translateX(-50%) rotate(180deg);
-          transition: opacity 0.5s ease;
-        }
-        .ev-gem.is-on .ev-gem-v {
-          opacity: 0;
-        }
-        .ev-gem-body {
-          position: absolute;
-          left: 40px;
-          right: 40px;
-          bottom: 38px;
-          z-index: 2;
-          display: flex;
-          flex-direction: column;
-          gap: 14px;
-          opacity: 0;
-          transform: translateY(18px);
-          transition: opacity 0.5s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
-          pointer-events: none;
-        }
-        .ev-gem.is-on .ev-gem-body {
-          opacity: 1;
-          transform: none;
-          transition-delay: 0.35s;
-        }
-        .ev-gem-cap {
-          font: 600 10px/1.4 'Montserrat', sans-serif;
-          letter-spacing: 0.22em;
-          text-transform: uppercase;
-          color: #E3C78F;
-        }
-        .ev-gem-name {
-          font: 400 clamp(34px, 3.2vw, 48px)/1 'IvyOra Display', Georgia, serif;
-          text-transform: uppercase;
-          color: #F6EFE4;
-        }
-        .ev-gem-desc {
-          font-size: 15px;
-          line-height: 1.75;
-          color: #EFE6D8;
-          max-width: 30em;
-        }
-
-        /* Reels */
-        .ev-reels-head {
-          display: flex;
-          align-items: flex-end;
-          justify-content: space-between;
-          gap: 24px 48px;
-          flex-wrap: wrap;
-        }
-        .ev-reels-head-r {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 20px;
-          max-width: 26em;
-        }
-        .ev-reel-row {
-          list-style: none;
-          margin: clamp(48px, 5vw, 64px) 0 0;
-          padding: 0;
-          display: grid;
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-          gap: clamp(16px, 2vw, 28px);
-        }
-        .ev-reel {
-          display: flex;
-          flex-direction: column;
-          gap: 18px;
-          padding: 0;
-          border: 0;
-          background: none;
-          color: inherit;
-          text-align: left;
-          cursor: pointer;
-          width: 100%;
-        }
-        .ev-reel-ph {
-          position: relative;
-          display: block;
-          aspect-ratio: 9 / 16;
-          border-radius: 20px;
-          overflow: hidden;
-          background: #2C0C0F;
-        }
-        .ev-reel-ph img {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
-        }
-        .ev-reel-ph::after {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background: rgba(20, 6, 8, 0.18);
-          transition: background 0.5s;
-        }
-        .ev-reel:hover .ev-reel-ph img {
-          transform: scale(1.06);
-        }
-        .ev-reel:hover .ev-reel-ph::after {
-          background: rgba(20, 6, 8, 0.05);
-        }
-        .ev-reel-play {
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          z-index: 1;
-          width: 60px;
-          height: 60px;
-          margin: -30px 0 0 -30px;
-          border-radius: 50%;
-          display: grid;
-          place-items: center;
-          color: #F6EFE4;
-          border: 1px solid rgba(246, 239, 228, 0.8);
-          background: rgba(246, 239, 228, 0.12);
-          backdrop-filter: blur(8px);
-          transition: background 0.4s, color 0.4s, transform 0.4s;
-        }
-        .ev-reel:hover .ev-reel-play {
-          background: #F6EFE4;
-          color: #3A1114;
-          transform: scale(1.06);
-        }
-        .ev-reel-cap {
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-          padding: 0 2px;
-        }
-        .ev-reel-cap span {
-          font: 600 10px/1.4 'Montserrat', sans-serif;
-          letter-spacing: 0.22em;
-          text-transform: uppercase;
-          color: #D8BE8E;
-        }
-        .ev-reel-cap b {
-          font: 400 20px/1.2 'IvyOra Display', Georgia, serif;
-          text-transform: uppercase;
-          color: #F6EFE4;
-        }
-
-        /* Occasions Card Grid */
-        .ev-occ-head {
-          display: flex;
-          align-items: flex-end;
-          justify-content: space-between;
-          gap: 24px 48px;
-          flex-wrap: wrap;
-        }
-        .ev-occ-head-r {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 20px;
-          max-width: 26em;
-        }
-        .ev-occ-grid {
-          list-style: none;
-          margin: clamp(48px, 5vw, 64px) 0 0;
-          padding: 0;
-          display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: clamp(36px, 3.4vw, 48px) clamp(20px, 2.4vw, 32px);
-        }
-        .ev-occ {
-          display: flex;
-        }
-        .ev-occ-card {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          color: #221811;
-          text-decoration: none;
-          border-radius: 20px;
-          outline-offset: 6px;
-        }
-        .ev-occ-ph2 {
-          position: relative;
-          aspect-ratio: 4 / 3;
-          border-radius: 18px;
-          overflow: hidden;
-          background: #E3D9CB;
-        }
-        .ev-occ-ph2 img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
-        }
-        .ev-occ-card:hover .ev-occ-ph2 img {
-          transform: scale(1.06);
-        }
-        .ev-occ-chip {
-          position: absolute;
-          left: 14px;
-          bottom: 14px;
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          padding: 8px 12px;
-          border-radius: 999px;
-          background: rgba(251, 247, 239, 0.92);
-          backdrop-filter: blur(8px);
-          font: 600 9px/1.2 'Montserrat', sans-serif;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-          color: #221811;
-        }
-        .ev-occ-chip i {
-          width: 6px;
-          height: 6px;
-          border-radius: 50%;
-          display: inline-block;
-        }
-        .ev-occ-txt {
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-          padding: 22px 4px 0;
-          flex: 1;
-        }
-        .ev-occ-txt h3 {
-          margin: 0;
-          font: 400 24px/1.15 'IvyOra Display', Georgia, serif;
-          text-transform: uppercase;
-          color: #221811;
-        }
-        .ev-occ-txt p {
-          margin: 0;
-          font-size: 14px;
-          line-height: 1.75;
-          color: #54473C;
-          max-width: 30em;
-        }
-        .ev-occ-go {
-          margin-top: auto;
-          padding-top: 14px;
-          display: inline-flex;
-          align-items: center;
-          gap: 12px;
-          font: 600 10px/1 'Montserrat', sans-serif;
-          letter-spacing: 0.22em;
-          text-transform: uppercase;
-          color: #7A5F3A;
-          transition: gap 0.4s, color 0.3s;
-        }
-        .ev-occ-card:hover .ev-occ-go {
-          gap: 20px;
-          color: #221811;
-        }
-
-        /* Closing CTA Card */
-        .ev-close-card {
-          position: relative;
-          border-radius: 28px;
-          overflow: hidden;
-          min-height: 580px;
-          display: flex;
-          align-items: center;
-          justify-content: flex-end;
-          background: #221811;
-          color: #D9CDBD;
-        }
-        .ev-close-card > img {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: 40% 50%;
-          transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
-        }
-        .ev-close-card:hover > img {
-          transform: scale(1.05);
-        }
-        .ev-close-scrim {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(
-            90deg,
-            rgba(25, 17, 11, 0) 26%,
-            rgba(25, 17, 11, 0.82) 66%
-          );
-        }
-        .ev-close-txt {
-          position: relative;
-          z-index: 1;
-          max-width: 620px;
-          margin-right: clamp(24px, 6vw, 96px);
-          padding: 64px 0;
-          display: flex;
-          flex-direction: column;
-          gap: 26px;
-        }
-        .ev-close-btns {
-          display: flex;
-          gap: 12px;
-          align-items: center;
-          flex-wrap: nowrap;
-        }
-        .ev-close-btns .ev-btn {
-          padding: 0 24px;
-        }
-        @media (max-width: 580px) {
-          .ev-close-btns {
-            flex-wrap: wrap;
-          }
-        }
-        .ev-close-txt .ev-title {
-          color: #F6EFE4;
-        }
-        .ev-close-txt .ev-script {
-          color: #D8BE8E;
-        }
-        .ev-close-txt .ev-eyebrow {
-          color: #D8BE8E;
-        }
-        .ev-close-txt .ev-lead {
-          color: #F6EFE4;
-        }
-
-        /* Responsive Breakpoints */
-        @media (min-width: 901px) {
-          .ev-gems-mobile {
-            display: none !important;
-          }
-        }
-        @media (max-width: 1100px) {
-          .ev-occ-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-          }
-        }
-        @media (max-width: 900px) {
-          .ev-stats {
-            flex-direction: column;
-          }
-          .ev-stats div + div {
-            border-left: 0;
-            border-top: 1px solid rgba(34, 24, 17, 0.14);
-          }
-          .ev-gems-desktop {
-            display: none !important;
-          }
-          .ev-gems-mobile {
-            display: block !important;
-          }
-          .ev-reel-row {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none;
-            gap: 14px;
-            margin-right: calc(-1 * clamp(20px, 5.6vw, 80px));
-            padding-right: clamp(20px, 5.6vw, 80px);
-          }
-          .ev-reel-row::-webkit-scrollbar {
-            display: none;
-          }
-          .ev-reel-row > li {
-            flex: 0 0 68%;
-            scroll-snap-align: start;
-          }
-          .ev-close-card {
-            min-height: 480px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-          }
-          .ev-close-scrim {
-            background: rgba(25, 17, 11, 0.66);
-          }
-          .ev-close-txt {
-            width: 100%;
-            max-width: 100%;
-            margin: 0 auto;
-            padding: 48px 24px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-          }
-        }
-        @media (max-width: 760px) {
-          .ev-panel {
-            border-radius: 28px 28px 0 0;
-            margin-top: -28px;
-          }
-          .ev-panel-wrap {
-            padding-top: 48px;
-            padding-bottom: 48px;
-          }
-          .ev-intro-head {
-            gap: 20px;
-          }
-          .ev-stats {
-            margin-top: 36px;
-          }
-          .ev-hero-box {
-            min-height: 500px;
-          }
-          .ev-hero-copy {
-            padding-bottom: 64px;
-            padding-left: 14px;
-            padding-right: 14px;
-          }
-          .ev-hero-big {
-            font-size: clamp(38px, 9.6vw, 56px);
-            letter-spacing: 0.01em;
-            line-height: 1;
-          }
-          .ev-hero-title .ev-script {
-            font-size: clamp(44px, 11vw, 66px);
-            padding-left: 0.4em;
-          }
-          .ev-reel-row {
-            display: flex;
-            flex-direction: column;
-            overflow-x: visible;
-            margin-right: 0;
-            padding-right: 0;
-            gap: 24px;
-          }
-          .ev-reel-row > li {
-            flex: none;
-            width: 100%;
-          }
-          .ev-close-card {
-            min-height: auto;
-            border-radius: 24px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-          }
-          .ev-close-txt {
-            width: 100%;
-            max-width: 100%;
-            margin: 0 auto;
-            padding: 44px 20px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 20px;
-          }
-          .ev-close-txt .ev-eyebrow {
-            text-align: center;
-          }
-          .ev-close-txt .ev-title {
-            text-align: center;
-            font-size: clamp(28px, 7.5vw, 36px);
-            line-height: 1.1;
-          }
-          .ev-close-txt .ev-script {
-            font-size: clamp(32px, 8.5vw, 44px);
-            padding-left: 0;
-            text-align: center;
-          }
-          .ev-close-txt .ev-lead {
-            text-align: center;
-            font-size: 16px;
-            line-height: 1.5;
-            max-width: 28em;
-            margin: 0 auto;
-          }
-          .ev-close-btns {
-            width: 100%;
-            max-width: 400px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-          }
-          .ev-close-btns .ev-btn {
-            width: 100%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 14px 18px;
-            font-size: 10.5px;
-            letter-spacing: 0.16em;
-            box-sizing: border-box;
-          }
-        }
-        @media (max-width: 480px) {
-          .ev-panel-wrap {
-            padding-top: 42px;
-            padding-bottom: 42px;
-          }
-          .ev-intro-head {
-            gap: 16px;
-          }
-          .ev-stats {
-            margin-top: 28px;
-          }
-          .ev-hero-box {
-            min-height: 460px;
-          }
-          .ev-hero-copy {
-            padding-bottom: 56px;
-            padding-left: 8px;
-            padding-right: 8px;
-          }
-          .ev-hero-big {
-            font-size: clamp(33px, 9.2vw, 42px);
-            letter-spacing: 0.005em;
-            line-height: 1;
-          }
-          .ev-hero-title .ev-script {
-            font-size: clamp(40px, 11vw, 52px);
-            padding-left: 0.3em;
-          }
-          .ev-close-txt {
-            padding: 38px 16px;
-            gap: 18px;
-          }
-          .ev-close-txt .ev-title {
-            font-size: clamp(25px, 7.2vw, 32px);
-          }
-          .ev-close-txt .ev-script {
-            font-size: clamp(28px, 8.2vw, 38px);
-            padding-left: 0;
-          }
-          .ev-close-txt .ev-lead {
-            font-size: 15px;
-            line-height: 1.55;
-          }
-          .ev-close-btns {
-            max-width: 100%;
-          }
-          .ev-close-btns .ev-btn {
-            padding: 14px 14px;
-            font-size: 10px;
-            letter-spacing: 0.14em;
-          }
-        }
-        @media (max-width: 600px) {
-          .ev-occ-grid {
-            grid-template-columns: minmax(0, 1fr);
-            gap: 40px;
-          }
-        }
-      `}</style>
-
+    <div className="max_screen_width font-sans text-[#54473C] bg-[#FBF7EF] antialiased overflow-x-clip relative mx-auto">
       {/* ============ 1. HERO ============ */}
-      <header className="ev-hero-box">
+      <header className="group relative min-h-[460px] sm:min-h-[500px] md:min-h-[clamp(560px,58vw,760px)] flex flex-col text-[#F6EFE4] bg-[#221811] overflow-hidden">
         <Image
-          className="ev-hero-img"
+          className="absolute inset-0 w-full h-full object-cover object-[50%_55%] transition-transform duration-1000 ease-out group-hover:scale-105"
           src="/event-banner.jpg"
           alt="The Blue Sapphire banquet hall fully set for a celebration"
           fill
@@ -1126,21 +146,28 @@ export default function EventsView() {
           sizes="100vw"
           quality={92}
         />
-        <div className="ev-hero-scrim" aria-hidden="true" />
-        <div className="ev-hero-copy ev-wrap">
-          <h1 className="ev-hero-title">
-            <span className="ev-hero-big">Celebrations</span>
-            <span className="ev-script">at Manratan</span>
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-[#19110b]/55 via-[#19110b]/20 to-[#19110b]/72 pointer-events-none"
+          aria-hidden="true"
+        />
+        <div className="relative z-[2] mt-auto pb-14 sm:pb-16 md:pb-[clamp(96px,10vw,136px)] px-2 sm:px-3.5 md:px-[clamp(20px,5.6vw,80px)] max-w-[1440px] mx-auto w-full flex flex-col items-center gap-[22px] text-center">
+          <h1 className="m-0 font-display font-normal text-[#F6EFE4] uppercase leading-[0.98] text-center">
+            <span className="block text-[clamp(33px,9.2vw,42px)] sm:text-[clamp(38px,9.6vw,56px)] md:text-[clamp(48px,6.8vw,96px)] tracking-[0.005em] sm:tracking-[0.01em] md:tracking-[0.02em] leading-none md:leading-[0.98]">
+              Celebrations
+            </span>
+            <span className="block font-script font-normal normal-case text-[#F6EFE4] leading-none text-[clamp(40px,11vw,52px)] sm:text-[clamp(44px,11vw,66px)] md:text-[clamp(44px,5.8vw,88px)] pl-[0.3em] sm:pl-[0.4em] md:pl-[1.4em] -mt-[0.04em]">
+              at Manratan
+            </span>
           </h1>
         </div>
       </header>
 
       {/* ============ 2. INTRO ============ */}
-      <section className="ev-panel" aria-labelledby="intro-title">
-        <div className="ev-wrap ev-panel-wrap">
-          <div className="ev-intro-head">
-            <div className="ev-orn" aria-hidden="true">
-              <span />
+      <section className="relative z-[3] -mt-7 md:-mt-[44px] rounded-t-[28px] md:rounded-t-[44px] bg-[#FBF7EF] pt-0" aria-labelledby="intro-title">
+        <div className="relative z-[2] max-w-[1440px] mx-auto px-[clamp(20px,5.6vw,80px)] py-[42px] sm:py-12 md:pt-[clamp(88px,8vw,120px)] md:pb-[clamp(88px,9vw,132px)]">
+          <div className="max-w-[820px] mx-auto text-center flex flex-col items-center gap-4 sm:gap-5 md:gap-7">
+            <div className="flex items-center justify-center gap-3.5 text-[#9C7A45]" aria-hidden="true">
+              <span className="block w-16 h-px bg-current opacity-60" />
               <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
                 <path
                   d="M11 1l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"
@@ -1148,90 +175,143 @@ export default function EventsView() {
                   strokeWidth="1"
                 />
               </svg>
-              <span />
+              <span className="block w-16 h-px bg-current opacity-60" />
             </div>
-            <p className="ev-eyebrow">Events &amp; celebrations</p>
-            <h2 className="ev-title ev-center" id="intro-title">
-              Crafted<span className="ev-script">to be remembered</span>
+            <p className="m-0 font-sans font-semibold text-[11px] leading-[1.5] tracking-[0.24em] uppercase text-[#7A5F3A]">
+              Events &amp; celebrations
+            </p>
+            <h2 className="m-0 font-display font-normal text-[clamp(40px,4.5vw,64px)] leading-[1.02] uppercase text-[#221811] text-center text-balance" id="intro-title">
+              Crafted
+              <span className="block font-script font-normal normal-case tracking-normal text-[0.8em] leading-none -mt-[0.06em] pl-[1.8em] text-[#221811]">
+                to be remembered
+              </span>
             </h2>
-            <p className="ev-lead">
+            <p className="m-0 font-display font-normal text-[clamp(22px,2vw,28px)] leading-[1.4] text-[#221811] text-pretty">
               From royal destination weddings and intimate family gatherings to poolside soirées and corporate retreats, every celebration here comes with elegant spaces, gracious hospitality and food people remember.
             </p>
-            <p className="ev-body ev-center" style={{ maxWidth: "40em" }}>
+            <p className="m-0 font-sans text-[15px] leading-[1.85] text-[#54473C] max-w-[40em] mx-auto text-pretty text-center">
               Set in the scenic hills of Narsinghgarh, the Mini Kashmir of Malwa, Manratan brings together the art of celebration and the warmth of belonging.
             </p>
           </div>
-          <dl className="ev-stats">
-            <div>
-              <dt>4,000</dt>
-              <dd>Guests on the Red Coral Lawn</dd>
+          <dl className="flex flex-col md:flex-row max-w-[960px] mx-auto mt-7 sm:mt-9 md:mt-[clamp(56px,6vw,80px)] p-0 border-y border-[#221811]/14">
+            <div className="flex-1 flex flex-col items-center gap-2.5 py-[30px] px-4 text-center">
+              <dt className="font-display font-normal text-[clamp(36px,3.6vw,52px)] leading-none text-[#221811]">
+                4,000
+              </dt>
+              <dd className="m-0 font-sans font-semibold text-[10px] leading-[1.5] tracking-[0.22em] uppercase text-[#7A5F3A]">
+                Guests on the Red Coral Lawn
+              </dd>
             </div>
-            <div>
-              <dt>65</dt>
-              <dd>Rooms for your guests</dd>
+            <div className="flex-1 flex flex-col items-center gap-2.5 py-[30px] px-4 text-center border-t border-[#221811]/14 md:border-t-0 md:border-l md:border-[#221811]/14">
+              <dt className="font-display font-normal text-[clamp(36px,3.6vw,52px)] leading-none text-[#221811]">
+                65
+              </dt>
+              <dd className="m-0 font-sans font-semibold text-[10px] leading-[1.5] tracking-[0.22em] uppercase text-[#7A5F3A]">
+                Rooms for your guests
+              </dd>
             </div>
-            <div>
-              <dt>100%</dt>
-              <dd>Pure vegetarian catering</dd>
+            <div className="flex-1 flex flex-col items-center gap-2.5 py-[30px] px-4 text-center border-t border-[#221811]/14 md:border-t-0 md:border-l md:border-[#221811]/14">
+              <dt className="font-display font-normal text-[clamp(36px,3.6vw,52px)] leading-none text-[#221811]">
+                100%
+              </dt>
+              <dd className="m-0 font-sans font-semibold text-[10px] leading-[1.5] tracking-[0.22em] uppercase text-[#7A5F3A]">
+                Pure vegetarian catering
+              </dd>
             </div>
           </dl>
         </div>
       </section>
 
       {/* ============ 3. VENUES ============ */}
-      <section className="ev-sec ev-sand" id="venues" aria-labelledby="ven-title">
-        <div className="ev-wrap">
-          <div className="ev-gems-head">
-            <div style={{ display: "flex", flexDirection: "column", gap: "22px" }}>
-              <p className="ev-eyebrow">The venues</p>
-              <h2 className="ev-title" id="ven-title">
-                A collection<span className="ev-script">of gems</span>
+      <section className="relative py-[clamp(88px,9vw,132px)] bg-[#F2EADD]" id="venues" aria-labelledby="ven-title">
+        <div className="max-w-[1440px] mx-auto px-[clamp(20px,5.6vw,80px)]">
+          <div className="flex items-end justify-between gap-6 md:gap-12 flex-wrap">
+            <div className="flex flex-col gap-[22px]">
+              <p className="m-0 font-sans font-semibold text-[11px] leading-[1.5] tracking-[0.24em] uppercase text-[#7A5F3A]">
+                The venues
+              </p>
+              <h2 className="m-0 font-display font-normal text-[clamp(40px,4.5vw,64px)] leading-[1.02] uppercase text-[#221811] text-balance" id="ven-title">
+                A collection
+                <span className="block font-script font-normal normal-case tracking-normal text-[0.8em] leading-none -mt-[0.06em] pl-[2.2em] text-[#221811]">
+                  of gems
+                </span>
               </h2>
             </div>
-            <p className="ev-body">
+            <p className="m-0 font-sans text-[15px] leading-[1.85] text-[#54473C] max-w-[30em] text-pretty">
               Our halls and lawns are named for jewels: sapphire, diamond, coral. Each one suits a different part of the celebration.
             </p>
           </div>
 
-          <div className="ev-gems ev-gems-desktop">
+          {/* Desktop Gem Accordion */}
+          <div className="hidden md:flex gap-3 h-[660px] mt-[clamp(48px,5vw,64px)]">
             {gems.map((g, idx) => {
               const isOn = activeGem === idx;
               return (
                 <button
                   key={g.num}
-                  className={`ev-gem ${isOn ? "is-on" : ""}`}
+                  style={{ flexGrow: isOn ? 3.6 : 1 }}
+                  className={`group relative min-w-0 p-0 border-0 rounded-[22px] overflow-hidden bg-[#221811] text-[#F6EFE4] text-left isolate transition-[flex-grow] duration-[900ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] focus-visible:outline-2 focus-visible:outline-[#7A5F3A] focus-visible:outline-offset-4 ${
+                    isOn ? "cursor-default" : "cursor-pointer"
+                  }`}
                   type="button"
                   aria-pressed={isOn}
                   onClick={() => setActiveGem(idx)}
                   onMouseEnter={() => setActiveGem(idx)}
                   onFocus={() => setActiveGem(idx)}
                 >
-                  <div className="ev-gem-img-wrap">
+                  <div className="absolute inset-0 w-full h-full transition-transform duration-[1200ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-105">
                     <Image
                       src={g.img}
                       alt={g.alt}
                       fill
                       sizes="(max-width: 900px) 100vw, 50vw"
                       quality={88}
-                      style={{ objectFit: "cover" }}
+                      className="object-cover"
                     />
                   </div>
-                  <span className="ev-gem-scrim" aria-hidden="true" />
-                  <span className="ev-gem-n">{g.num}</span>
-                  <span className="ev-gem-v" aria-hidden="true">
+                  <span
+                    className={`absolute inset-0 z-[1] transition-all duration-700 pointer-events-none ${
+                      isOn
+                        ? "bg-gradient-to-t from-[#19110b]/82 via-[#19110b]/20 to-[#19110b]/[0.08]"
+                        : "bg-gradient-to-t from-[#19110b]/78 to-[#19110b]/42"
+                    }`}
+                    aria-hidden="true"
+                  />
+                  <span className="absolute top-[30px] right-[26px] z-[2] font-sans font-semibold text-[10px] leading-none tracking-[0.22em] text-[#EADBC2]">
+                    {g.num}
+                  </span>
+                  <span
+                    className={`absolute left-1/2 bottom-[34px] z-[2] block whitespace-nowrap font-display font-normal text-[24px] leading-none uppercase tracking-[0.02em] [writing-mode:vertical-rl] -translate-x-1/2 rotate-180 transition-opacity duration-500 ease-out ${
+                      isOn ? "opacity-0 pointer-events-none" : "opacity-100"
+                    }`}
+                    aria-hidden="true"
+                  >
                     {g.name}
                   </span>
-                  <span className="ev-gem-body">
-                    <span className="ev-gem-cap">{g.cap}</span>
-                    <span className="ev-gem-name">{g.name}</span>
-                    <span className="ev-gem-desc">{g.desc}</span>
+                  <span
+                    className={`absolute left-10 right-10 bottom-[38px] z-[2] flex flex-col gap-3.5 transition-all duration-500 ease-out pointer-events-none ${
+                      isOn
+                        ? "opacity-100 translate-y-0 delay-300 pointer-events-auto"
+                        : "opacity-0 translate-y-[18px]"
+                    }`}
+                  >
+                    <span className="font-sans font-semibold text-[10px] leading-[1.4] tracking-[0.22em] uppercase text-[#E3C78F]">
+                      {g.cap}
+                    </span>
+                    <span className="font-display font-normal text-[clamp(34px,3.2vw,48px)] leading-none uppercase text-[#F6EFE4]">
+                      {g.name}
+                    </span>
+                    <span className="font-sans text-[15px] leading-[1.75] text-[#EFE6D8] max-w-[30em]">
+                      {g.desc}
+                    </span>
                   </span>
                 </button>
               );
             })}
           </div>
 
-          <div className="ev-gems-mobile">
+          {/* Mobile Swiper */}
+          <div className="block md:hidden">
             <Swiper
               modules={[Autoplay, A11y]}
               slidesPerView={1}
@@ -1257,14 +337,14 @@ export default function EventsView() {
                     <span className="absolute top-5 right-6 z-10 text-[11px] font-semibold tracking-[0.22em] text-[#EADBC2]">
                       {g.num}
                     </span>
-                    <span className="absolute inset-x-0 bottom-0 p-6 text-center text-stone z-10">
+                    <span className="absolute inset-x-0 bottom-0 p-6 text-center text-[#F3EEE7] z-10">
                       <span className="block text-[11px] font-semibold uppercase tracking-[0.22em] text-[#E3C78F] mb-1.5">
                         {g.cap}
                       </span>
-                      <span className="t-script block text-[2.6rem] leading-none text-[#F6EFE4] mb-2.5">
+                      <span className="font-script block text-[2.6rem] leading-none text-[#F6EFE4] mb-2.5">
                         {g.name}
                       </span>
-                      <span className="block text-sm text-stone/85 max-w-sm mx-auto leading-relaxed">
+                      <span className="block text-sm text-[#F3EEE7]/85 max-w-sm mx-auto leading-relaxed">
                         {g.desc}
                       </span>
                     </span>
@@ -1277,41 +357,46 @@ export default function EventsView() {
       </section>
 
       {/* ============ 4. REELS ============ */}
-      <section className="ev-sec ev-maroon" id="reels" aria-labelledby="reel-title">
-        <div className="ev-wrap">
-          <div className="ev-reels-head">
-            <div style={{ display: "flex", flexDirection: "column", gap: "22px" }}>
-              <p className="ev-eyebrow">Moments in motion</p>
-              <h2 className="ev-title" id="reel-title">
-                The reels<span className="ev-script">from our celebrations</span>
+      <section className="relative py-[clamp(88px,9vw,132px)] bg-[#3A1114] text-[#E8D9C4]" id="reels" aria-labelledby="reel-title">
+        <div className="max-w-[1440px] mx-auto px-[clamp(20px,5.6vw,80px)]">
+          <div className="flex items-end justify-between gap-6 md:gap-12 flex-wrap">
+            <div className="flex flex-col gap-[22px]">
+              <p className="m-0 font-sans font-semibold text-[11px] leading-[1.5] tracking-[0.24em] uppercase text-[#D8BE8E]">
+                Moments in motion
+              </p>
+              <h2 className="m-0 font-display font-normal text-[clamp(40px,4.5vw,64px)] leading-[1.02] uppercase text-[#F6EFE4] text-balance" id="reel-title">
+                The reels
+                <span className="block font-script font-normal normal-case tracking-normal text-[0.8em] leading-none -mt-[0.06em] pl-[2.2em] text-[#E3C78F]">
+                  from our celebrations
+                </span>
               </h2>
             </div>
-            <div className="ev-reels-head-r">
-              <p className="ev-body">
+            <div className="flex flex-col items-start gap-5 max-w-[26em]">
+              <p className="m-0 font-sans text-[15px] leading-[1.85] text-[#E8D9C4] text-pretty">
                 Haldi mornings, sangeet nights and receptions under the open sky, as they happened at Manratan.
               </p>
             </div>
           </div>
-          <ul className="ev-reel-row">
+          <ul className="list-none m-0 p-0 mt-[clamp(48px,5vw,64px)] flex flex-col md:flex-row md:overflow-x-auto lg:grid lg:grid-cols-4 gap-6 md:gap-3.5 lg:gap-[clamp(16px,2vw,28px)] snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden -mr-[clamp(20px,5.6vw,80px)] pr-[clamp(20px,5.6vw,80px)] md:-mr-[clamp(20px,5.6vw,80px)] md:pr-[clamp(20px,5.6vw,80px)] lg:mr-0 lg:pr-0">
             {reels.map((r) => (
-              <li key={r.title}>
+              <li key={r.title} className="w-full md:w-[68%] md:shrink-0 lg:w-auto snap-start">
                 <a
-                  className="ev-reel"
+                  className="group flex flex-col gap-[18px] p-0 border-0 bg-transparent text-inherit text-left cursor-pointer w-full"
                   href="https://www.instagram.com/"
                   target="_blank"
                   rel="noreferrer"
                   aria-label={`Play reel: ${r.title}`}
                 >
-                  <span className="ev-reel-ph">
+                  <span className="relative block aspect-[9/16] rounded-[20px] overflow-hidden bg-[#2C0C0F] after:content-[''] after:absolute after:inset-0 after:bg-[#140608]/[0.18] after:transition-colors after:duration-500 group-hover:after:bg-[#140608]/[0.05]">
                     <Image
                       src={r.img}
                       alt={r.title}
                       fill
                       sizes="(max-width: 900px) 70vw, 25vw"
                       quality={88}
-                      style={{ objectFit: "cover" }}
+                      className="object-cover transition-transform duration-[800ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-105"
                     />
-                    <span className="ev-reel-play" aria-hidden="true">
+                    <span className="absolute left-1/2 top-1/2 z-[1] w-[60px] h-[60px] -ml-[30px] -mt-[30px] rounded-full grid place-items-center text-[#F6EFE4] border border-[#F6EFE4]/80 bg-[#F6EFE4]/[0.12] backdrop-blur-md transition-all duration-400 group-hover:bg-[#F6EFE4] group-hover:text-[#3A1114] group-hover:scale-105" aria-hidden="true">
                       <svg width="16" height="18" viewBox="0 0 22 24" fill="currentColor">
                         <path d="M2 1.5v21L21 12z" />
                       </svg>
@@ -1321,13 +406,12 @@ export default function EventsView() {
               </li>
             ))}
           </ul>
-          <div style={{ display: "flex", justifyContent: "center", marginTop: "clamp(36px, 4vw, 54px)" }}>
+          <div className="flex justify-center mt-[clamp(36px,4vw,54px)]">
             <a
-              className="ev-link"
+              className="inline-flex items-center gap-3.5 min-h-[44px] font-sans font-semibold text-[11px] leading-none tracking-[0.22em] uppercase text-[#F6EFE4] border-b border-current self-center transition-all duration-300 hover:gap-[22px] hover:text-[#E3C78F]"
               href="https://www.instagram.com/"
               target="_blank"
               rel="noreferrer"
-              style={{ alignSelf: "center" }}
             >
               Follow @manratanresort{" "}
               <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
@@ -1339,50 +423,59 @@ export default function EventsView() {
       </section>
 
       {/* ============ 5. HOST YOUR EVENT ============ */}
-      <section className="ev-sec" id="occasions" aria-labelledby="occ-title">
-        <div className="ev-wrap">
-          <div className="ev-occ-head">
-            <div style={{ display: "flex", flexDirection: "column", gap: "22px" }}>
-              <p className="ev-eyebrow">Host your event</p>
-              <h2 className="ev-title" id="occ-title">
-                Every occasion<span className="ev-script">with us</span>
+      <section className="relative py-[clamp(88px,9vw,132px)] bg-[#FBF7EF]" id="occasions" aria-labelledby="occ-title">
+        <div className="max-w-[1440px] mx-auto px-[clamp(20px,5.6vw,80px)]">
+          <div className="flex items-end justify-between gap-6 md:gap-12 flex-wrap">
+            <div className="flex flex-col gap-[22px]">
+              <p className="m-0 font-sans font-semibold text-[11px] leading-[1.5] tracking-[0.24em] uppercase text-[#7A5F3A]">
+                Host your event
+              </p>
+              <h2 className="m-0 font-display font-normal text-[clamp(40px,4.5vw,64px)] leading-[1.02] uppercase text-[#221811] text-balance" id="occ-title">
+                Every occasion
+                <span className="block font-script font-normal normal-case tracking-normal text-[0.8em] leading-none -mt-[0.06em] pl-[2.2em] text-[#221811]">
+                  with us
+                </span>
               </h2>
             </div>
-            <div className="ev-occ-head-r">
-              <p className="ev-body">
+            <div className="flex flex-col items-start gap-5 max-w-[26em]">
+              <p className="m-0 font-sans text-[15px] leading-[1.85] text-[#54473C] text-pretty">
                 Six ways to celebrate at Manratan, each with the venue that suits it best.
               </p>
             </div>
           </div>
 
-          <ul className="ev-occ-grid">
+          <ul className="list-none p-0 mt-[clamp(48px,5vw,64px)] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-x-[clamp(20px,2.4vw,32px)] sm:gap-y-[clamp(36px,3.4vw,48px)]">
             {occasions.map((o) => (
-              <li key={o.title} className="ev-occ">
-                <Link className="ev-occ-card" href="/contactus">
-                  <div className="ev-occ-ph2">
+              <li key={o.title} className="flex">
+                <Link className="group flex-1 flex flex-col text-[#221811] no-underline rounded-[20px] outline-offset-[6px]" href="/contactus">
+                  <div className="relative aspect-[4/3] rounded-[18px] overflow-hidden bg-[#E3D9CB]">
                     <Image
                       src={o.img}
                       alt={o.alt}
                       fill
                       sizes="(max-width: 600px) 100vw, (max-width: 1100px) 50vw, 33vw"
                       quality={88}
-                      style={{ objectFit: "cover" }}
+                      className="object-cover transition-transform duration-[800ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-105"
                     />
-                    <span className="ev-occ-chip">
-                      <i style={{ backgroundColor: o.dot }} />
+                    <span className="absolute left-3.5 bottom-3.5 inline-flex items-center gap-2 py-2 px-3 rounded-full bg-[#FBF7EF]/90 backdrop-blur-md font-sans font-semibold text-[9px] leading-[1.2] tracking-[0.18em] uppercase text-[#221811]">
+                      <i className="w-1.5 h-1.5 rounded-full inline-block shrink-0" style={{ backgroundColor: o.dot }} />
                       {o.venue}
                     </span>
                   </div>
-                  <div className="ev-occ-txt">
-                    <h3>{o.title}</h3>
-                    <p>{o.desc}</p>
+                  <div className="flex flex-col gap-2.5 pt-[22px] px-1 flex-1">
+                    <h3 className="m-0 font-display font-normal text-[24px] leading-[1.15] uppercase text-[#221811]">
+                      {o.title}
+                    </h3>
+                    <p className="m-0 font-sans text-[14px] leading-[1.75] text-[#54473C] max-w-[30em]">
+                      {o.desc}
+                    </p>
                   </div>
                 </Link>
               </li>
             ))}
           </ul>
-          <div style={{ display: "flex", justifyContent: "center", marginTop: "clamp(36px, 4vw, 54px)" }}>
-            <a className="ev-link" href="#venues">
+          <div className="flex justify-center mt-[clamp(36px,4vw,54px)]">
+            <a className="inline-flex items-center gap-3.5 min-h-[44px] font-sans font-semibold text-[11px] leading-none tracking-[0.22em] uppercase text-[#221811] border-b border-current self-center transition-all duration-300 hover:gap-[22px] hover:text-[#7A5F3A]" href="#venues">
               See all venues{" "}
               <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
                 <path d="M0 5h16M12 1l4 4-4 4" stroke="currentColor" strokeWidth="1.2" />
@@ -1394,31 +487,42 @@ export default function EventsView() {
 
       {/* ============ 6. CLOSING CTA ============ */}
       <section
-        style={{ paddingBottom: "clamp(88px, 9vw, 132px)" }}
+        className="relative pb-[clamp(88px,9vw,132px)] bg-[#FBF7EF]"
         id="enquire"
         aria-labelledby="close-title"
       >
-        <div className="ev-wrap">
-          <div className="ev-close-card">
+        <div className="max-w-[1440px] mx-auto px-[clamp(20px,5.6vw,80px)]">
+          <div className="group relative rounded-[24px] md:rounded-[28px] overflow-hidden min-h-[440px] sm:min-h-[480px] lg:min-h-[580px] flex flex-col justify-center items-center lg:items-end lg:justify-center bg-[#221811] text-[#D9CDBD] w-full">
             <Image
               src="/events-page/4c58e0c82a181387981f70379aee86ae.jpg"
               alt="Golden Sapphire banquet hall with gold-draped tables"
               fill
               sizes="100vw"
               quality={90}
-              style={{ objectFit: "cover", objectPosition: "40% 50%" }}
+              className="object-cover object-[40%_50%] transition-transform duration-[1200ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-105"
             />
-            <div className="ev-close-scrim" aria-hidden="true" />
-            <div className="ev-close-txt">
-              <p className="ev-eyebrow">Plan with us</p>
-              <h2 className="ev-title" id="close-title">
-                A celebration<span className="ev-script">people talk about</span>
+            <div
+              className="absolute inset-0 bg-[#19110b]/66 lg:bg-gradient-to-r lg:from-[#19110b]/0 lg:from-[26%] lg:to-[#19110b]/82 lg:to-[66%] pointer-events-none"
+              aria-hidden="true"
+            />
+            <div className="relative z-[1] w-full max-w-[100%] lg:max-w-[620px] mx-auto lg:mx-0 lg:mr-[clamp(24px,6vw,96px)] p-[38px_16px] sm:p-[44px_20px] md:p-[48px_24px] lg:py-16 lg:px-0 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 sm:gap-5 md:gap-[26px]">
+              <p className="m-0 font-sans font-semibold text-[11px] leading-[1.5] tracking-[0.24em] uppercase text-[#D8BE8E]">
+                Plan with us
+              </p>
+              <h2 className="m-0 font-display font-normal text-[clamp(25px,7.2vw,32px)] sm:text-[clamp(28px,7.5vw,36px)] lg:text-[clamp(40px,4.5vw,64px)] leading-[1.1] lg:leading-[1.02] uppercase text-[#F6EFE4]" id="close-title">
+                A celebration
+                <span className="block font-script font-normal normal-case tracking-normal text-[clamp(28px,8.2vw,38px)] sm:text-[clamp(32px,8.5vw,44px)] lg:text-[0.8em] leading-none lg:-mt-[0.06em] lg:pl-[2.2em] text-[#D8BE8E]">
+                  people talk about
+                </span>
               </h2>
-              <p className="ev-lead">
+              <p className="m-0 font-display font-normal text-[15px] sm:text-[16px] lg:text-[clamp(22px,2vw,28px)] leading-[1.55] lg:leading-[1.4] text-[#F6EFE4] max-w-[28em] lg:max-w-none">
                 Tell us the date, the guest count and the moments you have in mind. Our events team will come back with venues, menus and rooms.
               </p>
-              <div className="ev-close-btns">
-                <Link className="ev-btn ev-btn-gold" href="/contactus">
+              <div className="flex flex-col sm:flex-row gap-3 items-center justify-center lg:justify-start w-full sm:w-auto max-w-[400px] lg:max-w-none">
+                <Link
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 min-h-[52px] px-6 rounded-full font-sans font-semibold text-[10px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.2em] uppercase text-[#221811] bg-[#C9A46C] hover:bg-[#D8BE8E] transition-all duration-300 hover:-translate-y-0.5 cursor-pointer whitespace-nowrap"
+                  href="/contactus"
+                >
                   <svg
                     width="15"
                     height="15"
@@ -1436,25 +540,12 @@ export default function EventsView() {
                   Send an enquiry
                 </Link>
                 <a
-                  className="ev-btn ev-btn-ghost"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 min-h-[52px] px-6 rounded-full font-sans font-semibold text-[10px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.2em] uppercase text-[#F6EFE4] hover:text-[#221811] bg-transparent hover:bg-[#F6EFE4] border border-[#F6EFE4]/55 transition-all duration-300 hover:-translate-y-0.5 cursor-pointer whitespace-nowrap"
                   href="https://wa.me/919171172205"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <svg
-                    width="15"
-                    height="15"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M3.5 20.5l1.3-4A8.5 8.5 0 1 1 8 19.6z" />
-                    <path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.6-2-1-1 1c-1-.4-2-1.4-2.4-2.4l1-1-1-2z" />
-                  </svg>
+                  <FaWhatsapp className="w-4 h-4 shrink-0 text-[16px]" />
                   WhatsApp the events team
                 </a>
               </div>
