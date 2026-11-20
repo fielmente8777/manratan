@@ -20,10 +20,9 @@ import styles from "./NightGallery.module.css";
 // Photo order follows the supplied Figma reference, left to right.
 // The ZIP repeats photo 3; its mirrored display matches reference photo 4.
 const photos = [
-  { src: "/media/night/new-gallery-1.webp", alt: "Manratan Resort illuminated facade and gardens at night" },
-  { src: "/media/night/new-gallery-2.webp", alt: "Manratan Resort illuminated entrance at night" },
-  { src: "/media/night/new-gallery-3.webp", alt: "Manratan Resort aerial view at night" },
-  { src: "/media/night/new-gallery-4.webp", alt: "Manratan Resort grounds and driveway at night" },
+  { src: "/gallery1.webp", alt: "Manratan Resort illuminated facade and gardens at night" },
+  { src: "/gallery2.webp", alt: "Manratan Resort illuminated entrance at night" },
+  { src: "/gallery3.webp", alt: "Manratan Resort grounds and driveway at night" },
 ];
 
 export default function NightGallery() {

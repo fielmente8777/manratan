@@ -371,7 +371,7 @@ export function Celebrations() {
 
         <div className="mt-12 text-center">
           <LineLink href="/weddings-&-events" tone="light">
-            Explore celebrations
+            Explore weddings & events
           </LineLink>
         </div>
     </SectionWithContainer>

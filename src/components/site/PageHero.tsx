@@ -22,7 +22,7 @@ export default function PageHero({ image, title, script, intro, height = "tall",
         preload
         sizes="100vw"
         quality={90}
-        className="-z-10 object-cover hero-fade transition-transform duration-1000 ease-out group-hover:scale-105"
+        className="-z-10 object-cover hero-fade transition-transform duration-[3500ms] ease-out group-hover:scale-105 will-change-transform"
         style={{ objectPosition: focus }}
       />
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/35 via-black/10 to-black/60" />
