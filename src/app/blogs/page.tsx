@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Journal: Narsinghgarh, Weddings & Malwa Food",
   description:
     "Stories from Manratan Resort: discovering Narsinghgarh, destination weddings, slow weekends from Bhopal and Indore, and the flavours of Malwa.",
-  alternates: { canonical: "/blogs" },
+  alternates: { canonical: "/journal" },
 };
 
 export default function BlogsPage() {
@@ -21,7 +21,7 @@ export default function BlogsPage() {
 
       <section className="py-24 md:py-32">
         <Container>
-          <Link href={`/blogs/${lead.slug}`} className="group grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-center lg:gap-16">
+          <Link href={`/journal/${lead.slug}`} className="group grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-center lg:gap-16">
             <div className="relative aspect-[16/10] overflow-hidden bg-ink/10">
               <Image src={lead.coverImage} alt={lead.alt} fill quality={85} sizes="(max-width: 1024px) 100vw, 58vw" className="img-drift object-cover" />
             </div>
@@ -35,7 +35,7 @@ export default function BlogsPage() {
 
           <div className="mt-24 grid gap-x-6 gap-y-16 md:grid-cols-2 lg:grid-cols-3">
             {rest.map((post) => (
-              <Link key={post.slug} href={`/blogs/${post.slug}`} className="group block">
+              <Link key={post.slug} href={`/journal/${post.slug}`} className="group block">
                 <div className="relative aspect-[4/3] overflow-hidden bg-ink/10">
                   <Image src={post.coverImage} alt={post.alt} fill quality={85} sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="img-drift object-cover" />
                 </div>

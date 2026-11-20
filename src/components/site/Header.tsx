@@ -11,10 +11,13 @@ import { Diamond } from "./ui";
 /** Routes that open on a full-bleed image, so the header can sit transparent over it. */
 const overHero = (path: string) =>
   path === "/" ||
+  path.startsWith("/rooms-&-suites") ||
   path.startsWith("/accommodation") ||
+  path.startsWith("/weddings-&-events") ||
+  path.startsWith("/events") ||
   path.startsWith("/about") ||
   path.startsWith("/our-story") ||
-  path.startsWith("/events") ||
+  path.startsWith("/journal") ||
   path.startsWith("/blogs");
 
 export default function Header() {
@@ -55,9 +58,8 @@ export default function Header() {
   return (
     <>
       <header
-        className={`max_screen_width fixed inset-x-0 top-0 z-50 transition-[transform,background-color] duration-700 ease-[var(--ease-lux)] ${
-          hidden && !open ? "-translate-y-full" : "translate-y-0"
-        } ${solid ? "bg-ink/95 backdrop-blur-md" : "bg-gradient-to-b from-black/45 to-transparent"}`}
+        className={`max_screen_width fixed inset-x-0 top-0 z-50 transition-[transform,background-color] duration-700 ease-[var(--ease-lux)] ${hidden && !open ? "-translate-y-full" : "translate-y-0"
+          } ${solid ? "bg-ink/95 backdrop-blur-md" : "bg-gradient-to-b from-black/45 to-transparent"}`}
       >
         <div className="relative mx-auto flex h-[76px] max-w-[1600px] items-center justify-between px-5 sm:px-8 lg:px-10 text-stone">
           {/* Left: menu, then location */}
@@ -93,9 +95,8 @@ export default function Header() {
           <Link
             href="/"
             aria-label="Manratan Resort home"
-            className={`absolute left-1/2 -translate-x-1/2 transition-opacity duration-700 ${
-              showLogo ? "opacity-100" : "opacity-0 pointer-events-none"
-            }`}
+            className={`absolute left-1/2 -translate-x-1/2 transition-opacity duration-700 ${showLogo ? "opacity-100" : "opacity-0 pointer-events-none"
+              }`}
           >
             <Image src="/images/nav.png" alt="Manratan Resort" width={118} height={50} className="h-[28px] w-auto sm:h-[46px]" preload />
           </Link>
@@ -141,9 +142,8 @@ function MenuOverlay({ open, onClose, onBook }: { open: boolean; onClose: () => 
       role="dialog"
       aria-modal="true"
       aria-label="Site menu"
-      className={`fixed inset-0 z-40 bg-ink text-stone transition-[opacity,visibility] duration-700 ${
-        open ? "visible opacity-100" : "invisible opacity-0"
-      }`}
+      className={`fixed inset-0 z-40 bg-ink text-stone transition-[opacity,visibility] duration-700 ${open ? "visible opacity-100" : "invisible opacity-0"
+        }`}
     >
       <div className="mx-auto grid h-full max-w-[1600px] grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-10 px-5 sm:px-8 lg:px-10 pt-[110px] pb-10 overflow-y-auto">
         <nav aria-label="Main" className="flex flex-col justify-center">
@@ -160,9 +160,8 @@ function MenuOverlay({ open, onClose, onBook }: { open: boolean; onClose: () => 
                   onClick={onClose}
                   onMouseEnter={() => setActive(i)}
                   onFocus={() => setActive(i)}
-                  className={`group inline-flex items-center gap-4 t-display text-[clamp(2rem,4.6vw,4rem)] leading-[1.15] transition-colors duration-500 ${
-                    active === i ? "text-stone" : "text-stone/45 hover:text-stone"
-                  }`}
+                  className={`group inline-flex items-center gap-4 t-display text-[clamp(2rem,4.6vw,4rem)] leading-[1.15] transition-colors duration-500 ${active === i ? "text-stone" : "text-stone/45 hover:text-stone"
+                    }`}
                 >
                   <Diamond className={`w-4 h-4 text-brass transition-opacity duration-500 ${active === i ? "opacity-100" : "opacity-0"}`} />
                   {l.label}

@@ -6,15 +6,25 @@ import { gallery, galleryCategories, type GallerySlug } from "@/data/site";
 
 const bySlug = new Map(galleryCategories.map((c) => [c.slug, c]));
 
-/** Read ?category= from the address bar; unknown values fall back to All. */
+/** Read category from pathname (/gallery/swimming-pool) or ?category=; unknown values fall back to All. */
 function slugFromUrl(): GallerySlug {
   if (typeof window === "undefined") return "all";
+  const path = window.location.pathname;
+  const match = path.match(/^\/gallery\/([^/?#]+)/);
+  if (match) {
+    const s = match[1] as GallerySlug;
+    if (bySlug.has(s)) return s;
+  }
   const v = new URLSearchParams(window.location.search).get("category") as GallerySlug | null;
   return v && bySlug.has(v) ? v : "all";
 }
 
-export default function GalleryGrid() {
-  const [slug, setSlug] = useState<GallerySlug>("all");
+interface GalleryGridProps {
+  initialSlug?: GallerySlug;
+}
+
+export default function GalleryGrid({ initialSlug }: GalleryGridProps = {}) {
+  const [slug, setSlug] = useState<GallerySlug>(initialSlug || "all");
   const [open, setOpen] = useState<number | null>(null);
   const label = bySlug.get(slug)?.label ?? "All";
   const items = useMemo(() => (slug === "all" ? gallery : gallery.filter((g) => g.category === label)), [slug, label]);
@@ -23,26 +33,33 @@ export default function GalleryGrid() {
   const lastTrigger = useRef<HTMLElement | null>(null);
   const touch = useRef<{ x: number; y: number } | null>(null);
 
-  // Deep links: /gallery?category=swimming-pool opens straight on the pool photographs.
+  // Deep links: /gallery/swimming-pool opens straight on the pool photographs.
   useEffect(() => {
-    // Syncing from the address bar after hydration (the server always renders "All").
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setSlug(slugFromUrl());
+    const current = initialSlug || slugFromUrl();
+    setSlug(current);
+
+    // If accessed via query string ?category=foo, rewrite address bar cleanly to /gallery/foo
+    if (typeof window !== "undefined" && window.location.search.includes("category=")) {
+      const v = new URLSearchParams(window.location.search).get("category") as GallerySlug | null;
+      if (v && bySlug.has(v)) {
+        const cleanPath = v === "all" ? "/gallery" : `/gallery/${v}`;
+        window.history.replaceState(null, "", cleanPath);
+      }
+    }
+
     const onPop = () => {
       setOpen(null);
       setSlug(slugFromUrl());
     };
     window.addEventListener("popstate", onPop);
     return () => window.removeEventListener("popstate", onPop);
-  }, []);
+  }, [initialSlug]);
 
   const choose = (next: GallerySlug) => {
     setSlug(next);
     setOpen(null);
-    const url = new URL(window.location.href);
-    if (next === "all") url.searchParams.delete("category");
-    else url.searchParams.set("category", next);
-    window.history.replaceState(null, "", url.pathname + url.search + url.hash);
+    const newPath = next === "all" ? "/gallery" : `/gallery/${next}`;
+    window.history.pushState(null, "", newPath);
   };
 
   const counts = useMemo(() => {

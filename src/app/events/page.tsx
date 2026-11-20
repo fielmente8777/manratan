@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import EventsView from "./components/EventsView";
 
 export const metadata: Metadata = {
-  title: "Weddings & Celebrations | Manratan Resort, Narsinghgarh",
+  title: "Weddings & Events | Manratan Resort, Narsinghgarh",
   description:
     "Weddings, sangeet, receptions and corporate events at Manratan Resort, Narsinghgarh. Featuring the Blue Sapphire and Golden Sapphire banquet halls, Blue Diamond pool, Sky Lawn and the grand Red Coral Lawn for up to 4,000 guests.",
-  alternates: { canonical: "/events" },
+  alternates: { canonical: "/weddings-&-events" },
 };
 
 export default function EventsPage() {

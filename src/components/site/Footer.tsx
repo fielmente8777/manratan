@@ -8,13 +8,13 @@ import { site } from "@/data/site";
 import { Container } from "@/components/sectionComponants";
 
 const explore = [
-  { label: "Our story", href: "/our-story" },
-  { label: "Rooms & suites", href: "/accommodation" },
-  { label: "Weddings & events", href: "/events" },
+  { label: "Our Story", href: "/our-story" },
+  { label: "Rooms & Suites", href: "/rooms-&-suites" },
+  { label: "Weddings & Events", href: "/weddings-&-events" },
   { label: "Swadika", href: "/#swadika" },
   { label: "Gallery", href: "/gallery" },
-  { label: "Journal", href: "/blogs" },
-  { label: "Contact Us", href: "/contactus" },
+  { label: "Journal", href: "/journal" },
+  { label: "Contact Us", href: "/contact-us" },
 ];
 const gettingHere = [
   { from: "Bhopal Airport", detail: "approx. 70 km · 1.5 hrs" },

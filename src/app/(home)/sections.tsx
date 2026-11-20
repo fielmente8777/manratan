@@ -225,7 +225,7 @@ const spaces = [
   {
     label: "Banquet",
     focus: "50% 50%",
-    href: "/events",
+    href: "/weddings-&-events",
     line: "The Blue Sapphire and Golden Sapphire halls",
     img: {
       src: "/final-view/banquet.webp",
@@ -237,7 +237,7 @@ const spaces = [
   {
     label: "Sky Lawn",
     focus: "42% 60%",
-    href: "/events",
+    href: "/weddings-&-events",
     line: "Open-air evenings as the sun sets over the hills",
     img: {
       src: "/final-view/skylawn.webp",
@@ -370,7 +370,7 @@ export function Celebrations() {
         <EventsGrid />
 
         <div className="mt-12 text-center">
-          <LineLink href="/events" tone="light">
+          <LineLink href="/weddings-&-events" tone="light">
             Explore celebrations
           </LineLink>
         </div>

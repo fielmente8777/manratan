@@ -9,10 +9,10 @@ export const navData = {
   links: [
     { label: "Home", href: "/" },
     { label: "Our Story", href: "/our-story" },
-    { label: "Accommodation", href: "/accommodation" },
+    { label: "Rooms & Suites", href: "/rooms-&-suites" },
     { label: "Gallery", href: "/gallery" },
-    { label: "Events", href: "/events" },
-    { label: "Blogs", href: "/blogs" },
-    { label: "Contact", href: "/contactus" },
+    { label: "Weddings & Events", href: "/weddings-&-events" },
+    { label: "Journal", href: "/journal" },
+    { label: "Contact Us", href: "/contact-us" },
   ],
 };

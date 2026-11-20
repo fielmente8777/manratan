@@ -75,11 +75,11 @@ export const site = {
 export const navLinks = [
   { label: "Home", href: "/", image: photo("facade-dusk", "Manratan Resort at dusk") },
   { label: "Our story", href: "/our-story", image: photo("lobby-monogram", "The Manratan lobby") },
-  { label: "Rooms & suites", href: "/accommodation", image: photo("suite-1", "Executive Suite with a view of the hills") },
-  { label: "Celebrations", href: "/events", image: photo("blue-sapphire-full", "Blue Sapphire banquet hall set for a celebration") },
+  { label: "Rooms & suites", href: "/rooms-&-suites", image: photo("suite-1", "Executive Suite with a view of the hills") },
+  { label: "Weddings & Events", href: "/weddings-&-events", image: photo("blue-sapphire-full", "Blue Sapphire banquet hall set for a celebration") },
   { label: "Gallery", href: "/gallery", image: photo("pool-dusk", "Blue Diamond pool from above") },
-  { label: "Journal", href: "/blogs", image: photo("ngh-lake-temple", "Jal Mandir on Paras Ram Sagar, Narsinghgarh") },
-  { label: "Contact", href: "/contactus", image: photo("reception-welcome", "Reception team welcome") },
+  { label: "Journal", href: "/journal", image: photo("ngh-lake-temple", "Jal Mandir on Paras Ram Sagar, Narsinghgarh") },
+  { label: "Contact Us", href: "/contact-us", image: photo("reception-welcome", "Reception team welcome") },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -302,8 +302,8 @@ export const amenities: { name: string; note: string; icon: AmenityIcon; feature
   { name: "Free parking", note: "On-site parking for guests.", icon: "parking" },
   { name: "24-hour front desk", note: "Round-the-clock reception and assistance.", icon: "front-desk" },
   { name: "Room service", note: "In-room dining and attentive service.", icon: "room-service" },
-  { name: "Banquet & conference facilities", note: "Blue Sapphire and Golden Sapphire halls, with a projector provided.", icon: "hall", href: "/events" },
-  { name: "Garden & outdoor event space", note: "Red Coral Lawn and Sky Lawn for open-air celebrations.", icon: "garden", href: "/events" },
+  { name: "Banquet & conference facilities", note: "Blue Sapphire and Golden Sapphire halls, with a projector provided.", icon: "hall", href: "/weddings-&-events" },
+  { name: "Garden & outdoor event space", note: "Red Coral Lawn and Sky Lawn for open-air celebrations.", icon: "garden", href: "/weddings-&-events" },
 ];
 
 /* ------------------------------------------------------------------ */

@@ -158,9 +158,9 @@ export default function EventsView() {
         <div className="relative z-[2] mt-auto pb-14 sm:pb-16 md:pb-[clamp(96px,10vw,136px)] px-2 sm:px-3.5 md:px-[clamp(20px,5.6vw,80px)] max-w-[1440px] mx-auto w-full flex flex-col items-center gap-[22px] text-center">
           <h1 className="m-0 font-display font-normal text-[#F6EFE4] uppercase leading-[0.98] text-center">
             <span className="block text-[clamp(33px,9.2vw,42px)] sm:text-[clamp(38px,9.6vw,56px)] md:text-[clamp(48px,6.8vw,96px)] tracking-[0.005em] sm:tracking-[0.01em] md:tracking-[0.02em] leading-none md:leading-[0.98]">
-              Celebrations
+              Weddings &amp; Events
             </span>
-            <span className="block font-script font-normal normal-case text-[#F6EFE4] leading-none text-[clamp(40px,11vw,52px)] sm:text-[clamp(44px,11vw,66px)] md:text-[clamp(44px,5.8vw,88px)] pl-[0.3em] sm:pl-[0.4em] md:pl-[1.4em] -mt-[0.04em]">
+            <span className="block font-script font-normal normal-case text-[#F6EFE4] leading-none text-[clamp(40px,11vw,52px)] sm:text-[clamp(44px,11vw,66px)] md:text-[clamp(44px,5.8vw,88px)] pl-[0.3em] sm:pl-[0.4em] md:pl-[1.4em] mt-1.5 sm:mt-2 md:mt-2.5">
               at Manratan
             </span>
           </h1>
@@ -255,9 +255,8 @@ export default function EventsView() {
                 <button
                   key={g.num}
                   style={{ flexGrow: isOn ? 3.6 : 1 }}
-                  className={`group relative min-w-0 p-0 border-0 rounded-[22px] overflow-hidden bg-[#221811] text-[#F6EFE4] text-left isolate transition-[flex-grow] duration-[900ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] focus-visible:outline-2 focus-visible:outline-[#7A5F3A] focus-visible:outline-offset-4 ${
-                    isOn ? "cursor-default" : "cursor-pointer"
-                  }`}
+                  className={`group relative min-w-0 p-0 border-0 rounded-[22px] overflow-hidden bg-[#221811] text-[#F6EFE4] text-left isolate transition-[flex-grow] duration-[900ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] focus-visible:outline-2 focus-visible:outline-[#7A5F3A] focus-visible:outline-offset-4 ${isOn ? "cursor-default" : "cursor-pointer"
+                    }`}
                   type="button"
                   aria-pressed={isOn}
                   onClick={() => setActiveGem(idx)}
@@ -275,30 +274,27 @@ export default function EventsView() {
                     />
                   </div>
                   <span
-                    className={`absolute inset-0 z-[1] transition-all duration-700 pointer-events-none ${
-                      isOn
-                        ? "bg-gradient-to-t from-[#19110b]/82 via-[#19110b]/20 to-[#19110b]/[0.08]"
-                        : "bg-gradient-to-t from-[#19110b]/78 to-[#19110b]/42"
-                    }`}
+                    className={`absolute inset-0 z-[1] transition-all duration-700 pointer-events-none ${isOn
+                      ? "bg-gradient-to-t from-[#19110b]/82 via-[#19110b]/20 to-[#19110b]/[0.08]"
+                      : "bg-gradient-to-t from-[#19110b]/78 to-[#19110b]/42"
+                      }`}
                     aria-hidden="true"
                   />
                   <span className="absolute top-[30px] right-[26px] z-[2] font-sans font-semibold text-[10px] leading-none tracking-[0.22em] text-[#EADBC2]">
                     {g.num}
                   </span>
                   <span
-                    className={`absolute left-1/2 bottom-[34px] z-[2] block whitespace-nowrap font-display font-normal text-[24px] leading-none uppercase tracking-[0.02em] [writing-mode:vertical-rl] -translate-x-1/2 rotate-180 transition-opacity duration-500 ease-out ${
-                      isOn ? "opacity-0 pointer-events-none" : "opacity-100"
-                    }`}
+                    className={`absolute left-1/2 bottom-[34px] z-[2] block whitespace-nowrap font-display font-normal text-[24px] leading-none uppercase tracking-[0.02em] [writing-mode:vertical-rl] -translate-x-1/2 rotate-180 transition-opacity duration-500 ease-out ${isOn ? "opacity-0 pointer-events-none" : "opacity-100"
+                      }`}
                     aria-hidden="true"
                   >
                     {g.name}
                   </span>
                   <span
-                    className={`absolute left-10 right-10 bottom-[38px] z-[2] flex flex-col gap-3.5 transition-all duration-500 ease-out pointer-events-none ${
-                      isOn
-                        ? "opacity-100 translate-y-0 delay-300 pointer-events-auto"
-                        : "opacity-0 translate-y-[18px]"
-                    }`}
+                    className={`absolute left-10 right-10 bottom-[38px] z-[2] flex flex-col gap-3.5 transition-all duration-500 ease-out pointer-events-none ${isOn
+                      ? "opacity-100 translate-y-0 delay-300 pointer-events-auto"
+                      : "opacity-0 translate-y-[18px]"
+                      }`}
                   >
                     <span className="font-sans font-semibold text-[10px] leading-[1.4] tracking-[0.22em] uppercase text-[#E3C78F]">
                       {g.cap}
@@ -448,7 +444,7 @@ export default function EventsView() {
           <ul className="list-none p-0 mt-[clamp(48px,5vw,64px)] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-x-[clamp(20px,2.4vw,32px)] sm:gap-y-[clamp(36px,3.4vw,48px)]">
             {occasions.map((o) => (
               <li key={o.title} className="flex">
-                <Link className="group flex-1 flex flex-col text-[#221811] no-underline rounded-[20px] outline-offset-[6px]" href="/contactus">
+                <Link className="group flex-1 flex flex-col text-[#221811] no-underline rounded-[20px] outline-offset-[6px]" href="/contact-us">
                   <div className="relative aspect-[4/3] rounded-[18px] overflow-hidden bg-[#E3D9CB]">
                     <Image
                       src={o.img}
@@ -522,7 +518,7 @@ export default function EventsView() {
               <div className="flex flex-col sm:flex-row gap-3 items-center justify-center lg:justify-start w-full sm:w-auto max-w-[400px] lg:max-w-none">
                 <Link
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-3 min-h-[52px] px-6 rounded-full font-sans font-semibold text-[10px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.2em] uppercase text-[#221811] bg-[#C9A46C] hover:bg-[#D8BE8E] transition-all duration-300 hover:-translate-y-0.5 cursor-pointer whitespace-nowrap"
-                  href="/contactus"
+                  href="/contact-us"
                 >
                   <svg
                     width="15"

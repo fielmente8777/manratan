@@ -12,7 +12,7 @@ interface RoomItem {
 
 const RoomCard = ({ id, title, subtitle, image, alt }: RoomItem) => {
   const room = id ? getRoom(id) : undefined;
-  const href = room ? `/accommodation/${room.slug}` : "#";
+  const href = room ? `/rooms-&-suites/${room.slug}` : "#";
 
   return (
     <article className="group flex flex-col gap-3 sm:gap-4 w-full h-full">

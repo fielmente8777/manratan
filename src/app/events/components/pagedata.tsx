@@ -124,7 +124,7 @@ export const eventsPageData = {
       "Whether planning a grand 4,000-guest wedding on Red Coral Lawn or an intimate poolside soiree, our event specialists are ready to turn your vision into reality.",
     link: {
       label: "CONTACT US",
-      href: "/contactus",
+      href: "/contact-us",
     },
   },
 };

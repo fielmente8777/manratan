@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Contact Us | Manratan Resort, Narsinghgarh",
   description:
     "Call, email or WhatsApp Manratan Resort, NH-46 Biaora Road, Narsinghgarh, Madhya Pradesh. Send an enquiry, plan celebrations, or get directions.",
-  alternates: { canonical: "/contactus" },
+  alternates: { canonical: "/contact-us" },
 };
 
 export default function ContactPage() {

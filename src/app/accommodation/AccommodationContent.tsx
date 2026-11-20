@@ -157,7 +157,7 @@ export default function AccommodationContent() {
           <article className={roomClass(0)} aria-labelledby="rm0">
             <a
               className="rm-ph rv"
-              href="/accommodation/executive-suite"
+              href="/rooms-&-suites/executive-suite"
               tabIndex={-1}
               aria-hidden="true"
             >
@@ -237,7 +237,7 @@ export default function AccommodationContent() {
                 <a className="btn btn-ink" href="#book">
                   {"Book this room"}
                 </a>
-                <a className="link" href="/accommodation/executive-suite">
+                <a className="link" href="/rooms-&-suites/executive-suite">
                   {"View room "}
                   <svg
                     width="18"
@@ -259,7 +259,7 @@ export default function AccommodationContent() {
           <article className={roomClass(1)} aria-labelledby="rm1">
             <a
               className="rm-ph rv"
-              href="/accommodation/premium-room"
+              href="/rooms-&-suites/premium-room"
               tabIndex={-1}
               aria-hidden="true"
             >
@@ -339,7 +339,7 @@ export default function AccommodationContent() {
                 <a className="btn btn-ink" href="#book">
                   {"Book this room"}
                 </a>
-                <a className="link" href="/accommodation/premium-room">
+                <a className="link" href="/rooms-&-suites/premium-room">
                   {"View room "}
                   <svg
                     width="18"
@@ -361,7 +361,7 @@ export default function AccommodationContent() {
           <article className={roomClass(2)} aria-labelledby="rm2">
             <a
               className="rm-ph rv"
-              href="/accommodation/executive-family-room"
+              href="/rooms-&-suites/executive-family-room"
               tabIndex={-1}
               aria-hidden="true"
             >
@@ -439,7 +439,7 @@ export default function AccommodationContent() {
                 <a className="btn btn-ink" href="#book">
                   {"Book this room"}
                 </a>
-                <a className="link" href="/accommodation/executive-family-room">
+                <a className="link" href="/rooms-&-suites/executive-family-room">
                   {"View room "}
                   <svg
                     width="18"
@@ -461,7 +461,7 @@ export default function AccommodationContent() {
           <article className={roomClass(3)} aria-labelledby="rm3">
             <a
               className="rm-ph rv"
-              href="/accommodation/deluxe-interconnected-room"
+              href="/rooms-&-suites/deluxe-interconnected-room"
               tabIndex={-1}
               aria-hidden="true"
             >
@@ -539,7 +539,7 @@ export default function AccommodationContent() {
                 <a className="btn btn-ink" href="#book">
                   {"Book this room"}
                 </a>
-                <a className="link" href="/accommodation/deluxe-interconnected-room">
+                <a className="link" href="/rooms-&-suites/deluxe-interconnected-room">
                   {"View room "}
                   <svg
                     width="18"
@@ -561,7 +561,7 @@ export default function AccommodationContent() {
           <article className={roomClass(4)} aria-labelledby="rm4">
             <a
               className="rm-ph rv"
-              href="/accommodation/deluxe-room"
+              href="/rooms-&-suites/deluxe-room"
               tabIndex={-1}
               aria-hidden="true"
             >
@@ -639,7 +639,7 @@ export default function AccommodationContent() {
                 <a className="btn btn-ink" href="#book">
                   {"Book this room"}
                 </a>
-                <a className="link" href="/accommodation/deluxe-room">
+                <a className="link" href="/rooms-&-suites/deluxe-room">
                   {"View room "}
                   <svg
                     width="18"

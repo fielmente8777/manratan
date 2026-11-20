@@ -27,7 +27,7 @@ export default function RoomsRail() {
               <span className="lg:block">air conditioning, Wi-Fi and tea and coffee in the room.</span>
             </p>
             <div className="mt-4 hidden items-center justify-end md:flex">
-              <LineLink href="/accommodation">All rooms</LineLink>
+              <LineLink href="/rooms-&-suites">All rooms</LineLink>
             </div>
           </div>
         </div>
@@ -55,7 +55,7 @@ export default function RoomsRail() {
         >
           {roomsPremiumFirst.map((r) => (
             <SwiperSlide key={r.id}>
-              <Link href={`/accommodation/${r.slug}`} className="group block text-center md:text-left">
+              <Link href={`/rooms-&-suites/${r.slug}`} className="group block text-center md:text-left">
                 <div className="relative aspect-[5/6] overflow-hidden bg-ink/10">
                   <Image src={r.cover.src} alt={r.cover.alt} fill quality={85} sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1024px) calc(50vw - 44px), (max-width: 1320px) calc((100vw - 128px) / 3), 398px" className="img-drift object-cover" style={r.focus ? { objectPosition: r.focus } : undefined} />
                 </div>
@@ -70,7 +70,7 @@ export default function RoomsRail() {
           <ArrowButton label="Next rooms" onClick={() => swiper.current?.slideNext()} className={styles.next} />
         </div>
 
-        <div className="mt-6 text-center md:hidden"><LineLink href="/accommodation">All rooms</LineLink></div>
+        <div className="mt-6 text-center md:hidden"><LineLink href="/rooms-&-suites">All rooms</LineLink></div>
 
         <div className="mt-6 flex flex-col items-center gap-3 border-t border-ink/15 pt-5 md:mt-10 md:flex-row md:gap-8 md:pt-7">
           <p className="t-label shrink-0 text-taupe">Also at Manratan</p>

@@ -10,7 +10,7 @@ interface BlogCardProps {
 
 const BlogCard = ({ post }: BlogCardProps) => {
   return (
-    <Link href={`/blogs/${post.slug}`} className="block group cursor-pointer h-full">
+    <Link href={`/journal/${post.slug}`} className="block group cursor-pointer h-full">
       <article className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full">
         {/* Card Cover Image */}
         <div className="relative w-full aspect-[16/10] overflow-hidden bg-gray-100 shrink-0">

@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: { absolute: post.meta.title },
     description: post.meta.description,
     keywords: post.meta.keyWords,
-    alternates: { canonical: `/blogs/${post.slug}` },
+    alternates: { canonical: `/journal/${post.slug}` },
     openGraph: { type: "article", title: post.meta.title, description: post.meta.description, images: [{ url: post.coverImage, alt: post.alt }] },
   };
 }
@@ -38,7 +38,7 @@ export default async function BlogPostPage({ params }: Props) {
     description: post.description,
     image: `${site.url}${post.coverImage}`,
     publisher: { "@type": "Organization", name: "Manratan Resort" },
-    mainEntityOfPage: `${site.url}/blogs/${post.slug}`,
+    mainEntityOfPage: `${site.url}/journal/${post.slug}`,
   };
 
   return (
@@ -55,7 +55,7 @@ export default async function BlogPostPage({ params }: Props) {
 
       <article className="py-20 md:py-28">
         <Container className="max-w-[760px]">
-          <Link href="/blogs" className="link-line t-label text-ink">All stories</Link>
+          <Link href="/journal" className="link-line t-label text-ink">All stories</Link>
           <p className="t-display mt-12 text-[clamp(1.25rem,2vw,1.6rem)] normal-case tracking-normal leading-snug">{post.description}</p>
           <div
             className="mt-10 space-y-5 text-[1.02rem] leading-[1.9] text-taupe [&_h2]:font-display [&_h2]:font-normal [&_h2]:pt-8 [&_h2]:text-[1.6rem] [&_h2]:leading-tight [&_h2]:text-ink [&_h2]:uppercase [&_li]:ml-5 [&_li]:list-disc [&_strong]:text-ink"
@@ -68,11 +68,11 @@ export default async function BlogPostPage({ params }: Props) {
         <Container>
           <div className="flex items-end justify-between gap-6">
             <h2 id="more-stories" className="t-display text-[clamp(1.6rem,2.6vw,2.4rem)]">More stories</h2>
-            <LineLink href="/blogs">The journal</LineLink>
+            <LineLink href="/journal">The journal</LineLink>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {more.map((m) => (
-              <Link key={m.slug} href={`/blogs/${m.slug}`} className="group block">
+              <Link key={m.slug} href={`/journal/${m.slug}`} className="group block">
                 <div className="relative aspect-[4/3] overflow-hidden bg-ink/10">
                   <Image src={m.coverImage} alt={m.alt} fill quality={85} sizes="(max-width: 768px) 100vw, 33vw" className="img-drift object-cover" />
                 </div>

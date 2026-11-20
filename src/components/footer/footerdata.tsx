@@ -27,11 +27,11 @@ export const footerData: FooterData = {
       items: [
         { label: "Home", href: "/" },
         { label: "Our Story", href: "/our-story" },
-        { label: "Accommodation", href: "/accommodation" },
+        { label: "Rooms & Suites", href: "/rooms-&-suites" },
         { label: "Gallery", href: "/gallery" },
-        { label: "Events", href: "/events" },
-        { label: "Contact", href: "/contactus" },
-        { label: "Blogs", href: "/blogs" },
+        { label: "Weddings & Events", href: "/weddings-&-events" },
+        { label: "Contact Us", href: "/contact-us" },
+        { label: "Journal", href: "/journal" },
       ],
     },
     {
@@ -46,7 +46,7 @@ export const footerData: FooterData = {
 
   cta: {
     label: "FIND A ROOM",
-    href: "/accommodation",
+    href: "/rooms-&-suites",
   },
 
   copyright: "© MANRATAN RESORT 2026",

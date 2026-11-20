@@ -202,13 +202,13 @@ export default function OurStoryPage() {
 
           <div className="mt-16 md:mt-20 flex flex-wrap items-center justify-center gap-6 sm:gap-8">
             <Link
-              href="/accommodation"
+              href="/rooms-&-suites"
               className="inline-flex items-center justify-center rounded-full bg-ink px-8 py-3.5 text-[0.72rem] font-medium tracking-[0.2em] text-stone uppercase transition-transform hover:scale-[1.02]"
             >
               See the rooms
             </Link>
             <Link
-              href="/events"
+              href="/weddings-&-events"
               className="inline-flex items-center text-[0.72rem] font-medium tracking-[0.2em] text-ink uppercase pb-1 border-b border-ink/80 transition-opacity hover:opacity-70"
             >
               Weddings &amp; Events
