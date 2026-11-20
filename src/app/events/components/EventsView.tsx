@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaWhatsapp } from "react-icons/fa";
@@ -14,7 +14,7 @@ const gems = [
     name: "Blue Sapphire",
     cap: "Banquet hall · 300–400 guests",
     desc: "Chandeliers and a sapphire carpet, for weddings, sangeet, mehendi, haldi, receptions and corporate events.",
-    img: "/events-page/fb3f33ecb5693c969ba11a9d05f2508b.jpg",
+    img: "/event4_11zon.webp",
     alt: "Blue Sapphire banquet hall set with round tables under crystal chandeliers",
     color: "#4A78C0",
   },
@@ -23,7 +23,7 @@ const gems = [
     name: "Golden Sapphire",
     cap: "Banquet hall · 25–80 guests",
     desc: "An intimate hall for birthdays, anniversaries, engagements and meetings, with a projector provided.",
-    img: "/events-page/b6c9d4ee7b169d2e1bcc67ac96263532.jpg",
+    img: "/event1_11zon.webp",
     alt: "Golden Sapphire hall set in black and gold with balloon decor",
     color: "#D9A94E",
   },
@@ -32,7 +32,7 @@ const gems = [
     name: "Blue Diamond",
     cap: "Poolside · 300–400 guests",
     desc: "Sundowners, poolside parties, pre-wedding mixers, candlelight dinners and proposals by the water.",
-    img: "/events-page/818adea292603515b98d4a0156693684.jpg",
+    img: "/event-new_11zon.webp",
     alt: "A floral mandap beside the Blue Diamond pool, with guests gathered around",
     color: "#A9D8EC",
   },
@@ -41,7 +41,7 @@ const gems = [
     name: "Sky Lawn",
     cap: "Open-air terrace · up to 20 guests",
     desc: "An intimate open-air space for private celebrations and small gatherings.",
-    img: "/events-page/7271f0ff0b4466e1112fca030f17a117.jpg",
+    img: "/event3_11zon.webp",
     alt: "The Sky Lawn terrace with lounge seating",
     color: "#E9D7B4",
   },
@@ -61,21 +61,25 @@ const reels = [
     tag: "Receptions",
     title: "The Red Coral Lawn at golden hour",
     img: "/events-page/c8bf4789cea881bd92707e31a0a2b3dd.jpg",
+    video: "/reels/reel1.mp4",
   },
   {
     tag: "Weddings",
     title: "A mandap by the Blue Diamond pool",
     img: "/events-page/818adea292603515b98d4a0156693684.jpg",
+    video: "/reels/reel2.mp4",
   },
   {
     tag: "Sangeet",
     title: "Blue Sapphire, set for the night",
     img: "/events-page/845d3c50e24e5a1e1b672c66abc701e9.jpg",
+    video: "/reels/reel3.mp4",
   },
   {
     tag: "Proposals",
     title: "A yes by the water",
     img: "/events-page/0b64d8ee48683a1436cce01ef0bd9fb8.jpg",
+    video: "/reels/reel4.mp4",
   },
 ];
 
@@ -85,7 +89,7 @@ const occasions = [
     desc: "Rooms for the family, halls and lawns for every ceremony, all in one place.",
     venue: "All venues",
     dot: "#C9A46C",
-    img: "/events-page/818adea292603515b98d4a0156693684.jpg",
+    img: "/event-new_11zon.webp",
     alt: "A floral mandap beside the pool with wedding guests",
   },
   {
@@ -132,6 +136,7 @@ const occasions = [
 
 export default function EventsView() {
   const [activeGem, setActiveGem] = useState<number>(2);
+  const [selectedReel, setSelectedReel] = useState<(typeof reels)[number] | null>(null);
 
   return (
     <div className="max_screen_width font-sans text-[#54473C] bg-[#FBF7EF] antialiased overflow-x-clip relative mx-auto">
@@ -380,29 +385,25 @@ export default function EventsView() {
           <ul className="list-none m-0 p-0 mt-[clamp(48px,5vw,64px)] flex flex-col md:flex-row md:overflow-x-auto lg:grid lg:grid-cols-4 gap-6 md:gap-3.5 lg:gap-[clamp(16px,2vw,28px)] snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden -mr-[clamp(20px,5.6vw,80px)] pr-[clamp(20px,5.6vw,80px)] md:-mr-[clamp(20px,5.6vw,80px)] md:pr-[clamp(20px,5.6vw,80px)] lg:mr-0 lg:pr-0">
             {reels.map((r) => (
               <li key={r.title} className="w-full md:w-[68%] md:shrink-0 lg:w-auto snap-start">
-                <a
-                  className="group flex flex-col gap-[18px] p-0 border-0 bg-transparent text-inherit text-left cursor-pointer w-full"
-                  href="https://www.instagram.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`Play reel: ${r.title}`}
+                <button
+                  type="button"
+                  onClick={() => setSelectedReel(r)}
+                  className="group flex flex-col gap-[18px] p-0 border-0 bg-transparent text-inherit text-left cursor-pointer w-full focus-visible:outline-2 focus-visible:outline-[#E3C78F] rounded-[20px]"
+                  aria-label={`Watch reel: ${r.title}`}
                 >
                   <span className="relative block aspect-[9/16] rounded-[20px] overflow-hidden bg-[#2C0C0F] after:content-[''] after:absolute after:inset-0 after:bg-[#140608]/[0.18] after:transition-colors after:duration-500 group-hover:after:bg-[#140608]/[0.05]">
-                    <Image
-                      src={r.img}
-                      alt={r.title}
-                      fill
-                      sizes="(max-width: 900px) 70vw, 25vw"
-                      quality={88}
-                      className="object-cover transition-transform duration-[800ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-105"
+                    <video
+                      src={r.video}
+                      poster={r.img}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="auto"
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-[800ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-105 pointer-events-none"
                     />
-                    <span className="absolute left-1/2 top-1/2 z-[1] w-[60px] h-[60px] -ml-[30px] -mt-[30px] rounded-full grid place-items-center text-[#F6EFE4] border border-[#F6EFE4]/80 bg-[#F6EFE4]/[0.12] backdrop-blur-md transition-all duration-400 group-hover:bg-[#F6EFE4] group-hover:text-[#3A1114] group-hover:scale-105" aria-hidden="true">
-                      <svg width="16" height="18" viewBox="0 0 22 24" fill="currentColor">
-                        <path d="M2 1.5v21L21 12z" />
-                      </svg>
-                    </span>
                   </span>
-                </a>
+                </button>
               </li>
             ))}
           </ul>
@@ -553,6 +554,70 @@ export default function EventsView() {
           </div>
         </div>
       </section>
+
+      {selectedReel && (
+        <ReelModal reel={selectedReel} onClose={() => setSelectedReel(null)} />
+      )}
+    </div>
+  );
+}
+
+function ReelModal({
+  reel,
+  onClose,
+}: {
+  reel: (typeof reels)[number];
+  onClose: () => void;
+}) {
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const vidRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeRef.current?.focus({ preventScroll: true });
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={reel.title}
+      className="fixed inset-0 z-[70] flex items-center justify-center bg-black/95 p-4 sm:p-6 backdrop-blur-md"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
+      <div className="relative flex flex-col items-center w-full max-w-[420px] max-h-[96vh]">
+        <div className="mb-3 flex w-full items-center justify-between text-[#F6EFE4]">
+          <p className="font-display text-base sm:text-lg truncate pr-3">{reel.title}</p>
+          <button
+            ref={closeRef}
+            type="button"
+            onClick={onClose}
+            className="shrink-0 text-xs sm:text-sm tracking-[0.15em] uppercase text-[#F6EFE4]/80 hover:text-[#F6EFE4] transition-colors cursor-pointer py-1.5 px-3 rounded-full border border-white/20 bg-white/10 hover:bg-white/20"
+          >
+            Close ✕
+          </button>
+        </div>
+        <div className="relative w-full aspect-[9/16] max-h-[82vh] overflow-hidden rounded-2xl bg-black shadow-2xl flex items-center justify-center border border-white/10">
+          <video
+            ref={vidRef}
+            src={reel.video}
+            controls
+            autoPlay
+            playsInline
+            preload="auto"
+            className="h-full w-full object-contain"
+          />
+        </div>
+      </div>
     </div>
   );
 }

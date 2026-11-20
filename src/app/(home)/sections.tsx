@@ -461,14 +461,14 @@ export function ManratanByNight() {
         <NightGallery />
         <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
         <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 z-10">
-          <Container className="pb-16 text-center text-stone md:pb-20">
+          <Container className="pb-10 text-center text-stone sm:pb-14 md:pb-20">
             <div id="night-title" className="mx-auto w-fit">
               <Title
                 main="Manratan"
                 script="by night"
                 align="center"
                 tone="light"
-                className="[&>.t-script>span]:translate-x-0"
+                className="max-sm:gap-1.5 sm:gap-3 [&>.t-script>span]:translate-x-0"
               />
             </div>
             {/* <p className="mx-auto mt-3 max-w-[46ch] text-sm text-stone/85">

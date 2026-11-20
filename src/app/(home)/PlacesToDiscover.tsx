@@ -15,7 +15,7 @@ const places = [
   {
     title: "Narsinghgarh Fort",
     note: "Hilltop fort-palace",
-    src: "/media/narsinghgarh-fort.jpg",
+    src: "/new-narsinghgarh.webp",
     alt: "Aerial view of Narsinghgarh Fort on a forested hill",
   },
   {

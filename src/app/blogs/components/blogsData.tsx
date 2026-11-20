@@ -32,8 +32,8 @@ export const blogsData: BlogPost[] = [
     slug: "discovering-narasingarh-hidden-gem-malwa",
     title: "Discovering Narsinghgarh: The Hidden Gem of Malwa",
     date: "18 Jan, 2026",
-    coverImage: "/media/ngh-lake-temple.webp",
-    url: "/media/ngh-lake-temple.webp",
+    coverImage: "/new-narsinghgarh.webp",
+    url: "/new-narsinghgarh.webp",
     alt: "Jal Mandir on Paras Ram Sagar with Narsinghgarh Fort on the ridge",
     description:
       "Explore Narsinghgarh, celebrated as the Mini Kashmir of Malwa, featuring emerald wildlife sanctuaries, royal heritage, and luxury stays at Manratan Resort.",

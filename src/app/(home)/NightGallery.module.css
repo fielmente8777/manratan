@@ -47,6 +47,28 @@
 .photo { position: absolute; inset: 0; transform-origin: center; will-change: transform; }
 
 @media (max-width: 767px) {
-  .gallery :global(.swiper-button-prev),
-  .gallery :global(.swiper-button-next) { width: 44px; height: 44px; margin-top: -22px; }
+  .gallery {
+    --swiper-navigation-size: 18px;
+    --swiper-navigation-sides-offset: 10px;
+  }
+  .gallery :global(.swiper-button-prev) {
+    left: 10px;
+    width: 32px;
+    height: 32px;
+    margin-top: -16px;
+  }
+  .gallery :global(.swiper-button-next) {
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    margin-top: -16px;
+  }
+  .gallery :global(.swiper-button-prev::after),
+  .gallery :global(.swiper-button-next::after) {
+    font-size: 18px;
+  }
+  .gallery :global(.swiper-navigation-icon) {
+    width: 18px;
+    height: 18px;
+  }
 }
