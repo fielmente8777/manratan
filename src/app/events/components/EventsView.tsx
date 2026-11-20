@@ -591,8 +591,7 @@ function ReelModal({
       }}
     >
       <div className="relative flex flex-col items-center w-full max-w-[420px] max-h-[96vh]">
-        <div className="mb-3 flex w-full items-center justify-between text-[#F6EFE4]">
-          <p className="font-display text-base sm:text-lg truncate pr-3">{reel.title}</p>
+        <div className="mb-3 flex w-full items-center justify-end text-[#F6EFE4]">
           <button
             ref={closeRef}
             type="button"
