@@ -45,7 +45,7 @@ const places = [
   {
     title: "Shyamji Sanka Temple",
     note: "Painted temple walls",
-    src: "/media/narsinghgarh-shyamji.jpg",
+    src: "/shyamji-temple.webp",
     alt: "Shyamji Sanka Temple at dusk",
   },
   {
