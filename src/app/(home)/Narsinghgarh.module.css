@@ -1,6 +1,21 @@
 .heading { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center; }
 .film { max-width: 1120px; margin: clamp(48px, 5vw, 72px) auto 0; }
-.frame { position: relative; aspect-ratio: 16 / 9; border-radius: 24px; overflow: hidden; background: #221811; box-shadow: 0 16px 36px -24px rgb(34 24 17 / .28); }
+.frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #221811;
+  box-shadow: 0 16px 36px -24px rgb(34 24 17 / .28);
+  isolation: isolate;
+  transform: translateZ(0);
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: -webkit-radial-gradient(white, black);
+}
+.frame video {
+  border-radius: inherit;
+  overflow: hidden;
+}
 .frame > img { object-fit: cover; transition: transform 2.4s var(--ease-lux); }
 .frame:hover > img { transform: scale(1.04); }
 .scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgb(25 17 11 / .05) 35%, rgb(25 17 11 / .6)); pointer-events: none; }

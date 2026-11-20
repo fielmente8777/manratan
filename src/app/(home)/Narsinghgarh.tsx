@@ -60,7 +60,7 @@ export default function Narsinghgarh() {
             muted
             playsInline
             preload="auto"
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover rounded-[inherit]"
           />
           <div className={styles.scrim} aria-hidden="true" />
           <figcaption className={styles.tag}>
