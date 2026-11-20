@@ -63,7 +63,7 @@ export default function PhotoLightbox({ photos, initialIndex, onClose }: {
         </div>
         <div className="min-w-0">
           <p className="mb-3 text-center text-sm" aria-live="polite">{photo.title}</p>
-          <div ref={strip} className="mx-auto flex max-w-[960px] snap-x gap-2 overflow-x-auto pb-2 sm:gap-3" aria-label="All destination photos">
+          <div ref={strip} className="mx-auto flex w-fit max-w-full snap-x justify-center gap-2 overflow-x-auto pb-2 sm:gap-3" aria-label="All destination photos">
             {photos.map((item, index) => (
               <button key={item.src} type="button" onClick={() => setActive(index)} aria-label={`View ${item.title}`} aria-current={active === index ? "true" : undefined}
                 className={`relative h-16 w-20 shrink-0 snap-center overflow-hidden rounded-lg border-2 sm:h-20 sm:w-24 ${active === index ? "border-white opacity-100" : "border-transparent opacity-50 hover:opacity-100"}`}>

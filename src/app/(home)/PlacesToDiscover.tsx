@@ -37,6 +37,12 @@ const places = [
     alt: "A deer with velvet-covered antlers against a warm golden background",
   },
   {
+    title: "Nadiya Pani",
+    note: "Scenic waterfall & stream",
+    src: "/nadia-pani.webp",
+    alt: "Scenic waterfall and natural stream at Nadiya Pani",
+  },
+  {
     title: "Shyamji Sanka Temple",
     note: "Painted temple walls",
     src: "/media/narsinghgarh-shyamji.jpg",
@@ -45,14 +51,21 @@ const places = [
   {
     title: "Bada Mahadev",
     note: "Shiva temple",
-    src: "/media/narsinghgarh-bada-mahadev.jpg",
-    alt: "Temples by the water",
+    src: "/bada-mahadev.webp",
+    alt: "Bada Mahadev Shiva temple in Narsinghgarh",
+  },
+  {
+    title: "Chhota Mahadev",
+    note: "Ancient Shiva temple",
+    src: "/chota-mahadev.webp",
+    alt: "Chhota Mahadev ancient Shiva temple nestled in the hills",
   },
   {
     title: "Hanuman Gadi",
     note: "Hanuman temple",
     src: "/final-view/narsinghgarh4.webp",
     alt: "Aerial view of Hanuman Gadi temple surrounded by green hills and its approach road",
+    objectPosition: "50% 18%",
   },
 ];
 
@@ -77,6 +90,7 @@ function PlaceTile({
         fill
         unoptimized
         sizes="(max-width: 768px) 100vw, 50vw"
+        style={place.objectPosition ? { objectPosition: place.objectPosition } : undefined}
       />
       <span className={styles.number} aria-hidden="true">
         {String(index + 1).padStart(2, "0")}
