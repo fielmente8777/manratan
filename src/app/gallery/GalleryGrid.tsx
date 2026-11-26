@@ -129,7 +129,15 @@ export default function GalleryGrid({ initialSlug }: GalleryGridProps = {}) {
         {slug === "all" ? `${items.length} photographs` : `${label} · ${items.length} photographs`}
       </p>
 
-      <div id="gallery-grid" role="tabpanel" className="mt-10 columns-1 gap-5 sm:columns-2 lg:columns-3 [&>*]:mb-5">
+      <div
+        id="gallery-grid"
+        role="tabpanel"
+        className={
+          items.length <= 3
+            ? "mt-10 grid grid-cols-1 gap-5 sm:grid-cols-3 items-start"
+            : "mt-10 columns-1 gap-5 sm:columns-2 lg:columns-3 [&>*]:mb-5"
+        }
+      >
         {items.map((it, i) => (
           <button
             key={it.src}

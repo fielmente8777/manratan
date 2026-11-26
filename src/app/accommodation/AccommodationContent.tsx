@@ -25,8 +25,8 @@ export default function AccommodationContent() {
       <header className="hero ab-hero acc-hero">
         <img
           className="hero-img"
-          src="/final-view/Suite-banner_11zon.webp"
-          alt="Executive Suite bedroom with a panoramic window over the hills"
+          src="/harsh-executive.jpg"
+          alt="Executive Suite luxurious bedroom view"
           style={{ objectPosition: "50% 50%" }}
         />
         <div className="hero-scrim" aria-hidden="true"></div>
@@ -162,8 +162,8 @@ export default function AccommodationContent() {
               aria-hidden="true"
             >
               <img
-                src="/final-view/Suite-room1_11zon.webp"
-                alt="Executive Suite living room with sofa, armchair and floor-to-ceiling window"
+                src="/harsh-executive.jpg"
+                alt="Executive Suite luxurious bedroom view"
                 loading="lazy"
               />
               <span className="rm-badge">{"2 suites"}</span>
@@ -264,8 +264,8 @@ export default function AccommodationContent() {
               aria-hidden="true"
             >
               <img
-                src="/final-view/Premium-room1_11zon.webp"
-                alt="Premium Room with king bed, sofa and window view"
+                src="/harsh-premium.jpg"
+                alt="Premium Room contemporary king bedroom view"
                 loading="lazy"
               />
               <span className="rm-badge">{"16 rooms"}</span>
@@ -366,8 +366,8 @@ export default function AccommodationContent() {
               aria-hidden="true"
             >
               <img
-                src="/final-view/Executive-room1_11zon.webp"
-                alt="Executive Family Room with two beds made up side by side"
+                src="/harsh-executive-family.jpg"
+                alt="Executive Family Room spacious living view"
                 loading="lazy"
               />
               <span className="rm-badge">{"8 rooms"}</span>

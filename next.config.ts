@@ -56,6 +56,10 @@ const nextConfig: NextConfig = {
         destination: "/events/:path*",
       },
       {
+        source: "/gallery/banquet",
+        destination: "/gallery/events",
+      },
+      {
         source: "/contact-us",
         destination: "/contactus",
       },

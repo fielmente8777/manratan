@@ -2,8 +2,8 @@
   "room-4": {
     "name": "Premium Room",
     "hero": {
-      "src": "/final-view/Premium-room1_11zon.webp",
-      "alt": "Premium Room with king bed and sofa by the window"
+      "src": "/harsh-premium.jpg",
+      "alt": "Premium Room contemporary king bedroom view"
     },
     "heroScript": "with a view of the green",
     "eyebrow": "Room · 16 of this style",
@@ -29,16 +29,16 @@
     ],
     "photos": [
       {
-        "src": "/final-view/Premium-room1_11zon.webp",
-        "alt": "Premium Room with king bed and sofa by the window"
-      },
-      {
-        "src": "/final-view/Premium-room2_11zon.webp",
-        "alt": "Premium Room with the sofa opened into a bed"
-      },
-      {
         "src": "/final-view/Premium-room4_11zon.webp",
         "alt": "Premium Room wide window view"
+      },
+      {
+        "src": "/harsh-premium.jpg",
+        "alt": "Premium Room contemporary king bedroom view"
+      },
+      {
+        "src": "/harsh-premium2.jpg",
+        "alt": "Premium Room plush seating and bedroom view"
       }
     ],
     "amenityTitle": "In your room",
@@ -87,7 +87,7 @@
         "name": "Executive Suite",
         "summary": "Master bedroom · Panoramic view",
         "image": {
-          "src": "/final-view/Suite-room1_11zon.webp",
+          "src": "/harsh-executive.jpg",
           "alt": "Executive Suite bedroom with a panoramic window"
         }
       },
@@ -96,7 +96,7 @@
         "name": "Executive Family Room",
         "summary": "Twin beds · Pool view",
         "image": {
-          "src": "/final-view/Executive-room1_11zon.webp",
+          "src": "/harsh-executive-family.jpg",
           "alt": "Executive Family Room with two beds"
         }
       },
@@ -150,20 +150,20 @@
     ],
     "photos": [
       {
-        "src": "/final-view/Executive-room1_11zon.webp",
-        "alt": "Executive Family Room beds"
-      },
-      {
-        "src": "/final-view/Executive-room2_11zon.webp",
-        "alt": "Executive Family Room twin beds and artwork"
-      },
-      {
-        "src": "/final-view/Executive-room3_11zon.webp",
-        "alt": "Executive Family Room seating and television wall"
-      },
-      {
         "src": "/final-view/Executive-room4_11zon.webp",
         "alt": "Executive Family Room work desk"
+      },
+      {
+        "src": "/harsh-executive-family.jpg",
+        "alt": "Executive Family Room spacious living view"
+      },
+      {
+        "src": "/harsh-executive-family2.jpg",
+        "alt": "Executive Family Room comfortable interior setup"
+      },
+      {
+        "src": "/harsh-executive-family3.jpg",
+        "alt": "Executive Family Room ambient lighting and styling"
       }
     ],
     "amenityTitle": "In your room",
@@ -212,7 +212,7 @@
         "name": "Executive Suite",
         "summary": "Master bedroom · Panoramic view",
         "image": {
-          "src": "/final-view/Suite-room1_11zon.webp",
+          "src": "/harsh-executive.jpg",
           "alt": "Executive Suite bedroom with a panoramic window"
         }
       },
@@ -221,7 +221,7 @@
         "name": "Premium Room",
         "summary": "King bed · Nature view",
         "image": {
-          "src": "/final-view/Premium-room1_11zon.webp",
+          "src": "/harsh-premium.jpg",
           "alt": "Premium Room with king bed, sofa and window view"
         }
       },
@@ -285,6 +285,10 @@
       {
         "src": "/final-view/Inter-room4_11zon.webp",
         "alt": "Interconnected room comfortable family setup"
+      },
+      {
+        "src": "/harsh-interconnected.jpg",
+        "alt": "Deluxe Interconnected Room connected suite view"
       }
     ],
     "amenityTitle": "In your room",
@@ -333,7 +337,7 @@
         "name": "Executive Suite",
         "summary": "Master bedroom · Panoramic view",
         "image": {
-          "src": "/final-view/Suite-room1_11zon.webp",
+          "src": "/harsh-executive.jpg",
           "alt": "Executive Suite bedroom with a panoramic window"
         }
       },
@@ -342,7 +346,7 @@
         "name": "Premium Room",
         "summary": "King bed · Nature view",
         "image": {
-          "src": "/final-view/Premium-room1_11zon.webp",
+          "src": "/harsh-premium.jpg",
           "alt": "Premium Room with king bed, sofa and window view"
         }
       },
@@ -351,7 +355,7 @@
         "name": "Executive Family Room",
         "summary": "Twin beds · Pool view",
         "image": {
-          "src": "/final-view/Executive-room1_11zon.webp",
+          "src": "/harsh-executive-family.jpg",
           "alt": "Executive Family Room with two beds"
         }
       },
@@ -466,7 +470,7 @@
         "name": "Executive Suite",
         "summary": "Master bedroom · Panoramic view",
         "image": {
-          "src": "/final-view/Suite-room1_11zon.webp",
+          "src": "/harsh-executive.jpg",
           "alt": "Executive Suite bedroom with a panoramic window"
         }
       },
@@ -475,7 +479,7 @@
         "name": "Premium Room",
         "summary": "King bed · Nature view",
         "image": {
-          "src": "/final-view/Premium-room1_11zon.webp",
+          "src": "/harsh-premium.jpg",
           "alt": "Premium Room with king bed, sofa and window view"
         }
       },
@@ -484,7 +488,7 @@
         "name": "Executive Family Room",
         "summary": "Twin beds · Pool view",
         "image": {
-          "src": "/final-view/Executive-room1_11zon.webp",
+          "src": "/harsh-executive-family.jpg",
           "alt": "Executive Family Room with two beds"
         }
       },
@@ -502,8 +506,8 @@
   "room-5": {
     "name": "Executive Suite",
     "hero": {
-      "src": "/final-view/Suite-banner_11zon.webp",
-      "alt": "Executive Suite bedroom with a panoramic window over the hills"
+      "src": "/harsh-executive.jpg",
+      "alt": "Executive Suite luxurious bedroom view"
     },
     "heroScript": "our two finest rooms",
     "eyebrow": "Suite · 2 of this style",
@@ -529,24 +533,20 @@
     ],
     "photos": [
       {
-        "src": "/final-view/Suite-room1_11zon.webp",
-        "alt": "Executive Suite bedroom with a panoramic window"
-      },
-      {
-        "src": "/final-view/Suite-room2_11zon.webp",
-        "alt": "Executive Suite living room with sofa and armchair"
-      },
-      {
-        "src": "/final-view/Suite-room3_11zon.webp",
-        "alt": "Executive Suite luxury details and amenities"
-      },
-      {
         "src": "/final-view/Suite-room4_11zon.webp",
         "alt": "Executive Suite spacious interior"
       },
       {
         "src": "/final-view/Suite-room5_11zon.webp",
         "alt": "Executive Suite master bathroom"
+      },
+      {
+        "src": "/harsh-executive.jpg",
+        "alt": "Executive Suite luxurious bedroom view"
+      },
+      {
+        "src": "/harsh-executive2.jpg",
+        "alt": "Executive Suite grand suite seating view"
       }
     ],
     "amenityTitle": "In your suite",
@@ -595,7 +595,7 @@
         "name": "Premium Room",
         "summary": "King bed · Nature view",
         "image": {
-          "src": "/final-view/Premium-room1_11zon.webp",
+          "src": "/harsh-premium.jpg",
           "alt": "Premium Room with king bed, sofa and window view"
         }
       },
@@ -604,7 +604,7 @@
         "name": "Executive Family Room",
         "summary": "Twin beds · Pool view",
         "image": {
-          "src": "/final-view/Executive-room1_11zon.webp",
+          "src": "/harsh-executive-family.jpg",
           "alt": "Executive Family Room with two beds"
         }
       },
