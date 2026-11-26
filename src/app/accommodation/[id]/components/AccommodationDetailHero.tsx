@@ -26,7 +26,7 @@ const AccommodationDetailHero = ({
         fill
         priority
         sizes="100vw"
-        className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+        className="object-cover object-center hero-kenburns"
       />
 
       {/* Soft gradient overlay matching luxury aesthetic */}

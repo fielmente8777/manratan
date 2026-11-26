@@ -26,7 +26,7 @@ const AccommodationHero = ({
         fill
         priority
         sizes="100vw"
-        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+        className="object-cover hero-kenburns"
       />
 
       {/* Subtle top/bottom gradient overlay */}

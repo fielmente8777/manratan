@@ -19,7 +19,7 @@ export default function EventsHero({ image, alt }: EventsHeroProps) {
         fill
         priority
         sizes="100vw"
-        className="object-cover object-center filter brightness-90 transition-all duration-700 ease-out group-hover:scale-105"
+        className="object-cover object-center filter brightness-90 hero-kenburns"
       />
 
       {/* Dark Overlay */}

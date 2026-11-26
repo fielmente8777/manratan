@@ -99,7 +99,7 @@ export default function ContactView() {
       {/* ============ HERO ============ */}
       <header className="group relative min-h-[520px] md:min-h-[640px] flex flex-col text-[#F6EFE4] bg-[#221811] overflow-hidden">
         <Image
-          className="absolute inset-0 w-full h-full object-cover object-[50%_36%] transition-transform duration-[800ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-105"
+          className="absolute inset-0 w-full h-full object-cover object-[50%_36%] hero-kenburns"
           src="/final-view/reception.webp"
           alt="The Manratan reception team greeting guests with a namaste"
           fill

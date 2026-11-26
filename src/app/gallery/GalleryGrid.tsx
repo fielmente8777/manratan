@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { gallery, galleryCategories, type GallerySlug } from "@/data/site";
 
 const bySlug = new Map(galleryCategories.map((c) => [c.slug, c]));
@@ -31,8 +32,13 @@ interface GalleryGridProps {
 }
 
 export default function GalleryGrid({ initialSlug }: GalleryGridProps = {}) {
+  const [mounted, setMounted] = useState(false);
   const [slug, setSlug] = useState<GallerySlug>(initialSlug || "all");
   const [open, setOpen] = useState<number | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   const label = bySlug.get(slug)?.label ?? "All Images";
   const items = useMemo(() => (slug === "all" ? gallery : gallery.filter((g) => g.category === label)), [slug, label]);
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -262,7 +268,7 @@ export default function GalleryGrid({ initialSlug }: GalleryGridProps = {}) {
         </div>
       </div>
 
-      {current && (
+      {mounted && current && createPortal(
         <div
           ref={dialogRef}
           role="dialog"
@@ -303,14 +309,16 @@ export default function GalleryGrid({ initialSlug }: GalleryGridProps = {}) {
 
           {/* Center Main Image Area */}
           <div
-            className="relative flex-1 flex items-center justify-center w-full min-h-0 px-4 sm:px-16 py-1"
+            className="relative flex-1 flex items-center justify-center w-full min-h-0 px-4 sm:px-16 py-1 pointer-events-auto"
             onClick={() => setOpen(null)}
           >
             <img
               key={current.src}
               src={current.src}
               alt={current.alt}
-              className="max-h-[75vh] max-w-[90vw] w-auto h-auto object-contain select-none shadow-2xl rounded-sm transition-transform duration-300 ease-out hover:scale-[1.02] cursor-pointer"
+              data-no-hover
+              style={{ transform: "none", transition: "none" }}
+              className="gallery-viewer-img max-h-[75vh] max-w-[90vw] w-auto h-auto object-contain select-none shadow-2xl rounded-sm cursor-default !transform-none !transition-none"
               onClick={(e) => e.stopPropagation()}
             />
 
@@ -386,7 +394,8 @@ export default function GalleryGrid({ initialSlug }: GalleryGridProps = {}) {
               </div>
             </div>
           )}
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );

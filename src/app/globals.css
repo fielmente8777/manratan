@@ -554,12 +554,48 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 /* Photos zoom within their existing frames; keep logos and icons still. */
 @media (hover: hover) {
-  .site-body main img:not([alt=""]):not([src*="/images/nav"]):not([src*="/images/footer"]):not([src*="logo"]):not([src$=".svg"]):not([data-no-hover]) {
+  .site-body main img:not([alt=""]):not([src*="/images/nav"]):not([src*="/images/footer"]):not([src*="logo"]):not([src$=".svg"]):not([data-no-hover]):not(.gallery-viewer-img) {
     transition: transform 1.2s var(--ease-lux), opacity 0.7s ease, filter 0.9s ease;
   }
-  .site-body main :is(div, a, figure, button):hover > img:not([alt=""]):not([src*="/images/nav"]):not([src*="/images/footer"]):not([src*="logo"]):not([src$=".svg"]):not([data-no-hover]) {
+  .site-body main :is(div, a, figure, button):hover > img:not([alt=""]):not([src*="/images/nav"]):not([src*="/images/footer"]):not([src*="logo"]):not([src$=".svg"]):not([data-no-hover]):not(.gallery-viewer-img) {
     transform: scale(1.06);
   }
+}
+
+/* Ken Burns slow zoom effect matching Rooms & Suites banner */
+.hero-kenburns {
+  animation: heroKenBurns 22s ease-out both !important;
+  will-change: transform;
+}
+
+@keyframes heroKenBurns {
+  from {
+    transform: scale(1.14);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-kenburns {
+    animation: none !important;
+  }
+}
+
+/* Strictly disable hover zoom inside modals, lightboxes, and dialogs */
+.gallery-viewer-img,
+.gallery-viewer-img:hover,
+:is(div, a, figure, button):hover > .gallery-viewer-img,
+[role="dialog"] img,
+[role="dialog"] img:hover,
+[role="dialog"] :is(div, a, figure, button):hover > img,
+dialog img,
+dialog img:hover,
+dialog :is(div, a, figure, button):hover > img {
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

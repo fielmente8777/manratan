@@ -131,7 +131,7 @@ const LandingBanner: React.FC<LandingBannerProps> = ({
           alt="Manratan Resort Exterior"
           fill
           priority
-          className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
+          className="object-cover object-center hero-kenburns"
         />
 
         {/* Overlay */}

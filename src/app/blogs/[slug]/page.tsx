@@ -45,7 +45,7 @@ export default async function BlogPostPage({ params }: Props) {
     <main className="bg-stone">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <section className="relative isolate flex min-h-[78svh] items-end overflow-hidden bg-ink text-stone">
-        <Image src={post.coverImage} alt={post.alt} fill preload sizes="100vw" quality={85} className="-z-10 object-cover hero-fade" />
+        <Image src={post.coverImage} alt={post.alt} fill preload sizes="100vw" quality={85} className="-z-10 object-cover hero-fade hero-kenburns will-change-transform" />
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/40 via-black/10 to-black/70" />
         <Container className="pb-16 sm:pb-20">
           <p className="hero-rise text-xs tracking-[0.2em] uppercase text-stone/80">{post.date}</p>

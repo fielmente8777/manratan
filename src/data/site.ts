@@ -73,13 +73,13 @@ export const site = {
 };
 
 export const navLinks = [
-  { label: "Home", href: "/", image: photo("facade-dusk", "Manratan Resort at dusk") },
-  { label: "Our story", href: "/our-story", image: photo("lobby-monogram", "The Manratan lobby") },
-  { label: "Rooms & suites", href: "/rooms-&-suites", image: photo("suite-1", "Executive Suite with a view of the hills") },
-  { label: "Weddings & Events", href: "/weddings-&-events", image: photo("blue-sapphire-full", "Blue Sapphire banquet hall set for a celebration") },
-  { label: "Gallery", href: "/gallery", image: photo("pool-dusk", "Blue Diamond pool from above") },
-  { label: "Journal", href: "/journal", image: photo("ngh-lake-temple", "Jal Mandir on Paras Ram Sagar, Narsinghgarh") },
-  { label: "Contact Us", href: "/contact-us", image: photo("reception-welcome", "Reception team welcome") },
+  { label: "Home", href: "/", image: { src: "/final-view/first-light1.webp", width: 1448, height: 1086, alt: "Manratan Resort facade and architecture" } },
+  { label: "Our story", href: "/our-story", image: { src: "/final-view/first-light2.webp", width: 1448, height: 1086, alt: "Manratan Resort illuminated view" } },
+  { label: "Rooms & suites", href: "/rooms-&-suites", image: { src: "/harsh-executive.jpg", width: 1672, height: 941, alt: "Executive Suite at Manratan Resort" } },
+  { label: "Weddings & Events", href: "/weddings-&-events", image: { src: "/harsh-event3.jpg", width: 1672, height: 941, alt: "Weddings and Celebrations at Manratan Resort" } },
+  { label: "Gallery", href: "/gallery", image: { src: "/final-view/pool.jpeg", width: 1448, height: 1086, alt: "Blue Diamond pool at Manratan Resort" } },
+  { label: "Journal", href: "/journal", image: { src: "/final-view/narsinghgarh1.webp", width: 1448, height: 1086, alt: "Narsinghgarh town and lake view" } },
+  { label: "Contact Us", href: "/contact-us", image: { src: "/final-view/reception.webp", width: 1672, height: 941, alt: "Manratan Resort reception" } },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -391,13 +391,13 @@ export const nearby: { featured: Place[]; more: { name: string; note: string }[]
 
 export const galleryCategories = [
   { label: "All Images", slug: "all" },
-  { label: "Reception", slug: "reception" },
   { label: "Exterior", slug: "exterior" },
-  { label: "Swimming Pool", slug: "swimming-pool" },
+  { label: "Reception", slug: "reception" },
   { label: "Rooms", slug: "rooms" },
+  { label: "Lobby", slug: "lobby" },
   { label: "Dining", slug: "dining" },
   { label: "Events", slug: "events" },
-  { label: "Lobby", slug: "lobby" },
+  { label: "Swimming Pool", slug: "swimming-pool" },
   { label: "Lifestyle", slug: "lifestyle" },
   { label: "Narsinghgarh", slug: "narsinghgarh" },
   // { label: "Nearby attractions", slug: "nearby-attractions" },

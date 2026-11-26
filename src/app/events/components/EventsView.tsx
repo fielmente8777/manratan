@@ -143,7 +143,7 @@ export default function EventsView() {
       {/* ============ 1. HERO ============ */}
       <header className="group relative min-h-[460px] sm:min-h-[500px] md:min-h-[clamp(560px,58vw,760px)] flex flex-col text-[#F6EFE4] bg-[#221811] overflow-hidden">
         <Image
-          className="absolute inset-0 w-full h-full object-cover object-[50%_55%] transition-transform duration-1000 ease-out group-hover:scale-105"
+          className="absolute inset-0 w-full h-full object-cover object-[50%_55%] hero-kenburns"
           src="/event-banner.jpg"
           alt="The Blue Sapphire banquet hall fully set for a celebration"
           fill
