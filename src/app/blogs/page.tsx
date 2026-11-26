@@ -17,7 +17,16 @@ export default function BlogsPage() {
   const [lead, ...rest] = blogsData;
   return (
     <main className="bg-stone">
-      <PageHero image={photo("ngh-lake-town", "Narsinghgarh town and its lake from above")} title="Journal" script="Stories from Malwa" />
+      <PageHero
+        image={{
+          src: "/final-view/narsinghgarh1.webp",
+          width: 1448,
+          height: 1086,
+          alt: "Narsinghgarh town and its lake from above",
+        }}
+        title="Journal"
+        script="Stories from Malwa"
+      />
 
       <section className="py-24 md:py-32">
         <Container>

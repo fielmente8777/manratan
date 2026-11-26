@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y, Autoplay } from "swiper/modules";
 import type { Swiper as SwiperInstance } from "swiper";
@@ -59,6 +59,50 @@ function Ornament() {
         <path d="M7 1l6 8-6 8-6-8z" stroke="currentColor" strokeWidth="1.1" />
       </svg>
       <span />
+    </div>
+  );
+}
+
+function SlideImage({ src, alt }: { src: string; alt: string }) {
+  const imgRef = useRef<HTMLImageElement>(null);
+  const [isPortrait, setIsPortrait] = useState<boolean>(() => {
+    const portraitImages = [
+      "/5.webp",
+      "/Premium-room4_11zon_11zon.webp",
+      "/new-premium-3rd.webp",
+      "/new-premium-4th.webp",
+      "/new-premium-5th.webp",
+      "/harsh-washroom-gallery.jpg",
+      "/executive-suite-5th.webp",
+      "/new-deluxe-5th.webp",
+      "/Deluxe Interconnected Room-washroom.webp",
+    ];
+    return portraitImages.includes(src);
+  });
+
+  useEffect(() => {
+    if (imgRef.current && imgRef.current.complete && imgRef.current.naturalWidth > 0) {
+      setIsPortrait(imgRef.current.naturalHeight > imgRef.current.naturalWidth);
+    }
+  }, [src]);
+
+  return (
+    <div className={`sl-slide-box ${isPortrait ? "is-portrait" : ""}`}>
+      <img
+        ref={imgRef}
+        src={src}
+        alt={alt}
+        loading="eager"
+        decoding="async"
+        data-no-hover
+        className={isPortrait ? "sl-img-contain" : "sl-img-cover"}
+        onLoad={(e) => {
+          const img = e.currentTarget;
+          if (img.naturalWidth > 0) {
+            setIsPortrait(img.naturalHeight > img.naturalWidth);
+          }
+        }}
+      />
     </div>
   );
 }
@@ -137,13 +181,7 @@ function ReferenceGallery({
       >
         {photos.map((photo, index) => (
           <SwiperSlide key={photo.src + index}>
-            <img
-              src={photo.src}
-              alt={photo.alt}
-              loading="eager"
-              decoding="async"
-              data-no-hover
-            />
+            <SlideImage src={photo.src} alt={photo.alt} />
           </SwiperSlide>
         ))}
       </Swiper>

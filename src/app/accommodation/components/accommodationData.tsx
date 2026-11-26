@@ -18,7 +18,7 @@ export const accommodationData = {
       id: "room-1",
       title: "DELUXE ROOM",
       subtitle: "Garden Views • King/Twin Bed • Modern Comfort",
-      image: "/roompage/Deluxe/Deluxe-room3_11zon.webp",
+      image: "/new-deluxe-room3.webp",
       alt: "Manratan Resort Deluxe Room",
     },
     {
@@ -46,7 +46,7 @@ export const accommodationData = {
       id: "room-5",
       title: "SUITE ROOM",
       subtitle: "Master Bedroom • Private Living Room • Presidential Luxury",
-      image: "/harsh-executive.jpg",
+      image: "/20.webp",
       alt: "Manratan Resort Suite Room",
     },
   ],

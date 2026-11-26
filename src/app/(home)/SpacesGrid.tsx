@@ -6,7 +6,7 @@ import Link from "next/link";
 import { photo, video } from "@/data/site";
 
 const spaces = [
-  { label: "Reception", focus: "31% 55%", href: "/gallery?category=lobby", img: photo("reception-welcome", "Reception team greeting guests with a namaste") },
+  { label: "Reception", focus: "31% 55%", href: "/gallery?category=reception", img: photo("reception-welcome", "Reception team greeting guests with a namaste") },
   { label: "Rooms", focus: "60% 50%", href: "/rooms-&-suites", img: photo("suite-bed", "Executive Suite bed dressed in Manratan linen with towel art") },
   { label: "Banquet", focus: "50% 50%", href: "/events", img: photo("blue-sapphire-full", "Blue Sapphire banquet hall fully set for a celebration") },
   { label: "Pool", focus: "50% 50%", href: "/gallery?category=swimming-pool", img: photo("pool-splash", "Guest splashing water at the Blue Diamond pool") },

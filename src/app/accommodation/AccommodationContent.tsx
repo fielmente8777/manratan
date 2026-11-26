@@ -25,7 +25,7 @@ export default function AccommodationContent() {
       <header className="hero ab-hero acc-hero">
         <img
           className="hero-img"
-          src="/harsh-executive.jpg"
+          src="/20.webp"
           alt="Executive Suite luxurious bedroom view"
           style={{ objectPosition: "50% 50%" }}
         />
@@ -162,7 +162,7 @@ export default function AccommodationContent() {
               aria-hidden="true"
             >
               <img
-                src="/harsh-executive.jpg"
+                src="/20.webp"
                 alt="Executive Suite luxurious bedroom view"
                 loading="lazy"
               />
@@ -466,7 +466,7 @@ export default function AccommodationContent() {
               aria-hidden="true"
             >
               <img
-                src="/final-view/Inter-room1_11zon.webp"
+                src="/11.webp"
                 alt="Deluxe Interconnected Room with two connected bedrooms"
                 loading="lazy"
               />
@@ -566,7 +566,7 @@ export default function AccommodationContent() {
               aria-hidden="true"
             >
               <img
-                src="/final-view/Deluxe-room1_11zon.webp"
+                src="/new-deluxe-room1.webp"
                 alt="Deluxe Room with double bed, warm-lit curtains and a writing desk"
                 loading="lazy"
               />

@@ -8,54 +8,62 @@ import type { Swiper as SwiperType } from "swiper";
 import { Container } from "@/components/sectionComponants";
 import "swiper/css";
 
-const foodSlides = [1, 2, 3].map((number) => ({
-  src: `/media/swadika-food${number}.jpg`,
-  alt: `Vegetarian food served at Swadika, photograph ${number}`,
-  caption: "Fresh flavours from the Swadika kitchen",
-  widthClass: number === 2
-    ? "!w-[80vw] sm:!w-[min(66vw,460px)]"
-    : "!w-[54vw] sm:!w-[min(33vw,260px)]",
-  aspectClass: number === 2 ? "aspect-[4096/2305]" : "aspect-[2305/4096]",
-  sizes: number === 2
-    ? "(max-width: 640px) 80vw, (max-width: 697px) 66vw, 460px"
-    : "(max-width: 640px) 54vw, (max-width: 788px) 33vw, 260px",
-}));
-
 const slides = [
   {
-    src: "/media/swadika-hall.webp",
-    alt: "Swadika dining hall with teal velvet chairs and chandeliers",
+    src: "/new-web/dining_11zon.webp",
+    alt: "Swadika dining hall with elegant chandeliers and seating",
     caption: "The chandelier-lit Swadika hall",
-    widthClass: "!w-[66vw] sm:!w-[min(40vw,320px)]",
-    aspectClass: "aspect-square",
-    sizes: "(max-width: 640px) 66vw, (max-width: 800px) 40vw, 320px",
+    widthClass: "!w-[80vw] sm:!w-[min(66vw,560px)]",
+    aspectClass: "aspect-[16/9]",
+    sizes: "(max-width: 640px) 80vw, (max-width: 900px) 66vw, 560px",
   },
-  foodSlides[0],
   {
-    src: "/media/swadika-guests.webp",
-    alt: "Families enjoying lunch together at Swadika",
+    src: "/dishes-2.webp",
+    alt: "Fresh vegetarian delicacies prepared in the Swadika kitchen",
+    caption: "Fresh flavours from the Swadika kitchen",
+    widthClass: "!w-[75vw] sm:!w-[min(55vw,460px)]",
+    aspectClass: "aspect-[16/9]",
+    sizes: "(max-width: 640px) 75vw, (max-width: 800px) 55vw, 460px",
+  },
+  {
+    src: "/new-dining-new.webp",
+    alt: "Families enjoying lunch together at Swadika restaurant",
     caption: "Tables laid for a long family lunch",
-    widthClass: "!w-[54vw] sm:!w-[min(33vw,260px)]",
-    aspectClass: "aspect-[26/35]",
-    sizes: "(max-width: 640px) 54vw, (max-width: 788px) 33vw, 260px",
+    widthClass: "!w-[66vw] sm:!w-[min(42vw,360px)]",
+    aspectClass: "aspect-[1368/1149]",
+    sizes: "(max-width: 640px) 66vw, (max-width: 800px) 42vw, 360px",
   },
-  foodSlides[1],
   {
-    src: "/media/swadika-room.webp",
-    alt: "Swadika restaurant set for service",
-    caption: "Indian and global, all pure vegetarian",
-    widthClass: "!w-[80vw] sm:!w-[min(66vw,640px)]",
-    aspectClass: "aspect-[2/1]",
-    sizes: "(max-width: 640px) 80vw, (max-width: 970px) 66vw, 640px",
-  },
-  foodSlides[2],
-  {
-    src: "/homopage/dining2_11zon.jpg",
-    alt: "A floating breakfast spread beside the Blue Diamond pool",
-    caption: "Breakfast by the Blue Diamond pool",
+    src: "/dishes-1.webp",
+    alt: "Signature vegetarian dish at Swadika",
+    caption: "Signature vegetarian delicacies",
     widthClass: "!w-[54vw] sm:!w-[min(33vw,260px)]",
     aspectClass: "aspect-[941/1672]",
     sizes: "(max-width: 640px) 54vw, (max-width: 788px) 33vw, 260px",
+  },
+  {
+    src: "/restaurant/swadika3_11zon.webp",
+    alt: "Swadika restaurant tables set for service",
+    caption: "Indian and global, all pure vegetarian",
+    widthClass: "!w-[80vw] sm:!w-[min(66vw,560px)]",
+    aspectClass: "aspect-[16/9]",
+    sizes: "(max-width: 640px) 80vw, (max-width: 900px) 66vw, 560px",
+  },
+  {
+    src: "/dishes-6.webp",
+    alt: "Authentic culinary preparation from Swadika restaurant",
+    caption: "Authentic culinary preparations",
+    widthClass: "!w-[54vw] sm:!w-[min(33vw,260px)]",
+    aspectClass: "aspect-[941/1672]",
+    sizes: "(max-width: 640px) 54vw, (max-width: 788px) 33vw, 260px",
+  },
+  {
+    src: "/dishes-9.webp",
+    alt: "Sumptuous dining spread at Swadika restaurant",
+    caption: "Handcrafted gourmet flavours",
+    widthClass: "!w-[75vw] sm:!w-[min(55vw,460px)]",
+    aspectClass: "aspect-[16/9]",
+    sizes: "(max-width: 640px) 75vw, (max-width: 800px) 55vw, 460px",
   },
 ];
 

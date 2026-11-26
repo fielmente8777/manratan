@@ -6,18 +6,24 @@ import { redirect } from "next/navigation";
 
 const bySlug = new Map(galleryCategories.map((c) => [c.slug, c]));
 
+const slugAliases: Record<string, GallerySlug> = {
+  exteriors: "exterior",
+  narsingha: "narsinghgarh",
+};
+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ category: string }>;
 }): Promise<Metadata> {
   const { category } = await params;
-  const cat = bySlug.get(category as GallerySlug);
+  const slug = (slugAliases[category] || category) as GallerySlug;
+  const cat = bySlug.get(slug);
   const label = cat ? cat.label : "Gallery";
   return {
     title: `${label} Gallery | Manratan Resort`,
     description: `Photographs of ${label} at Manratan Resort, Narsinghgarh.`,
-    alternates: { canonical: `/gallery/${category}` },
+    alternates: { canonical: `/gallery/${slug}` },
   };
 }
 
@@ -32,9 +38,8 @@ export default async function GalleryCategoryPage({
     redirect("/gallery");
   }
 
-  const validSlug = bySlug.has(category as GallerySlug)
-    ? (category as GallerySlug)
-    : "all";
+  const slug = (slugAliases[category] || category) as GallerySlug;
+  const validSlug = bySlug.has(slug) ? slug : "all";
 
   return (
     <main className="bg-stone">

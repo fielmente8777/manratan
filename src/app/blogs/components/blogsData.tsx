@@ -180,8 +180,8 @@ export const blogsData: BlogPost[] = [
     slug: "culinary-journey-authentic-malwa-flavors",
     title: "A Culinary Journey Through Authentic Malwa Flavors",
     date: "18 Jan, 2026",
-    coverImage: "/media/swadika-guests.webp",
-    url: "/media/swadika-guests.webp",
+    coverImage: "/new-dining-new.webp",
+    url: "/new-dining-new.webp",
     alt: "Families sharing a vegetarian lunch at Swadika",
     description:
       "Discover royal regional recipes, fragrant spices, and gourmet multi cuisine dining at Swadika Restaurant in Manratan Resort.",
@@ -224,8 +224,8 @@ export const blogsData: BlogPost[] = [
     slug: "weekend-getaway-guide-from-bhopal-indore",
     title: "The Ultimate Weekend Getaway Guide from Bhopal & Indore",
     date: "18 Jan, 2026",
-    coverImage: "/media/facade-dusk.webp",
-    url: "/media/facade-dusk.webp",
+    coverImage: "/final-view/first-light1.webp",
+    url: "/final-view/first-light1.webp",
     alt: "Manratan Resort at dusk, the arrival forecourt",
     description:
       "Plan a seamless road trip from Bhopal (70 km) or Indore (210 km) to the peaceful hills and luxury of Manratan Resort in Narsinghgarh.",
@@ -268,8 +268,8 @@ export const blogsData: BlogPost[] = [
     slug: "eco-friendly-luxury-sustainable-hospitality",
     title: "Eco Friendly Luxury: Sustainable Hospitality at Its Finest",
     date: "18 Jan, 2026",
-    coverImage: "/media/aerial-greenery.webp",
-    url: "/media/aerial-greenery.webp",
+    coverImage: "/final-view/first-light3.webp",
+    url: "/final-view/first-light3.webp",
     alt: "Manratan Resort among green fields, from the air",
     description:
       "Learn how Manratan Resort blends refined modern luxury with environmental stewardship, lush greenery, and conscious resort operations.",

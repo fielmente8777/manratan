@@ -129,8 +129,8 @@ const occasions = [
     desc: "Conference set-ups with screen and podium, a projector in the Golden Sapphire hall, and rooms for the team.",
     venue: "Golden Sapphire · Blue Sapphire",
     dot: "#D9A94E",
-    img: "/events-page/4c58e0c82a181387981f70379aee86ae.jpg",
-    alt: "The Golden Sapphire hall set for a gathering",
+    img: "/harsh-event2.jpg",
+    alt: "Corporate conference and events setup at Manratan Resort",
   },
 ];
 

@@ -168,7 +168,10 @@ export default function OurStoryPage() {
           <div className="mt-14 md:mt-16 grid gap-10 sm:gap-8 lg:gap-10 md:grid-cols-3">
             {[
               {
-                img: photo("swadika-room", "Swadika restaurant set for lunch"),
+                img: {
+                  src: "/restaurant/swadika3_11zon.webp",
+                  alt: "Swadika restaurant set for lunch",
+                },
                 tag: "PURE VEGETARIAN · 80–100 GUESTS",
                 t: "SWADIKA",
                 d: "Indian and global multi-cuisine dining under a signature chandelier.",
@@ -183,7 +186,10 @@ export default function OurStoryPage() {
                 d: "Slow afternoons, floating breakfasts and candlelit dinners by the water.",
               },
               {
-                img: photo("skylawn-sunset", "Sky Lawn lounge at sunset"),
+                img: {
+                  src: "/final-view/skylawn.webp",
+                  alt: "Sky Lawn rooftop open-air lounge at Manratan Resort",
+                },
                 tag: "UP TO 20 GUESTS",
                 t: "SKY LAWN",
                 d: "An intimate open-air terrace for sundowners and private celebrations.",

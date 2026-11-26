@@ -65,7 +65,7 @@ export default function EventsGrid() {
                 muted
                 playsInline
                 preload="auto"
-                className="absolute inset-0 h-full w-full object-cover"
+                className="absolute inset-0 h-full w-full object-cover transition-[filter,transform] duration-500 brightness-90 group-hover:scale-[1.02] group-hover:brightness-110"
               />
             ) : (
               <Image
@@ -74,13 +74,13 @@ export default function EventsGrid() {
                 fill
                 quality={85}
                 sizes="(max-width: 640px) 100vw, 50vw"
-                className="img-drift object-cover"
+                className="img-drift object-cover transition-[filter,transform] duration-500 brightness-90 group-hover:scale-[1.02] group-hover:brightness-110"
                 style={c.focus ? { objectPosition: c.focus } : undefined}
               />
             )}
-            <span className="absolute inset-0 bg-black/35 transition-colors duration-700 group-hover:bg-black/20" aria-hidden="true" />
+            <span className="absolute inset-0 bg-black/40 transition-colors duration-500 group-hover:bg-transparent" aria-hidden="true" />
             <span className="absolute inset-0 flex items-center justify-center">
-              <span className="font-ivy text-[clamp(1.5rem,2.3vw,2.1rem)] leading-none drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
+              <span className="font-ivy text-[clamp(1.5rem,2.3vw,2.1rem)] leading-none drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
                 {c.title}
               </span>
             </span>

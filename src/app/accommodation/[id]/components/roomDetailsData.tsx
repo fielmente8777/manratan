@@ -3,25 +3,33 @@ export const roomDetailsData = [
     id: "room-1",
     title: "DELUXE ROOM • TWIN / DOUBLE BED • GARDEN VIEW",
     specs: "DELUXE ROOM • TWIN / DOUBLE BED • GARDEN VIEW",
-    heroImage: "/final-view/Deluxe-room1_11zon.webp",
+    heroImage: "/new-deluxe-room1.webp",
     introParagraph:
       "Experience refined comfort in our Deluxe Room featuring panoramic garden views, contemporary wooden finishes, plush bedding, and an atmosphere designed for peaceful relaxation.",
     galleryImages: [
       {
-        src: "/final-view/Deluxe-room2_11zon.webp",
+        src: "/new-deluxe-room1.webp",
+        alt: "Deluxe Room with double bed, warm-lit curtains and a writing desk",
+      },
+      {
+        src: "/new-deluxe-room2.webp",
         alt: "Deluxe Room View 2",
       },
       {
-        src: "/final-view/Deluxe-room3_11zon.webp",
+        src: "/new-deluxe-room3.webp",
         alt: "Deluxe Room View 3",
       },
       {
-        src: "/final-view/Deluxe-room4_11zon.webp",
+        src: "/new-deluxe-room4.webp",
         alt: "Deluxe Room View 4",
       },
       {
-        src: "/final-view/Deluxe-room5_11zon.webp",
-        alt: "Deluxe Room View 5",
+        src: "/new-deluxe-5th.webp",
+        alt: "Deluxe Room amenities and details",
+      },
+      {
+        src: "/harsh-washroom-gallery.jpg",
+        alt: "Deluxe Room en-suite washroom with modern fittings",
       },
     ],
     amenities: [
@@ -49,21 +57,29 @@ export const roomDetailsData = [
     id: "room-2",
     title: "DELUXE INTERCONNECTED ROOM • CONNECTED SUITE • POOL & GARDEN VIEW",
     specs: "DELUXE INTERCONNECTED ROOM • CONNECTED SUITE • POOL & GARDEN VIEW",
-    heroImage: "/final-view/Inter-room1_11zon.webp",
+    heroImage: "/11.webp",
     introParagraph:
       "Perfect for families and groups traveling together, our Deluxe Interconnected Rooms offer seamless privacy and togetherness with interconnected bedrooms, premium furnishings, and scenic views.",
     galleryImages: [
       {
-        src: "/final-view/Inter-room2_11zon.webp",
+        src: "/11.webp",
+        alt: "Two bedrooms joined by a connecting door",
+      },
+      {
+        src: "/12.webp",
         alt: "Deluxe Interconnected Room View 2",
+      },
+      {
+        src: "/harsh-interconnected.jpg",
+        alt: "Deluxe Interconnected Room connected suite view",
       },
       {
         src: "/final-view/Inter-room4_11zon.webp",
         alt: "Deluxe Interconnected Room View 4",
       },
       {
-        src: "/harsh-interconnected.jpg",
-        alt: "Deluxe Interconnected Room connected suite view",
+        src: "/Deluxe Interconnected Room-washroom.webp",
+        alt: "Deluxe Interconnected Room modern washroom",
       },
     ],
     amenities: [
@@ -90,13 +106,13 @@ export const roomDetailsData = [
     id: "room-3",
     title: "EXECUTIVE FAMILY ROOM • KING BED • POOL VIEW",
     specs: "EXECUTIVE FAMILY ROOM • KING BED • POOL VIEW",
-    heroImage: "/final-view/Executive-banner_11zon.webp",
+    heroImage: "/harsh-executive-family.jpg",
     introParagraph:
       "An exquisite executive family room offering expansive living spaces, lavish interiors, and serene pool views designed for guests seeking the pinnacle of luxury and comfort.",
     galleryImages: [
       {
-        src: "/final-view/Executive-room4_11zon.webp",
-        alt: "Executive Family Room View 4",
+        src: "/6.webp",
+        alt: "Executive Family Room ambient lighting and wall paneling",
       },
       {
         src: "/harsh-executive-family.jpg",
@@ -109,6 +125,14 @@ export const roomDetailsData = [
       {
         src: "/harsh-executive-family3.jpg",
         alt: "Executive Family Room ambient lighting and styling",
+      },
+      {
+        src: "/7.webp",
+        alt: "Executive Family Room View 4",
+      },
+      {
+        src: "/Executive Family Room-washroom-6th.webp",
+        alt: "Executive Family Room modern washroom",
       },
     ],
     amenities: [
@@ -141,16 +165,28 @@ export const roomDetailsData = [
       "Nestled amidst lush landscapes, our premium rooms offer a peaceful haven with tasteful furnishings, warm ambient lighting, and modern amenities for a tranquil getaway.",
     galleryImages: [
       {
-        src: "/final-view/Premium-room4_11zon.webp",
-        alt: "Premium Room View 4",
-      },
-      {
         src: "/harsh-premium.jpg",
         alt: "Premium Room contemporary king bedroom view",
       },
       {
         src: "/harsh-premium2.jpg",
         alt: "Premium Room plush seating and bedroom view",
+      },
+      {
+        src: "/new-premium-3rd.webp",
+        alt: "Premium Room elegant interior view",
+      },
+      {
+        src: "/new-premium-4th.webp",
+        alt: "Premium Room contemporary amenities and decor",
+      },
+      {
+        src: "/Premium-room4_11zon_11zon.webp",
+        alt: "Premium Room wide window view",
+      },
+      {
+        src: "/new-premium-5th.webp",
+        alt: "Premium Room luxury bathroom and amenities",
       },
     ],
     amenities: [
@@ -177,25 +213,33 @@ export const roomDetailsData = [
     id: "room-5",
     title: "SUITE ROOM • LUXURY KING BED • PANORAMIC VIEW",
     specs: "SUITE ROOM • LUXURY KING BED • PANORAMIC VIEW",
-    heroImage: "/harsh-executive.jpg",
+    heroImage: "/20.webp",
     introParagraph:
       "Experience unmatched luxury and modern design with panoramic resort views, premium king bedding, and refined interiors crafted to perfection for an unforgettable escape.",
     galleryImages: [
       {
-        src: "/final-view/Suite-room4_11zon.webp",
-        alt: "Suite Room View 4",
-      },
-      {
-        src: "/final-view/Suite-room5_11zon.webp",
-        alt: "Suite Room View 5",
-      },
-      {
-        src: "/harsh-executive.jpg",
+        src: "/20.webp",
         alt: "Executive Suite luxurious bedroom view",
+      },
+      {
+        src: "/18.webp",
+        alt: "Suite Room View 4",
       },
       {
         src: "/harsh-executive2.jpg",
         alt: "Executive Suite grand suite seating view",
+      },
+      {
+        src: "/5.webp",
+        alt: "Executive Suite wardrobe and in-room safe",
+      },
+      {
+        src: "/executive-suite-5th.webp",
+        alt: "Executive Suite luxury interior and details",
+      },
+      {
+        src: "/Suite-room5_11zon_11zon.webp",
+        alt: "Suite Room View 5",
       },
     ],
     amenities: [

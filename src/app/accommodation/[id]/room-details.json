@@ -29,16 +29,28 @@
     ],
     "photos": [
       {
-        "src": "/final-view/Premium-room4_11zon.webp",
-        "alt": "Premium Room wide window view"
-      },
-      {
         "src": "/harsh-premium.jpg",
         "alt": "Premium Room contemporary king bedroom view"
       },
       {
         "src": "/harsh-premium2.jpg",
         "alt": "Premium Room plush seating and bedroom view"
+      },
+      {
+        "src": "/new-premium-3rd.webp",
+        "alt": "Premium Room elegant interior view"
+      },
+      {
+        "src": "/new-premium-4th.webp",
+        "alt": "Premium Room contemporary amenities and decor"
+      },
+      {
+        "src": "/Premium-room4_11zon_11zon.webp",
+        "alt": "Premium Room wide window view"
+      },
+      {
+        "src": "/new-premium-5th.webp",
+        "alt": "Premium Room luxury bathroom and amenities"
       }
     ],
     "amenityTitle": "In your room",
@@ -87,7 +99,7 @@
         "name": "Executive Suite",
         "summary": "Master bedroom · Panoramic view",
         "image": {
-          "src": "/harsh-executive.jpg",
+          "src": "/20.webp",
           "alt": "Executive Suite bedroom with a panoramic window"
         }
       },
@@ -105,7 +117,7 @@
         "name": "Deluxe Interconnected",
         "summary": "Two connected rooms · Pool & garden view",
         "image": {
-          "src": "/final-view/Inter-room1_11zon.webp",
+          "src": "/11.webp",
           "alt": "Deluxe Interconnected Room with two connected bedrooms"
         }
       },
@@ -114,7 +126,7 @@
         "name": "Deluxe Room",
         "summary": "Twin or double · Garden view",
         "image": {
-          "src": "/final-view/Deluxe-room1_11zon.webp",
+          "src": "/new-deluxe-room1.webp",
           "alt": "Deluxe Room with double bed and writing desk"
         }
       }
@@ -123,8 +135,8 @@
   "room-3": {
     "name": "Executive Family Room",
     "hero": {
-      "src": "/final-view/Executive-banner_11zon.webp",
-      "alt": "Executive Family Room beds"
+      "src": "/harsh-executive-family.jpg",
+      "alt": "Executive Family Room spacious living view"
     },
     "heroScript": "room for everyone",
     "eyebrow": "Family room · 8 of this style",
@@ -150,8 +162,8 @@
     ],
     "photos": [
       {
-        "src": "/final-view/Executive-room4_11zon.webp",
-        "alt": "Executive Family Room work desk"
+        "src": "/6.webp",
+        "alt": "Executive Family Room ambient lighting and wall paneling"
       },
       {
         "src": "/harsh-executive-family.jpg",
@@ -164,6 +176,14 @@
       {
         "src": "/harsh-executive-family3.jpg",
         "alt": "Executive Family Room ambient lighting and styling"
+      },
+      {
+        "src": "/7.webp",
+        "alt": "Executive Family Room work desk"
+      },
+      {
+        "src": "/Executive Family Room-washroom-6th.webp",
+        "alt": "Executive Family Room modern washroom"
       }
     ],
     "amenityTitle": "In your room",
@@ -212,7 +232,7 @@
         "name": "Executive Suite",
         "summary": "Master bedroom · Panoramic view",
         "image": {
-          "src": "/harsh-executive.jpg",
+          "src": "/20.webp",
           "alt": "Executive Suite bedroom with a panoramic window"
         }
       },
@@ -230,7 +250,7 @@
         "name": "Deluxe Interconnected",
         "summary": "Two connected rooms · Pool & garden view",
         "image": {
-          "src": "/final-view/Inter-room1_11zon.webp",
+          "src": "/11.webp",
           "alt": "Deluxe Interconnected Room with two connected bedrooms"
         }
       },
@@ -239,7 +259,7 @@
         "name": "Deluxe Room",
         "summary": "Twin or double · Garden view",
         "image": {
-          "src": "/final-view/Deluxe-room1_11zon.webp",
+          "src": "/new-deluxe-room1.webp",
           "alt": "Deluxe Room with double bed and writing desk"
         }
       }
@@ -248,7 +268,7 @@
   "room-2": {
     "name": "Deluxe Interconnected Room",
     "hero": {
-      "src": "/final-view/Inter-room1_11zon.webp",
+      "src": "/11.webp",
       "alt": "Two bedrooms joined by a connecting door"
     },
     "heroScript": "together, with space",
@@ -275,20 +295,24 @@
     ],
     "photos": [
       {
-        "src": "/final-view/Inter-room1_11zon.webp",
+        "src": "/11.webp",
         "alt": "Two bedrooms joined by a connecting door"
       },
       {
-        "src": "/final-view/Inter-room2_11zon.webp",
+        "src": "/12.webp",
         "alt": "Interconnected room bed with window light"
+      },
+      {
+        "src": "/harsh-interconnected.jpg",
+        "alt": "Deluxe Interconnected Room connected suite view"
       },
       {
         "src": "/final-view/Inter-room4_11zon.webp",
         "alt": "Interconnected room comfortable family setup"
       },
       {
-        "src": "/harsh-interconnected.jpg",
-        "alt": "Deluxe Interconnected Room connected suite view"
+        "src": "/Deluxe Interconnected Room-washroom.webp",
+        "alt": "Deluxe Interconnected Room modern washroom"
       }
     ],
     "amenityTitle": "In your room",
@@ -337,7 +361,7 @@
         "name": "Executive Suite",
         "summary": "Master bedroom · Panoramic view",
         "image": {
-          "src": "/harsh-executive.jpg",
+          "src": "/20.webp",
           "alt": "Executive Suite bedroom with a panoramic window"
         }
       },
@@ -364,7 +388,7 @@
         "name": "Deluxe Room",
         "summary": "Twin or double · Garden view",
         "image": {
-          "src": "/final-view/Deluxe-room1_11zon.webp",
+          "src": "/new-deluxe-room1.webp",
           "alt": "Deluxe Room with double bed and writing desk"
         }
       }
@@ -373,7 +397,7 @@
   "room-1": {
     "name": "Deluxe Room",
     "hero": {
-      "src": "/final-view/Deluxe-room1_11zon.webp",
+      "src": "/new-deluxe-room1.webp",
       "alt": "Deluxe Room with double bed, writing desk and wall-mounted TV"
     },
     "heroScript": "warm, calm and easy",
@@ -400,24 +424,28 @@
     ],
     "photos": [
       {
-        "src": "/final-view/Deluxe-room1_11zon.webp",
+        "src": "/new-deluxe-room1.webp",
         "alt": "Deluxe Room with double bed, writing desk and wall-mounted TV"
       },
       {
-        "src": "/final-view/Deluxe-room2_11zon.webp",
+        "src": "/new-deluxe-room2.webp",
         "alt": "Deluxe Room with armchair and bedside table"
       },
       {
-        "src": "/final-view/Deluxe-room3_11zon.webp",
+        "src": "/new-deluxe-room3.webp",
         "alt": "Deluxe Room spacious layout"
       },
       {
-        "src": "/final-view/Deluxe-room4_11zon.webp",
+        "src": "/new-deluxe-room4.webp",
         "alt": "Deluxe Room comfortable seating and natural lighting"
       },
       {
-        "src": "/final-view/Deluxe-room5_11zon.webp",
+        "src": "/new-deluxe-5th.webp",
         "alt": "Deluxe Room amenities and details"
+      },
+      {
+        "src": "/harsh-washroom-gallery.jpg",
+        "alt": "Deluxe Room en-suite washroom with modern fittings"
       }
     ],
     "amenityTitle": "In your room",
@@ -470,7 +498,7 @@
         "name": "Executive Suite",
         "summary": "Master bedroom · Panoramic view",
         "image": {
-          "src": "/harsh-executive.jpg",
+          "src": "/20.webp",
           "alt": "Executive Suite bedroom with a panoramic window"
         }
       },
@@ -497,7 +525,7 @@
         "name": "Deluxe Interconnected",
         "summary": "Two connected rooms · Pool & garden view",
         "image": {
-          "src": "/final-view/Inter-room1_11zon.webp",
+          "src": "/11.webp",
           "alt": "Deluxe Interconnected Room with two connected bedrooms"
         }
       }
@@ -506,7 +534,7 @@
   "room-5": {
     "name": "Executive Suite",
     "hero": {
-      "src": "/harsh-executive.jpg",
+      "src": "/20.webp",
       "alt": "Executive Suite luxurious bedroom view"
     },
     "heroScript": "our two finest rooms",
@@ -533,20 +561,28 @@
     ],
     "photos": [
       {
-        "src": "/final-view/Suite-room4_11zon.webp",
-        "alt": "Executive Suite spacious interior"
-      },
-      {
-        "src": "/final-view/Suite-room5_11zon.webp",
-        "alt": "Executive Suite master bathroom"
-      },
-      {
-        "src": "/harsh-executive.jpg",
+        "src": "/20.webp",
         "alt": "Executive Suite luxurious bedroom view"
+      },
+      {
+        "src": "/18.webp",
+        "alt": "Executive Suite spacious interior"
       },
       {
         "src": "/harsh-executive2.jpg",
         "alt": "Executive Suite grand suite seating view"
+      },
+      {
+        "src": "/5.webp",
+        "alt": "Executive Suite wardrobe and in-room safe"
+      },
+      {
+        "src": "/executive-suite-5th.webp",
+        "alt": "Executive Suite luxury interior and details"
+      },
+      {
+        "src": "/Suite-room5_11zon_11zon.webp",
+        "alt": "Executive Suite master bathroom"
       }
     ],
     "amenityTitle": "In your suite",
@@ -613,7 +649,7 @@
         "name": "Deluxe Interconnected",
         "summary": "Two connected rooms · Pool & garden view",
         "image": {
-          "src": "/final-view/Inter-room1_11zon.webp",
+          "src": "/11.webp",
           "alt": "Deluxe Interconnected Room with two connected bedrooms"
         }
       },
@@ -622,7 +658,7 @@
         "name": "Deluxe Room",
         "summary": "Twin or double · Garden view",
         "image": {
-          "src": "/final-view/Deluxe-room1_11zon.webp",
+          "src": "/new-deluxe-room1.webp",
           "alt": "Deluxe Room with double bed and writing desk"
         }
       }
