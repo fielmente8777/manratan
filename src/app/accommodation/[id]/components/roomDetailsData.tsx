@@ -73,14 +73,6 @@ export const roomDetailsData = [
         src: "/harsh-interconnected.jpg",
         alt: "Deluxe Interconnected Room connected suite view",
       },
-      {
-        src: "/final-view/Inter-room4_11zon.webp",
-        alt: "Deluxe Interconnected Room View 4",
-      },
-      {
-        src: "/Deluxe Interconnected Room-washroom.webp",
-        alt: "Deluxe Interconnected Room modern washroom",
-      },
     ],
     amenities: [
       "HIGH SPEED WIFI",
@@ -126,14 +118,6 @@ export const roomDetailsData = [
         src: "/harsh-executive-family3.jpg",
         alt: "Executive Family Room ambient lighting and styling",
       },
-      {
-        src: "/7.webp",
-        alt: "Executive Family Room View 4",
-      },
-      {
-        src: "/Executive Family Room-washroom-6th.webp",
-        alt: "Executive Family Room modern washroom",
-      },
     ],
     amenities: [
       "HIGH SPEED WIFI",
@@ -176,18 +160,6 @@ export const roomDetailsData = [
         src: "/new-premium-3rd.webp",
         alt: "Premium Room elegant interior view",
       },
-      {
-        src: "/new-premium-4th.webp",
-        alt: "Premium Room contemporary amenities and decor",
-      },
-      {
-        src: "/Premium-room4_11zon_11zon.webp",
-        alt: "Premium Room wide window view",
-      },
-      {
-        src: "/new-premium-5th.webp",
-        alt: "Premium Room luxury bathroom and amenities",
-      },
     ],
     amenities: [
       "HIGH SPEED WIFI",
@@ -228,10 +200,6 @@ export const roomDetailsData = [
       {
         src: "/harsh-executive2.jpg",
         alt: "Executive Suite grand suite seating view",
-      },
-      {
-        src: "/5.webp",
-        alt: "Executive Suite wardrobe and in-room safe",
       },
       {
         src: "/executive-suite-5th.webp",

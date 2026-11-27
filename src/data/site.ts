@@ -145,8 +145,6 @@ export const rooms: Room[] = [
       { src: "/11.webp", width: 1919, height: 1080, alt: "Two bedrooms joined by a connecting door" },
       { src: "/12.webp", width: 1918, height: 1079, alt: "Interconnected room bed with window light" },
       { src: "/harsh-interconnected.jpg", width: 1672, height: 941, alt: "Deluxe Interconnected Room connected suite view" },
-      { src: "/final-view/Inter-room4_11zon.webp", width: 6240, height: 3512, alt: "Interconnected room comfortable family setup" },
-      { src: "/Deluxe Interconnected Room-washroom.webp", width: 3024, height: 4032, alt: "Deluxe Interconnected Room modern washroom" },
     ],
     amenities: ["High-speed Wi-Fi", "Daily housekeeping", "In-room dining", "Interconnected rooms", "Air conditioning", "Tea & coffee maker"],
     meta: {
@@ -170,8 +168,6 @@ export const rooms: Room[] = [
       { src: "/harsh-executive-family.jpg", width: 1672, height: 941, alt: "Executive Family Room spacious living view" },
       { src: "/harsh-executive-family2.jpg", width: 1672, height: 941, alt: "Executive Family Room comfortable interior setup" },
       { src: "/harsh-executive-family3.jpg", width: 1672, height: 941, alt: "Executive Family Room ambient lighting and styling" },
-      { src: "/7.webp", width: 4096, height: 2305, alt: "Executive Family Room work desk" },
-      { src: "/Executive Family Room-washroom-6th.webp", width: 1914, height: 1077, alt: "Executive Family Room modern washroom" },
     ],
     amenities: ["High-speed Wi-Fi", "Daily housekeeping", "In-room dining", "Pool view", "Air conditioning", "Tea & coffee maker"],
     meta: {
@@ -195,9 +191,6 @@ export const rooms: Room[] = [
       { src: "/harsh-premium.jpg", width: 1672, height: 941, alt: "Premium Room contemporary king bedroom view" },
       { src: "/harsh-premium2.jpg", width: 1448, height: 1086, alt: "Premium Room plush seating and bedroom view" },
       { src: "/new-premium-3rd.webp", width: 2305, height: 4096, alt: "Premium Room elegant interior view" },
-      { src: "/new-premium-4th.webp", width: 2305, height: 4096, alt: "Premium Room contemporary amenities and decor" },
-      { src: "/Premium-room4_11zon_11zon.webp", width: 1024, height: 1536, alt: "Premium Room wide window view" },
-      { src: "/new-premium-5th.webp", width: 2305, height: 4096, alt: "Premium Room luxury bathroom and amenities" },
     ],
     amenities: ["High-speed Wi-Fi", "Daily housekeeping", "In-room dining", "Sofa-cum-bed", "Air conditioning", "Tea & coffee maker"],
     meta: {
@@ -221,7 +214,6 @@ export const rooms: Room[] = [
       { src: "/20.webp", width: 4096, height: 2305, alt: "Executive Suite luxurious bedroom view" },
       { src: "/18.webp", width: 1920, height: 1081, alt: "Executive Suite spacious interior" },
       { src: "/harsh-executive2.jpg", width: 1448, height: 1086, alt: "Executive Suite grand suite seating view" },
-      { src: "/5.webp", width: 643, height: 1143, alt: "Executive Suite wardrobe and in-room safe" },
       { src: "/executive-suite-5th.webp", width: 2305, height: 4096, alt: "Executive Suite luxury interior and details" },
       { src: "/Suite-room5_11zon_11zon.webp", width: 1448, height: 1086, alt: "Executive Suite master bathroom" },
     ],
